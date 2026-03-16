@@ -2,31 +2,44 @@ aid: togai
 name: Togai
 description: >-
   Togai API allows your application to push usage events and customer
-  information to Togai UBP infrastructure. Learn more about Togai UBP from here.
+  information to Togai usage-based pricing infrastructure.
 type: Index
 position: Consumer
 access: 3rd-Party
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
-  - API
+  - Billing
+  - Usage-Based Pricing
+  - Metering
 created: '2025-02-10'
-modified: '2025-02-10'
+modified: '2026-03-16'
 url: >-
   https://raw.githubusercontent.com/api-evangelist/togai/refs/heads/main/apis.yml
 specificationVersion: '0.19'
 apis:
   - aid: togai:togai
-    name: Togai
+    name: Togai API
     description: >-
       Togai API allows your application to push usage events and customer
-      information to Togai UBP infrastructure. Learn more about Togai UBP from
-      here.
+      information to Togai usage-based pricing infrastructure.
     humanURL: https://docs.togai.com/api-reference/getting-started
+    baseURL: https://api.togai.com
     tags:
-      - API
+      - Billing
+      - Usage-Based Pricing
+      - Metering
     properties:
       - type: Documentation
         url: https://docs.togai.com/api-reference/getting-started
+      - type: Getting Started
+        url: https://docs.togai.com/api-reference/getting-started
+common:
+  - type: Website
+    url: https://www.togai.com/
+  - type: Documentation
+    url: https://docs.togai.com/
+  - type: Sign Up
+    url: https://app.togai.com/auth/signup
 maintainers:
   - FN: Kin Lane
-    email: info@apievangelist.com
+    email: kin@apievangelist.com
