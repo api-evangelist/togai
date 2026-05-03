@@ -1,0 +1,49 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "https://api.togai.com/customers",
+    "headers": {
+      "Authorization": "Bearer {api_token}",
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "name": "Acme Corporation",
+      "id": "acme-corp",
+      "primaryEmail": "billing@acme.com",
+      "billingAddress": {
+        "addressLine1": "123 Enterprise Ave",
+        "addressLine2": "Suite 500",
+        "city": "San Francisco",
+        "state": "CA",
+        "country": "US",
+        "zipCode": "94105"
+      },
+      "account": {
+        "id": "acme-corp-main",
+        "name": "Acme Main Account",
+        "primaryEmail": "dev@acme.com"
+      }
+    }
+  },
+  "response": {
+    "status": 201,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "id": "acme-corp",
+      "name": "Acme Corporation",
+      "primaryEmail": "billing@acme.com",
+      "billingAddress": {
+        "addressLine1": "123 Enterprise Ave",
+        "addressLine2": "Suite 500",
+        "city": "San Francisco",
+        "state": "CA",
+        "country": "US",
+        "zipCode": "94105"
+      },
+      "createdAt": "2026-05-03T10:00:00Z",
+      "updatedAt": "2026-05-03T10:00:00Z"
+    }
+  }
+}

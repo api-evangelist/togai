@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/togai/json-schema/togai-event-schema.json",
+  "title": "Togai Usage Event",
+  "description": "A usage event ingested into Togai for metering and billing purposes.",
+  "type": "object",
+  "required": ["id", "schemaName", "accountId", "timestamp"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique event identifier (idempotency key)"
+    },
+    "schemaName": {
+      "type": "string",
+      "description": "Name of the event schema defining the event structure"
+    },
+    "accountId": {
+      "type": "string",
+      "description": "Account ID to attribute the usage to"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "UTC timestamp when the usage event occurred"
+    },
+    "dimensions": {
+      "type": "object",
+      "description": "Categorical attributes used for filtering and grouping",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "attributes": {
+      "type": "object",
+      "description": "Numeric or measured attributes for metering calculations",
+      "additionalProperties": {
+        "oneOf": [
+          { "type": "number" },
+          { "type": "string" }
+        ]
+      }
+    }
+  }
+}

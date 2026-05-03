@@ -1,0 +1,37 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "https://api.togai.com/ingest",
+    "headers": {
+      "Authorization": "Bearer {api_token}",
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "events": [
+        {
+          "id": "evt-001",
+          "schemaName": "api-calls",
+          "accountId": "acme-corp-main",
+          "timestamp": "2026-05-03T10:00:00Z",
+          "dimensions": {
+            "region": "us-east-1",
+            "tier": "premium"
+          },
+          "attributes": {
+            "units": 100
+          }
+        }
+      ]
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "success": true,
+      "eventIds": ["evt-001"]
+    }
+  }
+}

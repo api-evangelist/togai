@@ -1,0 +1,21 @@
+{
+  "name": "Customer",
+  "description": "Togai billing customer structure",
+  "properties": [
+    { "name": "id", "type": "string", "required": true, "description": "User-defined customer ID" },
+    { "name": "name", "type": "string", "required": true, "description": "Customer display name" },
+    { "name": "primaryEmail", "type": "string", "required": false, "description": "Billing email" },
+    { "name": "billingAddress", "type": "object", "required": false,
+      "properties": [
+        { "name": "addressLine1", "type": "string" },
+        { "name": "addressLine2", "type": "string" },
+        { "name": "city", "type": "string" },
+        { "name": "state", "type": "string" },
+        { "name": "country", "type": "string", "description": "ISO 3166-1 alpha-2" },
+        { "name": "zipCode", "type": "string" }
+      ]
+    },
+    { "name": "createdAt", "type": "string", "required": false, "description": "ISO 8601 creation timestamp" },
+    { "name": "updatedAt", "type": "string", "required": false }
+  ]
+}

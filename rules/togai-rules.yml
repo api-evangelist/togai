@@ -1,0 +1,96 @@
+extends: spectral:oas
+rules:
+  # Togai uses Bearer token authentication throughout
+  togai-auth-bearer:
+    description: All Togai API operations must use Bearer authentication
+    message: Security must be defined using bearerAuth
+    severity: error
+    given: "$.components.securitySchemes"
+    then:
+      function: defined
+
+  # OperationIds must use camelCase
+  togai-operation-id-camelcase:
+    description: OperationIds must use camelCase
+    message: "{{property}} operationId should be camelCase"
+    severity: warn
+    given: "$.paths[*][*].operationId"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[a-z][a-zA-Z0-9]*$"
+
+  # All operations must have operationId
+  togai-operation-id-required:
+    description: All operations must have an operationId
+    message: Operation is missing an operationId
+    severity: error
+    given: "$.paths[*][get,post,put,patch,delete]"
+    then:
+      field: operationId
+      function: defined
+
+  # All operations must have tags
+  togai-tags-required:
+    description: All operations must be tagged
+    message: Operation is missing tags
+    severity: warn
+    given: "$.paths[*][get,post,put,patch,delete]"
+    then:
+      field: tags
+      function: defined
+
+  # Summaries must use Title Case
+  togai-summary-title-case:
+    description: Operation summaries must use Title Case
+    message: "{{value}} summary should use Title Case"
+    severity: warn
+    given: "$.paths[*][get,post,put,patch,delete].summary"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[A-Z][A-Za-z0-9 ()-]*$"
+
+  # All path segments should use kebab-case
+  togai-path-kebab-case:
+    description: Path segments must use kebab-case
+    message: "Path segment {{value}} should use kebab-case"
+    severity: warn
+    given: "$.paths[*]~"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^(/[a-z0-9-{}/]*)+$"
+
+  # Pagination parameters should use consistent names
+  togai-pagination-params:
+    description: Pagination parameters should use nextToken or pageNo
+    message: Pagination parameters should follow Togai conventions
+    severity: info
+    given: "$.paths[*][get].parameters[?(@.name == 'pageToken' || @.name == 'nextToken')]"
+    then:
+      function: defined
+
+  # 4xx responses should be defined
+  togai-error-responses:
+    description: Operations must define error responses
+    message: Operations should define 400 or 401 error responses
+    severity: warn
+    given: "$.paths[*][get,post,put,patch,delete].responses"
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          anyOf:
+            - required: ["400"]
+            - required: ["401"]
+            - required: ["403"]
+
+  # Request bodies should use application/json
+  togai-request-body-json:
+    description: Request bodies should use application/json
+    message: Request body content type should be application/json
+    severity: warn
+    given: "$.paths[*][post,put,patch].requestBody.content"
+    then:
+      function: defined

@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/togai/json-schema/togai-customer-schema.json",
+  "title": "Togai Customer",
+  "description": "A customer entity in the Togai billing platform representing a company or individual account holder.",
+  "type": "object",
+  "required": ["id", "name"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique customer identifier (user-defined)"
+    },
+    "name": {
+      "type": "string",
+      "description": "Customer display name"
+    },
+    "primaryEmail": {
+      "type": "string",
+      "format": "email",
+      "description": "Primary billing email address"
+    },
+    "billingAddress": {
+      "type": "object",
+      "description": "Customer billing address",
+      "properties": {
+        "addressLine1": { "type": "string" },
+        "addressLine2": { "type": "string" },
+        "city": { "type": "string" },
+        "state": { "type": "string" },
+        "country": { "type": "string", "description": "ISO 3166-1 alpha-2 country code" },
+        "zipCode": { "type": "string" }
+      }
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

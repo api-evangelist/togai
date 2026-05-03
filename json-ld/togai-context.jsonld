@@ -1,0 +1,52 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "togai": "https://docs.togai.com/api-reference/#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "Customer": "schema:Organization",
+    "Account": "togai:Account",
+    "Event": "schema:Action",
+    "PricePlan": "schema:Offer",
+    "Invoice": "schema:Invoice",
+    "Credit": "togai:Credit",
+    "UsageMeter": "togai:UsageMeter",
+    "id": "@id",
+    "name": "schema:name",
+    "primaryEmail": "schema:email",
+    "billingAddress": "schema:address",
+    "addressLine1": "schema:streetAddress",
+    "addressLine2": "schema:streetAddress",
+    "city": "schema:addressLocality",
+    "state": "schema:addressRegion",
+    "country": "schema:addressCountry",
+    "zipCode": "schema:postalCode",
+    "createdAt": {
+      "@id": "schema:dateCreated",
+      "@type": "xsd:dateTime"
+    },
+    "updatedAt": {
+      "@id": "schema:dateModified",
+      "@type": "xsd:dateTime"
+    },
+    "accountId": {
+      "@id": "schema:subjectOf",
+      "@type": "@id"
+    },
+    "schemaName": "schema:additionalType",
+    "timestamp": {
+      "@id": "schema:startTime",
+      "@type": "xsd:dateTime"
+    },
+    "dimensions": "schema:additionalProperty",
+    "attributes": "schema:additionalProperty",
+    "creditAmount": "schema:price",
+    "effectiveFrom": {
+      "@id": "schema:validFrom",
+      "@type": "xsd:dateTime"
+    },
+    "effectiveTo": {
+      "@id": "schema:validThrough",
+      "@type": "xsd:dateTime"
+    }
+  }
+}

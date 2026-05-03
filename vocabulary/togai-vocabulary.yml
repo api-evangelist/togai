@@ -1,0 +1,105 @@
+name: Togai Vocabulary
+description: Domain vocabulary for the Togai usage-based billing platform covering metering concepts, pricing models, billing entities, and financial operations.
+version: '1.0'
+created: '2026-05-03'
+modified: '2026-05-03'
+tags:
+  - Togai
+  - Billing
+  - Metering
+  - Usage-Based Pricing
+
+terms:
+  - term: Customer
+    definition: A top-level entity in Togai representing a company or individual. Customers contain one or more accounts and have billing contact information.
+    category: Core Entity
+
+  - term: Account
+    definition: A billing unit within a customer. Accounts are assigned price plans and receive invoices. Most metering and pricing operations target accounts.
+    category: Core Entity
+
+  - term: Event
+    definition: A usage activity record ingested into Togai that represents consumption of a product or service. Events are the raw input for metering.
+    aliases: [usage event, consumption event]
+    category: Core Entity
+
+  - term: Event Schema
+    definition: A definition that specifies the structure of usage events, including dimensions and attributes. Events must conform to a schema to be processed.
+    aliases: [schema]
+    category: Core Entity
+
+  - term: Usage Meter
+    definition: A configuration that defines how to aggregate and calculate usage from events matching an event schema. Meters produce the quantities used for billing.
+    aliases: [meter]
+    category: Core Entity
+
+  - term: Price Plan
+    definition: A billing configuration that maps usage meter quantities to charges. Price plans define the pricing model (flat rate, tiered, volume, etc.) for a product.
+    aliases: [plan, rate card]
+    category: Core Entity
+
+  - term: Pricing Rule
+    definition: A conditional override within a price plan that applies custom pricing based on customer segment, volume commitment, or other criteria.
+    category: Core Entity
+
+  - term: Invoice
+    definition: A financial document generated at the end of a billing period summarizing charges for an account based on usage and price plan.
+    category: Core Entity
+
+  - term: Credit
+    definition: A balance applied to an account to offset future charges. Credits can be granted for promotions, refunds, or service level adjustments.
+    category: Core Entity
+
+  - term: Wallet
+    definition: A pre-paid balance that an account can consume to pay for usage. Distinct from credits in that wallets are typically funded by the customer.
+    category: Core Entity
+
+  - term: Entitlement
+    definition: A grant that allows an account to consume a specific feature or capability, often with limits enforced through event ingestion validation.
+    category: Core Entity
+
+  - term: Feature
+    definition: A discrete product capability that can be entitled to accounts, enabling or limiting access to functionality.
+    category: Core Entity
+
+  - term: Addon
+    definition: An optional add-on product or capability that can be attached to a price plan or account.
+    category: Core Entity
+
+  - term: Dimension
+    definition: A categorical attribute on a usage event used for filtering, grouping, and segmenting meter calculations (e.g., region, tier, product_id).
+    category: Attribute
+
+  - term: Attribute
+    definition: A numeric or measured value on a usage event that represents the quantity being metered (e.g., units, duration, bytes).
+    category: Attribute
+
+  - term: Rate Card
+    definition: The pricing structure within a price plan that maps quantities to prices. Supports flat, tiered, volume, and graduated pricing models.
+    category: Pricing Concept
+
+  - term: Bill Run
+    definition: The process that calculates and generates invoices for all eligible accounts at a billing period boundary.
+    category: Billing Operation
+
+  - term: Price Experimentation
+    definition: The ability to simulate pricing changes to forecast revenue impact before activating a new price plan.
+    category: Feature
+
+  - term: Bearer Token
+    definition: The authentication credential for Togai API calls, obtained from the Togai dashboard or authentication endpoint.
+    category: API Concept
+
+pricing_models:
+  - name: Flat Rate
+    description: A fixed charge per billing period regardless of usage volume
+  - name: Pay Per Use
+    description: Charge exactly proportional to measured usage quantity
+  - name: Tiered Pricing
+    description: Different per-unit rates applied at different consumption thresholds
+  - name: Volume Pricing
+    description: The rate for all units determined by total volume consumed in the period
+  - name: Graduated Pricing
+    description: Each unit priced at the rate of the tier it falls into
+  - name: Package Pricing
+    description: Fixed charge for a bundle of units; overage charged separately
