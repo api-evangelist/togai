@@ -111,6 +111,8 @@ common:
     url: https://sandbox-api.togai.com/
   - type: Postman Collection
     url: https://docs.togai.com/api-reference/getting-started
+  - type: Integrations
+    url: https://www.togai.com/product/integrations/
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
