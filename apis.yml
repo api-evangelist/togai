@@ -45,7 +45,7 @@ apis:
       - type: OpenAPI
         url: >-
           https://raw.githubusercontent.com/api-evangelist/togai/refs/heads/main/openapi/togai-openapi.yml
-      - type: Getting Started
+      - type: GettingStarted
         url: https://docs.togai.com/docs/introduction
       - type: JSONSchema
         url: >-
@@ -95,17 +95,17 @@ common:
     url: https://docs.togai.com/
   - type: Documentation
     url: https://docs.togai.com/docs
-  - type: API Reference
+  - type: APIReference
     url: https://docs.togai.com/api-reference/getting-started
-  - type: Sign Up
+  - type: SignUp
     url: https://app.togai.com/auth/signup
   - type: Pricing
     url: https://www.togai.com/pricing/
   - type: Blog
     url: https://www.togai.com/blog/
-  - type: Changelog
+  - type: ChangeLog
     url: https://docs.togai.com/changelog/change-log
-  - type: GitHub Organization
+  - type: GitHubOrganization
     url: https://github.com/TogaiHQ
   - type: Sandbox
     url: https://sandbox-api.togai.com/
