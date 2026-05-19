@@ -1,0 +1,355 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Togai Apis — Price Plans
+  description: 'Togai Apis — Price Plans. 9 operations. Lead operation: Create a Price Plan. Self-contained Naftiko capability
+    covering one Togai business surface.'
+  tags:
+  - Togai
+  - Price Plans
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    TOGAI_API_KEY: TOGAI_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: togai-price-plans
+    baseUri: https://api.togai.com
+    description: Togai Apis — Price Plans business capability. Self-contained, no shared references.
+    resources:
+    - name: price_plans
+      path: /price_plans
+      operations:
+      - name: createpriceplan
+        method: POST
+        description: Create a Price Plan
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: getpriceplans
+        method: GET
+        description: List Price Plans
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: price_plans-migration
+      path: /price_plans/migration
+      operations:
+      - name: priceplanmigration
+        method: POST
+        description: Create a Price Plan Migration
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: price_plans-price_plan_id
+      path: /price_plans/{price_plan_id}
+      operations:
+      - name: updatepriceplan
+        method: PATCH
+        description: Update a Price Plan
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: getpriceplan
+        method: GET
+        description: Get a Price Plan
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: archivepriceplan
+        method: DELETE
+        description: Archive a Price Plan
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: price_plans-price_plan_id-activate
+      path: /price_plans/{price_plan_id}/activate
+      operations:
+      - name: activatepriceplan
+        method: POST
+        description: Activate a Price Plan
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: price_plans-price_plan_id-currencies
+      path: /price_plans/{price_plan_id}/currencies
+      operations:
+      - name: addcurrencytopriceplan
+        method: POST
+        description: Add Currencies to a Price Plan
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: price_plans-price_plan_id-currencies-currency_id
+      path: /price_plans/{price_plan_id}/currencies/{currency_id}
+      operations:
+      - name: removecurrencyfrompriceplan
+        method: DELETE
+        description: Remove a Draft Currency From a Price Plan
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.TOGAI_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: togai-price-plans-rest
+    port: 8080
+    description: REST adapter for Togai Apis — Price Plans. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/price-plans
+      name: price-plans
+      description: REST surface for price_plans.
+      operations:
+      - method: POST
+        name: createpriceplan
+        description: Create a Price Plan
+        call: togai-price-plans.createpriceplan
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: getpriceplans
+        description: List Price Plans
+        call: togai-price-plans.getpriceplans
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/price-plans/migration
+      name: price-plans-migration
+      description: REST surface for price_plans-migration.
+      operations:
+      - method: POST
+        name: priceplanmigration
+        description: Create a Price Plan Migration
+        call: togai-price-plans.priceplanmigration
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/price-plans/{price-plan-id}
+      name: price-plans-price-plan-id
+      description: REST surface for price_plans-price_plan_id.
+      operations:
+      - method: PATCH
+        name: updatepriceplan
+        description: Update a Price Plan
+        call: togai-price-plans.updatepriceplan
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: getpriceplan
+        description: Get a Price Plan
+        call: togai-price-plans.getpriceplan
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: archivepriceplan
+        description: Archive a Price Plan
+        call: togai-price-plans.archivepriceplan
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/price-plans/{price-plan-id}/activate
+      name: price-plans-price-plan-id-activate
+      description: REST surface for price_plans-price_plan_id-activate.
+      operations:
+      - method: POST
+        name: activatepriceplan
+        description: Activate a Price Plan
+        call: togai-price-plans.activatepriceplan
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/price-plans/{price-plan-id}/currencies
+      name: price-plans-price-plan-id-currencies
+      description: REST surface for price_plans-price_plan_id-currencies.
+      operations:
+      - method: POST
+        name: addcurrencytopriceplan
+        description: Add Currencies to a Price Plan
+        call: togai-price-plans.addcurrencytopriceplan
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/price-plans/{price-plan-id}/currencies/{currency-id}
+      name: price-plans-price-plan-id-currencies-currency-id
+      description: REST surface for price_plans-price_plan_id-currencies-currency_id.
+      operations:
+      - method: DELETE
+        name: removecurrencyfrompriceplan
+        description: Remove a Draft Currency From a Price Plan
+        call: togai-price-plans.removecurrencyfrompriceplan
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: togai-price-plans-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Togai Apis — Price Plans. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: create-price-plan
+      description: Create a Price Plan
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: togai-price-plans.createpriceplan
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-price-plans
+      description: List Price Plans
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: togai-price-plans.getpriceplans
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-price-plan-migration
+      description: Create a Price Plan Migration
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: togai-price-plans.priceplanmigration
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-price-plan
+      description: Update a Price Plan
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: togai-price-plans.updatepriceplan
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-price-plan
+      description: Get a Price Plan
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: togai-price-plans.getpriceplan
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: archive-price-plan
+      description: Archive a Price Plan
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: togai-price-plans.archivepriceplan
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: activate-price-plan
+      description: Activate a Price Plan
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: togai-price-plans.activatepriceplan
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: add-currencies-price-plan
+      description: Add Currencies to a Price Plan
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: togai-price-plans.addcurrencytopriceplan
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: remove-draft-currency-price-plan
+      description: Remove a Draft Currency From a Price Plan
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: togai-price-plans.removecurrencyfrompriceplan
+      outputParameters:
+      - type: object
+        mapping: $.

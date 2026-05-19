@@ -1,0 +1,370 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Togai Apis — Invoices
+  description: 'Togai Apis — Invoices. 10 operations. Lead operation: Add or Update Miscellaneous Charges in Upcoming Invoice
+    for a Account. Self-contained Naftiko capability covering one Togai business surface.'
+  tags:
+  - Togai
+  - Invoices
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    TOGAI_API_KEY: TOGAI_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: togai-invoices
+    baseUri: https://api.togai.com
+    description: Togai Apis — Invoices business capability. Self-contained, no shared references.
+    resources:
+    - name: accounts-account_id-miscellaneous_charges
+      path: /accounts/{account_id}/miscellaneous_charges
+      operations:
+      - name: managemiscellaneouschargesinaccount
+        method: PUT
+        description: Add or Update Miscellaneous Charges in Upcoming Invoice for a Account
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: invoice-invoice_id-pricing_rules_logs
+      path: /invoice/{invoice_id}/pricing_rules_logs
+      operations:
+      - name: listpricingrulelogs
+        method: GET
+        description: List Pricing Rule Logs
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: invoices
+      path: /invoices
+      operations:
+      - name: listinvoices
+        method: GET
+        description: List Invoices
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createcustominvoice
+        method: POST
+        description: Create a Custom Invoice for an Account
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: invoices-bill_runs
+      path: /invoices/bill_runs
+      operations:
+      - name: createinvoicebillrun
+        method: POST
+        description: Create a Bill Run Job Request
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: listinvoicesforbillrun
+        method: GET
+        description: List Invoices Eligible for Bill Run
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: invoices-invoice_id
+      path: /invoices/{invoice_id}
+      operations:
+      - name: getinvoice
+        method: GET
+        description: Get an Invoice
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updateinvoice
+        method: PATCH
+        description: Update an Invoice
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: deletecustominvoice
+        method: DELETE
+        description: Delete a Custom Invoice in DRAFT State
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: invoices-invoice_id-miscellaneous_charges
+      path: /invoices/{invoice_id}/miscellaneous_charges
+      operations:
+      - name: managemiscellaneouschargesininvoice
+        method: PUT
+        description: Add or Update Miscellaneous Charges in Invoice
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    authentication:
+      type: bearer
+      token: '{{env.TOGAI_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: togai-invoices-rest
+    port: 8080
+    description: REST adapter for Togai Apis — Invoices. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/accounts/{account-id}/miscellaneous-charges
+      name: accounts-account-id-miscellaneous-charges
+      description: REST surface for accounts-account_id-miscellaneous_charges.
+      operations:
+      - method: PUT
+        name: managemiscellaneouschargesinaccount
+        description: Add or Update Miscellaneous Charges in Upcoming Invoice for a Account
+        call: togai-invoices.managemiscellaneouschargesinaccount
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/invoice/{invoice-id}/pricing-rules-logs
+      name: invoice-invoice-id-pricing-rules-logs
+      description: REST surface for invoice-invoice_id-pricing_rules_logs.
+      operations:
+      - method: GET
+        name: listpricingrulelogs
+        description: List Pricing Rule Logs
+        call: togai-invoices.listpricingrulelogs
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/invoices
+      name: invoices
+      description: REST surface for invoices.
+      operations:
+      - method: GET
+        name: listinvoices
+        description: List Invoices
+        call: togai-invoices.listinvoices
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createcustominvoice
+        description: Create a Custom Invoice for an Account
+        call: togai-invoices.createcustominvoice
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/invoices/bill-runs
+      name: invoices-bill-runs
+      description: REST surface for invoices-bill_runs.
+      operations:
+      - method: POST
+        name: createinvoicebillrun
+        description: Create a Bill Run Job Request
+        call: togai-invoices.createinvoicebillrun
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: listinvoicesforbillrun
+        description: List Invoices Eligible for Bill Run
+        call: togai-invoices.listinvoicesforbillrun
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/invoices/{invoice-id}
+      name: invoices-invoice-id
+      description: REST surface for invoices-invoice_id.
+      operations:
+      - method: GET
+        name: getinvoice
+        description: Get an Invoice
+        call: togai-invoices.getinvoice
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updateinvoice
+        description: Update an Invoice
+        call: togai-invoices.updateinvoice
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletecustominvoice
+        description: Delete a Custom Invoice in DRAFT State
+        call: togai-invoices.deletecustominvoice
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/invoices/{invoice-id}/miscellaneous-charges
+      name: invoices-invoice-id-miscellaneous-charges
+      description: REST surface for invoices-invoice_id-miscellaneous_charges.
+      operations:
+      - method: PUT
+        name: managemiscellaneouschargesininvoice
+        description: Add or Update Miscellaneous Charges in Invoice
+        call: togai-invoices.managemiscellaneouschargesininvoice
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: togai-invoices-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Togai Apis — Invoices. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: add-update-miscellaneous-charges-upcoming
+      description: Add or Update Miscellaneous Charges in Upcoming Invoice for a Account
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: togai-invoices.managemiscellaneouschargesinaccount
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-pricing-rule-logs
+      description: List Pricing Rule Logs
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: togai-invoices.listpricingrulelogs
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-invoices
+      description: List Invoices
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: togai-invoices.listinvoices
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-custom-invoice-account
+      description: Create a Custom Invoice for an Account
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: togai-invoices.createcustominvoice
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-bill-run-job-request
+      description: Create a Bill Run Job Request
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: togai-invoices.createinvoicebillrun
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-invoices-eligible-bill-run
+      description: List Invoices Eligible for Bill Run
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: togai-invoices.listinvoicesforbillrun
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-invoice
+      description: Get an Invoice
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: togai-invoices.getinvoice
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-invoice
+      description: Update an Invoice
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: togai-invoices.updateinvoice
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-custom-invoice-draft-state
+      description: Delete a Custom Invoice in DRAFT State
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: togai-invoices.deletecustominvoice
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: add-update-miscellaneous-charges-invoice
+      description: Add or Update Miscellaneous Charges in Invoice
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: togai-invoices.managemiscellaneouschargesininvoice
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

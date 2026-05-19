@@ -1,0 +1,206 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Togai Apis — AddOns
+  description: 'Togai Apis — AddOns. 5 operations. Lead operation: Create an AddOn. Self-contained Naftiko capability covering
+    one Togai business surface.'
+  tags:
+  - Togai
+  - AddOns
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    TOGAI_API_KEY: TOGAI_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: togai-addons
+    baseUri: https://api.togai.com
+    description: Togai Apis — AddOns business capability. Self-contained, no shared references.
+    resources:
+    - name: addons
+      path: /addons
+      operations:
+      - name: createaddon
+        method: POST
+        description: Create an AddOn
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: getaddons
+        method: GET
+        description: List AddOns
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: status
+          in: query
+          type: string
+          description: Filter by status
+    - name: addons-addon_id
+      path: /addons/{addon_id}
+      operations:
+      - name: updateaddon
+        method: PATCH
+        description: Update an Addon
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: getaddon
+        method: GET
+        description: Get an Addon
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deleteaddon
+        method: DELETE
+        description: Delete an Addon
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.TOGAI_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: togai-addons-rest
+    port: 8080
+    description: REST adapter for Togai Apis — AddOns. One Spectral-compliant resource per consumed operation, prefixed with
+      /v1.
+    resources:
+    - path: /v1/addons
+      name: addons
+      description: REST surface for addons.
+      operations:
+      - method: POST
+        name: createaddon
+        description: Create an AddOn
+        call: togai-addons.createaddon
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: getaddons
+        description: List AddOns
+        call: togai-addons.getaddons
+        with:
+          status: rest.status
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/addons/{addon-id}
+      name: addons-addon-id
+      description: REST surface for addons-addon_id.
+      operations:
+      - method: PATCH
+        name: updateaddon
+        description: Update an Addon
+        call: togai-addons.updateaddon
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: getaddon
+        description: Get an Addon
+        call: togai-addons.getaddon
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteaddon
+        description: Delete an Addon
+        call: togai-addons.deleteaddon
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: togai-addons-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Togai Apis — AddOns. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: create-addon
+      description: Create an AddOn
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: togai-addons.createaddon
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-addons
+      description: List AddOns
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: togai-addons.getaddons
+      with:
+        status: tools.status
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-addon
+      description: Update an Addon
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: togai-addons.updateaddon
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-addon
+      description: Get an Addon
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: togai-addons.getaddon
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-addon
+      description: Delete an Addon
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: togai-addons.deleteaddon
+      outputParameters:
+      - type: object
+        mapping: $.

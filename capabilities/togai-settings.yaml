@@ -1,0 +1,172 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Togai Apis — Settings
+  description: 'Togai Apis — Settings. 4 operations. Lead operation: Create a Setting. Self-contained Naftiko capability covering
+    one Togai business surface.'
+  tags:
+  - Togai
+  - Settings
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    TOGAI_API_KEY: TOGAI_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: togai-settings
+    baseUri: https://api.togai.com
+    description: Togai Apis — Settings business capability. Self-contained, no shared references.
+    resources:
+    - name: settings
+      path: /settings
+      operations:
+      - name: insertsetting
+        method: POST
+        description: Create a Setting
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: listsetting
+        method: GET
+        description: Lists Settings
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: settings-setting_id_str
+      path: /settings/{setting_id_str}
+      operations:
+      - name: getsetting
+        method: GET
+        description: Get a Setting
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updatesetting
+        method: PATCH
+        description: Update a Setting
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    authentication:
+      type: bearer
+      token: '{{env.TOGAI_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: togai-settings-rest
+    port: 8080
+    description: REST adapter for Togai Apis — Settings. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/settings
+      name: settings
+      description: REST surface for settings.
+      operations:
+      - method: POST
+        name: insertsetting
+        description: Create a Setting
+        call: togai-settings.insertsetting
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: listsetting
+        description: Lists Settings
+        call: togai-settings.listsetting
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/settings/{setting-id-str}
+      name: settings-setting-id-str
+      description: REST surface for settings-setting_id_str.
+      operations:
+      - method: GET
+        name: getsetting
+        description: Get a Setting
+        call: togai-settings.getsetting
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updatesetting
+        description: Update a Setting
+        call: togai-settings.updatesetting
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: togai-settings-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Togai Apis — Settings. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: create-setting
+      description: Create a Setting
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: togai-settings.insertsetting
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: lists-settings
+      description: Lists Settings
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: togai-settings.listsetting
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-setting
+      description: Get a Setting
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: togai-settings.getsetting
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-setting
+      description: Update a Setting
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: togai-settings.updatesetting
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

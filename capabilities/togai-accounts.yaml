@@ -1,0 +1,669 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Togai Apis — Accounts
+  description: 'Togai Apis — Accounts. 18 operations. Lead operation: Create an Account. Self-contained Naftiko capability
+    covering one Togai business surface.'
+  tags:
+  - Togai
+  - Accounts
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    TOGAI_API_KEY: TOGAI_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: togai-accounts
+    baseUri: https://api.togai.com
+    description: Togai Apis — Accounts business capability. Self-contained, no shared references.
+    resources:
+    - name: accounts
+      path: /accounts
+      operations:
+      - name: createaccount
+        method: POST
+        description: Create an Account
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: getaccounts
+        method: GET
+        description: List Accounts of Customer
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: accounts-account_id
+      path: /accounts/{account_id}
+      operations:
+      - name: getaccount
+        method: GET
+        description: Get an Account
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updateaccount
+        method: PATCH
+        description: Update an Account
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: deleteaccount
+        method: DELETE
+        description: Delete an Account
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: accounts-account_id-account_aliases
+      path: /accounts/{account_id}/account_aliases
+      operations:
+      - name: listaccountaliases
+        method: GET
+        description: Get All Aliases of an Account
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: accounts-account_id-add_aliases
+      path: /accounts/{account_id}/add_aliases
+      operations:
+      - name: addaliases
+        method: POST
+        description: Add Aliases to Account
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: accounts-account_id-edit_schedules
+      path: /accounts/{account_id}/edit_schedules
+      operations:
+      - name: updatepricingschedulebatch
+        method: POST
+        description: Edit Schedules of an Account
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: accounts-account_id-price_plans
+      path: /accounts/{account_id}/price_plans
+      operations:
+      - name: updatepricingschedule
+        method: POST
+        description: Dissociate or Associate a Price Plan with an Account
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: accounts-account_id-pricing_schedules
+      path: /accounts/{account_id}/pricing_schedules
+      operations:
+      - name: getpricingschedules
+        method: GET
+        description: List Pricing Schedules of an Account
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: accounts-account_id-purchase_proposals
+      path: /accounts/{account_id}/purchase_proposals
+      operations:
+      - name: createproposal
+        method: POST
+        description: Propose a Purchase of a Plan
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: listaccountproposals
+        method: GET
+        description: List All Proposals of an Account
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: accounts-account_id-purchases
+      path: /accounts/{account_id}/purchases
+      operations:
+      - name: initiateonetimeentitlementplan
+        method: POST
+        description: Initiate a Purchase
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: listaccountpurchases
+        method: GET
+        description: Get All Purchases for an Account
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: accounts-account_id-remove_aliases
+      path: /accounts/{account_id}/remove_aliases
+      operations:
+      - name: removealiases
+        method: POST
+        description: Remove Aliases to Account
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: purchase_proposals-purchase_proposal_id
+      path: /purchase_proposals/{purchase_proposal_id}
+      operations:
+      - name: getproposal
+        method: GET
+        description: Get Proposal Information
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: purchase_proposals-purchase_proposal_id-update_status
+      path: /purchase_proposals/{purchase_proposal_id}/update_status
+      operations:
+      - name: updateproposalstatus
+        method: POST
+        description: Approve or Decline a Purchase of a Billing Plan
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: purchases-purchase_id
+      path: /purchases/{purchase_id}
+      operations:
+      - name: getpurchase
+        method: GET
+        description: Get a Specific Purchase of an Account
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.TOGAI_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: togai-accounts-rest
+    port: 8080
+    description: REST adapter for Togai Apis — Accounts. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/accounts
+      name: accounts
+      description: REST surface for accounts.
+      operations:
+      - method: POST
+        name: createaccount
+        description: Create an Account
+        call: togai-accounts.createaccount
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: getaccounts
+        description: List Accounts of Customer
+        call: togai-accounts.getaccounts
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/accounts/{account-id}
+      name: accounts-account-id
+      description: REST surface for accounts-account_id.
+      operations:
+      - method: GET
+        name: getaccount
+        description: Get an Account
+        call: togai-accounts.getaccount
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updateaccount
+        description: Update an Account
+        call: togai-accounts.updateaccount
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteaccount
+        description: Delete an Account
+        call: togai-accounts.deleteaccount
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/accounts/{account-id}/account-aliases
+      name: accounts-account-id-account-aliases
+      description: REST surface for accounts-account_id-account_aliases.
+      operations:
+      - method: GET
+        name: listaccountaliases
+        description: Get All Aliases of an Account
+        call: togai-accounts.listaccountaliases
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/accounts/{account-id}/add-aliases
+      name: accounts-account-id-add-aliases
+      description: REST surface for accounts-account_id-add_aliases.
+      operations:
+      - method: POST
+        name: addaliases
+        description: Add Aliases to Account
+        call: togai-accounts.addaliases
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/accounts/{account-id}/edit-schedules
+      name: accounts-account-id-edit-schedules
+      description: REST surface for accounts-account_id-edit_schedules.
+      operations:
+      - method: POST
+        name: updatepricingschedulebatch
+        description: Edit Schedules of an Account
+        call: togai-accounts.updatepricingschedulebatch
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/accounts/{account-id}/price-plans
+      name: accounts-account-id-price-plans
+      description: REST surface for accounts-account_id-price_plans.
+      operations:
+      - method: POST
+        name: updatepricingschedule
+        description: Dissociate or Associate a Price Plan with an Account
+        call: togai-accounts.updatepricingschedule
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/accounts/{account-id}/pricing-schedules
+      name: accounts-account-id-pricing-schedules
+      description: REST surface for accounts-account_id-pricing_schedules.
+      operations:
+      - method: GET
+        name: getpricingschedules
+        description: List Pricing Schedules of an Account
+        call: togai-accounts.getpricingschedules
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/accounts/{account-id}/purchase-proposals
+      name: accounts-account-id-purchase-proposals
+      description: REST surface for accounts-account_id-purchase_proposals.
+      operations:
+      - method: POST
+        name: createproposal
+        description: Propose a Purchase of a Plan
+        call: togai-accounts.createproposal
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: listaccountproposals
+        description: List All Proposals of an Account
+        call: togai-accounts.listaccountproposals
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/accounts/{account-id}/purchases
+      name: accounts-account-id-purchases
+      description: REST surface for accounts-account_id-purchases.
+      operations:
+      - method: POST
+        name: initiateonetimeentitlementplan
+        description: Initiate a Purchase
+        call: togai-accounts.initiateonetimeentitlementplan
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: listaccountpurchases
+        description: Get All Purchases for an Account
+        call: togai-accounts.listaccountpurchases
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/accounts/{account-id}/remove-aliases
+      name: accounts-account-id-remove-aliases
+      description: REST surface for accounts-account_id-remove_aliases.
+      operations:
+      - method: POST
+        name: removealiases
+        description: Remove Aliases to Account
+        call: togai-accounts.removealiases
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/purchase-proposals/{purchase-proposal-id}
+      name: purchase-proposals-purchase-proposal-id
+      description: REST surface for purchase_proposals-purchase_proposal_id.
+      operations:
+      - method: GET
+        name: getproposal
+        description: Get Proposal Information
+        call: togai-accounts.getproposal
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/purchase-proposals/{purchase-proposal-id}/update-status
+      name: purchase-proposals-purchase-proposal-id-update-status
+      description: REST surface for purchase_proposals-purchase_proposal_id-update_status.
+      operations:
+      - method: POST
+        name: updateproposalstatus
+        description: Approve or Decline a Purchase of a Billing Plan
+        call: togai-accounts.updateproposalstatus
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/purchases/{purchase-id}
+      name: purchases-purchase-id
+      description: REST surface for purchases-purchase_id.
+      operations:
+      - method: GET
+        name: getpurchase
+        description: Get a Specific Purchase of an Account
+        call: togai-accounts.getpurchase
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: togai-accounts-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Togai Apis — Accounts. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: create-account
+      description: Create an Account
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: togai-accounts.createaccount
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-accounts-customer
+      description: List Accounts of Customer
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: togai-accounts.getaccounts
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-account
+      description: Get an Account
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: togai-accounts.getaccount
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-account
+      description: Update an Account
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: togai-accounts.updateaccount
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-account
+      description: Delete an Account
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: togai-accounts.deleteaccount
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-all-aliases-account
+      description: Get All Aliases of an Account
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: togai-accounts.listaccountaliases
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: add-aliases-account
+      description: Add Aliases to Account
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: togai-accounts.addaliases
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: edit-schedules-account
+      description: Edit Schedules of an Account
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: togai-accounts.updatepricingschedulebatch
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: dissociate-associate-price-plan-account
+      description: Dissociate or Associate a Price Plan with an Account
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: togai-accounts.updatepricingschedule
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-pricing-schedules-account
+      description: List Pricing Schedules of an Account
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: togai-accounts.getpricingschedules
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: propose-purchase-plan
+      description: Propose a Purchase of a Plan
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: togai-accounts.createproposal
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-all-proposals-account
+      description: List All Proposals of an Account
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: togai-accounts.listaccountproposals
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: initiate-purchase
+      description: Initiate a Purchase
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: togai-accounts.initiateonetimeentitlementplan
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-all-purchases-account
+      description: Get All Purchases for an Account
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: togai-accounts.listaccountpurchases
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: remove-aliases-account
+      description: Remove Aliases to Account
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: togai-accounts.removealiases
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-proposal-information
+      description: Get Proposal Information
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: togai-accounts.getproposal
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: approve-decline-purchase-billing-plan
+      description: Approve or Decline a Purchase of a Billing Plan
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: togai-accounts.updateproposalstatus
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-specific-purchase-account
+      description: Get a Specific Purchase of an Account
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: togai-accounts.getpurchase
+      outputParameters:
+      - type: object
+        mapping: $.

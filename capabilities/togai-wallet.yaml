@@ -1,0 +1,179 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Togai Apis — Wallet
+  description: 'Togai Apis — Wallet. 4 operations. Lead operation: Wallet Balance for Account. Self-contained Naftiko capability
+    covering one Togai business surface.'
+  tags:
+  - Togai
+  - Wallet
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    TOGAI_API_KEY: TOGAI_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: togai-wallet
+    baseUri: https://api.togai.com
+    description: Togai Apis — Wallet business capability. Self-contained, no shared references.
+    resources:
+    - name: accounts-account_id-wallet
+      path: /accounts/{account_id}/wallet
+      operations:
+      - name: walletbalanceforaccount
+        method: GET
+        description: Wallet Balance for Account
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updatewalletforaccount
+        method: PATCH
+        description: Update Wallet Details for an Account
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: accounts-account_id-wallet-entries
+      path: /accounts/{account_id}/wallet/entries
+      operations:
+      - name: walletentriesforaccount
+        method: GET
+        description: Wallet Entries for Account
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: accounts-account_id-wallet_topup
+      path: /accounts/{account_id}/wallet_topup
+      operations:
+      - name: topupwalletforaccount
+        method: POST
+        description: Top-up Wallet for an Account
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    authentication:
+      type: bearer
+      token: '{{env.TOGAI_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: togai-wallet-rest
+    port: 8080
+    description: REST adapter for Togai Apis — Wallet. One Spectral-compliant resource per consumed operation, prefixed with
+      /v1.
+    resources:
+    - path: /v1/accounts/{account-id}/wallet
+      name: accounts-account-id-wallet
+      description: REST surface for accounts-account_id-wallet.
+      operations:
+      - method: GET
+        name: walletbalanceforaccount
+        description: Wallet Balance for Account
+        call: togai-wallet.walletbalanceforaccount
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updatewalletforaccount
+        description: Update Wallet Details for an Account
+        call: togai-wallet.updatewalletforaccount
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/accounts/{account-id}/wallet/entries
+      name: accounts-account-id-wallet-entries
+      description: REST surface for accounts-account_id-wallet-entries.
+      operations:
+      - method: GET
+        name: walletentriesforaccount
+        description: Wallet Entries for Account
+        call: togai-wallet.walletentriesforaccount
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/accounts/{account-id}/wallet-topup
+      name: accounts-account-id-wallet-topup
+      description: REST surface for accounts-account_id-wallet_topup.
+      operations:
+      - method: POST
+        name: topupwalletforaccount
+        description: Top-up Wallet for an Account
+        call: togai-wallet.topupwalletforaccount
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: togai-wallet-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Togai Apis — Wallet. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: wallet-balance-account
+      description: Wallet Balance for Account
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: togai-wallet.walletbalanceforaccount
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-wallet-details-account
+      description: Update Wallet Details for an Account
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: togai-wallet.updatewalletforaccount
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: wallet-entries-account
+      description: Wallet Entries for Account
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: togai-wallet.walletentriesforaccount
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: top-up-wallet-account
+      description: Top-up Wallet for an Account
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: togai-wallet.topupwalletforaccount
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

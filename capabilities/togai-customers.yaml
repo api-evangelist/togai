@@ -1,0 +1,239 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Togai Apis — Customers
+  description: 'Togai Apis — Customers. 6 operations. Lead operation: Create a Customer. Self-contained Naftiko capability
+    covering one Togai business surface.'
+  tags:
+  - Togai
+  - Customers
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    TOGAI_API_KEY: TOGAI_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: togai-customers
+    baseUri: https://api.togai.com
+    description: Togai Apis — Customers business capability. Self-contained, no shared references.
+    resources:
+    - name: customers
+      path: /customers
+      operations:
+      - name: createcustomer
+        method: POST
+        description: Create a Customer
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: getcustomers
+        method: GET
+        description: List Customers
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: customers-customer_id
+      path: /customers/{customer_id}
+      operations:
+      - name: getcustomer
+        method: GET
+        description: Get a Customer
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updatecustomer
+        method: PATCH
+        description: Update a Customer
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: deletecustomer
+        method: DELETE
+        description: Delete a Customer
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: customers-customer_id-contacts
+      path: /customers/{customer_id}/contacts
+      operations:
+      - name: createcustomercontact
+        method: POST
+        description: Create a Contact for the Customer
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    authentication:
+      type: bearer
+      token: '{{env.TOGAI_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: togai-customers-rest
+    port: 8080
+    description: REST adapter for Togai Apis — Customers. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/customers
+      name: customers
+      description: REST surface for customers.
+      operations:
+      - method: POST
+        name: createcustomer
+        description: Create a Customer
+        call: togai-customers.createcustomer
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: getcustomers
+        description: List Customers
+        call: togai-customers.getcustomers
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/customers/{customer-id}
+      name: customers-customer-id
+      description: REST surface for customers-customer_id.
+      operations:
+      - method: GET
+        name: getcustomer
+        description: Get a Customer
+        call: togai-customers.getcustomer
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updatecustomer
+        description: Update a Customer
+        call: togai-customers.updatecustomer
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletecustomer
+        description: Delete a Customer
+        call: togai-customers.deletecustomer
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/customers/{customer-id}/contacts
+      name: customers-customer-id-contacts
+      description: REST surface for customers-customer_id-contacts.
+      operations:
+      - method: POST
+        name: createcustomercontact
+        description: Create a Contact for the Customer
+        call: togai-customers.createcustomercontact
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: togai-customers-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Togai Apis — Customers. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: create-customer
+      description: Create a Customer
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: togai-customers.createcustomer
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-customers
+      description: List Customers
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: togai-customers.getcustomers
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-customer
+      description: Get a Customer
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: togai-customers.getcustomer
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-customer
+      description: Update a Customer
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: togai-customers.updatecustomer
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-customer
+      description: Delete a Customer
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: togai-customers.deletecustomer
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-contact-customer
+      description: Create a Contact for the Customer
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: togai-customers.createcustomercontact
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

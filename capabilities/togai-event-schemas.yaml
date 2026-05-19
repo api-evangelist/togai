@@ -1,0 +1,302 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Togai Apis — Event Schemas
+  description: 'Togai Apis — Event Schemas. 8 operations. Lead operation: Create an Event Schema. Self-contained Naftiko capability
+    covering one Togai business surface.'
+  tags:
+  - Togai
+  - Event Schemas
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    TOGAI_API_KEY: TOGAI_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: togai-event-schemas
+    baseUri: https://api.togai.com
+    description: Togai Apis — Event Schemas business capability. Self-contained, no shared references.
+    resources:
+    - name: event_schema
+      path: /event_schema
+      operations:
+      - name: createeventschema
+        method: POST
+        description: Create an Event Schema
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: listeventschemas
+        method: GET
+        description: List Event Schemas
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: status
+          in: query
+          type: string
+          description: Filter by provided status
+    - name: event_schema-event_schema_name
+      path: /event_schema/{event_schema_name}
+      operations:
+      - name: patch
+        method: PATCH
+        description: Update an Event Schema
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: geteventschema
+        method: GET
+        description: Get an Event Schema
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deleteeventschema
+        method: DELETE
+        description: Delete an Event Schema
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: event_schema-event_schema_name-activate
+      path: /event_schema/{event_schema_name}/activate
+      operations:
+      - name: activateeventschema
+        method: POST
+        description: Activate an Event Schema
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: event_schema-event_schema_name-deactivate
+      path: /event_schema/{event_schema_name}/deactivate
+      operations:
+      - name: deactivateeventschema
+        method: POST
+        description: Deactivate an Event Schema
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: event_schema-event_schema_name-versions
+      path: /event_schema/{event_schema_name}/versions
+      operations:
+      - name: listeventschemaversions
+        method: GET
+        description: List All Event Schema Versions
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.TOGAI_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: togai-event-schemas-rest
+    port: 8080
+    description: REST adapter for Togai Apis — Event Schemas. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/event-schema
+      name: event-schema
+      description: REST surface for event_schema.
+      operations:
+      - method: POST
+        name: createeventschema
+        description: Create an Event Schema
+        call: togai-event-schemas.createeventschema
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: listeventschemas
+        description: List Event Schemas
+        call: togai-event-schemas.listeventschemas
+        with:
+          status: rest.status
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/event-schema/{event-schema-name}
+      name: event-schema-event-schema-name
+      description: REST surface for event_schema-event_schema_name.
+      operations:
+      - method: PATCH
+        name: patch
+        description: Update an Event Schema
+        call: togai-event-schemas.patch
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: geteventschema
+        description: Get an Event Schema
+        call: togai-event-schemas.geteventschema
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteeventschema
+        description: Delete an Event Schema
+        call: togai-event-schemas.deleteeventschema
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/event-schema/{event-schema-name}/activate
+      name: event-schema-event-schema-name-activate
+      description: REST surface for event_schema-event_schema_name-activate.
+      operations:
+      - method: POST
+        name: activateeventschema
+        description: Activate an Event Schema
+        call: togai-event-schemas.activateeventschema
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/event-schema/{event-schema-name}/deactivate
+      name: event-schema-event-schema-name-deactivate
+      description: REST surface for event_schema-event_schema_name-deactivate.
+      operations:
+      - method: POST
+        name: deactivateeventschema
+        description: Deactivate an Event Schema
+        call: togai-event-schemas.deactivateeventschema
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/event-schema/{event-schema-name}/versions
+      name: event-schema-event-schema-name-versions
+      description: REST surface for event_schema-event_schema_name-versions.
+      operations:
+      - method: GET
+        name: listeventschemaversions
+        description: List All Event Schema Versions
+        call: togai-event-schemas.listeventschemaversions
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: togai-event-schemas-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Togai Apis — Event Schemas. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: create-event-schema
+      description: Create an Event Schema
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: togai-event-schemas.createeventschema
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-event-schemas
+      description: List Event Schemas
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: togai-event-schemas.listeventschemas
+      with:
+        status: tools.status
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-event-schema
+      description: Update an Event Schema
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: togai-event-schemas.patch
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-event-schema
+      description: Get an Event Schema
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: togai-event-schemas.geteventschema
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-event-schema
+      description: Delete an Event Schema
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: togai-event-schemas.deleteeventschema
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: activate-event-schema
+      description: Activate an Event Schema
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: togai-event-schemas.activateeventschema
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deactivate-event-schema
+      description: Deactivate an Event Schema
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: togai-event-schemas.deactivateeventschema
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-all-event-schema-versions
+      description: List All Event Schema Versions
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: togai-event-schemas.listeventschemaversions
+      outputParameters:
+      - type: object
+        mapping: $.

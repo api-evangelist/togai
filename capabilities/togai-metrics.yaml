@@ -1,0 +1,80 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Togai Apis — Metrics
+  description: 'Togai Apis — Metrics. 1 operations. Lead operation: Get Togai Metrics. Self-contained Naftiko capability covering
+    one Togai business surface.'
+  tags:
+  - Togai
+  - Metrics
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    TOGAI_API_KEY: TOGAI_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: togai-metrics
+    baseUri: https://api.togai.com
+    description: Togai Apis — Metrics business capability. Self-contained, no shared references.
+    resources:
+    - name: metrics
+      path: /metrics
+      operations:
+      - name: getmetrics
+        method: POST
+        description: Get Togai Metrics
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    authentication:
+      type: bearer
+      token: '{{env.TOGAI_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: togai-metrics-rest
+    port: 8080
+    description: REST adapter for Togai Apis — Metrics. One Spectral-compliant resource per consumed operation, prefixed with
+      /v1.
+    resources:
+    - path: /v1/metrics
+      name: metrics
+      description: REST surface for metrics.
+      operations:
+      - method: POST
+        name: getmetrics
+        description: Get Togai Metrics
+        call: togai-metrics.getmetrics
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: togai-metrics-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Togai Apis — Metrics. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: get-togai-metrics
+      description: Get Togai Metrics
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: togai-metrics.getmetrics
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

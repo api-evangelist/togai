@@ -1,0 +1,80 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Togai Apis — Customer Portal
+  description: 'Togai Apis — Customer Portal. 1 operations. Lead operation: Get Delegate Token for Customer Portal. Self-contained
+    Naftiko capability covering one Togai business surface.'
+  tags:
+  - Togai
+  - Customer Portal
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    TOGAI_API_KEY: TOGAI_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: togai-customer-portal
+    baseUri: https://api.togai.com
+    description: Togai Apis — Customer Portal business capability. Self-contained, no shared references.
+    resources:
+    - name: portal-token
+      path: /portal/token
+      operations:
+      - name: getcustomerportaldelegatetoken
+        method: POST
+        description: Get Delegate Token for Customer Portal
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    authentication:
+      type: bearer
+      token: '{{env.TOGAI_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: togai-customer-portal-rest
+    port: 8080
+    description: REST adapter for Togai Apis — Customer Portal. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/portal/token
+      name: portal-token
+      description: REST surface for portal-token.
+      operations:
+      - method: POST
+        name: getcustomerportaldelegatetoken
+        description: Get Delegate Token for Customer Portal
+        call: togai-customer-portal.getcustomerportaldelegatetoken
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: togai-customer-portal-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Togai Apis — Customer Portal. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: get-delegate-token-customer-portal
+      description: Get Delegate Token for Customer Portal
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: togai-customer-portal.getcustomerportaldelegatetoken
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

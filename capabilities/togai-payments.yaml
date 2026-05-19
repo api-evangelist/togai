@@ -1,0 +1,137 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Togai Apis — Payments
+  description: 'Togai Apis — Payments. 3 operations. Lead operation: List All Payments. Self-contained Naftiko capability
+    covering one Togai business surface.'
+  tags:
+  - Togai
+  - Payments
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    TOGAI_API_KEY: TOGAI_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: togai-payments
+    baseUri: https://api.togai.com
+    description: Togai Apis — Payments business capability. Self-contained, no shared references.
+    resources:
+    - name: payments
+      path: /payments
+      operations:
+      - name: listpayments
+        method: GET
+        description: List All Payments
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createpayments
+        method: POST
+        description: Create Payments
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: payments-payment_id
+      path: /payments/{payment_id}
+      operations:
+      - name: getpayment
+        method: GET
+        description: Get a Payment
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.TOGAI_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: togai-payments-rest
+    port: 8080
+    description: REST adapter for Togai Apis — Payments. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/payments
+      name: payments
+      description: REST surface for payments.
+      operations:
+      - method: GET
+        name: listpayments
+        description: List All Payments
+        call: togai-payments.listpayments
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createpayments
+        description: Create Payments
+        call: togai-payments.createpayments
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/payments/{payment-id}
+      name: payments-payment-id
+      description: REST surface for payments-payment_id.
+      operations:
+      - method: GET
+        name: getpayment
+        description: Get a Payment
+        call: togai-payments.getpayment
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: togai-payments-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Togai Apis — Payments. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: list-all-payments
+      description: List All Payments
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: togai-payments.listpayments
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-payments
+      description: Create Payments
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: togai-payments.createpayments
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-payment
+      description: Get a Payment
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: togai-payments.getpayment
+      outputParameters:
+      - type: object
+        mapping: $.

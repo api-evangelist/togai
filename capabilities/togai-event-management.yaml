@@ -1,0 +1,144 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Togai Apis — Event Management
+  description: 'Togai Apis — Event Management. 3 operations. Lead operation: Get a List of Usage Events with Multiple Query
+    Options. Self-contained Naftiko capability covering one Togai business surface.'
+  tags:
+  - Togai
+  - Event Management
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    TOGAI_API_KEY: TOGAI_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: togai-event-management
+    baseUri: https://api.togai.com
+    description: Togai Apis — Event Management business capability. Self-contained, no shared references.
+    resources:
+    - name: events
+      path: /events
+      operations:
+      - name: getevents
+        method: GET
+        description: Get a List of Usage Events with Multiple Query Options
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: events-correction
+      path: /events/correction
+      operations:
+      - name: eventcorrection
+        method: POST
+        description: Correct an Ingested Event
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: events-event_id
+      path: /events/{event_id}
+      operations:
+      - name: getsingleevent
+        method: GET
+        description: Get an Event Using Event Id
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.TOGAI_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: togai-event-management-rest
+    port: 8080
+    description: REST adapter for Togai Apis — Event Management. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/events
+      name: events
+      description: REST surface for events.
+      operations:
+      - method: GET
+        name: getevents
+        description: Get a List of Usage Events with Multiple Query Options
+        call: togai-event-management.getevents
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/events/correction
+      name: events-correction
+      description: REST surface for events-correction.
+      operations:
+      - method: POST
+        name: eventcorrection
+        description: Correct an Ingested Event
+        call: togai-event-management.eventcorrection
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/events/{event-id}
+      name: events-event-id
+      description: REST surface for events-event_id.
+      operations:
+      - method: GET
+        name: getsingleevent
+        description: Get an Event Using Event Id
+        call: togai-event-management.getsingleevent
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: togai-event-management-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Togai Apis — Event Management. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: get-list-usage-events-multiple
+      description: Get a List of Usage Events with Multiple Query Options
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: togai-event-management.getevents
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: correct-ingested-event
+      description: Correct an Ingested Event
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: togai-event-management.eventcorrection
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-event-using-event-id
+      description: Get an Event Using Event Id
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: togai-event-management.getsingleevent
+      outputParameters:
+      - type: object
+        mapping: $.

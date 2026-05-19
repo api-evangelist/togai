@@ -1,0 +1,221 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Togai Apis — InvoiceGroups
+  description: 'Togai Apis — InvoiceGroups. 5 operations. Lead operation: Create an Invoice Group. Self-contained Naftiko
+    capability covering one Togai business surface.'
+  tags:
+  - Togai
+  - InvoiceGroups
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    TOGAI_API_KEY: TOGAI_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: togai-invoicegroups
+    baseUri: https://api.togai.com
+    description: Togai Apis — InvoiceGroups business capability. Self-contained, no shared references.
+    resources:
+    - name: invoice_groups
+      path: /invoice_groups
+      operations:
+      - name: createinvoicegroup
+        method: POST
+        description: Create an Invoice Group
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: listinvoicegroups
+        method: GET
+        description: List Invoice Groups
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: invoice_groups-invoice_group_id
+      path: /invoice_groups/{invoice_group_id}
+      operations:
+      - name: getinvoicegroup
+        method: GET
+        description: Get Information of an Invoice Group
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: invoice_groups-invoice_group_id-add_accounts
+      path: /invoice_groups/{invoice_group_id}/add_accounts
+      operations:
+      - name: addinvoicegroupaccounts
+        method: POST
+        description: Add Accounts to an Invoice Group
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: invoice_groups-invoice_group_id-remove_accounts
+      path: /invoice_groups/{invoice_group_id}/remove_accounts
+      operations:
+      - name: removeinvoicegroupaccounts
+        method: POST
+        description: Remove Accounts From an Invoice Group. Removing All Accounts Will Also Delete the Invoice Group
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    authentication:
+      type: bearer
+      token: '{{env.TOGAI_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: togai-invoicegroups-rest
+    port: 8080
+    description: REST adapter for Togai Apis — InvoiceGroups. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/invoice-groups
+      name: invoice-groups
+      description: REST surface for invoice_groups.
+      operations:
+      - method: POST
+        name: createinvoicegroup
+        description: Create an Invoice Group
+        call: togai-invoicegroups.createinvoicegroup
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: listinvoicegroups
+        description: List Invoice Groups
+        call: togai-invoicegroups.listinvoicegroups
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/invoice-groups/{invoice-group-id}
+      name: invoice-groups-invoice-group-id
+      description: REST surface for invoice_groups-invoice_group_id.
+      operations:
+      - method: GET
+        name: getinvoicegroup
+        description: Get Information of an Invoice Group
+        call: togai-invoicegroups.getinvoicegroup
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/invoice-groups/{invoice-group-id}/add-accounts
+      name: invoice-groups-invoice-group-id-add-accounts
+      description: REST surface for invoice_groups-invoice_group_id-add_accounts.
+      operations:
+      - method: POST
+        name: addinvoicegroupaccounts
+        description: Add Accounts to an Invoice Group
+        call: togai-invoicegroups.addinvoicegroupaccounts
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/invoice-groups/{invoice-group-id}/remove-accounts
+      name: invoice-groups-invoice-group-id-remove-accounts
+      description: REST surface for invoice_groups-invoice_group_id-remove_accounts.
+      operations:
+      - method: POST
+        name: removeinvoicegroupaccounts
+        description: Remove Accounts From an Invoice Group. Removing All Accounts Will Also Delete the Invoice Group
+        call: togai-invoicegroups.removeinvoicegroupaccounts
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: togai-invoicegroups-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Togai Apis — InvoiceGroups. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: create-invoice-group
+      description: Create an Invoice Group
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: togai-invoicegroups.createinvoicegroup
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-invoice-groups
+      description: List Invoice Groups
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: togai-invoicegroups.listinvoicegroups
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-information-invoice-group
+      description: Get Information of an Invoice Group
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: togai-invoicegroups.getinvoicegroup
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: add-accounts-invoice-group
+      description: Add Accounts to an Invoice Group
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: togai-invoicegroups.addinvoicegroupaccounts
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: remove-accounts-invoice-group-removing
+      description: Remove Accounts From an Invoice Group. Removing All Accounts Will Also Delete the Invoice Group
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: togai-invoicegroups.removeinvoicegroupaccounts
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
