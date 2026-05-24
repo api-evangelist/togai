@@ -155,6 +155,8 @@ common:
     url: https://docs.togai.com/api-reference/getting-started
   - type: Integrations
     url: https://www.togai.com/product/integrations/
+  - type: LLMsTxt
+    url: https://docs.togai.com/llms.txt
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
