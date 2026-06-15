@@ -1,0 +1,2875 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Togai Apis",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Customers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Customers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.togai.com/customers",
+            "params": [
+              {
+                "name": "nextToken",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns a list of customers with pagination and sort."
+        },
+        {
+          "info": {
+            "name": "Create a Customer",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.togai.com/customers",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API let’s you to create customers and corresponding accounts."
+        },
+        {
+          "info": {
+            "name": "Get a Customer",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.togai.com/customers/:customer_id",
+            "params": [
+              {
+                "name": "customer_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get customer information using customer_id."
+        },
+        {
+          "info": {
+            "name": "Update a Customer",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.togai.com/customers/:customer_id",
+            "params": [
+              {
+                "name": "customer_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API let’s you to update a customer’s information using customer_id."
+        },
+        {
+          "info": {
+            "name": "Delete a Customer",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.togai.com/customers/:customer_id",
+            "params": [
+              {
+                "name": "customer_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "This API let’s you to delete a customer using customer_id."
+        },
+        {
+          "info": {
+            "name": "Create a Contact for the Customer",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.togai.com/customers/:customer_id/contacts",
+            "params": [
+              {
+                "name": "customer_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API let’s you to create a contact for the customer"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Accounts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Accounts of Customer",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.togai.com/accounts",
+            "params": [
+              {
+                "name": "nextToken",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns a list of accounts of a customer with pagination and sort."
+        },
+        {
+          "info": {
+            "name": "Create an Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.togai.com/accounts",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API let’s you to create an account for a customer using customer_id."
+        },
+        {
+          "info": {
+            "name": "Get an Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.togai.com/accounts/:account_id",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "account_id corresponding to an account"
+              },
+              {
+                "name": "effectiveOn",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "includeGroupDetails",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get account information using customer_id and account_id."
+        },
+        {
+          "info": {
+            "name": "Update an Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.togai.com/accounts/:account_id",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "account_id corresponding to an account"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API let’s you to update an account’s information using customer_id and account_id."
+        },
+        {
+          "info": {
+            "name": "Delete an Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.togai.com/accounts/:account_id",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "account_id corresponding to an account"
+              }
+            ]
+          },
+          "docs": "This API let’s you to delete a customer using customer_id and account_id."
+        },
+        {
+          "info": {
+            "name": "Add Aliases to Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.togai.com/accounts/:account_id/add_aliases",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "account_id corresponding to an account"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add aliases to an account using customer_id and account_id."
+        },
+        {
+          "info": {
+            "name": "Get All Aliases of an Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.togai.com/accounts/:account_id/account_aliases",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "account_id corresponding to an account"
+              }
+            ]
+          },
+          "docs": "Get all aliases of an account using account_id"
+        },
+        {
+          "info": {
+            "name": "Remove Aliases to Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.togai.com/accounts/:account_id/remove_aliases",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "account_id corresponding to an account"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Remove existing aliases tagged to an account using this API"
+        },
+        {
+          "info": {
+            "name": "Dissociate or Associate a Price Plan with an Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.togai.com/accounts/:account_id/price_plans",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "account_id corresponding to an account"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API let’s you to detach or attach a price plan with an existing account"
+        },
+        {
+          "info": {
+            "name": "Get All Purchases for an Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.togai.com/accounts/:account_id/purchases",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "account_id corresponding to an account"
+              }
+            ]
+          },
+          "docs": "Get Purchase information for an account using account_id and price_plan_id"
+        },
+        {
+          "info": {
+            "name": "Initiate a Purchase",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.togai.com/accounts/:account_id/purchases",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "account_id corresponding to an account"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API let’s you to initiate a purchase for an account"
+        },
+        {
+          "info": {
+            "name": "Get a Specific Purchase of an Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.togai.com/purchases/:purchase_id",
+            "params": [
+              {
+                "name": "purchase_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get purchase information of an account for a specific plan using account_id and price_plan_id"
+        },
+        {
+          "info": {
+            "name": "List All Proposals of an Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.togai.com/accounts/:account_id/purchase_proposals",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "account_id corresponding to an account"
+              }
+            ]
+          },
+          "docs": "List all proposals of an account"
+        },
+        {
+          "info": {
+            "name": "Propose a Purchase of a Plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.togai.com/accounts/:account_id/purchase_proposals",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "account_id corresponding to an account"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API let’s you to create a proposal of a billing/entitlement plan for an account"
+        },
+        {
+          "info": {
+            "name": "Get Proposal Information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.togai.com/purchase_proposals/:purchase_proposal_id",
+            "params": [
+              {
+                "name": "purchase_proposal_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get proposal information"
+        },
+        {
+          "info": {
+            "name": "Edit Schedules of an Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.togai.com/accounts/:account_id/edit_schedules",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "account_id corresponding to an account"
+              },
+              {
+                "name": "dry_run",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API let’s you to detach/attach one or more price plans from/to an existing account"
+        },
+        {
+          "info": {
+            "name": "List Pricing Schedules of an Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.togai.com/accounts/:account_id/pricing_schedules",
+            "params": [
+              {
+                "name": "nextToken",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "account_id corresponding to an account"
+              },
+              {
+                "name": "start_date",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "end_date",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "include_price_plan_info",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "compact",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns a list of pricing schedules of an account with pagination and sort."
+        },
+        {
+          "info": {
+            "name": "Approve or Decline a Purchase of a Billing Plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.togai.com/purchase_proposals/:purchase_proposal_id/update_status",
+            "params": [
+              {
+                "name": "purchase_proposal_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API let’s you to approve or decline a proposal of a billing plan for an account"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Aliases",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List All Aliases",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.togai.com/aliases",
+            "params": [
+              {
+                "name": "nextToken",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns a list of aliases with pagination and sort."
+        },
+        {
+          "info": {
+            "name": "Create an Alias",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.togai.com/aliases",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API let’s you to create an alias"
+        },
+        {
+          "info": {
+            "name": "Get an Alias",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.togai.com/aliases/:alias",
+            "params": [
+              {
+                "name": "alias",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get alias information using alias."
+        },
+        {
+          "info": {
+            "name": "Delete an Alias",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.togai.com/aliases/:alias",
+            "params": [
+              {
+                "name": "alias",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "This API let’s you to delete an alias using alias."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "InvoiceGroups",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Invoice Groups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.togai.com/invoice_groups"
+          },
+          "docs": "This API let’s you to list invoice groups"
+        },
+        {
+          "info": {
+            "name": "Create an Invoice Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.togai.com/invoice_groups",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API let’s you to create an invoice group"
+        },
+        {
+          "info": {
+            "name": "Get Information of an Invoice Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.togai.com/invoice_groups/:invoice_group_id",
+            "params": [
+              {
+                "name": "invoice_group_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "This API let’s you to get information of an invoice group"
+        },
+        {
+          "info": {
+            "name": "Add Accounts to an Invoice Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.togai.com/invoice_groups/:invoice_group_id/add_accounts",
+            "params": [
+              {
+                "name": "invoice_group_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API let’s you to add accounts to an invoice group"
+        },
+        {
+          "info": {
+            "name": "Remove Accounts From an Invoice Group. Removing All Accounts Will Also Delete the Invoice Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.togai.com/invoice_groups/:invoice_group_id/remove_accounts",
+            "params": [
+              {
+                "name": "invoice_group_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API let’s you to remove accounts from an invoice group. Removing all accounts will also delete the invoice group"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Event Schemas",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Event Schemas",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.togai.com/event_schema",
+            "params": [
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter by provided status"
+              },
+              {
+                "name": "nextToken",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns a list of event schema with pagination."
+        },
+        {
+          "info": {
+            "name": "Create an Event Schema",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.togai.com/event_schema",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create an event schema with attributes and dimensions to process events."
+        },
+        {
+          "info": {
+            "name": "Get an Event Schema",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.togai.com/event_schema/:event_schema_name",
+            "params": [
+              {
+                "name": "event_schema_name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "query",
+                "description": "Optional version to get a specific version. Gets latest version if it is not provided."
+              }
+            ]
+          },
+          "docs": "Get an event schema"
+        },
+        {
+          "info": {
+            "name": "Update an Event Schema",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.togai.com/event_schema/:event_schema_name",
+            "params": [
+              {
+                "name": "event_schema_name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an event schema and add new attributes and dimensions\n\nOnce an event schema is activated, you cannot update or delete existing attributes and dimensions however you can add new attributes and dimensions and update event schema description.\n    operationId: updateEventSchema\n"
+        },
+        {
+          "info": {
+            "name": "Delete an Event Schema",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.togai.com/event_schema/:event_schema_name",
+            "params": [
+              {
+                "name": "event_schema_name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "To delete(archive) an event schema, you’re required to archive associated active usage meters if any."
+        },
+        {
+          "info": {
+            "name": "List All Event Schema Versions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.togai.com/event_schema/:event_schema_name/versions",
+            "params": [
+              {
+                "name": "event_schema_name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a list of all the versions of an event schema"
+        },
+        {
+          "info": {
+            "name": "Activate an Event Schema",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.togai.com/event_schema/:event_schema_name/activate",
+            "params": [
+              {
+                "name": "event_schema_name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Activate an event schema"
+        },
+        {
+          "info": {
+            "name": "Deactivate an Event Schema",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.togai.com/event_schema/:event_schema_name/deactivate",
+            "params": [
+              {
+                "name": "event_schema_name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "You can deactivate an event schema using this API. In case you have an activate usage meter associated with the event schema, you will need to deactivate it first and then try deactivating the event schema.\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Usage Meters",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Usage Meters for Event Schema",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.togai.com/usage_meters",
+            "params": [
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter by status\n"
+              },
+              {
+                "name": "aggregations",
+                "value": "",
+                "type": "query",
+                "description": "Filter by aggregations\n"
+              },
+              {
+                "name": "nextToken",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get a list of usage meters associated with an event schema"
+        },
+        {
+          "info": {
+            "name": "Create an Usage Meter",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.togai.com/usage_meters",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create an usage meter and associate with an event schema"
+        },
+        {
+          "info": {
+            "name": "Get Usage Meter",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.togai.com/usage_meters/:usage_meter_id",
+            "params": [
+              {
+                "name": "usage_meter_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get an usage meter using event schema name and usage meter id."
+        },
+        {
+          "info": {
+            "name": "Update an Usage Meter",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.togai.com/usage_meters/:usage_meter_id",
+            "params": [
+              {
+                "name": "usage_meter_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API lets you update an existing usage meter."
+        },
+        {
+          "info": {
+            "name": "Delete an Usage Meter",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.togai.com/usage_meters/:usage_meter_id",
+            "params": [
+              {
+                "name": "usage_meter_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete an Usage Meter"
+        },
+        {
+          "info": {
+            "name": "Activate Usage Meter",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.togai.com/usage_meters/:usage_meter_id/activate",
+            "params": [
+              {
+                "name": "usage_meter_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Activate usage meter"
+        },
+        {
+          "info": {
+            "name": "Deactivate Usage Meter",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.togai.com/usage_meters/:usage_meter_id/deactivate",
+            "params": [
+              {
+                "name": "usage_meter_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Make an existing active usage meter to be inactive\nActive Usage Meters with active Pricing Plan attached can also be deactivated.\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Price Plans",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Price Plans",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.togai.com/price_plans",
+            "params": [
+              {
+                "name": "nextToken",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get a list of price plans"
+        },
+        {
+          "info": {
+            "name": "Create a Price Plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.togai.com/price_plans",
+            "params": [
+              {
+                "name": "dry_run",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API let's you create and price plan\nLearn more about [Price Plans](https://docs.togai.com/docs/priceplan)\n"
+        },
+        {
+          "info": {
+            "name": "Get a Price Plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.togai.com/price_plans/:price_plan_id",
+            "params": [
+              {
+                "name": "price_plan_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "query",
+                "description": "Optional version to get a specific version. Gets latest version if it is not provided."
+              }
+            ]
+          },
+          "docs": "Get a price plan details using price plan id"
+        },
+        {
+          "info": {
+            "name": "Update a Price Plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.togai.com/price_plans/:price_plan_id",
+            "params": [
+              {
+                "name": "price_plan_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an existing price plan\nPrice Plans with status as DRAFT alone can be updated . Learn more about [Price plans](https://docs.togai.com/docs/priceplan) from our Guides\n"
+        },
+        {
+          "info": {
+            "name": "Archive a Price Plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.togai.com/price_plans/:price_plan_id",
+            "params": [
+              {
+                "name": "price_plan_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Archive a price plan"
+        },
+        {
+          "info": {
+            "name": "Activate a Price Plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.togai.com/price_plans/:price_plan_id/activate",
+            "params": [
+              {
+                "name": "price_plan_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Activate a price plan details using price plan id"
+        },
+        {
+          "info": {
+            "name": "Add Currencies to a Price Plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.togai.com/price_plans/:price_plan_id/currencies",
+            "params": [
+              {
+                "name": "price_plan_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add currencies to a price plan"
+        },
+        {
+          "info": {
+            "name": "Remove a Draft Currency From a Price Plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.togai.com/price_plans/:price_plan_id/currencies/:currency_id",
+            "params": [
+              {
+                "name": "price_plan_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "currency_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Remove a draft currency from a price plan"
+        },
+        {
+          "info": {
+            "name": "Create a Price Plan Migration",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.togai.com/price_plans/migration",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Migrates accounts across price plans. This is an asynchronous process functioning on top of Togai's Jobs \nframework. Status of the created migrations can be obtained using the [Jobs APIs](https://docs.togai.com/api-reference/jobs/get-the-status-of-a-job)\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Pricing Rules",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Pricing Rules by Price Plan Id and Pricing Schedule Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.togai.com/price_plans/:price_plan_id/pricing_schedules/:pricing_schedule_id/pricing_rules",
+            "params": [
+              {
+                "name": "price_plan_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "pricing_schedule_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "invoice_timing",
+                "value": "",
+                "type": "query",
+                "description": "Optional field to filter pricing rules based on invoice timing"
+              }
+            ]
+          },
+          "docs": "Get a list of pricing rules using price plan id and pricing schedule id"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "AddOns",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List AddOns",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.togai.com/addons",
+            "params": [
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter by status\n"
+              },
+              {
+                "name": "nextToken",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get a list of add-ons"
+        },
+        {
+          "info": {
+            "name": "Create an AddOn",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.togai.com/addons",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create an AddOn"
+        },
+        {
+          "info": {
+            "name": "Get an Addon",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.togai.com/addons/:addon_id",
+            "params": [
+              {
+                "name": "addon_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get details of an addon"
+        },
+        {
+          "info": {
+            "name": "Update an Addon",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.togai.com/addons/:addon_id",
+            "params": [
+              {
+                "name": "addon_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an existing addon\n"
+        },
+        {
+          "info": {
+            "name": "Delete an Addon",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.togai.com/addons/:addon_id",
+            "params": [
+              {
+                "name": "addon_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Archive an addOn"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Feature",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Feature",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.togai.com/features",
+            "params": [
+              {
+                "name": "nextToken",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get a list of features along with its associations"
+        },
+        {
+          "info": {
+            "name": "Create a Feature and Optionally Associate with One or More Event_schemas",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.togai.com/features",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a Feature optionally associate with one or more event_schemas"
+        },
+        {
+          "info": {
+            "name": "Get a Feature",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.togai.com/features/:feature_id",
+            "params": [
+              {
+                "name": "feature_id",
+                "value": "",
+                "type": "path",
+                "description": "feature_id corresponding to a feature"
+              }
+            ]
+          },
+          "docs": "Get details of a Feature"
+        },
+        {
+          "info": {
+            "name": "Update a Feature",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.togai.com/features/:feature_id",
+            "params": [
+              {
+                "name": "feature_id",
+                "value": "",
+                "type": "path",
+                "description": "feature_id corresponding to a feature"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an existing feature and its eventSchema associations\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Settings",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Lists Settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.togai.com/settings",
+            "params": [
+              {
+                "name": "nextToken",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "entity_type",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "entity_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "setting_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List settings"
+        },
+        {
+          "info": {
+            "name": "Create a Setting",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.togai.com/settings",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a setting"
+        },
+        {
+          "info": {
+            "name": "Get a Setting",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.togai.com/settings/:setting_id_str",
+            "params": [
+              {
+                "name": "setting_id_str",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a setting"
+        },
+        {
+          "info": {
+            "name": "Update a Setting",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.togai.com/settings/:setting_id_str",
+            "params": [
+              {
+                "name": "setting_id_str",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a setting"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Price Experimentation",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Calculate and Return the Revenue for a Existing or New Price Plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.togai.com/revenue_calculator",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Calculate and return the revenue for a existing or new price plan"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Jobs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get the Status of a Job",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.togai.com/jobs/:job_id",
+            "params": [
+              {
+                "name": "job_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get the status of a job"
+        },
+        {
+          "info": {
+            "name": "List Jobs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.togai.com/jobs",
+            "params": [
+              {
+                "name": "nextToken",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns a list of jobs with pagination and sort."
+        },
+        {
+          "info": {
+            "name": "Confirm a Job",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.togai.com/jobs/:job_id/confirm",
+            "params": [
+              {
+                "name": "job_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Confirm a job"
+        },
+        {
+          "info": {
+            "name": "Reject a Job",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.togai.com/jobs/:job_id/reject",
+            "params": [
+              {
+                "name": "job_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Reject a job"
+        },
+        {
+          "info": {
+            "name": "List Job Entries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.togai.com/jobs/:job_id/entries",
+            "params": [
+              {
+                "name": "job_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List individual job entries and current state of processing"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "File Storage",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a File",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.togai.com/files/:file_id",
+            "params": [
+              {
+                "name": "file_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a file"
+        },
+        {
+          "info": {
+            "name": "Get a Download Url for a File",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.togai.com/files/:file_id/download_url",
+            "params": [
+              {
+                "name": "file_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a download url for a file"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Customer Portal",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Delegate Token for Customer Portal",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.togai.com/portal/token",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get delegate token for customer portal"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Event Ingestion",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Ingest Events to Togai",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.togai.com/ingest",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API let’s you to ingest events to your Togai account.\nEvents ingested using this API will be processed via associated usage meters and further via associated price plans to generate final billable value to invoice the customer\nRead more about [Event Ingestion](https://docs.togai.com/docs/event-ingestion)\n"
+        },
+        {
+          "info": {
+            "name": "Ingest Events to Togai in Batch",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.togai.com/ingestBatch",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API let’s you to ingest events in batch upto 500 events.\nIngest large amounts of events up to 500 in batches in an array using this API."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Event Management",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a List of Usage Events with Multiple Query Options",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.togai.com/events",
+            "params": [
+              {
+                "name": "nextToken",
+                "value": "",
+                "type": "query",
+                "description": "Pagination token used as a marker to get records from next page."
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter option to filter by status."
+              },
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter option to filter based on account id."
+              },
+              {
+                "name": "schema_name",
+                "value": "",
+                "type": "query",
+                "description": "Filter option to filter the events based on schema name."
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "Maximum page size expected by client to return the record list. \n\n NOTE: Max page size cannot be more than 50. Also 50 is the default page size if no value is provided."
+              }
+            ]
+          },
+          "docs": "This API let’s you to fetch a list of events with multiple query parameters"
+        },
+        {
+          "info": {
+            "name": "Get an Event Using Event Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.togai.com/events/:event_id",
+            "params": [
+              {
+                "name": "event_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Fetch details of a particular event using the event ID."
+        },
+        {
+          "info": {
+            "name": "Correct an Ingested Event",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.togai.com/events/correction",
+            "params": [
+              {
+                "name": "action",
+                "value": "",
+                "type": "query",
+                "description": "Action to perform in event correction"
+              },
+              {
+                "name": "require_confirmation",
+                "value": "",
+                "type": "query",
+                "description": "Specifies whether to start a migration only after a confirmation"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "#### This API lets you to correct events. Available in both synchronous and asynchronous mode\n- **Usages**: Reduction of all usages associated with this event\n- **Revenue**: Reduction of all revenues associated with this event\n- **Entitlements**: Entitlements(Feature Credits) consumed by this event are granted back to the account.\n\n### Possible Actions:\n- UNDO: Undo all usages, revenue and entitlements associated with an event\n- REDO: Performs UNDO and re-ingests the same event\n- REDO_EVENT: Per"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Metrics",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Togai Metrics",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.togai.com/metrics",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Togai Metrics API allows you to fetch different metrics from Events, Usage Meters and PricePlans with multiple queryable options.\nA single request can query up to five metrics. \nSingle response can contain a maximum of 300 data points.\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Licenses",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a List of Licenses Updates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.togai.com/license_updates",
+            "params": [
+              {
+                "name": "nextToken",
+                "value": "",
+                "type": "query",
+                "description": "Pagination token used as a marker to get records from next page."
+              },
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter option to filter based on account id."
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "Maximum page size expected by client to return the record list. \n\n NOTE: Max page size cannot be more than 50. Also 50 is the default page size if no value is provided."
+              },
+              {
+                "name": "licenseId",
+                "value": "",
+                "type": "query",
+                "description": "License Id to filter"
+              },
+              {
+                "name": "effectiveFrom",
+                "value": "",
+                "type": "query",
+                "description": "effectiveFrom to filter"
+              }
+            ]
+          },
+          "docs": "This API let’s you to fetch a list of licenses updates with multiple query parameters"
+        },
+        {
+          "info": {
+            "name": "Update a License Entry",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.togai.com/license_updates",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API let’s you to add a license entry"
+        },
+        {
+          "info": {
+            "name": "Update a License Entry Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.togai.com/license_updates/:license_id",
+            "params": [
+              {
+                "name": "licenseId",
+                "value": "",
+                "type": "query",
+                "description": "License Id to filter"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API let’s you to update metadata of a license entry"
+        },
+        {
+          "info": {
+            "name": "Get a List of Named Licenses Updates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.togai.com/named_license_updates"
+          },
+          "docs": "This API let’s you to fetch a list of named licenses updates with multiple query parameters"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Entitlements",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Ingest Event if a User is Entitled to a Feature",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.togai.com/entitled",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API let’s you to ingest an event if a user is entitled to a feature"
+        },
+        {
+          "info": {
+            "name": "List Feature Credits Entries of a Feature for an Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.togai.com/accounts/:account_id/features/:feature_id/entries",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "account_id corresponding to an account"
+              },
+              {
+                "name": "feature_id",
+                "value": "",
+                "type": "path",
+                "description": "feature_id corresponding to a feature"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "Maximum page size expected by client to return the record list. \n\n NOTE: Max page size cannot be more than 50. Also 50 is the default page size if no value is provided."
+              },
+              {
+                "name": "nextToken",
+                "value": "",
+                "type": "query",
+                "description": "Pagination token used as a marker to get records from next page."
+              }
+            ]
+          },
+          "docs": "This API let’s you to list the feature credits entries of a feature for an account"
+        },
+        {
+          "info": {
+            "name": "Update a Feature Credits Entry",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.togai.com/accounts/:account_id/features/:feature_id/entries/:entry_id",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "account_id corresponding to an account"
+              },
+              {
+                "name": "feature_id",
+                "value": "",
+                "type": "path",
+                "description": "feature_id corresponding to a feature"
+              },
+              {
+                "name": "entry_id",
+                "value": "",
+                "type": "path",
+                "description": "`entryId` corresponding to a particular entitlement/overage grant entry\n\nFormats:\n1. If source of entry is an entitlement grant rate card in price plan: `schedule_id#pricing_cycle_start_date$PRICE_PLAN`\n2. If source of entry is an entitlement overage rate card in price plan: `schedule_id#pricing_cycle_start_date$OVERAGE`\n3. If source of entry is a purchase: `purchase_id#int_index$PURCHASE`\n"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "#### This API let's you to update the following attributes: `effectiveUntil` and `granted`\n\n- **effectiveUntil**: must be in future\n- **granted**: must be greater than the existing usage (previous granted - current balance)\n"
+        },
+        {
+          "info": {
+            "name": "Void a Feature Credits Entry of a Feature for an Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.togai.com/accounts/:account_id/features/:feature_id/entries/:entry_id/void",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "account_id corresponding to an account"
+              },
+              {
+                "name": "feature_id",
+                "value": "",
+                "type": "path",
+                "description": "feature_id corresponding to a feature"
+              },
+              {
+                "name": "entry_id",
+                "value": "",
+                "type": "path",
+                "description": "`entryId` corresponding to a particular entitlement/overage grant entry\n\nFormats:\n1. If source of entry is an entitlement grant rate card in price plan: `schedule_id#pricing_cycle_start_date$PRICE_PLAN`\n2. If source of entry is an entitlement overage rate card in price plan: `schedule_id#pricing_cycle_start_date$OVERAGE`\n3. If source of entry is a purchase: `purchase_id#int_index$PURCHASE`\n"
+              }
+            ]
+          },
+          "docs": "This API let’s you to void the feature credits entries of a feature for an account"
+        },
+        {
+          "info": {
+            "name": "Get Feature Credits Balance",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.togai.com/accounts/:account_id/features/:feature_id",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "account_id corresponding to an account"
+              },
+              {
+                "name": "feature_id",
+                "value": "",
+                "type": "path",
+                "description": "feature_id corresponding to a feature"
+              }
+            ]
+          },
+          "docs": "This API let’s you to get the feature credits balance"
+        },
+        {
+          "info": {
+            "name": "Get Entitlement Value for a Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.togai.com/accounts/:account_id/entitlements/:feature_id",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "account_id corresponding to an account"
+              },
+              {
+                "name": "feature_id",
+                "value": "",
+                "type": "path",
+                "description": "feature_id corresponding to a feature"
+              }
+            ]
+          },
+          "docs": "This API let’s you to get the entitlement value for a account"
+        },
+        {
+          "info": {
+            "name": "Check Entitlement Value for a Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.togai.com/accounts/:account_id/entitlements/:feature_id",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "account_id corresponding to an account"
+              },
+              {
+                "name": "feature_id",
+                "value": "",
+                "type": "path",
+                "description": "feature_id corresponding to a feature"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API let’s you to validate the entitlement value for a account"
+        },
+        {
+          "info": {
+            "name": "Get Entitlements for a Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.togai.com/accounts/:account_id/entitlements",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "account_id corresponding to an account"
+              }
+            ]
+          },
+          "docs": "This API let’s you to get the entitlements for a account"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Invoices",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Invoices",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.togai.com/invoices",
+            "params": [
+              {
+                "name": "nextToken",
+                "value": "",
+                "type": "query",
+                "description": "Pagination token used as a marker to get records from next page."
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter option to filter by status."
+              },
+              {
+                "name": "owner_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter option to filter based on owner id."
+              },
+              {
+                "name": "customer_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter option to filter based on customer id."
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "Maximum page size expected by client to return the record list. \n\n NOTE: Max page size cannot be more than 50. Also 50 is the default page size if no value is provided."
+              },
+              {
+                "name": "start_time",
+                "value": "",
+                "type": "query",
+                "description": "Start time filter in epoch milli seconds"
+              },
+              {
+                "name": "end_time",
+                "value": "",
+                "type": "query",
+                "description": "End time filter in epoch milli seconds"
+              }
+            ]
+          },
+          "docs": "List invoices"
+        },
+        {
+          "info": {
+            "name": "Create a Custom Invoice for an Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.togai.com/invoices",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a custom invoice for an account."
+        },
+        {
+          "info": {
+            "name": "Get an Invoice",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.togai.com/invoices/:invoice_id",
+            "params": [
+              {
+                "name": "invoice_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get invoice"
+        },
+        {
+          "info": {
+            "name": "Update an Invoice",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.togai.com/invoices/:invoice_id",
+            "params": [
+              {
+                "name": "invoice_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an invoice[Only CUSTOM invoices in DRAFT state support updating of all fields]. Updating status can be done for all invoice."
+        },
+        {
+          "info": {
+            "name": "Delete a Custom Invoice in DRAFT State",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.togai.com/invoices/:invoice_id",
+            "params": [
+              {
+                "name": "invoice_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a custom invoice in DRAFT state."
+        },
+        {
+          "info": {
+            "name": "List Invoices Eligible for Bill Run",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.togai.com/invoices/bill_runs",
+            "params": [
+              {
+                "name": "nextToken",
+                "value": "",
+                "type": "query",
+                "description": "Pagination token used as a marker to get records from next page."
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter option to filter by status."
+              },
+              {
+                "name": "owner_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter option to filter based on owner id."
+              },
+              {
+                "name": "customer_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter option to filter based on customer id."
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "Maximum page size expected by client to return the record list. \n\n NOTE: Max page size cannot be more than 50. Also 50 is the default page size if no value is provided."
+              },
+              {
+                "name": "start_time",
+                "value": "",
+                "type": "query",
+                "description": "Start time filter in epoch milli seconds"
+              },
+              {
+                "name": "end_time",
+                "value": "",
+                "type": "query",
+                "description": "End time filter in epoch milli seconds"
+              }
+            ]
+          },
+          "docs": "List invoices eligible for bill run"
+        },
+        {
+          "info": {
+            "name": "Create a Bill Run Job Request",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.togai.com/invoices/bill_runs",
+            "params": [
+              {
+                "name": "require_confirmation",
+                "value": "",
+                "type": "query",
+                "description": "Specifies whether to start a migration only after a confirmation"
+              }
+            ]
+          },
+          "docs": "Create a bill run job request"
+        },
+        {
+          "info": {
+            "name": "Add or Update Miscellaneous Charges in Invoice",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.togai.com/invoices/:invoice_id/miscellaneous_charges",
+            "params": [
+              {
+                "name": "invoice_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add or update miscellaneous charges in Invoice"
+        },
+        {
+          "info": {
+            "name": "Add or Update Miscellaneous Charges in Upcoming Invoice for a Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.togai.com/accounts/:account_id/miscellaneous_charges",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "account_id corresponding to an account"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add or update miscellaneous charges in upcoming Invoice for a account"
+        },
+        {
+          "info": {
+            "name": "List Pricing Rule Logs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.togai.com/invoice/:invoice_id/pricing_rules_logs",
+            "params": [
+              {
+                "name": "invoice_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List pricing rule logs"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Credits",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Credits",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.togai.com/credits",
+            "params": [
+              {
+                "name": "nextToken",
+                "value": "",
+                "type": "query",
+                "description": "Pagination token used as a marker to get records from next page."
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter option to filter by status."
+              },
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter option to filter based on account id."
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "Filter option to filter based on credit id."
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "Maximum page size expected by client to return the record list. \n\n NOTE: Max page size cannot be more than 50. Also 50 is the default page size if no value is provided."
+              }
+            ]
+          },
+          "docs": "Get all credits"
+        },
+        {
+          "info": {
+            "name": "Grant Credit",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.togai.com/credits",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Grant credit"
+        },
+        {
+          "info": {
+            "name": "Get Credit Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.togai.com/credits/:credit_id",
+            "params": [
+              {
+                "name": "credit_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get credit details"
+        },
+        {
+          "info": {
+            "name": "Void Credit",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.togai.com/credits/:credit_id/void",
+            "params": [
+              {
+                "name": "credit_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Void credit"
+        },
+        {
+          "info": {
+            "name": "Credit Balance for Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.togai.com/accounts/:account_id/credit_balance",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "account_id corresponding to an account"
+              }
+            ]
+          },
+          "docs": "Credit balance for Account"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Wallet",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Top-up Wallet for an Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.togai.com/accounts/:account_id/wallet_topup",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "account_id corresponding to an account"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Top-up wallet for an account"
+        },
+        {
+          "info": {
+            "name": "Wallet Balance for Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.togai.com/accounts/:account_id/wallet",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "account_id corresponding to an account"
+              }
+            ]
+          },
+          "docs": "Wallet balance for Account"
+        },
+        {
+          "info": {
+            "name": "Update Wallet Details for an Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.togai.com/accounts/:account_id/wallet",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "account_id corresponding to an account"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update wallet details for an account"
+        },
+        {
+          "info": {
+            "name": "Wallet Entries for Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.togai.com/accounts/:account_id/wallet/entries",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "account_id corresponding to an account"
+              },
+              {
+                "name": "nextToken",
+                "value": "",
+                "type": "query",
+                "description": "Pagination token used as a marker to get records from next page."
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "Maximum page size expected by client to return the record list. \n\n NOTE: Max page size cannot be more than 50. Also 50 is the default page size if no value is provided."
+              }
+            ]
+          },
+          "docs": "Wallet entries for Account"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Payments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List All Payments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.togai.com/payments",
+            "params": [
+              {
+                "name": "nextToken",
+                "value": "",
+                "type": "query",
+                "description": "Pagination token used as a marker to get records from next page."
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "Maximum page size expected by client to return the record list. \n\n NOTE: Max page size cannot be more than 50. Also 50 is the default page size if no value is provided."
+              }
+            ]
+          },
+          "docs": "List all payments"
+        },
+        {
+          "info": {
+            "name": "Create Payments",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.togai.com/payments",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "create payments"
+        },
+        {
+          "info": {
+            "name": "Get a Payment",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.togai.com/payments/:payment_id",
+            "params": [
+              {
+                "name": "payment_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "query",
+                "description": "Optional version to get a specific version. Gets latest version if it is not provided."
+              }
+            ]
+          },
+          "docs": "Get payment"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Authentication",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Generate Short Lived Bearer Token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.togai.com/authenticate",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Generates and returns a bearer token. Behavior of this API differs on the basis of the auth mechanism used to make the request.\n  - For API key auth, this API generates a JWT token whcih is valid for 24 hours and returns it.\n  - For JWT bearer auth, returns the same JWT token in response\nFor information on how to generate API token, refer [Generating New API Keys](https://docs.togai.com/api-reference/authentication#generating-new-api-keys) section of docs.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
