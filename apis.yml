@@ -83,13 +83,13 @@ common:
     url: https://www.linkedin.com/company/togai
   - type: Website
     url: https://www.togai.com/
-  - type: Developer Portal
+  - type: DeveloperPortal
     url: https://docs.togai.com/
   - type: Documentation
     url: https://docs.togai.com/docs
   - type: APIReference
     url: https://docs.togai.com/api-reference/getting-started
-  - type: SignUp
+  - type: Signup
     url: https://app.togai.com/auth/signup
   - type: Pricing
     url: https://www.togai.com/pricing/
@@ -101,11 +101,11 @@ common:
     url: https://github.com/TogaiHQ
   - type: Sandbox
     url: https://sandbox-api.togai.com/
-  - type: Postman Collection
+  - type: PostmanCollection
     url: https://docs.togai.com/api-reference/getting-started
   - type: Integrations
     url: https://www.togai.com/product/integrations/
-  - type: LLMsTxt
+  - type: LlmsText
     url: https://docs.togai.com/llms.txt
 maintainers:
   - FN: Kin Lane
