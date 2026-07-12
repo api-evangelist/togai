@@ -79,6 +79,10 @@ integrations:
   - Chargebee
   - Zuora
 common:
+  - type: DomainSecurity
+    url: security/togai-domain-security.yml
+  - type: Authentication
+    url: authentication/togai-authentication.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/togai
   - type: Website
