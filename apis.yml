@@ -79,6 +79,8 @@ integrations:
   - Chargebee
   - Zuora
 common:
+  - type: AgenticAccess
+    url: agentic-access/togai-agentic-access.yml
   - type: DomainSecurity
     url: security/togai-domain-security.yml
   - type: Authentication
