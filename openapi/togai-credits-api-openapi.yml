@@ -1,0 +1,584 @@
+openapi: 3.0.3
+info:
+  version: '1.0'
+  title: Togai Apis Accounts Credits API
+  contact:
+    email: engg@togai.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  description: APIs for Togai App
+servers:
+- description: Api endpoint
+  url: https://api.togai.com/
+- description: Sandbox api endpoint
+  url: https://sandbox-api.togai.com/
+security:
+- bearerAuth: []
+tags:
+- name: Credits
+  description: Credits API
+paths:
+  /credits:
+    get:
+      tags:
+      - Credits
+      summary: List Credits
+      description: Get all credits
+      operationId: listCredits
+      parameters:
+      - $ref: '#/components/parameters/filter_next_page_token'
+      - $ref: '#/components/parameters/filter_status'
+      - $ref: '#/components/parameters/filter_account_id'
+      - $ref: '#/components/parameters/filter_credit_id'
+      - $ref: '#/components/parameters/filter_page_size'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListCreditsResponse'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
+        '403':
+          $ref: '#/components/responses/ErrorResponse'
+        '404':
+          $ref: '#/components/responses/ErrorResponse'
+        '429':
+          $ref: '#/components/responses/ErrorResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+    post:
+      tags:
+      - Credits
+      summary: Grant Credit
+      description: Grant credit
+      operationId: createCredit
+      requestBody:
+        $ref: '#/components/requestBodies/CreateCreditRequest'
+      responses:
+        '200':
+          $ref: '#/components/responses/CreateCreditResponse'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
+        '403':
+          $ref: '#/components/responses/ErrorResponse'
+        '404':
+          $ref: '#/components/responses/ErrorResponse'
+        '429':
+          $ref: '#/components/responses/ErrorResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+  /credits/{credit_id}:
+    get:
+      tags:
+      - Credits
+      summary: Get Credit Details
+      description: Get credit details
+      operationId: getCreditDetails
+      parameters:
+      - $ref: '#/components/parameters/credit_id'
+      responses:
+        '200':
+          $ref: '#/components/responses/CreditDetailsResponse'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
+        '403':
+          $ref: '#/components/responses/ErrorResponse'
+        '404':
+          $ref: '#/components/responses/ErrorResponse'
+        '429':
+          $ref: '#/components/responses/ErrorResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+  /credits/{credit_id}/void:
+    post:
+      tags:
+      - Credits
+      summary: Void Credit
+      description: Void credit
+      operationId: voidCredit
+      parameters:
+      - $ref: '#/components/parameters/credit_id'
+      responses:
+        '200':
+          $ref: '#/components/responses/VoidCreditResponse'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
+        '403':
+          $ref: '#/components/responses/ErrorResponse'
+        '404':
+          $ref: '#/components/responses/ErrorResponse'
+        '429':
+          $ref: '#/components/responses/ErrorResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+  /accounts/{account_id}/credit_balance:
+    get:
+      tags:
+      - Credits
+      summary: Credit Balance for Account
+      description: Credit balance for Account
+      operationId: CreditBalanceForAccount
+      parameters:
+      - $ref: '#/components/parameters/account_id'
+      responses:
+        '200':
+          $ref: '#/components/responses/CreditBalanceResponse'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
+        '403':
+          $ref: '#/components/responses/ErrorResponse'
+        '404':
+          $ref: '#/components/responses/ErrorResponse'
+        '429':
+          $ref: '#/components/responses/ErrorResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+components:
+  schemas:
+    Credit:
+      allOf:
+      - $ref: '#/components/schemas/CreditRequest'
+      - type: object
+        additionalProperties: false
+        required:
+        - id
+        - customerId
+        - status
+        - createdAt
+        properties:
+          id:
+            description: Identifier of credits
+            type: string
+            maxLength: 50
+            example: cred.1znqBOVcai0.0tBFz
+          customerId:
+            type: string
+            example: 7VcRw9xZDIqsC5E
+          status:
+            type: string
+            enum:
+            - ACTIVE
+            - CONSUMED
+            - EXPIRED
+            - VOIDED
+            example: ACTIVE
+          creditUnit:
+            type: string
+            example: USD
+          holdAmount:
+            type: number
+            example: 500
+          consumedAmount:
+            type: number
+            example: 400
+          createdAt:
+            type: string
+            format: date-time
+          updatedAt:
+            type: string
+            format: date-time
+    CreateCreditResponse:
+      type: object
+      additionalProperties: false
+      required:
+      - credits
+      properties:
+        credits:
+          type: array
+          items:
+            $ref: '#/components/schemas/Credit'
+    CreateCreditRequest:
+      type: object
+      description: payload to create credits
+      additionalProperties: false
+      required:
+      - creditRequests
+      properties:
+        creditRequests:
+          type: array
+          items:
+            $ref: '#/components/schemas/CreditRequest'
+    ErrorResponse:
+      type: object
+      additionalProperties: false
+      required:
+      - message
+      properties:
+        message:
+          type: string
+          description: error description
+          maxLength: 500
+    ListCreditsResponse:
+      description: List credits response
+      type: object
+      additionalProperties: false
+      required:
+      - data
+      properties:
+        data:
+          type: array
+          minItems: 0
+          maxItems: 50
+          items:
+            $ref: '#/components/schemas/Credit'
+        nextToken:
+          type: string
+          maxLength: 500
+          example: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEyMywgInNvcnRPcmRlciI6ICJhc2MifQ==
+    CreditTransaction:
+      type: object
+      additionalProperties: false
+      required:
+      - id
+      - creditId
+      - transactionType
+      - amount
+      - createdAt
+      properties:
+        id:
+          description: Identifier of credit transactions
+          type: string
+          maxLength: 50
+        creditId:
+          type: string
+        transactionType:
+          type: string
+          enum:
+          - CREDITED
+          - DEBITED
+          - EXPIRED
+          - VOIDED
+          example: CREDITED
+        invoiceId:
+          type: string
+        entityId:
+          type: string
+        amount:
+          type: number
+          example: 200
+        createdAt:
+          type: string
+          format: date-time
+    CreditBalanceResponse:
+      description: Credit Balance response
+      type: object
+      additionalProperties: false
+      required:
+      - activeCredits
+      - availableBalance
+      - runningBalance
+      - inapplicableCredits
+      - unit
+      - lastUpdatedAt
+      properties:
+        activeCredits:
+          type: number
+          example: 1000
+        availableBalance:
+          type: number
+          example: 700
+        runningBalance:
+          type: number
+          example: 500
+        inapplicableCredits:
+          type: number
+          example: 500
+        unit:
+          type: string
+          example: USD
+        lastUpdatedAt:
+          type: string
+          format: date-time
+          example: '2021-01-01T00:00:00Z'
+    CreditRequest:
+      description: Payload to grant Credits
+      type: object
+      additionalProperties: false
+      required:
+      - accountId
+      - effectiveFrom
+      - priority
+      - purpose
+      properties:
+        accountId:
+          type: string
+          example: ACC001
+        purpose:
+          type: string
+          example: PREPAID_CREDIT
+        applicableEntityIds:
+          description: 'List of entity ids for which the credit is applicable. If null or empty, the credit is applicable to all ids. This list can accept special values like: - ALL_USAGE_METER_RATE_CARDS: To apply the credit to all usage meter rate cards - ALL_FIXED_FEE_RATE_CARDS: To apply the credit to all fixed fee rate cards
+
+            '
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+            example:
+            - umg.1znQx9jiIXw.r44fc
+            - ALL_USAGE_METER_RATE_CARDS
+            - ALL_FIXED_FEE_RATE_CARDS
+        effectiveFrom:
+          type: string
+          format: date
+          example: '2020-07-04'
+        effectiveUntil:
+          type: string
+          format: date
+          example: '2021-07-04'
+        creditAmount:
+          type: number
+          example: 1000
+        priority:
+          type: integer
+          example: 1
+        grantorId:
+          description: The entity through which the credit has been granted
+          type: string
+        idempotencyKey:
+          description: The idempotency key for uniqueness of the credit record
+          type: string
+    CreditDetailsResponse:
+      allOf:
+      - $ref: '#/components/schemas/Credit'
+      - type: object
+        additionalProperties: false
+        required:
+        - transactions
+        properties:
+          transactions:
+            type: array
+            items:
+              $ref: '#/components/schemas/CreditTransaction'
+  examples:
+    ListCreditsResponse:
+      summary: A Sample Credits List
+      value:
+        data:
+        - id: creds.1znQx9jiIXw.r44fc
+          customerId: 7VcRw9xZDIqsC5E
+          accountId: ACC001
+          purpose: Prepaid Credit
+          effectiveFrom: '2020-07-04'
+          effectiveUntil: '2021-07-04'
+          status: ACTIVE
+          creditAmount: 1000
+          creditUnit: USD
+          holdAmount: 500
+          consumedAmount: 400
+          priority: 1
+          createdAt: '2020-07-04T12:00:00.000Z'
+        nextToken: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEyMywgInNvcnRPcmRlciI6ICJhc2MifQ==
+    VoidCreditResponse:
+      summary: A Sample Credit
+      value:
+        accountId: biswa
+        purpose: credits
+        effectiveFrom: '2024-03-06'
+        priority: 1
+        id: cred.22LLLScunZg.om5kC
+        customerId: biswa
+        status: VOIDED
+        createdAt: '2024-03-13T12:33:39.986252Z'
+        applicableEntityIds: []
+        effectiveUntil: '2025-03-06'
+        creditAmount: 10
+        grantorId: addon.22IZs2ZVEnw.0zDFe
+        creditUnit: USD
+        holdAmount: 0
+        consumedAmount: 0
+        updatedAt: '2024-03-13T12:42:33.489822Z'
+    CreditBalanceResponse:
+      summary: A Sample for CreditBalanceResponse
+      value:
+        activeCredits: 1000
+        availableBalance: 800
+        runningBalance: 700
+        inapplicableCredits: 100
+        unit: USD
+        lastUpdatedAt: '2020-07-04T12:00:00.000Z'
+    CreateCreditRequest:
+      summary: A Sample for CreateCreditRequest
+      value:
+        creditRequests:
+        - accountId: ACC001
+          purpose: Prepaid Credit
+          effectiveFrom: '2023-02-04'
+          effectiveUntil: '2024-02-04'
+          creditAmount: 1000
+          priority: 1
+    CreateCreditResponse:
+      summary: A Sample for a Create Credit Response
+      value:
+      - id: creds.1znQx9jiIXw.r44fc
+        customerId: 7VcRw9xZDIqsC5E
+        accountId: ACC001
+        purpose: Prepaid Credit
+        effectiveFrom: '2020-07-04'
+        effectiveUntil: '2021-07-04'
+        status: ACTIVE
+        creditAmount: 1000
+        creditUnit: USD
+        holdAmount: 500
+        consumedAmount: 400
+        priority: 1
+        createdAt: '2020-07-04T12:00:00.000Z'
+      - id: creds.1znQ46jiIXw.r24fc
+        customerId: 7VcRw9xZDIqsC5E
+        accountId: ACC001
+        purpose: Prepaid Credit
+        effectiveFrom: '2020-08-04'
+        effectiveUntil: '2021-08-04'
+        status: ACTIVE
+        creditAmount: 1000
+        creditUnit: USD
+        holdAmount: 500
+        consumedAmount: 400
+        priority: 1
+        createdAt: '2020-08-04T12:00:00.000Z'
+  parameters:
+    filter_account_id:
+      in: query
+      description: Filter option to filter based on account id.
+      name: account_id
+      required: false
+      schema:
+        type: string
+        example: '1234'
+    account_id:
+      in: path
+      description: account_id corresponding to an account
+      name: account_id
+      required: true
+      schema:
+        type: string
+        maxLength: 50
+        example: ACC00001
+    filter_status:
+      in: query
+      description: Filter option to filter by status.
+      name: status
+      required: false
+      schema:
+        type: string
+      examples:
+        processed:
+          value: PROCESSED
+        in_progress:
+          value: IN_PROGRESS
+    filter_page_size:
+      in: query
+      description: "Maximum page size expected by client to return the record list. \n\n NOTE: Max page size cannot be more than 50. Also 50 is the default page size if no value is provided."
+      name: pageSize
+      required: false
+      schema:
+        type: integer
+        example: 10
+    credit_id:
+      in: path
+      name: credit_id
+      required: true
+      schema:
+        type: string
+        example: creds.1znQx9jiIXw.r44fc
+    filter_credit_id:
+      in: query
+      description: Filter option to filter based on credit id.
+      name: id
+      required: false
+      schema:
+        type: string
+        example: cred.1znpoFlsI3U.zmg85
+    filter_next_page_token:
+      in: query
+      description: Pagination token used as a marker to get records from next page.
+      name: nextToken
+      required: false
+      schema:
+        type: string
+        example: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEyMywgInNvcnRPcmRlciI6ICJhc2MifQ==
+  responses:
+    ListCreditsResponse:
+      description: Response for Get invoice requests
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ListCreditsResponse'
+          examples:
+            ListCreditsResponse:
+              $ref: '#/components/examples/ListCreditsResponse'
+    ErrorResponse:
+      description: Error response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            ErrorResponse:
+              summary: Error Message
+              value:
+                message: <Reason message>
+    CreditDetailsResponse:
+      description: Response for Fetch Credit Details request. This contains Credit Transactions
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CreditDetailsResponse'
+    CreditBalanceResponse:
+      description: Response for Credit Balance Request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CreditBalanceResponse'
+          examples:
+            CreditBalanceResponse:
+              $ref: '#/components/examples/CreditBalanceResponse'
+    VoidCreditResponse:
+      description: Response for Void credit request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Credit'
+          examples:
+            Credit:
+              $ref: '#/components/examples/VoidCreditResponse'
+    CreateCreditResponse:
+      description: Response for List credits request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CreateCreditResponse'
+          examples:
+            Credit:
+              $ref: '#/components/examples/CreateCreditResponse'
+  requestBodies:
+    CreateCreditRequest:
+      description: Payload to grant credits
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CreateCreditRequest'
+          examples:
+            CreateCreditRequest:
+              $ref: '#/components/examples/CreateCreditRequest'
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: Bearer <credential>
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
+externalDocs:
+  description: Find out more about Togai
+  url: https://docs.togai.com/docs

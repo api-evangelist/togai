@@ -1,0 +1,732 @@
+openapi: 3.0.3
+info:
+  version: '1.0'
+  title: Togai Apis Accounts Event Schemas API
+  contact:
+    email: engg@togai.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  description: APIs for Togai App
+servers:
+- description: Api endpoint
+  url: https://api.togai.com/
+- description: Sandbox api endpoint
+  url: https://sandbox-api.togai.com/
+security:
+- bearerAuth: []
+tags:
+- name: Event Schemas
+  description: Event Schema level calls
+paths:
+  /event_schema:
+    post:
+      tags:
+      - Event Schemas
+      summary: Create an Event Schema
+      description: Create an event schema with attributes and dimensions to process events.
+      operationId: createEventSchema
+      requestBody:
+        $ref: '#/components/requestBodies/CreateEventSchemaRequest'
+      responses:
+        '201':
+          $ref: '#/components/responses/EventSchemaResponse'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
+        '403':
+          $ref: '#/components/responses/ErrorResponse'
+        '404':
+          $ref: '#/components/responses/ErrorResponse'
+        '429':
+          $ref: '#/components/responses/ErrorResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+    get:
+      tags:
+      - Event Schemas
+      summary: List Event Schemas
+      description: Returns a list of event schema with pagination.
+      operationId: listEventSchemas
+      parameters:
+      - name: status
+        description: Filter by provided status
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - ACTIVE
+          - INACTIVE
+      - $ref: '#/components/parameters/next_token'
+      - $ref: '#/components/parameters/page_size'
+      responses:
+        '200':
+          $ref: '#/components/responses/EventSchemaListPaginatedResponse'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
+        '403':
+          $ref: '#/components/responses/ErrorResponse'
+        '404':
+          $ref: '#/components/responses/ErrorResponse'
+        '429':
+          $ref: '#/components/responses/ErrorResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+  /event_schema/{event_schema_name}:
+    patch:
+      tags:
+      - Event Schemas
+      summary: Update an Event Schema
+      description: "Update an event schema and add new attributes and dimensions\n\nOnce an event schema is activated, you cannot update or delete existing attributes and dimensions however you can add new attributes and dimensions and update event schema description.\n    operationId: updateEventSchema\n"
+      parameters:
+      - $ref: '#/components/parameters/event_schema_name'
+      requestBody:
+        $ref: '#/components/requestBodies/UpdateEventSchemaRequest'
+      responses:
+        '200':
+          $ref: '#/components/responses/EventSchemaResponse'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
+        '403':
+          $ref: '#/components/responses/ErrorResponse'
+        '404':
+          $ref: '#/components/responses/ErrorResponse'
+        '429':
+          $ref: '#/components/responses/ErrorResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+    get:
+      tags:
+      - Event Schemas
+      summary: Get an Event Schema
+      description: Get an event schema
+      operationId: getEventSchema
+      parameters:
+      - $ref: '#/components/parameters/event_schema_name'
+      - $ref: '#/components/parameters/version_query'
+      responses:
+        '200':
+          $ref: '#/components/responses/EventSchemaResponse'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
+        '403':
+          $ref: '#/components/responses/ErrorResponse'
+        '404':
+          $ref: '#/components/responses/ErrorResponse'
+        '429':
+          $ref: '#/components/responses/ErrorResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+    delete:
+      tags:
+      - Event Schemas
+      summary: Delete an Event Schema
+      description: To delete(archive) an event schema, you’re required to archive associated active usage meters if any.
+      operationId: deleteEventSchema
+      parameters:
+      - $ref: '#/components/parameters/event_schema_name'
+      responses:
+        '200':
+          $ref: '#/components/responses/BaseSuccessResponse'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
+        '403':
+          $ref: '#/components/responses/ErrorResponse'
+        '404':
+          $ref: '#/components/responses/ErrorResponse'
+        '429':
+          $ref: '#/components/responses/ErrorResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+  /event_schema/{event_schema_name}/versions:
+    get:
+      tags:
+      - Event Schemas
+      summary: List All Event Schema Versions
+      description: Get a list of all the versions of an event schema
+      operationId: listEventSchemaVersions
+      parameters:
+      - $ref: '#/components/parameters/event_schema_name'
+      responses:
+        '200':
+          $ref: '#/components/responses/EventSchemaVersionsResponse'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
+        '403':
+          $ref: '#/components/responses/ErrorResponse'
+        '404':
+          $ref: '#/components/responses/ErrorResponse'
+        '429':
+          $ref: '#/components/responses/ErrorResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+  /event_schema/{event_schema_name}/activate:
+    post:
+      tags:
+      - Event Schemas
+      summary: Activate an Event Schema
+      description: Activate an event schema
+      operationId: activateEventSchema
+      parameters:
+      - $ref: '#/components/parameters/event_schema_name'
+      responses:
+        '200':
+          $ref: '#/components/responses/EventSchemaResponse'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
+        '403':
+          $ref: '#/components/responses/ErrorResponse'
+        '404':
+          $ref: '#/components/responses/ErrorResponse'
+        '429':
+          $ref: '#/components/responses/ErrorResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+  /event_schema/{event_schema_name}/deactivate:
+    post:
+      tags:
+      - Event Schemas
+      summary: Deactivate an Event Schema
+      description: 'You can deactivate an event schema using this API. In case you have an activate usage meter associated with the event schema, you will need to deactivate it first and then try deactivating the event schema.
+
+        '
+      operationId: deactivateEventSchema
+      parameters:
+      - $ref: '#/components/parameters/event_schema_name'
+      responses:
+        '200':
+          $ref: '#/components/responses/EventSchemaResponse'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
+        '403':
+          $ref: '#/components/responses/ErrorResponse'
+        '404':
+          $ref: '#/components/responses/ErrorResponse'
+        '429':
+          $ref: '#/components/responses/ErrorResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+components:
+  responses:
+    BaseSuccessResponse:
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/BaseSuccessResponse'
+    EventSchemaResponse:
+      description: Response for Create and Get event schema requests
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/EventSchema'
+          examples:
+            EventSchema:
+              $ref: '#/components/examples/EventSchema'
+    ErrorResponse:
+      description: Error response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            ErrorResponse:
+              summary: Error Message
+              value:
+                message: <Reason message>
+    EventSchemaVersionsResponse:
+      description: Response for list event schema versions request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/EventSchemaVersionsResponse'
+          examples:
+            EventSchemaVersionsResponse:
+              $ref: '#/components/examples/EventSchemaVersionsResponse'
+    EventSchemaListPaginatedResponse:
+      description: Response for list events request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/EventSchemaListPaginatedResponse'
+          examples:
+            EventSchemaPaginatedResponse:
+              $ref: '#/components/examples/EventSchemaListPaginatedResponse'
+  examples:
+    EventSchema:
+      summary: A Sample Event Schema
+      value:
+        name: ride_completed
+        description: Cab ride completed
+        version: 1
+        attributes:
+        - name: distance
+        - name: time
+        dimensions:
+        - name: city
+        - name: ride_type
+        featureDetails:
+          featureId: feature.1122.ahoiud
+          attributeName: distance
+        eventLevelRevenue: false
+    CreateEventSchemaRequest:
+      summary: Create Event Schema Request Payload
+      value:
+        name: ride_completed
+        description: Cab ride completed
+        attributes:
+        - name: distance
+        - name: time
+        dimensions:
+        - name: city
+        - name: vehicle_type
+        enrichments:
+          dependencies:
+          - type: SETTING
+            key: setting.user.meters_per_km
+            name: meters_per_km
+          fields:
+          - name: distanceInKM
+            type: ATTRIBUTE
+            enrichmentType: JSON_LOGIC
+            value: '{"/":[{"var":["attribute.distance"]},{"var":["dependencies.meters_per_km"]}]}'
+            order: 1
+          - name: rideType
+            type: DIMENSION
+            enrichmentType: JSON_LOGIC
+            value: '{"if":[{"<=":[100,{"var":["attribute.distanceInKM"]}]},"long_distance","short_distance"]}'
+            order: 2
+    EventSchemaListPaginatedResponse:
+      value:
+        data:
+        - name: ride_completed
+          description: Cab ride completed
+          version: 1
+          status: DRAFT
+          attributes:
+          - name: distance
+          - name: time
+          dimensions:
+          - name: city
+          - name: ride_type
+          usageMetersCount: 10
+        nextToken: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEwMCwgInNvcnRPcmRlciI6ICJhc2MifQ==
+        context:
+          pageSize: 10
+    EventSchemaVersionsResponse:
+      summary: A Sample Event Schema Versions Response
+      value:
+        data:
+        - name: ride_completed
+          description: Cab ride completed
+          version: 1
+          status: DRAFT
+          attributes:
+          - name: distance
+          - name: time
+          dimensions:
+          - name: city
+          - name: ride_type
+    UpdateEventSchemaRequest:
+      summary: Update Event Schema Request Payload
+      value:
+        description: Cab ride completed
+        status: DRAFT
+        attributes:
+        - name: distance
+        - name: time
+        dimensions:
+        - name: city
+        - name: vehicle_type
+        enrichments:
+          dependencies:
+          - type: SETTING
+            key: setting.user.meters_per_km
+            name: meters_per_km
+          fields:
+          - name: distanceInKM
+            type: ATTRIBUTE
+            enrichmentType: JSON_LOGIC
+            value: '{"/":[{"var":["attribute.distance"]},{"var":["dependencies.meters_per_km"]}]}'
+            order: 1
+          - name: rideType
+            type: DIMENSION
+            enrichmentType: JSON_LOGIC
+            value: '{"if":[{"<=":[100,{"var":["attribute.distanceInKM"]}]},"long_distance","short_distance"]}'
+            order: 2
+  schemas:
+    CreateEventSchemaRequest:
+      description: Request to create event schema
+      type: object
+      additionalProperties: false
+      required:
+      - name
+      - attributes
+      - dimensions
+      properties:
+        name:
+          description: Name of the event. Must be unique for an organization.
+          type: string
+          maxLength: 50
+          pattern: ^[\sa-zA-Z0-9_-]*$
+        description:
+          description: Description of the event
+          type: string
+          maxLength: 255
+        attributes:
+          type: array
+          maxItems: 50
+          items:
+            $ref: '#/components/schemas/EventAttributeSchema'
+        dimensions:
+          type: array
+          maxItems: 50
+          items:
+            $ref: '#/components/schemas/DimensionsSchema'
+        enrichments:
+          $ref: '#/components/schemas/Enrichments'
+        filterFields:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+          description: List of fields that can be used for filtering in usage meter
+        eventIdTemplate:
+          description: Template used to generate event id based on event payload
+          type: string
+    ErrorResponse:
+      type: object
+      additionalProperties: false
+      required:
+      - message
+      properties:
+        message:
+          type: string
+          description: error description
+          maxLength: 500
+    Enrichments:
+      type: object
+      additionalProperties: false
+      required:
+      - fields
+      properties:
+        dependencies:
+          type: array
+          items:
+            $ref: '#/components/schemas/Dependency'
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/Field'
+    UpdateEventSchemaRequest:
+      description: Request to update event schema
+      type: object
+      additionalProperties: false
+      properties:
+        description:
+          description: Description of the event
+          type: string
+          maxLength: 255
+        attributes:
+          type: array
+          maxItems: 50
+          items:
+            $ref: '#/components/schemas/EventAttributeSchema'
+        dimensions:
+          type: array
+          maxItems: 50
+          items:
+            $ref: '#/components/schemas/DimensionsSchema'
+        enrichments:
+          $ref: '#/components/schemas/Enrichments'
+        filterFields:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+          description: List of fields that can be used for filtering in usage meter
+        eventIdTemplate:
+          description: Template used to generate event id based on event payload
+          type: string
+    PaginationOptions:
+      type: object
+      additionalProperties: false
+      properties:
+        pageSize:
+          type: integer
+        sortOrder:
+          type: string
+          enum:
+          - ASC
+          - DESC
+    EventSchemaListPaginatedResponse:
+      type: object
+      additionalProperties: false
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/EventSchemaListData'
+        nextToken:
+          type: string
+        context:
+          $ref: '#/components/schemas/PaginationOptions'
+    Field:
+      type: object
+      additionalProperties: false
+      required:
+      - name
+      - type
+      - enrichmentType
+      - value
+      - order
+      properties:
+        name:
+          type: string
+        type:
+          type: string
+          enum:
+          - ATTRIBUTE
+          - DIMENSION
+        enrichmentType:
+          type: string
+          enum:
+          - VALUE
+          - JSON_LOGIC
+          - JSON_LOGIC_FROM_DEPENDENCY
+        value:
+          type: string
+        order:
+          type: integer
+          format: int32
+    DimensionsSchema:
+      description: Structure of dimensions
+      type: object
+      additionalProperties: false
+      required:
+      - name
+      properties:
+        name:
+          description: Name of the event dimension
+          type: string
+          maxLength: 50
+          pattern: ^[\sa-zA-Z0-9_-]*$
+          example: city
+    EventSchemaVersionsResponse:
+      description: Response for event schema versions
+      type: object
+      additionalProperties: false
+      required:
+      - data
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/EventSchema'
+    EventSchema:
+      description: Structure of an event schema
+      type: object
+      additionalProperties: false
+      required:
+      - name
+      - version
+      properties:
+        name:
+          description: Name of the event. Must be unique for an organization.
+          type: string
+          maxLength: 50
+          pattern: ^[\sa-zA-Z0-9_-]*$
+        description:
+          description: Description of the event
+          type: string
+          maxLength: 255
+        version:
+          description: Version of event schema
+          type: integer
+          format: int32
+          minimum: 1
+          example: 1
+        status:
+          description: "Status of event schema\n* DRAFT - Schema is in draft state \n* ACTIVE - Schema is currently active \n* INACTIVE - Schema is currently inactive\n* ARCHIVED - Older version of event schema\n"
+          type: string
+          enum:
+          - DRAFT
+          - ACTIVE
+          - INACTIVE
+          - ARCHIVED
+          example: DRAFT
+        attributes:
+          type: array
+          maxItems: 50
+          items:
+            $ref: '#/components/schemas/EventAttributeSchema'
+          uniqueItems: true
+        dimensions:
+          type: array
+          maxItems: 50
+          items:
+            $ref: '#/components/schemas/DimensionsSchema'
+          uniqueItems: true
+        filterFields:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+        featureDetails:
+          $ref: '#/components/schemas/FeatureDetails'
+        enrichments:
+          $ref: '#/components/schemas/Enrichments'
+        eventIdTemplate:
+          description: Template used to generate event id based on event payload
+          type: string
+        eventLevelRevenue:
+          type: boolean
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+    EventSchemaListData:
+      allOf:
+      - $ref: '#/components/schemas/EventSchema'
+      - type: object
+        properties:
+          usageMetersCount:
+            type: integer
+    BaseSuccessResponse:
+      type: object
+      additionalProperties: false
+      required:
+      - success
+      properties:
+        success:
+          type: boolean
+          example: true
+    Dependency:
+      type: object
+      additionalProperties: false
+      required:
+      - type
+      - key
+      - name
+      properties:
+        type:
+          type: string
+          enum:
+          - SETTING
+        key:
+          type: string
+        name:
+          type: string
+    FeatureDetails:
+      description: details of feature associated with event schema with attribute name
+      type: object
+      additionalProperties: false
+      required:
+      - featureId
+      - attributeName
+      properties:
+        featureId:
+          type: string
+        attributeName:
+          type: string
+    EventAttributeSchema:
+      description: Structure of an event attribute
+      type: object
+      additionalProperties: false
+      required:
+      - name
+      properties:
+        name:
+          description: Name of the event attribute.
+          type: string
+          maxLength: 50
+          pattern: ^[\sa-zA-Z0-9_-]*$
+          example: distance
+        defaultUnit:
+          description: Unit for the attribute
+          type: string
+          maxLength: 10
+          example: kms
+  requestBodies:
+    UpdateEventSchemaRequest:
+      description: Payload to update event schema
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UpdateEventSchemaRequest'
+          examples:
+            EventSchema:
+              $ref: '#/components/examples/UpdateEventSchemaRequest'
+    CreateEventSchemaRequest:
+      description: Payload to create event schema
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CreateEventSchemaRequest'
+          examples:
+            EventSchema:
+              $ref: '#/components/examples/CreateEventSchemaRequest'
+  parameters:
+    page_size:
+      in: query
+      name: pageSize
+      required: false
+      schema:
+        type: number
+        example: 10
+    event_schema_name:
+      in: path
+      name: event_schema_name
+      required: true
+      schema:
+        type: string
+        maxLength: 50
+        example: rides
+    next_token:
+      in: query
+      name: nextToken
+      required: false
+      schema:
+        type: string
+        example: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEwMCwgInNvcnRPcmRlciI6ICJhc2MifQ==
+    version_query:
+      in: query
+      name: version
+      description: Optional version to get a specific version. Gets latest version if it is not provided.
+      required: false
+      schema:
+        type: integer
+        format: int32
+        example: 2
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: Bearer <credential>
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
+externalDocs:
+  description: Find out more about Togai
+  url: https://docs.togai.com/docs

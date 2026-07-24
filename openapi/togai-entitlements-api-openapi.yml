@@ -1,0 +1,739 @@
+openapi: 3.0.3
+info:
+  version: '1.0'
+  title: Togai Apis Accounts Entitlements API
+  contact:
+    email: engg@togai.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  description: APIs for Togai App
+servers:
+- description: Api endpoint
+  url: https://api.togai.com/
+- description: Sandbox api endpoint
+  url: https://sandbox-api.togai.com/
+security:
+- bearerAuth: []
+tags:
+- name: Entitlements
+  description: APIs related to entitlements
+paths:
+  /entitled:
+    post:
+      tags:
+      - Entitlements
+      summary: Ingest Event if a User is Entitled to a Feature
+      description: This API let’s you to ingest an event if a user is entitled to a feature
+      operationId: ingestEntitledEvent
+      requestBody:
+        $ref: '#/components/requestBodies/IngestEventRequest'
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaseSuccessResponse'
+        '400':
+          description: Bad request. Please check the response message for failure details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Credential is not valid. Please check the response message for failure details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Credential does not have access to add a license entry.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '409':
+          description: Duplicate Id
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Unable to process the query parameters provided. Please check our docs for the api limits - https://togai.io/docs/limits.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Request throttled. Please check the response message on the failure details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+  /accounts/{account_id}/features/{feature_id}/entries:
+    get:
+      tags:
+      - Entitlements
+      summary: List Feature Credits Entries of a Feature for an Account
+      description: This API let’s you to list the feature credits entries of a feature for an account
+      operationId: listFeatureCreditEntries
+      parameters:
+      - $ref: '#/components/parameters/account_id'
+      - $ref: '#/components/parameters/feature_id'
+      - $ref: '#/components/parameters/filter_page_size'
+      - $ref: '#/components/parameters/filter_next_page_token'
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetFeatureCreditEntriesPaginatedResponse'
+              examples:
+                GetFeatureCreditEntriesPaginatedResponse:
+                  $ref: '#/components/examples/GetFeatureCreditEntriesPaginatedResponse'
+        '400':
+          description: Bad request. Please check the response message for failure details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Credential is not valid. Please check the response message for failure details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Credential does not have access to add a license entry.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Unable to process the query parameters provided. Please check our docs for the api limits - https://togai.io/docs/limits.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Request throttled. Please check the response message on the failure details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+  /accounts/{account_id}/features/{feature_id}/entries/{entry_id}:
+    patch:
+      tags:
+      - Entitlements
+      summary: Update a Feature Credits Entry
+      description: '#### This API let''s you to update the following attributes: `effectiveUntil` and `granted`
+
+
+        - **effectiveUntil**: must be in future
+
+        - **granted**: must be greater than the existing usage (previous granted - current balance)
+
+        '
+      operationId: UpdateFeatureCreditEntry
+      parameters:
+      - $ref: '#/components/parameters/account_id'
+      - $ref: '#/components/parameters/feature_id'
+      - $ref: '#/components/parameters/entry_id'
+      requestBody:
+        $ref: '#/components/requestBodies/UpdateFeatureCreditsRequest'
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FeatureCreditEntry'
+              examples:
+                FeatureCreditEntry:
+                  $ref: '#/components/examples/FeatureCreditEntry'
+        '400':
+          description: Bad request. Please check the response message for failure details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Credential is not valid. Please check the response message for failure details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Credential does not have access to update a feature credit entry.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Entry not found. Please check the response message for failure details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Request throttled. Please check the response message on the failure details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+  /accounts/{account_id}/features/{feature_id}/entries/{entry_id}/void:
+    post:
+      tags:
+      - Entitlements
+      summary: Void a Feature Credits Entry of a Feature for an Account
+      description: This API let’s you to void the feature credits entries of a feature for an account
+      operationId: VoidFeatureCreditEntry
+      parameters:
+      - $ref: '#/components/parameters/account_id'
+      - $ref: '#/components/parameters/feature_id'
+      - $ref: '#/components/parameters/entry_id'
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaseSuccessResponse'
+        '400':
+          description: Bad request. Please check the response message for failure details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Credential is not valid. Please check the response message for failure details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Credential does not have access to void a feature credit entry.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Entry not found. Please check the response message for failure details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Request throttled. Please check the response message on the failure details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+  /accounts/{account_id}/features/{feature_id}:
+    get:
+      tags:
+      - Entitlements
+      summary: Get Feature Credits Balance
+      description: This API let’s you to get the feature credits balance
+      operationId: getFeatureCredits
+      parameters:
+      - $ref: '#/components/parameters/account_id'
+      - $ref: '#/components/parameters/feature_id'
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetFeatureCreditsResponse'
+              examples:
+                GetFeatureCreditsResponse:
+                  $ref: '#/components/examples/GetFeatureCreditsResponse'
+        '400':
+          description: Bad request. Please check the response message for failure details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Credential is not valid. Please check the response message for failure details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Credential does not have access to add a license entry.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Unable to process the query parameters provided. Please check our docs for the api limits - https://togai.io/docs/limits.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Request throttled. Please check the response message on the failure details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+  /accounts/{account_id}/entitlements/{feature_id}:
+    get:
+      tags:
+      - Entitlements
+      summary: Get Entitlement Value for a Account
+      description: This API let’s you to get the entitlement value for a account
+      operationId: getEntitlementValue
+      parameters:
+      - $ref: '#/components/parameters/account_id'
+      - $ref: '#/components/parameters/feature_id'
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetEntitlementValuesResponse'
+              examples:
+                GetEntitlementValuesResponse:
+                  $ref: '#/components/examples/GetEntitlementValuesResponse'
+    post:
+      tags:
+      - Entitlements
+      summary: Check Entitlement Value for a Account
+      description: This API let’s you to validate the entitlement value for a account
+      operationId: validateEntitlementValue
+      parameters:
+      - $ref: '#/components/parameters/account_id'
+      - $ref: '#/components/parameters/feature_id'
+      requestBody:
+        $ref: '#/components/requestBodies/ValidateEntitlementValueRequest'
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaseSuccessResponse'
+  /accounts/{account_id}/entitlements:
+    get:
+      tags:
+      - Entitlements
+      summary: Get Entitlements for a Account
+      description: This API let’s you to get the entitlements for a account
+      operationId: getEntitlements
+      parameters:
+      - $ref: '#/components/parameters/account_id'
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetEntitlementValuesResponse'
+              examples:
+                GetEntitlementValuesResponse:
+                  $ref: '#/components/examples/GetEntitlementValuesResponse'
+components:
+  parameters:
+    entry_id:
+      in: path
+      description: '`entryId` corresponding to a particular entitlement/overage grant entry
+
+
+        Formats:
+
+        1. If source of entry is an entitlement grant rate card in price plan: `schedule_id#pricing_cycle_start_date$PRICE_PLAN`
+
+        2. If source of entry is an entitlement overage rate card in price plan: `schedule_id#pricing_cycle_start_date$OVERAGE`
+
+        3. If source of entry is a purchase: `purchase_id#int_index$PURCHASE`
+
+        '
+      name: entry_id
+      required: true
+      schema:
+        type: string
+        maxLength: 50
+        example: purchase.21HbazIT3JQ.D90jC#1$PURCHASE
+    account_id:
+      in: path
+      description: account_id corresponding to an account
+      name: account_id
+      required: true
+      schema:
+        type: string
+        maxLength: 50
+        example: ACC00001
+    filter_page_size:
+      in: query
+      description: "Maximum page size expected by client to return the record list. \n\n NOTE: Max page size cannot be more than 50. Also 50 is the default page size if no value is provided."
+      name: pageSize
+      required: false
+      schema:
+        type: integer
+        example: 10
+    feature_id:
+      in: path
+      description: feature_id corresponding to a feature
+      name: feature_id
+      required: true
+      schema:
+        type: string
+        maxLength: 50
+        example: feat.fdjskl.sdkjl
+    filter_next_page_token:
+      in: query
+      description: Pagination token used as a marker to get records from next page.
+      name: nextToken
+      required: false
+      schema:
+        type: string
+        example: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEyMywgInNvcnRPcmRlciI6ICJhc2MifQ==
+  schemas:
+    GetEntitlementValuesResponse:
+      type: object
+      additionalProperties: false
+      required:
+      - data
+      properties:
+        data:
+          type: array
+          items:
+            type: object
+            additionalProperties: false
+            required:
+            - featureId
+            - value
+            properties:
+              featureId:
+                type: string
+                description: Feature ID
+              value:
+                type: string
+                description: Value of the feature
+    GetFeatureCreditEntriesPaginatedResponse:
+      type: object
+      additionalProperties: false
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/FeatureCreditEntry'
+        nextToken:
+          type: string
+    ErrorResponse:
+      type: object
+      additionalProperties: false
+      required:
+      - message
+      properties:
+        message:
+          type: string
+          description: error description
+          maxLength: 500
+    FeatureCreditEntry:
+      description: Get feature credits response
+      type: object
+      additionalProperties: false
+      required:
+      - id
+      - source
+      - status
+      - used
+      - effectiveFrom
+      - effectiveUntil
+      properties:
+        id:
+          type: string
+          maxLength: 50
+          example: purchase.20rvWRxQcQK.0ZwPG$1
+        source:
+          type: string
+          description: Source of the feature credit
+          enum:
+          - ENTITLEMENT
+          - PRICE_PLAN
+          - OVERAGE
+          - REFUND
+        status:
+          type: string
+          description: Status of the feature credit entry
+          enum:
+          - ACTIVE
+          - EXPIRED
+          - VOIDED
+        effectiveFrom:
+          type: string
+          format: date-time
+          example: '2021-03-04T14:25:10Z'
+        effectiveUntil:
+          type: string
+          format: date-time
+          example: '2021-05-20T01:00:10Z'
+        granted:
+          type: number
+          example: 15
+        balance:
+          type: number
+          example: 10
+        used:
+          type: number
+          example: 10
+    GetFeatureCreditsResponse:
+      description: Get feature credits response
+      type: object
+      additionalProperties: false
+      required:
+      - accountId
+      - featureId
+      - granted
+      - balance
+      - usedOverage
+      properties:
+        accountId:
+          type: string
+          maxLength: 50
+          example: acc.fdjsl.313
+        featureId:
+          type: string
+          maxLength: 50
+          example: feat.fdjsl.313
+        granted:
+          type: number
+          example: 15
+        balance:
+          type: number
+          example: 10
+        overageLimit:
+          type: number
+          example: 15
+        usedOverage:
+          type: number
+          example: 10
+    Event:
+      description: Contents of the event
+      type: object
+      additionalProperties: false
+      required:
+      - schemaName
+      - timestamp
+      - accountId
+      - attributes
+      - dimensions
+      properties:
+        schemaName:
+          description: "Name of the Event Schema. \nKnow more about [event schema](https://docs.togai.com/docs/event-schemas)\n"
+          type: string
+          minLength: 1
+          maxLength: 50
+        id:
+          description: Togai restricts users to ingest events with same id within a period of *45 days*. This restriction is common for [/entitled API](/api-reference/entitlements/ingest-event-if-a-user-is-entitled-to-a-feature), [/ingest API](/api-reference/event-ingestion/ingest-events-to-togai) and [/ingestBatch API](/api-reference/event-ingestion/ingest-events-to-togai-in-batch). i.e, an id used on /ingest API will not be allowed on /ingestBatch or /entitled APIs
+          type: string
+          maxLength: 512
+          example: c0b1306d-f506-43a6-856b-69221efaee6b
+        timestamp:
+          description: Source time stamp of the event. This timestamp must be in ISO 8601 format.
+          type: string
+          format: date-time
+          example: '2022-06-15T07:30:35.123'
+        accountId:
+          description: The event will be associated with the provided account
+          type: string
+          maxLength: 512
+          example: 1
+        attributes:
+          description: Attributes are numeric values. It can be usage metric which you push to Togai
+          type: array
+          minItems: 0
+          maxItems: 10
+          items:
+            $ref: '#/components/schemas/Attribute'
+        dimensions:
+          $ref: '#/components/schemas/Dimensions'
+    ValidateEntitlementValueRequest:
+      type: object
+      additionalProperties: false
+      required:
+      - value
+      properties:
+        value:
+          type: string
+          description: Value of the entitlement
+    IngestEventRequest:
+      description: Payload for ingesting events
+      type: object
+      additionalProperties: false
+      required:
+      - event
+      properties:
+        event:
+          $ref: '#/components/schemas/Event'
+    UpdateFeatureCreditsRequest:
+      type: object
+      properties:
+        effectiveUntil:
+          type: string
+          format: date-time
+          description: Expiry date-time for a feature credits entry
+        granted:
+          type: number
+          description: Granted units for a feature credits entry
+    Attribute:
+      description: Metric to be recorded
+      type: object
+      additionalProperties: false
+      required:
+      - name
+      - value
+      properties:
+        name:
+          description: Name of the event attribute
+          type: string
+          minLength: 1
+          maxLength: 50
+          example: message
+        value:
+          description: Value of the event attribute
+          type: string
+          pattern: ^-?\d{1,512}(\.\d+)?$
+          example: 100
+        unit:
+          description: Unit with which the attribute value was measured. Natively supported units - "Meters, Miles, Kilometers, Grams, Kilograms, ounces, Pounds, Minutes, Hours, Seconds, Milliseconds, Microseconds, None". Clients are free to add any other custom units.
+          type: string
+          minLength: 1
+          maxLength: 50
+          example: characters
+    Dimensions:
+      description: Dimensions are tags/labels associated with the events.
+      type: object
+      additionalProperties:
+        type: string
+        minLength: 1
+        maxLength: 200
+        example:
+          Country: India
+    BaseSuccessResponse:
+      type: object
+      additionalProperties: false
+      required:
+      - success
+      properties:
+        success:
+          type: boolean
+          example: true
+  examples:
+    FeatureCreditEntry:
+      summary: Example Update Feature Credits Response
+      value:
+        id: purchase.20rvWRxQcQK.0ZwPG$1
+        status: ACTIVE
+        source: ENTITLEMENT
+        effectiveFrom: '2020-01-01T00:00:00Z'
+        effectiveUntil: '2025-01-01T00:00:00Z'
+        granted: 15
+        balance: 10
+        used: 5
+    GetFeatureCreditEntriesPaginatedResponse:
+      summary: Example List Feature Credit Entries Response
+      value:
+        data:
+        - id: purchase.20rvWRxQcQK.0ZwPG
+          source: ENTITLEMENT
+          status: ACTIVE
+          granted: 10
+          balance: 5
+          used: 5
+          effectiveFrom: '2020-01-01T00:00:00Z'
+          effectiveUntil: '2021-03-04T14:25:10Z'
+        - id: purchase.20rvWRxQcQK.0ZwPG
+          source: ENTITLEMENT
+          status: ACTIVE
+          granted: 10
+          balance: 5
+          used: 5
+          effectiveFrom: '2020-01-01T00:00:00Z'
+          effectiveUntil: '2021-03-04T14:25:10Z'
+        nextToken: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEwMCwgInNvcnRPcmRlciI6ICJhc2MifQ==
+      description: 'Examples response of list feature entries API. The source id can either be a ''PURCHASE_ID'' incase of entry source being a purchase or ''SCHEDULE_ID#CYCLE_START_DATE'' in case of entry source being a price plan rate card to indicate the schedule_id and its start_date that granted the credits
+
+        '
+    GetFeatureCreditsResponse:
+      summary: Example Get Feature Credits Response
+      value:
+        accountId: acc.fdjsl.313
+        featureId: feat.fdjsl.313
+        granted: 15
+        balance: 10
+        overageLimit: 20
+        usedOverage: 15
+    GetEntitlementValuesResponse:
+      value:
+        data:
+        - featureId: feat.fdjsl.313
+          value: 'true'
+        - featureId: feat.fdjsl.314
+          value: custom
+  responses:
+    ErrorResponse:
+      description: Error response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            ErrorResponse:
+              summary: Error Message
+              value:
+                message: <Reason message>
+  requestBodies:
+    IngestEventRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/IngestEventRequest'
+    UpdateFeatureCreditsRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UpdateFeatureCreditsRequest'
+          examples:
+            UpdateFeatureCreditsRequest:
+              value:
+                effectiveUntil: '2023-02-23T14:25:10Z'
+                granted: 200
+    ValidateEntitlementValueRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ValidateEntitlementValueRequest'
+          examples:
+            ValidateEntitlementValueRequest:
+              value:
+                value: enum1
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: Bearer <credential>
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
+externalDocs:
+  description: Find out more about Togai
+  url: https://docs.togai.com/docs

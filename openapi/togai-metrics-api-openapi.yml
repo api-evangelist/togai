@@ -1,0 +1,329 @@
+openapi: 3.0.3
+info:
+  version: '1.0'
+  title: Togai Apis Accounts Metrics API
+  contact:
+    email: engg@togai.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  description: APIs for Togai App
+servers:
+- description: Api endpoint
+  url: https://api.togai.com/
+- description: Sandbox api endpoint
+  url: https://sandbox-api.togai.com/
+security:
+- bearerAuth: []
+tags:
+- name: Metrics
+  description: APIs for getting Togai metrics
+  externalDocs:
+    description: docs
+    url: https://togai.com/docs/metrics
+paths:
+  /metrics:
+    post:
+      tags:
+      - Metrics
+      summary: Get Togai Metrics
+      description: "Togai Metrics API allows you to fetch different metrics from Events, Usage Meters and PricePlans with multiple queryable options.\nA single request can query up to five metrics. \nSingle response can contain a maximum of 300 data points.\n"
+      operationId: getMetrics
+      requestBody:
+        $ref: '#/components/requestBodies/GetMetricsRequest'
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetMetricsResponse'
+              examples:
+                GetMetricsResponse:
+                  $ref: '#/components/examples/GetMetricsResponse'
+        '400':
+          description: Bad request. Please check the response message for failure details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Credential is not valid. Please check the response message for failure details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Credential does not have access to get metrics.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Request throttled. Please check the response message on the failure details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+components:
+  schemas:
+    MetricName:
+      type: string
+      description: 'Define the metric you would like to get - allowed options are
+
+        EVENTS - Aggregation of raw events,
+
+        USAGE - Default to METER_USAGE. To be deprecated soon,
+
+        METER_USAGE - Aggregated usage value from Usage meters,
+
+        NAMED_LICENSE_USAGE - Aggregated usage value from Named Licenses,
+
+        REVENUE - Aggregated revenue value from Pricing Plans
+
+        USAGE_FOR_CYCLE - Usage in pricing cycle
+
+        REVENUE_FOR_CYCLE - Revenue in pricing cycle
+
+        '
+      enum:
+      - EVENTS
+      - USAGE
+      - METER_USAGE
+      - NAMED_LICENSE_USAGE
+      - REVENUE
+      - USAGE_FOR_CYCLE
+      - REVENUE_FOR_CYCLE
+      default: EVENTS
+    MetricQuery:
+      type: object
+      description: Object representing a single metrics query
+      additionalProperties: false
+      required:
+      - id
+      - name
+      - aggregationPeriod
+      properties:
+        id:
+          type: string
+          description: "Mandatory  for all request. \nUser defined ID for identifying the request for your internal reference\n"
+        name:
+          $ref: '#/components/schemas/MetricName'
+        aggregationPeriod:
+          type: string
+          description: Set the aggregation period. Allowed periods are HOUR, DAY, WEEK, MONTH
+          enum:
+          - HOUR
+          - DAY
+          - WEEK
+          - MONTH
+          default: DAY
+        groupBy:
+          type: string
+          description: "Group your metric with a groupBy field. \nAllowed fields are \nACCOUNT_ID\nEVENT_STATUS \nSCHEMA_NAME \nUSAGE_METER_ID [Use BILLABLE_ID as this will be deprecated soon...]\nBILLABLE_ID\nRAW_EVENT_STATUS\nPlease refer the table above for the list of combinations allowed in the groupBy\n"
+        configs:
+          description: 'Configurations.
+
+            | Metric Name       | Config Key | Allowed Values  | Default value |              Description          |
+
+            |-------------------|------------|-----------------|---------------|-----------------------------------|
+
+            | REVENUE           | CURRENCY   | BASE or INVOICE | BASE          | currency to return the revenue in |
+
+            | REVENUE_FOR_CYCLE | CURRENCY   | BASE or INVOICE | BASE          | currency to return the revenue in |
+
+            '
+          additionalProperties:
+            type: string
+        filters:
+          type: array
+          description: "Filter on specific fields. \nRefer possible fieldNames and fieldValues from the table above.\n"
+          minItems: 1
+          maxItems: 5
+          items:
+            type: object
+            title: MetricQueryFilterEntry
+            description: "\n| Metric Name       | FilterEntry Name |    Allowed groupBy fields                                           |      Default Values      |                 Allowed Values                                  |\n|-------------------|------------------|---------------------------------------------------------------------|--------------------------|-----------------------------------------------------------------|\n| EVENTS            | ACCOUNT_ID       | ACCOUNT_ID, EVENT_STATUS, SCHEMA_NAME, RAW_EVENT_STATUS             | None                     | *\\<one or more valid account IDs>                               |\n| EVENTS            | CUSTOMER_ID      | ACCOUNT_ID, EVENT_STATUS, SCHEMA_NAME, RAW_EVENT_STATUS             | None                     | *\\<one or more valid customer IDs>                              |\n| EVENTS            | SCHEMA_NAME      | ACCOUNT_ID, EVENT_STATUS, SCHEMA_NAME, RAW_EVENT_STATUS             | None                     | *\\<at most one valid schema names>                              |\n| EVENTS            | EVENT_STATUS     | ACCOUNT_ID, EVENT_STATUS, SCHEMA_NAME, RAW_EVENT_STATUS             | [PROCESSED, UNPROCESSED] | oneOrMoreOf PROCESSED, UNPROCESSED, IN_PROGRESS, IngestionStatus|      \n| USAGE             | ACCOUNT_ID       | ACCOUNT_ID, USAGE_METER_ID, BILLABLE_ID CUSTOMER_ID                 | None                     | *\\<one or more valid account IDs>                               |\n| USAGE             | CUSTOMER_ID      | ACCOUNT_ID, USAGE_METER_ID, BILLABLE_ID CUSTOMER_ID                 | None                     | *\\<one or more valid customer IDs>                              |\n| USAGE             | USAGE_METER_ID   | ACCOUNT_ID, USAGE_METER_ID, BILLABLE_ID CUSTOMER_ID                 | None                     | *\\<one or more valid usage meter name>                          |\n| USAGE             | BILLABLE_ID      | ACCOUNT_ID, USAGE_METER_ID, BILLABLE_ID CUSTOMER_ID                 | None                     | *\\<one or more valid usage meter name>                          |\n| REVENUE           | ACCOUNT_ID       | ACCOUNT_ID, USAGE_METER_ID, BILLABLE_ID CUSTOMER_ID                 | None                     | *\\<one or more valid account IDs>                               |\n| REVENUE           | CUSTOMER_ID      | ACCOUNT_ID, USAGE_METER_ID, BILLABLE_ID CUSTOMER_ID                 | None                     | *\\<one or more valid customer IDs>                              |\n| REVENUE           | USAGE_METER_ID   | ACCOUNT_ID, USAGE_METER_ID, BILLABLE_ID CUSTOMER_ID                 | None                     | *\\<one or more valid usage meter name>                          |\n| REVENUE           | BILLABLE_ID      | ACCOUNT_ID, USAGE_METER_ID, BILLABLE_ID CUSTOMER_ID                 | None                     | *\\<one or more valid usage meter name>                          |\n| EVENTS            | ORGANIZATION_ID  | ACCOUNT_ID, USAGE_METER_ID, BILLABLE_ID CUSTOMER_ID                 | <From auth token>        |                                                                 |\n| USAGE             | ORGANIZATION_ID  | ACCOUNT_ID, USAGE_METER_ID, BILLABLE_ID CUSTOMER_ID                 | <From auth token>        |                                                                 |\n| REVENUE           | ORGANIZATION_ID  | ACCOUNT_ID, USAGE_METER_ID, BILLABLE_ID CUSTOMER_ID                 | <From auth token>        |                                                                 |\n| USAGE_FOR_CYCLE   | ACCOUNT_ID       | ACCOUNT_ID, USAGE_METER_ID, BILLABLE_ID CUSTOMER_ID                 | None                     | *\\<one or more valid account IDs>                               |\n| USAGE_FOR_CYCLE   | CUSTOMER_ID      | ACCOUNT_ID, USAGE_METER_ID, BILLABLE_ID CUSTOMER_ID                 | None                     | *\\<one or more valid customer IDs>                              |\n| USAGE_FOR_CYCLE   | USAGE_METER_ID   | ACCOUNT_ID, USAGE_METER_ID, BILLABLE_ID CUSTOMER_ID                 | None                     | *\\<one or more valid usage meter name>                          |\n| USAGE_FOR_CYCLE   | BILLABLE_ID      | ACCOUNT_ID, USAGE_METER_ID, BILLABLE_ID CUSTOMER_ID                 | None                     | *\\<one or more valid usage meter name>                          |\n| REVENUE_FOR_CYCLE | ACCOUNT_ID       | ACCOUNT_ID, USAGE_METER_ID, BILLABLE_ID CUSTOMER_ID                 | None                     | *\\<one or more valid account IDs>                               |\n| REVENUE_FOR_CYCLE | CUSTOMER_ID      | ACCOUNT_ID, USAGE_METER_ID, BILLABLE_ID CUSTOMER_ID                 | None                     | *\\<one or more valid customer IDs>                              |\n| REVENUE_FOR_CYCLE | USAGE_METER_ID   | ACCOUNT_ID, USAGE_METER_ID, BILLABLE_ID CUSTOMER_ID                 | None                     | *\\<one or more valid usage meter name>                          |\n| REVENUE_FOR_CYCLE | BILLABLE_ID      | ACCOUNT_ID, USAGE_METER_ID, BILLABLE_ID CUSTOMER_ID                 | None                     | *\\<one or more valid usage meter name>                          |\n"
+            additionalProperties: false
+            required:
+            - fieldName
+            - fieldValues
+            properties:
+              fieldName:
+                type: string
+                example: ACCOUNT_ID
+              fieldValues:
+                type: array
+                items:
+                  type: string
+                  example: account#1
+    GetMetricsRequest:
+      type: object
+      description: Request to get metrics from togai
+      additionalProperties: false
+      required:
+      - startTime
+      - endTime
+      - metricQueries
+      properties:
+        startTime:
+          type: string
+          format: date-time
+          description: Start date time of the query (inclusive)
+          example: '2017-07-21T00:00:00Z'
+        endTime:
+          type: string
+          format: date-time
+          description: End date time of the query (exclusive)
+          example: '2017-07-21T00:00:00Z'
+        metricQueries:
+          type: array
+          items:
+            $ref: '#/components/schemas/MetricQuery'
+          uniqueItems: true
+    MetricDataPoints:
+      type: object
+      additionalProperties: false
+      required:
+      - timestamps
+      - metricValues
+      properties:
+        groupedBy:
+          title: MetricDataPointsGroupedBy
+          type: object
+          required:
+          - fieldName
+          - fieldValue
+          properties:
+            fieldName:
+              type: string
+            fieldValue:
+              type: string
+        timestamps:
+          type: array
+          items:
+            type: string
+            format: date-time
+          maxItems: 300
+        metricValues:
+          type: array
+          items:
+            type: number
+          maxItems: 300
+    GetMetricsResponse:
+      type: object
+      description: Response to GetMetrics Request
+      additionalProperties: false
+      required:
+      - results
+      properties:
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/MetricQueryResponse'
+    ErrorResponse:
+      type: object
+      additionalProperties: false
+      required:
+      - message
+      properties:
+        message:
+          type: string
+          description: error description
+          maxLength: 500
+    MetricQueryResponse:
+      type: object
+      description: Response to GetMetrics Request
+      additionalProperties: false
+      required:
+      - id
+      - name
+      - data
+      properties:
+        id:
+          type: string
+        name:
+          $ref: '#/components/schemas/MetricName'
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/MetricDataPoints'
+  examples:
+    GetMetricsResponse:
+      summary: Example Get Metrics Response
+      value:
+        results:
+        - id: m1
+          name: EVENTS
+          data:
+          - timestamps:
+            - '2017-07-21T00:00:00Z'
+            - '2017-07-22T00:00:00Z'
+            metricValues:
+            - 53
+            - 32
+        - id: m2
+          name: USAGE
+          data:
+          - timestamps:
+            - '2017-07-01T00:00:00Z'
+            metricValues:
+            - 123.45
+  responses:
+    ErrorResponse:
+      description: Error response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            ErrorResponse:
+              summary: Error Message
+              value:
+                message: <Reason message>
+  requestBodies:
+    GetMetricsRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/GetMetricsRequest'
+          examples:
+            GetMetricsRequest:
+              value:
+                startTime: '2017-07-21T00:00:00Z'
+                endTime: '2017-07-22T00:00:00Z'
+                metricQueries:
+                - id: m1
+                  name: EVENTS
+                  aggregationPeriod: DAY
+                  filters:
+                  - fieldName: ACCOUNT_ID
+                    fieldValues:
+                    - account#1
+                  - fieldName: CUSTOMER_ID
+                    fieldValues:
+                    - customer#1
+                  - fieldName: EVENT_STATUS
+                    fieldValues:
+                    - PROCESSED
+                - id: m2
+                  name: USAGE
+                  aggregationPeriod: MONTH
+                  filters:
+                  - fieldName: CUSTOMER_ID
+                    fieldValues:
+                    - customer#1
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: Bearer <credential>
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
+externalDocs:
+  description: Find out more about Togai
+  url: https://docs.togai.com/docs

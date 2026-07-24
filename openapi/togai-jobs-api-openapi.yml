@@ -1,0 +1,394 @@
+openapi: 3.0.3
+info:
+  version: '1.0'
+  title: Togai Apis Accounts Jobs API
+  contact:
+    email: engg@togai.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  description: APIs for Togai App
+servers:
+- description: Api endpoint
+  url: https://api.togai.com/
+- description: Sandbox api endpoint
+  url: https://sandbox-api.togai.com/
+security:
+- bearerAuth: []
+tags:
+- name: Jobs
+paths:
+  /jobs/{job_id}:
+    get:
+      tags:
+      - Jobs
+      summary: Get the Status of a Job
+      description: Get the status of a job
+      operationId: getJobStatus
+      parameters:
+      - $ref: '#/components/parameters/job_id'
+      responses:
+        '200':
+          $ref: '#/components/responses/GetJobResponse'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
+        '403':
+          $ref: '#/components/responses/ErrorResponse'
+        '404':
+          $ref: '#/components/responses/ErrorResponse'
+        '429':
+          $ref: '#/components/responses/ErrorResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+  /jobs:
+    get:
+      tags:
+      - Jobs
+      summary: List Jobs
+      description: Returns a list of jobs with pagination and sort.
+      operationId: getJobs
+      parameters:
+      - $ref: '#/components/parameters/next_token'
+      - $ref: '#/components/parameters/page_size'
+      responses:
+        '200':
+          $ref: '#/components/responses/JobsPaginatedResponse'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
+        '403':
+          $ref: '#/components/responses/ErrorResponse'
+        '404':
+          $ref: '#/components/responses/ErrorResponse'
+        '429':
+          $ref: '#/components/responses/ErrorResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+  /jobs/{job_id}/confirm:
+    post:
+      tags:
+      - Jobs
+      summary: Confirm a Job
+      description: Confirm a job
+      operationId: confirmJob
+      parameters:
+      - $ref: '#/components/parameters/job_id'
+      responses:
+        '200':
+          $ref: '#/components/responses/GetJobResponse'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
+        '403':
+          $ref: '#/components/responses/ErrorResponse'
+        '404':
+          $ref: '#/components/responses/ErrorResponse'
+        '429':
+          $ref: '#/components/responses/ErrorResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+  /jobs/{job_id}/reject:
+    post:
+      tags:
+      - Jobs
+      summary: Reject a Job
+      description: Reject a job
+      operationId: rejectJob
+      parameters:
+      - $ref: '#/components/parameters/job_id'
+      responses:
+        '200':
+          $ref: '#/components/responses/GetJobResponse'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
+        '403':
+          $ref: '#/components/responses/ErrorResponse'
+        '404':
+          $ref: '#/components/responses/ErrorResponse'
+        '429':
+          $ref: '#/components/responses/ErrorResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+  /jobs/{job_id}/entries:
+    get:
+      tags:
+      - Jobs
+      summary: List Job Entries
+      description: List individual job entries and current state of processing
+      operationId: getJobEntries
+      parameters:
+      - $ref: '#/components/parameters/job_id'
+      responses:
+        '200':
+          $ref: '#/components/responses/JobEntriesPaginatedResponse'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
+        '403':
+          $ref: '#/components/responses/ErrorResponse'
+        '404':
+          $ref: '#/components/responses/ErrorResponse'
+        '429':
+          $ref: '#/components/responses/ErrorResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+components:
+  examples:
+    JobEntriesPaginatedResponse:
+      value:
+        data:
+        - entityId: inv.423535.afe325
+          jobId: job.20aUyEZSuYq.SoGbS
+          createdAt: '2080-10-04T00:00:00Z'
+          status: COMPLETED
+        nextToken: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEwMCwgInNvcnRPcmRlciI6ICJhc2MifQ==
+    GetJobResponse:
+      value:
+        id: job.20aUyEZSuYq.SoGbS
+        type: PRICE_PLAN
+        updatedAt: '2080-10-04T00:00:00Z'
+        status: COMPLETED
+        totalJobEntries: 100
+        pendingJobEntries: 40
+        failedJobEntries: 20
+        completedJobEntries: 40
+        metadata:
+          sourceId: pp.njrjk314hfr
+          targetId: pp.rhk32h4dsfq
+    JobsPaginatedResponse:
+      value:
+        data:
+        - id: mig.20aUyEZSuYq.SoGbS
+          type: PRICE_PLAN
+          status: COMPLETED
+          updatedAt: '2080-10-04T00:00:00Z'
+        nextToken: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEwMCwgInNvcnRPcmRlciI6ICJhc2MifQ==
+        context:
+          pageSize: 10
+  schemas:
+    GetJobResponse:
+      type: object
+      additionalProperties: false
+      required:
+      - id
+      - type
+      - updatedAt
+      - status
+      - totalJobEntries
+      - pendingJobEntries
+      - failedJobEntries
+      - completedJobEntries
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+          enum:
+          - PRICE_PLAN
+          - EVENT_CORRECTIONS
+          - BILL_RUN
+        settledAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        status:
+          type: string
+          enum:
+          - SCHEDULED
+          - PENDING
+          - INITIALIZED
+          - WAITING_FOR_CONFIRMATION
+          - IN_PROGRESS
+          - COMPLETED
+          - FAILED
+          - CANCELLED
+        totalJobEntries:
+          type: integer
+          format: int32
+        pendingJobEntries:
+          type: integer
+          format: int32
+        failedJobEntries:
+          type: integer
+          format: int32
+        completedJobEntries:
+          type: integer
+          format: int32
+        metadata:
+          type: object
+          additionalProperties:
+            type: string
+    JobEntriesPaginatedResponse:
+      type: object
+      additionalProperties: false
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/JobEntriesResponse'
+        nextToken:
+          type: string
+        context:
+          $ref: '#/components/schemas/PaginationOptions'
+    JobsWithoutStatusInfoResponse:
+      type: object
+      additionalProperties: false
+      required:
+      - id
+      - type
+      - status
+      - updatedAt
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+        status:
+          type: string
+        updatedAt:
+          type: string
+          format: date-time
+    PaginationOptions:
+      type: object
+      additionalProperties: false
+      properties:
+        pageSize:
+          type: integer
+        sortOrder:
+          type: string
+          enum:
+          - ASC
+          - DESC
+    ErrorResponse:
+      type: object
+      additionalProperties: false
+      required:
+      - message
+      properties:
+        message:
+          type: string
+          description: error description
+          maxLength: 500
+    JobEntriesResponse:
+      type: object
+      additionalProperties: false
+      required:
+      - entityId
+      - jobId
+      - status
+      - createdAt
+      - comments
+      properties:
+        entityId:
+          type: string
+        jobId:
+          type: string
+        status:
+          type: string
+          enum:
+          - PENDING
+          - IN_PROGRESS
+          - COMPLETED
+          - FAILED
+          - CANCELLED
+        createdAt:
+          type: string
+          format: date-time
+        metadata:
+          type: object
+          additionalProperties:
+            type: string
+    JobsPaginatedResponse:
+      type: object
+      additionalProperties: false
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/JobsWithoutStatusInfoResponse'
+        nextToken:
+          type: string
+        context:
+          $ref: '#/components/schemas/PaginationOptions'
+  parameters:
+    page_size:
+      in: query
+      name: pageSize
+      required: false
+      schema:
+        type: number
+        example: 10
+    next_token:
+      in: query
+      name: nextToken
+      required: false
+      schema:
+        type: string
+        example: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEwMCwgInNvcnRPcmRlciI6ICJhc2MifQ==
+    job_id:
+      in: path
+      name: job_id
+      required: true
+      schema:
+        type: string
+        example: mig.20aUyEZSuYq.SoGbS
+  responses:
+    JobsPaginatedResponse:
+      description: Response for list customers request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/JobsPaginatedResponse'
+          examples:
+            JobsPaginatedResponse:
+              $ref: '#/components/examples/JobsPaginatedResponse'
+    ErrorResponse:
+      description: Error response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            ErrorResponse:
+              summary: Error Message
+              value:
+                message: <Reason message>
+    JobEntriesPaginatedResponse:
+      description: Response for list job entries request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/JobEntriesPaginatedResponse'
+          examples:
+            JobEntriesPaginatedResponse:
+              $ref: '#/components/examples/JobEntriesPaginatedResponse'
+    GetJobResponse:
+      description: Response for get job status request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/GetJobResponse'
+          examples:
+            GetJobResponse:
+              $ref: '#/components/examples/GetJobResponse'
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: Bearer <credential>
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
+externalDocs:
+  description: Find out more about Togai
+  url: https://docs.togai.com/docs

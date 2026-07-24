@@ -1,0 +1,342 @@
+openapi: 3.0.3
+info:
+  version: '1.0'
+  title: Togai Apis Accounts Settings API
+  contact:
+    email: engg@togai.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  description: APIs for Togai App
+servers:
+- description: Api endpoint
+  url: https://api.togai.com/
+- description: Sandbox api endpoint
+  url: https://sandbox-api.togai.com/
+security:
+- bearerAuth: []
+tags:
+- name: Settings
+  description: Settings
+paths:
+  /settings:
+    post:
+      tags:
+      - Settings
+      summary: Create a Setting
+      description: Create a setting
+      operationId: insertSetting
+      requestBody:
+        $ref: '#/components/requestBodies/CreateSettingRequest'
+      responses:
+        '201':
+          $ref: '#/components/responses/SettingResponse'
+        '204':
+          $ref: '#/components/responses/SettingResponse'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
+        '403':
+          $ref: '#/components/responses/ErrorResponse'
+        '404':
+          $ref: '#/components/responses/ErrorResponse'
+        '429':
+          $ref: '#/components/responses/ErrorResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+    get:
+      tags:
+      - Settings
+      summary: Lists Settings
+      description: List settings
+      operationId: listSetting
+      parameters:
+      - $ref: '#/components/parameters/next_token'
+      - $ref: '#/components/parameters/page_size'
+      - $ref: '#/components/parameters/settings_entity_type'
+      - $ref: '#/components/parameters/settings_entity_id'
+      - $ref: '#/components/parameters/settings_setting_id'
+      - $ref: '#/components/parameters/settings_namespace'
+      responses:
+        '200':
+          $ref: '#/components/responses/SettingPaginatedResponse'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
+        '403':
+          $ref: '#/components/responses/ErrorResponse'
+        '404':
+          $ref: '#/components/responses/ErrorResponse'
+        '429':
+          $ref: '#/components/responses/ErrorResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+  /settings/{setting_id_str}:
+    get:
+      tags:
+      - Settings
+      summary: Get a Setting
+      description: Get a setting
+      operationId: getSetting
+      parameters:
+      - $ref: '#/components/parameters/settings_full_setting_id'
+      responses:
+        '200':
+          $ref: '#/components/responses/SettingResponse'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
+        '403':
+          $ref: '#/components/responses/ErrorResponse'
+        '404':
+          $ref: '#/components/responses/ErrorResponse'
+        '429':
+          $ref: '#/components/responses/ErrorResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+    patch:
+      tags:
+      - Settings
+      summary: Update a Setting
+      description: Update a setting
+      operationId: updateSetting
+      parameters:
+      - $ref: '#/components/parameters/settings_full_setting_id'
+      requestBody:
+        $ref: '#/components/requestBodies/UpdateSettingRequest'
+      responses:
+        '201':
+          $ref: '#/components/responses/SettingResponse'
+        '204':
+          $ref: '#/components/responses/SettingResponse'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
+        '403':
+          $ref: '#/components/responses/ErrorResponse'
+        '404':
+          $ref: '#/components/responses/ErrorResponse'
+        '429':
+          $ref: '#/components/responses/ErrorResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+components:
+  parameters:
+    settings_namespace:
+      in: query
+      name: namespace
+      schema:
+        type: string
+        example: USER
+    settings_setting_id:
+      in: query
+      name: setting_id
+      schema:
+        type: string
+    settings_entity_id:
+      in: query
+      name: entity_id
+      schema:
+        type: string
+        example: acc_X1Df3sRf3
+    settings_full_setting_id:
+      in: path
+      name: setting_id_str
+      required: true
+      schema:
+        type: string
+        example: setting.USER.success_threshold.ACCOUNT.G234DZZKBKACATFFGVGEMERFI
+    page_size:
+      in: query
+      name: pageSize
+      required: false
+      schema:
+        type: number
+        example: 10
+    settings_entity_type:
+      in: query
+      name: entity_type
+      schema:
+        type: string
+        example: ACCOUNT
+    next_token:
+      in: query
+      name: nextToken
+      required: false
+      schema:
+        type: string
+        example: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEwMCwgInNvcnRPcmRlciI6ICJhc2MifQ==
+  schemas:
+    Setting:
+      type: object
+      description: Represents a setting
+      additionalProperties: false
+      required:
+      - id
+      - value
+      - entityType
+      - entityId
+      - namespace
+      - name
+      - dataType
+      properties:
+        id:
+          type: string
+        value:
+          type: string
+        entityType:
+          type: string
+        entityId:
+          type: string
+        namespace:
+          type: string
+        name:
+          type: string
+        dataType:
+          $ref: '#/components/schemas/SettingDataType'
+    ErrorResponse:
+      type: object
+      additionalProperties: false
+      required:
+      - message
+      properties:
+        message:
+          type: string
+          description: error description
+          maxLength: 500
+    PaginationOptions:
+      type: object
+      additionalProperties: false
+      properties:
+        pageSize:
+          type: integer
+        sortOrder:
+          type: string
+          enum:
+          - ASC
+          - DESC
+    UpdateSettingRequest:
+      description: Update Settings
+      type: object
+      additionalProperties: false
+      properties:
+        name:
+          type: string
+        value:
+          type: string
+        dataType:
+          $ref: '#/components/schemas/SettingDataType'
+    SettingDataType:
+      type: string
+      enum:
+      - STRING
+      - NUMERIC
+      - JSON
+      - JSON_LOGIC
+    SettingPaginatedResponse:
+      type: object
+      additionalProperties: false
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Setting'
+        nextToken:
+          type: string
+        context:
+          $ref: '#/components/schemas/PaginationOptions'
+  responses:
+    SettingPaginatedResponse:
+      description: Response for list setting request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SettingPaginatedResponse'
+          examples:
+            SettingPaginatedResponse:
+              $ref: '#/components/examples/SettingPaginatedResponse'
+    ErrorResponse:
+      description: Error response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            ErrorResponse:
+              summary: Error Message
+              value:
+                message: <Reason message>
+    SettingResponse:
+      description: Response for insert and update settings request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Setting'
+          examples:
+            Setting:
+              $ref: '#/components/examples/Setting'
+  requestBodies:
+    CreateSettingRequest:
+      description: Payload to insert setting
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Setting'
+          examples:
+            Setting:
+              $ref: '#/components/examples/Setting'
+    UpdateSettingRequest:
+      description: Payload to update setting
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UpdateSettingRequest'
+          examples:
+            UpdateSettingRequest:
+              $ref: '#/components/examples/UpdateSettingRequest'
+  examples:
+    Setting:
+      value:
+        id: UserSetting
+        value: INR
+        entityType: ORGANIZATION
+        entityId: XlK5h64gND
+        namespace: USER
+        name: Settings Name
+        dataType: STRING
+    UpdateSettingRequest:
+      value:
+        value: '{"USD":"1"}'
+        name: Base_Currency
+        dataType: JSON
+    SettingPaginatedResponse:
+      value:
+        data:
+        - id: TogaiSetting
+          value: INR
+          entityType: ORGANIZATION
+          entityId: XlK5h64gND
+          namespace: togai
+          name: Settings Name
+          dataType: STRING
+        nextToken: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEwMCwgInNvcnRPcmRlciI6ICJhc2MifQ==
+        context:
+          pageSize: 10
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: Bearer <credential>
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
+externalDocs:
+  description: Find out more about Togai
+  url: https://docs.togai.com/docs

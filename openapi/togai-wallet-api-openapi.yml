@@ -1,0 +1,385 @@
+openapi: 3.0.3
+info:
+  version: '1.0'
+  title: Togai Apis Accounts Wallet API
+  contact:
+    email: engg@togai.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  description: APIs for Togai App
+servers:
+- description: Api endpoint
+  url: https://api.togai.com/
+- description: Sandbox api endpoint
+  url: https://sandbox-api.togai.com/
+security:
+- bearerAuth: []
+tags:
+- name: Wallet
+  description: Wallet API
+paths:
+  /accounts/{account_id}/wallet_topup:
+    post:
+      tags:
+      - Wallet
+      summary: Top-up Wallet for an Account
+      description: Top-up wallet for an account
+      operationId: topUpWalletForAccount
+      parameters:
+      - $ref: '#/components/parameters/account_id'
+      requestBody:
+        $ref: '#/components/requestBodies/TopupWalletRequest'
+      responses:
+        '200':
+          $ref: '#/components/responses/WalletBalanceResponse'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
+        '403':
+          $ref: '#/components/responses/ErrorResponse'
+        '404':
+          $ref: '#/components/responses/ErrorResponse'
+        '429':
+          $ref: '#/components/responses/ErrorResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+  /accounts/{account_id}/wallet:
+    get:
+      tags:
+      - Wallet
+      summary: Wallet Balance for Account
+      description: Wallet balance for Account
+      operationId: WalletBalanceForAccount
+      parameters:
+      - $ref: '#/components/parameters/account_id'
+      responses:
+        '200':
+          $ref: '#/components/responses/WalletBalanceResponse'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
+        '403':
+          $ref: '#/components/responses/ErrorResponse'
+        '404':
+          $ref: '#/components/responses/ErrorResponse'
+        '429':
+          $ref: '#/components/responses/ErrorResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+    patch:
+      tags:
+      - Wallet
+      summary: Update Wallet Details for an Account
+      description: Update wallet details for an account
+      operationId: updateWalletForAccount
+      parameters:
+      - $ref: '#/components/parameters/account_id'
+      requestBody:
+        $ref: '#/components/requestBodies/UpdateWalletRequest'
+      responses:
+        '200':
+          $ref: '#/components/responses/WalletBalanceResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+  /accounts/{account_id}/wallet/entries:
+    get:
+      tags:
+      - Wallet
+      summary: Wallet Entries for Account
+      description: Wallet entries for Account
+      operationId: WalletEntriesForAccount
+      parameters:
+      - $ref: '#/components/parameters/account_id'
+      - $ref: '#/components/parameters/filter_next_page_token'
+      - $ref: '#/components/parameters/filter_page_size'
+      responses:
+        '200':
+          $ref: '#/components/responses/WalletEntriesPaginatedResponse'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
+        '403':
+          $ref: '#/components/responses/ErrorResponse'
+        '404':
+          $ref: '#/components/responses/ErrorResponse'
+        '429':
+          $ref: '#/components/responses/ErrorResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+components:
+  schemas:
+    ErrorResponse:
+      type: object
+      additionalProperties: false
+      required:
+      - message
+      properties:
+        message:
+          type: string
+          description: error description
+          maxLength: 500
+    WalletBalanceResponse:
+      description: Wallet Balance response
+      type: object
+      additionalProperties: false
+      required:
+      - id
+      - accountId
+      - effectiveFrom
+      - status
+      - customerId
+      - balance
+      - creditUnit
+      properties:
+        id:
+          type: string
+        accountId:
+          type: string
+          example: ACC001
+        customerId:
+          type: string
+          example: ACC001
+        balance:
+          description: 'This amount is the difference of total credited amount and sum of consumed, hold amount.
+
+            ie. credit amount - (consumed amount + hold amount)
+
+            '
+          type: number
+          example: 500
+        creditUnit:
+          type: string
+          example: USD
+        externalId:
+          type: string
+        status:
+          $ref: '#/components/schemas/WalletStatus'
+        holdAmount:
+          type: number
+          example: 500
+        effectiveFrom:
+          type: string
+          format: date-time
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        metadata:
+          type: object
+          additionalProperties: true
+    WalletEntriesPaginatedResponse:
+      description: List wallet entries response
+      type: object
+      additionalProperties: false
+      required:
+      - data
+      properties:
+        data:
+          type: array
+          minItems: 0
+          maxItems: 50
+          items:
+            $ref: '#/components/schemas/WalletEntry'
+        nextToken:
+          type: string
+          maxLength: 500
+          example: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEyMywgInNvcnRPcmRlciI6ICJhc2MifQ==
+    TopupWalletRequest:
+      type: object
+      description: Payload to topup wallet of an account
+      additionalProperties: false
+      required:
+      - topupAmount
+      properties:
+        topupAmount:
+          type: number
+    WalletStatus:
+      type: string
+      enum:
+      - ACTIVE
+      - INACTIVE
+    WalletEntry:
+      type: object
+      additionalProperties: false
+      required:
+      - id
+      - walletId
+      - transactionType
+      - status
+      - amount
+      - createdAt
+      - closingBalance
+      properties:
+        id:
+          description: Identifier of credit transactions
+          type: string
+          maxLength: 50
+        description:
+          description: description of the entry
+          type: string
+          maxLength: 50
+        walletId:
+          type: string
+        transactionType:
+          type: string
+          enum:
+          - CREDITED
+          - DEBITED
+          example: CREDITED
+        status:
+          type: string
+          enum:
+          - COMPLETED
+          - ON_HOLD
+          example: COMPLETED
+        entityId:
+          type: string
+        amount:
+          type: number
+          example: 200
+        createdAt:
+          type: string
+          format: date-time
+        closingBalance:
+          type: number
+          example: 200
+    UpdateWalletRequest:
+      type: object
+      description: Payload to update wallet of an account
+      additionalProperties: false
+      properties:
+        effectiveFrom:
+          type: string
+          format: date-time
+        status:
+          $ref: '#/components/schemas/WalletStatus'
+  parameters:
+    account_id:
+      in: path
+      description: account_id corresponding to an account
+      name: account_id
+      required: true
+      schema:
+        type: string
+        maxLength: 50
+        example: ACC00001
+    filter_page_size:
+      in: query
+      description: "Maximum page size expected by client to return the record list. \n\n NOTE: Max page size cannot be more than 50. Also 50 is the default page size if no value is provided."
+      name: pageSize
+      required: false
+      schema:
+        type: integer
+        example: 10
+    filter_next_page_token:
+      in: query
+      description: Pagination token used as a marker to get records from next page.
+      name: nextToken
+      required: false
+      schema:
+        type: string
+        example: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEyMywgInNvcnRPcmRlciI6ICJhc2MifQ==
+  examples:
+    UpdateWalletRequest:
+      summary: A Sample for UpdateWalletRequest
+      value:
+        effectiveFrom: '2023-02-04T00:00:00Z'
+        status: ACTIVE
+    WalletEntriesPaginatedResponse:
+      summary: A Sample for CreditBalanceResponse
+      value:
+        data:
+        - id: wallet.q3df.1241
+          description: payment
+          walletId: cred.1234.2342
+          transactionType: CREDITED
+          entityId: inv.wrwerw.4234e
+          amount: 500
+          createdAt: '2023-11-07T05:31:56Z'
+          closingBalance: 500
+    TopupWalletRequest:
+      summary: A Sample for TopupWalletRequest
+      value:
+        topupAmount: 50
+    WalletBalanceResponse:
+      summary: A Sample for WalletBalanceResponse
+      value:
+        id: wallet.1223.sf23f
+        accountId: ACC001
+        customerId: CUST001
+        balance: 500
+        creditUnit: USD
+        externalId: ext_id_123
+        status: ACTIVE
+        holdAmount: 500
+        createdAt: '2023-12-13T12:00:00Z'
+        updatedAt: '2023-12-13T12:00:00Z'
+        metadata:
+          autoNetOff: false
+  responses:
+    ErrorResponse:
+      description: Error response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            ErrorResponse:
+              summary: Error Message
+              value:
+                message: <Reason message>
+    WalletBalanceResponse:
+      description: Response for Credit Balance Request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/WalletBalanceResponse'
+          examples:
+            WalletBalanceResponse:
+              $ref: '#/components/examples/WalletBalanceResponse'
+    WalletEntriesPaginatedResponse:
+      description: Response for Credit Balance Request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/WalletEntriesPaginatedResponse'
+          examples:
+            CreditBalanceResponse:
+              $ref: '#/components/examples/WalletEntriesPaginatedResponse'
+  requestBodies:
+    UpdateWalletRequest:
+      description: Payload to update wallet of an account
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UpdateWalletRequest'
+          examples:
+            CreatePaymentRequest:
+              $ref: '#/components/examples/UpdateWalletRequest'
+    TopupWalletRequest:
+      description: Payload to topup wallet of an account
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/TopupWalletRequest'
+          examples:
+            CreatePaymentRequest:
+              $ref: '#/components/examples/TopupWalletRequest'
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: Bearer <credential>
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
+externalDocs:
+  description: Find out more about Togai
+  url: https://docs.togai.com/docs

@@ -1,0 +1,1361 @@
+openapi: 3.0.3
+info:
+  version: '1.0'
+  title: Togai Apis Accounts Invoices API
+  contact:
+    email: engg@togai.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  description: APIs for Togai App
+servers:
+- description: Api endpoint
+  url: https://api.togai.com/
+- description: Sandbox api endpoint
+  url: https://sandbox-api.togai.com/
+security:
+- bearerAuth: []
+tags:
+- name: Invoices
+  description: Invoices API
+paths:
+  /invoices:
+    get:
+      tags:
+      - Invoices
+      summary: List Invoices
+      description: List invoices
+      operationId: listInvoices
+      parameters:
+      - $ref: '#/components/parameters/filter_next_page_token'
+      - $ref: '#/components/parameters/filter_status'
+      - $ref: '#/components/parameters/filter_owner_id'
+      - $ref: '#/components/parameters/filter_customer_id'
+      - $ref: '#/components/parameters/filter_page_size'
+      - $ref: '#/components/parameters/filter_start_time'
+      - $ref: '#/components/parameters/filter_end_time'
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListInvoicesResponse'
+              examples:
+                ListInvoicesResponse:
+                  $ref: '#/components/examples/ListInvoicesResponse'
+        '400':
+          description: Bad request. Please check the response message for failure details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Credential is not valid. Please check the response message for failure details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Credential does not have access to this operation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Unable to process the query parameters provided. Please check our docs for the api limits - https://togai.io/docs/limits.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Request throttled. Please check the response message on the failure details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+    post:
+      tags:
+      - Invoices
+      summary: Create a Custom Invoice for an Account
+      description: Create a custom invoice for an account.
+      operationId: createCustomInvoice
+      requestBody:
+        $ref: '#/components/requestBodies/CreateCustomInvoiceRequest'
+      responses:
+        '201':
+          $ref: '#/components/responses/InvoiceResponse'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
+        '403':
+          $ref: '#/components/responses/ErrorResponse'
+        '404':
+          $ref: '#/components/responses/ErrorResponse'
+        '429':
+          $ref: '#/components/responses/ErrorResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+  /invoices/{invoice_id}:
+    get:
+      tags:
+      - Invoices
+      summary: Get an Invoice
+      description: Get invoice
+      operationId: getInvoice
+      parameters:
+      - $ref: '#/components/parameters/invoice_id'
+      responses:
+        '200':
+          $ref: '#/components/responses/InvoiceResponse'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
+        '403':
+          $ref: '#/components/responses/ErrorResponse'
+        '404':
+          $ref: '#/components/responses/ErrorResponse'
+        '429':
+          $ref: '#/components/responses/ErrorResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+    patch:
+      tags:
+      - Invoices
+      summary: Update an Invoice
+      description: Update an invoice[Only CUSTOM invoices in DRAFT state support updating of all fields]. Updating status can be done for all invoice.
+      operationId: updateInvoice
+      parameters:
+      - $ref: '#/components/parameters/invoice_id'
+      requestBody:
+        $ref: '#/components/requestBodies/UpdateInvoiceRequest'
+      responses:
+        '200':
+          $ref: '#/components/responses/InvoiceResponse'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
+        '403':
+          $ref: '#/components/responses/ErrorResponse'
+        '404':
+          $ref: '#/components/responses/ErrorResponse'
+        '429':
+          $ref: '#/components/responses/ErrorResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+    delete:
+      tags:
+      - Invoices
+      summary: Delete a Custom Invoice in DRAFT State
+      description: Delete a custom invoice in DRAFT state.
+      operationId: deleteCustomInvoice
+      parameters:
+      - $ref: '#/components/parameters/invoice_id'
+      responses:
+        '200':
+          $ref: '#/components/responses/BaseSuccessResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
+        '403':
+          $ref: '#/components/responses/ErrorResponse'
+        '404':
+          $ref: '#/components/responses/ErrorResponse'
+        '429':
+          $ref: '#/components/responses/ErrorResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+  /invoices/bill_runs:
+    post:
+      tags:
+      - Invoices
+      summary: Create a Bill Run Job Request
+      description: Create a bill run job request
+      operationId: createInvoiceBillRun
+      parameters:
+      - $ref: '#/components/parameters/require_confirmation'
+      responses:
+        '200':
+          $ref: '#/components/responses/BaseSuccessResponse'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
+        '403':
+          $ref: '#/components/responses/ErrorResponse'
+        '404':
+          $ref: '#/components/responses/ErrorResponse'
+        '429':
+          $ref: '#/components/responses/ErrorResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+    get:
+      tags:
+      - Invoices
+      summary: List Invoices Eligible for Bill Run
+      description: List invoices eligible for bill run
+      operationId: listInvoicesForBillRun
+      parameters:
+      - $ref: '#/components/parameters/filter_next_page_token'
+      - $ref: '#/components/parameters/filter_status'
+      - $ref: '#/components/parameters/filter_owner_id'
+      - $ref: '#/components/parameters/filter_customer_id'
+      - $ref: '#/components/parameters/filter_page_size'
+      - $ref: '#/components/parameters/filter_start_time'
+      - $ref: '#/components/parameters/filter_end_time'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListInvoicesResponse'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
+        '403':
+          $ref: '#/components/responses/ErrorResponse'
+        '404':
+          $ref: '#/components/responses/ErrorResponse'
+        '429':
+          $ref: '#/components/responses/ErrorResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+  /invoices/{invoice_id}/miscellaneous_charges:
+    put:
+      tags:
+      - Invoices
+      summary: Add or Update Miscellaneous Charges in Invoice
+      description: Add or update miscellaneous charges in Invoice
+      operationId: manageMiscellaneousChargesInInvoice
+      parameters:
+      - $ref: '#/components/parameters/invoice_id'
+      requestBody:
+        $ref: '#/components/requestBodies/ManageMiscellaneousChargesRequest'
+      responses:
+        '200':
+          $ref: '#/components/responses/MiscellaneousChargesResponse'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
+        '403':
+          $ref: '#/components/responses/ErrorResponse'
+        '404':
+          $ref: '#/components/responses/ErrorResponse'
+        '429':
+          $ref: '#/components/responses/ErrorResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+  /accounts/{account_id}/miscellaneous_charges:
+    put:
+      tags:
+      - Invoices
+      summary: Add or Update Miscellaneous Charges in Upcoming Invoice for a Account
+      description: Add or update miscellaneous charges in upcoming Invoice for a account
+      operationId: manageMiscellaneousChargesInAccount
+      parameters:
+      - $ref: '#/components/parameters/account_id'
+      requestBody:
+        $ref: '#/components/requestBodies/ManageMiscellaneousChargesRequest'
+      responses:
+        '200':
+          $ref: '#/components/responses/MiscellaneousChargesResponse'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
+        '403':
+          $ref: '#/components/responses/ErrorResponse'
+        '404':
+          $ref: '#/components/responses/ErrorResponse'
+        '429':
+          $ref: '#/components/responses/ErrorResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+  /invoice/{invoice_id}/pricing_rules_logs:
+    get:
+      tags:
+      - Invoices
+      summary: List Pricing Rule Logs
+      description: List pricing rule logs
+      operationId: listPricingRuleLogs
+      parameters:
+      - $ref: '#/components/parameters/invoice_id'
+      responses:
+        '200':
+          $ref: '#/components/responses/PricingRulesLogsPaginatedResponse'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
+        '403':
+          $ref: '#/components/responses/ErrorResponse'
+        '404':
+          $ref: '#/components/responses/ErrorResponse'
+        '429':
+          $ref: '#/components/responses/ErrorResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+components:
+  responses:
+    BaseSuccessResponse:
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/BaseSuccessResponse'
+    InvoiceResponse:
+      description: Response for Get invoice requests
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Invoice'
+          examples:
+            Invoice:
+              $ref: '#/components/examples/Invoice'
+    PricingRulesLogsPaginatedResponse:
+      description: Response for list Invoice Pricing Rules Logs Request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PricingRulesLogsPaginatedResponse'
+          examples:
+            PricingRulesLogsPaginatedResponse:
+              $ref: '#/components/examples/PricingRulesLogsPaginatedResponse'
+    ErrorResponse:
+      description: Error response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            ErrorResponse:
+              summary: Error Message
+              value:
+                message: <Reason message>
+    ListInvoicesResponse:
+      description: Response for Get invoice requests
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ListInvoicesResponse'
+          examples:
+            ListInvoicesResponse:
+              $ref: '#/components/examples/ListInvoicesResponse'
+    MiscellaneousChargesResponse:
+      description: Response for Miscellaneous Charges Request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/MiscellaneousChargesResponse'
+          examples:
+            MiscellaneousChargesResponse:
+              $ref: '#/components/examples/MiscellaneousChargesResponse'
+  parameters:
+    invoice_id:
+      in: path
+      name: invoice_id
+      required: true
+      schema:
+        type: string
+        example: ACC001
+    require_confirmation:
+      in: query
+      name: require_confirmation
+      description: Specifies whether to start a migration only after a confirmation
+      required: false
+      schema:
+        type: boolean
+        example: false
+    account_id:
+      in: path
+      description: account_id corresponding to an account
+      name: account_id
+      required: true
+      schema:
+        type: string
+        maxLength: 50
+        example: ACC00001
+    filter_status:
+      in: query
+      description: Filter option to filter by status.
+      name: status
+      required: false
+      schema:
+        type: string
+      examples:
+        processed:
+          value: PROCESSED
+        in_progress:
+          value: IN_PROGRESS
+    filter_customer_id:
+      in: query
+      description: Filter option to filter based on customer id.
+      name: customer_id
+      required: false
+      schema:
+        type: string
+        example: '1234'
+    filter_page_size:
+      in: query
+      description: "Maximum page size expected by client to return the record list. \n\n NOTE: Max page size cannot be more than 50. Also 50 is the default page size if no value is provided."
+      name: pageSize
+      required: false
+      schema:
+        type: integer
+        example: 10
+    filter_owner_id:
+      in: query
+      description: Filter option to filter based on owner id.
+      name: owner_id
+      required: false
+      schema:
+        type: string
+        example: ACC001
+    filter_start_time:
+      in: query
+      name: start_time
+      description: Start time filter in epoch milli seconds
+      required: false
+      schema:
+        type: integer
+        format: int64
+        example: 1650110402000
+    filter_end_time:
+      in: query
+      name: end_time
+      description: End time filter in epoch milli seconds
+      required: false
+      schema:
+        type: integer
+        format: int64
+        example: 1650110402000
+    filter_next_page_token:
+      in: query
+      description: Pagination token used as a marker to get records from next page.
+      name: nextToken
+      required: false
+      schema:
+        type: string
+        example: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEyMywgInNvcnRPcmRlciI6ICJhc2MifQ==
+  schemas:
+    InvoiceSummary:
+      description: Structure of invoice response
+      type: object
+      additionalProperties: false
+      required:
+      - id
+      - status
+      - invoiceDate
+      - updatedAt
+      - invoiceClass
+      - invoiceType
+      - totalAmount
+      - paidAmount
+      - netTermDays
+      properties:
+        id:
+          description: Identifier of invoice
+          type: string
+          maxLength: 50
+        customerId:
+          type: string
+        ownerId:
+          type: string
+        pricePlanId:
+          type: string
+        status:
+          $ref: '#/components/schemas/InvoicesStatus'
+          example: DUE
+        finalizingStatus:
+          type: string
+          enum:
+          - FINALIZING
+          - FINALIZED
+        invoiceClass:
+          $ref: '#/components/schemas/InvoicesClass'
+          example: INVOICE
+        invoiceType:
+          $ref: '#/components/schemas/InvoicesType'
+          example: STANDARD
+        startDate:
+          description: Start date of the invoice
+          type: string
+          format: date-time
+          example: '2020-07-04T12:00:00.000Z'
+        endDate:
+          description: End date of the invoice
+          type: string
+          format: date-time
+          example: '2020-07-04T12:00:00.000Z'
+        endDateInclusive:
+          description: Inclusive end date of the invoice
+          type: string
+          format: date-time
+          example: '2020-07-03T11:59:59.999Z'
+        invoiceDate:
+          description: Invoice date of the invoice
+          type: string
+          format: date-time
+          example: '2020-07-04T12:00:00.000Z'
+        dueDate:
+          description: Due date of the invoice
+          type: string
+          format: date-time
+          example: '2020-07-04T12:00:00.000Z'
+        generatedAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        sequenceId:
+          type: string
+          description: Sequence id of the invoice
+        pdfUrl:
+          description: Download URL of the pdf file corresponding to the invoice
+          type: string
+        totalAmount:
+          type: number
+        paidAmount:
+          type: number
+        invoiceDetails:
+          $ref: '#/components/schemas/InvoiceDetails'
+        netTermDays:
+          type: integer
+          description: Number of days from the invoice date after which an invoice is considered overdue.
+    Address:
+      description: billing address of the customer
+      type: object
+      additionalProperties: false
+      properties:
+        phoneNumber:
+          description: Contact number
+          type: string
+        line1:
+          description: Address line 1 (eg. Street, PO Box, Company Name)
+          type: string
+        line2:
+          description: Address line 2 (eg. apartment, suite, unit or building)
+          type: string
+        postalCode:
+          description: ZIP or postal code
+          type: string
+        city:
+          description: City, district, suburb, town or village
+          type: string
+        state:
+          description: State, county, province or region
+          type: string
+        country:
+          description: Two letter country code [ISO-3166-1 Alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
+          type: string
+    InvoicesClass:
+      description: Represents the class of entity( INVOICE/ORDER/BILLABLE)
+      type: string
+      enum:
+      - INVOICE
+      - ORDER
+      - BILLABLE
+    ManageMiscellaneousChargesRequest:
+      description: Payload to update custom line items
+      type: object
+      additionalProperties: false
+      required:
+      - items
+      properties:
+        items:
+          $ref: '#/components/schemas/MiscellaneousCharges'
+    CreateCustomInvoiceRequest:
+      description: Payload to create invoice
+      type: object
+      additionalProperties: false
+      required:
+      - accountId
+      - startDate
+      - endDate
+      - status
+      - lineItems
+      properties:
+        accountId:
+          type: string
+          example: ACC001
+        ownerType:
+          type: string
+          enum:
+          - ACCOUNT
+          - INVOICE_GROUP
+        startDate:
+          type: string
+          format: date-time
+          example: '2020-06-04T12:00:00.000Z'
+        endDate:
+          type: string
+          format: date-time
+          example: '2020-07-04T12:00:00.000Z'
+        idempotencyKey:
+          type: string
+          example: '1234567890'
+        status:
+          title: CreateInvoiceStatus
+          description: Status to create an invoice in.
+          type: string
+          enum:
+          - DRAFT
+          - DUE
+          - PAID
+          example: DUE
+        lineItems:
+          type: array
+          minItems: 1
+          maxItems: 50
+          items:
+            $ref: '#/components/schemas/CustomInvoiceLineItem'
+        autoAdvance:
+          type: boolean
+          description: 'This property defines the behaviour of status transition of the invoice.
+
+            If true, invoice auto transitions from `DRAFT` to `DUE` or `PAID` at the end of pricing cycle.
+
+            If false, the invoice’s state doesn’t automatically advance without an explicit action.
+
+            Default: false
+
+            '
+        applyCredits:
+          type: boolean
+          description: 'This property defines the behaviour of whether or not to use credits to net off with the invoice amount. Default: true
+
+            '
+        applyWalletBalance:
+          type: boolean
+          description: 'This property defines the behaviour of whether or not to use wallet amount to net off with the invoice amount. Default: true
+
+            '
+    ErrorResponse:
+      type: object
+      additionalProperties: false
+      required:
+      - message
+      properties:
+        message:
+          type: string
+          description: error description
+          maxLength: 500
+    InvoicesStatus:
+      description: Status of the invoice
+      type: string
+      enum:
+      - DRAFT
+      - DUE
+      - PAID
+      - VOID
+      - UN_COLLECTIBLE
+      - REFUND_INITIATED
+      - REFUND_COMPLETED
+      - MERGED
+      - PARTIALLY_PAID
+    MiscellaneousChargesResponse:
+      description: Miscellaneous charges response
+      type: object
+      additionalProperties: false
+      required:
+      - data
+      properties:
+        data:
+          $ref: '#/components/schemas/MiscellaneousCharges'
+    CustomInvoiceLineItem:
+      type: object
+      description: 'Custom line item. Either `value` or `quantity` + `valuePerQuantity` is required.
+
+        In case `quantity` and `valuePerQuantity` are provided, `value` is computed as (`quantity` X `valuePerQuantity`)
+
+        '
+      additionalProperties: false
+      required:
+      - description
+      properties:
+        id:
+          type: string
+        description:
+          type: string
+        valuePerQuantity:
+          type: number
+        quantity:
+          type: number
+        value:
+          type: number
+    MiscellaneousCharges:
+      type: array
+      items:
+        title: MiscellaneousCharge
+        description: Miscellaneous charges are the charges that can be added to the invoice. A charge must either have rate and quantity or value. In case of rate and quantity, the value must not be provided as it is automatically calculated as (rate * quantity).
+        type: object
+        additionalProperties: false
+        required:
+        - name
+        properties:
+          name:
+            description: Name of the miscellaneous charge
+            type: string
+            example: Charge 1
+          rate:
+            description: Rate of the charge
+            type: number
+            example: 20
+          quantity:
+            description: Quantity of the charge
+            type: number
+            example: 10
+          value:
+            description: "Value of the charge\nPossible values:\n1. Fixed number [Example: 10]\n2. Json Logic [Example: {\"*\": [{\"var\": \"um.lineitem.id\"}, 0.1]}]\n   You can use all line item ids as variables in the json logic\n"
+            type: string
+            example: 100
+          considerForRevenue:
+            description: Specifies whether to consider this miscellaneous charge for revenue or not
+            type: boolean
+            default: false
+            example: true
+    InvoicesType:
+      description: Represents the type of entity(STANDARD/AD_HOC/COMPOSITE)
+      type: string
+      enum:
+      - STANDARD
+      - AD_HOC
+      - CUSTOM
+      - COMPOSITE
+      - STANDARD_ADVANCED
+      - ADHOC_ADVANCED
+    PricingRulesLogsPaginatedResponse:
+      description: Pricing Rules Logs response
+      type: object
+      additionalProperties: false
+      required:
+      - data
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/PricingRulesLog'
+    PricingRuleInfo:
+      description: Pricing Rule Info
+      type: object
+      additionalProperties: false
+      required:
+      - id
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        condition:
+          type: string
+        computation:
+          type: string
+    InvoiceLineItem:
+      type: object
+      additionalProperties: false
+      required:
+      - description
+      - type
+      - value
+      properties:
+        id:
+          type: string
+        description:
+          type: string
+        type:
+          type: string
+          enum:
+          - TOTAL_USAGE
+          - USAGE_METER_USAGE
+          - GRAND_TOTAL_AMOUNT
+          - TOTAL_AMOUNT
+          - NET_AMOUNT
+          - GROSS_AMOUNT
+          - SUB_TOTAL_AMOUNT
+          - PRICE_PLAN_AMOUNT
+          - FIXED_FEE_RATE_CARD_AMOUNT
+          - CREDIT_GRANT_RATE_CARD_AMOUNT
+          - BILLING_ENTITLEMENT_RATE_CARD_AMOUNT
+          - ENTITLEMENT_OVERAGE_RATE_CARD_AMOUNT
+          - ENTITLEMENT_OVERAGE_RATE_CARD_SLAB_AMOUNT
+          - LICENSE_RATE_CARD_AMOUNT
+          - USAGE_CYCLE_AMOUNT
+          - LICENSE_RATE_CARD_SLAB_AMOUNT
+          - USAGE_RATE_CARD_AMOUNT
+          - USAGE_RATE_CARD_SLAB_AMOUNT
+          - TOTAL_CREDITS
+          - SUB_CREDITS
+          - TOTAL_ADVANCED_FEES
+          - ADVANCED_FIXED_FEE
+          - ADVANCED_LICENSE_RATE_CARD_AMOUNT
+          - ADVANCED_BILLING_ENTITLEMENT_RATE_CARD_AMOUNT
+          - ADVANCED_CREDIT_GRANT_RATE_CARD_AMOUNT
+          - TOTAL_MISCELLANEOUS_CHARGES
+          - MISCELLANEOUS_CHARGE
+          - TRUE_UP_AMOUNT
+          - TOTAL_PURCHASE_AMOUNT
+          - CUSTOM_AMOUNT
+          - CUSTOM_TAG
+          - TOTAL_PRICING_RULE_ADDITION_AMOUNT
+          - PRICING_RULE_ADDITION_AMOUNT
+          - PRICING_RULE_REVENUE_UPDATE_AMOUNT
+          - PRICING_RULE_USAGE_UPDATE_AMOUNT
+          - RATE_CONFIG_ADJUSTMENT_AMOUNT
+          - TOTAL_TAX_AMOUNT
+          - TAX_AMOUNT
+          - PROXY_AMOUNT
+          description: "Type of the line item\n- GRAND_TOTAL_AMOUNT: Sum of all total amount of individual invoices in a grouped(composite) invoice\n- TOTAL_AMOUNT: Total revenue of the invoice\n- NET_AMOUNT: Net revenue of the invoice ( Gross revenue - Discounts )\n- GROSS_AMOUNT: Gross revenue of the invoice \n- PRICE_PLAN_AMOUNT: SUB_TOTAL_AMOUNT + true up amount\n- SUB_TOTAL_AMOUNT: Sum of all rate card revenues\n- TRUE_UP_AMOUNT: Minimum commitment - SUB_TOTAL_AMOUNT (Always positive)\n- TOTAL_USAGE: List of all the usage meter usages\n- USAGE_METER_USAGE: Usage of an usage meter\n- USAGE_RATE_CARD_AMOUNT: Revenue generated from usage rate card\n- USAGE_RATE_CARD_SLAB_AMOUNT: Revenue generated from usage rate card slab\n- FIXED_FEE_RATE_CARD_AMOUNT: Revenue generated from fixed fee rate card\n- CREDIT_GRANT_RATE_CARD_AMOUNT: : Revenue generated from credit grant rate card\n- BILLING_ENTITLEMENT_RATE_CARD_AMOUNT: Revenue generated from billing entitlement rate card\n- ENTITLEMENT_OVERAGE_RATE_CARD_AMOUNT: : Revenue generated from entitlement overage rate card\n- ENTITLEMENT_OVERAGE_RATE_CARD_SLAB_AMOUNT: Revenue generated from entitlement overage rate card slab\n- LICENSE_RATE_CARD_AMOUNT: Revenue generated from license rate card\n- TOTAL_CREDITS: Sum of all credit amounts\n- SUB_CREDITS: Granted credit value\n- TOTAL_ADVANCED_FEES: Sum of all advanced fee revenue\n- ADVANCED_FIXED_FEE: Revenue generated from advanced fixed fee rate card\n- ADVANCED_LICENSE_RATE_CARD_AMOUNT: Revenue generated from advanced license rate card\n- ADVANCED_BILLING_ENTITLEMENT_RATE_CARD_AMOUNT: Revenue generated from advanced billing entitlement rate card\n- ADVANCED_CREDIT_GRANT_RATE_CARD_AMOUNT: Revenue generated from advanced credit grant rate card\n- TOTAL_MISCELLANEOUS_CHARGES: Net revenue of all MISCELLANEOUS_CHARGE\n- MISCELLANEOUS_CHARGE: Custom amount added to a DRAFT invoice\n- TOTAL_PURCHASE_AMOUNT: Net revenue all rate cards in a purchase plan\n- CUSTOM_AMOUNT: Custom amount added a DRAFT invoice\n- CUSTOM_TAG: User defined tags given to each rate card\n- TOTAL_PRICING_RULE_ADDITION_AMOUNT: Sum of all line items added by applying pricing rules\n- PRICING_RULE_ADDITION_AMOUNT: Amount added to invoice as a result of applying a pricing rule\n- PRICING_RULE_REVENUE_UPDATE_AMOUNT: Difference in revenue(value) obtained as a result of applying a pricing rule\n- PRICING_RULE_USAGE_UPDATE_AMOUNT: Difference in usage(quantity) obtained as a result of applying a pricing rule\n- RATE_CONFIG_ADJUSTMENT_AMOUNT: Difference in revenue obtained as a result of applying rate config['minimumRate', 'maximumRate'] at rate card level\n"
+        valuePerQuantity:
+          type: number
+        quantity:
+          type: number
+        units:
+          type: string
+        value:
+          type: number
+        metadata:
+          type: object
+          additionalProperties: true
+    UpdateInvoiceRequest:
+      description: Payload to update an invoice
+      type: object
+      additionalProperties: false
+      properties:
+        startDate:
+          type: string
+          format: date-time
+          example: '2020-06-04T12:00:00.000Z'
+        endDate:
+          type: string
+          format: date-time
+          example: '2020-07-04T12:00:00.000Z'
+        status:
+          description: Status of invoice
+          type: string
+          enum:
+          - DUE
+          - PAID
+          - VOID
+          - UN_COLLECTIBLE
+          - REFUND_INITIATED
+          example: DUE
+        lineItems:
+          type: array
+          minItems: 1
+          maxItems: 50
+          items:
+            $ref: '#/components/schemas/CustomInvoiceLineItem'
+        autoAdvance:
+          type: boolean
+          description: 'This property defines the behaviour of status updates of invoices like:
+
+            Enabling this property to true auto updates the status of invoice to DUE or PAID accordingly
+
+            But disabling this property of left null does not auto update the custom status
+
+            '
+    PricingRuleChangesLog:
+      description: Pricing Rules Logs Changes
+      type: object
+      additionalProperties: false
+      required:
+      - key
+      - oldRevenue
+      - newRevenue
+      properties:
+        key:
+          type: string
+        keyName:
+          type: string
+        oldRevenue:
+          type: number
+        newRevenue:
+          type: number
+        oldUsage:
+          type: number
+        newUsage:
+          type: number
+        errorMessage:
+          type: string
+    BaseSuccessResponse:
+      type: object
+      additionalProperties: false
+      required:
+      - success
+      properties:
+        success:
+          type: boolean
+          example: true
+    PricingRulesLog:
+      description: Pricing Rules Logs
+      type: object
+      additionalProperties: false
+      required:
+      - id
+      - order
+      - changes
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+          enum:
+          - CONDITION_TRUE
+          - CONDITION_FALSE
+          - CONDITION_ERROR
+          - COMPUTATION_ERROR
+        order:
+          type: integer
+          format: int32
+        changes:
+          $ref: '#/components/schemas/PricingRuleChangesLog'
+        rule:
+          $ref: '#/components/schemas/PricingRuleInfo'
+        variablesValue:
+          type: object
+          nullable: true
+          additionalProperties:
+            $ref: '#/components/schemas/PricingRulesValues'
+    PricingRulesValues:
+      title: PricingRulesValues
+      type: object
+      properties:
+        name:
+          type: string
+        value:
+          type: string
+    Invoice:
+      description: Structure of invoice
+      type: object
+      additionalProperties: false
+      required:
+      - id
+      - status
+      - invoiceDate
+      - updatedAt
+      - invoiceClass
+      - invoiceType
+      - totalAmount
+      - paidAmount
+      - netTermDays
+      properties:
+        id:
+          description: Identifier of invoice
+          type: string
+          maxLength: 50
+        customerId:
+          type: string
+        ownerId:
+          type: string
+        pricePlanId:
+          type: string
+        usageInfo:
+          type: array
+          items:
+            $ref: '#/components/schemas/InvoiceLineItem'
+        revenueInfo:
+          $ref: '#/components/schemas/InvoiceLineItem'
+        invoiceDetails:
+          $ref: '#/components/schemas/InvoiceDetails'
+        status:
+          $ref: '#/components/schemas/InvoicesStatus'
+          example: DUE
+        finalizingStatus:
+          type: string
+          enum:
+          - FINALIZING
+          - FINALIZED
+        invoiceClass:
+          $ref: '#/components/schemas/InvoicesClass'
+          example: INVOICE
+        invoiceType:
+          $ref: '#/components/schemas/InvoicesType'
+        autoAdvance:
+          type: boolean
+          example: true
+        startDate:
+          description: Start date of the invoice
+          type: string
+          format: date-time
+          example: '2020-07-04T12:00:00.000Z'
+        endDate:
+          description: End date of the invoice
+          type: string
+          format: date-time
+          example: '2020-07-04T12:00:00.000Z'
+        endDateInclusive:
+          description: Inclusive end date of the invoice
+          type: string
+          format: date-time
+          example: '2020-07-03T11:59:59.999Z'
+        invoiceDate:
+          description: Invoice date of the invoice
+          type: string
+          format: date-time
+          example: '2020-07-04T12:00:00.000Z'
+        dueDate:
+          description: Due date of the invoice
+          type: string
+          format: date-time
+          example: '2020-07-04T12:00:00.000Z'
+        generatedAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        metadata:
+          type: object
+          additionalProperties: true
+        info:
+          type: array
+          items:
+            type: object
+            additionalProperties: false
+            required:
+            - type
+            - value
+            properties:
+              type:
+                type: string
+                description: Type of the information
+              value:
+                type: string
+                description: Value of the information
+        sequenceId:
+          type: string
+          description: Sequence id of the invoice
+        pdfUrl:
+          description: Download URL of the pdf file corresponding to the invoice
+          type: string
+        totalAmount:
+          type: number
+        paidAmount:
+          type: number
+        netTermDays:
+          type: integer
+          description: Number of days from the invoice date after which an invoice is considered overdue.
+    InvoiceDetails:
+      type: object
+      additionalProperties: false
+      properties:
+        customer:
+          type: object
+          additionalProperties: false
+          required:
+          - name
+          - primaryEmail
+          properties:
+            name:
+              type: string
+            primaryEmail:
+              type: string
+            billingAddress:
+              type: string
+            address:
+              $ref: '#/components/schemas/Address'
+        account:
+          type: object
+          additionalProperties: false
+          required:
+          - name
+          - invoiceCurrency
+          - address
+          - primaryEmail
+          properties:
+            name:
+              type: string
+            invoiceCurrency:
+              type: string
+            address:
+              $ref: '#/components/schemas/Address'
+            primaryEmail:
+              type: string
+        pricePlanName:
+          type: string
+        invoiceGroup:
+          type: object
+          additionalProperties: false
+          required:
+          - id
+          - name
+          - dailyInvoiceConsolidation
+          - invoiceCurrency
+          - address
+          properties:
+            id:
+              type: string
+            name:
+              type: string
+            email:
+              type: string
+            dailyInvoiceConsolidation:
+              type: boolean
+            invoiceCurrency:
+              type: string
+            address:
+              $ref: '#/components/schemas/Address'
+        organization:
+          type: object
+          additionalProperties: false
+          required:
+          - businessName
+          - address
+          - primaryEmail
+          properties:
+            businessName:
+              type: string
+            address:
+              $ref: '#/components/schemas/Address'
+            primaryEmail:
+              type: string
+            metadata:
+              type: object
+              additionalProperties:
+                type: string
+        logoUrl:
+          type: string
+    ListInvoicesResponse:
+      description: List invoices response
+      type: object
+      additionalProperties: false
+      required:
+      - data
+      properties:
+        data:
+          type: array
+          minItems: 0
+          maxItems: 50
+          items:
+            $ref: '#/components/schemas/InvoiceSummary'
+        nextToken:
+          type: string
+          maxLength: 500
+          example: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEyMywgInNvcnRPcmRlciI6ICJhc2MifQ==
+  requestBodies:
+    ManageMiscellaneousChargesRequest:
+      description: Payload to update custom line items
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ManageMiscellaneousChargesRequest'
+          examples:
+            ManageMiscellaneousChargesRequest:
+              $ref: '#/components/examples/ManageMiscellaneousChargesRequest'
+    CreateCustomInvoiceRequest:
+      description: Payload to create invoice
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CreateCustomInvoiceRequest'
+          examples:
+            CreateCustomInvoiceRequest:
+              $ref: '#/components/examples/CreateCustomInvoiceRequest'
+    UpdateInvoiceRequest:
+      description: Payload to update an invoice
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UpdateInvoiceRequest'
+          examples:
+            UpdateInvoiceRequest:
+              $ref: '#/components/examples/UpdateInvoiceRequest'
+  examples:
+    PricingRulesLogsPaginatedResponse:
+      summary: A Sample PricingRulesLogsPaginatedResponse
+      value:
+        data:
+        - id: rule_log.21x6RLQxnpg.1DHMH
+          ruleId: pp_rule.21wpdBGbhRI.L26uj
+          order: 1
+          changes:
+            key: urc.um.21wpFfFWtw0.PDfXy
+            oldUsage: 100
+            newUsage: 200
+            oldRevenue: 200
+            newRevenue: 400
+    ListInvoicesResponse:
+      summary: A Sample ListInvoicesResponse
+      value:
+        data:
+        - id: inv.hkgkgyh.ghg
+          customerId: 7VcRw9xZDIqsC5E
+          ownerId: ACC001
+          invoiceClass: INVOICE
+          invoiceType: AD_HOC
+          status: DUE
+          finalizingStatus: FINALIZED
+          totalAmount: 100
+          paidAmount: 0
+          startDate: '2020-07-04T12:00:00.000Z'
+          endDate: '2020-07-04T12:00:00.000Z'
+          invoiceDate: '2020-07-04T12:00:00.000Z'
+          generatedAt: '2020-07-04T12:00:00.000Z'
+          updatedAt: '2020-07-04T12:00:00.000Z'
+        nextToken: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEyMywgInNvcnRPcmRlciI6ICJhc2MifQ==
+    Invoice:
+      summary: A Sample Invoice
+      value:
+        id: inv.hkgkgyh.ghg
+        sequenceId: 2020-07-2958
+        customerId: 7VcRw9xZDIqsC5E
+        ownerId: ACC001
+        usageInfo:
+        - description: rides - local
+          type: USAGE_METER_USAGE
+          value: 15
+          units: USAGE_UNITS
+        - description: rides - pro
+          type: USAGE_METER_USAGE
+          value: 5
+          units: USAGE_UNITS
+        revenueInfo:
+          description: Grand Total Amount
+          type: GRAND_TOTAL_AMOUNT
+          units: USD
+          value: 881.94
+          lineItems:
+          - description: Total Amount
+            type: TOTAL_AMOUNT
+            units: USD
+            value: 881.94
+            lineItems:
+            - description: Total amount due
+              type: NET_AMOUNT
+              units: USD
+              value: 881.94
+              lineItems:
+              - description: Sum Total
+                type: GROSS_AMOUNT
+                units: USD
+                value: 981.94
+                lineItems:
+                - description: Payout_NEFT
+                  type: USAGE_RATE_CARD_AMOUNT
+                  units: USD
+                  value: 392.1
+                  lineItems:
+                  - description: Slab 1
+                    type: USAGE_RATE_CARD_SLAB_AMOUNT
+                    valuePerQuantity: 0.001
+                    quantity: 10000
+                    units: USD
+                    value: 10
+                  - description: Slab 2
+                    type: USAGE_RATE_CARD_SLAB_AMOUNT
+                    valuePerQuantity: 0.001
+                    quantity: 10000
+                    units: USD
+                    value: 10
+                - description: Payout IMPS
+                  type: USAGE_RATE_CARD_AMOUNT
+                  valuePerQuantity: 0.001
+                  quantity: 32109
+                  units: USD
+                  value: 589.94
+                  lineItems:
+                  - description: Slab 1
+                    type: USAGE_RATE_CARD_SLAB_AMOUNT
+                    valuePerQuantity: 0.001
+                    quantity: 10000
+                    units: USD
+                    value: 10
+                  - description: Slab 2
+                    type: USAGE_RATE_CARD_SLAB_AMOUNT
+                    valuePerQuantity: 0.001
+                    quantity: 10000
+                    units: USD
+                    value: 10
+        invoiceDetails:
+          customer:
+            name: John Doe
+            primaryEmail: john@togai.com
+            address:
+              line1: 2281 Broadway Street
+              line2: G-31
+              postalCode: '29501'
+              city: Florence
+              state: South Carolina
+              country: US
+          account:
+            name: Togai
+            address:
+              line1: 2281 Broadway Street
+              line2: G-31
+              postalCode: '29501'
+              city: Florence
+              state: South Carolina
+              country: US
+            primaryEmail: john@togai.com
+            invoiceCurrency: USD
+          pricePlanName: Togai Basic
+        totalAmount: 881.94
+        paidAmount: 0
+        invoiceClass: INVOICE
+        invoiceType: STANDARD
+        status: DUE
+        finalizingStatus: FINALIZED
+        startDate: '2020-07-04T12:00:00.000Z'
+        endDate: '2020-08-04T12:00:00.000Z'
+        invoiceDate: '2020-08-04T12:00:00.000Z'
+        generatedAt: '2020-08-04T12:00:00.000Z'
+        updatedAt: '2020-08-04T12:00:00.000Z'
+    UpdateInvoiceRequest:
+      summary: A Sample for UpdateInvoiceRequest
+      value:
+        startDate: '2020-06-04T12:00:00.000Z'
+        endDate: '2020-07-04T12:00:00.000Z'
+        status: DUE
+        lineItems:
+        - description: Payout IMPS
+          valuePerQuantity: 0.001
+          quantity: 32109
+    CreateCustomInvoiceRequest:
+      summary: A Sample for CreateCustomInvoiceRequest
+      value:
+        accountId: ACC001
+        startDate: '2020-06-04T12:00:00.000Z'
+        endDate: '2020-07-04T12:00:00.000Z'
+        idempotencyKey: '1234567890'
+        status: DRAFT
+        lineItems:
+        - description: Payout IMPS
+          valuePerQuantity: 0.001
+          quantity: 32109
+    MiscellaneousChargesResponse:
+      summary: A Sample MiscellaneousChargesResponse
+      value:
+        data:
+        - name: charge 1
+          value: '100'
+        - name: charge 2
+          rate: 20
+          quantity: 10
+          value: '200'
+    ManageMiscellaneousChargesRequest:
+      summary: A Sample for ManageMiscellaneousChargesRequest
+      value:
+        items:
+        - name: charge 1
+          value: '100'
+        - name: qty & rate charge
+          rate: 20
+          quantity: 10
+        - name: json logic charge
+          value: '{"var": "um.linitem.id"}'
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: Bearer <credential>
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
+externalDocs:
+  description: Find out more about Togai
+  url: https://docs.togai.com/docs

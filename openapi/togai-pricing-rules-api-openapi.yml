@@ -1,0 +1,216 @@
+openapi: 3.0.3
+info:
+  version: '1.0'
+  title: Togai Apis Accounts Pricing Rules API
+  contact:
+    email: engg@togai.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  description: APIs for Togai App
+servers:
+- description: Api endpoint
+  url: https://api.togai.com/
+- description: Sandbox api endpoint
+  url: https://sandbox-api.togai.com/
+security:
+- bearerAuth: []
+tags:
+- name: Pricing Rules
+  description: Pricing Rules level calls
+paths:
+  /price_plans/{price_plan_id}/pricing_schedules/{pricing_schedule_id}/pricing_rules:
+    get:
+      tags:
+      - Pricing Rules
+      summary: List Pricing Rules by Price Plan Id and Pricing Schedule Id
+      description: Get a list of pricing rules using price plan id and pricing schedule id
+      operationId: listPricingRulesByScheduleId
+      parameters:
+      - $ref: '#/components/parameters/price_plan_id'
+      - $ref: '#/components/parameters/pricing_schedule_id'
+      - $ref: '#/components/parameters/invoice_timing'
+      responses:
+        '200':
+          $ref: '#/components/responses/PricingRulesPaginatedResponse'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
+        '403':
+          $ref: '#/components/responses/ErrorResponse'
+        '404':
+          $ref: '#/components/responses/ErrorResponse'
+        '429':
+          $ref: '#/components/responses/ErrorResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+components:
+  examples:
+    PricingRulesPaginatedResponse:
+      value:
+        data:
+        - id: um.1zYnCiM9Bpg.lv25y
+          name: Rule 1
+          version: 1
+          order: 1
+          computation: '{"+": [{"var": "revenue.urc.um.21lmjsfcXPs.d929R"}, {"var": "usage.urc.um.21lmjObpMV6.9XeFl"}]}
+
+            '
+          condition: '{">": [{"+": [{"var": "revenue.urc.um.21lmjObpMV6.9XeFl"}, {"var": "usage.urc.um.21lmjObpMV6.9XeFl"}]}, 100]}
+
+            '
+          action:
+            type: UPDATE
+            target: revenue.ff.addon.21ERXMFJ83s.9EM5S
+  parameters:
+    price_plan_id:
+      in: path
+      name: price_plan_id
+      required: true
+      schema:
+        type: string
+        maxLength: 50
+        example: pp.1zYnCiM9Bpg.lv25y
+    invoice_timing:
+      in: query
+      name: invoice_timing
+      description: Optional field to filter pricing rules based on invoice timing
+      required: false
+      schema:
+        type: string
+        enum:
+        - IN_ADVANCE
+        - IN_ARREARS
+    pricing_schedule_id:
+      in: path
+      name: pricing_schedule_id
+      required: true
+      schema:
+        type: string
+        maxLength: 50
+        example: sch.1zYnCiM9Bpg.lv25y
+  responses:
+    ErrorResponse:
+      description: Error response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            ErrorResponse:
+              summary: Error Message
+              value:
+                message: <Reason message>
+    PricingRulesPaginatedResponse:
+      description: Response for create/list pricing rules request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PricingRulesPaginatedResponse'
+          examples:
+            PricingRulesPaginatedResponse:
+              $ref: '#/components/examples/PricingRulesPaginatedResponse'
+  schemas:
+    PricingRuleAction:
+      type: object
+      additionalProperties: false
+      required:
+      - type
+      properties:
+        type:
+          type: string
+          enum:
+          - ADD
+          - UPDATE
+        target:
+          type: string
+        id:
+          type: string
+        description:
+          type: string
+        metadata:
+          type: object
+          additionalProperties:
+            type: string
+    PricingRulesPaginatedResponse:
+      type: object
+      required:
+      - data
+      additionalProperties: false
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/PricingRule'
+    PricingRuleTiming:
+      type: string
+      enum:
+      - IN_ADVANCE
+      - IN_ARREARS
+      x-enum-varnames:
+      - IN_ADVANCE
+      - IN_ARREARS
+      description: 'If IN_ADVANCE, the rule will be applied on rate cards with invoice timing IN_ADVANCE .
+
+        If IN_ARREARS, the rule will be applied on rate cards with invoice timing IN_ARREARS .
+
+        '
+    ErrorResponse:
+      type: object
+      additionalProperties: false
+      required:
+      - message
+      properties:
+        message:
+          type: string
+          description: error description
+          maxLength: 500
+    PricingRule:
+      type: object
+      description: Represents pricing rules of a price plan. i.e, price plan bound by time.
+      additionalProperties: false
+      required:
+      - id
+      - name
+      - version
+      - order
+      - computation
+      - action
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        version:
+          type: integer
+          format: int32
+          minimum: 1
+        invoiceTiming:
+          $ref: '#/components/schemas/PricingRuleTiming'
+        order:
+          type: integer
+          format: int32
+          minimum: 1
+        condition:
+          description: JSON logic condition deciding whether to compute this pricing rule or not
+          type: string
+        computation:
+          description: JSON logic to be computed
+          type: string
+        action:
+          description: JSON logic to be computed
+          title: action
+          $ref: '#/components/schemas/PricingRuleAction'
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: Bearer <credential>
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
+externalDocs:
+  description: Find out more about Togai
+  url: https://docs.togai.com/docs

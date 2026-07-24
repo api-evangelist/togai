@@ -1,0 +1,138 @@
+openapi: 3.0.3
+info:
+  version: '1.0'
+  title: Togai Apis Accounts File Storage API
+  contact:
+    email: engg@togai.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  description: APIs for Togai App
+servers:
+- description: Api endpoint
+  url: https://api.togai.com/
+- description: Sandbox api endpoint
+  url: https://sandbox-api.togai.com/
+security:
+- bearerAuth: []
+tags:
+- name: File Storage
+paths:
+  /files/{file_id}:
+    get:
+      tags:
+      - File Storage
+      summary: Get a File
+      description: Get a file
+      operationId: getFile
+      parameters:
+      - $ref: '#/components/parameters/file_id'
+      responses:
+        '302':
+          description: Redirects to the file url
+          headers:
+            Location:
+              schema:
+                type: string
+                format: uri
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
+        '403':
+          $ref: '#/components/responses/ErrorResponse'
+        '404':
+          $ref: '#/components/responses/ErrorResponse'
+        '429':
+          $ref: '#/components/responses/ErrorResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+  /files/{file_id}/download_url:
+    get:
+      tags:
+      - File Storage
+      summary: Get a Download Url for a File
+      description: Get a download url for a file
+      operationId: getDownloadUrl
+      parameters:
+      - $ref: '#/components/parameters/file_id'
+      responses:
+        '200':
+          $ref: '#/components/responses/FileDownloadUrlResponse'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
+        '403':
+          $ref: '#/components/responses/ErrorResponse'
+        '404':
+          $ref: '#/components/responses/ErrorResponse'
+        '429':
+          $ref: '#/components/responses/ErrorResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+components:
+  examples:
+    FileDownloadUrlResponse:
+      value:
+        downloadUrl: https://s3.amazonaws.com/...
+  responses:
+    ErrorResponse:
+      description: Error response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            ErrorResponse:
+              summary: Error Message
+              value:
+                message: <Reason message>
+    FileDownloadUrlResponse:
+      description: Response for getting a download url for a file
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/FileDownloadUrlResponse'
+          examples:
+            FileDownloadUrlResponse:
+              $ref: '#/components/examples/FileDownloadUrlResponse'
+  schemas:
+    FileDownloadUrlResponse:
+      type: object
+      additionalProperties: false
+      required:
+      - downloadUrl
+      properties:
+        downloadUrl:
+          type: string
+    ErrorResponse:
+      type: object
+      additionalProperties: false
+      required:
+      - message
+      properties:
+        message:
+          type: string
+          description: error description
+          maxLength: 500
+  parameters:
+    file_id:
+      in: path
+      name: file_id
+      required: true
+      schema:
+        type: string
+        example: file.20aUyEZSuYq.SoGbS
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: Bearer <credential>
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
+externalDocs:
+  description: Find out more about Togai
+  url: https://docs.togai.com/docs

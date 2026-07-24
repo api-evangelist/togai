@@ -1,0 +1,871 @@
+openapi: 3.0.3
+info:
+  version: '1.0'
+  title: Togai Apis Accounts Event Management API
+  contact:
+    email: engg@togai.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  description: APIs for Togai App
+servers:
+- description: Api endpoint
+  url: https://api.togai.com/
+- description: Sandbox api endpoint
+  url: https://sandbox-api.togai.com/
+security:
+- bearerAuth: []
+tags:
+- name: Event Management
+  description: APIs for getting events ingested in Togai
+  externalDocs:
+    description: docs
+    url: https://togai.com/docs/billing/events
+paths:
+  /events:
+    get:
+      tags:
+      - Event Management
+      summary: Get a List of Usage Events with Multiple Query Options
+      description: This API let’s you to fetch a list of events with multiple query parameters
+      parameters:
+      - $ref: '#/components/parameters/filter_next_page_token'
+      - $ref: '#/components/parameters/filter_status'
+      - $ref: '#/components/parameters/filter_account_id'
+      - $ref: '#/components/parameters/filter_schema_name'
+      - $ref: '#/components/parameters/filter_page_size'
+      operationId: getEvents
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetEventsResponse'
+              examples:
+                GetEventsResponse:
+                  $ref: '#/components/examples/GetEventsResponse'
+        '400':
+          description: Bad request. Please check the response message for failure details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Credential is not valid. Please check the response message for failure details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Credential does not have access to list events.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Unable to process the query parameters provided. Please check our docs for the api limits - https://togai.io/docs/limits.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Request throttled. Please check the response message on the failure details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+  /events/{event_id}:
+    get:
+      tags:
+      - Event Management
+      summary: Get an Event Using Event Id
+      description: Fetch details of a particular event using the event ID.
+      operationId: getSingleEvent
+      parameters:
+      - $ref: '#/components/parameters/event_id'
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetEventResponse'
+              examples:
+                GetEventResponse:
+                  $ref: '#/components/examples/GetEventResponse'
+        '400':
+          description: Bad request. Please check the response message for failure details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Credential is not valid. Please check the response message for failure details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Credential does not have access to get events.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Request throttled. Please check the response message on the failure details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+  /events/correction:
+    post:
+      tags:
+      - Event Management
+      summary: Correct an Ingested Event
+      description: '#### This API lets you to correct events. Available in both synchronous and asynchronous mode
+
+        - **Usages**: Reduction of all usages associated with this event
+
+        - **Revenue**: Reduction of all revenues associated with this event
+
+        - **Entitlements**: Entitlements(Feature Credits) consumed by this event are granted back to the account.
+
+
+        ### Possible Actions:
+
+        - UNDO: Undo all usages, revenue and entitlements associated with an event
+
+        - REDO: Performs UNDO and re-ingests the same event
+
+        - REDO_EVENT: Performs UNDO and re-ingests the correction payload of the event
+
+        '
+      operationId: eventCorrection
+      parameters:
+      - $ref: '#/components/parameters/event_correction_action'
+      - $ref: '#/components/parameters/require_confirmation'
+      requestBody:
+        $ref: '#/components/requestBodies/EventCorrectionRequest'
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventsCorrectionResponse'
+              examples:
+                EventsCorrectionResponse:
+                  $ref: '#/components/examples/EventsCorrectionResponse'
+        '400':
+          description: Bad request. Please check the response message for failure details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Credential is not valid. Please check the response message for failure details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Credential does not have access to get events.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Request throttled. Please check the response message on the failure details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+components:
+  schemas:
+    EventWithStatusAndEventPipelineInfo:
+      allOf:
+      - $ref: '#/components/schemas/EventWithStatus'
+      - type: object
+        additionalProperties: false
+        required:
+        - eventPipelineInfo
+        properties:
+          eventPipelineInfo:
+            $ref: '#/components/schemas/EventPipelineInfo'
+    EventCorrectionInfo:
+      allOf:
+      - $ref: '#/components/schemas/EventWithStatus'
+      - type: object
+        additionalProperties: false
+        required:
+        - status
+        - reason
+        properties:
+          status:
+            type: string
+            description: Status of the event requested for correction
+            enum:
+            - REVERTED
+            - REVERTED_AND_REINGESTED
+            - FAILED
+          reason:
+            type: string
+            description: Status description of the event requested for correction
+    ErrorResponse:
+      type: object
+      additionalProperties: false
+      required:
+      - message
+      properties:
+        message:
+          type: string
+          description: error description
+          maxLength: 500
+    GetEventsResponse:
+      description: Get batch events response
+      type: object
+      additionalProperties: false
+      required:
+      - events
+      properties:
+        events:
+          type: array
+          minItems: 1
+          maxItems: 50
+          items:
+            $ref: '#/components/schemas/EventWithStatus'
+        nextToken:
+          type: string
+          maxLength: 500
+          example: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEyMywgInNvcnRPcmRlciI6ICJhc2MifQ==
+    IngestionStatus:
+      description: Status about the event ingestion.
+      type: object
+      additionalProperties: false
+      required:
+      - status
+      properties:
+        status:
+          type: string
+          description: Ingestion status
+          enum:
+          - INGESTION_IN_PROGRESS
+          - INGESTION_FAILED
+          - INGESTION_FAILED_SCHEMA_NOT_DEFINED
+          - INGESTION_FAILED_ENRICHMENT_FAILED
+          - INGESTION_FAILED_UNITS_INVALID
+          - INGESTION_COMPLETED_NO_MATCHING_METERS
+          - INGESTION_COMPLETED_EVENT_METERED
+          - INGESTION_COMPLETED_EVENT_NOT_METERED
+          - INGESTION_FAILED_PAST_GRACE_PERIOD
+          - INGESTION_FAILED_ACCOUNT_NOT_FOUND
+          - INGESTION_FAILED_DUPLICATE_EVENT
+          - INGESTION_FAILED_NO_EVENT_ID
+          - INGESTION_FAILED_INVALID_NAMED_LICENSE_EVENT
+          - INGESTION_FAILED_INSUFFICIENT_CREDITS
+          - REVERTED
+          - UNKNOWN
+          example: INGESTION_COMPLETED
+        statusDescription:
+          type: string
+          maxLength: 250
+          example: Ingestion Completed successfully
+    EventSource:
+      description: Source of ingestion of event
+      type: object
+      additionalProperties: false
+      required:
+      - id
+      - type
+      properties:
+        id:
+          type: string
+          description: Unique identifier representing the source
+          maxLength: 100
+        type:
+          type: string
+          description: Type of source
+          maxLength: 100
+    Event:
+      description: Contents of the event
+      type: object
+      additionalProperties: false
+      required:
+      - schemaName
+      - timestamp
+      - accountId
+      - attributes
+      - dimensions
+      properties:
+        schemaName:
+          description: "Name of the Event Schema. \nKnow more about [event schema](https://docs.togai.com/docs/event-schemas)\n"
+          type: string
+          minLength: 1
+          maxLength: 50
+        id:
+          description: Togai restricts users to ingest events with same id within a period of *45 days*. This restriction is common for [/entitled API](/api-reference/entitlements/ingest-event-if-a-user-is-entitled-to-a-feature), [/ingest API](/api-reference/event-ingestion/ingest-events-to-togai) and [/ingestBatch API](/api-reference/event-ingestion/ingest-events-to-togai-in-batch). i.e, an id used on /ingest API will not be allowed on /ingestBatch or /entitled APIs
+          type: string
+          maxLength: 512
+          example: c0b1306d-f506-43a6-856b-69221efaee6b
+        timestamp:
+          description: Source time stamp of the event. This timestamp must be in ISO 8601 format.
+          type: string
+          format: date-time
+          example: '2022-06-15T07:30:35.123'
+        accountId:
+          description: The event will be associated with the provided account
+          type: string
+          maxLength: 512
+          example: 1
+        attributes:
+          description: Attributes are numeric values. It can be usage metric which you push to Togai
+          type: array
+          minItems: 0
+          maxItems: 10
+          items:
+            $ref: '#/components/schemas/Attribute'
+        dimensions:
+          $ref: '#/components/schemas/Dimensions'
+    EnrichedField:
+      readOnly: true
+      description: enriched field
+      type: object
+      additionalProperties: false
+      required:
+      - name
+      - type
+      - value
+      properties:
+        name:
+          type: string
+        type:
+          type: string
+          enum:
+          - ATTRIBUTE
+          - DIMENSION
+        value:
+          type: string
+    EventsCorrectionResponse:
+      description: Events Correction response
+      type: object
+      additionalProperties: false
+      required:
+      - data
+      properties:
+        data:
+          type: array
+          minItems: 1
+          maxItems: 50
+          items:
+            $ref: '#/components/schemas/EventCorrectionInfo'
+    EventWithStatus:
+      description: Raw usage event ingested by the business team and the status of the event ingestion.
+      type: object
+      additionalProperties: false
+      required:
+      - referenceId
+      - eventPayload
+      - ingestionStatus
+      - createdAt
+      properties:
+        referenceId:
+          type: string
+          description: Unique id generated by Togai to identify an event uniquely
+        eventPayload:
+          $ref: '#/components/schemas/Event'
+        ingestionStatus:
+          $ref: '#/components/schemas/IngestionStatus'
+        customerId:
+          description: The associated account belongs to this customer
+          type: string
+          maxLength: 50
+          example: '1'
+        source:
+          $ref: '#/components/schemas/EventSource'
+        createdAt:
+          description: Created time stamp of the event. This timestamp must be in ISO 8601 format.
+          type: string
+          format: date-time
+          example: '2022-06-15T07:30:35.123'
+    Attribute:
+      description: Metric to be recorded
+      type: object
+      additionalProperties: false
+      required:
+      - name
+      - value
+      properties:
+        name:
+          description: Name of the event attribute
+          type: string
+          minLength: 1
+          maxLength: 50
+          example: message
+        value:
+          description: Value of the event attribute
+          type: string
+          pattern: ^-?\d{1,512}(\.\d+)?$
+          example: 100
+        unit:
+          description: Unit with which the attribute value was measured. Natively supported units - "Meters, Miles, Kilometers, Grams, Kilograms, ounces, Pounds, Minutes, Hours, Seconds, Milliseconds, Microseconds, None". Clients are free to add any other custom units.
+          type: string
+          minLength: 1
+          maxLength: 50
+          example: characters
+    EventPipelineInfo:
+      description: Information related to ingestion of an event
+      type: object
+      additionalProperties: false
+      properties:
+        eventSchema:
+          title: EventPipelineInfoEventSchema
+          type: object
+          additionalProperties: false
+          required:
+          - name
+          - version
+          properties:
+            name:
+              type: string
+            version:
+              type: integer
+              format: int32
+        usageMeters:
+          type: array
+          items:
+            title: EventPipelineInfoUsageMeters
+            type: object
+            additionalProperties: false
+            required:
+            - id
+            - name
+            - version
+            - status
+            properties:
+              id:
+                type: string
+              name:
+                type: string
+              version:
+                type: integer
+                format: int32
+              status:
+                type: string
+                enum:
+                - PROCESSED_FILTERED_OUT
+                - PROCESSED_UNITS_COMPUTED
+              units:
+                type: number
+        pricePlans:
+          type: array
+          items:
+            title: EventPipelineInfoPricePlans
+            type: object
+            additionalProperties: false
+            required:
+            - name
+            - id
+            - scheduleId
+            - cycleStart
+            - cycleEnd
+            properties:
+              name:
+                type: string
+              id:
+                type: string
+              scheduleId:
+                type: string
+              cycleStart:
+                type: string
+                format: date
+              cycleEnd:
+                type: string
+                format: date
+              usageMeters:
+                type: array
+                uniqueItems: true
+                items:
+                  type: string
+        account:
+          title: EventPipelineInfoAccount
+          type: object
+          additionalProperties: false
+          required:
+          - id
+          - name
+          properties:
+            id:
+              type: string
+            name:
+              type: string
+            alias:
+              type: string
+        customer:
+          title: EventPipelineInfoCustomer
+          type: object
+          additionalProperties: false
+          required:
+          - id
+          - name
+          properties:
+            id:
+              type: string
+            name:
+              type: string
+        featureDetails:
+          title: EventPipelineInfoFeatureDetails
+          type: object
+          additionalProperties: false
+          required:
+          - featureId
+          - mappedAttribute
+          properties:
+            featureId:
+              type: string
+            mappedAttribute:
+              type: string
+            overageInCycle:
+              type: number
+            overageInEvent:
+              type: number
+        enrichments:
+          title: EventPipelineInfoEnrichments
+          type: object
+          additionalProperties: false
+          properties:
+            attributes:
+              type: array
+              items:
+                $ref: '#/components/schemas/EnrichedField'
+            dimensions:
+              type: array
+              items:
+                $ref: '#/components/schemas/EnrichedField'
+            dependencies:
+              type: array
+              items:
+                $ref: '#/components/schemas/EnrichmentDependency'
+        revenueDetails:
+          type: array
+          items:
+            title: EventPipelineInfoRevenueDetails
+            type: object
+            additionalProperties: false
+            required:
+            - usageMeterId
+            - revenueBaseCurrency
+            - revenueInvoiceCurrency
+            properties:
+              usageMeterId:
+                type: string
+              revenueBaseCurrency:
+                type: number
+              revenueInvoiceCurrency:
+                type: number
+        statusBeforeReverting:
+          type: string
+    GetEventResponse:
+      description: Get single event response
+      type: object
+      required:
+      - events
+      additionalProperties: false
+      properties:
+        events:
+          type: array
+          items:
+            $ref: '#/components/schemas/EventWithStatusAndEventPipelineInfo'
+    EnrichmentDependency:
+      readOnly: true
+      description: enrichment dependency
+      type: object
+      additionalProperties: false
+      required:
+      - key
+      - type
+      - value
+      properties:
+        key:
+          type: string
+        type:
+          type: string
+          enum:
+          - SETTING
+        name:
+          type: string
+        value:
+          type: string
+    EventCorrectionRequest:
+      description: Event Correction Payload for event correction
+      type: object
+      additionalProperties: false
+      properties:
+        event:
+          $ref: '#/components/schemas/Event'
+    Dimensions:
+      description: Dimensions are tags/labels associated with the events.
+      type: object
+      additionalProperties:
+        type: string
+        minLength: 1
+        maxLength: 200
+        example:
+          Country: India
+  examples:
+    GetEventsResponse:
+      summary: Example Get Batch Event Response
+      value:
+        events:
+        - eventPayload:
+            timestamp: '2023-02-23T14:25:10Z'
+            schemaName: travelCompletedEvent
+            id: c0b1306d-f506-43a6-856b-69221efaee6b
+            referenceId: event.dsvhk32.234n3
+            accountId: '1'
+            attributes:
+            - name: distanceTravelled
+              value: '50'
+              unit: Miles
+            - name: timeSpent
+              value: '60'
+              unit: Minutes
+            dimensions:
+              location: Seattle
+              costCenterCode: '1234'
+              travelType: Business
+          ingestionStatus:
+            status: INGESTION_COMPLETED_EVENT_NOT_METERED
+            statusDescription: Event ingestion completed successfully but the event is not associated with any bill plan.
+          createdAt: '2021-03-04T14:25:10Z'
+        - eventPayload:
+            timestamp: '2023-02-23T14:25:10Z'
+            schemaName: sendMessageEvent
+            referenceId: event.dsvhk32.234n4
+            id: c0b1306d-f506-43a6-856b-69221efaee6c
+            accountId: '1'
+            attributes:
+            - name: messageSentCount
+              value: '50'
+              unit: None
+            - name: sizeOfMessage
+              value: '60'
+              unit: KiloBytes
+            dimensions:
+              location: Seattle
+              costCenterCode: '1234'
+              messageProviderName: Twilio
+          ingestionStatus:
+            status: INGESTION_COMPLETED_EVENT_METERED
+            statusDescription: Ingestion completed successfully
+          createdAt: '2021-03-04T14:25:10Z'
+    EventsCorrectionResponse:
+      summary: Example Event Correction Response
+      value:
+        data:
+        - referenceId: event.21OpEx4DHQu.CZlyh
+          eventPayload:
+            timestamp: '2023-02-23T14:25:10Z'
+            schemaName: travelCompletedEvent
+            id: c0b1306d-f506-43a6-856b-69221efaee6b
+            accountId: '1'
+            attributes:
+            - name: distanceTravelled
+              value: '50'
+              unit: Miles
+            - name: timeSpent
+              value: '60'
+              unit: Minutes
+            dimensions:
+              location: Seattle
+              costCenterCode: '1234'
+              travelType: Business
+          ingestionStatus:
+            status: INGESTION_COMPLETED_EVENT_NOT_METERED
+            statusDescription: Event ingestion completed successfully but the event is not associated with any bill plan.
+          customerId: CUS0001
+          source:
+            id: ENTITLED
+            type: ENTITLED
+          createdAt: '2023-02-23T14:25:10Z'
+          status: REVERTED
+          reason: Event Reverted
+        - referenceId: event.23OrTx4FGQu.XVpzf
+          eventPayload:
+            timestamp: '2023-02-23T14:25:10Z'
+            schemaName: smsSentEvent
+            id: sdvb325j-f506-43a6-856b-69221efaee6b
+            accountId: '1'
+            attributes:
+            - name: smsCount
+              value: '50'
+              unit: count
+            dimensions: {}
+          ingestionStatus:
+            status: INGESTION_COMPLETED_EVENT_NOT_METERED
+            statusDescription: Event ingestion completed successfully but the event is not associated with any bill plan.
+          customerId: CUS0001
+          source:
+            id: ''
+            type: ''
+          createdAt: '2023-01-01T14:25:10Z'
+          status: FAILED
+          reason: Event was ingested in past pricing cycle
+    GetEventResponse:
+      summary: Example Get Event Response
+      value:
+        events:
+        - eventPayload:
+            timestamp: '2023-02-23T14:25:10Z'
+            schemaName: travelCompletedEvent
+            referenceId: event.dsvhk32.234n3
+            id: c0b1306d-f506-43a6-856b-69221efaee6b
+            accountId: '1'
+            attributes:
+            - name: distanceTravelled
+              value: '50'
+              unit: Miles
+            - name: timeSpent
+              value: '60'
+              unit: Minutes
+            dimensions:
+              location: Seattle
+              costCenterCode: '1234'
+              travelType: Business
+          eventPipelineInfo:
+            eventSchema:
+              name: Rides
+              version: 1
+            usageMeters:
+            - id: 23bh55ZZdifACTAV9WEV
+              name: rides_distance
+              version: 1
+              status: PROCESSED_UNITS_COMPUTED
+              units: 10.42
+            - id: 23bh55ZZdifACTAV9WEV
+              name: rides_time
+              version: 1
+              status: PROCESSED_FILTERED_OUT
+            pricePlans:
+            - name: pro-plan
+              id: 68551191-982b-4663-92fa-38a6f8313e91
+              scheduleId: c0b1306d-f506-43a6-856b-69221efaee6b
+              cycleStart: 04-03-2022
+              cycleEnd: 04-04-2022
+            account:
+              id: acme-prod
+            customer:
+              id: acme_inc
+          ingestionStatus:
+            status: INGESTION_COMPLETED_EVENT_NOT_METERED
+            statusDescription: Event ingestion completed successfully but the event is not associated with any bill plan.
+          createdAt: '2021-03-04T14:25:10Z'
+  parameters:
+    require_confirmation:
+      in: query
+      name: require_confirmation
+      description: Specifies whether to start a migration only after a confirmation
+      required: false
+      schema:
+        type: boolean
+        example: false
+    filter_account_id:
+      in: query
+      description: Filter option to filter based on account id.
+      name: account_id
+      required: false
+      schema:
+        type: string
+        example: '1234'
+    event_id:
+      in: path
+      name: event_id
+      required: true
+      schema:
+        type: string
+        maxLength: 50
+        example: f4a52f2d-b798-4e08-8b24-db0a5a468ba3
+    filter_status:
+      in: query
+      description: Filter option to filter by status.
+      name: status
+      required: false
+      schema:
+        type: string
+      examples:
+        processed:
+          value: PROCESSED
+        in_progress:
+          value: IN_PROGRESS
+    filter_page_size:
+      in: query
+      description: "Maximum page size expected by client to return the record list. \n\n NOTE: Max page size cannot be more than 50. Also 50 is the default page size if no value is provided."
+      name: pageSize
+      required: false
+      schema:
+        type: integer
+        example: 10
+    event_correction_action:
+      in: query
+      description: Action to perform in event correction
+      name: action
+      required: true
+      schema:
+        type: string
+        enum:
+        - UNDO
+        - REDO
+        - REDO_EVENT
+        example: UNDO
+    filter_next_page_token:
+      in: query
+      description: Pagination token used as a marker to get records from next page.
+      name: nextToken
+      required: false
+      schema:
+        type: string
+        example: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEyMywgInNvcnRPcmRlciI6ICJhc2MifQ==
+    filter_schema_name:
+      in: query
+      description: Filter option to filter the events based on schema name.
+      name: schema_name
+      required: false
+      schema:
+        type: string
+        example: Rides
+  responses:
+    ErrorResponse:
+      description: Error response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            ErrorResponse:
+              summary: Error Message
+              value:
+                message: <Reason message>
+  requestBodies:
+    EventCorrectionRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/EventCorrectionRequest'
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: Bearer <credential>
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
+externalDocs:
+  description: Find out more about Togai
+  url: https://docs.togai.com/docs

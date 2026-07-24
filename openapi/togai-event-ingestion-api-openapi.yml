@@ -1,0 +1,384 @@
+openapi: 3.0.3
+info:
+  version: '1.0'
+  title: Togai Apis Accounts Event Ingestion API
+  contact:
+    email: engg@togai.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  description: APIs for Togai App
+servers:
+- description: Api endpoint
+  url: https://api.togai.com/
+- description: Sandbox api endpoint
+  url: https://sandbox-api.togai.com/
+security:
+- bearerAuth: []
+tags:
+- name: Event Ingestion
+paths:
+  /ingest:
+    post:
+      tags:
+      - Event Ingestion
+      summary: Ingest Events to Togai
+      description: 'This API let’s you to ingest events to your Togai account.
+
+        Events ingested using this API will be processed via associated usage meters and further via associated price plans to generate final billable value to invoice the customer
+
+        Read more about [Event Ingestion](https://docs.togai.com/docs/event-ingestion)
+
+        '
+      operationId: ingest
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IngestEventRequest'
+            examples:
+              IngestEventRequest:
+                $ref: '#/components/examples/IngestEventRequest'
+              NamedLicenseEventRequest:
+                $ref: '#/components/examples/NamedLicenseEventRequest'
+              UsageEventRequest:
+                $ref: '#/components/examples/UsageEventRequest'
+        description: Request body to ingest events to Togai usage and billing management service.
+        required: true
+      responses:
+        '202':
+          description: Successfully accepted to process all the events from payload.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IngestEventResponse'
+        '400':
+          description: Bad request. Please check the response message for failure details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Credential "x-api-key" is not valid. Please check the response message for failure details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Unable to process the events as the size of the event payload is above the supported limit. Please check our docs for the api limits - https://togai.com/docs/limits.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Request throttled. Please check the response message on the failure details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '503':
+          description: Service is currently unavailable to process the request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+  /ingestBatch:
+    post:
+      tags:
+      - Event Ingestion
+      summary: Ingest Events to Togai in Batch
+      description: 'This API let’s you to ingest events in batch upto 500 events.
+
+        Ingest large amounts of events up to 500 in batches in an array using this API.'
+      operationId: ingestBatch
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IngestBatchEventRequest'
+            examples:
+              IngestEventBatchRequest:
+                $ref: '#/components/examples/IngestEventBatchRequest'
+        description: Request body to ingest events in batch to Togai usage and billing management service.
+        required: true
+      responses:
+        '202':
+          description: Successfully accepted to process all the events from payload.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IngestEventResponse'
+              example:
+                success: true
+        '207':
+          description: Partial failure. Few events from request were not accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IngestEventResponse'
+        '400':
+          description: Bad request. Please check the response message for failure details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Credential "x-api-key" is not valid. Please check the response message for failure details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Unable to process the events as the size of the event payload is above the supported limit. Please check our docs for the api limits - https://togai.com/docs/limits.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Request throttled. Please check the response message on the failure details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '503':
+          description: Service is currently unavailable to process the request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+components:
+  schemas:
+    Dimensions:
+      description: Dimensions are tags/labels associated with the events.
+      type: object
+      additionalProperties:
+        type: string
+        minLength: 1
+        maxLength: 200
+        example:
+          Country: India
+    IngestBatchEventRequest:
+      description: Payload for ingesting batch events
+      type: object
+      additionalProperties: false
+      required:
+      - events
+      properties:
+        events:
+          type: array
+          minItems: 1
+          maxItems: 500
+          items:
+            $ref: '#/components/schemas/Event'
+    IngestEventRequest:
+      description: Payload for ingesting events
+      type: object
+      additionalProperties: false
+      required:
+      - event
+      properties:
+        event:
+          $ref: '#/components/schemas/Event'
+    IngestEventResponse:
+      type: object
+      additionalProperties: false
+      properties:
+        success:
+          type: boolean
+          example: true
+        statusCode:
+          type: integer
+          format: int32
+        name:
+          type: string
+        message:
+          type: string
+          maxLength: 500
+        code:
+          type: string
+        details:
+          type: object
+    ErrorResponse:
+      type: object
+      additionalProperties: false
+      required:
+      - message
+      properties:
+        message:
+          type: string
+          description: error description
+          maxLength: 500
+    Attribute:
+      description: Metric to be recorded
+      type: object
+      additionalProperties: false
+      required:
+      - name
+      - value
+      properties:
+        name:
+          description: Name of the event attribute
+          type: string
+          minLength: 1
+          maxLength: 50
+          example: message
+        value:
+          description: Value of the event attribute
+          type: string
+          pattern: ^-?\d{1,512}(\.\d+)?$
+          example: 100
+        unit:
+          description: Unit with which the attribute value was measured. Natively supported units - "Meters, Miles, Kilometers, Grams, Kilograms, ounces, Pounds, Minutes, Hours, Seconds, Milliseconds, Microseconds, None". Clients are free to add any other custom units.
+          type: string
+          minLength: 1
+          maxLength: 50
+          example: characters
+    Event:
+      description: Contents of the event
+      type: object
+      additionalProperties: false
+      required:
+      - schemaName
+      - timestamp
+      - accountId
+      - attributes
+      - dimensions
+      properties:
+        schemaName:
+          description: "Name of the Event Schema. \nKnow more about [event schema](https://docs.togai.com/docs/event-schemas)\n"
+          type: string
+          minLength: 1
+          maxLength: 50
+        id:
+          description: Togai restricts users to ingest events with same id within a period of *45 days*. This restriction is common for [/entitled API](/api-reference/entitlements/ingest-event-if-a-user-is-entitled-to-a-feature), [/ingest API](/api-reference/event-ingestion/ingest-events-to-togai) and [/ingestBatch API](/api-reference/event-ingestion/ingest-events-to-togai-in-batch). i.e, an id used on /ingest API will not be allowed on /ingestBatch or /entitled APIs
+          type: string
+          maxLength: 512
+          example: c0b1306d-f506-43a6-856b-69221efaee6b
+        timestamp:
+          description: Source time stamp of the event. This timestamp must be in ISO 8601 format.
+          type: string
+          format: date-time
+          example: '2022-06-15T07:30:35.123'
+        accountId:
+          description: The event will be associated with the provided account
+          type: string
+          maxLength: 512
+          example: 1
+        attributes:
+          description: Attributes are numeric values. It can be usage metric which you push to Togai
+          type: array
+          minItems: 0
+          maxItems: 10
+          items:
+            $ref: '#/components/schemas/Attribute'
+        dimensions:
+          $ref: '#/components/schemas/Dimensions'
+  examples:
+    IngestEventRequest:
+      summary: Example Event Ingestion Request
+      value:
+        event:
+          timestamp: '2022-06-15T07:30:35.123'
+          schemaName: travelCompletedEvent
+          id: c0b1306d-f506-43a6-856b-69221efaee6b
+          accountId: '1'
+          attributes:
+          - name: distanceTravelled
+            value: '50'
+            unit: Miles
+          - name: timeSpent
+            value: '60'
+            unit: Minutes
+          dimensions:
+            location: Seattle
+            costCenterCode: '1234'
+            travelType: Business
+    NamedLicenseEventRequest:
+      summary: Example Usage Event Ingestion Request
+      value:
+        event:
+          id: id-123
+          timestamp: '2024-04-18T13:23:55'
+          accountId: sampleID
+          schemaName: togai-named-license
+          dimensions:
+            license_id: addon.sample.sample
+            name: unique_name
+          attributes:
+          - name: action
+            value: '1'
+    UsageEventRequest:
+      summary: Example Named License Event Ingestion Request
+      value:
+        event:
+          id: 42162b5e-22f6-4cd3-a9d9-019ba2c485c1
+          timestamp: '2024-04-18T16:00:17'
+          accountId: customer@biswa
+          schemaName: togai-usage
+          dimensions:
+            usage_meter_id: um.21UFaN6gpmS.RAbFG
+          attributes:
+          - name: usage
+            value: '10'
+    IngestEventBatchRequest:
+      summary: Example Batch Event Ingestion Request
+      value:
+        events:
+        - timestamp: '2022-06-15T07:30:35.123'
+          schemaName: travelCompletedEvent
+          id: c0b1306d-f506-43a6-856b-69221efaee6b
+          accountId: '1'
+          attributes:
+          - name: distanceTravelled
+            value: '50'
+            unit: Miles
+          - name: timeSpent
+            value: '60'
+            unit: Minutes
+          dimensions:
+            location: Seattle
+            costCenterCode: '1234'
+            travelType: Business
+        - timestamp: '2022-06-15T07:30:35.123'
+          schemaName: sendMessageEvent
+          id: c0b1306d-f506-43a6-856b-69221efaee6c
+          accountId: '1'
+          attributes:
+          - name: messageSentCount
+            value: '50'
+            unit: None
+          - name: sizeOfMessage
+            value: '60'
+            unit: KiloBytes
+          dimensions:
+            location: Seattle
+            costCenterCode: '1234'
+            messageProviderName: Twilio
+  responses:
+    ErrorResponse:
+      description: Error response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            ErrorResponse:
+              summary: Error Message
+              value:
+                message: <Reason message>
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: Bearer <credential>
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
+externalDocs:
+  description: Find out more about Togai
+  url: https://docs.togai.com/docs

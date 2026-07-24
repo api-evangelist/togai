@@ -1,0 +1,534 @@
+openapi: 3.0.3
+info:
+  version: '1.0'
+  title: Togai Apis Accounts Licenses API
+  contact:
+    email: engg@togai.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  description: APIs for Togai App
+servers:
+- description: Api endpoint
+  url: https://api.togai.com/
+- description: Sandbox api endpoint
+  url: https://sandbox-api.togai.com/
+security:
+- bearerAuth: []
+tags:
+- name: Licenses
+  description: APIs for getting or updating license records in Togai
+paths:
+  /license_updates:
+    get:
+      tags:
+      - Licenses
+      summary: Get a List of Licenses Updates
+      description: This API let’s you to fetch a list of licenses updates with multiple query parameters
+      operationId: getLicenseUpdates
+      parameters:
+      - $ref: '#/components/parameters/filter_next_page_token'
+      - $ref: '#/components/parameters/filter_account_id'
+      - $ref: '#/components/parameters/filter_page_size'
+      - $ref: '#/components/parameters/filter_license_id'
+      - $ref: '#/components/parameters/filter_effective_from'
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetLicenseUpdatesResponse'
+              examples:
+                GetLicenseUpdatesResponse:
+                  $ref: '#/components/examples/GetLicenseUpdatesResponse'
+        '400':
+          description: Bad request. Please check the response message for failure details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Credential is not valid. Please check the response message for failure details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Credential does not have access to list licenses updates.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Unable to process the query parameters provided. Please check our docs for the api limits - https://togai.io/docs/limits.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Request throttled. Please check the response message on the failure details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+    post:
+      tags:
+      - Licenses
+      summary: Update a License Entry
+      description: This API let’s you to add a license entry
+      operationId: addLicenseUpdateEntry
+      requestBody:
+        $ref: '#/components/requestBodies/LicenseUpdateRequest'
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LicenseUpdateResponse'
+              examples:
+                LicenseUpdateResponse:
+                  $ref: '#/components/examples/LicenseUpdateResponse'
+        '400':
+          description: Bad request. Please check the response message for failure details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Credential is not valid. Please check the response message for failure details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Credential does not have access to add a license entry.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Unable to process the query parameters provided. Please check our docs for the api limits - https://togai.io/docs/limits.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Request throttled. Please check the response message on the failure details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+  /license_updates/{license_id}:
+    patch:
+      tags:
+      - Licenses
+      summary: Update a License Entry Details
+      description: This API let’s you to update metadata of a license entry
+      operationId: updateLicenseEntryDetails
+      parameters:
+      - $ref: '#/components/parameters/filter_license_id'
+      requestBody:
+        $ref: '#/components/requestBodies/LicenseEntryDetailsUpdateRequest'
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LicenseUpdateResponse'
+              examples:
+                LicenseUpdateResponse:
+                  $ref: '#/components/examples/LicenseUpdateResponse'
+        '400':
+          description: Bad request. Please check the response message for failure details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Credential is not valid. Please check the response message for failure details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Credential does not have access to update a license entry.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Request throttled. Please check the response message on the failure details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+  /named_license_updates:
+    get:
+      tags:
+      - Licenses
+      summary: Get a List of Named Licenses Updates
+      description: This API let’s you to fetch a list of named licenses updates with multiple query parameters
+      operationId: getNamedLicenseUpdates
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NamedLicenseUpdatesPaginatedResponse'
+              examples:
+                NamedLicenseUpdatesPaginatedResponse:
+                  $ref: '#/components/examples/NamedLicenseUpdatesPaginatedResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+components:
+  parameters:
+    filter_license_id:
+      in: query
+      description: License Id to filter
+      name: licenseId
+      required: false
+      schema:
+        type: string
+        example: addon.1zYnCiM9Bpg.1zYn
+    filter_account_id:
+      in: query
+      description: Filter option to filter based on account id.
+      name: account_id
+      required: false
+      schema:
+        type: string
+        example: '1234'
+    filter_effective_from:
+      in: query
+      description: effectiveFrom to filter
+      name: effectiveFrom
+      required: false
+      schema:
+        type: string
+        format: date-time
+        example: '2021-03-04T14:25:10Z'
+    filter_page_size:
+      in: query
+      description: "Maximum page size expected by client to return the record list. \n\n NOTE: Max page size cannot be more than 50. Also 50 is the default page size if no value is provided."
+      name: pageSize
+      required: false
+      schema:
+        type: integer
+        example: 10
+    filter_next_page_token:
+      in: query
+      description: Pagination token used as a marker to get records from next page.
+      name: nextToken
+      required: false
+      schema:
+        type: string
+        example: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEyMywgInNvcnRPcmRlciI6ICJhc2MifQ==
+  schemas:
+    NamedLicenseUpdatesPaginatedResponse:
+      description: Named License updates paginated response
+      type: object
+      additionalProperties: false
+      required:
+      - data
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/NamedLicenseUpdate'
+        nextToken:
+          type: string
+          maxLength: 500
+          example: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEyMywgInNvcnRPcmRlciI6ICJhc2MifQ==
+    ErrorResponse:
+      type: object
+      additionalProperties: false
+      required:
+      - message
+      properties:
+        message:
+          type: string
+          description: error description
+          maxLength: 500
+    LicenseUpdateResponse:
+      allOf:
+      - $ref: '#/components/schemas/LicenseUpdate'
+      - type: object
+        additionalProperties: false
+        required:
+        - createdAt
+        properties:
+          createdAt:
+            type: string
+            format: date-time
+            example: '2021-03-04T14:25:10Z'
+    GetLicenseUpdatesResponse:
+      description: Get license updates response
+      type: object
+      additionalProperties: false
+      required:
+      - data
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/LicenseUpdateResponse'
+        nextToken:
+          type: string
+          maxLength: 500
+          example: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEyMywgInNvcnRPcmRlciI6ICJhc2MifQ==
+    LicenseUpdate:
+      description: License update
+      type: object
+      additionalProperties: false
+      required:
+      - licenseId
+      - accountId
+      - quantity
+      - effectiveFrom
+      properties:
+        licenseId:
+          type: string
+          maxLength: 50
+          example: lic.fdjsl.313
+        accountId:
+          type: string
+          maxLength: 50
+          example: acc.fdjsl.313
+        quantity:
+          description: Absolute quantity of the license
+          type: number
+          example: 10
+        effectiveFrom:
+          type: string
+          format: date-time
+          example: '2021-03-04T14:25:10Z'
+        metadata:
+          type: object
+          additionalProperties:
+            type: string
+          example:
+            key1: value1
+            key2: value2
+    LicenseEntryDetailsUpdateRequest:
+      description: License Entry Details update request
+      type: object
+      additionalProperties: false
+      required:
+      - accountId
+      - effectiveFrom
+      - metadata
+      properties:
+        accountId:
+          type: string
+          description: The account id for which the license is being updated
+          maxLength: 50
+          example: acc.fdjsl.313
+        effectiveFrom:
+          type: string
+          description: The effective from date of the license entry
+          format: date-time
+          example: '2021-03-04T14:25:10Z'
+        metadata:
+          type: object
+          additionalProperties:
+            type: string
+          example:
+            key1: value1
+            key2: value2
+    NamedLicenseUpdate:
+      description: Named License update response
+      type: object
+      additionalProperties: false
+      required:
+      - id
+      - licenseId
+      - accountId
+      - name
+      - createdAt
+      - updatedAt
+      properties:
+        id:
+          type: string
+          maxLength: 50
+          example: named_license_entry.20rvWRx.0ZwPG
+        licenseId:
+          type: string
+          maxLength: 50
+          example: addon.fdjsl.313
+        accountId:
+          type: string
+          maxLength: 50
+          example: '123'
+        name:
+          type: string
+          maxLength: 50
+          example: user1
+        effectiveFrom:
+          type: string
+          format: date-time
+          example: '2021-03-04T14:25:10Z'
+        effectiveUntil:
+          type: string
+          format: date-time
+          example: '2021-03-04T14:25:10Z'
+        createdAt:
+          type: string
+          format: date-time
+          example: '2021-03-04T14:25:10Z'
+        updatedAt:
+          type: string
+          format: date-time
+          example: '2021-03-04T14:25:10Z'
+    LicenseUpdateRequest:
+      description: License update request
+      type: object
+      additionalProperties: false
+      required:
+      - licenseId
+      - accountId
+      - updateType
+      - quantity
+      properties:
+        licenseId:
+          type: string
+          description: The license id for which the update is requested
+          maxLength: 50
+          example: lic.fdjsl.313
+        accountId:
+          type: string
+          description: The account id for which the license is being updated
+          maxLength: 50
+          example: acc.fdjsl.313
+        updateType:
+          type: string
+          description: The type of update to be performed
+          enum:
+          - RELATIVE
+          - ABSOLUTE
+        quantity:
+          type: number
+          description: The quantity to be updated
+        effectiveFrom:
+          type: string
+          description: The effective from date for the update
+          format: date-time
+          example: '2021-03-04T14:25:10Z'
+        idempotencyKey:
+          type: string
+          description: The idempotency key for uniqueness of the license update request
+          example: idempotencyKey#1
+        metadata:
+          type: object
+          additionalProperties:
+            type: string
+          example:
+            key1: value1
+            key2: value2
+  requestBodies:
+    LicenseUpdateRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/LicenseUpdateRequest'
+          examples:
+            AbsoluteLicenseUpdateRequest:
+              value:
+                licenseId: addon.21LdC76myzw.uiSWm
+                accountId: account#1
+                updateType: ABSOLUTE
+                quantity: 10
+            RelativeLicenseUpdateRequest:
+              value:
+                licenseId: addon.21JwBhBzM76.9mzoA
+                accountId: account#2
+                updateType: RELATIVE
+                quantity: -5
+            AbsoluteLicenseUpdateRequestWithIdempotencyKey:
+              value:
+                licenseId: addon.21LdC76myzw.uiSWm
+                accountId: account#1
+                updateType: ABSOLUTE
+                quantity: 10
+                idempotencyKey: idempotencyKey#1
+            RelativeLicenseUpdateRequestWithIdempotencyKey:
+              value:
+                licenseId: addon.21JwBhBzM76.9mzoA
+                accountId: account#2
+                updateType: RELATIVE
+                quantity: -5
+                idempotencyKey: idempotencyKey#2
+    LicenseEntryDetailsUpdateRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/LicenseEntryDetailsUpdateRequest'
+          examples:
+            LicenseEntryDetailsUpdateRequest:
+              value:
+                accountId: account#1
+                effectiveFrom: '2020-01-01T00:00:00Z'
+                metadata:
+                  PO Number: PO.432t5kbj.43tdsv
+  responses:
+    ErrorResponse:
+      description: Error response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            ErrorResponse:
+              summary: Error Message
+              value:
+                message: <Reason message>
+  examples:
+    LicenseUpdateResponse:
+      summary: Example License Update Response
+      value:
+        licenseId: lic.fdjsl.313
+        accountId: acc.fdjsl.313
+        quantity: 10
+        effectiveFrom: '2020-01-01T00:00:00Z'
+        createdAt: '2021-03-04T14:25:10Z'
+    NamedLicenseUpdatesPaginatedResponse:
+      value:
+        data:
+        - id: named_license_entry.20rvWRx.0ZwPG
+          licenseId: addon.fdjsl.313
+          accountId: '123'
+          name: user1
+          effectiveFrom: '2021-03-04T14:25:10Z'
+          effectiveUntil: '2021-03-04T14:25:10Z'
+          createdAt: '2021-03-04T14:25:10Z'
+          updatedAt: '2021-03-04T14:25:10Z'
+    GetLicenseUpdatesResponse:
+      summary: Example Get License Updates Response
+      value:
+        data:
+        - licenseId: lic.fdjsl.313
+          accountId: acc.fdjsl.313
+          quantity: 10
+          effectiveFrom: '2020-01-01T00:00:00Z'
+          createdAt: '2021-03-04T14:25:10Z'
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: Bearer <credential>
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
+externalDocs:
+  description: Find out more about Togai
+  url: https://docs.togai.com/docs

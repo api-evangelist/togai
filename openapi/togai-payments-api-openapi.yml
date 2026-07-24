@@ -1,0 +1,426 @@
+openapi: 3.0.3
+info:
+  version: '1.0'
+  title: Togai Apis Accounts Payments API
+  contact:
+    email: engg@togai.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  description: APIs for Togai App
+servers:
+- description: Api endpoint
+  url: https://api.togai.com/
+- description: Sandbox api endpoint
+  url: https://sandbox-api.togai.com/
+security:
+- bearerAuth: []
+tags:
+- name: Payments
+  description: Payments API
+paths:
+  /payments:
+    get:
+      tags:
+      - Payments
+      summary: List All Payments
+      description: List all payments
+      operationId: listPayments
+      parameters:
+      - $ref: '#/components/parameters/filter_next_page_token'
+      - $ref: '#/components/parameters/filter_page_size'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListPaymentResponse'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
+        '403':
+          $ref: '#/components/responses/ErrorResponse'
+        '404':
+          $ref: '#/components/responses/ErrorResponse'
+        '429':
+          $ref: '#/components/responses/ErrorResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+    post:
+      tags:
+      - Payments
+      summary: Create Payments
+      description: create payments
+      operationId: createPayments
+      requestBody:
+        $ref: '#/components/requestBodies/CreatePaymentRequest'
+      responses:
+        '201':
+          $ref: '#/components/responses/PaymentResponse'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
+        '403':
+          $ref: '#/components/responses/ErrorResponse'
+        '404':
+          $ref: '#/components/responses/ErrorResponse'
+        '429':
+          $ref: '#/components/responses/ErrorResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+  /payments/{payment_id}:
+    get:
+      tags:
+      - Payments
+      summary: Get a Payment
+      description: Get payment
+      operationId: getPayment
+      parameters:
+      - $ref: '#/components/parameters/payment_id'
+      - $ref: '#/components/parameters/version'
+      responses:
+        '200':
+          $ref: '#/components/responses/PaymentResponse'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
+        '403':
+          $ref: '#/components/responses/ErrorResponse'
+        '404':
+          $ref: '#/components/responses/ErrorResponse'
+        '429':
+          $ref: '#/components/responses/ErrorResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+components:
+  parameters:
+    filter_page_size:
+      in: query
+      description: "Maximum page size expected by client to return the record list. \n\n NOTE: Max page size cannot be more than 50. Also 50 is the default page size if no value is provided."
+      name: pageSize
+      required: false
+      schema:
+        type: integer
+        example: 10
+    filter_next_page_token:
+      in: query
+      description: Pagination token used as a marker to get records from next page.
+      name: nextToken
+      required: false
+      schema:
+        type: string
+        example: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEyMywgInNvcnRPcmRlciI6ICJhc2MifQ==
+    version:
+      in: query
+      name: version
+      description: Optional version to get a specific version. Gets latest version if it is not provided.
+      required: false
+      schema:
+        type: integer
+        format: int32
+        example: 2
+    payment_id:
+      in: path
+      name: payment_id
+      required: true
+      schema:
+        type: string
+        example: payment.1zYnCiM9Bpg.lv25y
+  responses:
+    ErrorResponse:
+      description: Error response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            ErrorResponse:
+              summary: Error Message
+              value:
+                message: <Reason message>
+    ListPaymentResponse:
+      description: Response for GET payments requests
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ListPaymentResponse'
+          examples:
+            ListPaymentResponse:
+              $ref: '#/components/examples/ListPaymentResponse'
+    PaymentResponse:
+      description: Response for POST payments requests
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Payment'
+          examples:
+            Payment:
+              $ref: '#/components/examples/Payment'
+  examples:
+    CreatePaymentRequest:
+      summary: A Sample for CreatePaymentRequest
+      value:
+        description: Payment for services
+        notes: Invoice payment
+        currency: USD
+        accountId: acc123
+        totalAmount: 10000
+        externalPaymentReference:
+          sourceName: XYZ Company
+          sourceType: CARD
+          transactionNumber: TXN123
+          description: Card payment
+        lineItemRecords:
+        - togaiId: inv.234.12efwe
+          order: 1
+          amount: 1000
+          type: INVOICE
+        - togaiId: inv.236.12efwe
+          order: 2
+          amount: 500
+          type: INVOICE
+        - togaiId: cred.236.12efwe
+          order: 3
+          amount: 200
+          type: CREDIT
+    Payment:
+      summary: A Sample Payment
+      value:
+        id: payment.1223dfs.234ds
+        description: Payment for services
+        notes: Invoice payment
+        accountId: acc123
+        currency: USD
+        externalPaymentReferences:
+          sourceName: XYZ Company
+          sourceType: CARD
+          transactionNumber: TXN123
+          description: Card payment
+        lineItemRecords:
+        - togaiId: inv.234.12efwe
+          amount: 1000
+          type: INVOICE
+          order: 1
+        - togaiId: inv.235.12efwe
+          amount: 600
+          type: INVOICE
+          order: 2
+        - togaiId: cred.236.12efwe
+          amount: 100
+          type: CREDIT
+          order: 3
+        totalAmount: 1700
+        version: 1
+        createdBy: user123
+        createdAt: '2023-01-01T12:00:00'
+    ListPaymentResponse:
+      summary: A Sample List Payments Response
+      value:
+        data:
+        - id: payment.1223dfs.234ds
+          description: Payment for services
+          notes: Invoice payment
+          accountId: acc123
+          currency: USD
+          externalPaymentReferences:
+            sourceName: XYZ Company
+            sourceType: CARD
+            transactionNumber: TXN123
+            description: Card payment
+          lineItemRecords:
+          - togaiId: inv.234.12efwe
+            amount: 1000
+            type: INVOICE
+            order: 1
+          - togaiId: inv.235.12efwe
+            amount: 600
+            type: INVOICE
+            order: 2
+          - togaiId: cred.236.12efwe
+            amount: 100
+            type: CREDIT
+            order: 3
+          totalAmount: 1700
+          version: 1
+          createdBy: user123
+          createdAt: '2023-01-01T12:00:00'
+  schemas:
+    ErrorResponse:
+      type: object
+      additionalProperties: false
+      required:
+      - message
+      properties:
+        message:
+          type: string
+          description: error description
+          maxLength: 500
+    PaymentLineItemRecord:
+      type: object
+      description: payment line item record object
+      additionalProperties: false
+      required:
+      - type
+      - order
+      properties:
+        type:
+          type: string
+          enum:
+          - INVOICE
+          - CREDIT
+          - WALLET_CREDIT
+        togaiId:
+          type: string
+          example: inv.234.12efwe
+        amount:
+          type: number
+        order:
+          type: integer
+          format: int32
+    ExternalPaymentReference:
+      type: object
+      description: external payment reference object
+      additionalProperties: false
+      required:
+      - sourceName
+      - sourceType
+      - transactionNumber
+      properties:
+        sourceName:
+          type: string
+        sourceType:
+          type: string
+          enum:
+          - GATEWAY
+          - CASH
+          - CHEQUE
+          - BANK_TRANSFER
+          - CARD
+        transactionNumber:
+          description: Check number or Card transaction number
+          type: string
+        description:
+          type: string
+        metadata:
+          type: object
+          additionalProperties: true
+    CreatePaymentRequest:
+      type: object
+      description: payload to create payment
+      additionalProperties: false
+      required:
+      - accountId
+      - externalPaymentReference
+      - lineItemRecords
+      - currency
+      - totalAmount
+      properties:
+        description:
+          description: A brief description of the payment
+          type: string
+          maxLength: 512
+          example: Payment for Invoice inv.234.23afv
+        notes:
+          description: A detailed note about the payment
+          type: string
+          maxLength: 512
+          example: Payment for purchase of credits
+        accountId:
+          type: string
+          maxLength: 512
+          example: ACC001
+        externalPaymentReference:
+          $ref: '#/components/schemas/ExternalPaymentReference'
+        lineItemRecords:
+          type: array
+          minLength: 1
+          items:
+            $ref: '#/components/schemas/PaymentLineItemRecord'
+        currency:
+          type: string
+          maxLength: 512
+          example: USD
+        totalAmount:
+          type: number
+    ListPaymentResponse:
+      description: List payments response
+      type: object
+      additionalProperties: false
+      required:
+      - data
+      properties:
+        data:
+          type: array
+          minItems: 0
+          maxItems: 50
+          items:
+            $ref: '#/components/schemas/Payment'
+        nextToken:
+          type: string
+          maxLength: 500
+          example: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEyMywgInNvcnRPcmRlciI6ICJhc2MifQ==
+    Payment:
+      description: Payment object
+      type: object
+      additionalProperties: false
+      required:
+      - id
+      - accountId
+      - externalPaymentReferences
+      - lineItemRecords
+      - totalAmount
+      - currency
+      - version
+      - createdBy
+      - createdAt
+      properties:
+        id:
+          type: string
+          example: pay.w123rwe.1231
+        description:
+          type: string
+        notes:
+          type: string
+        accountId:
+          type: string
+          example: ACC001
+        externalPaymentReferences:
+          $ref: '#/components/schemas/ExternalPaymentReference'
+        lineItemRecords:
+          type: array
+          minLength: 1
+          items:
+            $ref: '#/components/schemas/PaymentLineItemRecord'
+        totalAmount:
+          type: number
+        currency:
+          type: string
+        version:
+          type: number
+        createdBy:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+  requestBodies:
+    CreatePaymentRequest:
+      description: Payload to create a payment
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CreatePaymentRequest'
+          examples:
+            CreatePaymentRequest:
+              $ref: '#/components/examples/CreatePaymentRequest'
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: Bearer <credential>
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
+externalDocs:
+  description: Find out more about Togai
+  url: https://docs.togai.com/docs

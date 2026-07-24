@@ -1,0 +1,2316 @@
+openapi: 3.0.3
+info:
+  version: '1.0'
+  title: Togai Apis Accounts Price Plans API
+  contact:
+    email: engg@togai.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  description: APIs for Togai App
+servers:
+- description: Api endpoint
+  url: https://api.togai.com/
+- description: Sandbox api endpoint
+  url: https://sandbox-api.togai.com/
+security:
+- bearerAuth: []
+tags:
+- name: Price Plans
+  description: Price Plan level calls
+paths:
+  /price_plans:
+    post:
+      tags:
+      - Price Plans
+      summary: Create a Price Plan
+      description: 'This API let''s you create and price plan
+
+        Learn more about [Price Plans](https://docs.togai.com/docs/priceplan)
+
+        '
+      operationId: createPricePlan
+      parameters:
+      - $ref: '#/components/parameters/dry_run'
+      requestBody:
+        $ref: '#/components/requestBodies/CreatePricePlanRequest'
+      responses:
+        '200':
+          $ref: '#/components/responses/PricePlanResponse'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
+        '403':
+          $ref: '#/components/responses/ErrorResponse'
+        '404':
+          $ref: '#/components/responses/ErrorResponse'
+        '429':
+          $ref: '#/components/responses/ErrorResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+    get:
+      tags:
+      - Price Plans
+      summary: List Price Plans
+      description: Get a list of price plans
+      operationId: getPricePlans
+      parameters:
+      - $ref: '#/components/parameters/next_token'
+      - $ref: '#/components/parameters/page_size'
+      responses:
+        '200':
+          $ref: '#/components/responses/PricePlanPaginatedResponse'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
+        '403':
+          $ref: '#/components/responses/ErrorResponse'
+        '404':
+          $ref: '#/components/responses/ErrorResponse'
+        '429':
+          $ref: '#/components/responses/ErrorResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+  /price_plans/{price_plan_id}:
+    patch:
+      tags:
+      - Price Plans
+      summary: Update a Price Plan
+      description: 'Update an existing price plan
+
+        Price Plans with status as DRAFT alone can be updated . Learn more about [Price plans](https://docs.togai.com/docs/priceplan) from our Guides
+
+        '
+      operationId: updatePricePlan
+      parameters:
+      - $ref: '#/components/parameters/price_plan_id'
+      requestBody:
+        $ref: '#/components/requestBodies/UpdatePricePlanRequest'
+      responses:
+        '200':
+          $ref: '#/components/responses/PricePlanResponse'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
+        '403':
+          $ref: '#/components/responses/ErrorResponse'
+        '404':
+          $ref: '#/components/responses/ErrorResponse'
+        '429':
+          $ref: '#/components/responses/ErrorResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+    get:
+      tags:
+      - Price Plans
+      summary: Get a Price Plan
+      description: Get a price plan details using price plan id
+      operationId: getPricePlan
+      parameters:
+      - $ref: '#/components/parameters/price_plan_id'
+      - $ref: '#/components/parameters/version_query'
+      responses:
+        '200':
+          $ref: '#/components/responses/PricePlanResponse'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
+        '403':
+          $ref: '#/components/responses/ErrorResponse'
+        '404':
+          $ref: '#/components/responses/ErrorResponse'
+        '429':
+          $ref: '#/components/responses/ErrorResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+    delete:
+      tags:
+      - Price Plans
+      summary: Archive a Price Plan
+      description: Archive a price plan
+      operationId: archivePricePlan
+      parameters:
+      - $ref: '#/components/parameters/price_plan_id'
+      responses:
+        '200':
+          $ref: '#/components/responses/BaseSuccessResponse'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
+        '403':
+          $ref: '#/components/responses/ErrorResponse'
+        '404':
+          $ref: '#/components/responses/ErrorResponse'
+        '429':
+          $ref: '#/components/responses/ErrorResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+  /price_plans/{price_plan_id}/activate:
+    post:
+      tags:
+      - Price Plans
+      summary: Activate a Price Plan
+      description: Activate a price plan details using price plan id
+      operationId: activatePricePlan
+      parameters:
+      - $ref: '#/components/parameters/price_plan_id'
+      requestBody:
+        $ref: '#/components/requestBodies/ActivatePricePlanRequest'
+      responses:
+        '200':
+          $ref: '#/components/responses/PricePlanResponse'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
+        '403':
+          $ref: '#/components/responses/ErrorResponse'
+        '404':
+          $ref: '#/components/responses/ErrorResponse'
+        '429':
+          $ref: '#/components/responses/ErrorResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+  /price_plans/{price_plan_id}/currencies:
+    post:
+      tags:
+      - Price Plans
+      summary: Add Currencies to a Price Plan
+      description: Add currencies to a price plan
+      operationId: addCurrencyToPricePlan
+      parameters:
+      - $ref: '#/components/parameters/price_plan_id'
+      requestBody:
+        $ref: '#/components/requestBodies/AddCurrencyToPricePlanRequest'
+      responses:
+        '200':
+          $ref: '#/components/responses/PricePlanResponse'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
+        '403':
+          $ref: '#/components/responses/ErrorResponse'
+        '404':
+          $ref: '#/components/responses/ErrorResponse'
+        '429':
+          $ref: '#/components/responses/ErrorResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+  /price_plans/{price_plan_id}/currencies/{currency_id}:
+    delete:
+      tags:
+      - Price Plans
+      summary: Remove a Draft Currency From a Price Plan
+      description: Remove a draft currency from a price plan
+      operationId: removeCurrencyFromPricePlan
+      parameters:
+      - $ref: '#/components/parameters/price_plan_id'
+      - $ref: '#/components/parameters/currency_id'
+      responses:
+        '200':
+          $ref: '#/components/responses/PricePlanResponse'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
+        '403':
+          $ref: '#/components/responses/ErrorResponse'
+        '404':
+          $ref: '#/components/responses/ErrorResponse'
+        '429':
+          $ref: '#/components/responses/ErrorResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+  /price_plans/migration:
+    post:
+      tags:
+      - Price Plans
+      summary: Create a Price Plan Migration
+      description: "Migrates accounts across price plans. This is an asynchronous process functioning on top of Togai's Jobs \nframework. Status of the created migrations can be obtained using the [Jobs APIs](https://docs.togai.com/api-reference/jobs/get-the-status-of-a-job)\n"
+      operationId: pricePlanMigration
+      requestBody:
+        $ref: '#/components/requestBodies/CreatePricePlanMigrationRequest'
+      responses:
+        '201':
+          $ref: '#/components/responses/BaseSuccessResponse'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
+        '403':
+          $ref: '#/components/responses/ErrorResponse'
+        '404':
+          $ref: '#/components/responses/ErrorResponse'
+        '429':
+          $ref: '#/components/responses/ErrorResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+components:
+  responses:
+    BaseSuccessResponse:
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/BaseSuccessResponse'
+    ErrorResponse:
+      description: Error response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            ErrorResponse:
+              summary: Error Message
+              value:
+                message: <Reason message>
+    PricePlanPaginatedResponse:
+      description: Response for list price plans request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PricePlanPaginatedResponse'
+          examples:
+            PricePlanPaginatedResponse:
+              $ref: '#/components/examples/PricePlanPaginatedResponse'
+    PricePlanResponse:
+      description: Response for Create and Get price plan requests
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PricePlan'
+          examples:
+            PricePlanResponse:
+              $ref: '#/components/examples/PricePlan'
+  schemas:
+    LicenseRateCardConfig:
+      title: LicenseRateCardConfig
+      type: object
+      properties:
+        maxQuantity:
+          description: Max allowed quantity for a particular license in a price plan
+          type: integer
+          format: int64
+          example: 100
+        maxQuantityBreachAction:
+          $ref: '#/components/schemas/MaxQuantityBreachAction'
+    FixedFeeRateCard:
+      title: FixedFeeRateCard
+      type: object
+      required:
+      - id
+      - rateValues
+      - enableProration
+      properties:
+        id:
+          description: Unique Identifier of the attached AddOn
+          type: string
+          maxLength: 50
+        displayName:
+          type: string
+          description: Name of the attached AddOn
+        tag:
+          type: string
+          description: A tag string to group fixedFeeRateCards
+        invoiceTiming:
+          $ref: '#/components/schemas/InvoiceTiming'
+        type:
+          $ref: '#/components/schemas/FixedFeeType'
+        rateValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/CurrencyRateValue'
+        enableProration:
+          type: boolean
+          example: false
+        recurrenceConfig:
+          $ref: '#/components/schemas/RecurrenceConfig'
+    CreatePricingRule:
+      type: object
+      additionalProperties: false
+      required:
+      - order
+      - name
+      - computation
+      - action
+      properties:
+        name:
+          description: Name of the pricing rule
+          type: string
+        order:
+          description: Order of the pricing rule
+          type: integer
+          format: int32
+        invoiceTiming:
+          $ref: '#/components/schemas/PricingRuleTiming'
+        condition:
+          description: JSON logic condition deciding whether to compute this pricing rule or not
+          type: string
+        computation:
+          description: JSON logic to be computed
+          type: string
+        action:
+          description: JSON logic to be computed
+          title: action
+          $ref: '#/components/schemas/PricingRuleAction'
+    FixedFeeType:
+      type: string
+      enum:
+      - ONE_TIME
+      - RECURRING
+      description: Fixed fee applies either for a one-time occurrence or for each cycle.
+    pricePlanMigrationConfig:
+      description: Migrate all account associations of a price plan to another price plan
+      type: object
+      additionalProperties: false
+      required:
+      - sourceId
+      - sourceVersion
+      - migrationMode
+      properties:
+        sourceId:
+          description: Id of source price plan
+          type: string
+          maxLength: 255
+        sourceVersion:
+          description: Version of the source price plan
+          type: integer
+          format: int32
+        targetId:
+          description: Id of target price plan
+          type: string
+          maxLength: 255
+        targetVersion:
+          description: Version of the target price plan
+          type: integer
+          format: int32
+        migrationMode:
+          type: string
+          enum:
+          - IMMEDIATE
+          - IMMEDIATE_IGNORE_OVERRIDE
+          - NEXT_CYCLE
+          - NEXT_CYCLE_IGNORE_OVERRIDE
+        retainStartOffsets:
+          type: boolean
+          description: "If this flag is true, current pricing cycle of the account on the date of association will continue rather \nthan the configurations of the newly associated price plan. Pricing cycle overrides specified  using \n`pricePlanDetailsOverride` will take precedence over the pricing cycle configurations of \nthe new price plan that the account needs to migrate to. PricingCycleInterval of the existing plan and \nthe new plan must be same for this to work. We'll return a `400 BadRequest` otherwise.\nExamples:\n  - Ongoing plan (1st Oct to 30th Oct) - {dayOffset: 1, monthOffset: NIL}\n    New association (15th Oct to 15th Nov) of different price plan with retainStartOffsets option true \n    will use the same pricing cycle configuration {dayOffset: 1, monthOffset: NIL} rather than using the\n    pricing cycle configuration of the new price plan that the account needs to migrate to.\n  - Ongoing plan (1st Oct to 30th Oct) - {dayOffset: 1, monthOffset: NIL}\n    New association (1st Nov to 30th Nov) of different price plan with retainStartOffsets option true will\n    throw a `400 BadRequest` as no existing price plan configuration found on date of association\n"
+    BillingConfig:
+      type: object
+      properties:
+        interval:
+          description: Represents the number of pricing cycles after which the rate card will be billed
+          type: integer
+          format: int64
+          example: 3
+        startOffset:
+          description: Represents the offset for pricing cycles after which the rate card will be billed
+          type: integer
+          format: int64
+          example: 5
+    SlabDetail:
+      type: object
+      description: The details of a slab
+      additionalProperties: false
+      required:
+      - startAfter
+      - priceType
+      - rate
+      properties:
+        startAfter:
+          type: number
+        priceType:
+          $ref: '#/components/schemas/PriceType'
+        slabConfig:
+          type: object
+          additionalProperties:
+            type: string
+        rate:
+          type: number
+        slabRateConfig:
+          type: object
+          additionalProperties:
+            type: string
+    ActivatePricePlanRequest:
+      description: Request to activate currencies of a price plan
+      type: object
+      additionalProperties: false
+      required:
+      - currencies
+      properties:
+        currencies:
+          description: List of currencies to activate
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+            minLength: 1
+    CreatePricePlanDetails:
+      type: object
+      additionalProperties: false
+      required:
+      - supportedCurrencies
+      properties:
+        pricingCycleConfig:
+          description: Configuration for pricing cycle
+          $ref: '#/components/schemas/PricingCycleConfig'
+        supportedCurrencies:
+          description: List of currencies supported by the price plan
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+        usageRateCards:
+          description: List of usage rate cards
+          type: array
+          items:
+            $ref: '#/components/schemas/UsageRateCard'
+        fixedFeeRateCards:
+          type: array
+          items:
+            $ref: '#/components/schemas/FixedFeeRateCard'
+        licenseRateCards:
+          type: array
+          items:
+            $ref: '#/components/schemas/LicenseRateCard'
+        billingEntitlementRateCards:
+          type: array
+          items:
+            $ref: '#/components/schemas/BillingEntitlementRateCard'
+        minimumCommitment:
+          $ref: '#/components/schemas/MinimumCommitment'
+        creditGrantRateCards:
+          type: array
+          items:
+            $ref: '#/components/schemas/CreditGrantRateCard'
+        entitlementOverageRateCards:
+          type: array
+          items:
+            $ref: '#/components/schemas/EntitlementOverageRateCard'
+        deferredRevenue:
+          description: "This option can be enabled while creating a price plan to opt for deferred revenue finalization.\ni.e, Togai will assume that the price plan may change any time during the pricing cycle and \nthereby does not compute the revenue in near-real time. \nThis gives the flexibility of editing rate cards in price plan from beginning of the pricing cycle.\nEnabling this mode comes with the following limitations.\n1. Following rate cards are not supported under a `deferredRevenue` plan\n    * creditGrantRateCards,\n    * billingEntitlementRateCards,\n    * entitlementOverageRateCards,\n    * IN_ADVANCE fixedFeeRateCards,\n    * IN_ADVANCE licenseRateCards\n2. Metrics API return revenue metrics only after the grace period of the account's pricing cycle \n(i.e, only once the invoice becomes DUE)\n"
+          type: boolean
+    MaxQuantityBreachAction:
+      type: string
+      enum:
+      - DO_NOTHING
+      description: "Action to be taken when the license maxQuantity is breached: \n- `DO_NOTHING`: Refrain from granting any new licenses.\n"
+    PricePlanListData:
+      description: Data of price plan list
+      type: object
+      additionalProperties: false
+      required:
+      - id
+      - name
+      - version
+      - pricePlanDetails
+      - status
+      - usageMeters
+      - createdAt
+      - updatedAt
+      - type
+      properties:
+        id:
+          description: Identifier of price plan
+          type: string
+          maxLength: 50
+        name:
+          type: string
+          description: Name of the price plan
+          maxLength: 50
+        version:
+          type: integer
+          format: int32
+          description: Version of the price plan
+        description:
+          description: Description of price plan
+          type: string
+          maxLength: 255
+        status:
+          description: Status of Price plan
+          type: string
+          enum:
+          - DRAFT
+          - ACTIVE
+          - ARCHIVED
+        usageMeters:
+          type: array
+          description: Usage meters id linked to the price plan
+          items:
+            type: string
+        pricePlanDetails:
+          $ref: '#/components/schemas/PricePlanDetails'
+        pricingRules:
+          type: array
+          items:
+            $ref: '#/components/schemas/PricingRule'
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        type:
+          $ref: '#/components/schemas/PricePlanType'
+    PaginationOptions:
+      type: object
+      additionalProperties: false
+      properties:
+        pageSize:
+          type: integer
+        sortOrder:
+          type: string
+          enum:
+          - ASC
+          - DESC
+    CreatePricePlanDetailsOverride:
+      type: object
+      properties:
+        pricingCycleConfig:
+          $ref: '#/components/schemas/PricingCycleConfig'
+        supportedCurrencies:
+          type: array
+          uniqueItems: true
+          minItems: 1
+          items:
+            type: string
+        usageRateCards:
+          type: array
+          items:
+            $ref: '#/components/schemas/UsageRateCard'
+        billingEntitlementRateCards:
+          type: array
+          items:
+            $ref: '#/components/schemas/BillingEntitlementRateCard'
+        entitlementOverageRateCards:
+          type: array
+          items:
+            $ref: '#/components/schemas/EntitlementOverageRateCard'
+        fixedFeeRateCards:
+          type: array
+          items:
+            $ref: '#/components/schemas/FixedFeeRateCard'
+        licenseRateCards:
+          type: array
+          items:
+            $ref: '#/components/schemas/LicenseRateCard'
+        minimumCommitment:
+          $ref: '#/components/schemas/MinimumCommitment'
+        creditGrantRateCards:
+          type: array
+          items:
+            $ref: '#/components/schemas/CreditGrantRateCard'
+    PricingSchedule:
+      type: object
+      description: Represents effectiveness period and config of a price plan. i.e, price plan bound by time.
+      additionalProperties: false
+      required:
+      - id
+      - startDate
+      - endDate
+      - version
+      - isOverriden
+      properties:
+        id:
+          type: string
+        pricePlanDetails:
+          $ref: '#/components/schemas/PricePlanDetails'
+        startDate:
+          type: string
+          format: date-time
+        endDate:
+          type: string
+          format: date-time
+        version:
+          type: integer
+          format: int32
+          minimum: 1
+        pricingRules:
+          type: array
+          items:
+            $ref: '#/components/schemas/PricingRule'
+        isOverriden:
+          type: boolean
+    CreatePricePlanRequest:
+      description: Request to create a price plan
+      type: object
+      additionalProperties: false
+      required:
+      - name
+      - pricePlanDetails
+      properties:
+        name:
+          type: string
+          description: Name of the price plan
+          maxLength: 50
+        description:
+          description: Description of price plan
+          type: string
+          maxLength: 255
+        type:
+          $ref: '#/components/schemas/PricePlanType'
+        pricePlanDetails:
+          $ref: '#/components/schemas/CreatePricePlanDetails'
+        pricingRules:
+          type: array
+          items:
+            $ref: '#/components/schemas/CreatePricingRule'
+    LicenseRateCard:
+      title: LicenseRateCard
+      type: object
+      required:
+      - id
+      - rateValues
+      - ratePlan
+      - enableProration
+      properties:
+        id:
+          description: Unique Identifier of the attached AddOn
+          type: string
+          maxLength: 50
+        type:
+          $ref: '#/components/schemas/AddOnType'
+        displayName:
+          type: string
+          description: Name of the attached AddOn
+        tag:
+          type: string
+          description: A tag string to group licenseRateCards
+        invoiceTiming:
+          $ref: '#/components/schemas/InvoiceTiming'
+        usageCycle:
+          $ref: '#/components/schemas/UsageCycleInterval'
+        enableProration:
+          type: boolean
+          example: false
+        config:
+          $ref: '#/components/schemas/LicenseRateCardConfig'
+        ratePlan:
+          $ref: '#/components/schemas/RatePlan'
+        rateValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/RateValue'
+        proratedRefundMode:
+          $ref: '#/components/schemas/ProratedRefundMode'
+    PricingRuleAction:
+      type: object
+      additionalProperties: false
+      required:
+      - type
+      properties:
+        type:
+          type: string
+          enum:
+          - ADD
+          - UPDATE
+        target:
+          type: string
+        id:
+          type: string
+        description:
+          type: string
+        metadata:
+          type: object
+          additionalProperties:
+            type: string
+    FeatureConfig:
+      description: Feature configuration object
+      type: object
+      additionalProperties: false
+      required:
+      - effectiveUntil
+      - featureCreditLimit
+      properties:
+        effectiveFrom:
+          type: string
+          format: duration
+        effectiveUntil:
+          type: string
+          format: duration
+        featureCreditLimit:
+          type: number
+          minimum: 0
+    PricingCycleInterval:
+      type: string
+      description: Interval field allow you to define the billing interval you would like to set
+      enum:
+      - WEEKLY
+      - MONTHLY
+      - QUARTERLY
+      - HALF_YEARLY
+      - ANNUALLY
+    PricePlanPaginatedResponse:
+      type: object
+      required:
+      - data
+      additionalProperties: false
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/PricePlanListData'
+        nextToken:
+          type: string
+        context:
+          $ref: '#/components/schemas/PaginationOptions'
+    PricePlanDetails:
+      type: object
+      required:
+      - supportedCurrencies
+      - activeCurrencies
+      properties:
+        supportedCurrencies:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+        activeCurrencies:
+          type: array
+          uniqueItems: true
+          readOnly: true
+          items:
+            type: string
+        pricingCycleConfig:
+          $ref: '#/components/schemas/PricingCycleConfig'
+        usageRateCards:
+          type: array
+          items:
+            $ref: '#/components/schemas/UsageRateCard'
+        fixedFeeRateCards:
+          type: array
+          items:
+            $ref: '#/components/schemas/FixedFeeRateCard'
+        licenseRateCards:
+          type: array
+          items:
+            $ref: '#/components/schemas/LicenseRateCard'
+        billingEntitlementRateCards:
+          type: array
+          items:
+            $ref: '#/components/schemas/BillingEntitlementRateCard'
+        entitlementOverageRateCards:
+          type: array
+          items:
+            $ref: '#/components/schemas/EntitlementOverageRateCard'
+        minimumCommitment:
+          $ref: '#/components/schemas/MinimumCommitment'
+        creditGrantRateCards:
+          type: array
+          items:
+            $ref: '#/components/schemas/CreditGrantRateCard'
+        type:
+          $ref: '#/components/schemas/PricePlanType'
+        deferredRevenue:
+          type: boolean
+    BillingEntitlementRateCard:
+      description: Billing Entitlement rate card
+      type: object
+      additionalProperties: false
+      required:
+      - featureId
+      - featureConfigs
+      - ratePlan
+      - rateValues
+      - invoiceTiming
+      properties:
+        featureId:
+          type: string
+        featureConfigs:
+          type: array
+          minItems: 1
+          items:
+            $ref: '#/components/schemas/FeatureConfig'
+        tag:
+          type: string
+          description: A tag string to group rate cards
+        invoiceTiming:
+          $ref: '#/components/schemas/InvoiceTiming'
+        displayName:
+          type: string
+          description: Name your rate card, this will be used in invoice
+        ratePlan:
+          $ref: '#/components/schemas/RatePlan'
+        rateValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/RateValue'
+        recurrenceConfig:
+          $ref: '#/components/schemas/RecurrenceConfig'
+    PricingRuleTiming:
+      type: string
+      enum:
+      - IN_ADVANCE
+      - IN_ARREARS
+      x-enum-varnames:
+      - IN_ADVANCE
+      - IN_ARREARS
+      description: 'If IN_ADVANCE, the rule will be applied on rate cards with invoice timing IN_ADVANCE .
+
+        If IN_ARREARS, the rule will be applied on rate cards with invoice timing IN_ARREARS .
+
+        '
+    CreatePricePlanMigrationRequest:
+      description: Request to create price plan migration request
+      allOf:
+      - $ref: '#/components/schemas/pricePlanMigrationConfig'
+      - type: object
+        properties:
+          requireConfirmation:
+            description: 'This field specifies whether to process job or to wait till the job is confirmed. Default value: false
+
+              '
+            type: boolean
+    UsageCycleInterval:
+      type: string
+      description: "UsageCycleInterval field allows you to treat the billing interval as many smaller windows. Revenue is calculated for\neach of the windows (usage cycles) and their sum is considered as the billing interval revenue.\nExample: 1 Named License being used across entire billing interval. Rate Value: $1/license\nCASE 1: Without usage cycle. $1 is charged for the entire billing cycle.\nCASE 2: Usage cycle is configure to be WEEKLY and the billing interval has 4 weeks. In this case $1 is charged \nfor each week totalling to $4 across for the billing interval\n"
+      enum:
+      - WEEKLY
+      - MONTHLY
+      - QUARTERLY
+      - HALF_YEARLY
+      - ANNUALLY
+    AddOnType:
+      type: string
+      enum:
+      - LICENSE
+      - FIXED_FEE
+      - CREDIT_GRANT
+      - NAMED_LICENSE
+      description: 'LICENSE: Addon can be used in license rate cards
+
+        FIXED_FEE: Addon can be used in fixed fee rate cards
+
+        CREDIT_GRANT: Addon can be used in credit grant rate cards
+
+        NAMED_LICENSE: Addon can be used in license rate cards
+
+        '
+    CreditGrantType:
+      type: string
+      enum:
+      - ONE_TIME
+      - RECURRING
+      description: Credit grant applies either for a one-time occurrence or for each cycle.
+    ErrorResponse:
+      type: object
+      additionalProperties: false
+      required:
+      - message
+      properties:
+        message:
+          type: string
+          description: error description
+          maxLength: 500
+    UpdatePricePlanRequest:
+      description: Request to update a price plan
+      type: object
+      additionalProperties: false
+      properties:
+        description:
+          description: Description of price plan
+          type: string
+          maxLength: 255
+        pricePlanDetails:
+          $ref: '#/components/schemas/CreatePricePlanDetailsOverride'
+        migrationMode:
+          type: string
+          enum:
+          - IMMEDIATE
+          - IMMEDIATE_IGNORE_OVERRIDE
+          - NEXT_CYCLE
+          - NEXT_CYCLE_IGNORE_OVERRIDE
+          - NONE
+        versionsToMigrate:
+          type: string
+          enum:
+          - LATEST_VERSION
+          - ALL_VERSION
+        pricingRules:
+          type: array
+          items:
+            $ref: '#/components/schemas/CreatePricingRule'
+    PricingRule:
+      type: object
+      description: Represents pricing rules of a price plan. i.e, price plan bound by time.
+      additionalProperties: false
+      required:
+      - id
+      - name
+      - version
+      - order
+      - computation
+      - action
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        version:
+          type: integer
+          format: int32
+          minimum: 1
+        invoiceTiming:
+          $ref: '#/components/schemas/PricingRuleTiming'
+        order:
+          type: integer
+          format: int32
+          minimum: 1
+        condition:
+          description: JSON logic condition deciding whether to compute this pricing rule or not
+          type: string
+        computation:
+          description: JSON logic to be computed
+          type: string
+        action:
+          description: JSON logic to be computed
+          title: action
+          $ref: '#/components/schemas/PricingRuleAction'
+    UsageRateCard:
+      type: object
+      required:
+      - usageMeterId
+      - ratePlan
+      - rateValues
+      properties:
+        displayName:
+          type: string
+          description: Name your rate card, this will be displayed in the Togai App
+        tag:
+          type: string
+          description: A tag string to group usageRateCards
+        usageMeterId:
+          type: string
+          example: um.1zYnCiM9Bpg.1zYn
+        ratePlan:
+          $ref: '#/components/schemas/RatePlan'
+        rateValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/RateValue'
+    PricingCycleConfig:
+      type: object
+      description: Represents configurations related to pricing cycle
+      required:
+      - interval
+      - gracePeriod
+      properties:
+        interval:
+          $ref: '#/components/schemas/PricingCycleInterval'
+        startOffset:
+          type: object
+          description: "Represents the start of pricing cycle in terms of\n - dayOffset - number of days from beginning of week / month and\n - monthOffset - number of months from beginning of interval (quarter, half-year or year)\nNote: If a day with offset doesn't exist for a month, closest previous day is considered\nExamples:\nWEEKLY -\n  - {dayOffset: 1, monthOffset: NIL} - First day of every week (Monday)\n  - {dayOffset: 3, monthOffset: NIL} - 3rd day of every week (Wednesday)\n  - {dayOffset: LAST, monthOffset: NIL} - Last day of every week (Sunday)\nMONTHLY -\n  - {dayOffset: 1, monthOffset: NIL} - First day of every month\n  - {dayOffset: 12, monthOffset: NIL} - 12th of every month\n  - {dayOffset: 28, monthOffset: NIL} - 28th of every month. i.e, 28th of Jan, 28th of Feb, ...\n  - {dayOffset: 30, monthOffset: NIL} - 30th of every month. i.e, 28th of Jan, 28th of Feb, ...\n  - {dayOffset: LAST, monthOffset: NIL} - Last day of every month. i.e, 31st of Jan, 28th of Feb, ...\nQUARTERLY\n  - {dayOffset: 15, monthOffset: FIRST} - 15th Jan, 15th Apr, 15th Jul and 15th Oct\n  - {dayOffset: 15, monthOffset: 2} - 15th Feb, 15th May, 15th Aug and 15th Nov\n  - {dayOffset: 15, monthOffset: LAST} - 15th Mar, 15th Jun, 15th Sep and 15th Dec\n  - {dayOffset: LAST, monthOffset: FIRST} - 31st Jan, 30th Apr, 30th Jul and 31th Oct\nHALF_YEARLY\n  - {dayOffset: 15, monthOffset: FIRST} - 15th Jan and 15th Jul\n  - {dayOffset: 15, monthOffset: 4} - 15th Apr and 15th Oct\n  - {dayOffset: 15, monthOffset: LAST} - 15th Jun and 15th Dec\nANNUALLY\n  - {dayOffset: 15, monthOffset: FIRST} - 15th Jan\n  - {dayOffset: 15, monthOffset: 1} - 15th Jan\n  - {dayOffset: LAST, monthOffset: 2} - 29th Feb on Leap year, 28th otherwise \n  - {dayOffset: 15, monthOffset: 8} - 15th Aug\n  - {dayOffset: 15, monthOffset: LAST} - 15th Dec\n"
+          required:
+          - dayOffset
+          - monthOffset
+          properties:
+            dayOffset:
+              type: string
+              description: 'If interval is WEEKLY, min: "1" and max: "7" as strings. Spl. string allowed: LAST
+
+                Otherwise, min: "1" and max: "31" as strings. Spl. string allowed: LAST
+
+                '
+            monthOffset:
+              type: string
+              description: 'min: "1" and max: "12". Spl. string allowed: FIRST / LAST.
+
+                For QUARTERLY only 1 - 3 is allowed and for HALF_YEARLY 1 - 6. This being an optional field, shouldn''t be passed for MONTHLY.
+
+                '
+        gracePeriod:
+          type: integer
+          description: "Togai allows you to ingest past dated events that will be processed by a pricing cycle till the end grace period. \nFor example: Pricing cycle is Monthly from 1st to 30th and gracePeriod is 5 days which next month 1 to 5th date, you can ingest past dated events during this grace period.\n"
+          format: int32
+          example: 3
+        anniversaryCycle:
+          type: boolean
+          description: "Togai calculates the startOffsets based on the date of association instead of requiring from the user and \nthese offsets will be applied as an override if this flag is enabled.\nExamples:\nWEEKLY -\n  - 23/10/2023 (Monday) - {dayOffset: 1, monthOffset: NIL} \n  - 25/10/2023 (Wednesday) - {dayOffset: 3, monthOffset: NIL} \n  - 29/10/2023 (Sunday) - {dayOffset: 7, monthOffset: NIL}\nMONTHLY -\n  - 1st Oct - {dayOffset: 1, monthOffset: NIL}\n  - 12th Oct - {dayOffset: 12, monthOffset: NIL}\n  - 28th Oct - {dayOffset: 28, monthOffset: NIL}\n  - 30th Oct - {dayOffset: 30, monthOffset: NIL}\n  - 31th Oct - {dayOffset: LAST, monthOffset: NIL}\nQUARTERLY\n  - 15th Jan, 15th Apr, 15th Jul and 15th Oct - {dayOffset: 15, monthOffset: 1}\n  - 15th Feb, 15th May, 15th Aug and 15th Nov - {dayOffset: 15, monthOffset: 2} \n  - 15th Mar, 15th Jun, 15th Sep and 15th Dec - {dayOffset: 15, monthOffset: 3}\nHALF_YEARLY\n  - 15th Jan and 15th Jul - {dayOffset: 15, monthOffset: 1} \n  - 15th Apr and 15th Oct - {dayOffset: 15, monthOffset: 4} \n  - 15th Jun and 15th Dec - {dayOffset: 15, monthOffset: 6}\nANNUALLY\n  - 15th Jan - {dayOffset: 15, monthOffset: 1}\n  - 29th Feb on Leap year  - {dayOffset: LAST, monthOffset: 2}\n  - 28th Feb  - {dayOffset: LAST, monthOffset: 2}\n  - 15th Aug - {dayOffset: 15, monthOffset: 8}\n  - 15th Dec - {dayOffset: 15, monthOffset: 12}\n"
+    CurrencySlabRateDetail:
+      type: object
+      description: The association of a currency along with its slab detail
+      additionalProperties: false
+      required:
+      - currency
+      - creditAmount
+      - slabDetails
+      properties:
+        currency:
+          type: string
+        creditAmount:
+          type: number
+          description: The amount of credit that needs to be credited
+          minimum: 0
+        slabDetails:
+          type: array
+          items:
+            $ref: '#/components/schemas/SlabDetail'
+        rateConfig:
+          type: object
+          additionalProperties:
+            type: string
+    AddCurrencyToPricePlanRequest:
+      description: Request to adding currency to a price plan
+      type: object
+      additionalProperties: false
+      required:
+      - currency
+      properties:
+        currency:
+          description: Currency to be added
+          type: string
+        usageRates:
+          description: List of usage rates
+          type: array
+          items:
+            title: UsageRate
+            type: object
+            required:
+            - usageMeterId
+            - slabRates
+            properties:
+              usageMeterId:
+                description: The usage meter will be associated with the rate card to transform the usage value to billable value
+                example: um.1zYnCiM9Bpg.1zYn
+                type: string
+              slabRates:
+                description: List of slab rates
+                type: array
+                items:
+                  $ref: '#/components/schemas/SlabRate'
+              rateConfig:
+                type: object
+                additionalProperties:
+                  type: string
+        fixedFeeRates:
+          description: Rates for fixed fee rate cards
+          type: array
+          items:
+            title: FixedFeeRate
+            type: object
+            required:
+            - id
+            - rate
+            properties:
+              id:
+                type: string
+              rate:
+                type: number
+        licenseRates:
+          description: Rates for license rate cards
+          type: array
+          items:
+            title: LicenseRate
+            type: object
+            required:
+            - id
+            - slabRates
+            properties:
+              id:
+                type: string
+              slabRates:
+                description: List of slab rates
+                type: array
+                items:
+                  $ref: '#/components/schemas/SlabRate'
+              rateConfig:
+                type: object
+                additionalProperties:
+                  type: string
+        billingEntitlementRates:
+          description: Rates for billing entitlement rate cards
+          type: array
+          items:
+            title: BillingEntitlementRate
+            type: object
+            required:
+            - id
+            - slabRates
+            properties:
+              id:
+                type: string
+              slabRates:
+                description: List of slab rates
+                type: array
+                items:
+                  $ref: '#/components/schemas/SlabRate'
+              rateConfig:
+                type: object
+                additionalProperties:
+                  type: string
+        minimumCommitmentRate:
+          description: Rates for minimum commitment.
+          type: number
+        creditGrantRates:
+          description: Rates for credit grant rate card
+          type: array
+          items:
+            title: creditGrantRates
+            type: object
+            required:
+            - id
+            - slabDetails
+            - creditAmount
+            properties:
+              id:
+                type: string
+              slabDetails:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SlabDetail'
+              creditAmount:
+                type: number
+              rateConfig:
+                type: object
+                additionalProperties:
+                  type: string
+        entitlementOverageRates:
+          description: Rates for entitlement overage rate cards
+          type: array
+          items:
+            title: EntitlementOverageRates
+            type: object
+            required:
+            - id
+            - slabRates
+            properties:
+              id:
+                type: string
+              slabRates:
+                description: List of slab rates
+                type: array
+                items:
+                  $ref: '#/components/schemas/SlabRate'
+              rateConfig:
+                type: object
+                additionalProperties:
+                  type: string
+    PriceType:
+      type: string
+      enum:
+      - FLAT
+      - PER_UNIT
+      - PACKAGE
+    CurrencyRateValue:
+      type: object
+      required:
+      - currency
+      - rate
+      properties:
+        currency:
+          type: string
+        rate:
+          type: number
+    CreditRateDetails:
+      type: object
+      description: Amount to be credited
+      additionalProperties: false
+      required:
+      - pricingModel
+      - currencySlabRateDetails
+      properties:
+        pricingModel:
+          $ref: '#/components/schemas/PricingModel'
+        currencySlabRateDetails:
+          type: array
+          items:
+            $ref: '#/components/schemas/CurrencySlabRateDetail'
+    SlabRate:
+      type: object
+      description: Represents a rate for a slab
+      required:
+      - order
+      - rate
+      properties:
+        order:
+          type: integer
+          format: int32
+        rate:
+          type: number
+        slabRateConfig:
+          type: object
+          additionalProperties:
+            type: string
+    Slab:
+      type: object
+      description: Represents a pricing priceType (rates + slabs) for usage price plan
+      required:
+      - order
+      - startAfter
+      - priceType
+      properties:
+        order:
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 10
+        startAfter:
+          type: number
+        priceType:
+          $ref: '#/components/schemas/PriceType'
+        slabConfig:
+          type: object
+          additionalProperties:
+            type: string
+    ProratedRefundMode:
+      type: string
+      enum:
+      - NONE
+      - CREDITS
+      - PAYMENT
+      - WALLET
+    CreditGrantRateCard:
+      description: Credit grant rate card
+      type: object
+      additionalProperties: false
+      required:
+      - id
+      - rateDetails
+      - grantDetails
+      properties:
+        id:
+          type: string
+        displayName:
+          type: string
+        tag:
+          type: string
+          description: A tag string to group creditGrantRateCard
+        grantDetails:
+          $ref: '#/components/schemas/GrantDetails'
+        rateDetails:
+          $ref: '#/components/schemas/CreditRateDetails'
+        invoiceTiming:
+          $ref: '#/components/schemas/InvoiceTiming'
+        type:
+          $ref: '#/components/schemas/CreditGrantType'
+        recurrenceConfig:
+          $ref: '#/components/schemas/RecurrenceConfig'
+    PricePlanType:
+      type: string
+      description: Type of price plan
+      enum:
+      - BILLING
+      - PURCHASE
+    RecurrenceConfig:
+      type: object
+      properties:
+        interval:
+          description: Represents the number of pricing cycles after which the rate card will be charged
+          type: integer
+          format: int64
+          example: 3
+        offset:
+          description: Represents the offset for pricing cycles after which the rate card will be charged
+          type: integer
+          format: int64
+          example: 5
+    ExpiryType:
+      type: string
+      description: Expiry type of grant
+      enum:
+      - PRICING_CYCLE
+      - NO_EXPIRY
+      - CUSTOM
+    PricePlan:
+      description: Price plan entity
+      type: object
+      additionalProperties: false
+      required:
+      - id
+      - name
+      - type
+      - status
+      - pricingSchedule
+      properties:
+        id:
+          type: string
+          description: Price plan id
+        name:
+          type: string
+          description: Name of the price plan
+          maxLength: 50
+        type:
+          $ref: '#/components/schemas/PricePlanType'
+        description:
+          description: Description of price plan
+          type: string
+          maxLength: 255
+        status:
+          description: Status of Price plan
+          type: string
+          enum:
+          - DRAFT
+          - ACTIVE
+          - ARCHIVED
+        pricingSchedule:
+          type: array
+          items:
+            $ref: '#/components/schemas/PricingSchedule'
+    GrantDetails:
+      description: Grant details of Credit Grant Rate Card
+      type: object
+      additionalProperties: false
+      required:
+      - priority
+      - expiryType
+      properties:
+        priority:
+          type: integer
+          minimum: 0
+        expiryType:
+          $ref: '#/components/schemas/ExpiryType'
+        expiryDuration:
+          type: string
+          format: duration
+        applicableEntityIds:
+          type: array
+          items:
+            type: string
+    RateValue:
+      type: object
+      description: Represents a rate
+      required:
+      - currency
+      - slabRates
+      properties:
+        currency:
+          type: string
+        slabRates:
+          type: array
+          minItems: 1
+          items:
+            $ref: '#/components/schemas/SlabRate'
+        rateConfig:
+          type: object
+          additionalProperties:
+            type: string
+    PricingModel:
+      type: string
+      description: "Togai supports two type of pricing model Tiered and Volume. Tiered pricing model applies respective slab and its rate to the usage value while volume pricing model applies the latest matching slab of the usage value and applies respective rate. \nFor more understanding read [Rate Cards](https://docs.togai.com/docs/priceplan#setting-up-multiple-rate-cards)\n"
+      enum:
+      - TIERED
+      - VOLUME
+    BaseSuccessResponse:
+      type: object
+      additionalProperties: false
+      required:
+      - success
+      properties:
+        success:
+          type: boolean
+          example: true
+    RatePlan:
+      type: object
+      description: Contains all rate related configurations
+      required:
+      - pricingModel
+      - slabs
+      properties:
+        pricingModel:
+          $ref: '#/components/schemas/PricingModel'
+        slabs:
+          description: Rate cards can have single or multiple slab up to 100.
+          type: array
+          minItems: 1
+          items:
+            $ref: '#/components/schemas/Slab'
+    MinimumCommitment:
+      title: MinimumCommitment
+      type: object
+      required:
+      - displayName
+      - rateValues
+      properties:
+        displayName:
+          type: string
+        rateValues:
+          type: array
+          minItems: 1
+          items:
+            $ref: '#/components/schemas/CurrencyRateValue'
+    EntitlementOverageRateCard:
+      type: object
+      required:
+      - ratePlan
+      - rateValues
+      - featureId
+      properties:
+        featureId:
+          type: string
+          description: Unique Identifier of the attached Feature
+          maxLength: 50
+        displayName:
+          type: string
+          description: Name to be displayed during invoice
+        tag:
+          type: string
+          description: A tag string to group rate cards
+        maxQuantity:
+          type: number
+          description: Maximum quantity allowed for the feature, if not specified, unlimited quantity is allowed
+        ratePlan:
+          $ref: '#/components/schemas/RatePlan'
+        rateValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/RateValue'
+        billingConfig:
+          $ref: '#/components/schemas/BillingConfig'
+          description: Represents the billing config of the entitlement overage rate card. If not specified interval:1 and startOffset:0 is taken as default value
+    InvoiceTiming:
+      type: string
+      enum:
+      - IN_ADVANCE
+      - IN_ARREARS
+      - PREPAID
+      x-enum-varnames:
+      - IN_ADVANCE
+      - IN_ARREARS
+      - PREPAID
+      description: 'If IN_ADVANCE, the rate card will be invoiced in the previous billing cycle.
+
+        If IN_ARREARS, the rate card will be invoiced in the current billing cycle.
+
+        If PREPAID, credits/entitlements will be granted only after invoice is paid
+
+        '
+  parameters:
+    currency_id:
+      in: path
+      name: currency_id
+      required: true
+      schema:
+        type: string
+        maxLength: 50
+        example: USD
+    version_query:
+      in: query
+      name: version
+      description: Optional version to get a specific version. Gets latest version if it is not provided.
+      required: false
+      schema:
+        type: integer
+        format: int32
+        example: 2
+    price_plan_id:
+      in: path
+      name: price_plan_id
+      required: true
+      schema:
+        type: string
+        maxLength: 50
+        example: pp.1zYnCiM9Bpg.lv25y
+    next_token:
+      in: query
+      name: nextToken
+      required: false
+      schema:
+        type: string
+        example: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEwMCwgInNvcnRPcmRlciI6ICJhc2MifQ==
+    dry_run:
+      in: query
+      name: dry_run
+      required: false
+      schema:
+        type: boolean
+        example: false
+    page_size:
+      in: query
+      name: pageSize
+      required: false
+      schema:
+        type: number
+        example: 10
+  requestBodies:
+    UpdatePricePlanRequest:
+      description: Payload to update price plan
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UpdatePricePlanRequest'
+          examples:
+            UpdatePricePlanRequest:
+              $ref: '#/components/examples/UpdatePricePlanRequest'
+    CreatePricePlanMigrationRequest:
+      description: Payload to create price plan migration request
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CreatePricePlanMigrationRequest'
+          examples:
+            CreatePricePlanMigrationRequest:
+              $ref: '#/components/examples/CreatePricePlanMigrationRequest'
+    AddCurrencyToPricePlanRequest:
+      description: Payload to add currency to price plan
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/AddCurrencyToPricePlanRequest'
+          examples:
+            AddCurrencyToPricePlanRequest:
+              $ref: '#/components/examples/AddCurrencyToPricePlanRequest'
+    ActivatePricePlanRequest:
+      description: Payload to activate price plan
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ActivatePricePlanRequest'
+          examples:
+            ActivatePricePlanRequest:
+              $ref: '#/components/examples/ActivatePricePlanRequest'
+    CreatePricePlanRequest:
+      description: Payload to create price plan
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CreatePricePlanRequest'
+          examples:
+            CreateNonAnniversaryBillingPricePlanRequest:
+              $ref: '#/components/examples/CreateNonAnniversaryBillingPricePlanRequest'
+            CreateAnniversaryBillingPricePlanRequest:
+              $ref: '#/components/examples/CreateAnniversaryBillingPricePlanRequest'
+            CreatePurchasePricePlanRequest:
+              $ref: '#/components/examples/CreatePurchasePricePlanRequest'
+  examples:
+    CreatePricePlanMigrationRequest:
+      value:
+        requireConfirmation: true
+        sourceId: pp.1zYnCiM9Bpg.lv25y
+        sourceVersion: 1
+        targetId: pp.2zYnCiM9Bpg.bfeu2
+        targetVersion: 2
+        migrationMode: IMMEDIATE
+    CreatePurchasePricePlanRequest:
+      value:
+        name: Purchase Plan
+        type: PURCHASE
+        pricePlanDetails:
+          billingEntitlementRateCards:
+          - featureId: feature.20txvOAhiIS.m3X3d
+            featureConfigs:
+            - featureCreditLimit: 100
+              effectiveUntil: P20D
+            invoiceTiming: IN_ADVANCE
+            ratePlan:
+              pricingModel: TIERED
+              slabs:
+              - order: 1
+                startAfter: 0
+                priceType: PER_UNIT
+            rateValues:
+            - currency: USD
+              slabRates:
+              - order: 1
+                rate: 1
+            displayName: feature1
+          fixedFeeRateCards:
+          - id: addon.20sidL2HJ7o.vvzDT
+            rateValues:
+            - currency: USD
+              rate: 50
+            enableProration: false
+            displayName: normal
+            tag: '1'
+            type: ONE_TIME
+          - id: addon.20sidQxYRjs.4oBSU
+            rateValues:
+            - currency: USD
+              rate: 10
+            enableProration: false
+            displayName: anotherNormal
+            tag: '2'
+            type: ONE_TIME
+          supportedCurrencies:
+          - USD
+    CreateNonAnniversaryBillingPricePlanRequest:
+      value:
+        name: grantCheck
+        type: BILLING
+        description: Starter plan
+        pricePlanDetails:
+          supportedCurrencies:
+          - USD
+          pricingCycleConfig:
+            interval: MONTHLY
+            startOffset:
+              dayOffset: '1'
+              monthOffset: NIL
+            gracePeriod: 1
+            anniversaryCycle: false
+          usageRateCards:
+          - displayName: rr1
+            usageMeterId: um.20Ms65CtgMy.nwFP0
+            ratePlan:
+              pricingModel: TIERED
+              slabs:
+              - order: 1
+                startAfter: 0
+                priceType: FLAT
+                slabConfig: {}
+            rateValues:
+            - currency: USD
+              slabRates:
+              - order: 1
+                rate: 10
+                slabRateConfig: {}
+              rateConfig:
+                minimumRate: '1'
+                maximumRate: '10'
+            tag: '1'
+          fixedFeeRateCards:
+          - id: addon.20sidL2HJ7o.vvzDT
+            rateValues:
+            - currency: USD
+              rate: 50
+            enableProration: false
+            displayName: normal
+            tag: '1'
+            invoiceTiming: IN_ARREARS
+            type: RECURRING
+          - id: addon.20sidQxYRjs.4oBSU
+            rateValues:
+            - currency: USD
+              rate: 10
+            enableProration: false
+            displayName: anotherNormal
+            tag: '2'
+            invoiceTiming: IN_ARREARS
+            type: RECURRING
+          - id: addon.20sidzySWoa.Bzrcc
+            rateValues:
+            - currency: USD
+              rate: 40
+            enableProration: false
+            displayName: inadvance
+            tag: '1'
+            invoiceTiming: IN_ADVANCE
+            type: RECURRING
+          licenseRateCards:
+          - id: addon.20rzlEPp6no.1BYez
+            enableProration: false
+            ratePlan:
+              pricingModel: TIERED
+              slabs:
+              - order: 1
+                startAfter: 0
+                priceType: FLAT
+                slabConfig: {}
+            rateValues:
+            - currency: USD
+              slabRates:
+              - order: 1
+                rate: 15
+                slabRateConfig: {}
+              rateConfig:
+                minimumRate: '1'
+                maximumRate: '10'
+            displayName: license
+            tag: '2'
+            config: {}
+          billingEntitlementRateCards:
+          - featureId: feature.20jxa18BdUW.d4XQw
+            featureConfigs:
+            - featureCreditLimit: 100
+              effectiveUntil: P20D
+            invoiceTiming: IN_ADVANCE
+            ratePlan:
+              pricingModel: TIERED
+              slabs:
+              - order: 1
+                startAfter: 0
+                priceType: PER_UNIT
+                slabConfig: {}
+            rateValues:
+            - currency: USD
+              slabRates:
+              - order: 1
+                rate: 1
+                slabRateConfig: {}
+            displayName: feature1
+            tag: tag_acme
+          - featureId: feature.20uE1xqEudk.MMVH8
+            featureConfigs:
+            - featureCreditLimit: 200
+              effectiveUntil: P20D
+            invoiceTiming: IN_ADVANCE
+            ratePlan:
+              pricingModel: TIERED
+              slabs:
+              - order: 1
+                startAfter: 0
+                priceType: PER_UNIT
+                slabConfig: {}
+            rateValues:
+            - currency: USD
+              slabRates:
+              - order: 1
+                rate: 2
+                slabRateConfig: {}
+            displayName: feature2
+            tag: tag_acme
+          minimumCommitment:
+            displayName: Minimum Commitment
+            rateValues:
+            - currency: USD
+              rate: 0
+          creditGrantRateCards:
+          - id: addon.20ufMNoJoAC.TUzRi
+            type: RECURRING
+            displayName: Credit2
+            rateDetails:
+              pricingModel: TIERED
+              currencySlabRateDetails:
+              - currency: USD
+                creditAmount: 100
+                slabDetails:
+                - startAfter: 0
+                  priceType: FLAT
+                  rate: 10
+            grantDetails:
+              priority: 1
+              expiryType: PRICING_CYCLE
+              applicableEntityIds: []
+            invoiceTiming: IN_ARREARS
+            recurrenceConfig:
+              offset: 0
+              interval: 1
+          - id: addon.20ufMNoJoAC.TUzRi
+            type: RECURRING
+            displayName: Credit2
+            rateDetails:
+              pricingModel: TIERED
+              currencySlabRateDetails:
+              - currency: USD
+                slabDetails:
+                - rate: 11
+                  priceType: FLAT
+                  startAfter: 0
+                  slabConfig: {}
+                  slabRateConfig: {}
+                creditAmount: 11
+              - currency: INR
+                slabDetails:
+                - rate: 11
+                  priceType: FLAT
+                  startAfter: 0
+                  slabConfig: {}
+                  slabRateConfig: {}
+                creditAmount: 11
+            grantDetails:
+              priority: 1
+              expiryType: PRICING_CYCLE
+              applicableEntityIds: []
+            invoiceTiming: IN_ARREARS
+            recurrenceConfig:
+              offset: 0
+              interval: 1
+          entitlementOverageRateCards:
+          - featureId: feature.20jxa18BdUW.d4XQw
+            ratePlan:
+              pricingModel: TIERED
+              slabs:
+              - order: 1
+                startAfter: 0
+                priceType: PER_UNIT
+                slabConfig: {}
+            rateValues:
+            - currency: USD
+              slabRates:
+              - order: 1
+                rate: 1
+                slabRateConfig: {}
+            displayName: feature1
+            tag: tag_acme
+            maxQuantity: 50
+            billingConfig:
+              interval: 1
+              startOffset: 4
+          - featureId: feature.20uE1xqEudk.MMVH8
+            ratePlan:
+              pricingModel: TIERED
+              slabs:
+              - order: 1
+                startAfter: 0
+                priceType: PER_UNIT
+                slabConfig: {}
+            rateValues:
+            - currency: USD
+              slabRates:
+              - order: 1
+                rate: 2
+                slabRateConfig: {}
+            displayName: feature2
+            tag: tag_acme
+            maxQuantity: 50
+    CreateAnniversaryBillingPricePlanRequest:
+      value:
+        name: grantCheck
+        description: Anniversary price plan
+        type: BILLING
+        pricePlanDetails:
+          supportedCurrencies:
+          - USD
+          pricingCycleConfig:
+            interval: MONTHLY
+            gracePeriod: 1
+            anniversaryCycle: true
+          usageRateCards:
+          - displayName: rr1
+            usageMeterId: um.20Ms65CtgMy.nwFP0
+            ratePlan:
+              pricingModel: TIERED
+              slabs:
+              - order: 1
+                startAfter: 0
+                priceType: FLAT
+                slabConfig: {}
+            rateValues:
+            - currency: USD
+              slabRates:
+              - order: 1
+                rate: 10
+                slabRateConfig: {}
+            tag: '1'
+          fixedFeeRateCards:
+          - id: addon.20sidL2HJ7o.vvzDT
+            rateValues:
+            - currency: USD
+              rate: 50
+            enableProration: false
+            displayName: normal
+            tag: '1'
+            invoiceTiming: IN_ARREARS
+            type: RECURRING
+          - id: addon.20sidQxYRjs.4oBSU
+            rateValues:
+            - currency: USD
+              rate: 10
+            enableProration: false
+            displayName: anotherNormal
+            tag: '2'
+            invoiceTiming: IN_ARREARS
+            type: RECURRING
+          - id: addon.20sidzySWoa.Bzrcc
+            rateValues:
+            - currency: USD
+              rate: 40
+            enableProration: false
+            displayName: inadvance
+            tag: '1'
+            invoiceTiming: IN_ADVANCE
+            type: RECURRING
+          licenseRateCards:
+          - id: addon.20rzlEPp6no.1BYez
+            enableProration: false
+            ratePlan:
+              pricingModel: TIERED
+              slabs:
+              - order: 1
+                startAfter: 0
+                priceType: FLAT
+                slabConfig: {}
+            rateValues:
+            - currency: USD
+              slabRates:
+              - order: 1
+                rate: 15
+                slabRateConfig: {}
+            displayName: license
+            tag: '2'
+          billingEntitlementRateCards:
+          - featureId: feature.20jxa18BdUW.d4XQw
+            featureConfigs:
+            - featureCreditLimit: 100
+              effectiveUntil: P20D
+            invoiceTiming: IN_ADVANCE
+            ratePlan:
+              pricingModel: TIERED
+              slabs:
+              - order: 1
+                startAfter: 0
+                priceType: PER_UNIT
+                slabConfig: {}
+            rateValues:
+            - currency: USD
+              slabRates:
+              - order: 1
+                rate: 1
+                slabRateConfig: {}
+            displayName: feature1
+            tag: tag_acme
+          - featureId: feature.20uE1xqEudk.MMVH8
+            featureConfigs:
+            - featureCreditLimit: 200
+              effectiveUntil: P20D
+            invoiceTiming: IN_ADVANCE
+            ratePlan:
+              pricingModel: TIERED
+              slabs:
+              - order: 1
+                startAfter: 0
+                priceType: PER_UNIT
+                slabConfig: {}
+            rateValues:
+            - currency: USD
+              slabRates:
+              - order: 1
+                rate: 2
+                slabRateConfig: {}
+            displayName: feature2
+            tag: tag_acme
+          minimumCommitment:
+            displayName: Minimum Commitment
+            rateValues:
+            - currency: USD
+              rate: 0
+          creditGrantRateCards:
+          - id: addon.20ufMNoJoAC.TUzRi
+            type: RECURRING
+            displayName: Credit2
+            rateDetails:
+              pricingModel: TIERED
+              currencySlabRateDetails:
+              - currency: USD
+                creditAmount: 100
+                slabDetails:
+                - startAfter: 0
+                  priceType: FLAT
+                  rate: 10
+            grantDetails:
+              priority: 1
+              expiryType: PRICING_CYCLE
+              applicableEntityIds: []
+            invoiceTiming: IN_ARREARS
+            recurrenceConfig:
+              offset: 0
+              interval: 1
+          - id: addon.20ufMNoJoAC.TUzRi
+            type: RECURRING
+            displayName: Credit2
+            rateDetails:
+              pricingModel: TIERED
+              currencySlabRateDetails:
+              - currency: USD
+                slabDetails:
+                - rate: 11
+                  priceType: FLAT
+                  startAfter: 0
+                  slabConfig: {}
+                  slabRateConfig: {}
+                creditAmount: 11
+              - currency: INR
+                slabDetails:
+                - rate: 11
+                  priceType: FLAT
+                  startAfter: 0
+                  slabConfig: {}
+                  slabRateConfig: {}
+                creditAmount: 11
+            grantDetails:
+              priority: 1
+              expiryType: PRICING_CYCLE
+              applicableEntityIds: []
+            invoiceTiming: IN_ARREARS
+            recurrenceConfig:
+              offset: 0
+              interval: 1
+          entitlementOverageRateCards:
+          - featureId: feature.20jxa18BdUW.d4XQw
+            ratePlan:
+              pricingModel: TIERED
+              slabs:
+              - order: 1
+                startAfter: 0
+                priceType: PER_UNIT
+                slabConfig: {}
+            rateValues:
+            - currency: USD
+              slabRates:
+              - order: 1
+                rate: 1
+                slabRateConfig: {}
+            displayName: feature1
+            tag: tag_acme
+            maxQuantity: 50
+            billingConfig:
+              interval: 1
+              startOffset: 4
+          - featureId: feature.20uE1xqEudk.MMVH8
+            ratePlan:
+              pricingModel: TIERED
+              slabs:
+              - order: 1
+                startAfter: 0
+                priceType: PER_UNIT
+                slabConfig: {}
+            rateValues:
+            - currency: USD
+              slabRates:
+              - order: 1
+                rate: 2
+                slabRateConfig: {}
+            displayName: feature2
+            tag: tag_acme
+    AddCurrencyToPricePlanRequest:
+      value:
+        currency: USD
+        usageRates:
+        - usageMeterId: um.1zYnCiM9Bpg.1zYn
+          slabRates:
+          - order: 0
+            rate: 100
+            rateConfig:
+              minimumValue: 0
+    UpdatePricePlanRequest:
+      value:
+        description: updated description
+        pricePlanDetails:
+          pricingCycleConfig:
+            interval: MONTHLY
+            startOffset:
+              dayOffset: '6'
+              monthOffset: NIL
+            gracePeriod: 3
+            anniversaryCycle: true
+        migrationMode: IMMEDIATE_IGNORE_OVERRIDE
+    PricePlanPaginatedResponse:
+      value:
+        data:
+        - id: um.1zYnCiM9Bpg.lv25y
+          version: 1
+          type: BILLING
+          name: Rides - Pro plan
+          description: ''
+          status: DRAFT
+          usageMeters:
+          - um.1zlQTBWlkeO.lB7fh
+          - um.1zYnCiM9Bpg.1zYn
+          pricePlanDetails:
+            pricingCycleConfig:
+              interval: MONTHLY
+              startOffset:
+                dayOffset: '4'
+                monthOffset: NIL
+              gracePeriod: 3
+              anniversaryCycle: false
+            supportedCurrencies:
+            - USD
+            activeCurrencies:
+            - USD
+          updatedAt: '2020-01-01T00:00:00Z'
+          createdAt: '2020-01-01T00:00:00Z'
+        nextToken: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEwMCwgInNvcnRPcmRlciI6ICJhc2MifQ==
+    ActivatePricePlanRequest:
+      value:
+        currencies:
+        - USD
+        - INR
+    PricePlan:
+      value:
+        id: pp.20sieTc1u2i.fY8AT
+        name: grantCheck
+        type: BILLING
+        status: ACTIVE
+        pricingSchedule:
+        - id: sch.20sieTcdnQ0.ZmseL
+          startDate: '1970-01-01T00:00:00Z'
+          endDate: '9999-01-01T00:00:00Z'
+          version: 1
+          isOverriden: false
+          pricePlanDetails:
+            supportedCurrencies:
+            - USD
+            activeCurrencies:
+            - USD
+            pricingCycleConfig:
+              interval: MONTHLY
+              startOffset:
+                dayOffset: '1'
+                monthOffset: NIL
+              gracePeriod: 1
+              anniversaryCycle: false
+            usageRateCards:
+            - displayName: rr1
+              usageMeterId: um.20Ms65CtgMy.nwFP0
+              ratePlan:
+                pricingModel: TIERED
+                slabs:
+                - order: 1
+                  startAfter: 0
+                  priceType: FLAT
+                  slabConfig: {}
+              rateValues:
+              - currency: USD
+                slabRates:
+                - order: 1
+                  rate: 10
+                  slabRateConfig: {}
+              tag: '1'
+            fixedFeeRateCards:
+            - id: addon.20sidL2HJ7o.vvzDT
+              rateValues:
+              - currency: USD
+                rate: 50
+              enableProration: false
+              displayName: normal
+              tag: '1'
+              invoiceTiming: IN_ARREARS
+              type: RECURRING
+            - id: addon.20sidQxYRjs.4oBSU
+              rateValues:
+              - currency: USD
+                rate: 10
+              enableProration: false
+              displayName: anotherNormal
+              tag: '2'
+              invoiceTiming: IN_ARREARS
+              type: RECURRING
+              recurrenceConfig:
+                interval: 2
+                offset: 1
+            - id: addon.20sidzySWoa.Bzrcc
+              rateValues:
+              - currency: USD
+                rate: 40
+              enableProration: false
+              displayName: inadvance
+              tag: '1'
+              invoiceTiming: IN_ADVANCE
+              type: RECURRING
+            licenseRateCards:
+            - id: addon.20darMuJ6C8.bdgRj
+              enableProration: false
+              ratePlan:
+                pricingModel: TIERED
+                slabs:
+                - order: 1
+                  startAfter: 0
+                  priceType: FLAT
+                  slabConfig: {}
+              rateValues:
+              - currency: USD
+                slabRates:
+                - order: 1
+                  rate: 15
+                  slabRateConfig: {}
+              displayName: license
+              tag: '2'
+              config:
+                maxQuantity: 100
+            billingEntitlementRateCards:
+            - featureId: feature.20jxa18BdUW.d4XQw
+              featureConfigs:
+              - featureCreditLimit: 100
+                effectiveUntil: P20D
+              invoiceTiming: IN_ADVANCE
+              ratePlan:
+                pricingModel: TIERED
+                slabs:
+                - order: 1
+                  startAfter: 0
+                  priceType: PER_UNIT
+                  slabConfig: {}
+              rateValues:
+              - currency: USD
+                slabRates:
+                - order: 1
+                  rate: 1
+              displayName: feature1
+            - featureId: feature.20uE1xqEudk.MMVH8
+              featureConfigs:
+              - featureCreditLimit: 200
+                effectiveUntil: P20D
+              invoiceTiming: IN_ADVANCE
+              ratePlan:
+                pricingModel: TIERED
+                slabs:
+                - order: 1
+                  startAfter: 0
+                  priceType: PER_UNIT
+                  slabConfig: {}
+              rateValues:
+              - currency: USD
+                slabRates:
+                - order: 1
+                  rate: 2
+              displayName: feature2
+            minimumCommitment:
+              displayName: Minimum Commitment
+              rateValues:
+              - currency: USD
+                rate: 0
+            creditGrantRateCards:
+            - id: addon.20ufMNoJoAC.TUzRi
+              type: RECURRING
+              displayName: Credit2
+              rateDetails:
+                pricingModel: TIERED
+                currencySlabRateDetails:
+                - currency: USD
+                  creditAmount: 100
+                  slabDetails:
+                  - startAfter: 0
+                    priceType: FLAT
+                    rate: 10
+              grantDetails:
+                priority: 1
+                expiryType: PRICING_CYCLE
+                applicableEntityIds: []
+              invoiceTiming: IN_ARREARS
+              recurrenceConfig:
+                offset: 0
+                interval: 1
+            - id: addon.20ufMNoJoAC.TUzRi
+              type: RECURRING
+              displayName: Credit2
+              rateDetails:
+                pricingModel: TIERED
+                currencySlabRateDetails:
+                - currency: USD
+                  slabDetails:
+                  - rate: 11
+                    priceType: FLAT
+                    startAfter: 0
+                    slabConfig: {}
+                    slabRateConfig: {}
+                  creditAmount: 11
+                - currency: INR
+                  slabDetails:
+                  - rate: 11
+                    priceType: FLAT
+                    startAfter: 0
+                    slabConfig: {}
+                    slabRateConfig: {}
+                  creditAmount: 11
+              grantDetails:
+                priority: 1
+                expiryType: PRICING_CYCLE
+                applicableEntityIds: []
+              invoiceTiming: IN_ARREARS
+              recurrenceConfig:
+                offset: 0
+                interval: 1
+            type: BILLING
+        description: Starter plan
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: Bearer <credential>
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
+externalDocs:
+  description: Find out more about Togai
+  url: https://docs.togai.com/docs

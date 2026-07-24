@@ -1,0 +1,239 @@
+openapi: 3.0.3
+info:
+  version: '1.0'
+  title: Togai Apis Accounts Aliases API
+  contact:
+    email: engg@togai.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  description: APIs for Togai App
+servers:
+- description: Api endpoint
+  url: https://api.togai.com/
+- description: Sandbox api endpoint
+  url: https://sandbox-api.togai.com/
+security:
+- bearerAuth: []
+tags:
+- name: Aliases
+  description: Alias level calls
+paths:
+  /aliases:
+    get:
+      tags:
+      - Aliases
+      summary: List All Aliases
+      description: Returns a list of aliases with pagination and sort.
+      operationId: listAliases
+      parameters:
+      - $ref: '#/components/parameters/next_token'
+      - $ref: '#/components/parameters/page_size'
+      responses:
+        '200':
+          $ref: '#/components/responses/AliasPaginatedResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+    post:
+      tags:
+      - Aliases
+      summary: Create an Alias
+      description: This API let’s you to create an alias
+      operationId: createAlias
+      requestBody:
+        $ref: '#/components/requestBodies/CreateBulkAliasRequest'
+      responses:
+        '201':
+          $ref: '#/components/responses/AliasPaginatedResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+  /aliases/{alias}:
+    get:
+      tags:
+      - Aliases
+      summary: Get an Alias
+      description: Get alias information using alias.
+      operationId: getAlias
+      parameters:
+      - $ref: '#/components/parameters/alias'
+      responses:
+        '200':
+          $ref: '#/components/responses/AliasResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+    delete:
+      tags:
+      - Aliases
+      summary: Delete an Alias
+      description: This API let’s you to delete an alias using alias.
+      operationId: deleteAlias
+      parameters:
+      - $ref: '#/components/parameters/alias'
+      responses:
+        '200':
+          $ref: '#/components/responses/BaseSuccessResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+components:
+  responses:
+    BaseSuccessResponse:
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/BaseSuccessResponse'
+    AliasPaginatedResponse:
+      description: Response for list aliases request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/AliasPaginatedResponse'
+          examples:
+            AliasPaginatedResponse:
+              $ref: '#/components/examples/AliasPaginatedResponse'
+    ErrorResponse:
+      description: Error response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            ErrorResponse:
+              summary: Error Message
+              value:
+                message: <Reason message>
+    AliasResponse:
+      description: Response for adding or removing aliases
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Alias'
+          examples:
+            AliasResponse:
+              $ref: '#/components/examples/AliasResponse'
+  schemas:
+    AliasPaginatedResponse:
+      type: object
+      description: Represents for list response of alias
+      additionalProperties: false
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Alias'
+        nextToken:
+          type: string
+    CreateBulkAliasRequest:
+      description: Create bulk alias
+      type: object
+      additionalProperties: false
+      required:
+      - aliases
+      properties:
+        aliases:
+          type: array
+          maxItems: 100
+          minItems: 1
+          items:
+            $ref: '#/components/schemas/CreateAliasRequest'
+    CreateAliasRequest:
+      description: Create an alias
+      type: object
+      additionalProperties: false
+      required:
+      - value
+      properties:
+        value:
+          type: string
+          maxLength: 255
+    ErrorResponse:
+      type: object
+      additionalProperties: false
+      required:
+      - message
+      properties:
+        message:
+          type: string
+          description: error description
+          maxLength: 500
+    BaseSuccessResponse:
+      type: object
+      additionalProperties: false
+      required:
+      - success
+      properties:
+        success:
+          type: boolean
+          example: true
+    Alias:
+      type: object
+      description: Represents an Alias
+      additionalProperties: false
+      required:
+      - value
+      - createdAt
+      properties:
+        value:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+  parameters:
+    page_size:
+      in: query
+      name: pageSize
+      required: false
+      schema:
+        type: number
+        example: 10
+    alias:
+      in: path
+      name: alias
+      required: true
+      schema:
+        type: string
+        example: custom_value
+    next_token:
+      in: query
+      name: nextToken
+      required: false
+      schema:
+        type: string
+        example: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEwMCwgInNvcnRPcmRlciI6ICJhc2MifQ==
+  examples:
+    AliasResponse:
+      value:
+        value: acme_primary
+        createdAt: '2020-01-01T00:00:00Z'
+    CreateBulkAliasRequest:
+      value:
+        aliases:
+        - value: alias1
+    AliasPaginatedResponse:
+      value:
+        data:
+        - value: acme_primary
+          createdAt: '2020-01-01T00:00:00Z'
+  requestBodies:
+    CreateBulkAliasRequest:
+      description: Payload to create bulk aliases
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CreateBulkAliasRequest'
+          examples:
+            CreateAliasRequest:
+              $ref: '#/components/examples/CreateBulkAliasRequest'
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: Bearer <credential>
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
+externalDocs:
+  description: Find out more about Togai
+  url: https://docs.togai.com/docs

@@ -1,0 +1,359 @@
+openapi: 3.0.3
+info:
+  version: '1.0'
+  title: Togai Apis Accounts AddOns API
+  contact:
+    email: engg@togai.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  description: APIs for Togai App
+servers:
+- description: Api endpoint
+  url: https://api.togai.com/
+- description: Sandbox api endpoint
+  url: https://sandbox-api.togai.com/
+security:
+- bearerAuth: []
+tags:
+- name: AddOns
+paths:
+  /addons:
+    post:
+      tags:
+      - AddOns
+      summary: Create an AddOn
+      description: Create an AddOn
+      operationId: createAddOn
+      requestBody:
+        $ref: '#/components/requestBodies/CreateAddOnRequest'
+      responses:
+        '200':
+          $ref: '#/components/responses/AddOnResponse'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
+        '403':
+          $ref: '#/components/responses/ErrorResponse'
+        '404':
+          $ref: '#/components/responses/ErrorResponse'
+        '429':
+          $ref: '#/components/responses/ErrorResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+    get:
+      tags:
+      - AddOns
+      summary: List AddOns
+      description: Get a list of add-ons
+      operationId: getAddOns
+      parameters:
+      - name: status
+        description: 'Filter by status
+
+          '
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - ACTIVE
+          - ARCHIVED
+          example: ACTIVE
+      - $ref: '#/components/parameters/next_token'
+      - $ref: '#/components/parameters/page_size'
+      responses:
+        '200':
+          $ref: '#/components/responses/AddOnPaginatedResponse'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
+        '403':
+          $ref: '#/components/responses/ErrorResponse'
+        '404':
+          $ref: '#/components/responses/ErrorResponse'
+        '429':
+          $ref: '#/components/responses/ErrorResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+  /addons/{addon_id}:
+    patch:
+      tags:
+      - AddOns
+      summary: Update an Addon
+      description: 'Update an existing addon
+
+        '
+      operationId: updateAddOn
+      parameters:
+      - $ref: '#/components/parameters/addon_id'
+      requestBody:
+        $ref: '#/components/requestBodies/UpdateAddOnRequest'
+      responses:
+        '200':
+          $ref: '#/components/responses/AddOnResponse'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
+        '403':
+          $ref: '#/components/responses/ErrorResponse'
+        '404':
+          $ref: '#/components/responses/ErrorResponse'
+        '429':
+          $ref: '#/components/responses/ErrorResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+    get:
+      tags:
+      - AddOns
+      summary: Get an Addon
+      description: Get details of an addon
+      operationId: getAddOn
+      parameters:
+      - $ref: '#/components/parameters/addon_id'
+      responses:
+        '200':
+          $ref: '#/components/responses/AddOnResponse'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
+        '403':
+          $ref: '#/components/responses/ErrorResponse'
+        '404':
+          $ref: '#/components/responses/ErrorResponse'
+        '429':
+          $ref: '#/components/responses/ErrorResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+    delete:
+      tags:
+      - AddOns
+      summary: Delete an Addon
+      description: Archive an addOn
+      operationId: deleteAddOn
+      parameters:
+      - $ref: '#/components/parameters/addon_id'
+      responses:
+        '200':
+          $ref: '#/components/responses/BaseSuccessResponse'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
+        '403':
+          $ref: '#/components/responses/ErrorResponse'
+        '404':
+          $ref: '#/components/responses/ErrorResponse'
+        '429':
+          $ref: '#/components/responses/ErrorResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+components:
+  responses:
+    AddOnResponse:
+      description: Response for Create and Get addons requests
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/AddOn'
+    BaseSuccessResponse:
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/BaseSuccessResponse'
+    AddOnPaginatedResponse:
+      description: Response for List addons requests
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/AddOnPaginatedResponse'
+    ErrorResponse:
+      description: Error response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            ErrorResponse:
+              summary: Error Message
+              value:
+                message: <Reason message>
+  schemas:
+    CreateAddOnRequest:
+      description: Request to create an addon
+      type: object
+      additionalProperties: false
+      required:
+      - name
+      - type
+      properties:
+        name:
+          description: Name of addon
+          type: string
+          maxLength: 255
+        type:
+          $ref: '#/components/schemas/AddOnType'
+        billableName:
+          description: Billable name of addon. Billable name takes precedence over name to display in invoice.
+          type: string
+          maxLength: 255
+    AddOnPaginatedResponse:
+      type: object
+      required:
+      - data
+      additionalProperties: false
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/AddOn'
+        nextToken:
+          type: string
+        context:
+          $ref: '#/components/schemas/PaginationOptions'
+    UpdateAddOnRequest:
+      description: Request to update an addon
+      type: object
+      additionalProperties: false
+      properties:
+        name:
+          description: Name of addon
+          type: string
+          maxLength: 255
+        billableName:
+          description: Billable name of addon. Billable name takes precedence over name to display in invoice.
+          type: string
+          maxLength: 255
+    AddOnType:
+      type: string
+      enum:
+      - LICENSE
+      - FIXED_FEE
+      - CREDIT_GRANT
+      - NAMED_LICENSE
+      description: 'LICENSE: Addon can be used in license rate cards
+
+        FIXED_FEE: Addon can be used in fixed fee rate cards
+
+        CREDIT_GRANT: Addon can be used in credit grant rate cards
+
+        NAMED_LICENSE: Addon can be used in license rate cards
+
+        '
+    AddOn:
+      allOf:
+      - $ref: '#/components/schemas/CreateAddOnRequest'
+      - type: object
+        required:
+        - id
+        - createdAt
+        - status
+        - displayName
+        properties:
+          id:
+            description: Id of addon
+            type: string
+            example: addon.1zYnCiM9Bpg.1zYn
+          createdAt:
+            description: Created Time of addon
+            type: string
+            format: date-time
+          status:
+            description: status of addon
+            type: string
+            enum:
+            - ACTIVE
+            - ARCHIVED
+            example: ACTIVE
+          displayName:
+            description: 'Display name of addon. This is an auto-generated field which contains billableName of addon.
+
+              If billableName is not provided, name will be used as display name.
+
+              '
+            type: string
+    PaginationOptions:
+      type: object
+      additionalProperties: false
+      properties:
+        pageSize:
+          type: integer
+        sortOrder:
+          type: string
+          enum:
+          - ASC
+          - DESC
+    ErrorResponse:
+      type: object
+      additionalProperties: false
+      required:
+      - message
+      properties:
+        message:
+          type: string
+          description: error description
+          maxLength: 500
+    BaseSuccessResponse:
+      type: object
+      additionalProperties: false
+      required:
+      - success
+      properties:
+        success:
+          type: boolean
+          example: true
+  parameters:
+    page_size:
+      in: query
+      name: pageSize
+      required: false
+      schema:
+        type: number
+        example: 10
+    next_token:
+      in: query
+      name: nextToken
+      required: false
+      schema:
+        type: string
+        example: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEwMCwgInNvcnRPcmRlciI6ICJhc2MifQ==
+    addon_id:
+      in: path
+      name: addon_id
+      required: true
+      schema:
+        type: string
+        maxLength: 50
+        example: addon.1zYnCiM9Bpg.lv25y
+  requestBodies:
+    CreateAddOnRequest:
+      description: Payload to create addon
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CreateAddOnRequest'
+    UpdateAddOnRequest:
+      description: Payload to update addon
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UpdateAddOnRequest'
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: Bearer <credential>
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
+externalDocs:
+  description: Find out more about Togai
+  url: https://docs.togai.com/docs

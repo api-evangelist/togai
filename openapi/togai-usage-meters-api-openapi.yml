@@ -1,0 +1,600 @@
+openapi: 3.0.3
+info:
+  version: '1.0'
+  title: Togai Apis Accounts Usage Meters API
+  contact:
+    email: engg@togai.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  description: APIs for Togai App
+servers:
+- description: Api endpoint
+  url: https://api.togai.com/
+- description: Sandbox api endpoint
+  url: https://sandbox-api.togai.com/
+security:
+- bearerAuth: []
+tags:
+- name: Usage Meters
+  description: Usage Meter level calls
+paths:
+  /usage_meters:
+    post:
+      tags:
+      - Usage Meters
+      summary: Create an Usage Meter
+      description: Create an usage meter and associate with an event schema
+      operationId: createUsageMeter
+      requestBody:
+        $ref: '#/components/requestBodies/CreateUsageMeterRequest'
+      responses:
+        '201':
+          $ref: '#/components/responses/UsageMeterResponse'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
+        '403':
+          $ref: '#/components/responses/ErrorResponse'
+        '404':
+          $ref: '#/components/responses/ErrorResponse'
+        '429':
+          $ref: '#/components/responses/ErrorResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+    get:
+      tags:
+      - Usage Meters
+      summary: List Usage Meters for Event Schema
+      description: Get a list of usage meters associated with an event schema
+      operationId: getUsageMetersForEventSchema
+      parameters:
+      - name: status
+        description: 'Filter by status
+
+          '
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - ACTIVE
+          - INACTIVE
+      - name: aggregations
+        description: 'Filter by aggregations
+
+          '
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - COUNT
+          - SUM
+      - $ref: '#/components/parameters/next_token'
+      - $ref: '#/components/parameters/page_size'
+      responses:
+        '200':
+          $ref: '#/components/responses/UsageMeterPaginatedResponse'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
+        '403':
+          $ref: '#/components/responses/ErrorResponse'
+        '404':
+          $ref: '#/components/responses/ErrorResponse'
+        '429':
+          $ref: '#/components/responses/ErrorResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+  /usage_meters/{usage_meter_id}:
+    get:
+      tags:
+      - Usage Meters
+      summary: Get Usage Meter
+      description: Get an usage meter using event schema name and usage meter id.
+      operationId: getUsageMeter
+      parameters:
+      - $ref: '#/components/parameters/usage_meter_id'
+      responses:
+        '200':
+          $ref: '#/components/responses/UsageMeterResponse'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
+        '403':
+          $ref: '#/components/responses/ErrorResponse'
+        '404':
+          $ref: '#/components/responses/ErrorResponse'
+        '429':
+          $ref: '#/components/responses/ErrorResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+    patch:
+      tags:
+      - Usage Meters
+      summary: Update an Usage Meter
+      description: This API lets you update an existing usage meter.
+      operationId: updateUsageMeter
+      parameters:
+      - $ref: '#/components/parameters/usage_meter_id'
+      requestBody:
+        $ref: '#/components/requestBodies/UpdateUsageMeterRequest'
+      responses:
+        '200':
+          $ref: '#/components/responses/UsageMeterResponse'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
+        '403':
+          $ref: '#/components/responses/ErrorResponse'
+        '404':
+          $ref: '#/components/responses/ErrorResponse'
+        '429':
+          $ref: '#/components/responses/ErrorResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+    delete:
+      tags:
+      - Usage Meters
+      summary: Delete an Usage Meter
+      description: Delete an Usage Meter
+      operationId: deleteUsageMeter
+      parameters:
+      - $ref: '#/components/parameters/usage_meter_id'
+      responses:
+        '200':
+          $ref: '#/components/responses/BaseSuccessResponse'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
+        '403':
+          $ref: '#/components/responses/ErrorResponse'
+        '404':
+          $ref: '#/components/responses/ErrorResponse'
+        '429':
+          $ref: '#/components/responses/ErrorResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+  /usage_meters/{usage_meter_id}/activate:
+    post:
+      tags:
+      - Usage Meters
+      summary: Activate Usage Meter
+      description: Activate usage meter
+      operationId: activateUsageMeter
+      parameters:
+      - $ref: '#/components/parameters/usage_meter_id'
+      responses:
+        '200':
+          $ref: '#/components/responses/UsageMeterResponse'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
+        '403':
+          $ref: '#/components/responses/ErrorResponse'
+        '404':
+          $ref: '#/components/responses/ErrorResponse'
+        '429':
+          $ref: '#/components/responses/ErrorResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+  /usage_meters/{usage_meter_id}/deactivate:
+    post:
+      tags:
+      - Usage Meters
+      summary: Deactivate Usage Meter
+      description: 'Make an existing active usage meter to be inactive
+
+        Active Usage Meters with active Pricing Plan attached can also be deactivated.
+
+        '
+      operationId: deactivateUsageMeter
+      parameters:
+      - $ref: '#/components/parameters/usage_meter_id'
+      responses:
+        '200':
+          $ref: '#/components/responses/UsageMeterResponse'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
+        '403':
+          $ref: '#/components/responses/ErrorResponse'
+        '404':
+          $ref: '#/components/responses/ErrorResponse'
+        '429':
+          $ref: '#/components/responses/ErrorResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+components:
+  schemas:
+    UsageMeterFilterEntry:
+      description: Filter entry with field and value
+      type: object
+      required:
+      - field
+      - value
+      properties:
+        field:
+          type: string
+        value:
+          type: string
+    UpdateUsageMeterRequest:
+      description: Request to update usage meter
+      type: object
+      additionalProperties: false
+      properties:
+        name:
+          description: Name of usage meter.
+          type: string
+          maxLength: 255
+        billableName:
+          description: Billable name of usage meter. Billable name takes precedence over name to display in invoice.
+          type: string
+          maxLength: 255
+        description:
+          description: Description of the usage meter
+          type: string
+          maxLength: 255
+        eventSchemaName:
+          description: Event Schema Identifier
+          type: string
+        type:
+          description: 'Type of usage meter
+
+            * COUNTER - Count usage
+
+            '
+          type: string
+          enum:
+          - COUNTER
+          example: COUNTER
+        aggregation:
+          $ref: '#/components/schemas/UsageMeterAggregation'
+        computations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Computation'
+        filters:
+          type: array
+          items:
+            $ref: '#/components/schemas/UsageMeterFilterEntry'
+    CreateUsageMeterRequest:
+      description: Request to create usage meter
+      type: object
+      additionalProperties: false
+      required:
+      - name
+      - type
+      - aggregation
+      properties:
+        name:
+          description: Name of the usage meter. Must be unique for an organization.
+          type: string
+          maxLength: 50
+          pattern: ^[\sa-zA-Z0-9_-]*$
+        billableName:
+          description: Billable name of usage meter. Billable name takes precedence over name to display in invoice.
+          type: string
+          maxLength: 255
+        description:
+          description: Description of the usage meter
+          type: string
+          maxLength: 255
+        filters:
+          description: The usage meter's applicability will be determined by comparing the filter condition agianst the events.
+          type: array
+          items:
+            $ref: '#/components/schemas/UsageMeterFilterEntry'
+        type:
+          description: Type of usage meter
+          type: string
+          enum:
+          - COUNTER
+        aggregation:
+          $ref: '#/components/schemas/UsageMeterAggregation'
+        computations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Computation'
+        eventSchemaName:
+          description: Event Schema Identifier
+          type: string
+    UsageMeterAggregation:
+      description: 'Aggregation to be applied on usage meter result
+
+        * COUNT - Counts number of events matching the usage meter
+
+        * SUM - Sums up results of computation of all events matching usage meter
+
+        '
+      type: string
+      enum:
+      - COUNT
+      - SUM
+    ErrorResponse:
+      type: object
+      additionalProperties: false
+      required:
+      - message
+      properties:
+        message:
+          type: string
+          description: error description
+          maxLength: 500
+    PaginationOptions:
+      type: object
+      additionalProperties: false
+      properties:
+        pageSize:
+          type: integer
+        sortOrder:
+          type: string
+          enum:
+          - ASC
+          - DESC
+    UsageMeterPaginatedResponse:
+      type: object
+      additionalProperties: false
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/UsageMeter'
+        nextToken:
+          type: string
+        context:
+          $ref: '#/components/schemas/PaginationOptions'
+    UsageMeter:
+      description: Structure of usage meter
+      type: object
+      additionalProperties: false
+      required:
+      - id
+      - name
+      - displayName
+      - type
+      - aggregation
+      properties:
+        id:
+          description: Identifier of the usage meter
+          type: string
+          maxLength: 20
+        name:
+          description: Name of the usage meter
+          type: string
+          maxLength: 50
+          pattern: ^[\sa-zA-Z0-9_-]*$
+          example: rides-usage
+        billableName:
+          description: Billable name of addon. Billable name takes precedence over name to display in invoice.
+          type: string
+          maxLength: 255
+          example: Rides Usage
+        displayName:
+          description: 'Display name of usage meter. This is an auto-generated field which contains billableName of usage meter.
+
+            If billableName is not provided, name will be used as display name.
+
+            '
+          type: string
+          maxLength: 255
+        description:
+          type: string
+          maxLength: 255
+          example: Meter to track cab rides
+        filters:
+          type: array
+          items:
+            $ref: '#/components/schemas/UsageMeterFilterEntry'
+        type:
+          description: Type of usage meter
+          type: string
+          enum:
+          - COUNTER
+          example: COUNTER
+        status:
+          description: Status of usage meter
+          type: string
+          enum:
+          - DRAFT
+          - ACTIVE
+          - INACTIVE
+          - ARCHIVED
+          example: DRAFT
+        aggregation:
+          $ref: '#/components/schemas/UsageMeterAggregation'
+        computations:
+          type: array
+          minItems: 0
+          maxItems: 1
+          items:
+            $ref: '#/components/schemas/Computation'
+        createdAt:
+          type: string
+          format: date-time
+        lastActivatedAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+    BaseSuccessResponse:
+      type: object
+      additionalProperties: false
+      required:
+      - success
+      properties:
+        success:
+          type: boolean
+          example: true
+    Computation:
+      type: object
+      required:
+      - computation
+      - order
+      properties:
+        id:
+          description: Optional identifier describing the matcher and computation pair
+          type: string
+          maxLength: 50
+        matcher:
+          description: 'Condition to be applied on event. Upon matching it the corresponding computation will be considered for usage_meter unit calculation. The result of the matcher needs to be [truthy](https://jsonlogic.com/truthy.html) in order to be considered as a match.
+
+            '
+          type: string
+          maxLength: 1500
+          example: "{\n  \"and\": [\n    {\"in\": [{\"var\": \"dimension.city\"}, \"chennai\", \"mumbai\"]},\n    \"or\": [\n      {\">\": [{\"var\": \"attribute.distance\"}, 100]},\n      {\"<\": [{\"var\": \"attribute.distance\"}, 20]}\n    ]\n  ]\n}\n"
+        computation:
+          description: 'Computation to be applied on an event if it matches the matcher. In case of a COUNT aggregation type, computation should be passed as ''1''
+
+            '
+          type: string
+          maxLength: 500
+          example:
+            '*':
+            - var: attributes.distance
+            - 0.4
+        order:
+          description: The order in which multiple matched computations will get evaluated
+          type: integer
+  responses:
+    BaseSuccessResponse:
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/BaseSuccessResponse'
+    UsageMeterResponse:
+      description: Response for Create and Get usage event requests
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UsageMeter'
+          examples:
+            UsageMeter:
+              $ref: '#/components/examples/UsageMeter'
+    UsageMeterPaginatedResponse:
+      description: Response for list usage_meters request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UsageMeterPaginatedResponse'
+          examples:
+            UsageMeterPaginatedResponse:
+              $ref: '#/components/examples/UsageMeterPaginatedResponse'
+    ErrorResponse:
+      description: Error response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            ErrorResponse:
+              summary: Error Message
+              value:
+                message: <Reason message>
+  requestBodies:
+    UpdateUsageMeterRequest:
+      description: Payload to create usage meter
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UpdateUsageMeterRequest'
+    CreateUsageMeterRequest:
+      description: Payload to create usage meter
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CreateUsageMeterRequest'
+          examples:
+            UsageMeter:
+              $ref: '#/components/examples/CreateUsageMeterRequest'
+  examples:
+    UsageMeter:
+      value:
+        id: um.1zlQTBWlkeO.lB7fh
+        name: Rides
+        displayName: Rides
+        description: Cab rides
+        type: COUNTER
+        aggregation: COUNT
+        status: DRAFT
+        computations:
+        - matcher: "{\n  \"and\": [\n    {\"in\": [{\"var\": \"dimension.city\"}, \"chennai\", \"mumbai\"]},\n    \"or\": [\n      {\">\": [{\"var\": \"attribute.distance\"}, 100]},\n      {\"<\": [{\"var\": \"attribute.distance\"}, 20]}\n    ]\n  ]\n}\n"
+          order: 1
+          computation: '1'
+    UsageMeterPaginatedResponse:
+      value:
+        data:
+        - id: 01BX5ZZKBKACTAV9WEVG
+          name: Rides
+          displayName: Rides Usage
+          description: Cab rides
+          type: COUNTER
+          aggregation: COUNT
+          status: DRAFT
+          computations:
+          - matcher: "{\n  \"and\": [\n    {\"in\": [{\"var\": \"dimension.city\"}, \"chennai\", \"mumbai\"]},\n    \"or\": [\n      {\">\": [{\"var\": \"attribute.distance\"}, 100]},\n      {\"<\": [{\"var\": \"attribute.distance\"}, 20]}\n    ]\n  ]\n}\n"
+            order: 1
+            computation: '1'
+        nextToken: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEwMCwgInNvcnRPcmRlciI6ICJhc2MifQ==
+        context:
+          pageSize: 10
+    CreateUsageMeterRequest:
+      value:
+        name: Rides
+        description: Cab rides
+        type: COUNTER
+        aggregation: SUM
+        eventSchemaName: evfhr123d
+        computations:
+        - matcher: "{\n  \"and\": [\n    {\"in\": [{\"var\": \"dimension.city\"}, \"chennai\", \"mumbai\"]},\n    \"or\": [\n      {\">\": [{\"var\": \"attribute.distance\"}, 100]},\n      {\"<\": [{\"var\": \"attribute.distance\"}, 20]}\n    ]\n  ]\n}\n"
+          computation:
+            '*':
+            - var: attributes.distance
+            - 0.4
+  parameters:
+    page_size:
+      in: query
+      name: pageSize
+      required: false
+      schema:
+        type: number
+        example: 10
+    next_token:
+      in: query
+      name: nextToken
+      required: false
+      schema:
+        type: string
+        example: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEwMCwgInNvcnRPcmRlciI6ICJhc2MifQ==
+    usage_meter_id:
+      in: path
+      name: usage_meter_id
+      required: true
+      schema:
+        type: string
+        maxLength: 50
+        example: um.1zYnCiM9Bpg.1zYn
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: Bearer <credential>
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
+externalDocs:
+  description: Find out more about Togai
+  url: https://docs.togai.com/docs

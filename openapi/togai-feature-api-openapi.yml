@@ -1,0 +1,399 @@
+openapi: 3.0.3
+info:
+  version: '1.0'
+  title: Togai Apis Accounts Feature API
+  contact:
+    email: engg@togai.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  description: APIs for Togai App
+servers:
+- description: Api endpoint
+  url: https://api.togai.com/
+- description: Sandbox api endpoint
+  url: https://sandbox-api.togai.com/
+security:
+- bearerAuth: []
+tags:
+- name: Feature
+paths:
+  /features:
+    post:
+      tags:
+      - Feature
+      summary: Create a Feature and Optionally Associate with One or More Event_schemas
+      description: Create a Feature optionally associate with one or more event_schemas
+      operationId: createFeature
+      requestBody:
+        $ref: '#/components/requestBodies/CreateFeatureRequest'
+      responses:
+        '200':
+          $ref: '#/components/responses/FeatureResponse'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
+        '403':
+          $ref: '#/components/responses/ErrorResponse'
+        '404':
+          $ref: '#/components/responses/ErrorResponse'
+        '429':
+          $ref: '#/components/responses/ErrorResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+    get:
+      tags:
+      - Feature
+      summary: List Feature
+      description: Get a list of features along with its associations
+      operationId: getFeatures
+      parameters:
+      - $ref: '#/components/parameters/next_token'
+      - $ref: '#/components/parameters/page_size'
+      responses:
+        '200':
+          $ref: '#/components/responses/FeaturePaginatedResponse'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
+        '403':
+          $ref: '#/components/responses/ErrorResponse'
+        '404':
+          $ref: '#/components/responses/ErrorResponse'
+        '429':
+          $ref: '#/components/responses/ErrorResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+  /features/{feature_id}:
+    patch:
+      tags:
+      - Feature
+      summary: Update a Feature
+      description: 'Update an existing feature and its eventSchema associations
+
+        '
+      operationId: updateFeature
+      parameters:
+      - $ref: '#/components/parameters/feature_id'
+      requestBody:
+        $ref: '#/components/requestBodies/UpdateFeatureRequest'
+      responses:
+        '200':
+          $ref: '#/components/responses/FeatureResponse'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
+        '403':
+          $ref: '#/components/responses/ErrorResponse'
+        '404':
+          $ref: '#/components/responses/ErrorResponse'
+        '429':
+          $ref: '#/components/responses/ErrorResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+    get:
+      tags:
+      - Feature
+      summary: Get a Feature
+      description: Get details of a Feature
+      operationId: getFeature
+      parameters:
+      - $ref: '#/components/parameters/feature_id'
+      responses:
+        '200':
+          $ref: '#/components/responses/FeatureResponse'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
+        '403':
+          $ref: '#/components/responses/ErrorResponse'
+        '404':
+          $ref: '#/components/responses/ErrorResponse'
+        '429':
+          $ref: '#/components/responses/ErrorResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+components:
+  responses:
+    FeaturePaginatedResponse:
+      description: Response for list Feature request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/FeaturePaginatedListData'
+          examples:
+            FeaturePaginatedResponse:
+              $ref: '#/components/examples/FeaturePaginatedResponse'
+    FeatureResponse:
+      description: Response for Create and Get Feature requests
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Feature'
+          examples:
+            FeatureResponse:
+              $ref: '#/components/examples/FeatureResponse'
+    ErrorResponse:
+      description: Error response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            ErrorResponse:
+              summary: Error Message
+              value:
+                message: <Reason message>
+  schemas:
+    EventSchemasForFeature:
+      description: event_schema details that are in association with feature
+      type: object
+      required:
+      - schemaName
+      - attributeName
+      properties:
+        schemaName:
+          type: string
+          pattern: ^[\sa-zA-Z0-9_-]*$
+        attributeName:
+          type: string
+    FeatureListResponse:
+      type: object
+      description: Represents a Feature for List Response
+      additionalProperties: false
+      required:
+      - id
+      - name
+      - displayName
+      - createdAt
+      - schemaCount
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        billableName:
+          type: string
+          maxLength: 255
+        displayName:
+          description: 'Display name of feature. This is an auto-generated field which contains billableName of feature.
+
+            If billableName is not provided, name will be used as display name.
+
+            '
+          type: string
+          maxLength: 255
+        schemaCount:
+          type: integer
+          format: int32
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+    ErrorResponse:
+      type: object
+      additionalProperties: false
+      required:
+      - message
+      properties:
+        message:
+          type: string
+          description: error description
+          maxLength: 500
+    CreateFeatureRequest:
+      description: Create a Feature stand-alone or associate it with schemas
+      type: object
+      additionalProperties: false
+      required:
+      - name
+      - schemaAssociations
+      properties:
+        name:
+          description: Name of the feature
+          type: string
+          maxLength: 255
+        billableName:
+          description: Billable name of feature. Billable name takes precedence over name to display in invoice.
+          type: string
+          maxLength: 255
+        schemaAssociations:
+          $ref: '#/components/schemas/SchemaFeature'
+    UpdateFeatureRequest:
+      description: Update a Feature properties
+      type: object
+      additionalProperties: false
+      properties:
+        name:
+          description: Name of the feature
+          type: string
+          maxLength: 255
+        billableName:
+          description: Billable name of addon. Billable name takes precedence over name to display in invoice.
+          type: string
+          maxLength: 255
+        schemaAssociations:
+          $ref: '#/components/schemas/SchemaFeature'
+    PaginationOptions:
+      type: object
+      additionalProperties: false
+      properties:
+        pageSize:
+          type: integer
+        sortOrder:
+          type: string
+          enum:
+          - ASC
+          - DESC
+    Feature:
+      type: object
+      description: Represents a Feature
+      additionalProperties: false
+      required:
+      - id
+      - name
+      - displayName
+      - schemaAssociations
+      - createdAt
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        billableName:
+          type: string
+          maxLength: 255
+        displayName:
+          description: 'Display name of feature. This is an auto-generated field which contains billableName of feature.
+
+            If billableName is not provided, name will be used as display name.
+
+            '
+          type: string
+          maxLength: 255
+        schemaAssociations:
+          $ref: '#/components/schemas/SchemaFeature'
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+    FeaturePaginatedListData:
+      type: object
+      additionalProperties: false
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/FeatureListResponse'
+        nextToken:
+          type: string
+        context:
+          $ref: '#/components/schemas/PaginationOptions'
+    SchemaFeature:
+      description: Association of a feature with event_schemas
+      type: array
+      maxItems: 50
+      items:
+        $ref: '#/components/schemas/EventSchemasForFeature'
+      uniqueItems: true
+  examples:
+    FeaturePaginatedResponse:
+      value:
+        data:
+        - id: feature.1zYnCiM9Bpg.lv25y
+          name: DiscountCredits
+          displayName: DiscountCredits
+          schemaCount: 2
+          createdAt: '2020-01-01T00:00:00Z'
+          updatedAt: '2020-01-01T00:00:00Z'
+        nextToken: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEwMCwgInNvcnRPcmRlciI6ICJhc2MifQ==
+        context:
+          pageSize: 10
+    CreateFeatureRequest:
+      value:
+        name: DiscountCredits
+        schemaAssociations:
+        - event_schema1
+        - event_schema2
+    UpdateFeatureRequest:
+      value:
+        name: DiscountCredits
+        schemaAssociations:
+        - event_schema1
+        - event_schema3
+    FeatureResponse:
+      value:
+        id: feature.1zYnCiM9Bpg.lv25y
+        name: DiscountCredits
+        displayName: DiscountCredits
+        schemaAssociations:
+        - schemaName: event_schema1
+          attributeName: distance
+        - schemaName: event_schema2
+          attributeName: time
+        createdAt: '2020-01-01T00:00:00Z'
+        updatedAt: '2020-01-01T00:00:00Z'
+  requestBodies:
+    UpdateFeatureRequest:
+      description: Payload to update a Feature along the associations with event_schemas
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UpdateFeatureRequest'
+          examples:
+            UpdateFeatureRequest:
+              $ref: '#/components/examples/UpdateFeatureRequest'
+    CreateFeatureRequest:
+      description: Payload to create a Feature along the association with event_schemas
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CreateFeatureRequest'
+          examples:
+            CreateFeatureRequest:
+              $ref: '#/components/examples/CreateFeatureRequest'
+  parameters:
+    feature_id:
+      in: path
+      description: feature_id corresponding to a feature
+      name: feature_id
+      required: true
+      schema:
+        type: string
+        maxLength: 50
+        example: feat.fdjskl.sdkjl
+    page_size:
+      in: query
+      name: pageSize
+      required: false
+      schema:
+        type: number
+        example: 10
+    next_token:
+      in: query
+      name: nextToken
+      required: false
+      schema:
+        type: string
+        example: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEwMCwgInNvcnRPcmRlciI6ICJhc2MifQ==
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: Bearer <credential>
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
+externalDocs:
+  description: Find out more about Togai
+  url: https://docs.togai.com/docs
