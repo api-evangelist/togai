@@ -6,9 +6,22 @@ description: >-
   meters, price plans, invoices, credits, entitlements, and financial reporting. Supports real-time billing
   orchestration across cloud infrastructure, generative AI services, and SaaS applications.
 type: Index
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 position: Consumer
 access: 3rd-Party
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/togai.png
 tags:
   - Billing
   - Metering
@@ -21,34 +34,581 @@ modified: '2026-05-19'
 url: https://raw.githubusercontent.com/api-evangelist/togai/refs/heads/main/apis.yml
 specificationVersion: '0.19'
 apis:
-  - aid: togai:togai-api
-    name: Togai API
-    description: >-
-      The Togai API provides full programmatic access to the Togai usage-based billing platform. Resources include
-      customers, accounts, event schemas, usage meters, price plans, pricing rules, invoices, credits, entitlements,
-      wallet, licenses, and reports. Supports both production and sandbox environments.
-    humanURL: https://docs.togai.com/api-reference/getting-started
-    baseURL: https://api.togai.com
-    tags:
-      - Billing
-      - Metering
-      - Usage-Based Pricing
-      - Revenue Management
-      - Customers
-      - Invoices
-    properties:
-      - type: Documentation
-        url: https://docs.togai.com/api-reference/getting-started
-      - type: OpenAPI
-        url: https://raw.githubusercontent.com/api-evangelist/togai/refs/heads/main/openapi/togai-openapi.yml
-      - type: GettingStarted
-        url: https://docs.togai.com/docs/introduction
-      - type: JSONSchema
-        url: https://raw.githubusercontent.com/api-evangelist/togai/refs/heads/main/json-schema/togai-customer-schema.json
-      - type: SpectralRules
-        url: https://raw.githubusercontent.com/api-evangelist/togai/refs/heads/main/rules/togai-rules.yml
-      - type: Vocabulary
-        url: https://raw.githubusercontent.com/api-evangelist/togai/refs/heads/main/vocabulary/togai-vocabulary.yml
+- aid: togai:togai-accounts-api
+  name: Togai Accounts API
+  description: Account level calls
+  humanURL: https://docs.togai.com/api-reference/getting-started
+  baseURL: https://api.togai.com
+  tags:
+  - Accounts
+  properties:
+  - type: OpenAPI
+    url: openapi/togai-accounts-api-openapi.yml
+  - type: Documentation
+    url: https://docs.togai.com/api-reference/getting-started
+  - type: GettingStarted
+    url: https://docs.togai.com/docs/introduction
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/togai/refs/heads/main/json-schema/togai-customer-schema.json
+  - type: SpectralRules
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/togai/refs/heads/main/rules/togai-rules.yml
+  - type: Vocabulary
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/togai/refs/heads/main/vocabulary/togai-vocabulary.yml
+- aid: togai:togai-addons-api
+  name: Togai AddOns API
+  description: The AddOns API from Togai — 2 operation(s) for addons.
+  humanURL: https://docs.togai.com/api-reference/getting-started
+  baseURL: https://api.togai.com
+  tags:
+  - AddOns
+  properties:
+  - type: OpenAPI
+    url: openapi/togai-addons-api-openapi.yml
+  - type: Documentation
+    url: https://docs.togai.com/api-reference/getting-started
+  - type: GettingStarted
+    url: https://docs.togai.com/docs/introduction
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/togai/refs/heads/main/json-schema/togai-customer-schema.json
+  - type: SpectralRules
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/togai/refs/heads/main/rules/togai-rules.yml
+  - type: Vocabulary
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/togai/refs/heads/main/vocabulary/togai-vocabulary.yml
+- aid: togai:togai-aliases-api
+  name: Togai Aliases API
+  description: Alias level calls
+  humanURL: https://docs.togai.com/api-reference/getting-started
+  baseURL: https://api.togai.com
+  tags:
+  - Aliases
+  properties:
+  - type: OpenAPI
+    url: openapi/togai-aliases-api-openapi.yml
+  - type: Documentation
+    url: https://docs.togai.com/api-reference/getting-started
+  - type: GettingStarted
+    url: https://docs.togai.com/docs/introduction
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/togai/refs/heads/main/json-schema/togai-customer-schema.json
+  - type: SpectralRules
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/togai/refs/heads/main/rules/togai-rules.yml
+  - type: Vocabulary
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/togai/refs/heads/main/vocabulary/togai-vocabulary.yml
+- aid: togai:togai-authentication-api
+  name: Togai Authentication API
+  description: Authentication API
+  humanURL: https://docs.togai.com/api-reference/getting-started
+  baseURL: https://api.togai.com
+  tags:
+  - Authentication
+  properties:
+  - type: OpenAPI
+    url: openapi/togai-authentication-api-openapi.yml
+  - type: Documentation
+    url: https://docs.togai.com/api-reference/getting-started
+  - type: GettingStarted
+    url: https://docs.togai.com/docs/introduction
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/togai/refs/heads/main/json-schema/togai-customer-schema.json
+  - type: SpectralRules
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/togai/refs/heads/main/rules/togai-rules.yml
+  - type: Vocabulary
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/togai/refs/heads/main/vocabulary/togai-vocabulary.yml
+- aid: togai:togai-credits-api
+  name: Togai Credits API
+  description: Credits API
+  humanURL: https://docs.togai.com/api-reference/getting-started
+  baseURL: https://api.togai.com
+  tags:
+  - Credits
+  properties:
+  - type: OpenAPI
+    url: openapi/togai-credits-api-openapi.yml
+  - type: Documentation
+    url: https://docs.togai.com/api-reference/getting-started
+  - type: GettingStarted
+    url: https://docs.togai.com/docs/introduction
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/togai/refs/heads/main/json-schema/togai-customer-schema.json
+  - type: SpectralRules
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/togai/refs/heads/main/rules/togai-rules.yml
+  - type: Vocabulary
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/togai/refs/heads/main/vocabulary/togai-vocabulary.yml
+- aid: togai:togai-customer-portal-api
+  name: Togai Customer Portal API
+  description: Portal level calls
+  humanURL: https://docs.togai.com/api-reference/getting-started
+  baseURL: https://api.togai.com
+  tags:
+  - Customer Portal
+  properties:
+  - type: OpenAPI
+    url: openapi/togai-customer-portal-api-openapi.yml
+  - type: Documentation
+    url: https://docs.togai.com/api-reference/getting-started
+  - type: GettingStarted
+    url: https://docs.togai.com/docs/introduction
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/togai/refs/heads/main/json-schema/togai-customer-schema.json
+  - type: SpectralRules
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/togai/refs/heads/main/rules/togai-rules.yml
+  - type: Vocabulary
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/togai/refs/heads/main/vocabulary/togai-vocabulary.yml
+- aid: togai:togai-customers-api
+  name: Togai Customers API
+  description: Customer level calls
+  humanURL: https://docs.togai.com/api-reference/getting-started
+  baseURL: https://api.togai.com
+  tags:
+  - Customers
+  properties:
+  - type: OpenAPI
+    url: openapi/togai-customers-api-openapi.yml
+  - type: Documentation
+    url: https://docs.togai.com/api-reference/getting-started
+  - type: GettingStarted
+    url: https://docs.togai.com/docs/introduction
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/togai/refs/heads/main/json-schema/togai-customer-schema.json
+  - type: SpectralRules
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/togai/refs/heads/main/rules/togai-rules.yml
+  - type: Vocabulary
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/togai/refs/heads/main/vocabulary/togai-vocabulary.yml
+- aid: togai:togai-entitlements-api
+  name: Togai Entitlements API
+  description: APIs related to entitlements
+  humanURL: https://docs.togai.com/api-reference/getting-started
+  baseURL: https://api.togai.com
+  tags:
+  - Entitlements
+  properties:
+  - type: OpenAPI
+    url: openapi/togai-entitlements-api-openapi.yml
+  - type: Documentation
+    url: https://docs.togai.com/api-reference/getting-started
+  - type: GettingStarted
+    url: https://docs.togai.com/docs/introduction
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/togai/refs/heads/main/json-schema/togai-customer-schema.json
+  - type: SpectralRules
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/togai/refs/heads/main/rules/togai-rules.yml
+  - type: Vocabulary
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/togai/refs/heads/main/vocabulary/togai-vocabulary.yml
+- aid: togai:togai-event-ingestion-api
+  name: Togai Event Ingestion API
+  description: The Event Ingestion API from Togai — 2 operation(s) for event ingestion.
+  humanURL: https://docs.togai.com/api-reference/getting-started
+  baseURL: https://api.togai.com
+  tags:
+  - Event Ingestion
+  properties:
+  - type: OpenAPI
+    url: openapi/togai-event-ingestion-api-openapi.yml
+  - type: Documentation
+    url: https://docs.togai.com/api-reference/getting-started
+  - type: GettingStarted
+    url: https://docs.togai.com/docs/introduction
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/togai/refs/heads/main/json-schema/togai-customer-schema.json
+  - type: SpectralRules
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/togai/refs/heads/main/rules/togai-rules.yml
+  - type: Vocabulary
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/togai/refs/heads/main/vocabulary/togai-vocabulary.yml
+- aid: togai:togai-event-management-api
+  name: Togai Event Management API
+  description: APIs for getting events ingested in Togai
+  humanURL: https://docs.togai.com/api-reference/getting-started
+  baseURL: https://api.togai.com
+  tags:
+  - Event Management
+  properties:
+  - type: OpenAPI
+    url: openapi/togai-event-management-api-openapi.yml
+  - type: Documentation
+    url: https://docs.togai.com/api-reference/getting-started
+  - type: GettingStarted
+    url: https://docs.togai.com/docs/introduction
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/togai/refs/heads/main/json-schema/togai-customer-schema.json
+  - type: SpectralRules
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/togai/refs/heads/main/rules/togai-rules.yml
+  - type: Vocabulary
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/togai/refs/heads/main/vocabulary/togai-vocabulary.yml
+- aid: togai:togai-event-schemas-api
+  name: Togai Event Schemas API
+  description: Event Schema level calls
+  humanURL: https://docs.togai.com/api-reference/getting-started
+  baseURL: https://api.togai.com
+  tags:
+  - Event Schemas
+  properties:
+  - type: OpenAPI
+    url: openapi/togai-event-schemas-api-openapi.yml
+  - type: Documentation
+    url: https://docs.togai.com/api-reference/getting-started
+  - type: GettingStarted
+    url: https://docs.togai.com/docs/introduction
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/togai/refs/heads/main/json-schema/togai-customer-schema.json
+  - type: SpectralRules
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/togai/refs/heads/main/rules/togai-rules.yml
+  - type: Vocabulary
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/togai/refs/heads/main/vocabulary/togai-vocabulary.yml
+- aid: togai:togai-feature-api
+  name: Togai Feature API
+  description: The Feature API from Togai — 2 operation(s) for feature.
+  humanURL: https://docs.togai.com/api-reference/getting-started
+  baseURL: https://api.togai.com
+  tags:
+  - Feature
+  properties:
+  - type: OpenAPI
+    url: openapi/togai-feature-api-openapi.yml
+  - type: Documentation
+    url: https://docs.togai.com/api-reference/getting-started
+  - type: GettingStarted
+    url: https://docs.togai.com/docs/introduction
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/togai/refs/heads/main/json-schema/togai-customer-schema.json
+  - type: SpectralRules
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/togai/refs/heads/main/rules/togai-rules.yml
+  - type: Vocabulary
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/togai/refs/heads/main/vocabulary/togai-vocabulary.yml
+- aid: togai:togai-file-storage-api
+  name: Togai File Storage API
+  description: The File Storage API from Togai — 2 operation(s) for file storage.
+  humanURL: https://docs.togai.com/api-reference/getting-started
+  baseURL: https://api.togai.com
+  tags:
+  - File Storage
+  properties:
+  - type: OpenAPI
+    url: openapi/togai-file-storage-api-openapi.yml
+  - type: Documentation
+    url: https://docs.togai.com/api-reference/getting-started
+  - type: GettingStarted
+    url: https://docs.togai.com/docs/introduction
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/togai/refs/heads/main/json-schema/togai-customer-schema.json
+  - type: SpectralRules
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/togai/refs/heads/main/rules/togai-rules.yml
+  - type: Vocabulary
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/togai/refs/heads/main/vocabulary/togai-vocabulary.yml
+- aid: togai:togai-invoicegroups-api
+  name: Togai InvoiceGroups API
+  description: Invoice Group level calls
+  humanURL: https://docs.togai.com/api-reference/getting-started
+  baseURL: https://api.togai.com
+  tags:
+  - InvoiceGroups
+  properties:
+  - type: OpenAPI
+    url: openapi/togai-invoicegroups-api-openapi.yml
+  - type: Documentation
+    url: https://docs.togai.com/api-reference/getting-started
+  - type: GettingStarted
+    url: https://docs.togai.com/docs/introduction
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/togai/refs/heads/main/json-schema/togai-customer-schema.json
+  - type: SpectralRules
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/togai/refs/heads/main/rules/togai-rules.yml
+  - type: Vocabulary
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/togai/refs/heads/main/vocabulary/togai-vocabulary.yml
+- aid: togai:togai-invoices-api
+  name: Togai Invoices API
+  description: Invoices API
+  humanURL: https://docs.togai.com/api-reference/getting-started
+  baseURL: https://api.togai.com
+  tags:
+  - Invoices
+  properties:
+  - type: OpenAPI
+    url: openapi/togai-invoices-api-openapi.yml
+  - type: Documentation
+    url: https://docs.togai.com/api-reference/getting-started
+  - type: GettingStarted
+    url: https://docs.togai.com/docs/introduction
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/togai/refs/heads/main/json-schema/togai-customer-schema.json
+  - type: SpectralRules
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/togai/refs/heads/main/rules/togai-rules.yml
+  - type: Vocabulary
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/togai/refs/heads/main/vocabulary/togai-vocabulary.yml
+- aid: togai:togai-jobs-api
+  name: Togai Jobs API
+  description: The Jobs API from Togai — 5 operation(s) for jobs.
+  humanURL: https://docs.togai.com/api-reference/getting-started
+  baseURL: https://api.togai.com
+  tags:
+  - Jobs
+  properties:
+  - type: OpenAPI
+    url: openapi/togai-jobs-api-openapi.yml
+  - type: Documentation
+    url: https://docs.togai.com/api-reference/getting-started
+  - type: GettingStarted
+    url: https://docs.togai.com/docs/introduction
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/togai/refs/heads/main/json-schema/togai-customer-schema.json
+  - type: SpectralRules
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/togai/refs/heads/main/rules/togai-rules.yml
+  - type: Vocabulary
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/togai/refs/heads/main/vocabulary/togai-vocabulary.yml
+- aid: togai:togai-licenses-api
+  name: Togai Licenses API
+  description: APIs for getting or updating license records in Togai
+  humanURL: https://docs.togai.com/api-reference/getting-started
+  baseURL: https://api.togai.com
+  tags:
+  - Licenses
+  properties:
+  - type: OpenAPI
+    url: openapi/togai-licenses-api-openapi.yml
+  - type: Documentation
+    url: https://docs.togai.com/api-reference/getting-started
+  - type: GettingStarted
+    url: https://docs.togai.com/docs/introduction
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/togai/refs/heads/main/json-schema/togai-customer-schema.json
+  - type: SpectralRules
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/togai/refs/heads/main/rules/togai-rules.yml
+  - type: Vocabulary
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/togai/refs/heads/main/vocabulary/togai-vocabulary.yml
+- aid: togai:togai-metrics-api
+  name: Togai Metrics API
+  description: APIs for getting Togai metrics
+  humanURL: https://docs.togai.com/api-reference/getting-started
+  baseURL: https://api.togai.com
+  tags:
+  - Metrics
+  properties:
+  - type: OpenAPI
+    url: openapi/togai-metrics-api-openapi.yml
+  - type: Documentation
+    url: https://docs.togai.com/api-reference/getting-started
+  - type: GettingStarted
+    url: https://docs.togai.com/docs/introduction
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/togai/refs/heads/main/json-schema/togai-customer-schema.json
+  - type: SpectralRules
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/togai/refs/heads/main/rules/togai-rules.yml
+  - type: Vocabulary
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/togai/refs/heads/main/vocabulary/togai-vocabulary.yml
+- aid: togai:togai-payments-api
+  name: Togai Payments API
+  description: Payments API
+  humanURL: https://docs.togai.com/api-reference/getting-started
+  baseURL: https://api.togai.com
+  tags:
+  - Payments
+  properties:
+  - type: OpenAPI
+    url: openapi/togai-payments-api-openapi.yml
+  - type: Documentation
+    url: https://docs.togai.com/api-reference/getting-started
+  - type: GettingStarted
+    url: https://docs.togai.com/docs/introduction
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/togai/refs/heads/main/json-schema/togai-customer-schema.json
+  - type: SpectralRules
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/togai/refs/heads/main/rules/togai-rules.yml
+  - type: Vocabulary
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/togai/refs/heads/main/vocabulary/togai-vocabulary.yml
+- aid: togai:togai-price-experimentation-api
+  name: Togai Price Experimentation API
+  description: Price Experimentation apis
+  humanURL: https://docs.togai.com/api-reference/getting-started
+  baseURL: https://api.togai.com
+  tags:
+  - Price Experimentation
+  properties:
+  - type: OpenAPI
+    url: openapi/togai-price-experimentation-api-openapi.yml
+  - type: Documentation
+    url: https://docs.togai.com/api-reference/getting-started
+  - type: GettingStarted
+    url: https://docs.togai.com/docs/introduction
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/togai/refs/heads/main/json-schema/togai-customer-schema.json
+  - type: SpectralRules
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/togai/refs/heads/main/rules/togai-rules.yml
+  - type: Vocabulary
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/togai/refs/heads/main/vocabulary/togai-vocabulary.yml
+- aid: togai:togai-price-plans-api
+  name: Togai Price Plans API
+  description: Price Plan level calls
+  humanURL: https://docs.togai.com/api-reference/getting-started
+  baseURL: https://api.togai.com
+  tags:
+  - Price Plans
+  properties:
+  - type: OpenAPI
+    url: openapi/togai-price-plans-api-openapi.yml
+  - type: Documentation
+    url: https://docs.togai.com/api-reference/getting-started
+  - type: GettingStarted
+    url: https://docs.togai.com/docs/introduction
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/togai/refs/heads/main/json-schema/togai-customer-schema.json
+  - type: SpectralRules
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/togai/refs/heads/main/rules/togai-rules.yml
+  - type: Vocabulary
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/togai/refs/heads/main/vocabulary/togai-vocabulary.yml
+- aid: togai:togai-pricing-rules-api
+  name: Togai Pricing Rules API
+  description: Pricing Rules level calls
+  humanURL: https://docs.togai.com/api-reference/getting-started
+  baseURL: https://api.togai.com
+  tags:
+  - Pricing Rules
+  properties:
+  - type: OpenAPI
+    url: openapi/togai-pricing-rules-api-openapi.yml
+  - type: Documentation
+    url: https://docs.togai.com/api-reference/getting-started
+  - type: GettingStarted
+    url: https://docs.togai.com/docs/introduction
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/togai/refs/heads/main/json-schema/togai-customer-schema.json
+  - type: SpectralRules
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/togai/refs/heads/main/rules/togai-rules.yml
+  - type: Vocabulary
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/togai/refs/heads/main/vocabulary/togai-vocabulary.yml
+- aid: togai:togai-settings-api
+  name: Togai Settings API
+  description: Settings
+  humanURL: https://docs.togai.com/api-reference/getting-started
+  baseURL: https://api.togai.com
+  tags:
+  - Settings
+  properties:
+  - type: OpenAPI
+    url: openapi/togai-settings-api-openapi.yml
+  - type: Documentation
+    url: https://docs.togai.com/api-reference/getting-started
+  - type: GettingStarted
+    url: https://docs.togai.com/docs/introduction
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/togai/refs/heads/main/json-schema/togai-customer-schema.json
+  - type: SpectralRules
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/togai/refs/heads/main/rules/togai-rules.yml
+  - type: Vocabulary
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/togai/refs/heads/main/vocabulary/togai-vocabulary.yml
+- aid: togai:togai-usage-meters-api
+  name: Togai Usage Meters API
+  description: Usage Meter level calls
+  humanURL: https://docs.togai.com/api-reference/getting-started
+  baseURL: https://api.togai.com
+  tags:
+  - Usage Meters
+  properties:
+  - type: OpenAPI
+    url: openapi/togai-usage-meters-api-openapi.yml
+  - type: Documentation
+    url: https://docs.togai.com/api-reference/getting-started
+  - type: GettingStarted
+    url: https://docs.togai.com/docs/introduction
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/togai/refs/heads/main/json-schema/togai-customer-schema.json
+  - type: SpectralRules
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/togai/refs/heads/main/rules/togai-rules.yml
+  - type: Vocabulary
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/togai/refs/heads/main/vocabulary/togai-vocabulary.yml
+- aid: togai:togai-wallet-api
+  name: Togai Wallet API
+  description: Wallet API
+  humanURL: https://docs.togai.com/api-reference/getting-started
+  baseURL: https://api.togai.com
+  tags:
+  - Wallet
+  properties:
+  - type: OpenAPI
+    url: openapi/togai-wallet-api-openapi.yml
+  - type: Documentation
+    url: https://docs.togai.com/api-reference/getting-started
+  - type: GettingStarted
+    url: https://docs.togai.com/docs/introduction
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/togai/refs/heads/main/json-schema/togai-customer-schema.json
+  - type: SpectralRules
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/togai/refs/heads/main/rules/togai-rules.yml
+  - type: Vocabulary
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/togai/refs/heads/main/vocabulary/togai-vocabulary.yml
 features:
   - Usage-based metering and rating
   - Price plan creation and management
@@ -79,6 +639,8 @@ integrations:
   - Chargebee
   - Zuora
 common:
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/togai/overview
   - type: AgenticAccess
     url: agentic-access/togai-agentic-access.yml
   - type: DomainSecurity
