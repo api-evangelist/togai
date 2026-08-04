@@ -1,0 +1,622 @@
+{
+  "info": {
+    "_postman_id": "6fef7810-141e-4e2b-a331-e805224fd7df",
+    "name": "Togai Apis Accounts Aliases API",
+    "description": "APIs for Togai App\n\nContact Support:\n Email: engg@togai.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:15:00.000Z",
+    "updatedAt": "2026-07-28T03:15:01.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-6fef7810-141e-4e2b-a331-e805224fd7df"
+  },
+  "item": [
+    {
+      "name": "aliases",
+      "item": [
+        {
+          "name": "{alias}",
+          "item": [
+            {
+              "name": "Get an Alias",
+              "id": "64340a16-180f-444a-b579-28baf451b988",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/aliases/:alias",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "aliases",
+                    ":alias"
+                  ],
+                  "variable": [
+                    {
+                      "id": "811e6443-56ff-4f70-ba7e-cdbd5894bdac",
+                      "key": "alias",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "Get alias information using alias."
+              },
+              "response": [
+                {
+                  "id": "2812835e-6f63-43fd-85c4-c1d39d398ec7",
+                  "name": "Response for adding or removing aliases",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/aliases/:alias",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "aliases",
+                        ":alias"
+                      ],
+                      "variable": [
+                        {
+                          "key": "alias"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"value\": \"<string>\",\n  \"createdAt\": \"<dateTime>\"\n}",
+                  "createdAt": "2026-07-28T03:15:01.000Z",
+                  "updatedAt": "2026-07-28T03:15:01.000Z",
+                  "uid": "35240-2812835e-6f63-43fd-85c4-c1d39d398ec7"
+                },
+                {
+                  "id": "78c21909-00e4-4474-ade1-78fe230d7ee3",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/aliases/:alias",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "aliases",
+                        ":alias"
+                      ],
+                      "variable": [
+                        {
+                          "key": "alias"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:15:01.000Z",
+                  "updatedAt": "2026-07-28T03:15:01.000Z",
+                  "uid": "35240-78c21909-00e4-4474-ade1-78fe230d7ee3"
+                }
+              ],
+              "createdAt": "2026-07-28T03:15:01.000Z",
+              "updatedAt": "2026-07-28T03:15:01.000Z",
+              "uid": "35240-64340a16-180f-444a-b579-28baf451b988"
+            },
+            {
+              "name": "Delete an Alias",
+              "id": "f5426ff6-7527-43a6-998b-5a4f5744403f",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/aliases/:alias",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "aliases",
+                    ":alias"
+                  ],
+                  "variable": [
+                    {
+                      "id": "f553f606-143a-4a02-adcb-1f1c445183b9",
+                      "key": "alias",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "This API let\u2019s you to delete an alias using alias."
+              },
+              "response": [
+                {
+                  "id": "20c6215d-528d-49e9-a7eb-c7a145bde3ed",
+                  "name": "OK",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/aliases/:alias",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "aliases",
+                        ":alias"
+                      ],
+                      "variable": [
+                        {
+                          "key": "alias"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\"\n}",
+                  "createdAt": "2026-07-28T03:15:01.000Z",
+                  "updatedAt": "2026-07-28T03:15:01.000Z",
+                  "uid": "35240-20c6215d-528d-49e9-a7eb-c7a145bde3ed"
+                },
+                {
+                  "id": "5623dc69-cc9a-4a0d-b05a-c273765eb620",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/aliases/:alias",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "aliases",
+                        ":alias"
+                      ],
+                      "variable": [
+                        {
+                          "key": "alias"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:15:01.000Z",
+                  "updatedAt": "2026-07-28T03:15:01.000Z",
+                  "uid": "35240-5623dc69-cc9a-4a0d-b05a-c273765eb620"
+                }
+              ],
+              "createdAt": "2026-07-28T03:15:01.000Z",
+              "updatedAt": "2026-07-28T03:15:01.000Z",
+              "uid": "35240-f5426ff6-7527-43a6-998b-5a4f5744403f"
+            }
+          ],
+          "id": "72081c6e-aef8-4f39-ab03-f8d605b00fd3",
+          "createdAt": "2026-07-28T03:15:01.000Z",
+          "updatedAt": "2026-07-28T03:15:01.000Z",
+          "uid": "35240-72081c6e-aef8-4f39-ab03-f8d605b00fd3"
+        },
+        {
+          "name": "List All Aliases",
+          "id": "5d998423-d863-44a8-a0b1-4bcc12533dc0",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/aliases?nextToken=<string>&pageSize=<number>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "aliases"
+              ],
+              "query": [
+                {
+                  "key": "nextToken",
+                  "value": "<string>"
+                },
+                {
+                  "key": "pageSize",
+                  "value": "<number>"
+                }
+              ]
+            },
+            "description": "Returns a list of aliases with pagination and sort."
+          },
+          "response": [
+            {
+              "id": "3e232665-b560-4001-9aba-4ffe95342373",
+              "name": "Response for list aliases request",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/aliases?nextToken=<string>&pageSize=<number>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "aliases"
+                  ],
+                  "query": [
+                    {
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<number>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"data\": [\n    {\n      \"value\": \"<string>\",\n      \"createdAt\": \"<dateTime>\"\n    },\n    {\n      \"value\": \"<string>\",\n      \"createdAt\": \"<dateTime>\"\n    }\n  ],\n  \"nextToken\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:15:01.000Z",
+              "updatedAt": "2026-07-28T03:15:01.000Z",
+              "uid": "35240-3e232665-b560-4001-9aba-4ffe95342373"
+            },
+            {
+              "id": "e762b8a9-2419-4213-a5ac-1e7e82bfaf46",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/aliases?nextToken=<string>&pageSize=<number>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "aliases"
+                  ],
+                  "query": [
+                    {
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<number>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:15:01.000Z",
+              "updatedAt": "2026-07-28T03:15:01.000Z",
+              "uid": "35240-e762b8a9-2419-4213-a5ac-1e7e82bfaf46"
+            }
+          ],
+          "createdAt": "2026-07-28T03:15:01.000Z",
+          "updatedAt": "2026-07-28T03:15:01.000Z",
+          "uid": "35240-5d998423-d863-44a8-a0b1-4bcc12533dc0"
+        },
+        {
+          "name": "Create an Alias",
+          "id": "872c6b5f-0909-494c-956a-27596c5d1a17",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"aliases\": [\n    {\n      \"value\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/aliases",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "aliases"
+              ]
+            },
+            "description": "This API let\u2019s you to create an alias"
+          },
+          "response": [
+            {
+              "id": "013001c6-3d20-41c5-a69a-79ea7ce78eae",
+              "name": "Response for list aliases request",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"aliases\": [\n    {\n      \"value\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/aliases",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "aliases"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"data\": [\n    {\n      \"value\": \"<string>\",\n      \"createdAt\": \"<dateTime>\"\n    },\n    {\n      \"value\": \"<string>\",\n      \"createdAt\": \"<dateTime>\"\n    }\n  ],\n  \"nextToken\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:15:01.000Z",
+              "updatedAt": "2026-07-28T03:15:01.000Z",
+              "uid": "35240-013001c6-3d20-41c5-a69a-79ea7ce78eae"
+            },
+            {
+              "id": "9a581b84-caae-4382-bd82-0f1b494afab0",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"aliases\": [\n    {\n      \"value\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/aliases",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "aliases"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:15:01.000Z",
+              "updatedAt": "2026-07-28T03:15:01.000Z",
+              "uid": "35240-9a581b84-caae-4382-bd82-0f1b494afab0"
+            }
+          ],
+          "createdAt": "2026-07-28T03:15:01.000Z",
+          "updatedAt": "2026-07-28T03:15:01.000Z",
+          "uid": "35240-872c6b5f-0909-494c-956a-27596c5d1a17"
+        }
+      ],
+      "id": "b89179ff-248f-42e2-8557-f73929f36395",
+      "createdAt": "2026-07-28T03:15:01.000Z",
+      "updatedAt": "2026-07-28T03:15:01.000Z",
+      "uid": "35240-b89179ff-248f-42e2-8557-f73929f36395"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.togai.com/"
+    }
+  ]
+}

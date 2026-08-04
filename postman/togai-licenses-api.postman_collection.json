@@ -1,0 +1,1623 @@
+{
+  "info": {
+    "_postman_id": "2657b442-5209-43c9-bf4b-8a7ab5274ecc",
+    "name": "Togai Apis Accounts Licenses API",
+    "description": "APIs for Togai App\n\nContact Support:\n Email: engg@togai.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:16:39.000Z",
+    "updatedAt": "2026-07-28T03:16:39.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-2657b442-5209-43c9-bf4b-8a7ab5274ecc"
+  },
+  "item": [
+    {
+      "name": "license_updates",
+      "item": [
+        {
+          "name": "{license_id}",
+          "item": [
+            {
+              "name": "Update a License Entry Details",
+              "id": "e8eac608-ba3b-4349-a691-3df85f1135e4",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"accountId\": \"<string>\",\n  \"effectiveFrom\": \"<dateTime>\",\n  \"metadata\": {\n    \"culpa36\": \"<string>\",\n    \"aliqua_9\": \"<string>\",\n    \"nisi_f\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/license_updates/:license_id?licenseId=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "license_updates",
+                    ":license_id"
+                  ],
+                  "query": [
+                    {
+                      "description": "License Id to filter",
+                      "key": "licenseId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "id": "f7a8f8ea-c9e7-431e-8015-23b257349239",
+                      "key": "license_id"
+                    }
+                  ]
+                },
+                "description": "This API let\u2019s you to update metadata of a license entry"
+              },
+              "response": [
+                {
+                  "id": "0fb822aa-654b-4734-9322-bdf0dd5c787a",
+                  "name": "Success response",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"accountId\": \"<string>\",\n  \"effectiveFrom\": \"<dateTime>\",\n  \"metadata\": {\n    \"culpa36\": \"<string>\",\n    \"aliqua_9\": \"<string>\",\n    \"nisi_f\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/license_updates/:license_id?licenseId=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "license_updates",
+                        ":license_id"
+                      ],
+                      "query": [
+                        {
+                          "description": "License Id to filter",
+                          "key": "licenseId",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "license_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"accountId\": \"<string>\",\n  \"createdAt\": \"<dateTime>\",\n  \"effectiveFrom\": \"<dateTime>\",\n  \"licenseId\": \"<string>\",\n  \"quantity\": \"<number>\",\n  \"metadata\": {\n    \"in96\": \"<string>\",\n    \"reprehenderit98\": \"<string>\",\n    \"et_d2\": \"<string>\",\n    \"sunt_6d\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T03:16:39.000Z",
+                  "updatedAt": "2026-07-28T03:16:39.000Z",
+                  "uid": "35240-0fb822aa-654b-4734-9322-bdf0dd5c787a"
+                },
+                {
+                  "id": "526cef00-a468-4a4b-815b-64459b27190d",
+                  "name": "Bad request. Please check the response message for failure details.",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"accountId\": \"<string>\",\n  \"effectiveFrom\": \"<dateTime>\",\n  \"metadata\": {\n    \"culpa36\": \"<string>\",\n    \"aliqua_9\": \"<string>\",\n    \"nisi_f\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/license_updates/:license_id?licenseId=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "license_updates",
+                        ":license_id"
+                      ],
+                      "query": [
+                        {
+                          "description": "License Id to filter",
+                          "key": "licenseId",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "license_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:16:39.000Z",
+                  "updatedAt": "2026-07-28T03:16:39.000Z",
+                  "uid": "35240-526cef00-a468-4a4b-815b-64459b27190d"
+                },
+                {
+                  "id": "75332004-d1f5-44e4-b3af-c14725dc45ca",
+                  "name": "Credential is not valid. Please check the response message for failure details.",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"accountId\": \"<string>\",\n  \"effectiveFrom\": \"<dateTime>\",\n  \"metadata\": {\n    \"culpa36\": \"<string>\",\n    \"aliqua_9\": \"<string>\",\n    \"nisi_f\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/license_updates/:license_id?licenseId=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "license_updates",
+                        ":license_id"
+                      ],
+                      "query": [
+                        {
+                          "description": "License Id to filter",
+                          "key": "licenseId",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "license_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:16:39.000Z",
+                  "updatedAt": "2026-07-28T03:16:39.000Z",
+                  "uid": "35240-75332004-d1f5-44e4-b3af-c14725dc45ca"
+                },
+                {
+                  "id": "746dbdf5-cc50-45f4-93e7-1175eefae00e",
+                  "name": "Credential does not have access to update a license entry.",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"accountId\": \"<string>\",\n  \"effectiveFrom\": \"<dateTime>\",\n  \"metadata\": {\n    \"culpa36\": \"<string>\",\n    \"aliqua_9\": \"<string>\",\n    \"nisi_f\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/license_updates/:license_id?licenseId=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "license_updates",
+                        ":license_id"
+                      ],
+                      "query": [
+                        {
+                          "description": "License Id to filter",
+                          "key": "licenseId",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "license_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:16:39.000Z",
+                  "updatedAt": "2026-07-28T03:16:39.000Z",
+                  "uid": "35240-746dbdf5-cc50-45f4-93e7-1175eefae00e"
+                },
+                {
+                  "id": "d5c23797-9b87-4603-afc5-316cf33fa344",
+                  "name": "Request throttled. Please check the response message on the failure details.",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"accountId\": \"<string>\",\n  \"effectiveFrom\": \"<dateTime>\",\n  \"metadata\": {\n    \"culpa36\": \"<string>\",\n    \"aliqua_9\": \"<string>\",\n    \"nisi_f\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/license_updates/:license_id?licenseId=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "license_updates",
+                        ":license_id"
+                      ],
+                      "query": [
+                        {
+                          "description": "License Id to filter",
+                          "key": "licenseId",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "license_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:16:39.000Z",
+                  "updatedAt": "2026-07-28T03:16:39.000Z",
+                  "uid": "35240-d5c23797-9b87-4603-afc5-316cf33fa344"
+                },
+                {
+                  "id": "33f72e3a-2b28-49ab-a1f7-27a577fc977a",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"accountId\": \"<string>\",\n  \"effectiveFrom\": \"<dateTime>\",\n  \"metadata\": {\n    \"culpa36\": \"<string>\",\n    \"aliqua_9\": \"<string>\",\n    \"nisi_f\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/license_updates/:license_id?licenseId=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "license_updates",
+                        ":license_id"
+                      ],
+                      "query": [
+                        {
+                          "description": "License Id to filter",
+                          "key": "licenseId",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "license_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:16:39.000Z",
+                  "updatedAt": "2026-07-28T03:16:39.000Z",
+                  "uid": "35240-33f72e3a-2b28-49ab-a1f7-27a577fc977a"
+                }
+              ],
+              "createdAt": "2026-07-28T03:16:39.000Z",
+              "updatedAt": "2026-07-28T03:16:39.000Z",
+              "uid": "35240-e8eac608-ba3b-4349-a691-3df85f1135e4"
+            }
+          ],
+          "id": "1f640147-82f6-42d0-865b-5769ded481a8",
+          "createdAt": "2026-07-28T03:16:39.000Z",
+          "updatedAt": "2026-07-28T03:16:39.000Z",
+          "uid": "35240-1f640147-82f6-42d0-865b-5769ded481a8"
+        },
+        {
+          "name": "Get a List of Licenses Updates",
+          "id": "14ca17ed-925c-4252-b072-c0f7098f5da6",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/license_updates?nextToken=<string>&account_id=<string>&pageSize=<integer>&licenseId=<string>&effectiveFrom=<dateTime>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "license_updates"
+              ],
+              "query": [
+                {
+                  "description": "Pagination token used as a marker to get records from next page.",
+                  "key": "nextToken",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Filter option to filter based on account id.",
+                  "key": "account_id",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Maximum page size expected by client to return the record list. \n\n NOTE: Max page size cannot be more than 50. Also 50 is the default page size if no value is provided.",
+                  "key": "pageSize",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "License Id to filter",
+                  "key": "licenseId",
+                  "value": "<string>"
+                },
+                {
+                  "description": "effectiveFrom to filter",
+                  "key": "effectiveFrom",
+                  "value": "<dateTime>"
+                }
+              ]
+            },
+            "description": "This API let\u2019s you to fetch a list of licenses updates with multiple query parameters"
+          },
+          "response": [
+            {
+              "id": "9d450d24-6c62-4b75-9347-0acaab50d337",
+              "name": "Success response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/license_updates?nextToken=<string>&account_id=<string>&pageSize=<integer>&licenseId=<string>&effectiveFrom=<dateTime>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "license_updates"
+                  ],
+                  "query": [
+                    {
+                      "description": "Pagination token used as a marker to get records from next page.",
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter option to filter based on account id.",
+                      "key": "account_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Maximum page size expected by client to return the record list. \n\n NOTE: Max page size cannot be more than 50. Also 50 is the default page size if no value is provided.",
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "License Id to filter",
+                      "key": "licenseId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "effectiveFrom to filter",
+                      "key": "effectiveFrom",
+                      "value": "<dateTime>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"data\": [\n    {\n      \"accountId\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"effectiveFrom\": \"<dateTime>\",\n      \"licenseId\": \"<string>\",\n      \"quantity\": \"<number>\",\n      \"metadata\": {\n        \"Excepteur65a\": \"<string>\",\n        \"doloreb3\": \"<string>\"\n      }\n    },\n    {\n      \"accountId\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"effectiveFrom\": \"<dateTime>\",\n      \"licenseId\": \"<string>\",\n      \"quantity\": \"<number>\",\n      \"metadata\": {\n        \"non_8\": \"<string>\",\n        \"ipsum_e2\": \"<string>\"\n      }\n    }\n  ],\n  \"nextToken\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:16:39.000Z",
+              "updatedAt": "2026-07-28T03:16:39.000Z",
+              "uid": "35240-9d450d24-6c62-4b75-9347-0acaab50d337"
+            },
+            {
+              "id": "0f7299e9-c1a2-42db-9123-131c8c287baa",
+              "name": "Bad request. Please check the response message for failure details.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/license_updates?nextToken=<string>&account_id=<string>&pageSize=<integer>&licenseId=<string>&effectiveFrom=<dateTime>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "license_updates"
+                  ],
+                  "query": [
+                    {
+                      "description": "Pagination token used as a marker to get records from next page.",
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter option to filter based on account id.",
+                      "key": "account_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Maximum page size expected by client to return the record list. \n\n NOTE: Max page size cannot be more than 50. Also 50 is the default page size if no value is provided.",
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "License Id to filter",
+                      "key": "licenseId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "effectiveFrom to filter",
+                      "key": "effectiveFrom",
+                      "value": "<dateTime>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:16:39.000Z",
+              "updatedAt": "2026-07-28T03:16:39.000Z",
+              "uid": "35240-0f7299e9-c1a2-42db-9123-131c8c287baa"
+            },
+            {
+              "id": "0e3180c7-adb9-4b24-ace8-04378f2b9231",
+              "name": "Credential is not valid. Please check the response message for failure details.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/license_updates?nextToken=<string>&account_id=<string>&pageSize=<integer>&licenseId=<string>&effectiveFrom=<dateTime>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "license_updates"
+                  ],
+                  "query": [
+                    {
+                      "description": "Pagination token used as a marker to get records from next page.",
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter option to filter based on account id.",
+                      "key": "account_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Maximum page size expected by client to return the record list. \n\n NOTE: Max page size cannot be more than 50. Also 50 is the default page size if no value is provided.",
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "License Id to filter",
+                      "key": "licenseId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "effectiveFrom to filter",
+                      "key": "effectiveFrom",
+                      "value": "<dateTime>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:16:39.000Z",
+              "updatedAt": "2026-07-28T03:16:39.000Z",
+              "uid": "35240-0e3180c7-adb9-4b24-ace8-04378f2b9231"
+            },
+            {
+              "id": "f631ddd1-facc-4501-b2e5-96a49ec59e89",
+              "name": "Credential does not have access to list licenses updates.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/license_updates?nextToken=<string>&account_id=<string>&pageSize=<integer>&licenseId=<string>&effectiveFrom=<dateTime>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "license_updates"
+                  ],
+                  "query": [
+                    {
+                      "description": "Pagination token used as a marker to get records from next page.",
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter option to filter based on account id.",
+                      "key": "account_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Maximum page size expected by client to return the record list. \n\n NOTE: Max page size cannot be more than 50. Also 50 is the default page size if no value is provided.",
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "License Id to filter",
+                      "key": "licenseId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "effectiveFrom to filter",
+                      "key": "effectiveFrom",
+                      "value": "<dateTime>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:16:39.000Z",
+              "updatedAt": "2026-07-28T03:16:39.000Z",
+              "uid": "35240-f631ddd1-facc-4501-b2e5-96a49ec59e89"
+            },
+            {
+              "id": "4482e140-804d-4bdd-aa9c-e25d617a6384",
+              "name": "Unable to process the query parameters provided. Please check our docs for the api limits - https://togai.io/docs/limits.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/license_updates?nextToken=<string>&account_id=<string>&pageSize=<integer>&licenseId=<string>&effectiveFrom=<dateTime>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "license_updates"
+                  ],
+                  "query": [
+                    {
+                      "description": "Pagination token used as a marker to get records from next page.",
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter option to filter based on account id.",
+                      "key": "account_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Maximum page size expected by client to return the record list. \n\n NOTE: Max page size cannot be more than 50. Also 50 is the default page size if no value is provided.",
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "License Id to filter",
+                      "key": "licenseId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "effectiveFrom to filter",
+                      "key": "effectiveFrom",
+                      "value": "<dateTime>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:16:39.000Z",
+              "updatedAt": "2026-07-28T03:16:39.000Z",
+              "uid": "35240-4482e140-804d-4bdd-aa9c-e25d617a6384"
+            },
+            {
+              "id": "1ed68663-e2e0-45d0-8b68-417999d507b6",
+              "name": "Request throttled. Please check the response message on the failure details.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/license_updates?nextToken=<string>&account_id=<string>&pageSize=<integer>&licenseId=<string>&effectiveFrom=<dateTime>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "license_updates"
+                  ],
+                  "query": [
+                    {
+                      "description": "Pagination token used as a marker to get records from next page.",
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter option to filter based on account id.",
+                      "key": "account_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Maximum page size expected by client to return the record list. \n\n NOTE: Max page size cannot be more than 50. Also 50 is the default page size if no value is provided.",
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "License Id to filter",
+                      "key": "licenseId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "effectiveFrom to filter",
+                      "key": "effectiveFrom",
+                      "value": "<dateTime>"
+                    }
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:16:39.000Z",
+              "updatedAt": "2026-07-28T03:16:39.000Z",
+              "uid": "35240-1ed68663-e2e0-45d0-8b68-417999d507b6"
+            },
+            {
+              "id": "8f28c0a4-6b72-4f5c-8663-43277e70ebdd",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/license_updates?nextToken=<string>&account_id=<string>&pageSize=<integer>&licenseId=<string>&effectiveFrom=<dateTime>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "license_updates"
+                  ],
+                  "query": [
+                    {
+                      "description": "Pagination token used as a marker to get records from next page.",
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter option to filter based on account id.",
+                      "key": "account_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Maximum page size expected by client to return the record list. \n\n NOTE: Max page size cannot be more than 50. Also 50 is the default page size if no value is provided.",
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "License Id to filter",
+                      "key": "licenseId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "effectiveFrom to filter",
+                      "key": "effectiveFrom",
+                      "value": "<dateTime>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:16:39.000Z",
+              "updatedAt": "2026-07-28T03:16:39.000Z",
+              "uid": "35240-8f28c0a4-6b72-4f5c-8663-43277e70ebdd"
+            }
+          ],
+          "createdAt": "2026-07-28T03:16:39.000Z",
+          "updatedAt": "2026-07-28T03:16:39.000Z",
+          "uid": "35240-14ca17ed-925c-4252-b072-c0f7098f5da6"
+        },
+        {
+          "name": "Update a License Entry",
+          "id": "3e89e4f3-c7ce-4614-bb2c-721c3b69b8fa",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"licenseId\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"updateType\": \"ABSOLUTE\",\n  \"quantity\": \"<number>\",\n  \"effectiveFrom\": \"<dateTime>\",\n  \"idempotencyKey\": \"<string>\",\n  \"metadata\": {\n    \"ex_b\": \"<string>\",\n    \"sitab7\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/license_updates",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "license_updates"
+              ]
+            },
+            "description": "This API let\u2019s you to add a license entry"
+          },
+          "response": [
+            {
+              "id": "54c8196d-5f5f-4477-a95b-f55fee1bf0a4",
+              "name": "Success response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"licenseId\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"updateType\": \"ABSOLUTE\",\n  \"quantity\": \"<number>\",\n  \"effectiveFrom\": \"<dateTime>\",\n  \"idempotencyKey\": \"<string>\",\n  \"metadata\": {\n    \"ex_b\": \"<string>\",\n    \"sitab7\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/license_updates",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "license_updates"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"accountId\": \"<string>\",\n  \"createdAt\": \"<dateTime>\",\n  \"effectiveFrom\": \"<dateTime>\",\n  \"licenseId\": \"<string>\",\n  \"quantity\": \"<number>\",\n  \"metadata\": {\n    \"in96\": \"<string>\",\n    \"reprehenderit98\": \"<string>\",\n    \"et_d2\": \"<string>\",\n    \"sunt_6d\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T03:16:39.000Z",
+              "updatedAt": "2026-07-28T03:16:39.000Z",
+              "uid": "35240-54c8196d-5f5f-4477-a95b-f55fee1bf0a4"
+            },
+            {
+              "id": "f7ab2426-ceb6-4db9-8521-566c79f9dcef",
+              "name": "Bad request. Please check the response message for failure details.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"licenseId\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"updateType\": \"ABSOLUTE\",\n  \"quantity\": \"<number>\",\n  \"effectiveFrom\": \"<dateTime>\",\n  \"idempotencyKey\": \"<string>\",\n  \"metadata\": {\n    \"ex_b\": \"<string>\",\n    \"sitab7\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/license_updates",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "license_updates"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:16:39.000Z",
+              "updatedAt": "2026-07-28T03:16:39.000Z",
+              "uid": "35240-f7ab2426-ceb6-4db9-8521-566c79f9dcef"
+            },
+            {
+              "id": "baf8ec4a-c981-40f2-b92a-e5e708ef9f27",
+              "name": "Credential is not valid. Please check the response message for failure details.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"licenseId\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"updateType\": \"ABSOLUTE\",\n  \"quantity\": \"<number>\",\n  \"effectiveFrom\": \"<dateTime>\",\n  \"idempotencyKey\": \"<string>\",\n  \"metadata\": {\n    \"ex_b\": \"<string>\",\n    \"sitab7\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/license_updates",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "license_updates"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:16:39.000Z",
+              "updatedAt": "2026-07-28T03:16:39.000Z",
+              "uid": "35240-baf8ec4a-c981-40f2-b92a-e5e708ef9f27"
+            },
+            {
+              "id": "0a6ca922-8024-4532-9837-093dee0cfa0a",
+              "name": "Credential does not have access to add a license entry.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"licenseId\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"updateType\": \"ABSOLUTE\",\n  \"quantity\": \"<number>\",\n  \"effectiveFrom\": \"<dateTime>\",\n  \"idempotencyKey\": \"<string>\",\n  \"metadata\": {\n    \"ex_b\": \"<string>\",\n    \"sitab7\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/license_updates",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "license_updates"
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:16:39.000Z",
+              "updatedAt": "2026-07-28T03:16:39.000Z",
+              "uid": "35240-0a6ca922-8024-4532-9837-093dee0cfa0a"
+            },
+            {
+              "id": "d6ad94b9-c787-4b78-a32f-061a1988b0c9",
+              "name": "Unable to process the query parameters provided. Please check our docs for the api limits - https://togai.io/docs/limits.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"licenseId\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"updateType\": \"ABSOLUTE\",\n  \"quantity\": \"<number>\",\n  \"effectiveFrom\": \"<dateTime>\",\n  \"idempotencyKey\": \"<string>\",\n  \"metadata\": {\n    \"ex_b\": \"<string>\",\n    \"sitab7\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/license_updates",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "license_updates"
+                  ]
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:16:39.000Z",
+              "updatedAt": "2026-07-28T03:16:39.000Z",
+              "uid": "35240-d6ad94b9-c787-4b78-a32f-061a1988b0c9"
+            },
+            {
+              "id": "2287f4f0-c6de-47b1-bbc0-2a51cf1ebe74",
+              "name": "Request throttled. Please check the response message on the failure details.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"licenseId\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"updateType\": \"ABSOLUTE\",\n  \"quantity\": \"<number>\",\n  \"effectiveFrom\": \"<dateTime>\",\n  \"idempotencyKey\": \"<string>\",\n  \"metadata\": {\n    \"ex_b\": \"<string>\",\n    \"sitab7\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/license_updates",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "license_updates"
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:16:39.000Z",
+              "updatedAt": "2026-07-28T03:16:39.000Z",
+              "uid": "35240-2287f4f0-c6de-47b1-bbc0-2a51cf1ebe74"
+            },
+            {
+              "id": "53c1560b-092b-4e6e-8828-6ade1066f285",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"licenseId\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"updateType\": \"ABSOLUTE\",\n  \"quantity\": \"<number>\",\n  \"effectiveFrom\": \"<dateTime>\",\n  \"idempotencyKey\": \"<string>\",\n  \"metadata\": {\n    \"ex_b\": \"<string>\",\n    \"sitab7\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/license_updates",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "license_updates"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:16:39.000Z",
+              "updatedAt": "2026-07-28T03:16:39.000Z",
+              "uid": "35240-53c1560b-092b-4e6e-8828-6ade1066f285"
+            }
+          ],
+          "createdAt": "2026-07-28T03:16:39.000Z",
+          "updatedAt": "2026-07-28T03:16:39.000Z",
+          "uid": "35240-3e89e4f3-c7ce-4614-bb2c-721c3b69b8fa"
+        }
+      ],
+      "id": "e1027706-da75-4049-925c-2662b71193c8",
+      "createdAt": "2026-07-28T03:16:39.000Z",
+      "updatedAt": "2026-07-28T03:16:39.000Z",
+      "uid": "35240-e1027706-da75-4049-925c-2662b71193c8"
+    },
+    {
+      "name": "named_license_updates",
+      "item": [
+        {
+          "name": "Get a List of Named Licenses Updates",
+          "id": "7b70e335-bf35-48b2-aec8-af06c1594585",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/named_license_updates",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "named_license_updates"
+              ]
+            },
+            "description": "This API let\u2019s you to fetch a list of named licenses updates with multiple query parameters"
+          },
+          "response": [
+            {
+              "id": "b1c7fabc-7117-4d68-b0aa-de90a6f2beab",
+              "name": "Success response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/named_license_updates",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "named_license_updates"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"licenseId\": \"<string>\",\n      \"accountId\": \"<string>\",\n      \"name\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"updatedAt\": \"<dateTime>\",\n      \"effectiveFrom\": \"<dateTime>\",\n      \"effectiveUntil\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"licenseId\": \"<string>\",\n      \"accountId\": \"<string>\",\n      \"name\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"updatedAt\": \"<dateTime>\",\n      \"effectiveFrom\": \"<dateTime>\",\n      \"effectiveUntil\": \"<dateTime>\"\n    }\n  ],\n  \"nextToken\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:16:39.000Z",
+              "updatedAt": "2026-07-28T03:16:39.000Z",
+              "uid": "35240-b1c7fabc-7117-4d68-b0aa-de90a6f2beab"
+            },
+            {
+              "id": "288caacb-264f-449f-8fcf-5f6e091bcfb6",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/named_license_updates",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "named_license_updates"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:16:39.000Z",
+              "updatedAt": "2026-07-28T03:16:39.000Z",
+              "uid": "35240-288caacb-264f-449f-8fcf-5f6e091bcfb6"
+            }
+          ],
+          "createdAt": "2026-07-28T03:16:39.000Z",
+          "updatedAt": "2026-07-28T03:16:39.000Z",
+          "uid": "35240-7b70e335-bf35-48b2-aec8-af06c1594585"
+        }
+      ],
+      "id": "60f5db94-db87-4a76-bc7a-4f8524a26631",
+      "createdAt": "2026-07-28T03:16:39.000Z",
+      "updatedAt": "2026-07-28T03:16:39.000Z",
+      "uid": "35240-60f5db94-db87-4a76-bc7a-4f8524a26631"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.togai.com/"
+    }
+  ]
+}

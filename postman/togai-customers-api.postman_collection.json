@@ -1,0 +1,2635 @@
+{
+  "info": {
+    "_postman_id": "c52988df-3d21-4c63-b043-70e69ff8af7a",
+    "name": "Togai Apis Accounts Customers API",
+    "description": "APIs for Togai App\n\nContact Support:\n Email: engg@togai.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:15:21.000Z",
+    "updatedAt": "2026-07-28T03:15:22.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-c52988df-3d21-4c63-b043-70e69ff8af7a"
+  },
+  "item": [
+    {
+      "name": "customers",
+      "item": [
+        {
+          "name": "{customer_id}",
+          "item": [
+            {
+              "name": "contacts",
+              "item": [
+                {
+                  "name": "Create a Contact for the Customer",
+                  "id": "b7805f7c-6274-4280-88f5-fd7fc139ac0d",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"Alf@-vN.!\",\n  \"preferredUsername\": \"JWL4CkguEKS0bPx6c3JeE2\",\n  \"password\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"verified\": \"<boolean>\",\n  \"loginAccess\": false\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/customers/:customer_id/contacts",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "customers",
+                        ":customer_id",
+                        "contacts"
+                      ],
+                      "variable": [
+                        {
+                          "id": "24fbd3e1-7e8b-4666-a1b7-da4255ddd2af",
+                          "key": "customer_id",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "This API let\u2019s you to create a contact for the customer"
+                  },
+                  "response": [
+                    {
+                      "id": "c7b6427a-a0b5-458e-aa00-e90922b99bec",
+                      "name": "Response for CreateCustomerContactRequest",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"Alf@-vN.!\",\n  \"preferredUsername\": \"JWL4CkguEKS0bPx6c3JeE2\",\n  \"password\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"verified\": \"<boolean>\",\n  \"loginAccess\": false\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/customers/:customer_id/contacts",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "customers",
+                            ":customer_id",
+                            "contacts"
+                          ],
+                          "variable": [
+                            {
+                              "key": "customer_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"username\": \"<string>\",\n  \"name\": \"<string>\",\n  \"verified\": \"<boolean>\",\n  \"createdAt\": \"<dateTime>\",\n  \"loginAccess\": \"<boolean>\",\n  \"preferredUsername\": \"<string>\",\n  \"email\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"createdBy\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:15:22.000Z",
+                      "updatedAt": "2026-07-28T03:15:22.000Z",
+                      "uid": "35240-c7b6427a-a0b5-458e-aa00-e90922b99bec"
+                    },
+                    {
+                      "id": "2355efa0-0b21-47fe-90bd-8b6520d5d2d3",
+                      "name": "Error response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"Alf@-vN.!\",\n  \"preferredUsername\": \"JWL4CkguEKS0bPx6c3JeE2\",\n  \"password\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"verified\": \"<boolean>\",\n  \"loginAccess\": false\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/customers/:customer_id/contacts",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "customers",
+                            ":customer_id",
+                            "contacts"
+                          ],
+                          "variable": [
+                            {
+                              "key": "customer_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:15:22.000Z",
+                      "updatedAt": "2026-07-28T03:15:22.000Z",
+                      "uid": "35240-2355efa0-0b21-47fe-90bd-8b6520d5d2d3"
+                    },
+                    {
+                      "id": "bcbbad45-4a1d-4823-b3e3-86e300a74e49",
+                      "name": "Error response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"Alf@-vN.!\",\n  \"preferredUsername\": \"JWL4CkguEKS0bPx6c3JeE2\",\n  \"password\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"verified\": \"<boolean>\",\n  \"loginAccess\": false\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/customers/:customer_id/contacts",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "customers",
+                            ":customer_id",
+                            "contacts"
+                          ],
+                          "variable": [
+                            {
+                              "key": "customer_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:15:22.000Z",
+                      "updatedAt": "2026-07-28T03:15:22.000Z",
+                      "uid": "35240-bcbbad45-4a1d-4823-b3e3-86e300a74e49"
+                    },
+                    {
+                      "id": "a094c7b0-85d4-403b-a598-2fe2a1952bf6",
+                      "name": "Error response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"Alf@-vN.!\",\n  \"preferredUsername\": \"JWL4CkguEKS0bPx6c3JeE2\",\n  \"password\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"verified\": \"<boolean>\",\n  \"loginAccess\": false\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/customers/:customer_id/contacts",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "customers",
+                            ":customer_id",
+                            "contacts"
+                          ],
+                          "variable": [
+                            {
+                              "key": "customer_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:15:22.000Z",
+                      "updatedAt": "2026-07-28T03:15:22.000Z",
+                      "uid": "35240-a094c7b0-85d4-403b-a598-2fe2a1952bf6"
+                    },
+                    {
+                      "id": "720dbfe7-4cef-42af-963b-9878264aa893",
+                      "name": "Error response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"Alf@-vN.!\",\n  \"preferredUsername\": \"JWL4CkguEKS0bPx6c3JeE2\",\n  \"password\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"verified\": \"<boolean>\",\n  \"loginAccess\": false\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/customers/:customer_id/contacts",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "customers",
+                            ":customer_id",
+                            "contacts"
+                          ],
+                          "variable": [
+                            {
+                              "key": "customer_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:15:22.000Z",
+                      "updatedAt": "2026-07-28T03:15:22.000Z",
+                      "uid": "35240-720dbfe7-4cef-42af-963b-9878264aa893"
+                    },
+                    {
+                      "id": "a4635114-35fa-458c-a855-b3a7ca7d37e3",
+                      "name": "Error response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"Alf@-vN.!\",\n  \"preferredUsername\": \"JWL4CkguEKS0bPx6c3JeE2\",\n  \"password\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"verified\": \"<boolean>\",\n  \"loginAccess\": false\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/customers/:customer_id/contacts",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "customers",
+                            ":customer_id",
+                            "contacts"
+                          ],
+                          "variable": [
+                            {
+                              "key": "customer_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:15:22.000Z",
+                      "updatedAt": "2026-07-28T03:15:22.000Z",
+                      "uid": "35240-a4635114-35fa-458c-a855-b3a7ca7d37e3"
+                    },
+                    {
+                      "id": "3b693d41-1656-4629-b81f-94d344d4d1b1",
+                      "name": "Error response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"Alf@-vN.!\",\n  \"preferredUsername\": \"JWL4CkguEKS0bPx6c3JeE2\",\n  \"password\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"verified\": \"<boolean>\",\n  \"loginAccess\": false\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/customers/:customer_id/contacts",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "customers",
+                            ":customer_id",
+                            "contacts"
+                          ],
+                          "variable": [
+                            {
+                              "key": "customer_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:15:22.000Z",
+                      "updatedAt": "2026-07-28T03:15:22.000Z",
+                      "uid": "35240-3b693d41-1656-4629-b81f-94d344d4d1b1"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:15:22.000Z",
+                  "updatedAt": "2026-07-28T03:15:22.000Z",
+                  "uid": "35240-b7805f7c-6274-4280-88f5-fd7fc139ac0d"
+                }
+              ],
+              "id": "5f4d2014-2a18-416c-a88f-35e52f42bc75",
+              "createdAt": "2026-07-28T03:15:22.000Z",
+              "updatedAt": "2026-07-28T03:15:22.000Z",
+              "uid": "35240-5f4d2014-2a18-416c-a88f-35e52f42bc75"
+            },
+            {
+              "name": "Get a Customer",
+              "id": "e8d7fd0f-79bc-428d-b64f-e13b9b7968bb",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/customers/:customer_id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "customers",
+                    ":customer_id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "a1f2a8b4-a0e9-4dea-94f4-746af3062828",
+                      "key": "customer_id",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "Get customer information using customer_id."
+              },
+              "response": [
+                {
+                  "id": "c7da989a-c228-45c2-9d46-49de27859d46",
+                  "name": "Response for Get customer requests",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/customers/:customer_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "customers",
+                        ":customer_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "customer_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"name\": \"<string>\",\n  \"id\": \"<string>\",\n  \"togaiCustomerId\": \"<string>\",\n  \"primaryEmail\": \"<string>\",\n  \"billingAddress\": \"<string>\",\n  \"address\": {\n    \"phoneNumber\": \"<string>\",\n    \"line1\": \"<string>\",\n    \"line2\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"country\": \"<string>\"\n  },\n  \"status\": \"ACTIVE\",\n  \"createdAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\"\n}",
+                  "createdAt": "2026-07-28T03:15:22.000Z",
+                  "updatedAt": "2026-07-28T03:15:22.000Z",
+                  "uid": "35240-c7da989a-c228-45c2-9d46-49de27859d46"
+                },
+                {
+                  "id": "6b505f1b-835d-4925-ba6e-b4ea3abd1b1c",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/customers/:customer_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "customers",
+                        ":customer_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "customer_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:15:22.000Z",
+                  "updatedAt": "2026-07-28T03:15:22.000Z",
+                  "uid": "35240-6b505f1b-835d-4925-ba6e-b4ea3abd1b1c"
+                },
+                {
+                  "id": "7eab8523-f273-4be4-9bbc-4b25dbc96c04",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/customers/:customer_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "customers",
+                        ":customer_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "customer_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:15:22.000Z",
+                  "updatedAt": "2026-07-28T03:15:22.000Z",
+                  "uid": "35240-7eab8523-f273-4be4-9bbc-4b25dbc96c04"
+                },
+                {
+                  "id": "2b5d21d0-5329-4fdd-ad8d-8a14631d7496",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/customers/:customer_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "customers",
+                        ":customer_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "customer_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:15:22.000Z",
+                  "updatedAt": "2026-07-28T03:15:22.000Z",
+                  "uid": "35240-2b5d21d0-5329-4fdd-ad8d-8a14631d7496"
+                },
+                {
+                  "id": "80d57428-f10c-450a-89d3-c114506f02e5",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/customers/:customer_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "customers",
+                        ":customer_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "customer_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:15:22.000Z",
+                  "updatedAt": "2026-07-28T03:15:22.000Z",
+                  "uid": "35240-80d57428-f10c-450a-89d3-c114506f02e5"
+                },
+                {
+                  "id": "efb66700-ad85-4518-bc02-73d7c43ad124",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/customers/:customer_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "customers",
+                        ":customer_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "customer_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:15:22.000Z",
+                  "updatedAt": "2026-07-28T03:15:22.000Z",
+                  "uid": "35240-efb66700-ad85-4518-bc02-73d7c43ad124"
+                },
+                {
+                  "id": "754dddbc-0df7-4f6f-b343-97d226aaf4b1",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/customers/:customer_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "customers",
+                        ":customer_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "customer_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:15:22.000Z",
+                  "updatedAt": "2026-07-28T03:15:22.000Z",
+                  "uid": "35240-754dddbc-0df7-4f6f-b343-97d226aaf4b1"
+                }
+              ],
+              "createdAt": "2026-07-28T03:15:22.000Z",
+              "updatedAt": "2026-07-28T03:15:22.000Z",
+              "uid": "35240-e8d7fd0f-79bc-428d-b64f-e13b9b7968bb"
+            },
+            {
+              "name": "Update a Customer",
+              "id": "7c77b94a-cf1d-48d3-a91f-977fec1118ab",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"primaryEmail\": \"<string>\",\n  \"address\": {\n    \"phoneNumber\": \"<string>\",\n    \"line1\": \"<string>\",\n    \"line2\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"country\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/customers/:customer_id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "customers",
+                    ":customer_id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "35598487-dfce-42c9-bc7a-d0ccd790f3ee",
+                      "key": "customer_id",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "This API let\u2019s you to update a customer\u2019s information using customer_id."
+              },
+              "response": [
+                {
+                  "id": "e2a87ed7-703a-407a-b549-9befc716ebeb",
+                  "name": "Response for Get customer requests",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"primaryEmail\": \"<string>\",\n  \"address\": {\n    \"phoneNumber\": \"<string>\",\n    \"line1\": \"<string>\",\n    \"line2\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"country\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/customers/:customer_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "customers",
+                        ":customer_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "customer_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"name\": \"<string>\",\n  \"id\": \"<string>\",\n  \"togaiCustomerId\": \"<string>\",\n  \"primaryEmail\": \"<string>\",\n  \"billingAddress\": \"<string>\",\n  \"address\": {\n    \"phoneNumber\": \"<string>\",\n    \"line1\": \"<string>\",\n    \"line2\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"country\": \"<string>\"\n  },\n  \"status\": \"ACTIVE\",\n  \"createdAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\"\n}",
+                  "createdAt": "2026-07-28T03:15:22.000Z",
+                  "updatedAt": "2026-07-28T03:15:22.000Z",
+                  "uid": "35240-e2a87ed7-703a-407a-b549-9befc716ebeb"
+                },
+                {
+                  "id": "0b7828ee-6520-4e08-b3ec-648795ee2af6",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"primaryEmail\": \"<string>\",\n  \"address\": {\n    \"phoneNumber\": \"<string>\",\n    \"line1\": \"<string>\",\n    \"line2\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"country\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/customers/:customer_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "customers",
+                        ":customer_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "customer_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:15:22.000Z",
+                  "updatedAt": "2026-07-28T03:15:22.000Z",
+                  "uid": "35240-0b7828ee-6520-4e08-b3ec-648795ee2af6"
+                },
+                {
+                  "id": "4d1239c8-53b9-450a-9534-b60e901e03a6",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"primaryEmail\": \"<string>\",\n  \"address\": {\n    \"phoneNumber\": \"<string>\",\n    \"line1\": \"<string>\",\n    \"line2\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"country\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/customers/:customer_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "customers",
+                        ":customer_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "customer_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:15:22.000Z",
+                  "updatedAt": "2026-07-28T03:15:22.000Z",
+                  "uid": "35240-4d1239c8-53b9-450a-9534-b60e901e03a6"
+                },
+                {
+                  "id": "75157dfa-ab2f-44dd-a93c-392a97056a34",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"primaryEmail\": \"<string>\",\n  \"address\": {\n    \"phoneNumber\": \"<string>\",\n    \"line1\": \"<string>\",\n    \"line2\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"country\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/customers/:customer_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "customers",
+                        ":customer_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "customer_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:15:22.000Z",
+                  "updatedAt": "2026-07-28T03:15:22.000Z",
+                  "uid": "35240-75157dfa-ab2f-44dd-a93c-392a97056a34"
+                },
+                {
+                  "id": "1761c114-7b88-4ce4-a2a9-f464217000b9",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"primaryEmail\": \"<string>\",\n  \"address\": {\n    \"phoneNumber\": \"<string>\",\n    \"line1\": \"<string>\",\n    \"line2\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"country\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/customers/:customer_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "customers",
+                        ":customer_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "customer_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:15:22.000Z",
+                  "updatedAt": "2026-07-28T03:15:22.000Z",
+                  "uid": "35240-1761c114-7b88-4ce4-a2a9-f464217000b9"
+                },
+                {
+                  "id": "a9692c94-4b6b-408a-97bb-e99c5b74bc91",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"primaryEmail\": \"<string>\",\n  \"address\": {\n    \"phoneNumber\": \"<string>\",\n    \"line1\": \"<string>\",\n    \"line2\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"country\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/customers/:customer_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "customers",
+                        ":customer_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "customer_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:15:22.000Z",
+                  "updatedAt": "2026-07-28T03:15:22.000Z",
+                  "uid": "35240-a9692c94-4b6b-408a-97bb-e99c5b74bc91"
+                },
+                {
+                  "id": "87e57e38-3dc6-4504-93fb-ec74aa039fdc",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"primaryEmail\": \"<string>\",\n  \"address\": {\n    \"phoneNumber\": \"<string>\",\n    \"line1\": \"<string>\",\n    \"line2\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"country\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/customers/:customer_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "customers",
+                        ":customer_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "customer_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:15:22.000Z",
+                  "updatedAt": "2026-07-28T03:15:22.000Z",
+                  "uid": "35240-87e57e38-3dc6-4504-93fb-ec74aa039fdc"
+                }
+              ],
+              "createdAt": "2026-07-28T03:15:22.000Z",
+              "updatedAt": "2026-07-28T03:15:22.000Z",
+              "uid": "35240-7c77b94a-cf1d-48d3-a91f-977fec1118ab"
+            },
+            {
+              "name": "Delete a Customer",
+              "id": "16ee4cf5-cd3a-4bd4-98a4-efabab255406",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/customers/:customer_id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "customers",
+                    ":customer_id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "3038ba9d-da39-4e62-a414-fe0bcf1a7f2b",
+                      "key": "customer_id",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "This API let\u2019s you to delete a customer using customer_id."
+              },
+              "response": [
+                {
+                  "id": "d07b1efc-c67a-4002-90f0-b448dd0ef115",
+                  "name": "OK",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/customers/:customer_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "customers",
+                        ":customer_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "customer_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\"\n}",
+                  "createdAt": "2026-07-28T03:15:22.000Z",
+                  "updatedAt": "2026-07-28T03:15:22.000Z",
+                  "uid": "35240-d07b1efc-c67a-4002-90f0-b448dd0ef115"
+                },
+                {
+                  "id": "fdd91d93-ffef-4b55-8a47-19b74966b432",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/customers/:customer_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "customers",
+                        ":customer_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "customer_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:15:22.000Z",
+                  "updatedAt": "2026-07-28T03:15:22.000Z",
+                  "uid": "35240-fdd91d93-ffef-4b55-8a47-19b74966b432"
+                },
+                {
+                  "id": "94236d05-65af-4714-86b7-012d029dcf00",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/customers/:customer_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "customers",
+                        ":customer_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "customer_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:15:22.000Z",
+                  "updatedAt": "2026-07-28T03:15:22.000Z",
+                  "uid": "35240-94236d05-65af-4714-86b7-012d029dcf00"
+                },
+                {
+                  "id": "ee354191-54f5-43a1-8f3c-8f5b24d66989",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/customers/:customer_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "customers",
+                        ":customer_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "customer_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:15:22.000Z",
+                  "updatedAt": "2026-07-28T03:15:22.000Z",
+                  "uid": "35240-ee354191-54f5-43a1-8f3c-8f5b24d66989"
+                },
+                {
+                  "id": "94f0952c-60b7-4c69-afd6-88fb5d55c6fc",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/customers/:customer_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "customers",
+                        ":customer_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "customer_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:15:22.000Z",
+                  "updatedAt": "2026-07-28T03:15:22.000Z",
+                  "uid": "35240-94f0952c-60b7-4c69-afd6-88fb5d55c6fc"
+                },
+                {
+                  "id": "f8ed2bcb-ad64-41d4-8ad5-eaea1fbb6261",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/customers/:customer_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "customers",
+                        ":customer_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "customer_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:15:22.000Z",
+                  "updatedAt": "2026-07-28T03:15:22.000Z",
+                  "uid": "35240-f8ed2bcb-ad64-41d4-8ad5-eaea1fbb6261"
+                },
+                {
+                  "id": "b9cfdec5-c0c9-4fe8-8552-c2911568c7b5",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/customers/:customer_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "customers",
+                        ":customer_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "customer_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:15:22.000Z",
+                  "updatedAt": "2026-07-28T03:15:22.000Z",
+                  "uid": "35240-b9cfdec5-c0c9-4fe8-8552-c2911568c7b5"
+                }
+              ],
+              "createdAt": "2026-07-28T03:15:22.000Z",
+              "updatedAt": "2026-07-28T03:15:22.000Z",
+              "uid": "35240-16ee4cf5-cd3a-4bd4-98a4-efabab255406"
+            }
+          ],
+          "id": "ba0d742d-957b-488d-b95f-0945e3abdff1",
+          "createdAt": "2026-07-28T03:15:22.000Z",
+          "updatedAt": "2026-07-28T03:15:22.000Z",
+          "uid": "35240-ba0d742d-957b-488d-b95f-0945e3abdff1"
+        },
+        {
+          "name": "Create a Customer",
+          "id": "a33ef623-7c62-45a0-b805-8235e9aac108",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"id\": \"<string>\",\n  \"primaryEmail\": \"<string>\",\n  \"address\": {\n    \"phoneNumber\": \"<string>\",\n    \"line1\": \"<string>\",\n    \"line2\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"country\": \"<string>\"\n  },\n  \"settings\": [\n    {\n      \"id\": \"<string>\",\n      \"value\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"name\": \"<string>\",\n      \"dataType\": \"JSON_LOGIC\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"value\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"name\": \"<string>\",\n      \"dataType\": \"JSON\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"value\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"name\": \"<string>\",\n      \"dataType\": \"JSON_LOGIC\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"value\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"name\": \"<string>\",\n      \"dataType\": \"NUMERIC\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"value\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"name\": \"<string>\",\n      \"dataType\": \"STRING\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"value\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"name\": \"<string>\",\n      \"dataType\": \"JSON_LOGIC\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"value\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"name\": \"<string>\",\n      \"dataType\": \"JSON\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"value\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"name\": \"<string>\",\n      \"dataType\": \"JSON_LOGIC\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"value\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"name\": \"<string>\",\n      \"dataType\": \"STRING\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"value\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"name\": \"<string>\",\n      \"dataType\": \"NUMERIC\"\n    }\n  ],\n  \"account\": {\n    \"name\": \"<string>\",\n    \"id\": \"<string>\",\n    \"invoiceCurrency\": \"<string>\",\n    \"aliases\": [\n      \"<string>\",\n      \"<string>\",\n      \"<string>\",\n      \"<string>\",\n      \"<string>\",\n      \"<string>\",\n      \"<string>\",\n      \"<string>\",\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"accountAliases\": [\n      {\n        \"value\": \"<string>\",\n        \"effectiveFrom\": \"<dateTime>\",\n        \"effectiveUntil\": \"<dateTime>\"\n      },\n      {\n        \"value\": \"<string>\",\n        \"effectiveFrom\": \"<dateTime>\",\n        \"effectiveUntil\": \"<dateTime>\"\n      }\n    ],\n    \"address\": {\n      \"phoneNumber\": \"<string>\",\n      \"line1\": \"<string>\",\n      \"line2\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"country\": \"<string>\"\n    },\n    \"primaryEmail\": \"<string>\",\n    \"settings\": [\n      {\n        \"id\": \"<string>\",\n        \"value\": \"<string>\",\n        \"namespace\": \"<string>\",\n        \"name\": \"<string>\",\n        \"dataType\": \"JSON_LOGIC\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"value\": \"<string>\",\n        \"namespace\": \"<string>\",\n        \"name\": \"<string>\",\n        \"dataType\": \"STRING\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"value\": \"<string>\",\n        \"namespace\": \"<string>\",\n        \"name\": \"<string>\",\n        \"dataType\": \"STRING\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"value\": \"<string>\",\n        \"namespace\": \"<string>\",\n        \"name\": \"<string>\",\n        \"dataType\": \"JSON\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"value\": \"<string>\",\n        \"namespace\": \"<string>\",\n        \"name\": \"<string>\",\n        \"dataType\": \"STRING\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"value\": \"<string>\",\n        \"namespace\": \"<string>\",\n        \"name\": \"<string>\",\n        \"dataType\": \"JSON\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"value\": \"<string>\",\n        \"namespace\": \"<string>\",\n        \"name\": \"<string>\",\n        \"dataType\": \"STRING\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"value\": \"<string>\",\n        \"namespace\": \"<string>\",\n        \"name\": \"<string>\",\n        \"dataType\": \"NUMERIC\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"value\": \"<string>\",\n        \"namespace\": \"<string>\",\n        \"name\": \"<string>\",\n        \"dataType\": \"NUMERIC\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"value\": \"<string>\",\n        \"namespace\": \"<string>\",\n        \"name\": \"<string>\",\n        \"dataType\": \"JSON_LOGIC\"\n      }\n    ],\n    \"netTermDays\": \"<integer>\",\n    \"metadata\": {\n      \"in_3a\": \"<string>\",\n      \"ipsum_bfe\": \"<string>\"\n    },\n    \"tags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"status\": \"ACTIVE\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/customers",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "customers"
+              ]
+            },
+            "description": "This API let\u2019s you to create customers and corresponding accounts."
+          },
+          "response": [
+            {
+              "id": "a1a6e2cd-277d-4733-838e-95a86b291555",
+              "name": "Response for Create customer request",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"id\": \"<string>\",\n  \"primaryEmail\": \"<string>\",\n  \"address\": {\n    \"phoneNumber\": \"<string>\",\n    \"line1\": \"<string>\",\n    \"line2\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"country\": \"<string>\"\n  },\n  \"settings\": [\n    {\n      \"id\": \"<string>\",\n      \"value\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"name\": \"<string>\",\n      \"dataType\": \"JSON_LOGIC\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"value\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"name\": \"<string>\",\n      \"dataType\": \"JSON\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"value\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"name\": \"<string>\",\n      \"dataType\": \"JSON_LOGIC\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"value\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"name\": \"<string>\",\n      \"dataType\": \"NUMERIC\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"value\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"name\": \"<string>\",\n      \"dataType\": \"STRING\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"value\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"name\": \"<string>\",\n      \"dataType\": \"JSON_LOGIC\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"value\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"name\": \"<string>\",\n      \"dataType\": \"JSON\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"value\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"name\": \"<string>\",\n      \"dataType\": \"JSON_LOGIC\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"value\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"name\": \"<string>\",\n      \"dataType\": \"STRING\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"value\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"name\": \"<string>\",\n      \"dataType\": \"NUMERIC\"\n    }\n  ],\n  \"account\": {\n    \"name\": \"<string>\",\n    \"id\": \"<string>\",\n    \"invoiceCurrency\": \"<string>\",\n    \"aliases\": [\n      \"<string>\",\n      \"<string>\",\n      \"<string>\",\n      \"<string>\",\n      \"<string>\",\n      \"<string>\",\n      \"<string>\",\n      \"<string>\",\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"accountAliases\": [\n      {\n        \"value\": \"<string>\",\n        \"effectiveFrom\": \"<dateTime>\",\n        \"effectiveUntil\": \"<dateTime>\"\n      },\n      {\n        \"value\": \"<string>\",\n        \"effectiveFrom\": \"<dateTime>\",\n        \"effectiveUntil\": \"<dateTime>\"\n      }\n    ],\n    \"address\": {\n      \"phoneNumber\": \"<string>\",\n      \"line1\": \"<string>\",\n      \"line2\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"country\": \"<string>\"\n    },\n    \"primaryEmail\": \"<string>\",\n    \"settings\": [\n      {\n        \"id\": \"<string>\",\n        \"value\": \"<string>\",\n        \"namespace\": \"<string>\",\n        \"name\": \"<string>\",\n        \"dataType\": \"JSON_LOGIC\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"value\": \"<string>\",\n        \"namespace\": \"<string>\",\n        \"name\": \"<string>\",\n        \"dataType\": \"STRING\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"value\": \"<string>\",\n        \"namespace\": \"<string>\",\n        \"name\": \"<string>\",\n        \"dataType\": \"STRING\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"value\": \"<string>\",\n        \"namespace\": \"<string>\",\n        \"name\": \"<string>\",\n        \"dataType\": \"JSON\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"value\": \"<string>\",\n        \"namespace\": \"<string>\",\n        \"name\": \"<string>\",\n        \"dataType\": \"STRING\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"value\": \"<string>\",\n        \"namespace\": \"<string>\",\n        \"name\": \"<string>\",\n        \"dataType\": \"JSON\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"value\": \"<string>\",\n        \"namespace\": \"<string>\",\n        \"name\": \"<string>\",\n        \"dataType\": \"STRING\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"value\": \"<string>\",\n        \"namespace\": \"<string>\",\n        \"name\": \"<string>\",\n        \"dataType\": \"NUMERIC\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"value\": \"<string>\",\n        \"namespace\": \"<string>\",\n        \"name\": \"<string>\",\n        \"dataType\": \"NUMERIC\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"value\": \"<string>\",\n        \"namespace\": \"<string>\",\n        \"name\": \"<string>\",\n        \"dataType\": \"JSON_LOGIC\"\n      }\n    ],\n    \"netTermDays\": \"<integer>\",\n    \"metadata\": {\n      \"in_3a\": \"<string>\",\n      \"ipsum_bfe\": \"<string>\"\n    },\n    \"tags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"status\": \"ACTIVE\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/customers",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "customers"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"name\": \"<string>\",\n  \"id\": \"<string>\",\n  \"togaiCustomerId\": \"<string>\",\n  \"primaryEmail\": \"<string>\",\n  \"billingAddress\": \"<string>\",\n  \"address\": {\n    \"phoneNumber\": \"<string>\",\n    \"line1\": \"<string>\",\n    \"line2\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"country\": \"<string>\"\n  },\n  \"settings\": [\n    {\n      \"id\": \"<string>\",\n      \"value\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"name\": \"<string>\",\n      \"dataType\": \"JSON_LOGIC\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"value\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"name\": \"<string>\",\n      \"dataType\": \"NUMERIC\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"value\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"name\": \"<string>\",\n      \"dataType\": \"NUMERIC\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"value\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"name\": \"<string>\",\n      \"dataType\": \"STRING\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"value\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"name\": \"<string>\",\n      \"dataType\": \"JSON\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"value\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"name\": \"<string>\",\n      \"dataType\": \"NUMERIC\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"value\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"name\": \"<string>\",\n      \"dataType\": \"STRING\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"value\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"name\": \"<string>\",\n      \"dataType\": \"STRING\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"value\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"name\": \"<string>\",\n      \"dataType\": \"JSON_LOGIC\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"value\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"name\": \"<string>\",\n      \"dataType\": \"NUMERIC\"\n    }\n  ],\n  \"account\": {\n    \"name\": \"<string>\",\n    \"id\": \"<string>\",\n    \"togaiAccountId\": \"<string>\",\n    \"togaiCustomerId\": \"<string>\",\n    \"status\": \"DRAFT\",\n    \"customerId\": \"<string>\",\n    \"invoiceCurrency\": \"<string>\",\n    \"aliases\": [\n      {\n        \"alias\": \"<string>\"\n      },\n      {\n        \"alias\": \"<string>\"\n      },\n      {\n        \"alias\": \"<string>\"\n      },\n      {\n        \"alias\": \"<string>\"\n      },\n      {\n        \"alias\": \"<string>\"\n      },\n      {\n        \"alias\": \"<string>\"\n      },\n      {\n        \"alias\": \"<string>\"\n      },\n      {\n        \"alias\": \"<string>\"\n      },\n      {\n        \"alias\": \"<string>\"\n      },\n      {\n        \"alias\": \"<string>\"\n      }\n    ],\n    \"netTermDays\": \"<integer>\",\n    \"address\": {\n      \"phoneNumber\": \"<string>\",\n      \"line1\": \"<string>\",\n      \"line2\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"country\": \"<string>\"\n    },\n    \"primaryEmail\": \"<string>\",\n    \"settings\": [\n      {\n        \"id\": \"<string>\",\n        \"value\": \"<string>\",\n        \"namespace\": \"<string>\",\n        \"name\": \"<string>\",\n        \"dataType\": \"JSON_LOGIC\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"value\": \"<string>\",\n        \"namespace\": \"<string>\",\n        \"name\": \"<string>\",\n        \"dataType\": \"JSON\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"value\": \"<string>\",\n        \"namespace\": \"<string>\",\n        \"name\": \"<string>\",\n        \"dataType\": \"NUMERIC\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"value\": \"<string>\",\n        \"namespace\": \"<string>\",\n        \"name\": \"<string>\",\n        \"dataType\": \"STRING\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"value\": \"<string>\",\n        \"namespace\": \"<string>\",\n        \"name\": \"<string>\",\n        \"dataType\": \"JSON_LOGIC\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"value\": \"<string>\",\n        \"namespace\": \"<string>\",\n        \"name\": \"<string>\",\n        \"dataType\": \"JSON_LOGIC\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"value\": \"<string>\",\n        \"namespace\": \"<string>\",\n        \"name\": \"<string>\",\n        \"dataType\": \"JSON\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"value\": \"<string>\",\n        \"namespace\": \"<string>\",\n        \"name\": \"<string>\",\n        \"dataType\": \"STRING\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"value\": \"<string>\",\n        \"namespace\": \"<string>\",\n        \"name\": \"<string>\",\n        \"dataType\": \"JSON\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"value\": \"<string>\",\n        \"namespace\": \"<string>\",\n        \"name\": \"<string>\",\n        \"dataType\": \"NUMERIC\"\n      }\n    ],\n    \"invoiceGroupDetails\": {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"email\": \"<string>\",\n      \"dailyInvoiceConsolidation\": \"<boolean>\",\n      \"invoiceCurrency\": \"<string>\",\n      \"billingAddress\": {\n        \"phoneNumber\": \"<string>\",\n        \"line1\": \"<string>\",\n        \"line2\": \"<string>\",\n        \"postalCode\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"country\": \"<string>\"\n      },\n      \"netTermDays\": \"<integer>\"\n    },\n    \"metadata\": {\n      \"labore_e14\": \"<string>\"\n    },\n    \"tags\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+              "createdAt": "2026-07-28T03:15:22.000Z",
+              "updatedAt": "2026-07-28T03:15:22.000Z",
+              "uid": "35240-a1a6e2cd-277d-4733-838e-95a86b291555"
+            },
+            {
+              "id": "1837457b-5667-432a-b6fd-6aaba5eb46f5",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"id\": \"<string>\",\n  \"primaryEmail\": \"<string>\",\n  \"address\": {\n    \"phoneNumber\": \"<string>\",\n    \"line1\": \"<string>\",\n    \"line2\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"country\": \"<string>\"\n  },\n  \"settings\": [\n    {\n      \"id\": \"<string>\",\n      \"value\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"name\": \"<string>\",\n      \"dataType\": \"JSON_LOGIC\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"value\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"name\": \"<string>\",\n      \"dataType\": \"JSON\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"value\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"name\": \"<string>\",\n      \"dataType\": \"JSON_LOGIC\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"value\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"name\": \"<string>\",\n      \"dataType\": \"NUMERIC\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"value\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"name\": \"<string>\",\n      \"dataType\": \"STRING\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"value\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"name\": \"<string>\",\n      \"dataType\": \"JSON_LOGIC\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"value\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"name\": \"<string>\",\n      \"dataType\": \"JSON\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"value\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"name\": \"<string>\",\n      \"dataType\": \"JSON_LOGIC\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"value\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"name\": \"<string>\",\n      \"dataType\": \"STRING\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"value\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"name\": \"<string>\",\n      \"dataType\": \"NUMERIC\"\n    }\n  ],\n  \"account\": {\n    \"name\": \"<string>\",\n    \"id\": \"<string>\",\n    \"invoiceCurrency\": \"<string>\",\n    \"aliases\": [\n      \"<string>\",\n      \"<string>\",\n      \"<string>\",\n      \"<string>\",\n      \"<string>\",\n      \"<string>\",\n      \"<string>\",\n      \"<string>\",\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"accountAliases\": [\n      {\n        \"value\": \"<string>\",\n        \"effectiveFrom\": \"<dateTime>\",\n        \"effectiveUntil\": \"<dateTime>\"\n      },\n      {\n        \"value\": \"<string>\",\n        \"effectiveFrom\": \"<dateTime>\",\n        \"effectiveUntil\": \"<dateTime>\"\n      }\n    ],\n    \"address\": {\n      \"phoneNumber\": \"<string>\",\n      \"line1\": \"<string>\",\n      \"line2\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"country\": \"<string>\"\n    },\n    \"primaryEmail\": \"<string>\",\n    \"settings\": [\n      {\n        \"id\": \"<string>\",\n        \"value\": \"<string>\",\n        \"namespace\": \"<string>\",\n        \"name\": \"<string>\",\n        \"dataType\": \"JSON_LOGIC\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"value\": \"<string>\",\n        \"namespace\": \"<string>\",\n        \"name\": \"<string>\",\n        \"dataType\": \"STRING\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"value\": \"<string>\",\n        \"namespace\": \"<string>\",\n        \"name\": \"<string>\",\n        \"dataType\": \"STRING\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"value\": \"<string>\",\n        \"namespace\": \"<string>\",\n        \"name\": \"<string>\",\n        \"dataType\": \"JSON\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"value\": \"<string>\",\n        \"namespace\": \"<string>\",\n        \"name\": \"<string>\",\n        \"dataType\": \"STRING\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"value\": \"<string>\",\n        \"namespace\": \"<string>\",\n        \"name\": \"<string>\",\n        \"dataType\": \"JSON\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"value\": \"<string>\",\n        \"namespace\": \"<string>\",\n        \"name\": \"<string>\",\n        \"dataType\": \"STRING\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"value\": \"<string>\",\n        \"namespace\": \"<string>\",\n        \"name\": \"<string>\",\n        \"dataType\": \"NUMERIC\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"value\": \"<string>\",\n        \"namespace\": \"<string>\",\n        \"name\": \"<string>\",\n        \"dataType\": \"NUMERIC\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"value\": \"<string>\",\n        \"namespace\": \"<string>\",\n        \"name\": \"<string>\",\n        \"dataType\": \"JSON_LOGIC\"\n      }\n    ],\n    \"netTermDays\": \"<integer>\",\n    \"metadata\": {\n      \"in_3a\": \"<string>\",\n      \"ipsum_bfe\": \"<string>\"\n    },\n    \"tags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"status\": \"ACTIVE\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/customers",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "customers"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:15:22.000Z",
+              "updatedAt": "2026-07-28T03:15:22.000Z",
+              "uid": "35240-1837457b-5667-432a-b6fd-6aaba5eb46f5"
+            },
+            {
+              "id": "f0f472b4-84ed-4dbc-91e2-5ae4a296daec",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"id\": \"<string>\",\n  \"primaryEmail\": \"<string>\",\n  \"address\": {\n    \"phoneNumber\": \"<string>\",\n    \"line1\": \"<string>\",\n    \"line2\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"country\": \"<string>\"\n  },\n  \"settings\": [\n    {\n      \"id\": \"<string>\",\n      \"value\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"name\": \"<string>\",\n      \"dataType\": \"JSON_LOGIC\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"value\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"name\": \"<string>\",\n      \"dataType\": \"JSON\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"value\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"name\": \"<string>\",\n      \"dataType\": \"JSON_LOGIC\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"value\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"name\": \"<string>\",\n      \"dataType\": \"NUMERIC\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"value\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"name\": \"<string>\",\n      \"dataType\": \"STRING\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"value\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"name\": \"<string>\",\n      \"dataType\": \"JSON_LOGIC\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"value\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"name\": \"<string>\",\n      \"dataType\": \"JSON\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"value\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"name\": \"<string>\",\n      \"dataType\": \"JSON_LOGIC\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"value\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"name\": \"<string>\",\n      \"dataType\": \"STRING\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"value\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"name\": \"<string>\",\n      \"dataType\": \"NUMERIC\"\n    }\n  ],\n  \"account\": {\n    \"name\": \"<string>\",\n    \"id\": \"<string>\",\n    \"invoiceCurrency\": \"<string>\",\n    \"aliases\": [\n      \"<string>\",\n      \"<string>\",\n      \"<string>\",\n      \"<string>\",\n      \"<string>\",\n      \"<string>\",\n      \"<string>\",\n      \"<string>\",\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"accountAliases\": [\n      {\n        \"value\": \"<string>\",\n        \"effectiveFrom\": \"<dateTime>\",\n        \"effectiveUntil\": \"<dateTime>\"\n      },\n      {\n        \"value\": \"<string>\",\n        \"effectiveFrom\": \"<dateTime>\",\n        \"effectiveUntil\": \"<dateTime>\"\n      }\n    ],\n    \"address\": {\n      \"phoneNumber\": \"<string>\",\n      \"line1\": \"<string>\",\n      \"line2\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"country\": \"<string>\"\n    },\n    \"primaryEmail\": \"<string>\",\n    \"settings\": [\n      {\n        \"id\": \"<string>\",\n        \"value\": \"<string>\",\n        \"namespace\": \"<string>\",\n        \"name\": \"<string>\",\n        \"dataType\": \"JSON_LOGIC\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"value\": \"<string>\",\n        \"namespace\": \"<string>\",\n        \"name\": \"<string>\",\n        \"dataType\": \"STRING\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"value\": \"<string>\",\n        \"namespace\": \"<string>\",\n        \"name\": \"<string>\",\n        \"dataType\": \"STRING\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"value\": \"<string>\",\n        \"namespace\": \"<string>\",\n        \"name\": \"<string>\",\n        \"dataType\": \"JSON\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"value\": \"<string>\",\n        \"namespace\": \"<string>\",\n        \"name\": \"<string>\",\n        \"dataType\": \"STRING\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"value\": \"<string>\",\n        \"namespace\": \"<string>\",\n        \"name\": \"<string>\",\n        \"dataType\": \"JSON\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"value\": \"<string>\",\n        \"namespace\": \"<string>\",\n        \"name\": \"<string>\",\n        \"dataType\": \"STRING\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"value\": \"<string>\",\n        \"namespace\": \"<string>\",\n        \"name\": \"<string>\",\n        \"dataType\": \"NUMERIC\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"value\": \"<string>\",\n        \"namespace\": \"<string>\",\n        \"name\": \"<string>\",\n        \"dataType\": \"NUMERIC\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"value\": \"<string>\",\n        \"namespace\": \"<string>\",\n        \"name\": \"<string>\",\n        \"dataType\": \"JSON_LOGIC\"\n      }\n    ],\n    \"netTermDays\": \"<integer>\",\n    \"metadata\": {\n      \"in_3a\": \"<string>\",\n      \"ipsum_bfe\": \"<string>\"\n    },\n    \"tags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"status\": \"ACTIVE\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/customers",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "customers"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:15:22.000Z",
+              "updatedAt": "2026-07-28T03:15:22.000Z",
+              "uid": "35240-f0f472b4-84ed-4dbc-91e2-5ae4a296daec"
+            },
+            {
+              "id": "6138b8dc-cb11-4171-b173-3d49555977e2",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"id\": \"<string>\",\n  \"primaryEmail\": \"<string>\",\n  \"address\": {\n    \"phoneNumber\": \"<string>\",\n    \"line1\": \"<string>\",\n    \"line2\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"country\": \"<string>\"\n  },\n  \"settings\": [\n    {\n      \"id\": \"<string>\",\n      \"value\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"name\": \"<string>\",\n      \"dataType\": \"JSON_LOGIC\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"value\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"name\": \"<string>\",\n      \"dataType\": \"JSON\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"value\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"name\": \"<string>\",\n      \"dataType\": \"JSON_LOGIC\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"value\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"name\": \"<string>\",\n      \"dataType\": \"NUMERIC\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"value\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"name\": \"<string>\",\n      \"dataType\": \"STRING\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"value\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"name\": \"<string>\",\n      \"dataType\": \"JSON_LOGIC\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"value\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"name\": \"<string>\",\n      \"dataType\": \"JSON\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"value\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"name\": \"<string>\",\n      \"dataType\": \"JSON_LOGIC\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"value\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"name\": \"<string>\",\n      \"dataType\": \"STRING\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"value\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"name\": \"<string>\",\n      \"dataType\": \"NUMERIC\"\n    }\n  ],\n  \"account\": {\n    \"name\": \"<string>\",\n    \"id\": \"<string>\",\n    \"invoiceCurrency\": \"<string>\",\n    \"aliases\": [\n      \"<string>\",\n      \"<string>\",\n      \"<string>\",\n      \"<string>\",\n      \"<string>\",\n      \"<string>\",\n      \"<string>\",\n      \"<string>\",\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"accountAliases\": [\n      {\n        \"value\": \"<string>\",\n        \"effectiveFrom\": \"<dateTime>\",\n        \"effectiveUntil\": \"<dateTime>\"\n      },\n      {\n        \"value\": \"<string>\",\n        \"effectiveFrom\": \"<dateTime>\",\n        \"effectiveUntil\": \"<dateTime>\"\n      }\n    ],\n    \"address\": {\n      \"phoneNumber\": \"<string>\",\n      \"line1\": \"<string>\",\n      \"line2\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"country\": \"<string>\"\n    },\n    \"primaryEmail\": \"<string>\",\n    \"settings\": [\n      {\n        \"id\": \"<string>\",\n        \"value\": \"<string>\",\n        \"namespace\": \"<string>\",\n        \"name\": \"<string>\",\n        \"dataType\": \"JSON_LOGIC\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"value\": \"<string>\",\n        \"namespace\": \"<string>\",\n        \"name\": \"<string>\",\n        \"dataType\": \"STRING\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"value\": \"<string>\",\n        \"namespace\": \"<string>\",\n        \"name\": \"<string>\",\n        \"dataType\": \"STRING\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"value\": \"<string>\",\n        \"namespace\": \"<string>\",\n        \"name\": \"<string>\",\n        \"dataType\": \"JSON\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"value\": \"<string>\",\n        \"namespace\": \"<string>\",\n        \"name\": \"<string>\",\n        \"dataType\": \"STRING\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"value\": \"<string>\",\n        \"namespace\": \"<string>\",\n        \"name\": \"<string>\",\n        \"dataType\": \"JSON\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"value\": \"<string>\",\n        \"namespace\": \"<string>\",\n        \"name\": \"<string>\",\n        \"dataType\": \"STRING\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"value\": \"<string>\",\n        \"namespace\": \"<string>\",\n        \"name\": \"<string>\",\n        \"dataType\": \"NUMERIC\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"value\": \"<string>\",\n        \"namespace\": \"<string>\",\n        \"name\": \"<string>\",\n        \"dataType\": \"NUMERIC\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"value\": \"<string>\",\n        \"namespace\": \"<string>\",\n        \"name\": \"<string>\",\n        \"dataType\": \"JSON_LOGIC\"\n      }\n    ],\n    \"netTermDays\": \"<integer>\",\n    \"metadata\": {\n      \"in_3a\": \"<string>\",\n      \"ipsum_bfe\": \"<string>\"\n    },\n    \"tags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"status\": \"ACTIVE\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/customers",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "customers"
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:15:22.000Z",
+              "updatedAt": "2026-07-28T03:15:22.000Z",
+              "uid": "35240-6138b8dc-cb11-4171-b173-3d49555977e2"
+            },
+            {
+              "id": "9130f63b-a415-4128-a632-a3f37843f173",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"id\": \"<string>\",\n  \"primaryEmail\": \"<string>\",\n  \"address\": {\n    \"phoneNumber\": \"<string>\",\n    \"line1\": \"<string>\",\n    \"line2\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"country\": \"<string>\"\n  },\n  \"settings\": [\n    {\n      \"id\": \"<string>\",\n      \"value\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"name\": \"<string>\",\n      \"dataType\": \"JSON_LOGIC\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"value\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"name\": \"<string>\",\n      \"dataType\": \"JSON\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"value\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"name\": \"<string>\",\n      \"dataType\": \"JSON_LOGIC\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"value\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"name\": \"<string>\",\n      \"dataType\": \"NUMERIC\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"value\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"name\": \"<string>\",\n      \"dataType\": \"STRING\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"value\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"name\": \"<string>\",\n      \"dataType\": \"JSON_LOGIC\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"value\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"name\": \"<string>\",\n      \"dataType\": \"JSON\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"value\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"name\": \"<string>\",\n      \"dataType\": \"JSON_LOGIC\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"value\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"name\": \"<string>\",\n      \"dataType\": \"STRING\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"value\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"name\": \"<string>\",\n      \"dataType\": \"NUMERIC\"\n    }\n  ],\n  \"account\": {\n    \"name\": \"<string>\",\n    \"id\": \"<string>\",\n    \"invoiceCurrency\": \"<string>\",\n    \"aliases\": [\n      \"<string>\",\n      \"<string>\",\n      \"<string>\",\n      \"<string>\",\n      \"<string>\",\n      \"<string>\",\n      \"<string>\",\n      \"<string>\",\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"accountAliases\": [\n      {\n        \"value\": \"<string>\",\n        \"effectiveFrom\": \"<dateTime>\",\n        \"effectiveUntil\": \"<dateTime>\"\n      },\n      {\n        \"value\": \"<string>\",\n        \"effectiveFrom\": \"<dateTime>\",\n        \"effectiveUntil\": \"<dateTime>\"\n      }\n    ],\n    \"address\": {\n      \"phoneNumber\": \"<string>\",\n      \"line1\": \"<string>\",\n      \"line2\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"country\": \"<string>\"\n    },\n    \"primaryEmail\": \"<string>\",\n    \"settings\": [\n      {\n        \"id\": \"<string>\",\n        \"value\": \"<string>\",\n        \"namespace\": \"<string>\",\n        \"name\": \"<string>\",\n        \"dataType\": \"JSON_LOGIC\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"value\": \"<string>\",\n        \"namespace\": \"<string>\",\n        \"name\": \"<string>\",\n        \"dataType\": \"STRING\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"value\": \"<string>\",\n        \"namespace\": \"<string>\",\n        \"name\": \"<string>\",\n        \"dataType\": \"STRING\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"value\": \"<string>\",\n        \"namespace\": \"<string>\",\n        \"name\": \"<string>\",\n        \"dataType\": \"JSON\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"value\": \"<string>\",\n        \"namespace\": \"<string>\",\n        \"name\": \"<string>\",\n        \"dataType\": \"STRING\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"value\": \"<string>\",\n        \"namespace\": \"<string>\",\n        \"name\": \"<string>\",\n        \"dataType\": \"JSON\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"value\": \"<string>\",\n        \"namespace\": \"<string>\",\n        \"name\": \"<string>\",\n        \"dataType\": \"STRING\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"value\": \"<string>\",\n        \"namespace\": \"<string>\",\n        \"name\": \"<string>\",\n        \"dataType\": \"NUMERIC\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"value\": \"<string>\",\n        \"namespace\": \"<string>\",\n        \"name\": \"<string>\",\n        \"dataType\": \"NUMERIC\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"value\": \"<string>\",\n        \"namespace\": \"<string>\",\n        \"name\": \"<string>\",\n        \"dataType\": \"JSON_LOGIC\"\n      }\n    ],\n    \"netTermDays\": \"<integer>\",\n    \"metadata\": {\n      \"in_3a\": \"<string>\",\n      \"ipsum_bfe\": \"<string>\"\n    },\n    \"tags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"status\": \"ACTIVE\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/customers",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "customers"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:15:22.000Z",
+              "updatedAt": "2026-07-28T03:15:22.000Z",
+              "uid": "35240-9130f63b-a415-4128-a632-a3f37843f173"
+            },
+            {
+              "id": "f7996747-5f8a-4bcf-9df9-228a3c75a074",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"id\": \"<string>\",\n  \"primaryEmail\": \"<string>\",\n  \"address\": {\n    \"phoneNumber\": \"<string>\",\n    \"line1\": \"<string>\",\n    \"line2\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"country\": \"<string>\"\n  },\n  \"settings\": [\n    {\n      \"id\": \"<string>\",\n      \"value\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"name\": \"<string>\",\n      \"dataType\": \"JSON_LOGIC\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"value\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"name\": \"<string>\",\n      \"dataType\": \"JSON\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"value\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"name\": \"<string>\",\n      \"dataType\": \"JSON_LOGIC\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"value\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"name\": \"<string>\",\n      \"dataType\": \"NUMERIC\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"value\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"name\": \"<string>\",\n      \"dataType\": \"STRING\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"value\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"name\": \"<string>\",\n      \"dataType\": \"JSON_LOGIC\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"value\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"name\": \"<string>\",\n      \"dataType\": \"JSON\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"value\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"name\": \"<string>\",\n      \"dataType\": \"JSON_LOGIC\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"value\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"name\": \"<string>\",\n      \"dataType\": \"STRING\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"value\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"name\": \"<string>\",\n      \"dataType\": \"NUMERIC\"\n    }\n  ],\n  \"account\": {\n    \"name\": \"<string>\",\n    \"id\": \"<string>\",\n    \"invoiceCurrency\": \"<string>\",\n    \"aliases\": [\n      \"<string>\",\n      \"<string>\",\n      \"<string>\",\n      \"<string>\",\n      \"<string>\",\n      \"<string>\",\n      \"<string>\",\n      \"<string>\",\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"accountAliases\": [\n      {\n        \"value\": \"<string>\",\n        \"effectiveFrom\": \"<dateTime>\",\n        \"effectiveUntil\": \"<dateTime>\"\n      },\n      {\n        \"value\": \"<string>\",\n        \"effectiveFrom\": \"<dateTime>\",\n        \"effectiveUntil\": \"<dateTime>\"\n      }\n    ],\n    \"address\": {\n      \"phoneNumber\": \"<string>\",\n      \"line1\": \"<string>\",\n      \"line2\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"country\": \"<string>\"\n    },\n    \"primaryEmail\": \"<string>\",\n    \"settings\": [\n      {\n        \"id\": \"<string>\",\n        \"value\": \"<string>\",\n        \"namespace\": \"<string>\",\n        \"name\": \"<string>\",\n        \"dataType\": \"JSON_LOGIC\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"value\": \"<string>\",\n        \"namespace\": \"<string>\",\n        \"name\": \"<string>\",\n        \"dataType\": \"STRING\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"value\": \"<string>\",\n        \"namespace\": \"<string>\",\n        \"name\": \"<string>\",\n        \"dataType\": \"STRING\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"value\": \"<string>\",\n        \"namespace\": \"<string>\",\n        \"name\": \"<string>\",\n        \"dataType\": \"JSON\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"value\": \"<string>\",\n        \"namespace\": \"<string>\",\n        \"name\": \"<string>\",\n        \"dataType\": \"STRING\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"value\": \"<string>\",\n        \"namespace\": \"<string>\",\n        \"name\": \"<string>\",\n        \"dataType\": \"JSON\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"value\": \"<string>\",\n        \"namespace\": \"<string>\",\n        \"name\": \"<string>\",\n        \"dataType\": \"STRING\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"value\": \"<string>\",\n        \"namespace\": \"<string>\",\n        \"name\": \"<string>\",\n        \"dataType\": \"NUMERIC\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"value\": \"<string>\",\n        \"namespace\": \"<string>\",\n        \"name\": \"<string>\",\n        \"dataType\": \"NUMERIC\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"value\": \"<string>\",\n        \"namespace\": \"<string>\",\n        \"name\": \"<string>\",\n        \"dataType\": \"JSON_LOGIC\"\n      }\n    ],\n    \"netTermDays\": \"<integer>\",\n    \"metadata\": {\n      \"in_3a\": \"<string>\",\n      \"ipsum_bfe\": \"<string>\"\n    },\n    \"tags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"status\": \"ACTIVE\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/customers",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "customers"
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:15:22.000Z",
+              "updatedAt": "2026-07-28T03:15:22.000Z",
+              "uid": "35240-f7996747-5f8a-4bcf-9df9-228a3c75a074"
+            },
+            {
+              "id": "27dc1361-dada-4f12-86b0-7fb5dc65be92",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"id\": \"<string>\",\n  \"primaryEmail\": \"<string>\",\n  \"address\": {\n    \"phoneNumber\": \"<string>\",\n    \"line1\": \"<string>\",\n    \"line2\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"country\": \"<string>\"\n  },\n  \"settings\": [\n    {\n      \"id\": \"<string>\",\n      \"value\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"name\": \"<string>\",\n      \"dataType\": \"JSON_LOGIC\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"value\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"name\": \"<string>\",\n      \"dataType\": \"JSON\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"value\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"name\": \"<string>\",\n      \"dataType\": \"JSON_LOGIC\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"value\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"name\": \"<string>\",\n      \"dataType\": \"NUMERIC\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"value\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"name\": \"<string>\",\n      \"dataType\": \"STRING\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"value\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"name\": \"<string>\",\n      \"dataType\": \"JSON_LOGIC\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"value\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"name\": \"<string>\",\n      \"dataType\": \"JSON\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"value\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"name\": \"<string>\",\n      \"dataType\": \"JSON_LOGIC\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"value\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"name\": \"<string>\",\n      \"dataType\": \"STRING\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"value\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"name\": \"<string>\",\n      \"dataType\": \"NUMERIC\"\n    }\n  ],\n  \"account\": {\n    \"name\": \"<string>\",\n    \"id\": \"<string>\",\n    \"invoiceCurrency\": \"<string>\",\n    \"aliases\": [\n      \"<string>\",\n      \"<string>\",\n      \"<string>\",\n      \"<string>\",\n      \"<string>\",\n      \"<string>\",\n      \"<string>\",\n      \"<string>\",\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"accountAliases\": [\n      {\n        \"value\": \"<string>\",\n        \"effectiveFrom\": \"<dateTime>\",\n        \"effectiveUntil\": \"<dateTime>\"\n      },\n      {\n        \"value\": \"<string>\",\n        \"effectiveFrom\": \"<dateTime>\",\n        \"effectiveUntil\": \"<dateTime>\"\n      }\n    ],\n    \"address\": {\n      \"phoneNumber\": \"<string>\",\n      \"line1\": \"<string>\",\n      \"line2\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"country\": \"<string>\"\n    },\n    \"primaryEmail\": \"<string>\",\n    \"settings\": [\n      {\n        \"id\": \"<string>\",\n        \"value\": \"<string>\",\n        \"namespace\": \"<string>\",\n        \"name\": \"<string>\",\n        \"dataType\": \"JSON_LOGIC\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"value\": \"<string>\",\n        \"namespace\": \"<string>\",\n        \"name\": \"<string>\",\n        \"dataType\": \"STRING\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"value\": \"<string>\",\n        \"namespace\": \"<string>\",\n        \"name\": \"<string>\",\n        \"dataType\": \"STRING\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"value\": \"<string>\",\n        \"namespace\": \"<string>\",\n        \"name\": \"<string>\",\n        \"dataType\": \"JSON\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"value\": \"<string>\",\n        \"namespace\": \"<string>\",\n        \"name\": \"<string>\",\n        \"dataType\": \"STRING\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"value\": \"<string>\",\n        \"namespace\": \"<string>\",\n        \"name\": \"<string>\",\n        \"dataType\": \"JSON\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"value\": \"<string>\",\n        \"namespace\": \"<string>\",\n        \"name\": \"<string>\",\n        \"dataType\": \"STRING\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"value\": \"<string>\",\n        \"namespace\": \"<string>\",\n        \"name\": \"<string>\",\n        \"dataType\": \"NUMERIC\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"value\": \"<string>\",\n        \"namespace\": \"<string>\",\n        \"name\": \"<string>\",\n        \"dataType\": \"NUMERIC\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"value\": \"<string>\",\n        \"namespace\": \"<string>\",\n        \"name\": \"<string>\",\n        \"dataType\": \"JSON_LOGIC\"\n      }\n    ],\n    \"netTermDays\": \"<integer>\",\n    \"metadata\": {\n      \"in_3a\": \"<string>\",\n      \"ipsum_bfe\": \"<string>\"\n    },\n    \"tags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"status\": \"ACTIVE\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/customers",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "customers"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:15:22.000Z",
+              "updatedAt": "2026-07-28T03:15:22.000Z",
+              "uid": "35240-27dc1361-dada-4f12-86b0-7fb5dc65be92"
+            }
+          ],
+          "createdAt": "2026-07-28T03:15:22.000Z",
+          "updatedAt": "2026-07-28T03:15:22.000Z",
+          "uid": "35240-a33ef623-7c62-45a0-b805-8235e9aac108"
+        },
+        {
+          "name": "List Customers",
+          "id": "6f3b55e3-05f0-40a9-b4d6-7289f9451c18",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/customers?nextToken=<string>&pageSize=<number>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "customers"
+              ],
+              "query": [
+                {
+                  "key": "nextToken",
+                  "value": "<string>"
+                },
+                {
+                  "key": "pageSize",
+                  "value": "<number>"
+                }
+              ]
+            },
+            "description": "Returns a list of customers with pagination and sort."
+          },
+          "response": [
+            {
+              "id": "3d139aff-32ce-436d-949c-ed5594b7a379",
+              "name": "Response for list customers request",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/customers?nextToken=<string>&pageSize=<number>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "customers"
+                  ],
+                  "query": [
+                    {
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<number>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"data\": [\n    {\n      \"name\": \"<string>\",\n      \"id\": \"<string>\",\n      \"togaiCustomerId\": \"<string>\",\n      \"primaryEmail\": \"<string>\",\n      \"billingAddress\": \"<string>\",\n      \"address\": {\n        \"phoneNumber\": \"<string>\",\n        \"line1\": \"<string>\",\n        \"line2\": \"<string>\",\n        \"postalCode\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"country\": \"<string>\"\n      },\n      \"status\": \"ACTIVE\",\n      \"createdAt\": \"<dateTime>\",\n      \"updatedAt\": \"<dateTime>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"id\": \"<string>\",\n      \"togaiCustomerId\": \"<string>\",\n      \"primaryEmail\": \"<string>\",\n      \"billingAddress\": \"<string>\",\n      \"address\": {\n        \"phoneNumber\": \"<string>\",\n        \"line1\": \"<string>\",\n        \"line2\": \"<string>\",\n        \"postalCode\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"country\": \"<string>\"\n      },\n      \"status\": \"ARCHIVED\",\n      \"createdAt\": \"<dateTime>\",\n      \"updatedAt\": \"<dateTime>\"\n    }\n  ],\n  \"nextToken\": \"<string>\",\n  \"context\": {\n    \"pageSize\": \"<integer>\",\n    \"sortOrder\": \"ASC\"\n  }\n}",
+              "createdAt": "2026-07-28T03:15:22.000Z",
+              "updatedAt": "2026-07-28T03:15:22.000Z",
+              "uid": "35240-3d139aff-32ce-436d-949c-ed5594b7a379"
+            },
+            {
+              "id": "1e33af0f-f016-40f4-baa0-5e386ed45e55",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/customers?nextToken=<string>&pageSize=<number>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "customers"
+                  ],
+                  "query": [
+                    {
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<number>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:15:22.000Z",
+              "updatedAt": "2026-07-28T03:15:22.000Z",
+              "uid": "35240-1e33af0f-f016-40f4-baa0-5e386ed45e55"
+            },
+            {
+              "id": "04f73905-00aa-4f68-a28d-7b8a6445f557",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/customers?nextToken=<string>&pageSize=<number>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "customers"
+                  ],
+                  "query": [
+                    {
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<number>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:15:22.000Z",
+              "updatedAt": "2026-07-28T03:15:22.000Z",
+              "uid": "35240-04f73905-00aa-4f68-a28d-7b8a6445f557"
+            },
+            {
+              "id": "b52bf8f6-899f-40d1-aa54-40ff72a7c412",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/customers?nextToken=<string>&pageSize=<number>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "customers"
+                  ],
+                  "query": [
+                    {
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<number>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:15:22.000Z",
+              "updatedAt": "2026-07-28T03:15:22.000Z",
+              "uid": "35240-b52bf8f6-899f-40d1-aa54-40ff72a7c412"
+            },
+            {
+              "id": "0a9806f7-02c7-43df-a337-2e4ff36f744c",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/customers?nextToken=<string>&pageSize=<number>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "customers"
+                  ],
+                  "query": [
+                    {
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<number>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:15:22.000Z",
+              "updatedAt": "2026-07-28T03:15:22.000Z",
+              "uid": "35240-0a9806f7-02c7-43df-a337-2e4ff36f744c"
+            },
+            {
+              "id": "979a81fb-cc04-4741-9879-6f4742c4a8de",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/customers?nextToken=<string>&pageSize=<number>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "customers"
+                  ],
+                  "query": [
+                    {
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<number>"
+                    }
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:15:22.000Z",
+              "updatedAt": "2026-07-28T03:15:22.000Z",
+              "uid": "35240-979a81fb-cc04-4741-9879-6f4742c4a8de"
+            },
+            {
+              "id": "dccc8e87-b63c-418c-aa25-64424517f860",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/customers?nextToken=<string>&pageSize=<number>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "customers"
+                  ],
+                  "query": [
+                    {
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<number>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:15:22.000Z",
+              "updatedAt": "2026-07-28T03:15:22.000Z",
+              "uid": "35240-dccc8e87-b63c-418c-aa25-64424517f860"
+            }
+          ],
+          "createdAt": "2026-07-28T03:15:22.000Z",
+          "updatedAt": "2026-07-28T03:15:22.000Z",
+          "uid": "35240-6f3b55e3-05f0-40a9-b4d6-7289f9451c18"
+        }
+      ],
+      "id": "f6c01932-9596-47ef-b153-a16b7ebc1775",
+      "createdAt": "2026-07-28T03:15:22.000Z",
+      "updatedAt": "2026-07-28T03:15:22.000Z",
+      "uid": "35240-f6c01932-9596-47ef-b153-a16b7ebc1775"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.togai.com/"
+    }
+  ]
+}

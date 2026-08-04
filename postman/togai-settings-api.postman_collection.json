@@ -1,0 +1,2000 @@
+{
+  "info": {
+    "_postman_id": "b48577b9-8534-4319-9d4d-2ba42cb5efaa",
+    "name": "Togai Apis Accounts Settings API",
+    "description": "APIs for Togai App\n\nContact Support:\n Email: engg@togai.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:16:51.000Z",
+    "updatedAt": "2026-07-28T03:16:52.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-b48577b9-8534-4319-9d4d-2ba42cb5efaa"
+  },
+  "item": [
+    {
+      "name": "settings",
+      "item": [
+        {
+          "name": "{setting_id_str}",
+          "item": [
+            {
+              "name": "Get a Setting",
+              "id": "098e02c0-0a2c-4ff4-bdab-a40afd72aaf0",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/settings/:setting_id_str",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "settings",
+                    ":setting_id_str"
+                  ],
+                  "variable": [
+                    {
+                      "id": "64be8026-6e60-499f-a14e-6f050ef57834",
+                      "key": "setting_id_str",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "Get a setting"
+              },
+              "response": [
+                {
+                  "id": "62af2f92-884e-4624-ba25-724665e43ccc",
+                  "name": "Response for insert and update settings request",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/settings/:setting_id_str",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "settings",
+                        ":setting_id_str"
+                      ],
+                      "variable": [
+                        {
+                          "key": "setting_id_str"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"value\": \"<string>\",\n  \"entityType\": \"<string>\",\n  \"entityId\": \"<string>\",\n  \"namespace\": \"<string>\",\n  \"name\": \"<string>\",\n  \"dataType\": \"STRING\"\n}",
+                  "createdAt": "2026-07-28T03:16:52.000Z",
+                  "updatedAt": "2026-07-28T03:16:52.000Z",
+                  "uid": "35240-62af2f92-884e-4624-ba25-724665e43ccc"
+                },
+                {
+                  "id": "9aec1cdf-3ce3-4574-bb16-097ed9aaca24",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/settings/:setting_id_str",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "settings",
+                        ":setting_id_str"
+                      ],
+                      "variable": [
+                        {
+                          "key": "setting_id_str"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:16:52.000Z",
+                  "updatedAt": "2026-07-28T03:16:52.000Z",
+                  "uid": "35240-9aec1cdf-3ce3-4574-bb16-097ed9aaca24"
+                },
+                {
+                  "id": "b1db487b-5c23-4542-9ee0-91989bd2f257",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/settings/:setting_id_str",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "settings",
+                        ":setting_id_str"
+                      ],
+                      "variable": [
+                        {
+                          "key": "setting_id_str"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:16:52.000Z",
+                  "updatedAt": "2026-07-28T03:16:52.000Z",
+                  "uid": "35240-b1db487b-5c23-4542-9ee0-91989bd2f257"
+                },
+                {
+                  "id": "fcd6b682-e04e-4207-af2e-d1bd50a3e186",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/settings/:setting_id_str",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "settings",
+                        ":setting_id_str"
+                      ],
+                      "variable": [
+                        {
+                          "key": "setting_id_str"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:16:52.000Z",
+                  "updatedAt": "2026-07-28T03:16:52.000Z",
+                  "uid": "35240-fcd6b682-e04e-4207-af2e-d1bd50a3e186"
+                },
+                {
+                  "id": "4004c458-447e-4231-876b-52d0bbdf9112",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/settings/:setting_id_str",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "settings",
+                        ":setting_id_str"
+                      ],
+                      "variable": [
+                        {
+                          "key": "setting_id_str"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:16:52.000Z",
+                  "updatedAt": "2026-07-28T03:16:52.000Z",
+                  "uid": "35240-4004c458-447e-4231-876b-52d0bbdf9112"
+                },
+                {
+                  "id": "1e5c2cae-bc01-4ca1-a5e0-35f4c15f8409",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/settings/:setting_id_str",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "settings",
+                        ":setting_id_str"
+                      ],
+                      "variable": [
+                        {
+                          "key": "setting_id_str"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:16:52.000Z",
+                  "updatedAt": "2026-07-28T03:16:52.000Z",
+                  "uid": "35240-1e5c2cae-bc01-4ca1-a5e0-35f4c15f8409"
+                },
+                {
+                  "id": "bc99e18e-a469-4976-ac37-5c415dbbab14",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/settings/:setting_id_str",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "settings",
+                        ":setting_id_str"
+                      ],
+                      "variable": [
+                        {
+                          "key": "setting_id_str"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:16:52.000Z",
+                  "updatedAt": "2026-07-28T03:16:52.000Z",
+                  "uid": "35240-bc99e18e-a469-4976-ac37-5c415dbbab14"
+                }
+              ],
+              "createdAt": "2026-07-28T03:16:52.000Z",
+              "updatedAt": "2026-07-28T03:16:52.000Z",
+              "uid": "35240-098e02c0-0a2c-4ff4-bdab-a40afd72aaf0"
+            },
+            {
+              "name": "Update a Setting",
+              "id": "d13ae7be-d641-41da-b91a-cfdeda565c1c",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"value\": \"<string>\",\n  \"dataType\": \"JSON\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/settings/:setting_id_str",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "settings",
+                    ":setting_id_str"
+                  ],
+                  "variable": [
+                    {
+                      "id": "d6bc77db-b92f-4acc-ac5a-845093cdf930",
+                      "key": "setting_id_str",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "Update a setting"
+              },
+              "response": [
+                {
+                  "id": "15f020c0-de7a-47dd-be18-57b689530fb2",
+                  "name": "Response for insert and update settings request",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"value\": \"<string>\",\n  \"dataType\": \"JSON\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/settings/:setting_id_str",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "settings",
+                        ":setting_id_str"
+                      ],
+                      "variable": [
+                        {
+                          "key": "setting_id_str"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"value\": \"<string>\",\n  \"entityType\": \"<string>\",\n  \"entityId\": \"<string>\",\n  \"namespace\": \"<string>\",\n  \"name\": \"<string>\",\n  \"dataType\": \"STRING\"\n}",
+                  "createdAt": "2026-07-28T03:16:52.000Z",
+                  "updatedAt": "2026-07-28T03:16:52.000Z",
+                  "uid": "35240-15f020c0-de7a-47dd-be18-57b689530fb2"
+                },
+                {
+                  "id": "cd094b30-a491-4441-8a0e-efd5fa9435db",
+                  "name": "Response for insert and update settings request",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"value\": \"<string>\",\n  \"dataType\": \"JSON\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/settings/:setting_id_str",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "settings",
+                        ":setting_id_str"
+                      ],
+                      "variable": [
+                        {
+                          "key": "setting_id_str"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "No Content",
+                  "code": 204,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"value\": \"<string>\",\n  \"entityType\": \"<string>\",\n  \"entityId\": \"<string>\",\n  \"namespace\": \"<string>\",\n  \"name\": \"<string>\",\n  \"dataType\": \"STRING\"\n}",
+                  "createdAt": "2026-07-28T03:16:52.000Z",
+                  "updatedAt": "2026-07-28T03:16:52.000Z",
+                  "uid": "35240-cd094b30-a491-4441-8a0e-efd5fa9435db"
+                },
+                {
+                  "id": "0c3f2f4c-af2e-4e03-aa4d-9eb2f6760226",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"value\": \"<string>\",\n  \"dataType\": \"JSON\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/settings/:setting_id_str",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "settings",
+                        ":setting_id_str"
+                      ],
+                      "variable": [
+                        {
+                          "key": "setting_id_str"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:16:52.000Z",
+                  "updatedAt": "2026-07-28T03:16:52.000Z",
+                  "uid": "35240-0c3f2f4c-af2e-4e03-aa4d-9eb2f6760226"
+                },
+                {
+                  "id": "c3135d44-8524-43c2-a1dd-6774ba7ff136",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"value\": \"<string>\",\n  \"dataType\": \"JSON\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/settings/:setting_id_str",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "settings",
+                        ":setting_id_str"
+                      ],
+                      "variable": [
+                        {
+                          "key": "setting_id_str"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:16:52.000Z",
+                  "updatedAt": "2026-07-28T03:16:52.000Z",
+                  "uid": "35240-c3135d44-8524-43c2-a1dd-6774ba7ff136"
+                },
+                {
+                  "id": "5552699b-9c56-4c78-bfad-99559f8fe711",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"value\": \"<string>\",\n  \"dataType\": \"JSON\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/settings/:setting_id_str",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "settings",
+                        ":setting_id_str"
+                      ],
+                      "variable": [
+                        {
+                          "key": "setting_id_str"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:16:52.000Z",
+                  "updatedAt": "2026-07-28T03:16:52.000Z",
+                  "uid": "35240-5552699b-9c56-4c78-bfad-99559f8fe711"
+                },
+                {
+                  "id": "558f76b5-ced3-4a59-9084-7ef1a004c02b",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"value\": \"<string>\",\n  \"dataType\": \"JSON\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/settings/:setting_id_str",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "settings",
+                        ":setting_id_str"
+                      ],
+                      "variable": [
+                        {
+                          "key": "setting_id_str"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:16:52.000Z",
+                  "updatedAt": "2026-07-28T03:16:52.000Z",
+                  "uid": "35240-558f76b5-ced3-4a59-9084-7ef1a004c02b"
+                },
+                {
+                  "id": "9ac99cfe-3397-4d96-b458-a20156ecb113",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"value\": \"<string>\",\n  \"dataType\": \"JSON\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/settings/:setting_id_str",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "settings",
+                        ":setting_id_str"
+                      ],
+                      "variable": [
+                        {
+                          "key": "setting_id_str"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:16:52.000Z",
+                  "updatedAt": "2026-07-28T03:16:52.000Z",
+                  "uid": "35240-9ac99cfe-3397-4d96-b458-a20156ecb113"
+                },
+                {
+                  "id": "dec79bfc-68ec-4f29-89db-21c7acde554c",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"value\": \"<string>\",\n  \"dataType\": \"JSON\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/settings/:setting_id_str",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "settings",
+                        ":setting_id_str"
+                      ],
+                      "variable": [
+                        {
+                          "key": "setting_id_str"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:16:52.000Z",
+                  "updatedAt": "2026-07-28T03:16:52.000Z",
+                  "uid": "35240-dec79bfc-68ec-4f29-89db-21c7acde554c"
+                }
+              ],
+              "createdAt": "2026-07-28T03:16:52.000Z",
+              "updatedAt": "2026-07-28T03:16:52.000Z",
+              "uid": "35240-d13ae7be-d641-41da-b91a-cfdeda565c1c"
+            }
+          ],
+          "id": "11e995c1-f669-4b0f-9cfc-862aac779335",
+          "createdAt": "2026-07-28T03:16:52.000Z",
+          "updatedAt": "2026-07-28T03:16:52.000Z",
+          "uid": "35240-11e995c1-f669-4b0f-9cfc-862aac779335"
+        },
+        {
+          "name": "Create a Setting",
+          "id": "bfe9b7db-cdcf-4b69-a0a8-5c6988833d32",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<string>\",\n  \"value\": \"<string>\",\n  \"entityType\": \"<string>\",\n  \"entityId\": \"<string>\",\n  \"namespace\": \"<string>\",\n  \"name\": \"<string>\",\n  \"dataType\": \"STRING\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/settings",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "settings"
+              ]
+            },
+            "description": "Create a setting"
+          },
+          "response": [
+            {
+              "id": "fade8209-306c-4adc-88c5-2c102e79c0fd",
+              "name": "Response for insert and update settings request",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"value\": \"<string>\",\n  \"entityType\": \"<string>\",\n  \"entityId\": \"<string>\",\n  \"namespace\": \"<string>\",\n  \"name\": \"<string>\",\n  \"dataType\": \"STRING\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/settings",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "settings"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<string>\",\n  \"value\": \"<string>\",\n  \"entityType\": \"<string>\",\n  \"entityId\": \"<string>\",\n  \"namespace\": \"<string>\",\n  \"name\": \"<string>\",\n  \"dataType\": \"STRING\"\n}",
+              "createdAt": "2026-07-28T03:16:52.000Z",
+              "updatedAt": "2026-07-28T03:16:52.000Z",
+              "uid": "35240-fade8209-306c-4adc-88c5-2c102e79c0fd"
+            },
+            {
+              "id": "4d622176-3733-49cb-a3ca-54a74d7f78c4",
+              "name": "Response for insert and update settings request",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"value\": \"<string>\",\n  \"entityType\": \"<string>\",\n  \"entityId\": \"<string>\",\n  \"namespace\": \"<string>\",\n  \"name\": \"<string>\",\n  \"dataType\": \"STRING\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/settings",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "settings"
+                  ]
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<string>\",\n  \"value\": \"<string>\",\n  \"entityType\": \"<string>\",\n  \"entityId\": \"<string>\",\n  \"namespace\": \"<string>\",\n  \"name\": \"<string>\",\n  \"dataType\": \"STRING\"\n}",
+              "createdAt": "2026-07-28T03:16:52.000Z",
+              "updatedAt": "2026-07-28T03:16:52.000Z",
+              "uid": "35240-4d622176-3733-49cb-a3ca-54a74d7f78c4"
+            },
+            {
+              "id": "9226d2ce-3fce-4eca-aba3-daf5708876cb",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"value\": \"<string>\",\n  \"entityType\": \"<string>\",\n  \"entityId\": \"<string>\",\n  \"namespace\": \"<string>\",\n  \"name\": \"<string>\",\n  \"dataType\": \"STRING\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/settings",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "settings"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:16:52.000Z",
+              "updatedAt": "2026-07-28T03:16:52.000Z",
+              "uid": "35240-9226d2ce-3fce-4eca-aba3-daf5708876cb"
+            },
+            {
+              "id": "f69a4419-4767-4f66-ada0-735bc6a6c0cb",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"value\": \"<string>\",\n  \"entityType\": \"<string>\",\n  \"entityId\": \"<string>\",\n  \"namespace\": \"<string>\",\n  \"name\": \"<string>\",\n  \"dataType\": \"STRING\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/settings",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "settings"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:16:52.000Z",
+              "updatedAt": "2026-07-28T03:16:52.000Z",
+              "uid": "35240-f69a4419-4767-4f66-ada0-735bc6a6c0cb"
+            },
+            {
+              "id": "c5e0819d-c40a-45b2-a62c-7b82f1ed4928",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"value\": \"<string>\",\n  \"entityType\": \"<string>\",\n  \"entityId\": \"<string>\",\n  \"namespace\": \"<string>\",\n  \"name\": \"<string>\",\n  \"dataType\": \"STRING\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/settings",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "settings"
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:16:52.000Z",
+              "updatedAt": "2026-07-28T03:16:52.000Z",
+              "uid": "35240-c5e0819d-c40a-45b2-a62c-7b82f1ed4928"
+            },
+            {
+              "id": "4db5490f-6457-4f6e-a0e0-03b2a6e6ee04",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"value\": \"<string>\",\n  \"entityType\": \"<string>\",\n  \"entityId\": \"<string>\",\n  \"namespace\": \"<string>\",\n  \"name\": \"<string>\",\n  \"dataType\": \"STRING\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/settings",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "settings"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:16:52.000Z",
+              "updatedAt": "2026-07-28T03:16:52.000Z",
+              "uid": "35240-4db5490f-6457-4f6e-a0e0-03b2a6e6ee04"
+            },
+            {
+              "id": "46680514-d2b3-4595-9251-2d85d9586d35",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"value\": \"<string>\",\n  \"entityType\": \"<string>\",\n  \"entityId\": \"<string>\",\n  \"namespace\": \"<string>\",\n  \"name\": \"<string>\",\n  \"dataType\": \"STRING\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/settings",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "settings"
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:16:52.000Z",
+              "updatedAt": "2026-07-28T03:16:52.000Z",
+              "uid": "35240-46680514-d2b3-4595-9251-2d85d9586d35"
+            },
+            {
+              "id": "af981eb1-c41f-4150-b391-b9c15a812314",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"value\": \"<string>\",\n  \"entityType\": \"<string>\",\n  \"entityId\": \"<string>\",\n  \"namespace\": \"<string>\",\n  \"name\": \"<string>\",\n  \"dataType\": \"STRING\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/settings",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "settings"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:16:52.000Z",
+              "updatedAt": "2026-07-28T03:16:52.000Z",
+              "uid": "35240-af981eb1-c41f-4150-b391-b9c15a812314"
+            }
+          ],
+          "createdAt": "2026-07-28T03:16:52.000Z",
+          "updatedAt": "2026-07-28T03:16:52.000Z",
+          "uid": "35240-bfe9b7db-cdcf-4b69-a0a8-5c6988833d32"
+        },
+        {
+          "name": "Lists Settings",
+          "id": "dd0769bc-f1e4-4d89-8e46-3f537c6f0279",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/settings?nextToken=<string>&pageSize=<number>&entity_type=<string>&entity_id=<string>&setting_id=<string>&namespace=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "settings"
+              ],
+              "query": [
+                {
+                  "key": "nextToken",
+                  "value": "<string>"
+                },
+                {
+                  "key": "pageSize",
+                  "value": "<number>"
+                },
+                {
+                  "key": "entity_type",
+                  "value": "<string>"
+                },
+                {
+                  "key": "entity_id",
+                  "value": "<string>"
+                },
+                {
+                  "key": "setting_id",
+                  "value": "<string>"
+                },
+                {
+                  "key": "namespace",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "List settings"
+          },
+          "response": [
+            {
+              "id": "54d66691-f32d-4fa6-910b-b09252091bff",
+              "name": "Response for list setting request",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/settings?nextToken=<string>&pageSize=<number>&entity_type=<string>&entity_id=<string>&setting_id=<string>&namespace=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "settings"
+                  ],
+                  "query": [
+                    {
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "entity_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "entity_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "setting_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "namespace",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"value\": \"<string>\",\n      \"entityType\": \"<string>\",\n      \"entityId\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"name\": \"<string>\",\n      \"dataType\": \"JSON\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"value\": \"<string>\",\n      \"entityType\": \"<string>\",\n      \"entityId\": \"<string>\",\n      \"namespace\": \"<string>\",\n      \"name\": \"<string>\",\n      \"dataType\": \"JSON_LOGIC\"\n    }\n  ],\n  \"nextToken\": \"<string>\",\n  \"context\": {\n    \"pageSize\": \"<integer>\",\n    \"sortOrder\": \"ASC\"\n  }\n}",
+              "createdAt": "2026-07-28T03:16:52.000Z",
+              "updatedAt": "2026-07-28T03:16:52.000Z",
+              "uid": "35240-54d66691-f32d-4fa6-910b-b09252091bff"
+            },
+            {
+              "id": "3f9b9daa-a7d3-4085-9d75-ef4b638f75bf",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/settings?nextToken=<string>&pageSize=<number>&entity_type=<string>&entity_id=<string>&setting_id=<string>&namespace=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "settings"
+                  ],
+                  "query": [
+                    {
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "entity_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "entity_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "setting_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "namespace",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:16:52.000Z",
+              "updatedAt": "2026-07-28T03:16:52.000Z",
+              "uid": "35240-3f9b9daa-a7d3-4085-9d75-ef4b638f75bf"
+            },
+            {
+              "id": "37b11fc3-c795-4a3f-97fe-23c5273ca899",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/settings?nextToken=<string>&pageSize=<number>&entity_type=<string>&entity_id=<string>&setting_id=<string>&namespace=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "settings"
+                  ],
+                  "query": [
+                    {
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "entity_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "entity_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "setting_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "namespace",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:16:52.000Z",
+              "updatedAt": "2026-07-28T03:16:52.000Z",
+              "uid": "35240-37b11fc3-c795-4a3f-97fe-23c5273ca899"
+            },
+            {
+              "id": "f051f5a8-e185-4635-94bb-ba63e6a31943",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/settings?nextToken=<string>&pageSize=<number>&entity_type=<string>&entity_id=<string>&setting_id=<string>&namespace=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "settings"
+                  ],
+                  "query": [
+                    {
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "entity_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "entity_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "setting_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "namespace",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:16:52.000Z",
+              "updatedAt": "2026-07-28T03:16:52.000Z",
+              "uid": "35240-f051f5a8-e185-4635-94bb-ba63e6a31943"
+            },
+            {
+              "id": "d3cffb84-d108-4cd7-9b79-d4c0e0395a34",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/settings?nextToken=<string>&pageSize=<number>&entity_type=<string>&entity_id=<string>&setting_id=<string>&namespace=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "settings"
+                  ],
+                  "query": [
+                    {
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "entity_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "entity_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "setting_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "namespace",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:16:52.000Z",
+              "updatedAt": "2026-07-28T03:16:52.000Z",
+              "uid": "35240-d3cffb84-d108-4cd7-9b79-d4c0e0395a34"
+            },
+            {
+              "id": "866f7082-0964-4c9d-8e5f-b5ceb5c4f4b6",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/settings?nextToken=<string>&pageSize=<number>&entity_type=<string>&entity_id=<string>&setting_id=<string>&namespace=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "settings"
+                  ],
+                  "query": [
+                    {
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "entity_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "entity_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "setting_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "namespace",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:16:52.000Z",
+              "updatedAt": "2026-07-28T03:16:52.000Z",
+              "uid": "35240-866f7082-0964-4c9d-8e5f-b5ceb5c4f4b6"
+            },
+            {
+              "id": "8d4939a8-05f4-44bc-9f0a-410093f9a252",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/settings?nextToken=<string>&pageSize=<number>&entity_type=<string>&entity_id=<string>&setting_id=<string>&namespace=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "settings"
+                  ],
+                  "query": [
+                    {
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "entity_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "entity_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "setting_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "namespace",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:16:52.000Z",
+              "updatedAt": "2026-07-28T03:16:52.000Z",
+              "uid": "35240-8d4939a8-05f4-44bc-9f0a-410093f9a252"
+            }
+          ],
+          "createdAt": "2026-07-28T03:16:52.000Z",
+          "updatedAt": "2026-07-28T03:16:52.000Z",
+          "uid": "35240-dd0769bc-f1e4-4d89-8e46-3f537c6f0279"
+        }
+      ],
+      "id": "f2a960b0-e680-49c2-8282-dbb64b69ac97",
+      "createdAt": "2026-07-28T03:16:52.000Z",
+      "updatedAt": "2026-07-28T03:16:52.000Z",
+      "uid": "35240-f2a960b0-e680-49c2-8282-dbb64b69ac97"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.togai.com/"
+    }
+  ]
+}

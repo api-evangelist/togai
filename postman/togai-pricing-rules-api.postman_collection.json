@@ -1,0 +1,558 @@
+{
+  "info": {
+    "_postman_id": "e6ac0121-1e9c-44bf-9292-22b8a724a4c4",
+    "name": "Togai Apis Accounts Pricing Rules API",
+    "description": "APIs for Togai App\n\nContact Support:\n Email: engg@togai.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:16:50.000Z",
+    "updatedAt": "2026-07-28T03:16:51.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-e6ac0121-1e9c-44bf-9292-22b8a724a4c4"
+  },
+  "item": [
+    {
+      "name": "price_plans",
+      "item": [
+        {
+          "name": "{price_plan_id}",
+          "item": [
+            {
+              "name": "pricing_schedules",
+              "item": [
+                {
+                  "name": "{pricing_schedule_id}",
+                  "item": [
+                    {
+                      "name": "pricing_rules",
+                      "item": [
+                        {
+                          "name": "List Pricing Rules by Price Plan Id and Pricing Schedule Id",
+                          "id": "fe85a52b-f6d1-4d85-a4b9-eb47d8a13e78",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/price_plans/:price_plan_id/pricing_schedules/:pricing_schedule_id/pricing_rules?invoice_timing=IN_ADVANCE",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "price_plans",
+                                ":price_plan_id",
+                                "pricing_schedules",
+                                ":pricing_schedule_id",
+                                "pricing_rules"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Optional field to filter pricing rules based on invoice timing",
+                                  "key": "invoice_timing",
+                                  "value": "IN_ADVANCE"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "id": "2086492b-a905-47ff-b9af-df6bae99504e",
+                                  "key": "price_plan_id",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                },
+                                {
+                                  "id": "a917cfdb-8525-4e27-a5c4-6c2b36b62a41",
+                                  "key": "pricing_schedule_id",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            },
+                            "description": "Get a list of pricing rules using price plan id and pricing schedule id"
+                          },
+                          "response": [
+                            {
+                              "id": "cf1bfbfe-f631-4fe7-850c-b52512571f4f",
+                              "name": "Response for create/list pricing rules request",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/price_plans/:price_plan_id/pricing_schedules/:pricing_schedule_id/pricing_rules?invoice_timing=IN_ADVANCE",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "price_plans",
+                                    ":price_plan_id",
+                                    "pricing_schedules",
+                                    ":pricing_schedule_id",
+                                    "pricing_rules"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Optional field to filter pricing rules based on invoice timing",
+                                      "key": "invoice_timing",
+                                      "value": "IN_ADVANCE"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "price_plan_id"
+                                    },
+                                    {
+                                      "key": "pricing_schedule_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"version\": \"<integer>\",\n      \"order\": \"<integer>\",\n      \"computation\": \"<string>\",\n      \"action\": {\n        \"type\": \"ADD\",\n        \"target\": \"<string>\",\n        \"id\": \"<string>\",\n        \"description\": \"<string>\",\n        \"metadata\": {\n          \"mollit2fb\": \"<string>\",\n          \"essecc2\": \"<string>\"\n        }\n      },\n      \"invoiceTiming\": \"IN_ARREARS\",\n      \"condition\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"version\": \"<integer>\",\n      \"order\": \"<integer>\",\n      \"computation\": \"<string>\",\n      \"action\": {\n        \"type\": \"UPDATE\",\n        \"target\": \"<string>\",\n        \"id\": \"<string>\",\n        \"description\": \"<string>\",\n        \"metadata\": {\n          \"sunt_f\": \"<string>\"\n        }\n      },\n      \"invoiceTiming\": \"IN_ADVANCE\",\n      \"condition\": \"<string>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-07-28T03:16:51.000Z",
+                              "updatedAt": "2026-07-28T03:16:51.000Z",
+                              "uid": "35240-cf1bfbfe-f631-4fe7-850c-b52512571f4f"
+                            },
+                            {
+                              "id": "247f51c5-b6b5-4919-bc23-e738787cd242",
+                              "name": "Error response",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/price_plans/:price_plan_id/pricing_schedules/:pricing_schedule_id/pricing_rules?invoice_timing=IN_ADVANCE",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "price_plans",
+                                    ":price_plan_id",
+                                    "pricing_schedules",
+                                    ":pricing_schedule_id",
+                                    "pricing_rules"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Optional field to filter pricing rules based on invoice timing",
+                                      "key": "invoice_timing",
+                                      "value": "IN_ADVANCE"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "price_plan_id"
+                                    },
+                                    {
+                                      "key": "pricing_schedule_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"message\": \"<string>\"\n}",
+                              "createdAt": "2026-07-28T03:16:51.000Z",
+                              "updatedAt": "2026-07-28T03:16:51.000Z",
+                              "uid": "35240-247f51c5-b6b5-4919-bc23-e738787cd242"
+                            },
+                            {
+                              "id": "1fe5101b-3b43-4fbc-ac7c-07ceba64bc5a",
+                              "name": "Error response",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/price_plans/:price_plan_id/pricing_schedules/:pricing_schedule_id/pricing_rules?invoice_timing=IN_ADVANCE",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "price_plans",
+                                    ":price_plan_id",
+                                    "pricing_schedules",
+                                    ":pricing_schedule_id",
+                                    "pricing_rules"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Optional field to filter pricing rules based on invoice timing",
+                                      "key": "invoice_timing",
+                                      "value": "IN_ADVANCE"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "price_plan_id"
+                                    },
+                                    {
+                                      "key": "pricing_schedule_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"message\": \"<string>\"\n}",
+                              "createdAt": "2026-07-28T03:16:51.000Z",
+                              "updatedAt": "2026-07-28T03:16:51.000Z",
+                              "uid": "35240-1fe5101b-3b43-4fbc-ac7c-07ceba64bc5a"
+                            },
+                            {
+                              "id": "9a52e810-41e7-4561-b7a7-ed31fda28445",
+                              "name": "Error response",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/price_plans/:price_plan_id/pricing_schedules/:pricing_schedule_id/pricing_rules?invoice_timing=IN_ADVANCE",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "price_plans",
+                                    ":price_plan_id",
+                                    "pricing_schedules",
+                                    ":pricing_schedule_id",
+                                    "pricing_rules"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Optional field to filter pricing rules based on invoice timing",
+                                      "key": "invoice_timing",
+                                      "value": "IN_ADVANCE"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "price_plan_id"
+                                    },
+                                    {
+                                      "key": "pricing_schedule_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Forbidden",
+                              "code": 403,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"message\": \"<string>\"\n}",
+                              "createdAt": "2026-07-28T03:16:51.000Z",
+                              "updatedAt": "2026-07-28T03:16:51.000Z",
+                              "uid": "35240-9a52e810-41e7-4561-b7a7-ed31fda28445"
+                            },
+                            {
+                              "id": "8e95a82b-8bc7-4aee-a09d-1df219d443c8",
+                              "name": "Error response",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/price_plans/:price_plan_id/pricing_schedules/:pricing_schedule_id/pricing_rules?invoice_timing=IN_ADVANCE",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "price_plans",
+                                    ":price_plan_id",
+                                    "pricing_schedules",
+                                    ":pricing_schedule_id",
+                                    "pricing_rules"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Optional field to filter pricing rules based on invoice timing",
+                                      "key": "invoice_timing",
+                                      "value": "IN_ADVANCE"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "price_plan_id"
+                                    },
+                                    {
+                                      "key": "pricing_schedule_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"message\": \"<string>\"\n}",
+                              "createdAt": "2026-07-28T03:16:51.000Z",
+                              "updatedAt": "2026-07-28T03:16:51.000Z",
+                              "uid": "35240-8e95a82b-8bc7-4aee-a09d-1df219d443c8"
+                            },
+                            {
+                              "id": "17c947a8-7df8-43c7-b60f-d9fc881eb267",
+                              "name": "Error response",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/price_plans/:price_plan_id/pricing_schedules/:pricing_schedule_id/pricing_rules?invoice_timing=IN_ADVANCE",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "price_plans",
+                                    ":price_plan_id",
+                                    "pricing_schedules",
+                                    ":pricing_schedule_id",
+                                    "pricing_rules"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Optional field to filter pricing rules based on invoice timing",
+                                      "key": "invoice_timing",
+                                      "value": "IN_ADVANCE"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "price_plan_id"
+                                    },
+                                    {
+                                      "key": "pricing_schedule_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Too Many Requests",
+                              "code": 429,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"message\": \"<string>\"\n}",
+                              "createdAt": "2026-07-28T03:16:51.000Z",
+                              "updatedAt": "2026-07-28T03:16:51.000Z",
+                              "uid": "35240-17c947a8-7df8-43c7-b60f-d9fc881eb267"
+                            },
+                            {
+                              "id": "46dba7d7-add3-4457-934d-33cca3df55bc",
+                              "name": "Error response",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/price_plans/:price_plan_id/pricing_schedules/:pricing_schedule_id/pricing_rules?invoice_timing=IN_ADVANCE",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "price_plans",
+                                    ":price_plan_id",
+                                    "pricing_schedules",
+                                    ":pricing_schedule_id",
+                                    "pricing_rules"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Optional field to filter pricing rules based on invoice timing",
+                                      "key": "invoice_timing",
+                                      "value": "IN_ADVANCE"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "price_plan_id"
+                                    },
+                                    {
+                                      "key": "pricing_schedule_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Internal Server Error",
+                              "code": 500,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"message\": \"<string>\"\n}",
+                              "createdAt": "2026-07-28T03:16:51.000Z",
+                              "updatedAt": "2026-07-28T03:16:51.000Z",
+                              "uid": "35240-46dba7d7-add3-4457-934d-33cca3df55bc"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T03:16:51.000Z",
+                          "updatedAt": "2026-07-28T03:16:51.000Z",
+                          "uid": "35240-fe85a52b-f6d1-4d85-a4b9-eb47d8a13e78"
+                        }
+                      ],
+                      "id": "29392609-ab97-41d5-bf23-099c4d1fbd23",
+                      "createdAt": "2026-07-28T03:16:51.000Z",
+                      "updatedAt": "2026-07-28T03:16:51.000Z",
+                      "uid": "35240-29392609-ab97-41d5-bf23-099c4d1fbd23"
+                    }
+                  ],
+                  "id": "bb10bad0-c4c6-4cec-93aa-c97b986f9c81",
+                  "createdAt": "2026-07-28T03:16:51.000Z",
+                  "updatedAt": "2026-07-28T03:16:51.000Z",
+                  "uid": "35240-bb10bad0-c4c6-4cec-93aa-c97b986f9c81"
+                }
+              ],
+              "id": "b2c390b1-ed60-4b05-a8f9-8f0ba5f0ceb8",
+              "createdAt": "2026-07-28T03:16:51.000Z",
+              "updatedAt": "2026-07-28T03:16:51.000Z",
+              "uid": "35240-b2c390b1-ed60-4b05-a8f9-8f0ba5f0ceb8"
+            }
+          ],
+          "id": "fd3c00aa-1ddf-43fa-abd3-ae7e495b80fc",
+          "createdAt": "2026-07-28T03:16:51.000Z",
+          "updatedAt": "2026-07-28T03:16:51.000Z",
+          "uid": "35240-fd3c00aa-1ddf-43fa-abd3-ae7e495b80fc"
+        }
+      ],
+      "id": "36ef774a-76a8-4eb5-9a3f-3b9703c7ecfa",
+      "createdAt": "2026-07-28T03:16:51.000Z",
+      "updatedAt": "2026-07-28T03:16:51.000Z",
+      "uid": "35240-36ef774a-76a8-4eb5-9a3f-3b9703c7ecfa"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.togai.com/"
+    }
+  ]
+}

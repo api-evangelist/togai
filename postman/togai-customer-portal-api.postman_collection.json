@@ -1,0 +1,493 @@
+{
+  "info": {
+    "_postman_id": "66903396-d7db-40fc-81b0-6fd4d89bd5ff",
+    "name": "Togai Apis Accounts Customer Portal API",
+    "description": "APIs for Togai App\n\nContact Support:\n Email: engg@togai.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:15:20.000Z",
+    "updatedAt": "2026-07-28T03:15:20.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-66903396-d7db-40fc-81b0-6fd4d89bd5ff"
+  },
+  "item": [
+    {
+      "name": "portal",
+      "item": [
+        {
+          "name": "token",
+          "item": [
+            {
+              "name": "Get Delegate Token for Customer Portal",
+              "id": "2a744ec4-d1e7-4143-a509-a48d6046c7cd",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"customerId\": \"<string>\",\n  \"accountIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"allAccountsAccess\": \"<boolean>\",\n  \"expiry\": \"<long>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/portal/token",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "portal",
+                    "token"
+                  ]
+                },
+                "description": "Get delegate token for customer portal"
+              },
+              "response": [
+                {
+                  "id": "d66392a9-6c0d-4961-8cb6-96f8a117b043",
+                  "name": "OK",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"customerId\": \"<string>\",\n  \"accountIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"allAccountsAccess\": \"<boolean>\",\n  \"expiry\": \"<long>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/portal/token",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "portal",
+                        "token"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"token\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:15:21.000Z",
+                  "updatedAt": "2026-07-28T03:15:21.000Z",
+                  "uid": "35240-d66392a9-6c0d-4961-8cb6-96f8a117b043"
+                },
+                {
+                  "id": "63820bb2-1cc4-446e-b063-dc0aa42f6232",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"customerId\": \"<string>\",\n  \"accountIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"allAccountsAccess\": \"<boolean>\",\n  \"expiry\": \"<long>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/portal/token",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "portal",
+                        "token"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:15:21.000Z",
+                  "updatedAt": "2026-07-28T03:15:21.000Z",
+                  "uid": "35240-63820bb2-1cc4-446e-b063-dc0aa42f6232"
+                },
+                {
+                  "id": "54e7d290-0951-448e-9b36-7ad1c46aa529",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"customerId\": \"<string>\",\n  \"accountIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"allAccountsAccess\": \"<boolean>\",\n  \"expiry\": \"<long>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/portal/token",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "portal",
+                        "token"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:15:21.000Z",
+                  "updatedAt": "2026-07-28T03:15:21.000Z",
+                  "uid": "35240-54e7d290-0951-448e-9b36-7ad1c46aa529"
+                },
+                {
+                  "id": "c3d37ba3-18f8-414c-bbfa-fa044b20cd97",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"customerId\": \"<string>\",\n  \"accountIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"allAccountsAccess\": \"<boolean>\",\n  \"expiry\": \"<long>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/portal/token",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "portal",
+                        "token"
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:15:21.000Z",
+                  "updatedAt": "2026-07-28T03:15:21.000Z",
+                  "uid": "35240-c3d37ba3-18f8-414c-bbfa-fa044b20cd97"
+                },
+                {
+                  "id": "b887be4e-47de-4173-a966-89c24ea5e020",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"customerId\": \"<string>\",\n  \"accountIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"allAccountsAccess\": \"<boolean>\",\n  \"expiry\": \"<long>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/portal/token",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "portal",
+                        "token"
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:15:21.000Z",
+                  "updatedAt": "2026-07-28T03:15:21.000Z",
+                  "uid": "35240-b887be4e-47de-4173-a966-89c24ea5e020"
+                },
+                {
+                  "id": "c2945a71-b09e-42eb-b0af-ddf0321d379b",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"customerId\": \"<string>\",\n  \"accountIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"allAccountsAccess\": \"<boolean>\",\n  \"expiry\": \"<long>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/portal/token",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "portal",
+                        "token"
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:15:21.000Z",
+                  "updatedAt": "2026-07-28T03:15:21.000Z",
+                  "uid": "35240-c2945a71-b09e-42eb-b0af-ddf0321d379b"
+                },
+                {
+                  "id": "cb490edb-18da-4352-a1ae-c0f63a04225a",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"customerId\": \"<string>\",\n  \"accountIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"allAccountsAccess\": \"<boolean>\",\n  \"expiry\": \"<long>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/portal/token",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "portal",
+                        "token"
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:15:21.000Z",
+                  "updatedAt": "2026-07-28T03:15:21.000Z",
+                  "uid": "35240-cb490edb-18da-4352-a1ae-c0f63a04225a"
+                }
+              ],
+              "createdAt": "2026-07-28T03:15:21.000Z",
+              "updatedAt": "2026-07-28T03:15:21.000Z",
+              "uid": "35240-2a744ec4-d1e7-4143-a509-a48d6046c7cd"
+            }
+          ],
+          "id": "442672d2-f0f5-4f69-bda3-2d6d56f671a2",
+          "createdAt": "2026-07-28T03:15:21.000Z",
+          "updatedAt": "2026-07-28T03:15:21.000Z",
+          "uid": "35240-442672d2-f0f5-4f69-bda3-2d6d56f671a2"
+        }
+      ],
+      "id": "b2b3b0b9-a887-4e9e-a916-7493b8352795",
+      "createdAt": "2026-07-28T03:15:21.000Z",
+      "updatedAt": "2026-07-28T03:15:21.000Z",
+      "uid": "35240-b2b3b0b9-a887-4e9e-a916-7493b8352795"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.togai.com/"
+    }
+  ]
+}

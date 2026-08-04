@@ -1,0 +1,1398 @@
+{
+  "info": {
+    "_postman_id": "02eb34f7-5801-4bac-8e26-60c8c46e040e",
+    "name": "Togai Apis Accounts Event Management API",
+    "description": "APIs for Togai App\n\nContact Support:\n Email: engg@togai.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:15:30.000Z",
+    "updatedAt": "2026-07-28T03:15:30.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-02eb34f7-5801-4bac-8e26-60c8c46e040e"
+  },
+  "item": [
+    {
+      "name": "events",
+      "item": [
+        {
+          "name": "{event_id}",
+          "item": [
+            {
+              "name": "Get an Event Using Event Id",
+              "id": "9bf862c1-7764-45f0-876b-9485979cf923",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/events/:event_id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "events",
+                    ":event_id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "237f83a3-0536-4b54-b432-7771355f8a6b",
+                      "key": "event_id",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "Fetch details of a particular event using the event ID."
+              },
+              "response": [
+                {
+                  "id": "e5b3102c-13ad-4769-9e71-7f6360550ac9",
+                  "name": "Success response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/events/:event_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "events",
+                        ":event_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "event_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"events\": [\n    {\n      \"createdAt\": \"<dateTime>\",\n      \"eventPayload\": {\n        \"schemaName\": \"<string>\",\n        \"timestamp\": \"<dateTime>\",\n        \"accountId\": \"<string>\",\n        \"attributes\": [\n          {\n            \"name\": \"<string>\",\n            \"value\": \"-8646118343999396625024458328736954241175144943964276966.3576\",\n            \"unit\": \"<string>\"\n          },\n          {\n            \"name\": \"<string>\",\n            \"value\": \"2318344261115542836713606943396.114440\",\n            \"unit\": \"<string>\"\n          },\n          {\n            \"name\": \"<string>\",\n            \"value\": \"-273423828877924345668200218221005747680777151500389524143067199090743293297586459243552939483052463464305118023736959932480642045094901008391519456064981643703126265147326155542677406917463176580460544640870896874162848131282466267707126089419864191252640444.288\",\n            \"unit\": \"<string>\"\n          },\n          {\n            \"name\": \"<string>\",\n            \"value\": \"069309225188427239169811232117510020064493266433348539782257346553107454775451053815596717818290704730868895875383376749837497684607342323031906551685453804512759823596968149958675776441755643796324268094986692797475356274787921240053708999146334489937479165415207623253430456329733596379782879452551954944989356253992179010129857275141791159086823038307992294603269594606.2910137489\",\n            \"unit\": \"<string>\"\n          },\n          {\n            \"name\": \"<string>\",\n            \"value\": \"-9426063881325048360474081725143156193975681009676551320916168698977961547798495297407477195118308721982020738337345813306389319195128239734818469474462896849858489968573591672781412715744.27\",\n            \"unit\": \"<string>\"\n          },\n          {\n            \"name\": \"<string>\",\n            \"value\": \"-7\",\n            \"unit\": \"<string>\"\n          },\n          {\n            \"name\": \"<string>\",\n            \"value\": \"0241047630501953412648131040775440517102336145459109658580897051604739889809743919044287141898069592122865969740363069387653636486949782496216096545330474019901967274617914060356110655808704917882247741007152272152314240494689621143220998544040213382834800147155798930264175962336714335435067840450289999080942993394.16879\",\n            \"unit\": \"<string>\"\n          },\n          {\n            \"name\": \"<string>\",\n            \"value\": \"4453242602024100175163052135945759924767108034200386305222394429183986217130575555331548014929269066026297338699955634712521300296086949654225913801367772201218504523412066303068940515486380306822567252440151877137934348392189620920977580769685425465407009237278915238339601806445386761020410833664432420071496537259310912840543216071069431173509219962731103534418749255177559.6655913\",\n            \"unit\": \"<string>\"\n          },\n          {\n            \"name\": \"<string>\",\n            \"value\": \"592286271508508812835175906736568671616508485434582379998180480696463066039207946100568927478832769037907515612865672783908977525432477417561562903894388048539903873083471013872719518439708550974096108963889454897802405323041920114142190733233731617650686078366350992883546356590538483896.35105\",\n            \"unit\": \"<string>\"\n          },\n          {\n            \"name\": \"<string>\",\n            \"value\": \"095603547328383770125016897305781587532906545070060595835291540\",\n            \"unit\": \"<string>\"\n          }\n        ],\n        \"dimensions\": {\n          \"fugiat_3fc\": \"<string>\",\n          \"Excepteur87e\": \"<string>\"\n        },\n        \"id\": \"<string>\"\n      },\n      \"eventPipelineInfo\": {\n        \"eventSchema\": {\n          \"name\": \"<string>\",\n          \"version\": \"<integer>\"\n        },\n        \"usageMeters\": [\n          {\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"version\": \"<integer>\",\n            \"status\": \"PROCESSED_FILTERED_OUT\",\n            \"units\": \"<number>\"\n          },\n          {\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"version\": \"<integer>\",\n            \"status\": \"PROCESSED_FILTERED_OUT\",\n            \"units\": \"<number>\"\n          }\n        ],\n        \"pricePlans\": [\n          {\n            \"name\": \"<string>\",\n            \"id\": \"<string>\",\n            \"scheduleId\": \"<string>\",\n            \"cycleStart\": \"<date>\",\n            \"cycleEnd\": \"<date>\",\n            \"usageMeters\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          },\n          {\n            \"name\": \"<string>\",\n            \"id\": \"<string>\",\n            \"scheduleId\": \"<string>\",\n            \"cycleStart\": \"<date>\",\n            \"cycleEnd\": \"<date>\",\n            \"usageMeters\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        ],\n        \"account\": {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"alias\": \"<string>\"\n        },\n        \"customer\": {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\"\n        },\n        \"featureDetails\": {\n          \"featureId\": \"<string>\",\n          \"mappedAttribute\": \"<string>\",\n          \"overageInCycle\": \"<number>\",\n          \"overageInEvent\": \"<number>\"\n        },\n        \"enrichments\": {\n          \"attributes\": [\n            {\n              \"name\": \"<string>\",\n              \"type\": \"DIMENSION\",\n              \"value\": \"<string>\"\n            },\n            {\n              \"name\": \"<string>\",\n              \"type\": \"DIMENSION\",\n              \"value\": \"<string>\"\n            }\n          ],\n          \"dimensions\": [\n            {\n              \"name\": \"<string>\",\n              \"type\": \"ATTRIBUTE\",\n              \"value\": \"<string>\"\n            },\n            {\n              \"name\": \"<string>\",\n              \"type\": \"DIMENSION\",\n              \"value\": \"<string>\"\n            }\n          ],\n          \"dependencies\": [\n            {\n              \"key\": \"<string>\",\n              \"type\": \"SETTING\",\n              \"value\": \"<string>\",\n              \"name\": \"<string>\"\n            },\n            {\n              \"key\": \"<string>\",\n              \"type\": \"SETTING\",\n              \"value\": \"<string>\",\n              \"name\": \"<string>\"\n            }\n          ]\n        },\n        \"revenueDetails\": [\n          {\n            \"usageMeterId\": \"<string>\",\n            \"revenueBaseCurrency\": \"<number>\",\n            \"revenueInvoiceCurrency\": \"<number>\"\n          },\n          {\n            \"usageMeterId\": \"<string>\",\n            \"revenueBaseCurrency\": \"<number>\",\n            \"revenueInvoiceCurrency\": \"<number>\"\n          }\n        ],\n        \"statusBeforeReverting\": \"<string>\"\n      },\n      \"ingestionStatus\": {\n        \"status\": \"INGESTION_IN_PROGRESS\",\n        \"statusDescription\": \"<string>\"\n      },\n      \"referenceId\": \"<string>\",\n      \"customerId\": \"<string>\",\n      \"source\": {\n        \"id\": \"<string>\",\n        \"type\": \"<string>\"\n      }\n    },\n    {\n      \"createdAt\": \"<dateTime>\",\n      \"eventPayload\": {\n        \"schemaName\": \"<string>\",\n        \"timestamp\": \"<dateTime>\",\n        \"accountId\": \"<string>\",\n        \"attributes\": [\n          {\n            \"name\": \"<string>\",\n            \"value\": \"-068110033220340526020194463481671237300859077879080148474622383983563995153630996631544884319002456340290256526856073713898294598168290388195604642730667066152765040057944897652827252695642393917573109159809637839216973475422647602094010566788085594562625063463601415991551909321301311168953733977728190569914607761875393126959999317644863272294430148297144919176831530218701779045649757027514387795966966748800055970423877629\",\n            \"unit\": \"<string>\"\n          },\n          {\n            \"name\": \"<string>\",\n            \"value\": \"-0557336627076893987150816398763758022351937723447782801596392244844786210150575763453384614109254153734326395902635999564712548310570100018863696347485940288239126455427761477336648806260248798646879131485460901045960328287959134577783348529750915219233349767588168784514430733733502721703961486758520189186123766808514759080787951501415427251326662637637455224530986773554715302202842656725788062774431131303382934485306259655364054237297327243803896237022256373122286421992266856464021976256910228002573867.77530\",\n            \"unit\": \"<string>\"\n          },\n          {\n            \"name\": \"<string>\",\n            \"value\": \"-4200817859106981961621557220179837674202436257624401881747069217718481073939038962984389489339147813272733754140284887498634743678148732902918834261235496480897777427461647499288557406693533499562243601977310874810200663444625271502173891603544555439151103606854360476038565233250128316965461999056195804419025016098899393231425441020763391457345733207620068546236336912654329519264210833906288195431520942237252544186086551562575381754527875809536652700942864655216017697465439453496347359559874281087897164\",\n            \"unit\": \"<string>\"\n          },\n          {\n            \"name\": \"<string>\",\n            \"value\": \"61161354367236227519914356121265219637343032773305128238167792244767694393184620216207589245775823.3\",\n            \"unit\": \"<string>\"\n          },\n          {\n            \"name\": \"<string>\",\n            \"value\": \"8172192329456036275352260766695584208717553959954938358750391123792548813805529066575465353487739448377531426046858120985473622029694150398178840277194573628447266067307377699884998282200254659256359538084980408978090846111943653796955250257474823350560794138157502052006154806721041638446491918942913830774997851213611486998376024150672663500415061711086538598759080483415537058694601306717128293460687397485691219457625300911411312075676844241122374916093577589027798249824234406967849.37400765061\",\n            \"unit\": \"<string>\"\n          },\n          {\n            \"name\": \"<string>\",\n            \"value\": \"-472122665950011068097042912848698939071513885588241852573251621627946980019162941015891671710009713874585080727944494651788506350207688496937026728387797029866485786543269881119318207772342555153097965696581248978094332573443091098436080753939524366165015185685191438204248308273383688880983727977008105441383949157888113518062868741477159887226971770549232915184471216755338223149682364330903901046890872328793867379138.23\",\n            \"unit\": \"<string>\"\n          },\n          {\n            \"name\": \"<string>\",\n            \"value\": \"-02666119986824892199662094245043439775414247470524408921167164115612234402684648565663203852613229886019951525481767250622330235047089980372202952928420778949343098535563450681529753918398090658257628076161063339335574695779458189084\",\n            \"unit\": \"<string>\"\n          },\n          {\n            \"name\": \"<string>\",\n            \"value\": \"63320\",\n            \"unit\": \"<string>\"\n          },\n          {\n            \"name\": \"<string>\",\n            \"value\": \"-682360382287985846745558967858770524583116721104021580175157446772260371292163050305230348211925146051304641538299983213734593479175735599983105061382243407652005352371516173297767721134896451946351305564377873935439962013061774564576048302591146455043224791133226416782212369448840266265937459099342660543210291369413723380666455162909029378231776008614821835233940575059210731342938514621740405111231369924378167339408152394298282316029509208698192386758221708990793299.9357188299\",\n            \"unit\": \"<string>\"\n          },\n          {\n            \"name\": \"<string>\",\n            \"value\": \"3635166061143798467669355743721165419199680365572370185321425949579050112687041787274609481604608451408502495247260212430235796027446639454035041328611628298859332618296794367879136646951182562063636044303643709132075032291802499697517611833856772371606307193948724564815899375736655406773462201101890048881333248363788988293987614487264644274479814332573337442206907908102544588531706751553004310049491625988766202488435254472376762161783832043703479934027213109325766950478603514735557937.10\",\n            \"unit\": \"<string>\"\n          }\n        ],\n        \"dimensions\": {\n          \"dolor_79\": \"<string>\",\n          \"minim_2\": \"<string>\"\n        },\n        \"id\": \"<string>\"\n      },\n      \"eventPipelineInfo\": {\n        \"eventSchema\": {\n          \"name\": \"<string>\",\n          \"version\": \"<integer>\"\n        },\n        \"usageMeters\": [\n          {\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"version\": \"<integer>\",\n            \"status\": \"PROCESSED_FILTERED_OUT\",\n            \"units\": \"<number>\"\n          },\n          {\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"version\": \"<integer>\",\n            \"status\": \"PROCESSED_UNITS_COMPUTED\",\n            \"units\": \"<number>\"\n          }\n        ],\n        \"pricePlans\": [\n          {\n            \"name\": \"<string>\",\n            \"id\": \"<string>\",\n            \"scheduleId\": \"<string>\",\n            \"cycleStart\": \"<date>\",\n            \"cycleEnd\": \"<date>\",\n            \"usageMeters\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          },\n          {\n            \"name\": \"<string>\",\n            \"id\": \"<string>\",\n            \"scheduleId\": \"<string>\",\n            \"cycleStart\": \"<date>\",\n            \"cycleEnd\": \"<date>\",\n            \"usageMeters\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        ],\n        \"account\": {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"alias\": \"<string>\"\n        },\n        \"customer\": {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\"\n        },\n        \"featureDetails\": {\n          \"featureId\": \"<string>\",\n          \"mappedAttribute\": \"<string>\",\n          \"overageInCycle\": \"<number>\",\n          \"overageInEvent\": \"<number>\"\n        },\n        \"enrichments\": {\n          \"attributes\": [\n            {\n              \"name\": \"<string>\",\n              \"type\": \"ATTRIBUTE\",\n              \"value\": \"<string>\"\n            },\n            {\n              \"name\": \"<string>\",\n              \"type\": \"DIMENSION\",\n              \"value\": \"<string>\"\n            }\n          ],\n          \"dimensions\": [\n            {\n              \"name\": \"<string>\",\n              \"type\": \"DIMENSION\",\n              \"value\": \"<string>\"\n            },\n            {\n              \"name\": \"<string>\",\n              \"type\": \"ATTRIBUTE\",\n              \"value\": \"<string>\"\n            }\n          ],\n          \"dependencies\": [\n            {\n              \"key\": \"<string>\",\n              \"type\": \"SETTING\",\n              \"value\": \"<string>\",\n              \"name\": \"<string>\"\n            },\n            {\n              \"key\": \"<string>\",\n              \"type\": \"SETTING\",\n              \"value\": \"<string>\",\n              \"name\": \"<string>\"\n            }\n          ]\n        },\n        \"revenueDetails\": [\n          {\n            \"usageMeterId\": \"<string>\",\n            \"revenueBaseCurrency\": \"<number>\",\n            \"revenueInvoiceCurrency\": \"<number>\"\n          },\n          {\n            \"usageMeterId\": \"<string>\",\n            \"revenueBaseCurrency\": \"<number>\",\n            \"revenueInvoiceCurrency\": \"<number>\"\n          }\n        ],\n        \"statusBeforeReverting\": \"<string>\"\n      },\n      \"ingestionStatus\": {\n        \"status\": \"INGESTION_IN_PROGRESS\",\n        \"statusDescription\": \"<string>\"\n      },\n      \"referenceId\": \"<string>\",\n      \"customerId\": \"<string>\",\n      \"source\": {\n        \"id\": \"<string>\",\n        \"type\": \"<string>\"\n      }\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T03:15:30.000Z",
+                  "updatedAt": "2026-07-28T03:15:30.000Z",
+                  "uid": "35240-e5b3102c-13ad-4769-9e71-7f6360550ac9"
+                },
+                {
+                  "id": "849be811-7b92-4f53-a47c-0c94ded4f2b1",
+                  "name": "Bad request. Please check the response message for failure details.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/events/:event_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "events",
+                        ":event_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "event_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:15:30.000Z",
+                  "updatedAt": "2026-07-28T03:15:30.000Z",
+                  "uid": "35240-849be811-7b92-4f53-a47c-0c94ded4f2b1"
+                },
+                {
+                  "id": "a5130bc3-5376-4eda-8210-671f323d8e69",
+                  "name": "Credential is not valid. Please check the response message for failure details.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/events/:event_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "events",
+                        ":event_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "event_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:15:30.000Z",
+                  "updatedAt": "2026-07-28T03:15:30.000Z",
+                  "uid": "35240-a5130bc3-5376-4eda-8210-671f323d8e69"
+                },
+                {
+                  "id": "dd7abfe5-c13a-496a-8c22-ff88ed33202f",
+                  "name": "Credential does not have access to get events.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/events/:event_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "events",
+                        ":event_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "event_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:15:30.000Z",
+                  "updatedAt": "2026-07-28T03:15:30.000Z",
+                  "uid": "35240-dd7abfe5-c13a-496a-8c22-ff88ed33202f"
+                },
+                {
+                  "id": "7f0a4af1-a75d-4e3c-af95-2a19afb3224c",
+                  "name": "Request throttled. Please check the response message on the failure details.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/events/:event_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "events",
+                        ":event_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "event_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:15:30.000Z",
+                  "updatedAt": "2026-07-28T03:15:30.000Z",
+                  "uid": "35240-7f0a4af1-a75d-4e3c-af95-2a19afb3224c"
+                },
+                {
+                  "id": "c0cc3a0e-1f64-49de-8f34-0e5c03a218f7",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/events/:event_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "events",
+                        ":event_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "event_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:15:30.000Z",
+                  "updatedAt": "2026-07-28T03:15:30.000Z",
+                  "uid": "35240-c0cc3a0e-1f64-49de-8f34-0e5c03a218f7"
+                }
+              ],
+              "createdAt": "2026-07-28T03:15:30.000Z",
+              "updatedAt": "2026-07-28T03:15:30.000Z",
+              "uid": "35240-9bf862c1-7764-45f0-876b-9485979cf923"
+            }
+          ],
+          "id": "d9b4f214-28e3-4535-862a-e82ba6da6d0d",
+          "createdAt": "2026-07-28T03:15:30.000Z",
+          "updatedAt": "2026-07-28T03:15:30.000Z",
+          "uid": "35240-d9b4f214-28e3-4535-862a-e82ba6da6d0d"
+        },
+        {
+          "name": "correction",
+          "item": [
+            {
+              "name": "Correct an Ingested Event",
+              "id": "c6c7b72b-4cb2-477f-a32f-9ae807e61f79",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": {\n    \"schemaName\": \"<string>\",\n    \"timestamp\": \"<dateTime>\",\n    \"accountId\": \"<string>\",\n    \"attributes\": [\n      {\n        \"name\": \"<string>\",\n        \"value\": \"-167689411189914955385905726232071461254622678093240722151223262497388174175206951195370244500380855273415212754516698488459087562315872752560236421487829514158015987499792770584327645653174702969799696558551934741770600728353268240948522565322021196349953514671117932629722814941086962655450614458400404951264928494139073843539029625569302583459144474.507947\",\n        \"unit\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"70121157390626840433710018393797749977132050810845485794539229422706521593072167743067273345253766937911229442304297559398392763121013479671838655740405052851712398410285400957499300939367538287864974834930937525262653547787834401500268298418129468853408263170633220159104895901693671182513864.98\",\n        \"unit\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"6488772843906161447554546074348444974459299494928018167775060176516702014316256827524199218504856595177302414880157997290204471421780006976447934090211281262095178440640855944042824288588476368355670095359802440993080892925616605167064214623234821485511309438417448339762803663601990\",\n        \"unit\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"-75010504648237092368746928640390738466009774594183367948297066452952066892408362110001989599830896306347785421683869641603360755281721300382946802567473225701001253230595625947644375105042265933289110322585553258600122633491613743039777663365292855395651038809288766300895658254632444845212441870733656893406716031292609640197604143816064534.331\",\n        \"unit\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"-530330532993308979276178984612686675388945770026757167092590280303746919421492931018307871538592376322642088017946599403845451877173694824458759658729989896495412065459780970127273900314451578295567688401140581004731209132746231011025458615112226253097155224517816895367706415707284866437991853963575792103882922102392149.795145\",\n        \"unit\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"32517219368102006866252360263129028019651350415287912776540446837239295426853449789748585897832649549821332632934648022062195071290292668619458005258458314822951410383821980048940891994646407502930805188691654447663914792602088763998353711116852343711596801627213198689972138623273943158457855705400489026428973697703860774264278326484076705354667138393253054731397233228320338485542\",\n        \"unit\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"-20373411847516234542273525761089304703\",\n        \"unit\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"-08238710373254637149869765048153494423256771988582894597766315300582940183064949757618029978907217940140538506209584108398172792608349953674415979489945518627147667612211869623532978314040337138146833286128628972240521063888884468976393648166565041170887185575431302475900465485360384318066864178718429143891290168247505027850115543666169758811246\",\n        \"unit\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"822457635977177773434423775812231027154513472005737617468817586658647283904226154537132417234051573599715329028276145772041754865028056558196971257163742509333047707288743999226748555791136394338777295041368790173098149770095030497006629350961180647441722831929525037954848396994658564427862124253901314754483176220324552413776852563688873906085091120826212718645568989409726693095590696837486806790224790660348148780773058777384067571353817041602899897062117842587499\",\n        \"unit\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"-5232301313199592590659519720403806562533733461180112765155746951845106984301673913884705232489224997230078269206831156890974034464420.3152462\",\n        \"unit\": \"<string>\"\n      }\n    ],\n    \"dimensions\": {\n      \"consequatb\": \"<string>\",\n      \"estfc\": \"<string>\"\n    },\n    \"id\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/events/correction?action=REDO_EVENT&require_confirmation=<boolean>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "events",
+                    "correction"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Action to perform in event correction",
+                      "key": "action",
+                      "value": "REDO_EVENT"
+                    },
+                    {
+                      "description": "Specifies whether to start a migration only after a confirmation",
+                      "key": "require_confirmation",
+                      "value": "<boolean>"
+                    }
+                  ]
+                },
+                "description": "#### This API lets you to correct events. Available in both synchronous and asynchronous mode\n- **Usages**: Reduction of all usages associated with this event\n- **Revenue**: Reduction of all revenues associated with this event\n- **Entitlements**: Entitlements(Feature Credits) consumed by this event are granted back to the account.\n\n### Possible Actions:\n- UNDO: Undo all usages, revenue and entitlements associated with an event\n- REDO: Performs UNDO and re-ingests the same event\n- REDO_EVENT: Performs UNDO and re-ingests the correction payload of the event\n"
+              },
+              "response": [
+                {
+                  "id": "958b8bc5-7bff-4331-bc9e-e9ef7406eb27",
+                  "name": "Success response",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"event\": {\n    \"schemaName\": \"<string>\",\n    \"timestamp\": \"<dateTime>\",\n    \"accountId\": \"<string>\",\n    \"attributes\": [\n      {\n        \"name\": \"<string>\",\n        \"value\": \"-167689411189914955385905726232071461254622678093240722151223262497388174175206951195370244500380855273415212754516698488459087562315872752560236421487829514158015987499792770584327645653174702969799696558551934741770600728353268240948522565322021196349953514671117932629722814941086962655450614458400404951264928494139073843539029625569302583459144474.507947\",\n        \"unit\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"70121157390626840433710018393797749977132050810845485794539229422706521593072167743067273345253766937911229442304297559398392763121013479671838655740405052851712398410285400957499300939367538287864974834930937525262653547787834401500268298418129468853408263170633220159104895901693671182513864.98\",\n        \"unit\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"6488772843906161447554546074348444974459299494928018167775060176516702014316256827524199218504856595177302414880157997290204471421780006976447934090211281262095178440640855944042824288588476368355670095359802440993080892925616605167064214623234821485511309438417448339762803663601990\",\n        \"unit\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"-75010504648237092368746928640390738466009774594183367948297066452952066892408362110001989599830896306347785421683869641603360755281721300382946802567473225701001253230595625947644375105042265933289110322585553258600122633491613743039777663365292855395651038809288766300895658254632444845212441870733656893406716031292609640197604143816064534.331\",\n        \"unit\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"-530330532993308979276178984612686675388945770026757167092590280303746919421492931018307871538592376322642088017946599403845451877173694824458759658729989896495412065459780970127273900314451578295567688401140581004731209132746231011025458615112226253097155224517816895367706415707284866437991853963575792103882922102392149.795145\",\n        \"unit\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"32517219368102006866252360263129028019651350415287912776540446837239295426853449789748585897832649549821332632934648022062195071290292668619458005258458314822951410383821980048940891994646407502930805188691654447663914792602088763998353711116852343711596801627213198689972138623273943158457855705400489026428973697703860774264278326484076705354667138393253054731397233228320338485542\",\n        \"unit\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"-20373411847516234542273525761089304703\",\n        \"unit\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"-08238710373254637149869765048153494423256771988582894597766315300582940183064949757618029978907217940140538506209584108398172792608349953674415979489945518627147667612211869623532978314040337138146833286128628972240521063888884468976393648166565041170887185575431302475900465485360384318066864178718429143891290168247505027850115543666169758811246\",\n        \"unit\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"822457635977177773434423775812231027154513472005737617468817586658647283904226154537132417234051573599715329028276145772041754865028056558196971257163742509333047707288743999226748555791136394338777295041368790173098149770095030497006629350961180647441722831929525037954848396994658564427862124253901314754483176220324552413776852563688873906085091120826212718645568989409726693095590696837486806790224790660348148780773058777384067571353817041602899897062117842587499\",\n        \"unit\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"-5232301313199592590659519720403806562533733461180112765155746951845106984301673913884705232489224997230078269206831156890974034464420.3152462\",\n        \"unit\": \"<string>\"\n      }\n    ],\n    \"dimensions\": {\n      \"consequatb\": \"<string>\",\n      \"estfc\": \"<string>\"\n    },\n    \"id\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/events/correction?action=REDO_EVENT&require_confirmation=<boolean>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "events",
+                        "correction"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Action to perform in event correction",
+                          "key": "action",
+                          "value": "REDO_EVENT"
+                        },
+                        {
+                          "description": "Specifies whether to start a migration only after a confirmation",
+                          "key": "require_confirmation",
+                          "value": "<boolean>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"data\": [\n    {\n      \"createdAt\": \"<dateTime>\",\n      \"eventPayload\": {\n        \"schemaName\": \"<string>\",\n        \"timestamp\": \"<dateTime>\",\n        \"accountId\": \"<string>\",\n        \"attributes\": [\n          {\n            \"name\": \"<string>\",\n            \"value\": \"-9186966413855669786908570600559849064173702382493799787618709506210678962502848671723742339322785322260255374200474675594446463010007960119448077340359502875687559663376047080758988197321034046995109781834598122450762900470850136587686256389628660701150529316698118607700001701693187684841\",\n            \"unit\": \"<string>\"\n          },\n          {\n            \"name\": \"<string>\",\n            \"value\": \"371990073191628128353775633353599137457945206295193772241925551652088609937692123163984312\",\n            \"unit\": \"<string>\"\n          },\n          {\n            \"name\": \"<string>\",\n            \"value\": \"-933208068931485352666577797631715725739379480335815379052541595915443495414767146929428886313008785947701407368698711920929920945120642059581413900949014162686124267813459955544276808974602047435308957226838421320374917615037030965314561150637817434313765160672591614206831526959835023246416669352543985680295187059936692122952759919392985766401809370282210407692667364085274229349373371632783654972718743980623730659700747868404774633771403831252628670792317753693947431445379190105325508342219318\",\n            \"unit\": \"<string>\"\n          },\n          {\n            \"name\": \"<string>\",\n            \"value\": \"-532168717907083026095134266466032580417522050192373276193709773907019707967496178945189162573602296744643996755439633551543273982185481788308762174808304381860450576323407136598483293452803339507826538136711446144462387634394470437428744601.517\",\n            \"unit\": \"<string>\"\n          },\n          {\n            \"name\": \"<string>\",\n            \"value\": \"-45261512208734690058874112313155254244771219445694880340268749388724919167454520171658383790547723638358351176713891842050287037836144524670620142002988061442187930952323863855230576588047264587214612599185101101368917736396408831950637712612238085750344838986229568745.5070348\",\n            \"unit\": \"<string>\"\n          },\n          {\n            \"name\": \"<string>\",\n            \"value\": \"7710880168968724007145533688007942061168.62609\",\n            \"unit\": \"<string>\"\n          },\n          {\n            \"name\": \"<string>\",\n            \"value\": \"-5803223236926751703150133019347211378638773770893560024465405269623839507301043105541042413284321829048884899805292143942663039785062730702565174082623003896598143937163341397461351136199535498726305750149372198433225991395811773754564818932603366585.740245\",\n            \"unit\": \"<string>\"\n          },\n          {\n            \"name\": \"<string>\",\n            \"value\": \"574014036255253284549720067317525309575035237269.9\",\n            \"unit\": \"<string>\"\n          },\n          {\n            \"name\": \"<string>\",\n            \"value\": \"20176313334397218078190974759537802699913573499508990969708405924019790072352640599980711796361170424072249673\",\n            \"unit\": \"<string>\"\n          },\n          {\n            \"name\": \"<string>\",\n            \"value\": \"-375396149460071132039792222831083966739617968152860795029948199390482023116374375058130340763313148151116463827175577893099351970243803337832571881593277101517436162041074274425304812943157677777904634114773983681137507354073469833937811294448074504457473626854888279614380141016556336559965069670868798589211776068882817038060021123227250959311771176784592681997411206976015787917064445866705594562264221701808613741659709350133311909442.15758767\",\n            \"unit\": \"<string>\"\n          }\n        ],\n        \"dimensions\": {\n          \"proident_d7\": \"<string>\"\n        },\n        \"id\": \"<string>\"\n      },\n      \"ingestionStatus\": {\n        \"status\": \"INGESTION_FAILED_SCHEMA_NOT_DEFINED\",\n        \"statusDescription\": \"<string>\"\n      },\n      \"reason\": \"<string>\",\n      \"referenceId\": \"<string>\",\n      \"status\": \"REVERTED_AND_REINGESTED\",\n      \"customerId\": \"<string>\",\n      \"source\": {\n        \"id\": \"<string>\",\n        \"type\": \"<string>\"\n      }\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T03:15:30.000Z",
+                  "updatedAt": "2026-07-28T03:15:30.000Z",
+                  "uid": "35240-958b8bc5-7bff-4331-bc9e-e9ef7406eb27"
+                },
+                {
+                  "id": "3aab0c7c-519a-448a-a143-664d6e773ea9",
+                  "name": "Bad request. Please check the response message for failure details.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"event\": {\n    \"schemaName\": \"<string>\",\n    \"timestamp\": \"<dateTime>\",\n    \"accountId\": \"<string>\",\n    \"attributes\": [\n      {\n        \"name\": \"<string>\",\n        \"value\": \"-167689411189914955385905726232071461254622678093240722151223262497388174175206951195370244500380855273415212754516698488459087562315872752560236421487829514158015987499792770584327645653174702969799696558551934741770600728353268240948522565322021196349953514671117932629722814941086962655450614458400404951264928494139073843539029625569302583459144474.507947\",\n        \"unit\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"70121157390626840433710018393797749977132050810845485794539229422706521593072167743067273345253766937911229442304297559398392763121013479671838655740405052851712398410285400957499300939367538287864974834930937525262653547787834401500268298418129468853408263170633220159104895901693671182513864.98\",\n        \"unit\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"6488772843906161447554546074348444974459299494928018167775060176516702014316256827524199218504856595177302414880157997290204471421780006976447934090211281262095178440640855944042824288588476368355670095359802440993080892925616605167064214623234821485511309438417448339762803663601990\",\n        \"unit\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"-75010504648237092368746928640390738466009774594183367948297066452952066892408362110001989599830896306347785421683869641603360755281721300382946802567473225701001253230595625947644375105042265933289110322585553258600122633491613743039777663365292855395651038809288766300895658254632444845212441870733656893406716031292609640197604143816064534.331\",\n        \"unit\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"-530330532993308979276178984612686675388945770026757167092590280303746919421492931018307871538592376322642088017946599403845451877173694824458759658729989896495412065459780970127273900314451578295567688401140581004731209132746231011025458615112226253097155224517816895367706415707284866437991853963575792103882922102392149.795145\",\n        \"unit\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"32517219368102006866252360263129028019651350415287912776540446837239295426853449789748585897832649549821332632934648022062195071290292668619458005258458314822951410383821980048940891994646407502930805188691654447663914792602088763998353711116852343711596801627213198689972138623273943158457855705400489026428973697703860774264278326484076705354667138393253054731397233228320338485542\",\n        \"unit\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"-20373411847516234542273525761089304703\",\n        \"unit\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"-08238710373254637149869765048153494423256771988582894597766315300582940183064949757618029978907217940140538506209584108398172792608349953674415979489945518627147667612211869623532978314040337138146833286128628972240521063888884468976393648166565041170887185575431302475900465485360384318066864178718429143891290168247505027850115543666169758811246\",\n        \"unit\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"822457635977177773434423775812231027154513472005737617468817586658647283904226154537132417234051573599715329028276145772041754865028056558196971257163742509333047707288743999226748555791136394338777295041368790173098149770095030497006629350961180647441722831929525037954848396994658564427862124253901314754483176220324552413776852563688873906085091120826212718645568989409726693095590696837486806790224790660348148780773058777384067571353817041602899897062117842587499\",\n        \"unit\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"-5232301313199592590659519720403806562533733461180112765155746951845106984301673913884705232489224997230078269206831156890974034464420.3152462\",\n        \"unit\": \"<string>\"\n      }\n    ],\n    \"dimensions\": {\n      \"consequatb\": \"<string>\",\n      \"estfc\": \"<string>\"\n    },\n    \"id\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/events/correction?action=REDO_EVENT&require_confirmation=<boolean>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "events",
+                        "correction"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Action to perform in event correction",
+                          "key": "action",
+                          "value": "REDO_EVENT"
+                        },
+                        {
+                          "description": "Specifies whether to start a migration only after a confirmation",
+                          "key": "require_confirmation",
+                          "value": "<boolean>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:15:30.000Z",
+                  "updatedAt": "2026-07-28T03:15:30.000Z",
+                  "uid": "35240-3aab0c7c-519a-448a-a143-664d6e773ea9"
+                },
+                {
+                  "id": "200136e0-cf77-43b7-ac0b-a172ad283821",
+                  "name": "Credential is not valid. Please check the response message for failure details.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"event\": {\n    \"schemaName\": \"<string>\",\n    \"timestamp\": \"<dateTime>\",\n    \"accountId\": \"<string>\",\n    \"attributes\": [\n      {\n        \"name\": \"<string>\",\n        \"value\": \"-167689411189914955385905726232071461254622678093240722151223262497388174175206951195370244500380855273415212754516698488459087562315872752560236421487829514158015987499792770584327645653174702969799696558551934741770600728353268240948522565322021196349953514671117932629722814941086962655450614458400404951264928494139073843539029625569302583459144474.507947\",\n        \"unit\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"70121157390626840433710018393797749977132050810845485794539229422706521593072167743067273345253766937911229442304297559398392763121013479671838655740405052851712398410285400957499300939367538287864974834930937525262653547787834401500268298418129468853408263170633220159104895901693671182513864.98\",\n        \"unit\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"6488772843906161447554546074348444974459299494928018167775060176516702014316256827524199218504856595177302414880157997290204471421780006976447934090211281262095178440640855944042824288588476368355670095359802440993080892925616605167064214623234821485511309438417448339762803663601990\",\n        \"unit\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"-75010504648237092368746928640390738466009774594183367948297066452952066892408362110001989599830896306347785421683869641603360755281721300382946802567473225701001253230595625947644375105042265933289110322585553258600122633491613743039777663365292855395651038809288766300895658254632444845212441870733656893406716031292609640197604143816064534.331\",\n        \"unit\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"-530330532993308979276178984612686675388945770026757167092590280303746919421492931018307871538592376322642088017946599403845451877173694824458759658729989896495412065459780970127273900314451578295567688401140581004731209132746231011025458615112226253097155224517816895367706415707284866437991853963575792103882922102392149.795145\",\n        \"unit\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"32517219368102006866252360263129028019651350415287912776540446837239295426853449789748585897832649549821332632934648022062195071290292668619458005258458314822951410383821980048940891994646407502930805188691654447663914792602088763998353711116852343711596801627213198689972138623273943158457855705400489026428973697703860774264278326484076705354667138393253054731397233228320338485542\",\n        \"unit\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"-20373411847516234542273525761089304703\",\n        \"unit\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"-08238710373254637149869765048153494423256771988582894597766315300582940183064949757618029978907217940140538506209584108398172792608349953674415979489945518627147667612211869623532978314040337138146833286128628972240521063888884468976393648166565041170887185575431302475900465485360384318066864178718429143891290168247505027850115543666169758811246\",\n        \"unit\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"822457635977177773434423775812231027154513472005737617468817586658647283904226154537132417234051573599715329028276145772041754865028056558196971257163742509333047707288743999226748555791136394338777295041368790173098149770095030497006629350961180647441722831929525037954848396994658564427862124253901314754483176220324552413776852563688873906085091120826212718645568989409726693095590696837486806790224790660348148780773058777384067571353817041602899897062117842587499\",\n        \"unit\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"-5232301313199592590659519720403806562533733461180112765155746951845106984301673913884705232489224997230078269206831156890974034464420.3152462\",\n        \"unit\": \"<string>\"\n      }\n    ],\n    \"dimensions\": {\n      \"consequatb\": \"<string>\",\n      \"estfc\": \"<string>\"\n    },\n    \"id\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/events/correction?action=REDO_EVENT&require_confirmation=<boolean>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "events",
+                        "correction"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Action to perform in event correction",
+                          "key": "action",
+                          "value": "REDO_EVENT"
+                        },
+                        {
+                          "description": "Specifies whether to start a migration only after a confirmation",
+                          "key": "require_confirmation",
+                          "value": "<boolean>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:15:30.000Z",
+                  "updatedAt": "2026-07-28T03:15:30.000Z",
+                  "uid": "35240-200136e0-cf77-43b7-ac0b-a172ad283821"
+                },
+                {
+                  "id": "d3135eff-96cd-4b8e-ac02-485bcc4c5276",
+                  "name": "Credential does not have access to get events.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"event\": {\n    \"schemaName\": \"<string>\",\n    \"timestamp\": \"<dateTime>\",\n    \"accountId\": \"<string>\",\n    \"attributes\": [\n      {\n        \"name\": \"<string>\",\n        \"value\": \"-167689411189914955385905726232071461254622678093240722151223262497388174175206951195370244500380855273415212754516698488459087562315872752560236421487829514158015987499792770584327645653174702969799696558551934741770600728353268240948522565322021196349953514671117932629722814941086962655450614458400404951264928494139073843539029625569302583459144474.507947\",\n        \"unit\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"70121157390626840433710018393797749977132050810845485794539229422706521593072167743067273345253766937911229442304297559398392763121013479671838655740405052851712398410285400957499300939367538287864974834930937525262653547787834401500268298418129468853408263170633220159104895901693671182513864.98\",\n        \"unit\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"6488772843906161447554546074348444974459299494928018167775060176516702014316256827524199218504856595177302414880157997290204471421780006976447934090211281262095178440640855944042824288588476368355670095359802440993080892925616605167064214623234821485511309438417448339762803663601990\",\n        \"unit\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"-75010504648237092368746928640390738466009774594183367948297066452952066892408362110001989599830896306347785421683869641603360755281721300382946802567473225701001253230595625947644375105042265933289110322585553258600122633491613743039777663365292855395651038809288766300895658254632444845212441870733656893406716031292609640197604143816064534.331\",\n        \"unit\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"-530330532993308979276178984612686675388945770026757167092590280303746919421492931018307871538592376322642088017946599403845451877173694824458759658729989896495412065459780970127273900314451578295567688401140581004731209132746231011025458615112226253097155224517816895367706415707284866437991853963575792103882922102392149.795145\",\n        \"unit\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"32517219368102006866252360263129028019651350415287912776540446837239295426853449789748585897832649549821332632934648022062195071290292668619458005258458314822951410383821980048940891994646407502930805188691654447663914792602088763998353711116852343711596801627213198689972138623273943158457855705400489026428973697703860774264278326484076705354667138393253054731397233228320338485542\",\n        \"unit\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"-20373411847516234542273525761089304703\",\n        \"unit\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"-08238710373254637149869765048153494423256771988582894597766315300582940183064949757618029978907217940140538506209584108398172792608349953674415979489945518627147667612211869623532978314040337138146833286128628972240521063888884468976393648166565041170887185575431302475900465485360384318066864178718429143891290168247505027850115543666169758811246\",\n        \"unit\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"822457635977177773434423775812231027154513472005737617468817586658647283904226154537132417234051573599715329028276145772041754865028056558196971257163742509333047707288743999226748555791136394338777295041368790173098149770095030497006629350961180647441722831929525037954848396994658564427862124253901314754483176220324552413776852563688873906085091120826212718645568989409726693095590696837486806790224790660348148780773058777384067571353817041602899897062117842587499\",\n        \"unit\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"-5232301313199592590659519720403806562533733461180112765155746951845106984301673913884705232489224997230078269206831156890974034464420.3152462\",\n        \"unit\": \"<string>\"\n      }\n    ],\n    \"dimensions\": {\n      \"consequatb\": \"<string>\",\n      \"estfc\": \"<string>\"\n    },\n    \"id\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/events/correction?action=REDO_EVENT&require_confirmation=<boolean>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "events",
+                        "correction"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Action to perform in event correction",
+                          "key": "action",
+                          "value": "REDO_EVENT"
+                        },
+                        {
+                          "description": "Specifies whether to start a migration only after a confirmation",
+                          "key": "require_confirmation",
+                          "value": "<boolean>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:15:30.000Z",
+                  "updatedAt": "2026-07-28T03:15:30.000Z",
+                  "uid": "35240-d3135eff-96cd-4b8e-ac02-485bcc4c5276"
+                },
+                {
+                  "id": "754a6507-a9a8-4a42-8204-56903f0dc6c5",
+                  "name": "Request throttled. Please check the response message on the failure details.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"event\": {\n    \"schemaName\": \"<string>\",\n    \"timestamp\": \"<dateTime>\",\n    \"accountId\": \"<string>\",\n    \"attributes\": [\n      {\n        \"name\": \"<string>\",\n        \"value\": \"-167689411189914955385905726232071461254622678093240722151223262497388174175206951195370244500380855273415212754516698488459087562315872752560236421487829514158015987499792770584327645653174702969799696558551934741770600728353268240948522565322021196349953514671117932629722814941086962655450614458400404951264928494139073843539029625569302583459144474.507947\",\n        \"unit\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"70121157390626840433710018393797749977132050810845485794539229422706521593072167743067273345253766937911229442304297559398392763121013479671838655740405052851712398410285400957499300939367538287864974834930937525262653547787834401500268298418129468853408263170633220159104895901693671182513864.98\",\n        \"unit\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"6488772843906161447554546074348444974459299494928018167775060176516702014316256827524199218504856595177302414880157997290204471421780006976447934090211281262095178440640855944042824288588476368355670095359802440993080892925616605167064214623234821485511309438417448339762803663601990\",\n        \"unit\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"-75010504648237092368746928640390738466009774594183367948297066452952066892408362110001989599830896306347785421683869641603360755281721300382946802567473225701001253230595625947644375105042265933289110322585553258600122633491613743039777663365292855395651038809288766300895658254632444845212441870733656893406716031292609640197604143816064534.331\",\n        \"unit\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"-530330532993308979276178984612686675388945770026757167092590280303746919421492931018307871538592376322642088017946599403845451877173694824458759658729989896495412065459780970127273900314451578295567688401140581004731209132746231011025458615112226253097155224517816895367706415707284866437991853963575792103882922102392149.795145\",\n        \"unit\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"32517219368102006866252360263129028019651350415287912776540446837239295426853449789748585897832649549821332632934648022062195071290292668619458005258458314822951410383821980048940891994646407502930805188691654447663914792602088763998353711116852343711596801627213198689972138623273943158457855705400489026428973697703860774264278326484076705354667138393253054731397233228320338485542\",\n        \"unit\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"-20373411847516234542273525761089304703\",\n        \"unit\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"-08238710373254637149869765048153494423256771988582894597766315300582940183064949757618029978907217940140538506209584108398172792608349953674415979489945518627147667612211869623532978314040337138146833286128628972240521063888884468976393648166565041170887185575431302475900465485360384318066864178718429143891290168247505027850115543666169758811246\",\n        \"unit\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"822457635977177773434423775812231027154513472005737617468817586658647283904226154537132417234051573599715329028276145772041754865028056558196971257163742509333047707288743999226748555791136394338777295041368790173098149770095030497006629350961180647441722831929525037954848396994658564427862124253901314754483176220324552413776852563688873906085091120826212718645568989409726693095590696837486806790224790660348148780773058777384067571353817041602899897062117842587499\",\n        \"unit\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"-5232301313199592590659519720403806562533733461180112765155746951845106984301673913884705232489224997230078269206831156890974034464420.3152462\",\n        \"unit\": \"<string>\"\n      }\n    ],\n    \"dimensions\": {\n      \"consequatb\": \"<string>\",\n      \"estfc\": \"<string>\"\n    },\n    \"id\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/events/correction?action=REDO_EVENT&require_confirmation=<boolean>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "events",
+                        "correction"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Action to perform in event correction",
+                          "key": "action",
+                          "value": "REDO_EVENT"
+                        },
+                        {
+                          "description": "Specifies whether to start a migration only after a confirmation",
+                          "key": "require_confirmation",
+                          "value": "<boolean>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:15:30.000Z",
+                  "updatedAt": "2026-07-28T03:15:30.000Z",
+                  "uid": "35240-754a6507-a9a8-4a42-8204-56903f0dc6c5"
+                },
+                {
+                  "id": "0e0f9026-f8a4-40e3-a961-1e3e2045d787",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"event\": {\n    \"schemaName\": \"<string>\",\n    \"timestamp\": \"<dateTime>\",\n    \"accountId\": \"<string>\",\n    \"attributes\": [\n      {\n        \"name\": \"<string>\",\n        \"value\": \"-167689411189914955385905726232071461254622678093240722151223262497388174175206951195370244500380855273415212754516698488459087562315872752560236421487829514158015987499792770584327645653174702969799696558551934741770600728353268240948522565322021196349953514671117932629722814941086962655450614458400404951264928494139073843539029625569302583459144474.507947\",\n        \"unit\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"70121157390626840433710018393797749977132050810845485794539229422706521593072167743067273345253766937911229442304297559398392763121013479671838655740405052851712398410285400957499300939367538287864974834930937525262653547787834401500268298418129468853408263170633220159104895901693671182513864.98\",\n        \"unit\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"6488772843906161447554546074348444974459299494928018167775060176516702014316256827524199218504856595177302414880157997290204471421780006976447934090211281262095178440640855944042824288588476368355670095359802440993080892925616605167064214623234821485511309438417448339762803663601990\",\n        \"unit\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"-75010504648237092368746928640390738466009774594183367948297066452952066892408362110001989599830896306347785421683869641603360755281721300382946802567473225701001253230595625947644375105042265933289110322585553258600122633491613743039777663365292855395651038809288766300895658254632444845212441870733656893406716031292609640197604143816064534.331\",\n        \"unit\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"-530330532993308979276178984612686675388945770026757167092590280303746919421492931018307871538592376322642088017946599403845451877173694824458759658729989896495412065459780970127273900314451578295567688401140581004731209132746231011025458615112226253097155224517816895367706415707284866437991853963575792103882922102392149.795145\",\n        \"unit\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"32517219368102006866252360263129028019651350415287912776540446837239295426853449789748585897832649549821332632934648022062195071290292668619458005258458314822951410383821980048940891994646407502930805188691654447663914792602088763998353711116852343711596801627213198689972138623273943158457855705400489026428973697703860774264278326484076705354667138393253054731397233228320338485542\",\n        \"unit\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"-20373411847516234542273525761089304703\",\n        \"unit\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"-08238710373254637149869765048153494423256771988582894597766315300582940183064949757618029978907217940140538506209584108398172792608349953674415979489945518627147667612211869623532978314040337138146833286128628972240521063888884468976393648166565041170887185575431302475900465485360384318066864178718429143891290168247505027850115543666169758811246\",\n        \"unit\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"822457635977177773434423775812231027154513472005737617468817586658647283904226154537132417234051573599715329028276145772041754865028056558196971257163742509333047707288743999226748555791136394338777295041368790173098149770095030497006629350961180647441722831929525037954848396994658564427862124253901314754483176220324552413776852563688873906085091120826212718645568989409726693095590696837486806790224790660348148780773058777384067571353817041602899897062117842587499\",\n        \"unit\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"-5232301313199592590659519720403806562533733461180112765155746951845106984301673913884705232489224997230078269206831156890974034464420.3152462\",\n        \"unit\": \"<string>\"\n      }\n    ],\n    \"dimensions\": {\n      \"consequatb\": \"<string>\",\n      \"estfc\": \"<string>\"\n    },\n    \"id\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/events/correction?action=REDO_EVENT&require_confirmation=<boolean>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "events",
+                        "correction"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Action to perform in event correction",
+                          "key": "action",
+                          "value": "REDO_EVENT"
+                        },
+                        {
+                          "description": "Specifies whether to start a migration only after a confirmation",
+                          "key": "require_confirmation",
+                          "value": "<boolean>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:15:30.000Z",
+                  "updatedAt": "2026-07-28T03:15:30.000Z",
+                  "uid": "35240-0e0f9026-f8a4-40e3-a961-1e3e2045d787"
+                }
+              ],
+              "createdAt": "2026-07-28T03:15:30.000Z",
+              "updatedAt": "2026-07-28T03:15:30.000Z",
+              "uid": "35240-c6c7b72b-4cb2-477f-a32f-9ae807e61f79"
+            }
+          ],
+          "id": "a17e2f12-ebb1-401a-a73e-4ab339b0ecc6",
+          "createdAt": "2026-07-28T03:15:30.000Z",
+          "updatedAt": "2026-07-28T03:15:30.000Z",
+          "uid": "35240-a17e2f12-ebb1-401a-a73e-4ab339b0ecc6"
+        },
+        {
+          "name": "Get a List of Usage Events with Multiple Query Options",
+          "id": "df687e87-7b37-4c18-a2b4-817fa7235ac0",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/events?nextToken=<string>&status=<string>&account_id=<string>&schema_name=<string>&pageSize=<integer>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "events"
+              ],
+              "query": [
+                {
+                  "description": "Pagination token used as a marker to get records from next page.",
+                  "key": "nextToken",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Filter option to filter by status.",
+                  "key": "status",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Filter option to filter based on account id.",
+                  "key": "account_id",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Filter option to filter the events based on schema name.",
+                  "key": "schema_name",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Maximum page size expected by client to return the record list. \n\n NOTE: Max page size cannot be more than 50. Also 50 is the default page size if no value is provided.",
+                  "key": "pageSize",
+                  "value": "<integer>"
+                }
+              ]
+            },
+            "description": "This API let\u2019s you to fetch a list of events with multiple query parameters"
+          },
+          "response": [
+            {
+              "id": "4b847126-6377-4a17-8019-192c1a9258a5",
+              "name": "Success response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/events?nextToken=<string>&status=<string>&account_id=<string>&schema_name=<string>&pageSize=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "events"
+                  ],
+                  "query": [
+                    {
+                      "description": "Pagination token used as a marker to get records from next page.",
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter option to filter by status.",
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter option to filter based on account id.",
+                      "key": "account_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter option to filter the events based on schema name.",
+                      "key": "schema_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Maximum page size expected by client to return the record list. \n\n NOTE: Max page size cannot be more than 50. Also 50 is the default page size if no value is provided.",
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"events\": [\n    {\n      \"referenceId\": \"<string>\",\n      \"eventPayload\": {\n        \"schemaName\": \"<string>\",\n        \"timestamp\": \"<dateTime>\",\n        \"accountId\": \"<string>\",\n        \"attributes\": [\n          {\n            \"name\": \"<string>\",\n            \"value\": \"465178590730879544525713\",\n            \"unit\": \"<string>\"\n          },\n          {\n            \"name\": \"<string>\",\n            \"value\": \"-45378495769374818164850294408659435082940064102121809290862101491427481019227842948200902054942231465389150561671734902144394051590513902.99\",\n            \"unit\": \"<string>\"\n          },\n          {\n            \"name\": \"<string>\",\n            \"value\": \"-78754819492552836224565432515915317240453.3044787099\",\n            \"unit\": \"<string>\"\n          },\n          {\n            \"name\": \"<string>\",\n            \"value\": \"85230710263901701015635748178527716395298986216174833537673389556434084589398834787956846731799944583991478946804636561323591510568758607365788509679972200575972184493196648883790572636458161635926179228483647974438486775955423220888827032716868212042094850772544424516032270191755746907730.454735\",\n            \"unit\": \"<string>\"\n          },\n          {\n            \"name\": \"<string>\",\n            \"value\": \"57801590980777304621064080954811910719678809021928330104919840788086193158842669543475095907139112173577161229731345001436697563437270617310516187800973740978067598369608622315927199690161897477599229482870769933400088234460473037432706591882548317329334417657.798\",\n            \"unit\": \"<string>\"\n          },\n          {\n            \"name\": \"<string>\",\n            \"value\": \"089678796673020233155969500440691106671764580568619805269408346865181697641506139546485008253634246205174763938902239460904060641253691291929582511832069528233720355995325606225957917733784985759343321970422174956433971661597236576353365108088970412482099596978470132061116804630595999825046648989568062458207317355661949868890187173000432793682749391420470194962337769119215891526037852528913841799390175885223151148005137643273080089046005384245496174904113811134265011783820\",\n            \"unit\": \"<string>\"\n          },\n          {\n            \"name\": \"<string>\",\n            \"value\": \"-711096383081556427032096997242603758728858607685129367973121563872209432564129909047355051249794948405663869479779653857032356004473250407148826520267970817280234427844493847910648078753348719229807166205299908060354236874450479838665893739745662014056199499525649213283804020.200220811\",\n            \"unit\": \"<string>\"\n          },\n          {\n            \"name\": \"<string>\",\n            \"value\": \"413013836557040572339809153276968079306676258321133588353580354148942669426123574610556013176327535114679297268139957473923126886296358821112617861753899384592755991366642235096298306306045812849872918589772619121769353665773641291853653846771488010567994486911186294713465595057884529468965902944569145857732141522677581747656275607744141171457012206465\",\n            \"unit\": \"<string>\"\n          },\n          {\n            \"name\": \"<string>\",\n            \"value\": \"-06605103267647275110413860197572168759604376249391137422624309747334253483545166359670415408493383939268078680126930896410666405176504256184105246222965822026846569643429152239780374869833894103299896408494891201295853726513184022854149749064244858500593991317419355951278133493298588681236060768193715614125283354194010359951817057695673628903369678370640179775145005735567785716143299139333.9953592\",\n            \"unit\": \"<string>\"\n          },\n          {\n            \"name\": \"<string>\",\n            \"value\": \"6739830387414927180684069276147291152324443684285420367060632320334765816524451544619685117337683232757261551018221165377000879833393935668338086569243333857470573093640153532759188739984369858003112924421261762919045203494573290213606658199669736262303158252577561431637791715072773051192759699652377812243620857767\",\n            \"unit\": \"<string>\"\n          }\n        ],\n        \"dimensions\": {\n          \"aliquip_6\": \"<string>\",\n          \"culpae04\": \"<string>\"\n        },\n        \"id\": \"<string>\"\n      },\n      \"ingestionStatus\": {\n        \"status\": \"INGESTION_COMPLETED_NO_MATCHING_METERS\",\n        \"statusDescription\": \"<string>\"\n      },\n      \"createdAt\": \"<dateTime>\",\n      \"customerId\": \"<string>\",\n      \"source\": {\n        \"id\": \"<string>\",\n        \"type\": \"<string>\"\n      }\n    }\n  ],\n  \"nextToken\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:15:30.000Z",
+              "updatedAt": "2026-07-28T03:15:30.000Z",
+              "uid": "35240-4b847126-6377-4a17-8019-192c1a9258a5"
+            },
+            {
+              "id": "12c3c3ab-292d-444e-95f8-c8e40ae2d937",
+              "name": "Bad request. Please check the response message for failure details.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/events?nextToken=<string>&status=<string>&account_id=<string>&schema_name=<string>&pageSize=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "events"
+                  ],
+                  "query": [
+                    {
+                      "description": "Pagination token used as a marker to get records from next page.",
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter option to filter by status.",
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter option to filter based on account id.",
+                      "key": "account_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter option to filter the events based on schema name.",
+                      "key": "schema_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Maximum page size expected by client to return the record list. \n\n NOTE: Max page size cannot be more than 50. Also 50 is the default page size if no value is provided.",
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:15:30.000Z",
+              "updatedAt": "2026-07-28T03:15:30.000Z",
+              "uid": "35240-12c3c3ab-292d-444e-95f8-c8e40ae2d937"
+            },
+            {
+              "id": "bea2747a-f0c0-47e4-af4a-53554010fcc6",
+              "name": "Credential is not valid. Please check the response message for failure details.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/events?nextToken=<string>&status=<string>&account_id=<string>&schema_name=<string>&pageSize=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "events"
+                  ],
+                  "query": [
+                    {
+                      "description": "Pagination token used as a marker to get records from next page.",
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter option to filter by status.",
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter option to filter based on account id.",
+                      "key": "account_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter option to filter the events based on schema name.",
+                      "key": "schema_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Maximum page size expected by client to return the record list. \n\n NOTE: Max page size cannot be more than 50. Also 50 is the default page size if no value is provided.",
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:15:30.000Z",
+              "updatedAt": "2026-07-28T03:15:30.000Z",
+              "uid": "35240-bea2747a-f0c0-47e4-af4a-53554010fcc6"
+            },
+            {
+              "id": "857e528b-0bc8-44e0-aa4c-2a98f6b28413",
+              "name": "Credential does not have access to list events.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/events?nextToken=<string>&status=<string>&account_id=<string>&schema_name=<string>&pageSize=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "events"
+                  ],
+                  "query": [
+                    {
+                      "description": "Pagination token used as a marker to get records from next page.",
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter option to filter by status.",
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter option to filter based on account id.",
+                      "key": "account_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter option to filter the events based on schema name.",
+                      "key": "schema_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Maximum page size expected by client to return the record list. \n\n NOTE: Max page size cannot be more than 50. Also 50 is the default page size if no value is provided.",
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:15:30.000Z",
+              "updatedAt": "2026-07-28T03:15:30.000Z",
+              "uid": "35240-857e528b-0bc8-44e0-aa4c-2a98f6b28413"
+            },
+            {
+              "id": "39ffffd4-3c29-40a8-9a9a-9d5499f9c752",
+              "name": "Unable to process the query parameters provided. Please check our docs for the api limits - https://togai.io/docs/limits.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/events?nextToken=<string>&status=<string>&account_id=<string>&schema_name=<string>&pageSize=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "events"
+                  ],
+                  "query": [
+                    {
+                      "description": "Pagination token used as a marker to get records from next page.",
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter option to filter by status.",
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter option to filter based on account id.",
+                      "key": "account_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter option to filter the events based on schema name.",
+                      "key": "schema_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Maximum page size expected by client to return the record list. \n\n NOTE: Max page size cannot be more than 50. Also 50 is the default page size if no value is provided.",
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:15:30.000Z",
+              "updatedAt": "2026-07-28T03:15:30.000Z",
+              "uid": "35240-39ffffd4-3c29-40a8-9a9a-9d5499f9c752"
+            },
+            {
+              "id": "254cb68c-f937-487b-abb5-cb8b4910086a",
+              "name": "Request throttled. Please check the response message on the failure details.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/events?nextToken=<string>&status=<string>&account_id=<string>&schema_name=<string>&pageSize=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "events"
+                  ],
+                  "query": [
+                    {
+                      "description": "Pagination token used as a marker to get records from next page.",
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter option to filter by status.",
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter option to filter based on account id.",
+                      "key": "account_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter option to filter the events based on schema name.",
+                      "key": "schema_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Maximum page size expected by client to return the record list. \n\n NOTE: Max page size cannot be more than 50. Also 50 is the default page size if no value is provided.",
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:15:30.000Z",
+              "updatedAt": "2026-07-28T03:15:30.000Z",
+              "uid": "35240-254cb68c-f937-487b-abb5-cb8b4910086a"
+            },
+            {
+              "id": "333b6114-6f0e-4937-9a68-e9327061db8d",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/events?nextToken=<string>&status=<string>&account_id=<string>&schema_name=<string>&pageSize=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "events"
+                  ],
+                  "query": [
+                    {
+                      "description": "Pagination token used as a marker to get records from next page.",
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter option to filter by status.",
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter option to filter based on account id.",
+                      "key": "account_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter option to filter the events based on schema name.",
+                      "key": "schema_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Maximum page size expected by client to return the record list. \n\n NOTE: Max page size cannot be more than 50. Also 50 is the default page size if no value is provided.",
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:15:30.000Z",
+              "updatedAt": "2026-07-28T03:15:30.000Z",
+              "uid": "35240-333b6114-6f0e-4937-9a68-e9327061db8d"
+            }
+          ],
+          "createdAt": "2026-07-28T03:15:30.000Z",
+          "updatedAt": "2026-07-28T03:15:30.000Z",
+          "uid": "35240-df687e87-7b37-4c18-a2b4-817fa7235ac0"
+        }
+      ],
+      "id": "2b14153f-5d38-4863-ab6e-76c9a8ccce64",
+      "createdAt": "2026-07-28T03:15:30.000Z",
+      "updatedAt": "2026-07-28T03:15:30.000Z",
+      "uid": "35240-2b14153f-5d38-4863-ab6e-76c9a8ccce64"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.togai.com/"
+    }
+  ]
+}

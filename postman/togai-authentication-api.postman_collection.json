@@ -1,0 +1,332 @@
+{
+  "info": {
+    "_postman_id": "c7ab9213-8dd3-4767-932f-58b6e42a56c4",
+    "name": "Togai Apis Accounts Authentication API",
+    "description": "APIs for Togai App\n\nContact Support:\n Email: engg@togai.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:15:04.000Z",
+    "updatedAt": "2026-07-28T03:15:04.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-c7ab9213-8dd3-4767-932f-58b6e42a56c4"
+  },
+  "item": [
+    {
+      "name": "authenticate",
+      "item": [
+        {
+          "name": "Generate Short Lived Bearer Token",
+          "id": "abaefccc-6196-4f46-810f-3f1fdc00b628",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/authenticate",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "authenticate"
+              ]
+            },
+            "description": "Generates and returns a bearer token. Behavior of this API differs on the basis of the auth mechanism used to make the request.\n  - For API key auth, this API generates a JWT token whcih is valid for 24 hours and returns it.\n  - For JWT bearer auth, returns the same JWT token in response\nFor information on how to generate API token, refer [Generating New API Keys](https://docs.togai.com/api-reference/authentication#generating-new-api-keys) section of docs.\n"
+          },
+          "response": [
+            {
+              "id": "5b0d56d6-4cd5-4b4c-9032-5dde11f596de",
+              "name": "OK",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/authenticate",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "authenticate"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"token\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:15:05.000Z",
+              "updatedAt": "2026-07-28T03:15:05.000Z",
+              "uid": "35240-5b0d56d6-4cd5-4b4c-9032-5dde11f596de"
+            },
+            {
+              "id": "66759c4a-a729-4f11-aaef-533f0db20949",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/authenticate",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "authenticate"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:15:05.000Z",
+              "updatedAt": "2026-07-28T03:15:05.000Z",
+              "uid": "35240-66759c4a-a729-4f11-aaef-533f0db20949"
+            },
+            {
+              "id": "d8e5e93b-a6d8-4226-8e06-48e3c1422cb3",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/authenticate",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "authenticate"
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:15:05.000Z",
+              "updatedAt": "2026-07-28T03:15:05.000Z",
+              "uid": "35240-d8e5e93b-a6d8-4226-8e06-48e3c1422cb3"
+            },
+            {
+              "id": "8ed31450-968b-4472-9f4c-45a226b75d56",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/authenticate",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "authenticate"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:15:05.000Z",
+              "updatedAt": "2026-07-28T03:15:05.000Z",
+              "uid": "35240-8ed31450-968b-4472-9f4c-45a226b75d56"
+            },
+            {
+              "id": "0b80224e-8a18-45d2-a40b-9050c2bb0f22",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/authenticate",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "authenticate"
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:15:05.000Z",
+              "updatedAt": "2026-07-28T03:15:05.000Z",
+              "uid": "35240-0b80224e-8a18-45d2-a40b-9050c2bb0f22"
+            },
+            {
+              "id": "3361c286-c6bb-49b4-a012-14a5135ec95a",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/authenticate",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "authenticate"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:15:05.000Z",
+              "updatedAt": "2026-07-28T03:15:05.000Z",
+              "uid": "35240-3361c286-c6bb-49b4-a012-14a5135ec95a"
+            }
+          ],
+          "createdAt": "2026-07-28T03:15:05.000Z",
+          "updatedAt": "2026-07-28T03:15:05.000Z",
+          "uid": "35240-abaefccc-6196-4f46-810f-3f1fdc00b628"
+        }
+      ],
+      "id": "c190980b-daaa-4bcf-8e3a-0f61a74a48af",
+      "createdAt": "2026-07-28T03:15:05.000Z",
+      "updatedAt": "2026-07-28T03:15:05.000Z",
+      "uid": "35240-c190980b-daaa-4bcf-8e3a-0f61a74a48af"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.togai.com/"
+    }
+  ]
+}

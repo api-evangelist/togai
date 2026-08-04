@@ -1,0 +1,2996 @@
+{
+  "info": {
+    "_postman_id": "0a27a96f-fbbe-4617-8d79-1de0d866b1a8",
+    "name": "Togai Apis Accounts Usage Meters API",
+    "description": "APIs for Togai App\n\nContact Support:\n Email: engg@togai.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:17:03.000Z",
+    "updatedAt": "2026-07-28T03:17:03.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-0a27a96f-fbbe-4617-8d79-1de0d866b1a8"
+  },
+  "item": [
+    {
+      "name": "usage_meters",
+      "item": [
+        {
+          "name": "{usage_meter_id}",
+          "item": [
+            {
+              "name": "activate",
+              "item": [
+                {
+                  "name": "Activate Usage Meter",
+                  "id": "86c76899-0d5d-478f-b593-93733e874362",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/usage_meters/:usage_meter_id/activate",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "usage_meters",
+                        ":usage_meter_id",
+                        "activate"
+                      ],
+                      "variable": [
+                        {
+                          "id": "77b34175-e697-46d8-848c-07c9d4c5a636",
+                          "key": "usage_meter_id",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Activate usage meter"
+                  },
+                  "response": [
+                    {
+                      "id": "9234b75f-a002-4d59-8301-e6a4482616d8",
+                      "name": "Response for Create and Get usage event requests",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/usage_meters/:usage_meter_id/activate",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "usage_meters",
+                            ":usage_meter_id",
+                            "activate"
+                          ],
+                          "variable": [
+                            {
+                              "key": "usage_meter_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"4\",\n  \"displayName\": \"<string>\",\n  \"type\": \"COUNTER\",\n  \"aggregation\": \"SUM\",\n  \"billableName\": \"<string>\",\n  \"description\": \"<string>\",\n  \"filters\": [\n    {\n      \"field\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"status\": \"INACTIVE\",\n  \"computations\": [\n    {\n      \"computation\": \"<string>\",\n      \"order\": \"<integer>\",\n      \"id\": \"<string>\",\n      \"matcher\": \"<string>\"\n    }\n  ],\n  \"createdAt\": \"<dateTime>\",\n  \"lastActivatedAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\"\n}",
+                      "createdAt": "2026-07-28T03:17:03.000Z",
+                      "updatedAt": "2026-07-28T03:17:03.000Z",
+                      "uid": "35240-9234b75f-a002-4d59-8301-e6a4482616d8"
+                    },
+                    {
+                      "id": "cf441947-48f6-4686-979d-5cb46af3a065",
+                      "name": "Error response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/usage_meters/:usage_meter_id/activate",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "usage_meters",
+                            ":usage_meter_id",
+                            "activate"
+                          ],
+                          "variable": [
+                            {
+                              "key": "usage_meter_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:17:03.000Z",
+                      "updatedAt": "2026-07-28T03:17:03.000Z",
+                      "uid": "35240-cf441947-48f6-4686-979d-5cb46af3a065"
+                    },
+                    {
+                      "id": "720e946a-2b02-46e6-a101-09507819fd7a",
+                      "name": "Error response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/usage_meters/:usage_meter_id/activate",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "usage_meters",
+                            ":usage_meter_id",
+                            "activate"
+                          ],
+                          "variable": [
+                            {
+                              "key": "usage_meter_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:17:03.000Z",
+                      "updatedAt": "2026-07-28T03:17:03.000Z",
+                      "uid": "35240-720e946a-2b02-46e6-a101-09507819fd7a"
+                    },
+                    {
+                      "id": "1d89bd0e-8c6d-4bef-ab56-0bc5b9e27970",
+                      "name": "Error response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/usage_meters/:usage_meter_id/activate",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "usage_meters",
+                            ":usage_meter_id",
+                            "activate"
+                          ],
+                          "variable": [
+                            {
+                              "key": "usage_meter_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:17:03.000Z",
+                      "updatedAt": "2026-07-28T03:17:03.000Z",
+                      "uid": "35240-1d89bd0e-8c6d-4bef-ab56-0bc5b9e27970"
+                    },
+                    {
+                      "id": "50dd6560-d50c-4d3c-ae21-24e7220a9ab4",
+                      "name": "Error response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/usage_meters/:usage_meter_id/activate",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "usage_meters",
+                            ":usage_meter_id",
+                            "activate"
+                          ],
+                          "variable": [
+                            {
+                              "key": "usage_meter_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:17:03.000Z",
+                      "updatedAt": "2026-07-28T03:17:03.000Z",
+                      "uid": "35240-50dd6560-d50c-4d3c-ae21-24e7220a9ab4"
+                    },
+                    {
+                      "id": "ba2ecba6-82af-4593-b580-99155ce414df",
+                      "name": "Error response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/usage_meters/:usage_meter_id/activate",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "usage_meters",
+                            ":usage_meter_id",
+                            "activate"
+                          ],
+                          "variable": [
+                            {
+                              "key": "usage_meter_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:17:03.000Z",
+                      "updatedAt": "2026-07-28T03:17:03.000Z",
+                      "uid": "35240-ba2ecba6-82af-4593-b580-99155ce414df"
+                    },
+                    {
+                      "id": "05d0bbc2-2de4-425b-b29e-3137fba81f9b",
+                      "name": "Error response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/usage_meters/:usage_meter_id/activate",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "usage_meters",
+                            ":usage_meter_id",
+                            "activate"
+                          ],
+                          "variable": [
+                            {
+                              "key": "usage_meter_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:17:03.000Z",
+                      "updatedAt": "2026-07-28T03:17:03.000Z",
+                      "uid": "35240-05d0bbc2-2de4-425b-b29e-3137fba81f9b"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:17:03.000Z",
+                  "updatedAt": "2026-07-28T03:17:03.000Z",
+                  "uid": "35240-86c76899-0d5d-478f-b593-93733e874362"
+                }
+              ],
+              "id": "af39eac3-1333-4ee0-99f7-c2f59fd76411",
+              "createdAt": "2026-07-28T03:17:03.000Z",
+              "updatedAt": "2026-07-28T03:17:03.000Z",
+              "uid": "35240-af39eac3-1333-4ee0-99f7-c2f59fd76411"
+            },
+            {
+              "name": "deactivate",
+              "item": [
+                {
+                  "name": "Deactivate Usage Meter",
+                  "id": "734a9cd3-29cc-4881-9bdc-09a16469b89c",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/usage_meters/:usage_meter_id/deactivate",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "usage_meters",
+                        ":usage_meter_id",
+                        "deactivate"
+                      ],
+                      "variable": [
+                        {
+                          "id": "0127a4ad-8bdb-456d-8e7a-f3ff577dd6a1",
+                          "key": "usage_meter_id",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Make an existing active usage meter to be inactive\nActive Usage Meters with active Pricing Plan attached can also be deactivated.\n"
+                  },
+                  "response": [
+                    {
+                      "id": "1f352d89-481a-43d8-88dd-0ab3b1874279",
+                      "name": "Response for Create and Get usage event requests",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/usage_meters/:usage_meter_id/deactivate",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "usage_meters",
+                            ":usage_meter_id",
+                            "deactivate"
+                          ],
+                          "variable": [
+                            {
+                              "key": "usage_meter_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"4\",\n  \"displayName\": \"<string>\",\n  \"type\": \"COUNTER\",\n  \"aggregation\": \"SUM\",\n  \"billableName\": \"<string>\",\n  \"description\": \"<string>\",\n  \"filters\": [\n    {\n      \"field\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"status\": \"INACTIVE\",\n  \"computations\": [\n    {\n      \"computation\": \"<string>\",\n      \"order\": \"<integer>\",\n      \"id\": \"<string>\",\n      \"matcher\": \"<string>\"\n    }\n  ],\n  \"createdAt\": \"<dateTime>\",\n  \"lastActivatedAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\"\n}",
+                      "createdAt": "2026-07-28T03:17:03.000Z",
+                      "updatedAt": "2026-07-28T03:17:03.000Z",
+                      "uid": "35240-1f352d89-481a-43d8-88dd-0ab3b1874279"
+                    },
+                    {
+                      "id": "9ce378d7-fa65-4e50-98ee-24d4f70f590b",
+                      "name": "Error response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/usage_meters/:usage_meter_id/deactivate",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "usage_meters",
+                            ":usage_meter_id",
+                            "deactivate"
+                          ],
+                          "variable": [
+                            {
+                              "key": "usage_meter_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:17:03.000Z",
+                      "updatedAt": "2026-07-28T03:17:03.000Z",
+                      "uid": "35240-9ce378d7-fa65-4e50-98ee-24d4f70f590b"
+                    },
+                    {
+                      "id": "b90f74c2-3538-4ad4-9e80-c0c51bd8d0ce",
+                      "name": "Error response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/usage_meters/:usage_meter_id/deactivate",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "usage_meters",
+                            ":usage_meter_id",
+                            "deactivate"
+                          ],
+                          "variable": [
+                            {
+                              "key": "usage_meter_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:17:03.000Z",
+                      "updatedAt": "2026-07-28T03:17:03.000Z",
+                      "uid": "35240-b90f74c2-3538-4ad4-9e80-c0c51bd8d0ce"
+                    },
+                    {
+                      "id": "2c0cb5a0-d2a9-4142-b9ff-4486086bed4e",
+                      "name": "Error response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/usage_meters/:usage_meter_id/deactivate",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "usage_meters",
+                            ":usage_meter_id",
+                            "deactivate"
+                          ],
+                          "variable": [
+                            {
+                              "key": "usage_meter_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:17:03.000Z",
+                      "updatedAt": "2026-07-28T03:17:03.000Z",
+                      "uid": "35240-2c0cb5a0-d2a9-4142-b9ff-4486086bed4e"
+                    },
+                    {
+                      "id": "50ed3bc6-baab-4d38-8f83-3133dd6af086",
+                      "name": "Error response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/usage_meters/:usage_meter_id/deactivate",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "usage_meters",
+                            ":usage_meter_id",
+                            "deactivate"
+                          ],
+                          "variable": [
+                            {
+                              "key": "usage_meter_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:17:03.000Z",
+                      "updatedAt": "2026-07-28T03:17:03.000Z",
+                      "uid": "35240-50ed3bc6-baab-4d38-8f83-3133dd6af086"
+                    },
+                    {
+                      "id": "9b4f8537-b99f-405f-809b-fd53afa18b51",
+                      "name": "Error response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/usage_meters/:usage_meter_id/deactivate",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "usage_meters",
+                            ":usage_meter_id",
+                            "deactivate"
+                          ],
+                          "variable": [
+                            {
+                              "key": "usage_meter_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:17:03.000Z",
+                      "updatedAt": "2026-07-28T03:17:03.000Z",
+                      "uid": "35240-9b4f8537-b99f-405f-809b-fd53afa18b51"
+                    },
+                    {
+                      "id": "838b537c-d627-469e-a831-3eafeac2794f",
+                      "name": "Error response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/usage_meters/:usage_meter_id/deactivate",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "usage_meters",
+                            ":usage_meter_id",
+                            "deactivate"
+                          ],
+                          "variable": [
+                            {
+                              "key": "usage_meter_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:17:03.000Z",
+                      "updatedAt": "2026-07-28T03:17:03.000Z",
+                      "uid": "35240-838b537c-d627-469e-a831-3eafeac2794f"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:17:03.000Z",
+                  "updatedAt": "2026-07-28T03:17:03.000Z",
+                  "uid": "35240-734a9cd3-29cc-4881-9bdc-09a16469b89c"
+                }
+              ],
+              "id": "d477d53f-880e-45d4-a258-3329a6484cb3",
+              "createdAt": "2026-07-28T03:17:03.000Z",
+              "updatedAt": "2026-07-28T03:17:03.000Z",
+              "uid": "35240-d477d53f-880e-45d4-a258-3329a6484cb3"
+            },
+            {
+              "name": "Get Usage Meter",
+              "id": "723f3531-7ccc-46c3-8e43-56254301e491",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/usage_meters/:usage_meter_id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "usage_meters",
+                    ":usage_meter_id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "3060f8aa-e573-4e97-8494-06032feac84e",
+                      "key": "usage_meter_id",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "Get an usage meter using event schema name and usage meter id."
+              },
+              "response": [
+                {
+                  "id": "3e2ac917-83fa-4087-ae60-64e83a56ef33",
+                  "name": "Response for Create and Get usage event requests",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/usage_meters/:usage_meter_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "usage_meters",
+                        ":usage_meter_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "usage_meter_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"4\",\n  \"displayName\": \"<string>\",\n  \"type\": \"COUNTER\",\n  \"aggregation\": \"SUM\",\n  \"billableName\": \"<string>\",\n  \"description\": \"<string>\",\n  \"filters\": [\n    {\n      \"field\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"status\": \"INACTIVE\",\n  \"computations\": [\n    {\n      \"computation\": \"<string>\",\n      \"order\": \"<integer>\",\n      \"id\": \"<string>\",\n      \"matcher\": \"<string>\"\n    }\n  ],\n  \"createdAt\": \"<dateTime>\",\n  \"lastActivatedAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\"\n}",
+                  "createdAt": "2026-07-28T03:17:03.000Z",
+                  "updatedAt": "2026-07-28T03:17:03.000Z",
+                  "uid": "35240-3e2ac917-83fa-4087-ae60-64e83a56ef33"
+                },
+                {
+                  "id": "01af7327-070a-46cd-af12-eaabbb9d39e7",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/usage_meters/:usage_meter_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "usage_meters",
+                        ":usage_meter_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "usage_meter_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:17:03.000Z",
+                  "updatedAt": "2026-07-28T03:17:03.000Z",
+                  "uid": "35240-01af7327-070a-46cd-af12-eaabbb9d39e7"
+                },
+                {
+                  "id": "b3db3d62-5ac7-4d4f-8189-407ee76174e1",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/usage_meters/:usage_meter_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "usage_meters",
+                        ":usage_meter_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "usage_meter_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:17:03.000Z",
+                  "updatedAt": "2026-07-28T03:17:03.000Z",
+                  "uid": "35240-b3db3d62-5ac7-4d4f-8189-407ee76174e1"
+                },
+                {
+                  "id": "26d76f82-ab57-4cc7-977f-347ab838f28e",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/usage_meters/:usage_meter_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "usage_meters",
+                        ":usage_meter_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "usage_meter_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:17:03.000Z",
+                  "updatedAt": "2026-07-28T03:17:03.000Z",
+                  "uid": "35240-26d76f82-ab57-4cc7-977f-347ab838f28e"
+                },
+                {
+                  "id": "23f4e32f-1b87-4e55-a11a-55517dea210c",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/usage_meters/:usage_meter_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "usage_meters",
+                        ":usage_meter_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "usage_meter_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:17:03.000Z",
+                  "updatedAt": "2026-07-28T03:17:03.000Z",
+                  "uid": "35240-23f4e32f-1b87-4e55-a11a-55517dea210c"
+                },
+                {
+                  "id": "37c105fd-5df1-4179-9b20-2aaa18d4eeee",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/usage_meters/:usage_meter_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "usage_meters",
+                        ":usage_meter_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "usage_meter_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:17:03.000Z",
+                  "updatedAt": "2026-07-28T03:17:03.000Z",
+                  "uid": "35240-37c105fd-5df1-4179-9b20-2aaa18d4eeee"
+                },
+                {
+                  "id": "9787e7f0-8c68-416c-aed0-89f9f876ed77",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/usage_meters/:usage_meter_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "usage_meters",
+                        ":usage_meter_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "usage_meter_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:17:03.000Z",
+                  "updatedAt": "2026-07-28T03:17:03.000Z",
+                  "uid": "35240-9787e7f0-8c68-416c-aed0-89f9f876ed77"
+                }
+              ],
+              "createdAt": "2026-07-28T03:17:03.000Z",
+              "updatedAt": "2026-07-28T03:17:03.000Z",
+              "uid": "35240-723f3531-7ccc-46c3-8e43-56254301e491"
+            },
+            {
+              "name": "Update an Usage Meter",
+              "id": "04df25f6-f9b3-43e1-9e63-a5d7ee068ca7",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"billableName\": \"<string>\",\n  \"description\": \"<string>\",\n  \"eventSchemaName\": \"<string>\",\n  \"type\": \"COUNTER\",\n  \"aggregation\": \"SUM\",\n  \"computations\": [\n    {\n      \"computation\": \"<string>\",\n      \"order\": \"<integer>\",\n      \"id\": \"<string>\",\n      \"matcher\": \"<string>\"\n    },\n    {\n      \"computation\": \"<string>\",\n      \"order\": \"<integer>\",\n      \"id\": \"<string>\",\n      \"matcher\": \"<string>\"\n    }\n  ],\n  \"filters\": [\n    {\n      \"field\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/usage_meters/:usage_meter_id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "usage_meters",
+                    ":usage_meter_id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "26055323-aa54-4700-bc84-4798b28f794e",
+                      "key": "usage_meter_id",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "This API lets you update an existing usage meter."
+              },
+              "response": [
+                {
+                  "id": "a9a4c300-6d9c-4930-860b-f352faba040b",
+                  "name": "Response for Create and Get usage event requests",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"billableName\": \"<string>\",\n  \"description\": \"<string>\",\n  \"eventSchemaName\": \"<string>\",\n  \"type\": \"COUNTER\",\n  \"aggregation\": \"SUM\",\n  \"computations\": [\n    {\n      \"computation\": \"<string>\",\n      \"order\": \"<integer>\",\n      \"id\": \"<string>\",\n      \"matcher\": \"<string>\"\n    },\n    {\n      \"computation\": \"<string>\",\n      \"order\": \"<integer>\",\n      \"id\": \"<string>\",\n      \"matcher\": \"<string>\"\n    }\n  ],\n  \"filters\": [\n    {\n      \"field\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/usage_meters/:usage_meter_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "usage_meters",
+                        ":usage_meter_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "usage_meter_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"4\",\n  \"displayName\": \"<string>\",\n  \"type\": \"COUNTER\",\n  \"aggregation\": \"SUM\",\n  \"billableName\": \"<string>\",\n  \"description\": \"<string>\",\n  \"filters\": [\n    {\n      \"field\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"status\": \"INACTIVE\",\n  \"computations\": [\n    {\n      \"computation\": \"<string>\",\n      \"order\": \"<integer>\",\n      \"id\": \"<string>\",\n      \"matcher\": \"<string>\"\n    }\n  ],\n  \"createdAt\": \"<dateTime>\",\n  \"lastActivatedAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\"\n}",
+                  "createdAt": "2026-07-28T03:17:03.000Z",
+                  "updatedAt": "2026-07-28T03:17:03.000Z",
+                  "uid": "35240-a9a4c300-6d9c-4930-860b-f352faba040b"
+                },
+                {
+                  "id": "8e7f49c8-50d9-442f-b48f-5436e5bdce6b",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"billableName\": \"<string>\",\n  \"description\": \"<string>\",\n  \"eventSchemaName\": \"<string>\",\n  \"type\": \"COUNTER\",\n  \"aggregation\": \"SUM\",\n  \"computations\": [\n    {\n      \"computation\": \"<string>\",\n      \"order\": \"<integer>\",\n      \"id\": \"<string>\",\n      \"matcher\": \"<string>\"\n    },\n    {\n      \"computation\": \"<string>\",\n      \"order\": \"<integer>\",\n      \"id\": \"<string>\",\n      \"matcher\": \"<string>\"\n    }\n  ],\n  \"filters\": [\n    {\n      \"field\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/usage_meters/:usage_meter_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "usage_meters",
+                        ":usage_meter_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "usage_meter_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:17:03.000Z",
+                  "updatedAt": "2026-07-28T03:17:03.000Z",
+                  "uid": "35240-8e7f49c8-50d9-442f-b48f-5436e5bdce6b"
+                },
+                {
+                  "id": "18fa4901-9850-413a-b3c3-931f344ef840",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"billableName\": \"<string>\",\n  \"description\": \"<string>\",\n  \"eventSchemaName\": \"<string>\",\n  \"type\": \"COUNTER\",\n  \"aggregation\": \"SUM\",\n  \"computations\": [\n    {\n      \"computation\": \"<string>\",\n      \"order\": \"<integer>\",\n      \"id\": \"<string>\",\n      \"matcher\": \"<string>\"\n    },\n    {\n      \"computation\": \"<string>\",\n      \"order\": \"<integer>\",\n      \"id\": \"<string>\",\n      \"matcher\": \"<string>\"\n    }\n  ],\n  \"filters\": [\n    {\n      \"field\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/usage_meters/:usage_meter_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "usage_meters",
+                        ":usage_meter_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "usage_meter_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:17:03.000Z",
+                  "updatedAt": "2026-07-28T03:17:03.000Z",
+                  "uid": "35240-18fa4901-9850-413a-b3c3-931f344ef840"
+                },
+                {
+                  "id": "aca401d9-6e08-45a3-9a4e-7f104d477b8d",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"billableName\": \"<string>\",\n  \"description\": \"<string>\",\n  \"eventSchemaName\": \"<string>\",\n  \"type\": \"COUNTER\",\n  \"aggregation\": \"SUM\",\n  \"computations\": [\n    {\n      \"computation\": \"<string>\",\n      \"order\": \"<integer>\",\n      \"id\": \"<string>\",\n      \"matcher\": \"<string>\"\n    },\n    {\n      \"computation\": \"<string>\",\n      \"order\": \"<integer>\",\n      \"id\": \"<string>\",\n      \"matcher\": \"<string>\"\n    }\n  ],\n  \"filters\": [\n    {\n      \"field\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/usage_meters/:usage_meter_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "usage_meters",
+                        ":usage_meter_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "usage_meter_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:17:03.000Z",
+                  "updatedAt": "2026-07-28T03:17:03.000Z",
+                  "uid": "35240-aca401d9-6e08-45a3-9a4e-7f104d477b8d"
+                },
+                {
+                  "id": "bf19fda1-2717-4caf-8021-4f1fc460a28e",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"billableName\": \"<string>\",\n  \"description\": \"<string>\",\n  \"eventSchemaName\": \"<string>\",\n  \"type\": \"COUNTER\",\n  \"aggregation\": \"SUM\",\n  \"computations\": [\n    {\n      \"computation\": \"<string>\",\n      \"order\": \"<integer>\",\n      \"id\": \"<string>\",\n      \"matcher\": \"<string>\"\n    },\n    {\n      \"computation\": \"<string>\",\n      \"order\": \"<integer>\",\n      \"id\": \"<string>\",\n      \"matcher\": \"<string>\"\n    }\n  ],\n  \"filters\": [\n    {\n      \"field\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/usage_meters/:usage_meter_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "usage_meters",
+                        ":usage_meter_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "usage_meter_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:17:03.000Z",
+                  "updatedAt": "2026-07-28T03:17:03.000Z",
+                  "uid": "35240-bf19fda1-2717-4caf-8021-4f1fc460a28e"
+                },
+                {
+                  "id": "44d64ab5-d9cf-4077-9c5a-e48b3c9dab97",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"billableName\": \"<string>\",\n  \"description\": \"<string>\",\n  \"eventSchemaName\": \"<string>\",\n  \"type\": \"COUNTER\",\n  \"aggregation\": \"SUM\",\n  \"computations\": [\n    {\n      \"computation\": \"<string>\",\n      \"order\": \"<integer>\",\n      \"id\": \"<string>\",\n      \"matcher\": \"<string>\"\n    },\n    {\n      \"computation\": \"<string>\",\n      \"order\": \"<integer>\",\n      \"id\": \"<string>\",\n      \"matcher\": \"<string>\"\n    }\n  ],\n  \"filters\": [\n    {\n      \"field\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/usage_meters/:usage_meter_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "usage_meters",
+                        ":usage_meter_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "usage_meter_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:17:03.000Z",
+                  "updatedAt": "2026-07-28T03:17:03.000Z",
+                  "uid": "35240-44d64ab5-d9cf-4077-9c5a-e48b3c9dab97"
+                },
+                {
+                  "id": "3f4e1579-42ed-4f49-b67d-e4de19a7f9b2",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"billableName\": \"<string>\",\n  \"description\": \"<string>\",\n  \"eventSchemaName\": \"<string>\",\n  \"type\": \"COUNTER\",\n  \"aggregation\": \"SUM\",\n  \"computations\": [\n    {\n      \"computation\": \"<string>\",\n      \"order\": \"<integer>\",\n      \"id\": \"<string>\",\n      \"matcher\": \"<string>\"\n    },\n    {\n      \"computation\": \"<string>\",\n      \"order\": \"<integer>\",\n      \"id\": \"<string>\",\n      \"matcher\": \"<string>\"\n    }\n  ],\n  \"filters\": [\n    {\n      \"field\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/usage_meters/:usage_meter_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "usage_meters",
+                        ":usage_meter_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "usage_meter_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:17:03.000Z",
+                  "updatedAt": "2026-07-28T03:17:03.000Z",
+                  "uid": "35240-3f4e1579-42ed-4f49-b67d-e4de19a7f9b2"
+                }
+              ],
+              "createdAt": "2026-07-28T03:17:03.000Z",
+              "updatedAt": "2026-07-28T03:17:03.000Z",
+              "uid": "35240-04df25f6-f9b3-43e1-9e63-a5d7ee068ca7"
+            },
+            {
+              "name": "Delete an Usage Meter",
+              "id": "51002bef-ab1d-4aa8-866c-c807b2e05e0f",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/usage_meters/:usage_meter_id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "usage_meters",
+                    ":usage_meter_id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "50266438-59a9-473a-b90a-2893819254da",
+                      "key": "usage_meter_id",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "Delete an Usage Meter"
+              },
+              "response": [
+                {
+                  "id": "feba76e8-bbf5-4e6c-9c81-3074aa78c5b8",
+                  "name": "OK",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/usage_meters/:usage_meter_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "usage_meters",
+                        ":usage_meter_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "usage_meter_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\"\n}",
+                  "createdAt": "2026-07-28T03:17:03.000Z",
+                  "updatedAt": "2026-07-28T03:17:03.000Z",
+                  "uid": "35240-feba76e8-bbf5-4e6c-9c81-3074aa78c5b8"
+                },
+                {
+                  "id": "dec9c00b-d50a-4259-b25c-00f16f4ebd88",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/usage_meters/:usage_meter_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "usage_meters",
+                        ":usage_meter_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "usage_meter_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:17:03.000Z",
+                  "updatedAt": "2026-07-28T03:17:03.000Z",
+                  "uid": "35240-dec9c00b-d50a-4259-b25c-00f16f4ebd88"
+                },
+                {
+                  "id": "bba07e69-f3d3-421b-b682-bfc220cee7f3",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/usage_meters/:usage_meter_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "usage_meters",
+                        ":usage_meter_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "usage_meter_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:17:03.000Z",
+                  "updatedAt": "2026-07-28T03:17:03.000Z",
+                  "uid": "35240-bba07e69-f3d3-421b-b682-bfc220cee7f3"
+                },
+                {
+                  "id": "a7b2760c-26eb-4498-ab2d-eef74320f66b",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/usage_meters/:usage_meter_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "usage_meters",
+                        ":usage_meter_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "usage_meter_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:17:03.000Z",
+                  "updatedAt": "2026-07-28T03:17:03.000Z",
+                  "uid": "35240-a7b2760c-26eb-4498-ab2d-eef74320f66b"
+                },
+                {
+                  "id": "36c113be-6bd4-458e-9aee-f8a52464ad43",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/usage_meters/:usage_meter_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "usage_meters",
+                        ":usage_meter_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "usage_meter_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:17:03.000Z",
+                  "updatedAt": "2026-07-28T03:17:03.000Z",
+                  "uid": "35240-36c113be-6bd4-458e-9aee-f8a52464ad43"
+                },
+                {
+                  "id": "6ddb6a83-3019-4af5-a60a-d99b6682f4e1",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/usage_meters/:usage_meter_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "usage_meters",
+                        ":usage_meter_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "usage_meter_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:17:03.000Z",
+                  "updatedAt": "2026-07-28T03:17:03.000Z",
+                  "uid": "35240-6ddb6a83-3019-4af5-a60a-d99b6682f4e1"
+                },
+                {
+                  "id": "c9318569-94de-4b89-9960-47c3c15d6060",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/usage_meters/:usage_meter_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "usage_meters",
+                        ":usage_meter_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "usage_meter_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:17:03.000Z",
+                  "updatedAt": "2026-07-28T03:17:03.000Z",
+                  "uid": "35240-c9318569-94de-4b89-9960-47c3c15d6060"
+                }
+              ],
+              "createdAt": "2026-07-28T03:17:03.000Z",
+              "updatedAt": "2026-07-28T03:17:03.000Z",
+              "uid": "35240-51002bef-ab1d-4aa8-866c-c807b2e05e0f"
+            }
+          ],
+          "id": "fd193d4d-e5a9-4b4c-8bf1-8e8a64e5c443",
+          "createdAt": "2026-07-28T03:17:03.000Z",
+          "updatedAt": "2026-07-28T03:17:03.000Z",
+          "uid": "35240-fd193d4d-e5a9-4b4c-8bf1-8e8a64e5c443"
+        },
+        {
+          "name": "Create an Usage Meter",
+          "id": "95544189-ae9f-458d-bd73-a3f0fc0fb2ac",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"X\\u000bo\",\n  \"type\": \"COUNTER\",\n  \"aggregation\": \"SUM\",\n  \"billableName\": \"<string>\",\n  \"description\": \"<string>\",\n  \"filters\": [\n    {\n      \"field\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"computations\": [\n    {\n      \"computation\": \"<string>\",\n      \"order\": \"<integer>\",\n      \"id\": \"<string>\",\n      \"matcher\": \"<string>\"\n    },\n    {\n      \"computation\": \"<string>\",\n      \"order\": \"<integer>\",\n      \"id\": \"<string>\",\n      \"matcher\": \"<string>\"\n    }\n  ],\n  \"eventSchemaName\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/usage_meters",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "usage_meters"
+              ]
+            },
+            "description": "Create an usage meter and associate with an event schema"
+          },
+          "response": [
+            {
+              "id": "3bbb8246-7a4c-4e69-a45e-2a4c4d0d0220",
+              "name": "Response for Create and Get usage event requests",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"X\\u000bo\",\n  \"type\": \"COUNTER\",\n  \"aggregation\": \"SUM\",\n  \"billableName\": \"<string>\",\n  \"description\": \"<string>\",\n  \"filters\": [\n    {\n      \"field\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"computations\": [\n    {\n      \"computation\": \"<string>\",\n      \"order\": \"<integer>\",\n      \"id\": \"<string>\",\n      \"matcher\": \"<string>\"\n    },\n    {\n      \"computation\": \"<string>\",\n      \"order\": \"<integer>\",\n      \"id\": \"<string>\",\n      \"matcher\": \"<string>\"\n    }\n  ],\n  \"eventSchemaName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/usage_meters",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "usage_meters"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"4\",\n  \"displayName\": \"<string>\",\n  \"type\": \"COUNTER\",\n  \"aggregation\": \"SUM\",\n  \"billableName\": \"<string>\",\n  \"description\": \"<string>\",\n  \"filters\": [\n    {\n      \"field\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"status\": \"INACTIVE\",\n  \"computations\": [\n    {\n      \"computation\": \"<string>\",\n      \"order\": \"<integer>\",\n      \"id\": \"<string>\",\n      \"matcher\": \"<string>\"\n    }\n  ],\n  \"createdAt\": \"<dateTime>\",\n  \"lastActivatedAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\"\n}",
+              "createdAt": "2026-07-28T03:17:03.000Z",
+              "updatedAt": "2026-07-28T03:17:03.000Z",
+              "uid": "35240-3bbb8246-7a4c-4e69-a45e-2a4c4d0d0220"
+            },
+            {
+              "id": "fdbbdd9b-8ffc-4e1e-86fa-4e4ee7657e80",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"X\\u000bo\",\n  \"type\": \"COUNTER\",\n  \"aggregation\": \"SUM\",\n  \"billableName\": \"<string>\",\n  \"description\": \"<string>\",\n  \"filters\": [\n    {\n      \"field\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"computations\": [\n    {\n      \"computation\": \"<string>\",\n      \"order\": \"<integer>\",\n      \"id\": \"<string>\",\n      \"matcher\": \"<string>\"\n    },\n    {\n      \"computation\": \"<string>\",\n      \"order\": \"<integer>\",\n      \"id\": \"<string>\",\n      \"matcher\": \"<string>\"\n    }\n  ],\n  \"eventSchemaName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/usage_meters",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "usage_meters"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:17:03.000Z",
+              "updatedAt": "2026-07-28T03:17:03.000Z",
+              "uid": "35240-fdbbdd9b-8ffc-4e1e-86fa-4e4ee7657e80"
+            },
+            {
+              "id": "d0e07631-9951-466c-a849-09ee27eb1630",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"X\\u000bo\",\n  \"type\": \"COUNTER\",\n  \"aggregation\": \"SUM\",\n  \"billableName\": \"<string>\",\n  \"description\": \"<string>\",\n  \"filters\": [\n    {\n      \"field\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"computations\": [\n    {\n      \"computation\": \"<string>\",\n      \"order\": \"<integer>\",\n      \"id\": \"<string>\",\n      \"matcher\": \"<string>\"\n    },\n    {\n      \"computation\": \"<string>\",\n      \"order\": \"<integer>\",\n      \"id\": \"<string>\",\n      \"matcher\": \"<string>\"\n    }\n  ],\n  \"eventSchemaName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/usage_meters",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "usage_meters"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:17:03.000Z",
+              "updatedAt": "2026-07-28T03:17:03.000Z",
+              "uid": "35240-d0e07631-9951-466c-a849-09ee27eb1630"
+            },
+            {
+              "id": "b4f559fb-1408-4e95-bf2c-75f007421647",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"X\\u000bo\",\n  \"type\": \"COUNTER\",\n  \"aggregation\": \"SUM\",\n  \"billableName\": \"<string>\",\n  \"description\": \"<string>\",\n  \"filters\": [\n    {\n      \"field\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"computations\": [\n    {\n      \"computation\": \"<string>\",\n      \"order\": \"<integer>\",\n      \"id\": \"<string>\",\n      \"matcher\": \"<string>\"\n    },\n    {\n      \"computation\": \"<string>\",\n      \"order\": \"<integer>\",\n      \"id\": \"<string>\",\n      \"matcher\": \"<string>\"\n    }\n  ],\n  \"eventSchemaName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/usage_meters",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "usage_meters"
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:17:03.000Z",
+              "updatedAt": "2026-07-28T03:17:03.000Z",
+              "uid": "35240-b4f559fb-1408-4e95-bf2c-75f007421647"
+            },
+            {
+              "id": "a0c548b9-dd11-4c13-a7f5-e8c7a626f34e",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"X\\u000bo\",\n  \"type\": \"COUNTER\",\n  \"aggregation\": \"SUM\",\n  \"billableName\": \"<string>\",\n  \"description\": \"<string>\",\n  \"filters\": [\n    {\n      \"field\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"computations\": [\n    {\n      \"computation\": \"<string>\",\n      \"order\": \"<integer>\",\n      \"id\": \"<string>\",\n      \"matcher\": \"<string>\"\n    },\n    {\n      \"computation\": \"<string>\",\n      \"order\": \"<integer>\",\n      \"id\": \"<string>\",\n      \"matcher\": \"<string>\"\n    }\n  ],\n  \"eventSchemaName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/usage_meters",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "usage_meters"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:17:03.000Z",
+              "updatedAt": "2026-07-28T03:17:03.000Z",
+              "uid": "35240-a0c548b9-dd11-4c13-a7f5-e8c7a626f34e"
+            },
+            {
+              "id": "d13a29e4-4a34-4404-b584-8cb7c0105143",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"X\\u000bo\",\n  \"type\": \"COUNTER\",\n  \"aggregation\": \"SUM\",\n  \"billableName\": \"<string>\",\n  \"description\": \"<string>\",\n  \"filters\": [\n    {\n      \"field\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"computations\": [\n    {\n      \"computation\": \"<string>\",\n      \"order\": \"<integer>\",\n      \"id\": \"<string>\",\n      \"matcher\": \"<string>\"\n    },\n    {\n      \"computation\": \"<string>\",\n      \"order\": \"<integer>\",\n      \"id\": \"<string>\",\n      \"matcher\": \"<string>\"\n    }\n  ],\n  \"eventSchemaName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/usage_meters",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "usage_meters"
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:17:03.000Z",
+              "updatedAt": "2026-07-28T03:17:03.000Z",
+              "uid": "35240-d13a29e4-4a34-4404-b584-8cb7c0105143"
+            },
+            {
+              "id": "832ed06b-a133-4ae6-b51c-f430445eeb27",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"X\\u000bo\",\n  \"type\": \"COUNTER\",\n  \"aggregation\": \"SUM\",\n  \"billableName\": \"<string>\",\n  \"description\": \"<string>\",\n  \"filters\": [\n    {\n      \"field\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"field\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"computations\": [\n    {\n      \"computation\": \"<string>\",\n      \"order\": \"<integer>\",\n      \"id\": \"<string>\",\n      \"matcher\": \"<string>\"\n    },\n    {\n      \"computation\": \"<string>\",\n      \"order\": \"<integer>\",\n      \"id\": \"<string>\",\n      \"matcher\": \"<string>\"\n    }\n  ],\n  \"eventSchemaName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/usage_meters",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "usage_meters"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:17:03.000Z",
+              "updatedAt": "2026-07-28T03:17:03.000Z",
+              "uid": "35240-832ed06b-a133-4ae6-b51c-f430445eeb27"
+            }
+          ],
+          "createdAt": "2026-07-28T03:17:03.000Z",
+          "updatedAt": "2026-07-28T03:17:03.000Z",
+          "uid": "35240-95544189-ae9f-458d-bd73-a3f0fc0fb2ac"
+        },
+        {
+          "name": "List Usage Meters for Event Schema",
+          "id": "f3eac618-832e-4c2c-92ce-5a99aba532d9",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/usage_meters?status=INACTIVE&aggregations=SUM&nextToken=<string>&pageSize=<number>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "usage_meters"
+              ],
+              "query": [
+                {
+                  "description": "Filter by status\n",
+                  "key": "status",
+                  "value": "INACTIVE"
+                },
+                {
+                  "description": "Filter by aggregations\n",
+                  "key": "aggregations",
+                  "value": "SUM"
+                },
+                {
+                  "key": "nextToken",
+                  "value": "<string>"
+                },
+                {
+                  "key": "pageSize",
+                  "value": "<number>"
+                }
+              ]
+            },
+            "description": "Get a list of usage meters associated with an event schema"
+          },
+          "response": [
+            {
+              "id": "6374d244-8a37-45a5-84bf-b57e75943969",
+              "name": "Response for list usage_meters request",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/usage_meters?status=INACTIVE&aggregations=SUM&nextToken=<string>&pageSize=<number>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "usage_meters"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter by status\n",
+                      "key": "status",
+                      "value": "INACTIVE"
+                    },
+                    {
+                      "description": "Filter by aggregations\n",
+                      "key": "aggregations",
+                      "value": "SUM"
+                    },
+                    {
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<number>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"\",\n      \"displayName\": \"<string>\",\n      \"type\": \"COUNTER\",\n      \"aggregation\": \"SUM\",\n      \"billableName\": \"<string>\",\n      \"description\": \"<string>\",\n      \"filters\": [\n        {\n          \"field\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"field\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"status\": \"DRAFT\",\n      \"computations\": [\n        {\n          \"computation\": \"<string>\",\n          \"order\": \"<integer>\",\n          \"id\": \"<string>\",\n          \"matcher\": \"<string>\"\n        }\n      ],\n      \"createdAt\": \"<dateTime>\",\n      \"lastActivatedAt\": \"<dateTime>\",\n      \"updatedAt\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"\\rRK2\",\n      \"displayName\": \"<string>\",\n      \"type\": \"COUNTER\",\n      \"aggregation\": \"COUNT\",\n      \"billableName\": \"<string>\",\n      \"description\": \"<string>\",\n      \"filters\": [\n        {\n          \"field\": \"<string>\",\n          \"value\": \"<string>\"\n        },\n        {\n          \"field\": \"<string>\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"status\": \"ACTIVE\",\n      \"computations\": [\n        {\n          \"computation\": \"<string>\",\n          \"order\": \"<integer>\",\n          \"id\": \"<string>\",\n          \"matcher\": \"<string>\"\n        }\n      ],\n      \"createdAt\": \"<dateTime>\",\n      \"lastActivatedAt\": \"<dateTime>\",\n      \"updatedAt\": \"<dateTime>\"\n    }\n  ],\n  \"nextToken\": \"<string>\",\n  \"context\": {\n    \"pageSize\": \"<integer>\",\n    \"sortOrder\": \"DESC\"\n  }\n}",
+              "createdAt": "2026-07-28T03:17:03.000Z",
+              "updatedAt": "2026-07-28T03:17:03.000Z",
+              "uid": "35240-6374d244-8a37-45a5-84bf-b57e75943969"
+            },
+            {
+              "id": "795e7822-0dbc-477c-a113-879779e87ef0",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/usage_meters?status=INACTIVE&aggregations=SUM&nextToken=<string>&pageSize=<number>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "usage_meters"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter by status\n",
+                      "key": "status",
+                      "value": "INACTIVE"
+                    },
+                    {
+                      "description": "Filter by aggregations\n",
+                      "key": "aggregations",
+                      "value": "SUM"
+                    },
+                    {
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<number>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:17:03.000Z",
+              "updatedAt": "2026-07-28T03:17:03.000Z",
+              "uid": "35240-795e7822-0dbc-477c-a113-879779e87ef0"
+            },
+            {
+              "id": "04bfc766-63b0-41c5-95e1-42c754999456",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/usage_meters?status=INACTIVE&aggregations=SUM&nextToken=<string>&pageSize=<number>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "usage_meters"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter by status\n",
+                      "key": "status",
+                      "value": "INACTIVE"
+                    },
+                    {
+                      "description": "Filter by aggregations\n",
+                      "key": "aggregations",
+                      "value": "SUM"
+                    },
+                    {
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<number>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:17:03.000Z",
+              "updatedAt": "2026-07-28T03:17:03.000Z",
+              "uid": "35240-04bfc766-63b0-41c5-95e1-42c754999456"
+            },
+            {
+              "id": "64f6645f-f811-4cbe-874b-9f602c24145d",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/usage_meters?status=INACTIVE&aggregations=SUM&nextToken=<string>&pageSize=<number>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "usage_meters"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter by status\n",
+                      "key": "status",
+                      "value": "INACTIVE"
+                    },
+                    {
+                      "description": "Filter by aggregations\n",
+                      "key": "aggregations",
+                      "value": "SUM"
+                    },
+                    {
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<number>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:17:03.000Z",
+              "updatedAt": "2026-07-28T03:17:03.000Z",
+              "uid": "35240-64f6645f-f811-4cbe-874b-9f602c24145d"
+            },
+            {
+              "id": "c90381cb-4fbc-45b0-b03f-d8fea3fa6c5c",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/usage_meters?status=INACTIVE&aggregations=SUM&nextToken=<string>&pageSize=<number>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "usage_meters"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter by status\n",
+                      "key": "status",
+                      "value": "INACTIVE"
+                    },
+                    {
+                      "description": "Filter by aggregations\n",
+                      "key": "aggregations",
+                      "value": "SUM"
+                    },
+                    {
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<number>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:17:03.000Z",
+              "updatedAt": "2026-07-28T03:17:03.000Z",
+              "uid": "35240-c90381cb-4fbc-45b0-b03f-d8fea3fa6c5c"
+            },
+            {
+              "id": "40339835-e3b9-44b3-a844-e920f4183158",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/usage_meters?status=INACTIVE&aggregations=SUM&nextToken=<string>&pageSize=<number>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "usage_meters"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter by status\n",
+                      "key": "status",
+                      "value": "INACTIVE"
+                    },
+                    {
+                      "description": "Filter by aggregations\n",
+                      "key": "aggregations",
+                      "value": "SUM"
+                    },
+                    {
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<number>"
+                    }
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:17:03.000Z",
+              "updatedAt": "2026-07-28T03:17:03.000Z",
+              "uid": "35240-40339835-e3b9-44b3-a844-e920f4183158"
+            },
+            {
+              "id": "0b68b4c1-91a6-4e53-a2cb-61afb398b817",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/usage_meters?status=INACTIVE&aggregations=SUM&nextToken=<string>&pageSize=<number>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "usage_meters"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter by status\n",
+                      "key": "status",
+                      "value": "INACTIVE"
+                    },
+                    {
+                      "description": "Filter by aggregations\n",
+                      "key": "aggregations",
+                      "value": "SUM"
+                    },
+                    {
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<number>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:17:03.000Z",
+              "updatedAt": "2026-07-28T03:17:03.000Z",
+              "uid": "35240-0b68b4c1-91a6-4e53-a2cb-61afb398b817"
+            }
+          ],
+          "createdAt": "2026-07-28T03:17:03.000Z",
+          "updatedAt": "2026-07-28T03:17:03.000Z",
+          "uid": "35240-f3eac618-832e-4c2c-92ce-5a99aba532d9"
+        }
+      ],
+      "id": "e7cf7152-edb9-40b8-99fb-8c6d02905a46",
+      "createdAt": "2026-07-28T03:17:03.000Z",
+      "updatedAt": "2026-07-28T03:17:03.000Z",
+      "uid": "35240-e7cf7152-edb9-40b8-99fb-8c6d02905a46"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.togai.com/"
+    }
+  ]
+}

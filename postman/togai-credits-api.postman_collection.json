@@ -1,0 +1,2206 @@
+{
+  "info": {
+    "_postman_id": "7faa9f98-06f1-4b9c-aa95-5354a277bc1d",
+    "name": "Togai Apis Accounts Credits API",
+    "description": "APIs for Togai App\n\nContact Support:\n Email: engg@togai.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:15:05.000Z",
+    "updatedAt": "2026-07-28T03:15:05.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-7faa9f98-06f1-4b9c-aa95-5354a277bc1d"
+  },
+  "item": [
+    {
+      "name": "credits",
+      "item": [
+        {
+          "name": "{credit_id}",
+          "item": [
+            {
+              "name": "void",
+              "item": [
+                {
+                  "name": "Void Credit",
+                  "id": "9a75e55e-2b12-44b7-b52c-58a190fe3a54",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/credits/:credit_id/void",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "credits",
+                        ":credit_id",
+                        "void"
+                      ],
+                      "variable": [
+                        {
+                          "id": "5d73abad-7197-4a72-a46a-18586ba75bb7",
+                          "key": "credit_id",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Void credit"
+                  },
+                  "response": [
+                    {
+                      "id": "84236c1d-f189-41cf-8c8c-f663be110ede",
+                      "name": "Response for Void credit request",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/credits/:credit_id/void",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "credits",
+                            ":credit_id",
+                            "void"
+                          ],
+                          "variable": [
+                            {
+                              "key": "credit_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"accountId\": \"<string>\",\n  \"createdAt\": \"<dateTime>\",\n  \"customerId\": \"<string>\",\n  \"effectiveFrom\": \"<date>\",\n  \"id\": \"<string>\",\n  \"priority\": \"<integer>\",\n  \"purpose\": \"<string>\",\n  \"status\": \"ACTIVE\",\n  \"applicableEntityIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"effectiveUntil\": \"<date>\",\n  \"creditAmount\": \"<number>\",\n  \"grantorId\": \"<string>\",\n  \"idempotencyKey\": \"<string>\",\n  \"creditUnit\": \"<string>\",\n  \"holdAmount\": \"<number>\",\n  \"consumedAmount\": \"<number>\",\n  \"updatedAt\": \"<dateTime>\"\n}",
+                      "createdAt": "2026-07-28T03:15:06.000Z",
+                      "updatedAt": "2026-07-28T03:15:06.000Z",
+                      "uid": "35240-84236c1d-f189-41cf-8c8c-f663be110ede"
+                    },
+                    {
+                      "id": "0a636e1a-c69c-49e5-aac8-4c5a288bf4dd",
+                      "name": "Error response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/credits/:credit_id/void",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "credits",
+                            ":credit_id",
+                            "void"
+                          ],
+                          "variable": [
+                            {
+                              "key": "credit_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:15:06.000Z",
+                      "updatedAt": "2026-07-28T03:15:06.000Z",
+                      "uid": "35240-0a636e1a-c69c-49e5-aac8-4c5a288bf4dd"
+                    },
+                    {
+                      "id": "15b496e3-33fc-4d8d-b2ba-8b993897fe0e",
+                      "name": "Error response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/credits/:credit_id/void",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "credits",
+                            ":credit_id",
+                            "void"
+                          ],
+                          "variable": [
+                            {
+                              "key": "credit_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:15:06.000Z",
+                      "updatedAt": "2026-07-28T03:15:06.000Z",
+                      "uid": "35240-15b496e3-33fc-4d8d-b2ba-8b993897fe0e"
+                    },
+                    {
+                      "id": "c7f9b5e8-d90a-437d-86a1-0a53f7d98779",
+                      "name": "Error response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/credits/:credit_id/void",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "credits",
+                            ":credit_id",
+                            "void"
+                          ],
+                          "variable": [
+                            {
+                              "key": "credit_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:15:06.000Z",
+                      "updatedAt": "2026-07-28T03:15:06.000Z",
+                      "uid": "35240-c7f9b5e8-d90a-437d-86a1-0a53f7d98779"
+                    },
+                    {
+                      "id": "4c876139-2c48-4338-b8f2-15f689b327d0",
+                      "name": "Error response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/credits/:credit_id/void",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "credits",
+                            ":credit_id",
+                            "void"
+                          ],
+                          "variable": [
+                            {
+                              "key": "credit_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:15:06.000Z",
+                      "updatedAt": "2026-07-28T03:15:06.000Z",
+                      "uid": "35240-4c876139-2c48-4338-b8f2-15f689b327d0"
+                    },
+                    {
+                      "id": "eab1107e-f646-42f5-87e1-ba31f7815375",
+                      "name": "Error response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/credits/:credit_id/void",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "credits",
+                            ":credit_id",
+                            "void"
+                          ],
+                          "variable": [
+                            {
+                              "key": "credit_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:15:06.000Z",
+                      "updatedAt": "2026-07-28T03:15:06.000Z",
+                      "uid": "35240-eab1107e-f646-42f5-87e1-ba31f7815375"
+                    },
+                    {
+                      "id": "b27f5c92-7eed-492a-a7b3-6af2a5395bf6",
+                      "name": "Error response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/credits/:credit_id/void",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "credits",
+                            ":credit_id",
+                            "void"
+                          ],
+                          "variable": [
+                            {
+                              "key": "credit_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:15:06.000Z",
+                      "updatedAt": "2026-07-28T03:15:06.000Z",
+                      "uid": "35240-b27f5c92-7eed-492a-a7b3-6af2a5395bf6"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:15:06.000Z",
+                  "updatedAt": "2026-07-28T03:15:06.000Z",
+                  "uid": "35240-9a75e55e-2b12-44b7-b52c-58a190fe3a54"
+                }
+              ],
+              "id": "06cc6534-846e-482e-aeb4-097f4c84d06b",
+              "createdAt": "2026-07-28T03:15:06.000Z",
+              "updatedAt": "2026-07-28T03:15:06.000Z",
+              "uid": "35240-06cc6534-846e-482e-aeb4-097f4c84d06b"
+            },
+            {
+              "name": "Get Credit Details",
+              "id": "af294a87-9ab0-4eb0-97c1-b7e6e0ebb4a5",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/credits/:credit_id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "credits",
+                    ":credit_id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "08652ff8-79bd-4d2e-9184-9d4a6142ecac",
+                      "key": "credit_id",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "Get credit details"
+              },
+              "response": [
+                {
+                  "id": "ebc657e2-1c21-4e66-8e3f-a531ceca6f36",
+                  "name": "Response for Fetch Credit Details request. This contains Credit Transactions",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/credits/:credit_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "credits",
+                        ":credit_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "credit_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"accountId\": \"<string>\",\n  \"createdAt\": \"<dateTime>\",\n  \"customerId\": \"<string>\",\n  \"effectiveFrom\": \"<date>\",\n  \"id\": \"<string>\",\n  \"priority\": \"<integer>\",\n  \"purpose\": \"<string>\",\n  \"status\": \"CONSUMED\",\n  \"transactions\": [\n    {\n      \"id\": \"<string>\",\n      \"creditId\": \"<string>\",\n      \"transactionType\": \"VOIDED\",\n      \"amount\": \"<number>\",\n      \"createdAt\": \"<dateTime>\",\n      \"invoiceId\": \"<string>\",\n      \"entityId\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"creditId\": \"<string>\",\n      \"transactionType\": \"VOIDED\",\n      \"amount\": \"<number>\",\n      \"createdAt\": \"<dateTime>\",\n      \"invoiceId\": \"<string>\",\n      \"entityId\": \"<string>\"\n    }\n  ],\n  \"applicableEntityIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"effectiveUntil\": \"<date>\",\n  \"creditAmount\": \"<number>\",\n  \"grantorId\": \"<string>\",\n  \"idempotencyKey\": \"<string>\",\n  \"creditUnit\": \"<string>\",\n  \"holdAmount\": \"<number>\",\n  \"consumedAmount\": \"<number>\",\n  \"updatedAt\": \"<dateTime>\"\n}",
+                  "createdAt": "2026-07-28T03:15:06.000Z",
+                  "updatedAt": "2026-07-28T03:15:06.000Z",
+                  "uid": "35240-ebc657e2-1c21-4e66-8e3f-a531ceca6f36"
+                },
+                {
+                  "id": "fabf8783-f369-4924-9f58-e723b3a1b036",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/credits/:credit_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "credits",
+                        ":credit_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "credit_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:15:06.000Z",
+                  "updatedAt": "2026-07-28T03:15:06.000Z",
+                  "uid": "35240-fabf8783-f369-4924-9f58-e723b3a1b036"
+                },
+                {
+                  "id": "cc853cee-aad9-48a6-a094-ca558c98f068",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/credits/:credit_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "credits",
+                        ":credit_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "credit_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:15:06.000Z",
+                  "updatedAt": "2026-07-28T03:15:06.000Z",
+                  "uid": "35240-cc853cee-aad9-48a6-a094-ca558c98f068"
+                },
+                {
+                  "id": "4f38bf7a-4403-4c21-874a-be88b2828d87",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/credits/:credit_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "credits",
+                        ":credit_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "credit_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:15:06.000Z",
+                  "updatedAt": "2026-07-28T03:15:06.000Z",
+                  "uid": "35240-4f38bf7a-4403-4c21-874a-be88b2828d87"
+                },
+                {
+                  "id": "c187758f-9f51-491a-a3a5-b5b7eb1f0a84",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/credits/:credit_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "credits",
+                        ":credit_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "credit_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:15:06.000Z",
+                  "updatedAt": "2026-07-28T03:15:06.000Z",
+                  "uid": "35240-c187758f-9f51-491a-a3a5-b5b7eb1f0a84"
+                },
+                {
+                  "id": "100223e7-fd52-44a4-a8d2-a47b4143ec01",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/credits/:credit_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "credits",
+                        ":credit_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "credit_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:15:06.000Z",
+                  "updatedAt": "2026-07-28T03:15:06.000Z",
+                  "uid": "35240-100223e7-fd52-44a4-a8d2-a47b4143ec01"
+                },
+                {
+                  "id": "f60eff77-aa2d-4ff0-bc37-208a6b38fa03",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/credits/:credit_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "credits",
+                        ":credit_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "credit_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:15:06.000Z",
+                  "updatedAt": "2026-07-28T03:15:06.000Z",
+                  "uid": "35240-f60eff77-aa2d-4ff0-bc37-208a6b38fa03"
+                }
+              ],
+              "createdAt": "2026-07-28T03:15:06.000Z",
+              "updatedAt": "2026-07-28T03:15:06.000Z",
+              "uid": "35240-af294a87-9ab0-4eb0-97c1-b7e6e0ebb4a5"
+            }
+          ],
+          "id": "e8e793e2-de4b-405b-8787-8268a23fb8f6",
+          "createdAt": "2026-07-28T03:15:06.000Z",
+          "updatedAt": "2026-07-28T03:15:06.000Z",
+          "uid": "35240-e8e793e2-de4b-405b-8787-8268a23fb8f6"
+        },
+        {
+          "name": "List Credits",
+          "id": "a1fc1f4e-8506-42ec-bd15-bd75cf07c390",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/credits?nextToken=<string>&status=<string>&account_id=<string>&id=<string>&pageSize=<integer>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "credits"
+              ],
+              "query": [
+                {
+                  "description": "Pagination token used as a marker to get records from next page.",
+                  "key": "nextToken",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Filter option to filter by status.",
+                  "key": "status",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Filter option to filter based on account id.",
+                  "key": "account_id",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Filter option to filter based on credit id.",
+                  "key": "id",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Maximum page size expected by client to return the record list. \n\n NOTE: Max page size cannot be more than 50. Also 50 is the default page size if no value is provided.",
+                  "key": "pageSize",
+                  "value": "<integer>"
+                }
+              ]
+            },
+            "description": "Get all credits"
+          },
+          "response": [
+            {
+              "id": "a6b1221e-dcb3-4100-8ed6-d16cc426f4c8",
+              "name": "Response for Get invoice requests",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/credits?nextToken=<string>&status=<string>&account_id=<string>&id=<string>&pageSize=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "credits"
+                  ],
+                  "query": [
+                    {
+                      "description": "Pagination token used as a marker to get records from next page.",
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter option to filter by status.",
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter option to filter based on account id.",
+                      "key": "account_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter option to filter based on credit id.",
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Maximum page size expected by client to return the record list. \n\n NOTE: Max page size cannot be more than 50. Also 50 is the default page size if no value is provided.",
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"data\": [\n    {\n      \"accountId\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"customerId\": \"<string>\",\n      \"effectiveFrom\": \"<date>\",\n      \"id\": \"<string>\",\n      \"priority\": \"<integer>\",\n      \"purpose\": \"<string>\",\n      \"status\": \"EXPIRED\",\n      \"applicableEntityIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"effectiveUntil\": \"<date>\",\n      \"creditAmount\": \"<number>\",\n      \"grantorId\": \"<string>\",\n      \"idempotencyKey\": \"<string>\",\n      \"creditUnit\": \"<string>\",\n      \"holdAmount\": \"<number>\",\n      \"consumedAmount\": \"<number>\",\n      \"updatedAt\": \"<dateTime>\"\n    },\n    {\n      \"accountId\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"customerId\": \"<string>\",\n      \"effectiveFrom\": \"<date>\",\n      \"id\": \"<string>\",\n      \"priority\": \"<integer>\",\n      \"purpose\": \"<string>\",\n      \"status\": \"CONSUMED\",\n      \"applicableEntityIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"effectiveUntil\": \"<date>\",\n      \"creditAmount\": \"<number>\",\n      \"grantorId\": \"<string>\",\n      \"idempotencyKey\": \"<string>\",\n      \"creditUnit\": \"<string>\",\n      \"holdAmount\": \"<number>\",\n      \"consumedAmount\": \"<number>\",\n      \"updatedAt\": \"<dateTime>\"\n    },\n    {\n      \"accountId\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"customerId\": \"<string>\",\n      \"effectiveFrom\": \"<date>\",\n      \"id\": \"<string>\",\n      \"priority\": \"<integer>\",\n      \"purpose\": \"<string>\",\n      \"status\": \"EXPIRED\",\n      \"applicableEntityIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"effectiveUntil\": \"<date>\",\n      \"creditAmount\": \"<number>\",\n      \"grantorId\": \"<string>\",\n      \"idempotencyKey\": \"<string>\",\n      \"creditUnit\": \"<string>\",\n      \"holdAmount\": \"<number>\",\n      \"consumedAmount\": \"<number>\",\n      \"updatedAt\": \"<dateTime>\"\n    },\n    {\n      \"accountId\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"customerId\": \"<string>\",\n      \"effectiveFrom\": \"<date>\",\n      \"id\": \"<string>\",\n      \"priority\": \"<integer>\",\n      \"purpose\": \"<string>\",\n      \"status\": \"CONSUMED\",\n      \"applicableEntityIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"effectiveUntil\": \"<date>\",\n      \"creditAmount\": \"<number>\",\n      \"grantorId\": \"<string>\",\n      \"idempotencyKey\": \"<string>\",\n      \"creditUnit\": \"<string>\",\n      \"holdAmount\": \"<number>\",\n      \"consumedAmount\": \"<number>\",\n      \"updatedAt\": \"<dateTime>\"\n    },\n    {\n      \"accountId\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"customerId\": \"<string>\",\n      \"effectiveFrom\": \"<date>\",\n      \"id\": \"<string>\",\n      \"priority\": \"<integer>\",\n      \"purpose\": \"<string>\",\n      \"status\": \"CONSUMED\",\n      \"applicableEntityIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"effectiveUntil\": \"<date>\",\n      \"creditAmount\": \"<number>\",\n      \"grantorId\": \"<string>\",\n      \"idempotencyKey\": \"<string>\",\n      \"creditUnit\": \"<string>\",\n      \"holdAmount\": \"<number>\",\n      \"consumedAmount\": \"<number>\",\n      \"updatedAt\": \"<dateTime>\"\n    },\n    {\n      \"accountId\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"customerId\": \"<string>\",\n      \"effectiveFrom\": \"<date>\",\n      \"id\": \"<string>\",\n      \"priority\": \"<integer>\",\n      \"purpose\": \"<string>\",\n      \"status\": \"VOIDED\",\n      \"applicableEntityIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"effectiveUntil\": \"<date>\",\n      \"creditAmount\": \"<number>\",\n      \"grantorId\": \"<string>\",\n      \"idempotencyKey\": \"<string>\",\n      \"creditUnit\": \"<string>\",\n      \"holdAmount\": \"<number>\",\n      \"consumedAmount\": \"<number>\",\n      \"updatedAt\": \"<dateTime>\"\n    },\n    {\n      \"accountId\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"customerId\": \"<string>\",\n      \"effectiveFrom\": \"<date>\",\n      \"id\": \"<string>\",\n      \"priority\": \"<integer>\",\n      \"purpose\": \"<string>\",\n      \"status\": \"EXPIRED\",\n      \"applicableEntityIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"effectiveUntil\": \"<date>\",\n      \"creditAmount\": \"<number>\",\n      \"grantorId\": \"<string>\",\n      \"idempotencyKey\": \"<string>\",\n      \"creditUnit\": \"<string>\",\n      \"holdAmount\": \"<number>\",\n      \"consumedAmount\": \"<number>\",\n      \"updatedAt\": \"<dateTime>\"\n    },\n    {\n      \"accountId\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"customerId\": \"<string>\",\n      \"effectiveFrom\": \"<date>\",\n      \"id\": \"<string>\",\n      \"priority\": \"<integer>\",\n      \"purpose\": \"<string>\",\n      \"status\": \"ACTIVE\",\n      \"applicableEntityIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"effectiveUntil\": \"<date>\",\n      \"creditAmount\": \"<number>\",\n      \"grantorId\": \"<string>\",\n      \"idempotencyKey\": \"<string>\",\n      \"creditUnit\": \"<string>\",\n      \"holdAmount\": \"<number>\",\n      \"consumedAmount\": \"<number>\",\n      \"updatedAt\": \"<dateTime>\"\n    },\n    {\n      \"accountId\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"customerId\": \"<string>\",\n      \"effectiveFrom\": \"<date>\",\n      \"id\": \"<string>\",\n      \"priority\": \"<integer>\",\n      \"purpose\": \"<string>\",\n      \"status\": \"VOIDED\",\n      \"applicableEntityIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"effectiveUntil\": \"<date>\",\n      \"creditAmount\": \"<number>\",\n      \"grantorId\": \"<string>\",\n      \"idempotencyKey\": \"<string>\",\n      \"creditUnit\": \"<string>\",\n      \"holdAmount\": \"<number>\",\n      \"consumedAmount\": \"<number>\",\n      \"updatedAt\": \"<dateTime>\"\n    },\n    {\n      \"accountId\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"customerId\": \"<string>\",\n      \"effectiveFrom\": \"<date>\",\n      \"id\": \"<string>\",\n      \"priority\": \"<integer>\",\n      \"purpose\": \"<string>\",\n      \"status\": \"ACTIVE\",\n      \"applicableEntityIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"effectiveUntil\": \"<date>\",\n      \"creditAmount\": \"<number>\",\n      \"grantorId\": \"<string>\",\n      \"idempotencyKey\": \"<string>\",\n      \"creditUnit\": \"<string>\",\n      \"holdAmount\": \"<number>\",\n      \"consumedAmount\": \"<number>\",\n      \"updatedAt\": \"<dateTime>\"\n    },\n    {\n      \"accountId\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"customerId\": \"<string>\",\n      \"effectiveFrom\": \"<date>\",\n      \"id\": \"<string>\",\n      \"priority\": \"<integer>\",\n      \"purpose\": \"<string>\",\n      \"status\": \"ACTIVE\",\n      \"applicableEntityIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"effectiveUntil\": \"<date>\",\n      \"creditAmount\": \"<number>\",\n      \"grantorId\": \"<string>\",\n      \"idempotencyKey\": \"<string>\",\n      \"creditUnit\": \"<string>\",\n      \"holdAmount\": \"<number>\",\n      \"consumedAmount\": \"<number>\",\n      \"updatedAt\": \"<dateTime>\"\n    },\n    {\n      \"accountId\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"customerId\": \"<string>\",\n      \"effectiveFrom\": \"<date>\",\n      \"id\": \"<string>\",\n      \"priority\": \"<integer>\",\n      \"purpose\": \"<string>\",\n      \"status\": \"VOIDED\",\n      \"applicableEntityIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"effectiveUntil\": \"<date>\",\n      \"creditAmount\": \"<number>\",\n      \"grantorId\": \"<string>\",\n      \"idempotencyKey\": \"<string>\",\n      \"creditUnit\": \"<string>\",\n      \"holdAmount\": \"<number>\",\n      \"consumedAmount\": \"<number>\",\n      \"updatedAt\": \"<dateTime>\"\n    },\n    {\n      \"accountId\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"customerId\": \"<string>\",\n      \"effectiveFrom\": \"<date>\",\n      \"id\": \"<string>\",\n      \"priority\": \"<integer>\",\n      \"purpose\": \"<string>\",\n      \"status\": \"ACTIVE\",\n      \"applicableEntityIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"effectiveUntil\": \"<date>\",\n      \"creditAmount\": \"<number>\",\n      \"grantorId\": \"<string>\",\n      \"idempotencyKey\": \"<string>\",\n      \"creditUnit\": \"<string>\",\n      \"holdAmount\": \"<number>\",\n      \"consumedAmount\": \"<number>\",\n      \"updatedAt\": \"<dateTime>\"\n    },\n    {\n      \"accountId\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"customerId\": \"<string>\",\n      \"effectiveFrom\": \"<date>\",\n      \"id\": \"<string>\",\n      \"priority\": \"<integer>\",\n      \"purpose\": \"<string>\",\n      \"status\": \"EXPIRED\",\n      \"applicableEntityIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"effectiveUntil\": \"<date>\",\n      \"creditAmount\": \"<number>\",\n      \"grantorId\": \"<string>\",\n      \"idempotencyKey\": \"<string>\",\n      \"creditUnit\": \"<string>\",\n      \"holdAmount\": \"<number>\",\n      \"consumedAmount\": \"<number>\",\n      \"updatedAt\": \"<dateTime>\"\n    },\n    {\n      \"accountId\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"customerId\": \"<string>\",\n      \"effectiveFrom\": \"<date>\",\n      \"id\": \"<string>\",\n      \"priority\": \"<integer>\",\n      \"purpose\": \"<string>\",\n      \"status\": \"CONSUMED\",\n      \"applicableEntityIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"effectiveUntil\": \"<date>\",\n      \"creditAmount\": \"<number>\",\n      \"grantorId\": \"<string>\",\n      \"idempotencyKey\": \"<string>\",\n      \"creditUnit\": \"<string>\",\n      \"holdAmount\": \"<number>\",\n      \"consumedAmount\": \"<number>\",\n      \"updatedAt\": \"<dateTime>\"\n    },\n    {\n      \"accountId\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"customerId\": \"<string>\",\n      \"effectiveFrom\": \"<date>\",\n      \"id\": \"<string>\",\n      \"priority\": \"<integer>\",\n      \"purpose\": \"<string>\",\n      \"status\": \"CONSUMED\",\n      \"applicableEntityIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"effectiveUntil\": \"<date>\",\n      \"creditAmount\": \"<number>\",\n      \"grantorId\": \"<string>\",\n      \"idempotencyKey\": \"<string>\",\n      \"creditUnit\": \"<string>\",\n      \"holdAmount\": \"<number>\",\n      \"consumedAmount\": \"<number>\",\n      \"updatedAt\": \"<dateTime>\"\n    },\n    {\n      \"accountId\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"customerId\": \"<string>\",\n      \"effectiveFrom\": \"<date>\",\n      \"id\": \"<string>\",\n      \"priority\": \"<integer>\",\n      \"purpose\": \"<string>\",\n      \"status\": \"VOIDED\",\n      \"applicableEntityIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"effectiveUntil\": \"<date>\",\n      \"creditAmount\": \"<number>\",\n      \"grantorId\": \"<string>\",\n      \"idempotencyKey\": \"<string>\",\n      \"creditUnit\": \"<string>\",\n      \"holdAmount\": \"<number>\",\n      \"consumedAmount\": \"<number>\",\n      \"updatedAt\": \"<dateTime>\"\n    },\n    {\n      \"accountId\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"customerId\": \"<string>\",\n      \"effectiveFrom\": \"<date>\",\n      \"id\": \"<string>\",\n      \"priority\": \"<integer>\",\n      \"purpose\": \"<string>\",\n      \"status\": \"ACTIVE\",\n      \"applicableEntityIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"effectiveUntil\": \"<date>\",\n      \"creditAmount\": \"<number>\",\n      \"grantorId\": \"<string>\",\n      \"idempotencyKey\": \"<string>\",\n      \"creditUnit\": \"<string>\",\n      \"holdAmount\": \"<number>\",\n      \"consumedAmount\": \"<number>\",\n      \"updatedAt\": \"<dateTime>\"\n    },\n    {\n      \"accountId\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"customerId\": \"<string>\",\n      \"effectiveFrom\": \"<date>\",\n      \"id\": \"<string>\",\n      \"priority\": \"<integer>\",\n      \"purpose\": \"<string>\",\n      \"status\": \"VOIDED\",\n      \"applicableEntityIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"effectiveUntil\": \"<date>\",\n      \"creditAmount\": \"<number>\",\n      \"grantorId\": \"<string>\",\n      \"idempotencyKey\": \"<string>\",\n      \"creditUnit\": \"<string>\",\n      \"holdAmount\": \"<number>\",\n      \"consumedAmount\": \"<number>\",\n      \"updatedAt\": \"<dateTime>\"\n    },\n    {\n      \"accountId\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"customerId\": \"<string>\",\n      \"effectiveFrom\": \"<date>\",\n      \"id\": \"<string>\",\n      \"priority\": \"<integer>\",\n      \"purpose\": \"<string>\",\n      \"status\": \"VOIDED\",\n      \"applicableEntityIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"effectiveUntil\": \"<date>\",\n      \"creditAmount\": \"<number>\",\n      \"grantorId\": \"<string>\",\n      \"idempotencyKey\": \"<string>\",\n      \"creditUnit\": \"<string>\",\n      \"holdAmount\": \"<number>\",\n      \"consumedAmount\": \"<number>\",\n      \"updatedAt\": \"<dateTime>\"\n    }\n  ],\n  \"nextToken\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:15:06.000Z",
+              "updatedAt": "2026-07-28T03:15:06.000Z",
+              "uid": "35240-a6b1221e-dcb3-4100-8ed6-d16cc426f4c8"
+            },
+            {
+              "id": "81a0a959-d485-4a7d-890b-094e2aa3a186",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/credits?nextToken=<string>&status=<string>&account_id=<string>&id=<string>&pageSize=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "credits"
+                  ],
+                  "query": [
+                    {
+                      "description": "Pagination token used as a marker to get records from next page.",
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter option to filter by status.",
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter option to filter based on account id.",
+                      "key": "account_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter option to filter based on credit id.",
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Maximum page size expected by client to return the record list. \n\n NOTE: Max page size cannot be more than 50. Also 50 is the default page size if no value is provided.",
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:15:06.000Z",
+              "updatedAt": "2026-07-28T03:15:06.000Z",
+              "uid": "35240-81a0a959-d485-4a7d-890b-094e2aa3a186"
+            },
+            {
+              "id": "552a5fdf-4948-4474-a9e4-43ad4d926d58",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/credits?nextToken=<string>&status=<string>&account_id=<string>&id=<string>&pageSize=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "credits"
+                  ],
+                  "query": [
+                    {
+                      "description": "Pagination token used as a marker to get records from next page.",
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter option to filter by status.",
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter option to filter based on account id.",
+                      "key": "account_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter option to filter based on credit id.",
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Maximum page size expected by client to return the record list. \n\n NOTE: Max page size cannot be more than 50. Also 50 is the default page size if no value is provided.",
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:15:06.000Z",
+              "updatedAt": "2026-07-28T03:15:06.000Z",
+              "uid": "35240-552a5fdf-4948-4474-a9e4-43ad4d926d58"
+            },
+            {
+              "id": "b9702267-bb55-42a4-8c20-ffcf8c3d12c4",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/credits?nextToken=<string>&status=<string>&account_id=<string>&id=<string>&pageSize=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "credits"
+                  ],
+                  "query": [
+                    {
+                      "description": "Pagination token used as a marker to get records from next page.",
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter option to filter by status.",
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter option to filter based on account id.",
+                      "key": "account_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter option to filter based on credit id.",
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Maximum page size expected by client to return the record list. \n\n NOTE: Max page size cannot be more than 50. Also 50 is the default page size if no value is provided.",
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:15:06.000Z",
+              "updatedAt": "2026-07-28T03:15:06.000Z",
+              "uid": "35240-b9702267-bb55-42a4-8c20-ffcf8c3d12c4"
+            },
+            {
+              "id": "01dd0144-135c-4b57-a547-ead58ec02d3e",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/credits?nextToken=<string>&status=<string>&account_id=<string>&id=<string>&pageSize=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "credits"
+                  ],
+                  "query": [
+                    {
+                      "description": "Pagination token used as a marker to get records from next page.",
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter option to filter by status.",
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter option to filter based on account id.",
+                      "key": "account_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter option to filter based on credit id.",
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Maximum page size expected by client to return the record list. \n\n NOTE: Max page size cannot be more than 50. Also 50 is the default page size if no value is provided.",
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:15:06.000Z",
+              "updatedAt": "2026-07-28T03:15:06.000Z",
+              "uid": "35240-01dd0144-135c-4b57-a547-ead58ec02d3e"
+            },
+            {
+              "id": "2f619836-88e2-4008-9e7c-5fae1bb9dfdd",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/credits?nextToken=<string>&status=<string>&account_id=<string>&id=<string>&pageSize=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "credits"
+                  ],
+                  "query": [
+                    {
+                      "description": "Pagination token used as a marker to get records from next page.",
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter option to filter by status.",
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter option to filter based on account id.",
+                      "key": "account_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter option to filter based on credit id.",
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Maximum page size expected by client to return the record list. \n\n NOTE: Max page size cannot be more than 50. Also 50 is the default page size if no value is provided.",
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:15:06.000Z",
+              "updatedAt": "2026-07-28T03:15:06.000Z",
+              "uid": "35240-2f619836-88e2-4008-9e7c-5fae1bb9dfdd"
+            },
+            {
+              "id": "6265723a-f9cb-46c7-b2a5-b92ef8213f58",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/credits?nextToken=<string>&status=<string>&account_id=<string>&id=<string>&pageSize=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "credits"
+                  ],
+                  "query": [
+                    {
+                      "description": "Pagination token used as a marker to get records from next page.",
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter option to filter by status.",
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter option to filter based on account id.",
+                      "key": "account_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter option to filter based on credit id.",
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Maximum page size expected by client to return the record list. \n\n NOTE: Max page size cannot be more than 50. Also 50 is the default page size if no value is provided.",
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:15:06.000Z",
+              "updatedAt": "2026-07-28T03:15:06.000Z",
+              "uid": "35240-6265723a-f9cb-46c7-b2a5-b92ef8213f58"
+            }
+          ],
+          "createdAt": "2026-07-28T03:15:06.000Z",
+          "updatedAt": "2026-07-28T03:15:06.000Z",
+          "uid": "35240-a1fc1f4e-8506-42ec-bd15-bd75cf07c390"
+        },
+        {
+          "name": "Grant Credit",
+          "id": "3d8aad52-f2f7-4329-bc8b-153b40c8a7ec",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"creditRequests\": [\n    {\n      \"accountId\": \"<string>\",\n      \"effectiveFrom\": \"<date>\",\n      \"priority\": \"<integer>\",\n      \"purpose\": \"<string>\",\n      \"applicableEntityIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"effectiveUntil\": \"<date>\",\n      \"creditAmount\": \"<number>\",\n      \"grantorId\": \"<string>\",\n      \"idempotencyKey\": \"<string>\"\n    },\n    {\n      \"accountId\": \"<string>\",\n      \"effectiveFrom\": \"<date>\",\n      \"priority\": \"<integer>\",\n      \"purpose\": \"<string>\",\n      \"applicableEntityIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"effectiveUntil\": \"<date>\",\n      \"creditAmount\": \"<number>\",\n      \"grantorId\": \"<string>\",\n      \"idempotencyKey\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/credits",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "credits"
+              ]
+            },
+            "description": "Grant credit"
+          },
+          "response": [
+            {
+              "id": "cd8750f5-c734-40e7-ae52-3cb777945148",
+              "name": "Response for List credits request",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"creditRequests\": [\n    {\n      \"accountId\": \"<string>\",\n      \"effectiveFrom\": \"<date>\",\n      \"priority\": \"<integer>\",\n      \"purpose\": \"<string>\",\n      \"applicableEntityIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"effectiveUntil\": \"<date>\",\n      \"creditAmount\": \"<number>\",\n      \"grantorId\": \"<string>\",\n      \"idempotencyKey\": \"<string>\"\n    },\n    {\n      \"accountId\": \"<string>\",\n      \"effectiveFrom\": \"<date>\",\n      \"priority\": \"<integer>\",\n      \"purpose\": \"<string>\",\n      \"applicableEntityIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"effectiveUntil\": \"<date>\",\n      \"creditAmount\": \"<number>\",\n      \"grantorId\": \"<string>\",\n      \"idempotencyKey\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/credits",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "credits"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"credits\": [\n    {\n      \"accountId\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"customerId\": \"<string>\",\n      \"effectiveFrom\": \"<date>\",\n      \"id\": \"<string>\",\n      \"priority\": \"<integer>\",\n      \"purpose\": \"<string>\",\n      \"status\": \"EXPIRED\",\n      \"applicableEntityIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"effectiveUntil\": \"<date>\",\n      \"creditAmount\": \"<number>\",\n      \"grantorId\": \"<string>\",\n      \"idempotencyKey\": \"<string>\",\n      \"creditUnit\": \"<string>\",\n      \"holdAmount\": \"<number>\",\n      \"consumedAmount\": \"<number>\",\n      \"updatedAt\": \"<dateTime>\"\n    },\n    {\n      \"accountId\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"customerId\": \"<string>\",\n      \"effectiveFrom\": \"<date>\",\n      \"id\": \"<string>\",\n      \"priority\": \"<integer>\",\n      \"purpose\": \"<string>\",\n      \"status\": \"VOIDED\",\n      \"applicableEntityIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"effectiveUntil\": \"<date>\",\n      \"creditAmount\": \"<number>\",\n      \"grantorId\": \"<string>\",\n      \"idempotencyKey\": \"<string>\",\n      \"creditUnit\": \"<string>\",\n      \"holdAmount\": \"<number>\",\n      \"consumedAmount\": \"<number>\",\n      \"updatedAt\": \"<dateTime>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T03:15:06.000Z",
+              "updatedAt": "2026-07-28T03:15:06.000Z",
+              "uid": "35240-cd8750f5-c734-40e7-ae52-3cb777945148"
+            },
+            {
+              "id": "bd55eefe-39da-43ce-8224-e639b19adf70",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"creditRequests\": [\n    {\n      \"accountId\": \"<string>\",\n      \"effectiveFrom\": \"<date>\",\n      \"priority\": \"<integer>\",\n      \"purpose\": \"<string>\",\n      \"applicableEntityIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"effectiveUntil\": \"<date>\",\n      \"creditAmount\": \"<number>\",\n      \"grantorId\": \"<string>\",\n      \"idempotencyKey\": \"<string>\"\n    },\n    {\n      \"accountId\": \"<string>\",\n      \"effectiveFrom\": \"<date>\",\n      \"priority\": \"<integer>\",\n      \"purpose\": \"<string>\",\n      \"applicableEntityIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"effectiveUntil\": \"<date>\",\n      \"creditAmount\": \"<number>\",\n      \"grantorId\": \"<string>\",\n      \"idempotencyKey\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/credits",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "credits"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:15:06.000Z",
+              "updatedAt": "2026-07-28T03:15:06.000Z",
+              "uid": "35240-bd55eefe-39da-43ce-8224-e639b19adf70"
+            },
+            {
+              "id": "1a28c205-559e-4068-9a9e-c67b4d3ef58b",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"creditRequests\": [\n    {\n      \"accountId\": \"<string>\",\n      \"effectiveFrom\": \"<date>\",\n      \"priority\": \"<integer>\",\n      \"purpose\": \"<string>\",\n      \"applicableEntityIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"effectiveUntil\": \"<date>\",\n      \"creditAmount\": \"<number>\",\n      \"grantorId\": \"<string>\",\n      \"idempotencyKey\": \"<string>\"\n    },\n    {\n      \"accountId\": \"<string>\",\n      \"effectiveFrom\": \"<date>\",\n      \"priority\": \"<integer>\",\n      \"purpose\": \"<string>\",\n      \"applicableEntityIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"effectiveUntil\": \"<date>\",\n      \"creditAmount\": \"<number>\",\n      \"grantorId\": \"<string>\",\n      \"idempotencyKey\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/credits",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "credits"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:15:06.000Z",
+              "updatedAt": "2026-07-28T03:15:06.000Z",
+              "uid": "35240-1a28c205-559e-4068-9a9e-c67b4d3ef58b"
+            },
+            {
+              "id": "3124edf0-c0e9-4d03-b03f-ec41a97537d9",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"creditRequests\": [\n    {\n      \"accountId\": \"<string>\",\n      \"effectiveFrom\": \"<date>\",\n      \"priority\": \"<integer>\",\n      \"purpose\": \"<string>\",\n      \"applicableEntityIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"effectiveUntil\": \"<date>\",\n      \"creditAmount\": \"<number>\",\n      \"grantorId\": \"<string>\",\n      \"idempotencyKey\": \"<string>\"\n    },\n    {\n      \"accountId\": \"<string>\",\n      \"effectiveFrom\": \"<date>\",\n      \"priority\": \"<integer>\",\n      \"purpose\": \"<string>\",\n      \"applicableEntityIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"effectiveUntil\": \"<date>\",\n      \"creditAmount\": \"<number>\",\n      \"grantorId\": \"<string>\",\n      \"idempotencyKey\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/credits",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "credits"
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:15:06.000Z",
+              "updatedAt": "2026-07-28T03:15:06.000Z",
+              "uid": "35240-3124edf0-c0e9-4d03-b03f-ec41a97537d9"
+            },
+            {
+              "id": "d1212ad6-d3f7-4945-ab72-4380acc9c1a0",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"creditRequests\": [\n    {\n      \"accountId\": \"<string>\",\n      \"effectiveFrom\": \"<date>\",\n      \"priority\": \"<integer>\",\n      \"purpose\": \"<string>\",\n      \"applicableEntityIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"effectiveUntil\": \"<date>\",\n      \"creditAmount\": \"<number>\",\n      \"grantorId\": \"<string>\",\n      \"idempotencyKey\": \"<string>\"\n    },\n    {\n      \"accountId\": \"<string>\",\n      \"effectiveFrom\": \"<date>\",\n      \"priority\": \"<integer>\",\n      \"purpose\": \"<string>\",\n      \"applicableEntityIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"effectiveUntil\": \"<date>\",\n      \"creditAmount\": \"<number>\",\n      \"grantorId\": \"<string>\",\n      \"idempotencyKey\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/credits",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "credits"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:15:06.000Z",
+              "updatedAt": "2026-07-28T03:15:06.000Z",
+              "uid": "35240-d1212ad6-d3f7-4945-ab72-4380acc9c1a0"
+            },
+            {
+              "id": "22f2f8ca-f728-4bc9-90c8-b69da1210e0b",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"creditRequests\": [\n    {\n      \"accountId\": \"<string>\",\n      \"effectiveFrom\": \"<date>\",\n      \"priority\": \"<integer>\",\n      \"purpose\": \"<string>\",\n      \"applicableEntityIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"effectiveUntil\": \"<date>\",\n      \"creditAmount\": \"<number>\",\n      \"grantorId\": \"<string>\",\n      \"idempotencyKey\": \"<string>\"\n    },\n    {\n      \"accountId\": \"<string>\",\n      \"effectiveFrom\": \"<date>\",\n      \"priority\": \"<integer>\",\n      \"purpose\": \"<string>\",\n      \"applicableEntityIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"effectiveUntil\": \"<date>\",\n      \"creditAmount\": \"<number>\",\n      \"grantorId\": \"<string>\",\n      \"idempotencyKey\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/credits",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "credits"
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:15:06.000Z",
+              "updatedAt": "2026-07-28T03:15:06.000Z",
+              "uid": "35240-22f2f8ca-f728-4bc9-90c8-b69da1210e0b"
+            },
+            {
+              "id": "c8a0cca7-ef3e-44a7-b1ae-0ac2dcff1b20",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"creditRequests\": [\n    {\n      \"accountId\": \"<string>\",\n      \"effectiveFrom\": \"<date>\",\n      \"priority\": \"<integer>\",\n      \"purpose\": \"<string>\",\n      \"applicableEntityIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"effectiveUntil\": \"<date>\",\n      \"creditAmount\": \"<number>\",\n      \"grantorId\": \"<string>\",\n      \"idempotencyKey\": \"<string>\"\n    },\n    {\n      \"accountId\": \"<string>\",\n      \"effectiveFrom\": \"<date>\",\n      \"priority\": \"<integer>\",\n      \"purpose\": \"<string>\",\n      \"applicableEntityIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"effectiveUntil\": \"<date>\",\n      \"creditAmount\": \"<number>\",\n      \"grantorId\": \"<string>\",\n      \"idempotencyKey\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/credits",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "credits"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:15:06.000Z",
+              "updatedAt": "2026-07-28T03:15:06.000Z",
+              "uid": "35240-c8a0cca7-ef3e-44a7-b1ae-0ac2dcff1b20"
+            }
+          ],
+          "createdAt": "2026-07-28T03:15:06.000Z",
+          "updatedAt": "2026-07-28T03:15:06.000Z",
+          "uid": "35240-3d8aad52-f2f7-4329-bc8b-153b40c8a7ec"
+        }
+      ],
+      "id": "c80b5903-2da6-49aa-b741-c7920bdd2cd7",
+      "createdAt": "2026-07-28T03:15:06.000Z",
+      "updatedAt": "2026-07-28T03:15:06.000Z",
+      "uid": "35240-c80b5903-2da6-49aa-b741-c7920bdd2cd7"
+    },
+    {
+      "name": "accounts",
+      "item": [
+        {
+          "name": "{account_id}",
+          "item": [
+            {
+              "name": "credit_balance",
+              "item": [
+                {
+                  "name": "Credit Balance for Account",
+                  "id": "8b3dc2d4-e0be-49b9-8ad4-d88fd1b20b51",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/accounts/:account_id/credit_balance",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "accounts",
+                        ":account_id",
+                        "credit_balance"
+                      ],
+                      "variable": [
+                        {
+                          "id": "cd5d79ae-c9af-401f-a8bb-c754a5104248",
+                          "key": "account_id",
+                          "value": "<string>",
+                          "description": "(Required) account_id corresponding to an account"
+                        }
+                      ]
+                    },
+                    "description": "Credit balance for Account"
+                  },
+                  "response": [
+                    {
+                      "id": "45f4980b-f57c-4a9a-abf8-ff8eff698538",
+                      "name": "Response for Credit Balance Request",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:account_id/credit_balance",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":account_id",
+                            "credit_balance"
+                          ],
+                          "variable": [
+                            {
+                              "key": "account_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"activeCredits\": \"<number>\",\n  \"availableBalance\": \"<number>\",\n  \"runningBalance\": \"<number>\",\n  \"inapplicableCredits\": \"<number>\",\n  \"unit\": \"<string>\",\n  \"lastUpdatedAt\": \"<dateTime>\"\n}",
+                      "createdAt": "2026-07-28T03:15:06.000Z",
+                      "updatedAt": "2026-07-28T03:15:06.000Z",
+                      "uid": "35240-45f4980b-f57c-4a9a-abf8-ff8eff698538"
+                    },
+                    {
+                      "id": "b424effb-60bb-4cf8-b35a-bec409015a9f",
+                      "name": "Error response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:account_id/credit_balance",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":account_id",
+                            "credit_balance"
+                          ],
+                          "variable": [
+                            {
+                              "key": "account_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:15:06.000Z",
+                      "updatedAt": "2026-07-28T03:15:06.000Z",
+                      "uid": "35240-b424effb-60bb-4cf8-b35a-bec409015a9f"
+                    },
+                    {
+                      "id": "966dca7b-c896-41f0-abfd-e88d0d5aa5b2",
+                      "name": "Error response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:account_id/credit_balance",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":account_id",
+                            "credit_balance"
+                          ],
+                          "variable": [
+                            {
+                              "key": "account_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:15:06.000Z",
+                      "updatedAt": "2026-07-28T03:15:06.000Z",
+                      "uid": "35240-966dca7b-c896-41f0-abfd-e88d0d5aa5b2"
+                    },
+                    {
+                      "id": "20778640-ad98-44a4-a7f1-f6fca2f142c2",
+                      "name": "Error response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:account_id/credit_balance",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":account_id",
+                            "credit_balance"
+                          ],
+                          "variable": [
+                            {
+                              "key": "account_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:15:06.000Z",
+                      "updatedAt": "2026-07-28T03:15:06.000Z",
+                      "uid": "35240-20778640-ad98-44a4-a7f1-f6fca2f142c2"
+                    },
+                    {
+                      "id": "7ee1bb90-5d55-4724-8026-f70003e6e4ff",
+                      "name": "Error response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:account_id/credit_balance",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":account_id",
+                            "credit_balance"
+                          ],
+                          "variable": [
+                            {
+                              "key": "account_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:15:06.000Z",
+                      "updatedAt": "2026-07-28T03:15:06.000Z",
+                      "uid": "35240-7ee1bb90-5d55-4724-8026-f70003e6e4ff"
+                    },
+                    {
+                      "id": "8184ab70-2a12-4f74-959f-f831e986283c",
+                      "name": "Error response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:account_id/credit_balance",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":account_id",
+                            "credit_balance"
+                          ],
+                          "variable": [
+                            {
+                              "key": "account_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:15:06.000Z",
+                      "updatedAt": "2026-07-28T03:15:06.000Z",
+                      "uid": "35240-8184ab70-2a12-4f74-959f-f831e986283c"
+                    },
+                    {
+                      "id": "bfcc0e03-eac2-496b-85ac-fbbdfb26b080",
+                      "name": "Error response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:account_id/credit_balance",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":account_id",
+                            "credit_balance"
+                          ],
+                          "variable": [
+                            {
+                              "key": "account_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:15:06.000Z",
+                      "updatedAt": "2026-07-28T03:15:06.000Z",
+                      "uid": "35240-bfcc0e03-eac2-496b-85ac-fbbdfb26b080"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:15:06.000Z",
+                  "updatedAt": "2026-07-28T03:15:06.000Z",
+                  "uid": "35240-8b3dc2d4-e0be-49b9-8ad4-d88fd1b20b51"
+                }
+              ],
+              "id": "8790b15a-9f37-4841-a654-182e42ebebac",
+              "createdAt": "2026-07-28T03:15:06.000Z",
+              "updatedAt": "2026-07-28T03:15:06.000Z",
+              "uid": "35240-8790b15a-9f37-4841-a654-182e42ebebac"
+            }
+          ],
+          "id": "96ee1101-2474-4dac-b324-88bc87854cdf",
+          "createdAt": "2026-07-28T03:15:06.000Z",
+          "updatedAt": "2026-07-28T03:15:06.000Z",
+          "uid": "35240-96ee1101-2474-4dac-b324-88bc87854cdf"
+        }
+      ],
+      "id": "2ea4a87e-cf00-4046-a057-8cd91e70dc62",
+      "createdAt": "2026-07-28T03:15:06.000Z",
+      "updatedAt": "2026-07-28T03:15:06.000Z",
+      "uid": "35240-2ea4a87e-cf00-4046-a057-8cd91e70dc62"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.togai.com/"
+    }
+  ]
+}

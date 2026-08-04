@@ -1,0 +1,420 @@
+{
+  "info": {
+    "_postman_id": "838d134e-44d7-4139-a7bb-fdadcd7757d4",
+    "name": "Togai Apis Accounts Metrics API",
+    "description": "APIs for Togai App\n\nContact Support:\n Email: engg@togai.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:16:40.000Z",
+    "updatedAt": "2026-07-28T03:16:40.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-838d134e-44d7-4139-a7bb-fdadcd7757d4"
+  },
+  "item": [
+    {
+      "name": "metrics",
+      "item": [
+        {
+          "name": "Get Togai Metrics",
+          "id": "4c99c7f4-ae7a-4989-968c-cd42f0a13045",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"startTime\": \"<dateTime>\",\n  \"endTime\": \"<dateTime>\",\n  \"metricQueries\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"EVENTS\",\n      \"aggregationPeriod\": \"DAY\",\n      \"groupBy\": \"<string>\",\n      \"configs\": {\n        \"amet_ba\": \"<string>\",\n        \"commodo_1f\": \"<string>\"\n      },\n      \"filters\": [\n        {\n          \"fieldName\": \"<string>\",\n          \"fieldValues\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ]\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"EVENTS\",\n      \"aggregationPeriod\": \"DAY\",\n      \"groupBy\": \"<string>\",\n      \"configs\": {\n        \"labore_c\": \"<string>\",\n        \"dolore_c45\": \"<string>\"\n      },\n      \"filters\": [\n        {\n          \"fieldName\": \"<string>\",\n          \"fieldValues\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ]\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/metrics",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "metrics"
+              ]
+            },
+            "description": "Togai Metrics API allows you to fetch different metrics from Events, Usage Meters and PricePlans with multiple queryable options.\nA single request can query up to five metrics. \nSingle response can contain a maximum of 300 data points.\n"
+          },
+          "response": [
+            {
+              "id": "654889d9-4a2e-41d3-b738-20c2240a71c5",
+              "name": "Success response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"startTime\": \"<dateTime>\",\n  \"endTime\": \"<dateTime>\",\n  \"metricQueries\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"EVENTS\",\n      \"aggregationPeriod\": \"DAY\",\n      \"groupBy\": \"<string>\",\n      \"configs\": {\n        \"amet_ba\": \"<string>\",\n        \"commodo_1f\": \"<string>\"\n      },\n      \"filters\": [\n        {\n          \"fieldName\": \"<string>\",\n          \"fieldValues\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ]\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"EVENTS\",\n      \"aggregationPeriod\": \"DAY\",\n      \"groupBy\": \"<string>\",\n      \"configs\": {\n        \"labore_c\": \"<string>\",\n        \"dolore_c45\": \"<string>\"\n      },\n      \"filters\": [\n        {\n          \"fieldName\": \"<string>\",\n          \"fieldValues\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/metrics",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "metrics"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"results\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"EVENTS\",\n      \"data\": [\n        {\n          \"timestamps\": [\n            \"<dateTime>\",\n            \"<dateTime>\"\n          ],\n          \"metricValues\": [\n            \"<number>\",\n            \"<number>\"\n          ],\n          \"groupedBy\": {\n            \"fieldName\": \"<string>\",\n            \"fieldValue\": \"<string>\"\n          }\n        },\n        {\n          \"timestamps\": [\n            \"<dateTime>\",\n            \"<dateTime>\"\n          ],\n          \"metricValues\": [\n            \"<number>\",\n            \"<number>\"\n          ],\n          \"groupedBy\": {\n            \"fieldName\": \"<string>\",\n            \"fieldValue\": \"<string>\"\n          }\n        }\n      ]\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"EVENTS\",\n      \"data\": [\n        {\n          \"timestamps\": [\n            \"<dateTime>\",\n            \"<dateTime>\"\n          ],\n          \"metricValues\": [\n            \"<number>\",\n            \"<number>\"\n          ],\n          \"groupedBy\": {\n            \"fieldName\": \"<string>\",\n            \"fieldValue\": \"<string>\"\n          }\n        },\n        {\n          \"timestamps\": [\n            \"<dateTime>\",\n            \"<dateTime>\"\n          ],\n          \"metricValues\": [\n            \"<number>\",\n            \"<number>\"\n          ],\n          \"groupedBy\": {\n            \"fieldName\": \"<string>\",\n            \"fieldValue\": \"<string>\"\n          }\n        }\n      ]\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T03:16:40.000Z",
+              "updatedAt": "2026-07-28T03:16:40.000Z",
+              "uid": "35240-654889d9-4a2e-41d3-b738-20c2240a71c5"
+            },
+            {
+              "id": "1c1d9a91-37eb-4242-b910-d5b99695f27e",
+              "name": "Bad request. Please check the response message for failure details.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"startTime\": \"<dateTime>\",\n  \"endTime\": \"<dateTime>\",\n  \"metricQueries\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"EVENTS\",\n      \"aggregationPeriod\": \"DAY\",\n      \"groupBy\": \"<string>\",\n      \"configs\": {\n        \"amet_ba\": \"<string>\",\n        \"commodo_1f\": \"<string>\"\n      },\n      \"filters\": [\n        {\n          \"fieldName\": \"<string>\",\n          \"fieldValues\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ]\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"EVENTS\",\n      \"aggregationPeriod\": \"DAY\",\n      \"groupBy\": \"<string>\",\n      \"configs\": {\n        \"labore_c\": \"<string>\",\n        \"dolore_c45\": \"<string>\"\n      },\n      \"filters\": [\n        {\n          \"fieldName\": \"<string>\",\n          \"fieldValues\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/metrics",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "metrics"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:16:40.000Z",
+              "updatedAt": "2026-07-28T03:16:40.000Z",
+              "uid": "35240-1c1d9a91-37eb-4242-b910-d5b99695f27e"
+            },
+            {
+              "id": "7e8f14c4-edec-4b21-a4f7-873d83fae600",
+              "name": "Credential is not valid. Please check the response message for failure details.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"startTime\": \"<dateTime>\",\n  \"endTime\": \"<dateTime>\",\n  \"metricQueries\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"EVENTS\",\n      \"aggregationPeriod\": \"DAY\",\n      \"groupBy\": \"<string>\",\n      \"configs\": {\n        \"amet_ba\": \"<string>\",\n        \"commodo_1f\": \"<string>\"\n      },\n      \"filters\": [\n        {\n          \"fieldName\": \"<string>\",\n          \"fieldValues\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ]\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"EVENTS\",\n      \"aggregationPeriod\": \"DAY\",\n      \"groupBy\": \"<string>\",\n      \"configs\": {\n        \"labore_c\": \"<string>\",\n        \"dolore_c45\": \"<string>\"\n      },\n      \"filters\": [\n        {\n          \"fieldName\": \"<string>\",\n          \"fieldValues\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/metrics",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "metrics"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:16:40.000Z",
+              "updatedAt": "2026-07-28T03:16:40.000Z",
+              "uid": "35240-7e8f14c4-edec-4b21-a4f7-873d83fae600"
+            },
+            {
+              "id": "a7e1aedf-2d1b-4c83-bc30-f9280ad3b38b",
+              "name": "Credential does not have access to get metrics.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"startTime\": \"<dateTime>\",\n  \"endTime\": \"<dateTime>\",\n  \"metricQueries\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"EVENTS\",\n      \"aggregationPeriod\": \"DAY\",\n      \"groupBy\": \"<string>\",\n      \"configs\": {\n        \"amet_ba\": \"<string>\",\n        \"commodo_1f\": \"<string>\"\n      },\n      \"filters\": [\n        {\n          \"fieldName\": \"<string>\",\n          \"fieldValues\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ]\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"EVENTS\",\n      \"aggregationPeriod\": \"DAY\",\n      \"groupBy\": \"<string>\",\n      \"configs\": {\n        \"labore_c\": \"<string>\",\n        \"dolore_c45\": \"<string>\"\n      },\n      \"filters\": [\n        {\n          \"fieldName\": \"<string>\",\n          \"fieldValues\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/metrics",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "metrics"
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:16:40.000Z",
+              "updatedAt": "2026-07-28T03:16:40.000Z",
+              "uid": "35240-a7e1aedf-2d1b-4c83-bc30-f9280ad3b38b"
+            },
+            {
+              "id": "9d9095bf-0083-44f8-a6a9-18dbd9d3eda0",
+              "name": "Request throttled. Please check the response message on the failure details.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"startTime\": \"<dateTime>\",\n  \"endTime\": \"<dateTime>\",\n  \"metricQueries\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"EVENTS\",\n      \"aggregationPeriod\": \"DAY\",\n      \"groupBy\": \"<string>\",\n      \"configs\": {\n        \"amet_ba\": \"<string>\",\n        \"commodo_1f\": \"<string>\"\n      },\n      \"filters\": [\n        {\n          \"fieldName\": \"<string>\",\n          \"fieldValues\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ]\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"EVENTS\",\n      \"aggregationPeriod\": \"DAY\",\n      \"groupBy\": \"<string>\",\n      \"configs\": {\n        \"labore_c\": \"<string>\",\n        \"dolore_c45\": \"<string>\"\n      },\n      \"filters\": [\n        {\n          \"fieldName\": \"<string>\",\n          \"fieldValues\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/metrics",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "metrics"
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:16:40.000Z",
+              "updatedAt": "2026-07-28T03:16:40.000Z",
+              "uid": "35240-9d9095bf-0083-44f8-a6a9-18dbd9d3eda0"
+            },
+            {
+              "id": "082875b5-4866-4cd7-9807-1b7c49bf27de",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"startTime\": \"<dateTime>\",\n  \"endTime\": \"<dateTime>\",\n  \"metricQueries\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"EVENTS\",\n      \"aggregationPeriod\": \"DAY\",\n      \"groupBy\": \"<string>\",\n      \"configs\": {\n        \"amet_ba\": \"<string>\",\n        \"commodo_1f\": \"<string>\"\n      },\n      \"filters\": [\n        {\n          \"fieldName\": \"<string>\",\n          \"fieldValues\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ]\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"EVENTS\",\n      \"aggregationPeriod\": \"DAY\",\n      \"groupBy\": \"<string>\",\n      \"configs\": {\n        \"labore_c\": \"<string>\",\n        \"dolore_c45\": \"<string>\"\n      },\n      \"filters\": [\n        {\n          \"fieldName\": \"<string>\",\n          \"fieldValues\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/metrics",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "metrics"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:16:40.000Z",
+              "updatedAt": "2026-07-28T03:16:40.000Z",
+              "uid": "35240-082875b5-4866-4cd7-9807-1b7c49bf27de"
+            }
+          ],
+          "createdAt": "2026-07-28T03:16:40.000Z",
+          "updatedAt": "2026-07-28T03:16:40.000Z",
+          "uid": "35240-4c99c7f4-ae7a-4989-968c-cd42f0a13045"
+        }
+      ],
+      "id": "64d63233-ffa8-4951-9ef8-8b3a42ebbfd3",
+      "createdAt": "2026-07-28T03:16:40.000Z",
+      "updatedAt": "2026-07-28T03:16:40.000Z",
+      "uid": "35240-64d63233-ffa8-4951-9ef8-8b3a42ebbfd3"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.togai.com/"
+    }
+  ]
+}

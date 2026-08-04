@@ -1,0 +1,2170 @@
+{
+  "info": {
+    "_postman_id": "d6edd4a1-60e4-4297-ba7a-17ab7c2f05fd",
+    "name": "Togai Apis Accounts AddOns API",
+    "description": "APIs for Togai App\n\nContact Support:\n Email: engg@togai.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:14:59.000Z",
+    "updatedAt": "2026-07-28T03:14:59.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-d6edd4a1-60e4-4297-ba7a-17ab7c2f05fd"
+  },
+  "item": [
+    {
+      "name": "addons",
+      "item": [
+        {
+          "name": "{addon_id}",
+          "item": [
+            {
+              "name": "Update an Addon",
+              "id": "06bb1d36-6a54-4c0d-8614-64962b2c9f52",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"billableName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/addons/:addon_id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "addons",
+                    ":addon_id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "f846395d-7789-4bca-b124-d1c4f114109e",
+                      "key": "addon_id",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "Update an existing addon\n"
+              },
+              "response": [
+                {
+                  "id": "481a1d16-d215-48ae-8bf4-1a32dc093e91",
+                  "name": "Response for Create and Get addons requests",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"billableName\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/addons/:addon_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "addons",
+                        ":addon_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "addon_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"createdAt\": \"<dateTime>\",\n  \"displayName\": \"<string>\",\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"status\": \"ACTIVE\",\n  \"type\": \"CREDIT_GRANT\",\n  \"billableName\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:15:00.000Z",
+                  "updatedAt": "2026-07-28T03:15:00.000Z",
+                  "uid": "35240-481a1d16-d215-48ae-8bf4-1a32dc093e91"
+                },
+                {
+                  "id": "608144fc-487c-430c-8fe8-2d58a1677aa8",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"billableName\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/addons/:addon_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "addons",
+                        ":addon_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "addon_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:15:00.000Z",
+                  "updatedAt": "2026-07-28T03:15:00.000Z",
+                  "uid": "35240-608144fc-487c-430c-8fe8-2d58a1677aa8"
+                },
+                {
+                  "id": "3339e0fc-dbd2-408e-834f-51702c51861e",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"billableName\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/addons/:addon_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "addons",
+                        ":addon_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "addon_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:15:00.000Z",
+                  "updatedAt": "2026-07-28T03:15:00.000Z",
+                  "uid": "35240-3339e0fc-dbd2-408e-834f-51702c51861e"
+                },
+                {
+                  "id": "eaad065d-7f93-41e4-97e9-f206df659533",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"billableName\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/addons/:addon_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "addons",
+                        ":addon_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "addon_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:15:00.000Z",
+                  "updatedAt": "2026-07-28T03:15:00.000Z",
+                  "uid": "35240-eaad065d-7f93-41e4-97e9-f206df659533"
+                },
+                {
+                  "id": "c7dc2734-3f77-4bec-8fb5-02a284166a4a",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"billableName\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/addons/:addon_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "addons",
+                        ":addon_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "addon_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:15:00.000Z",
+                  "updatedAt": "2026-07-28T03:15:00.000Z",
+                  "uid": "35240-c7dc2734-3f77-4bec-8fb5-02a284166a4a"
+                },
+                {
+                  "id": "4781783c-699e-4a12-a778-c0fa3d32b618",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"billableName\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/addons/:addon_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "addons",
+                        ":addon_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "addon_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:15:00.000Z",
+                  "updatedAt": "2026-07-28T03:15:00.000Z",
+                  "uid": "35240-4781783c-699e-4a12-a778-c0fa3d32b618"
+                },
+                {
+                  "id": "a7a3b108-6353-4222-bb28-6ad37521f48d",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"billableName\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/addons/:addon_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "addons",
+                        ":addon_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "addon_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:15:00.000Z",
+                  "updatedAt": "2026-07-28T03:15:00.000Z",
+                  "uid": "35240-a7a3b108-6353-4222-bb28-6ad37521f48d"
+                }
+              ],
+              "createdAt": "2026-07-28T03:15:00.000Z",
+              "updatedAt": "2026-07-28T03:15:00.000Z",
+              "uid": "35240-06bb1d36-6a54-4c0d-8614-64962b2c9f52"
+            },
+            {
+              "name": "Get an Addon",
+              "id": "623aea09-2247-47e3-85e5-7281c8b603f0",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/addons/:addon_id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "addons",
+                    ":addon_id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "47e6a2f3-4b8a-49c3-be37-71a73c2f40b3",
+                      "key": "addon_id",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "Get details of an addon"
+              },
+              "response": [
+                {
+                  "id": "7ec73569-2783-42aa-88a4-19b4abb0d31b",
+                  "name": "Response for Create and Get addons requests",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/addons/:addon_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "addons",
+                        ":addon_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "addon_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"createdAt\": \"<dateTime>\",\n  \"displayName\": \"<string>\",\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"status\": \"ACTIVE\",\n  \"type\": \"CREDIT_GRANT\",\n  \"billableName\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:15:00.000Z",
+                  "updatedAt": "2026-07-28T03:15:00.000Z",
+                  "uid": "35240-7ec73569-2783-42aa-88a4-19b4abb0d31b"
+                },
+                {
+                  "id": "0afe920f-e457-4dce-8837-023b9727f389",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/addons/:addon_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "addons",
+                        ":addon_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "addon_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:15:00.000Z",
+                  "updatedAt": "2026-07-28T03:15:00.000Z",
+                  "uid": "35240-0afe920f-e457-4dce-8837-023b9727f389"
+                },
+                {
+                  "id": "adcf9846-a390-47fb-9c7e-2e32d7ee5be2",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/addons/:addon_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "addons",
+                        ":addon_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "addon_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:15:00.000Z",
+                  "updatedAt": "2026-07-28T03:15:00.000Z",
+                  "uid": "35240-adcf9846-a390-47fb-9c7e-2e32d7ee5be2"
+                },
+                {
+                  "id": "81699d43-9c09-4503-a26f-c8435862ffb4",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/addons/:addon_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "addons",
+                        ":addon_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "addon_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:15:00.000Z",
+                  "updatedAt": "2026-07-28T03:15:00.000Z",
+                  "uid": "35240-81699d43-9c09-4503-a26f-c8435862ffb4"
+                },
+                {
+                  "id": "bde6bf89-7586-442f-92ee-dd6a7a0a3aa2",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/addons/:addon_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "addons",
+                        ":addon_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "addon_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:15:00.000Z",
+                  "updatedAt": "2026-07-28T03:15:00.000Z",
+                  "uid": "35240-bde6bf89-7586-442f-92ee-dd6a7a0a3aa2"
+                },
+                {
+                  "id": "0833ed80-2faa-4273-ac1a-4f7e7471fe4b",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/addons/:addon_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "addons",
+                        ":addon_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "addon_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:15:00.000Z",
+                  "updatedAt": "2026-07-28T03:15:00.000Z",
+                  "uid": "35240-0833ed80-2faa-4273-ac1a-4f7e7471fe4b"
+                },
+                {
+                  "id": "00725a02-c163-4cbc-bd78-7d3f9fd8d8bb",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/addons/:addon_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "addons",
+                        ":addon_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "addon_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:15:00.000Z",
+                  "updatedAt": "2026-07-28T03:15:00.000Z",
+                  "uid": "35240-00725a02-c163-4cbc-bd78-7d3f9fd8d8bb"
+                }
+              ],
+              "createdAt": "2026-07-28T03:15:00.000Z",
+              "updatedAt": "2026-07-28T03:15:00.000Z",
+              "uid": "35240-623aea09-2247-47e3-85e5-7281c8b603f0"
+            },
+            {
+              "name": "Delete an Addon",
+              "id": "3502b104-a9dd-43cb-9e29-74322d9965c4",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/addons/:addon_id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "addons",
+                    ":addon_id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "aa878c3a-6d6d-47a4-a175-615a76c0c239",
+                      "key": "addon_id",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "Archive an addOn"
+              },
+              "response": [
+                {
+                  "id": "3b41fd7a-482d-4a74-8fda-19ed8dcbcdd8",
+                  "name": "OK",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/addons/:addon_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "addons",
+                        ":addon_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "addon_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\"\n}",
+                  "createdAt": "2026-07-28T03:15:00.000Z",
+                  "updatedAt": "2026-07-28T03:15:00.000Z",
+                  "uid": "35240-3b41fd7a-482d-4a74-8fda-19ed8dcbcdd8"
+                },
+                {
+                  "id": "4fdc6e23-fa80-4b23-abe7-c31b9c0db663",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/addons/:addon_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "addons",
+                        ":addon_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "addon_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:15:00.000Z",
+                  "updatedAt": "2026-07-28T03:15:00.000Z",
+                  "uid": "35240-4fdc6e23-fa80-4b23-abe7-c31b9c0db663"
+                },
+                {
+                  "id": "2692a903-e5e6-4dd3-9054-d4e7989509fa",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/addons/:addon_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "addons",
+                        ":addon_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "addon_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:15:00.000Z",
+                  "updatedAt": "2026-07-28T03:15:00.000Z",
+                  "uid": "35240-2692a903-e5e6-4dd3-9054-d4e7989509fa"
+                },
+                {
+                  "id": "b9cf146e-6ce9-40a9-a1a5-3d3be598ef76",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/addons/:addon_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "addons",
+                        ":addon_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "addon_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:15:00.000Z",
+                  "updatedAt": "2026-07-28T03:15:00.000Z",
+                  "uid": "35240-b9cf146e-6ce9-40a9-a1a5-3d3be598ef76"
+                },
+                {
+                  "id": "2dfd170e-0aca-4f15-b5c9-349c698048be",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/addons/:addon_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "addons",
+                        ":addon_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "addon_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:15:00.000Z",
+                  "updatedAt": "2026-07-28T03:15:00.000Z",
+                  "uid": "35240-2dfd170e-0aca-4f15-b5c9-349c698048be"
+                },
+                {
+                  "id": "70ae52b8-f1c0-473b-a793-8a884538f9b1",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/addons/:addon_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "addons",
+                        ":addon_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "addon_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:15:00.000Z",
+                  "updatedAt": "2026-07-28T03:15:00.000Z",
+                  "uid": "35240-70ae52b8-f1c0-473b-a793-8a884538f9b1"
+                },
+                {
+                  "id": "433d4caa-0b6d-405f-a64e-373ac18e039c",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/addons/:addon_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "addons",
+                        ":addon_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "addon_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:15:00.000Z",
+                  "updatedAt": "2026-07-28T03:15:00.000Z",
+                  "uid": "35240-433d4caa-0b6d-405f-a64e-373ac18e039c"
+                }
+              ],
+              "createdAt": "2026-07-28T03:15:00.000Z",
+              "updatedAt": "2026-07-28T03:15:00.000Z",
+              "uid": "35240-3502b104-a9dd-43cb-9e29-74322d9965c4"
+            }
+          ],
+          "id": "5e83740d-967f-4f3f-b7a8-cf96e2741eff",
+          "createdAt": "2026-07-28T03:15:00.000Z",
+          "updatedAt": "2026-07-28T03:15:00.000Z",
+          "uid": "35240-5e83740d-967f-4f3f-b7a8-cf96e2741eff"
+        },
+        {
+          "name": "Create an AddOn",
+          "id": "904b5da4-663a-4710-8bd8-7e035a6ac34e",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"CREDIT_GRANT\",\n  \"billableName\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/addons",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "addons"
+              ]
+            },
+            "description": "Create an AddOn"
+          },
+          "response": [
+            {
+              "id": "cfc6857f-29a1-41ba-a111-c0198f377646",
+              "name": "Response for Create and Get addons requests",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"CREDIT_GRANT\",\n  \"billableName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/addons",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "addons"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"createdAt\": \"<dateTime>\",\n  \"displayName\": \"<string>\",\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"status\": \"ACTIVE\",\n  \"type\": \"CREDIT_GRANT\",\n  \"billableName\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:15:00.000Z",
+              "updatedAt": "2026-07-28T03:15:00.000Z",
+              "uid": "35240-cfc6857f-29a1-41ba-a111-c0198f377646"
+            },
+            {
+              "id": "b7d81d03-c1fe-4afd-babb-4ce11bc6691b",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"CREDIT_GRANT\",\n  \"billableName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/addons",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "addons"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:15:00.000Z",
+              "updatedAt": "2026-07-28T03:15:00.000Z",
+              "uid": "35240-b7d81d03-c1fe-4afd-babb-4ce11bc6691b"
+            },
+            {
+              "id": "30a26cb3-104c-4a35-a738-5fabeb94e472",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"CREDIT_GRANT\",\n  \"billableName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/addons",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "addons"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:15:00.000Z",
+              "updatedAt": "2026-07-28T03:15:00.000Z",
+              "uid": "35240-30a26cb3-104c-4a35-a738-5fabeb94e472"
+            },
+            {
+              "id": "7252a398-621c-4295-9075-62830d71a952",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"CREDIT_GRANT\",\n  \"billableName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/addons",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "addons"
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:15:00.000Z",
+              "updatedAt": "2026-07-28T03:15:00.000Z",
+              "uid": "35240-7252a398-621c-4295-9075-62830d71a952"
+            },
+            {
+              "id": "28e47195-4d79-439e-87eb-fcff67863511",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"CREDIT_GRANT\",\n  \"billableName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/addons",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "addons"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:15:00.000Z",
+              "updatedAt": "2026-07-28T03:15:00.000Z",
+              "uid": "35240-28e47195-4d79-439e-87eb-fcff67863511"
+            },
+            {
+              "id": "843a39f6-ecf2-4e49-a457-945067f7a131",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"CREDIT_GRANT\",\n  \"billableName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/addons",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "addons"
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:15:00.000Z",
+              "updatedAt": "2026-07-28T03:15:00.000Z",
+              "uid": "35240-843a39f6-ecf2-4e49-a457-945067f7a131"
+            },
+            {
+              "id": "2fe911d9-f14b-484f-b186-203a8c270c04",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"CREDIT_GRANT\",\n  \"billableName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/addons",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "addons"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:15:00.000Z",
+              "updatedAt": "2026-07-28T03:15:00.000Z",
+              "uid": "35240-2fe911d9-f14b-484f-b186-203a8c270c04"
+            }
+          ],
+          "createdAt": "2026-07-28T03:15:00.000Z",
+          "updatedAt": "2026-07-28T03:15:00.000Z",
+          "uid": "35240-904b5da4-663a-4710-8bd8-7e035a6ac34e"
+        },
+        {
+          "name": "List AddOns",
+          "id": "c60e61a8-936e-4edb-8a42-a5739fe427c6",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/addons?status=ACTIVE&nextToken=<string>&pageSize=<number>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "addons"
+              ],
+              "query": [
+                {
+                  "description": "Filter by status\n",
+                  "key": "status",
+                  "value": "ACTIVE"
+                },
+                {
+                  "key": "nextToken",
+                  "value": "<string>"
+                },
+                {
+                  "key": "pageSize",
+                  "value": "<number>"
+                }
+              ]
+            },
+            "description": "Get a list of add-ons"
+          },
+          "response": [
+            {
+              "id": "3d3c1dc0-0784-4155-8544-96c3fb08b498",
+              "name": "Response for List addons requests",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/addons?status=ACTIVE&nextToken=<string>&pageSize=<number>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "addons"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter by status\n",
+                      "key": "status",
+                      "value": "ACTIVE"
+                    },
+                    {
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<number>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"data\": [\n    {\n      \"createdAt\": \"<dateTime>\",\n      \"displayName\": \"<string>\",\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"status\": \"ACTIVE\",\n      \"type\": \"FIXED_FEE\",\n      \"billableName\": \"<string>\"\n    },\n    {\n      \"createdAt\": \"<dateTime>\",\n      \"displayName\": \"<string>\",\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"status\": \"ACTIVE\",\n      \"type\": \"LICENSE\",\n      \"billableName\": \"<string>\"\n    }\n  ],\n  \"nextToken\": \"<string>\",\n  \"context\": {\n    \"pageSize\": \"<integer>\",\n    \"sortOrder\": \"ASC\"\n  }\n}",
+              "createdAt": "2026-07-28T03:15:00.000Z",
+              "updatedAt": "2026-07-28T03:15:00.000Z",
+              "uid": "35240-3d3c1dc0-0784-4155-8544-96c3fb08b498"
+            },
+            {
+              "id": "ef952035-80e6-43c1-a611-b545a2220d18",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/addons?status=ACTIVE&nextToken=<string>&pageSize=<number>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "addons"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter by status\n",
+                      "key": "status",
+                      "value": "ACTIVE"
+                    },
+                    {
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<number>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:15:00.000Z",
+              "updatedAt": "2026-07-28T03:15:00.000Z",
+              "uid": "35240-ef952035-80e6-43c1-a611-b545a2220d18"
+            },
+            {
+              "id": "d5e31f14-4545-4a59-932f-2f848f2f67e1",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/addons?status=ACTIVE&nextToken=<string>&pageSize=<number>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "addons"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter by status\n",
+                      "key": "status",
+                      "value": "ACTIVE"
+                    },
+                    {
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<number>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:15:00.000Z",
+              "updatedAt": "2026-07-28T03:15:00.000Z",
+              "uid": "35240-d5e31f14-4545-4a59-932f-2f848f2f67e1"
+            },
+            {
+              "id": "f60a31ea-a1f9-4716-9288-033aeef34acf",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/addons?status=ACTIVE&nextToken=<string>&pageSize=<number>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "addons"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter by status\n",
+                      "key": "status",
+                      "value": "ACTIVE"
+                    },
+                    {
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<number>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:15:00.000Z",
+              "updatedAt": "2026-07-28T03:15:00.000Z",
+              "uid": "35240-f60a31ea-a1f9-4716-9288-033aeef34acf"
+            },
+            {
+              "id": "42e0b742-abc6-4007-89d9-1cc44be89a9f",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/addons?status=ACTIVE&nextToken=<string>&pageSize=<number>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "addons"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter by status\n",
+                      "key": "status",
+                      "value": "ACTIVE"
+                    },
+                    {
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<number>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:15:00.000Z",
+              "updatedAt": "2026-07-28T03:15:00.000Z",
+              "uid": "35240-42e0b742-abc6-4007-89d9-1cc44be89a9f"
+            },
+            {
+              "id": "9f294bda-9f65-4eb5-8ecf-4d4d0d2b4e0f",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/addons?status=ACTIVE&nextToken=<string>&pageSize=<number>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "addons"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter by status\n",
+                      "key": "status",
+                      "value": "ACTIVE"
+                    },
+                    {
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<number>"
+                    }
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:15:00.000Z",
+              "updatedAt": "2026-07-28T03:15:00.000Z",
+              "uid": "35240-9f294bda-9f65-4eb5-8ecf-4d4d0d2b4e0f"
+            },
+            {
+              "id": "25947b8d-076d-42f7-9a57-b571070ddc7c",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/addons?status=ACTIVE&nextToken=<string>&pageSize=<number>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "addons"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter by status\n",
+                      "key": "status",
+                      "value": "ACTIVE"
+                    },
+                    {
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<number>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:15:00.000Z",
+              "updatedAt": "2026-07-28T03:15:00.000Z",
+              "uid": "35240-25947b8d-076d-42f7-9a57-b571070ddc7c"
+            }
+          ],
+          "createdAt": "2026-07-28T03:15:00.000Z",
+          "updatedAt": "2026-07-28T03:15:00.000Z",
+          "uid": "35240-c60e61a8-936e-4edb-8a42-a5739fe427c6"
+        }
+      ],
+      "id": "50b3fd8f-6465-4b35-92a1-0b5074992e99",
+      "createdAt": "2026-07-28T03:15:00.000Z",
+      "updatedAt": "2026-07-28T03:15:00.000Z",
+      "uid": "35240-50b3fd8f-6465-4b35-92a1-0b5074992e99"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.togai.com/"
+    }
+  ]
+}

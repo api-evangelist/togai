@@ -1,0 +1,1754 @@
+{
+  "info": {
+    "_postman_id": "ae39e9a9-f89b-45e7-b3bd-982bf919aabd",
+    "name": "Togai Apis Accounts Feature API",
+    "description": "APIs for Togai App\n\nContact Support:\n Email: engg@togai.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:15:32.000Z",
+    "updatedAt": "2026-07-28T03:15:32.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-ae39e9a9-f89b-45e7-b3bd-982bf919aabd"
+  },
+  "item": [
+    {
+      "name": "features",
+      "item": [
+        {
+          "name": "{feature_id}",
+          "item": [
+            {
+              "name": "Update a Feature",
+              "id": "7e6d3615-c39d-436a-9e50-60402199f1fe",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"billableName\": \"<string>\",\n  \"schemaAssociations\": [\n    {\n      \"schemaName\": \"tDQtQdMbmi\",\n      \"attributeName\": \"<string>\"\n    },\n    {\n      \"schemaName\": \"\u202f\u2005\u2005Y\",\n      \"attributeName\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/features/:feature_id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "features",
+                    ":feature_id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "54931b4f-fb85-421d-a1a2-0e2374ca7ae9",
+                      "key": "feature_id",
+                      "value": "<string>",
+                      "description": "(Required) feature_id corresponding to a feature"
+                    }
+                  ]
+                },
+                "description": "Update an existing feature and its eventSchema associations\n"
+              },
+              "response": [
+                {
+                  "id": "f4b8b2b5-ae3d-40da-93ac-f23c9956c288",
+                  "name": "Response for Create and Get Feature requests",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"billableName\": \"<string>\",\n  \"schemaAssociations\": [\n    {\n      \"schemaName\": \"tDQtQdMbmi\",\n      \"attributeName\": \"<string>\"\n    },\n    {\n      \"schemaName\": \"\u202f\u2005\u2005Y\",\n      \"attributeName\": \"<string>\"\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/features/:feature_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "features",
+                        ":feature_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "feature_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"displayName\": \"<string>\",\n  \"schemaAssociations\": [\n    {\n      \"schemaName\": \"bu\u2001sOC\",\n      \"attributeName\": \"<string>\"\n    },\n    {\n      \"schemaName\": \"\\u000bQPIonEIr\",\n      \"attributeName\": \"<string>\"\n    }\n  ],\n  \"createdAt\": \"<dateTime>\",\n  \"billableName\": \"<string>\",\n  \"updatedAt\": \"<dateTime>\"\n}",
+                  "createdAt": "2026-07-28T03:15:33.000Z",
+                  "updatedAt": "2026-07-28T03:15:33.000Z",
+                  "uid": "35240-f4b8b2b5-ae3d-40da-93ac-f23c9956c288"
+                },
+                {
+                  "id": "bef340f0-adb4-4f71-a16a-94bd9823602f",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"billableName\": \"<string>\",\n  \"schemaAssociations\": [\n    {\n      \"schemaName\": \"tDQtQdMbmi\",\n      \"attributeName\": \"<string>\"\n    },\n    {\n      \"schemaName\": \"\u202f\u2005\u2005Y\",\n      \"attributeName\": \"<string>\"\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/features/:feature_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "features",
+                        ":feature_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "feature_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:15:33.000Z",
+                  "updatedAt": "2026-07-28T03:15:33.000Z",
+                  "uid": "35240-bef340f0-adb4-4f71-a16a-94bd9823602f"
+                },
+                {
+                  "id": "730a70bb-4f1e-4a45-8625-251ec1819fb7",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"billableName\": \"<string>\",\n  \"schemaAssociations\": [\n    {\n      \"schemaName\": \"tDQtQdMbmi\",\n      \"attributeName\": \"<string>\"\n    },\n    {\n      \"schemaName\": \"\u202f\u2005\u2005Y\",\n      \"attributeName\": \"<string>\"\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/features/:feature_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "features",
+                        ":feature_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "feature_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:15:33.000Z",
+                  "updatedAt": "2026-07-28T03:15:33.000Z",
+                  "uid": "35240-730a70bb-4f1e-4a45-8625-251ec1819fb7"
+                },
+                {
+                  "id": "91e68d3c-d454-4ce9-a46c-6ea3ab64050b",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"billableName\": \"<string>\",\n  \"schemaAssociations\": [\n    {\n      \"schemaName\": \"tDQtQdMbmi\",\n      \"attributeName\": \"<string>\"\n    },\n    {\n      \"schemaName\": \"\u202f\u2005\u2005Y\",\n      \"attributeName\": \"<string>\"\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/features/:feature_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "features",
+                        ":feature_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "feature_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:15:33.000Z",
+                  "updatedAt": "2026-07-28T03:15:33.000Z",
+                  "uid": "35240-91e68d3c-d454-4ce9-a46c-6ea3ab64050b"
+                },
+                {
+                  "id": "9222a560-e074-470b-b49c-80f55435739d",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"billableName\": \"<string>\",\n  \"schemaAssociations\": [\n    {\n      \"schemaName\": \"tDQtQdMbmi\",\n      \"attributeName\": \"<string>\"\n    },\n    {\n      \"schemaName\": \"\u202f\u2005\u2005Y\",\n      \"attributeName\": \"<string>\"\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/features/:feature_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "features",
+                        ":feature_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "feature_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:15:33.000Z",
+                  "updatedAt": "2026-07-28T03:15:33.000Z",
+                  "uid": "35240-9222a560-e074-470b-b49c-80f55435739d"
+                },
+                {
+                  "id": "dae49b6e-74ae-4b3d-90c3-0bf8a5845486",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"billableName\": \"<string>\",\n  \"schemaAssociations\": [\n    {\n      \"schemaName\": \"tDQtQdMbmi\",\n      \"attributeName\": \"<string>\"\n    },\n    {\n      \"schemaName\": \"\u202f\u2005\u2005Y\",\n      \"attributeName\": \"<string>\"\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/features/:feature_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "features",
+                        ":feature_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "feature_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:15:33.000Z",
+                  "updatedAt": "2026-07-28T03:15:33.000Z",
+                  "uid": "35240-dae49b6e-74ae-4b3d-90c3-0bf8a5845486"
+                },
+                {
+                  "id": "ff2d4b4a-19f6-4d33-9b90-2ba6f0f9148f",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"billableName\": \"<string>\",\n  \"schemaAssociations\": [\n    {\n      \"schemaName\": \"tDQtQdMbmi\",\n      \"attributeName\": \"<string>\"\n    },\n    {\n      \"schemaName\": \"\u202f\u2005\u2005Y\",\n      \"attributeName\": \"<string>\"\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/features/:feature_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "features",
+                        ":feature_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "feature_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:15:33.000Z",
+                  "updatedAt": "2026-07-28T03:15:33.000Z",
+                  "uid": "35240-ff2d4b4a-19f6-4d33-9b90-2ba6f0f9148f"
+                }
+              ],
+              "createdAt": "2026-07-28T03:15:33.000Z",
+              "updatedAt": "2026-07-28T03:15:33.000Z",
+              "uid": "35240-7e6d3615-c39d-436a-9e50-60402199f1fe"
+            },
+            {
+              "name": "Get a Feature",
+              "id": "bfb71cea-c0be-49fc-b30d-ae4b1f21b7aa",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/features/:feature_id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "features",
+                    ":feature_id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "d0131a41-b328-42d1-9d60-8ba440998798",
+                      "key": "feature_id",
+                      "value": "<string>",
+                      "description": "(Required) feature_id corresponding to a feature"
+                    }
+                  ]
+                },
+                "description": "Get details of a Feature"
+              },
+              "response": [
+                {
+                  "id": "deb49763-1814-470e-8913-d6f91833b9dd",
+                  "name": "Response for Create and Get Feature requests",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/features/:feature_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "features",
+                        ":feature_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "feature_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"displayName\": \"<string>\",\n  \"schemaAssociations\": [\n    {\n      \"schemaName\": \"bu\u2001sOC\",\n      \"attributeName\": \"<string>\"\n    },\n    {\n      \"schemaName\": \"\\u000bQPIonEIr\",\n      \"attributeName\": \"<string>\"\n    }\n  ],\n  \"createdAt\": \"<dateTime>\",\n  \"billableName\": \"<string>\",\n  \"updatedAt\": \"<dateTime>\"\n}",
+                  "createdAt": "2026-07-28T03:15:33.000Z",
+                  "updatedAt": "2026-07-28T03:15:33.000Z",
+                  "uid": "35240-deb49763-1814-470e-8913-d6f91833b9dd"
+                },
+                {
+                  "id": "431d4db5-4907-459e-a9e3-c27c510ee27b",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/features/:feature_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "features",
+                        ":feature_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "feature_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:15:33.000Z",
+                  "updatedAt": "2026-07-28T03:15:33.000Z",
+                  "uid": "35240-431d4db5-4907-459e-a9e3-c27c510ee27b"
+                },
+                {
+                  "id": "c31ebd66-10cc-4680-bf53-fff9da3d7ece",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/features/:feature_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "features",
+                        ":feature_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "feature_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:15:33.000Z",
+                  "updatedAt": "2026-07-28T03:15:33.000Z",
+                  "uid": "35240-c31ebd66-10cc-4680-bf53-fff9da3d7ece"
+                },
+                {
+                  "id": "452bc210-ef28-434c-82aa-cbca28cbb8ae",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/features/:feature_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "features",
+                        ":feature_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "feature_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:15:33.000Z",
+                  "updatedAt": "2026-07-28T03:15:33.000Z",
+                  "uid": "35240-452bc210-ef28-434c-82aa-cbca28cbb8ae"
+                },
+                {
+                  "id": "f8b36b68-2d04-4420-925a-925218059dd3",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/features/:feature_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "features",
+                        ":feature_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "feature_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:15:33.000Z",
+                  "updatedAt": "2026-07-28T03:15:33.000Z",
+                  "uid": "35240-f8b36b68-2d04-4420-925a-925218059dd3"
+                },
+                {
+                  "id": "bb85a312-9876-4f4b-a739-5ce2f51fb158",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/features/:feature_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "features",
+                        ":feature_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "feature_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:15:33.000Z",
+                  "updatedAt": "2026-07-28T03:15:33.000Z",
+                  "uid": "35240-bb85a312-9876-4f4b-a739-5ce2f51fb158"
+                },
+                {
+                  "id": "099e72d3-0e5e-404a-937d-611aff88a199",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/features/:feature_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "features",
+                        ":feature_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "feature_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:15:33.000Z",
+                  "updatedAt": "2026-07-28T03:15:33.000Z",
+                  "uid": "35240-099e72d3-0e5e-404a-937d-611aff88a199"
+                }
+              ],
+              "createdAt": "2026-07-28T03:15:33.000Z",
+              "updatedAt": "2026-07-28T03:15:33.000Z",
+              "uid": "35240-bfb71cea-c0be-49fc-b30d-ae4b1f21b7aa"
+            }
+          ],
+          "id": "512644cf-4643-4a97-bd5c-2dabe9ecb5e0",
+          "createdAt": "2026-07-28T03:15:33.000Z",
+          "updatedAt": "2026-07-28T03:15:33.000Z",
+          "uid": "35240-512644cf-4643-4a97-bd5c-2dabe9ecb5e0"
+        },
+        {
+          "name": "Create a Feature and Optionally Associate with One or More Event_schemas",
+          "id": "d424f35f-5bed-42aa-bef4-6b3d54f0c74b",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"schemaAssociations\": [\n    {\n      \"schemaName\": \" J\",\n      \"attributeName\": \"<string>\"\n    },\n    {\n      \"schemaName\": \"\u2006\ufeffMM ilt\",\n      \"attributeName\": \"<string>\"\n    }\n  ],\n  \"billableName\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/features",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "features"
+              ]
+            },
+            "description": "Create a Feature optionally associate with one or more event_schemas"
+          },
+          "response": [
+            {
+              "id": "66a17480-4e14-492d-b423-f53fdc6d1fdc",
+              "name": "Response for Create and Get Feature requests",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"schemaAssociations\": [\n    {\n      \"schemaName\": \" J\",\n      \"attributeName\": \"<string>\"\n    },\n    {\n      \"schemaName\": \"\u2006\ufeffMM ilt\",\n      \"attributeName\": \"<string>\"\n    }\n  ],\n  \"billableName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/features",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "features"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"displayName\": \"<string>\",\n  \"schemaAssociations\": [\n    {\n      \"schemaName\": \"bu\u2001sOC\",\n      \"attributeName\": \"<string>\"\n    },\n    {\n      \"schemaName\": \"\\u000bQPIonEIr\",\n      \"attributeName\": \"<string>\"\n    }\n  ],\n  \"createdAt\": \"<dateTime>\",\n  \"billableName\": \"<string>\",\n  \"updatedAt\": \"<dateTime>\"\n}",
+              "createdAt": "2026-07-28T03:15:33.000Z",
+              "updatedAt": "2026-07-28T03:15:33.000Z",
+              "uid": "35240-66a17480-4e14-492d-b423-f53fdc6d1fdc"
+            },
+            {
+              "id": "43785fb0-1714-48bf-9743-8b649a10a191",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"schemaAssociations\": [\n    {\n      \"schemaName\": \" J\",\n      \"attributeName\": \"<string>\"\n    },\n    {\n      \"schemaName\": \"\u2006\ufeffMM ilt\",\n      \"attributeName\": \"<string>\"\n    }\n  ],\n  \"billableName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/features",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "features"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:15:33.000Z",
+              "updatedAt": "2026-07-28T03:15:33.000Z",
+              "uid": "35240-43785fb0-1714-48bf-9743-8b649a10a191"
+            },
+            {
+              "id": "f7e47fa6-dc0f-4fdd-b519-93e1e8958329",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"schemaAssociations\": [\n    {\n      \"schemaName\": \" J\",\n      \"attributeName\": \"<string>\"\n    },\n    {\n      \"schemaName\": \"\u2006\ufeffMM ilt\",\n      \"attributeName\": \"<string>\"\n    }\n  ],\n  \"billableName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/features",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "features"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:15:33.000Z",
+              "updatedAt": "2026-07-28T03:15:33.000Z",
+              "uid": "35240-f7e47fa6-dc0f-4fdd-b519-93e1e8958329"
+            },
+            {
+              "id": "990aebfd-583b-41a3-ae8e-90f942b15820",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"schemaAssociations\": [\n    {\n      \"schemaName\": \" J\",\n      \"attributeName\": \"<string>\"\n    },\n    {\n      \"schemaName\": \"\u2006\ufeffMM ilt\",\n      \"attributeName\": \"<string>\"\n    }\n  ],\n  \"billableName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/features",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "features"
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:15:33.000Z",
+              "updatedAt": "2026-07-28T03:15:33.000Z",
+              "uid": "35240-990aebfd-583b-41a3-ae8e-90f942b15820"
+            },
+            {
+              "id": "0887814c-c52b-4ce5-8e25-7e8cbf8c3e53",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"schemaAssociations\": [\n    {\n      \"schemaName\": \" J\",\n      \"attributeName\": \"<string>\"\n    },\n    {\n      \"schemaName\": \"\u2006\ufeffMM ilt\",\n      \"attributeName\": \"<string>\"\n    }\n  ],\n  \"billableName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/features",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "features"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:15:33.000Z",
+              "updatedAt": "2026-07-28T03:15:33.000Z",
+              "uid": "35240-0887814c-c52b-4ce5-8e25-7e8cbf8c3e53"
+            },
+            {
+              "id": "fd8654fb-0da2-4f24-89d9-df679807478d",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"schemaAssociations\": [\n    {\n      \"schemaName\": \" J\",\n      \"attributeName\": \"<string>\"\n    },\n    {\n      \"schemaName\": \"\u2006\ufeffMM ilt\",\n      \"attributeName\": \"<string>\"\n    }\n  ],\n  \"billableName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/features",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "features"
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:15:33.000Z",
+              "updatedAt": "2026-07-28T03:15:33.000Z",
+              "uid": "35240-fd8654fb-0da2-4f24-89d9-df679807478d"
+            },
+            {
+              "id": "e33c086e-5ad6-4709-9965-8d1e2dbd698b",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"schemaAssociations\": [\n    {\n      \"schemaName\": \" J\",\n      \"attributeName\": \"<string>\"\n    },\n    {\n      \"schemaName\": \"\u2006\ufeffMM ilt\",\n      \"attributeName\": \"<string>\"\n    }\n  ],\n  \"billableName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/features",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "features"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:15:33.000Z",
+              "updatedAt": "2026-07-28T03:15:33.000Z",
+              "uid": "35240-e33c086e-5ad6-4709-9965-8d1e2dbd698b"
+            }
+          ],
+          "createdAt": "2026-07-28T03:15:33.000Z",
+          "updatedAt": "2026-07-28T03:15:33.000Z",
+          "uid": "35240-d424f35f-5bed-42aa-bef4-6b3d54f0c74b"
+        },
+        {
+          "name": "List Feature",
+          "id": "98776abf-15f5-4777-be92-4d2ff1e1a5ab",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/features?nextToken=<string>&pageSize=<number>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "features"
+              ],
+              "query": [
+                {
+                  "key": "nextToken",
+                  "value": "<string>"
+                },
+                {
+                  "key": "pageSize",
+                  "value": "<number>"
+                }
+              ]
+            },
+            "description": "Get a list of features along with its associations"
+          },
+          "response": [
+            {
+              "id": "54e210e8-1f5a-4a99-a7de-bdfc8e3fc5e1",
+              "name": "Response for list Feature request",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/features?nextToken=<string>&pageSize=<number>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "features"
+                  ],
+                  "query": [
+                    {
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<number>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"displayName\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"schemaCount\": \"<integer>\",\n      \"billableName\": \"<string>\",\n      \"updatedAt\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"displayName\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"schemaCount\": \"<integer>\",\n      \"billableName\": \"<string>\",\n      \"updatedAt\": \"<dateTime>\"\n    }\n  ],\n  \"nextToken\": \"<string>\",\n  \"context\": {\n    \"pageSize\": \"<integer>\",\n    \"sortOrder\": \"ASC\"\n  }\n}",
+              "createdAt": "2026-07-28T03:15:33.000Z",
+              "updatedAt": "2026-07-28T03:15:33.000Z",
+              "uid": "35240-54e210e8-1f5a-4a99-a7de-bdfc8e3fc5e1"
+            },
+            {
+              "id": "e3a2c7b8-cce3-4857-9186-2eba66ff4414",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/features?nextToken=<string>&pageSize=<number>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "features"
+                  ],
+                  "query": [
+                    {
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<number>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:15:33.000Z",
+              "updatedAt": "2026-07-28T03:15:33.000Z",
+              "uid": "35240-e3a2c7b8-cce3-4857-9186-2eba66ff4414"
+            },
+            {
+              "id": "29b62a19-1cdd-40e5-85ca-f40449538e02",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/features?nextToken=<string>&pageSize=<number>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "features"
+                  ],
+                  "query": [
+                    {
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<number>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:15:33.000Z",
+              "updatedAt": "2026-07-28T03:15:33.000Z",
+              "uid": "35240-29b62a19-1cdd-40e5-85ca-f40449538e02"
+            },
+            {
+              "id": "544dca57-b6b5-4070-a0a8-83f0d524b6fc",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/features?nextToken=<string>&pageSize=<number>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "features"
+                  ],
+                  "query": [
+                    {
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<number>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:15:33.000Z",
+              "updatedAt": "2026-07-28T03:15:33.000Z",
+              "uid": "35240-544dca57-b6b5-4070-a0a8-83f0d524b6fc"
+            },
+            {
+              "id": "4f8f0ecb-1633-4950-8563-1f7fcab1911b",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/features?nextToken=<string>&pageSize=<number>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "features"
+                  ],
+                  "query": [
+                    {
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<number>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:15:33.000Z",
+              "updatedAt": "2026-07-28T03:15:33.000Z",
+              "uid": "35240-4f8f0ecb-1633-4950-8563-1f7fcab1911b"
+            },
+            {
+              "id": "5e16c1f4-d783-4d6f-bde2-88f667fce203",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/features?nextToken=<string>&pageSize=<number>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "features"
+                  ],
+                  "query": [
+                    {
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<number>"
+                    }
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:15:33.000Z",
+              "updatedAt": "2026-07-28T03:15:33.000Z",
+              "uid": "35240-5e16c1f4-d783-4d6f-bde2-88f667fce203"
+            },
+            {
+              "id": "06aca2cd-e6e5-45ac-8b6d-6ba37c1f732f",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/features?nextToken=<string>&pageSize=<number>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "features"
+                  ],
+                  "query": [
+                    {
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<number>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:15:33.000Z",
+              "updatedAt": "2026-07-28T03:15:33.000Z",
+              "uid": "35240-06aca2cd-e6e5-45ac-8b6d-6ba37c1f732f"
+            }
+          ],
+          "createdAt": "2026-07-28T03:15:33.000Z",
+          "updatedAt": "2026-07-28T03:15:33.000Z",
+          "uid": "35240-98776abf-15f5-4777-be92-4d2ff1e1a5ab"
+        }
+      ],
+      "id": "46f147c2-56d3-4ad8-97c1-59b4df67d22a",
+      "createdAt": "2026-07-28T03:15:33.000Z",
+      "updatedAt": "2026-07-28T03:15:33.000Z",
+      "uid": "35240-46f147c2-56d3-4ad8-97c1-59b4df67d22a"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.togai.com/"
+    }
+  ]
+}

@@ -1,0 +1,1338 @@
+{
+  "info": {
+    "_postman_id": "ce75b339-7044-423b-bcaa-089d52d30017",
+    "name": "Togai Apis Accounts Payments API",
+    "description": "APIs for Togai App\n\nContact Support:\n Email: engg@togai.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:16:43.000Z",
+    "updatedAt": "2026-07-28T03:16:44.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-ce75b339-7044-423b-bcaa-089d52d30017"
+  },
+  "item": [
+    {
+      "name": "payments",
+      "item": [
+        {
+          "name": "{payment_id}",
+          "item": [
+            {
+              "name": "Get a Payment",
+              "id": "cdaeda06-db4f-4419-bae6-12049f412555",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/payments/:payment_id?version=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "payments",
+                    ":payment_id"
+                  ],
+                  "query": [
+                    {
+                      "description": "Optional version to get a specific version. Gets latest version if it is not provided.",
+                      "key": "version",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "id": "e3667dcc-926a-4990-9e4b-d6f2bc19ecd5",
+                      "key": "payment_id",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "Get payment"
+              },
+              "response": [
+                {
+                  "id": "2e5357c8-de8c-40d8-845e-32af7e60390e",
+                  "name": "Response for POST payments requests",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/payments/:payment_id?version=<integer>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "payments",
+                        ":payment_id"
+                      ],
+                      "query": [
+                        {
+                          "description": "Optional version to get a specific version. Gets latest version if it is not provided.",
+                          "key": "version",
+                          "value": "<integer>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "payment_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"externalPaymentReferences\": {\n    \"sourceName\": \"<string>\",\n    \"sourceType\": \"CHEQUE\",\n    \"transactionNumber\": \"<string>\",\n    \"description\": \"<string>\",\n    \"metadata\": {\n      \"laboris_c_6\": 93385706\n    }\n  },\n  \"lineItemRecords\": [\n    {\n      \"type\": \"CREDIT\",\n      \"order\": \"<integer>\",\n      \"togaiId\": \"<string>\",\n      \"amount\": \"<number>\"\n    },\n    {\n      \"type\": \"CREDIT\",\n      \"order\": \"<integer>\",\n      \"togaiId\": \"<string>\",\n      \"amount\": \"<number>\"\n    }\n  ],\n  \"totalAmount\": \"<number>\",\n  \"currency\": \"<string>\",\n  \"version\": \"<number>\",\n  \"createdBy\": \"<string>\",\n  \"createdAt\": \"<dateTime>\",\n  \"description\": \"<string>\",\n  \"notes\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:16:44.000Z",
+                  "updatedAt": "2026-07-28T03:16:44.000Z",
+                  "uid": "35240-2e5357c8-de8c-40d8-845e-32af7e60390e"
+                },
+                {
+                  "id": "f86d3345-be8c-4b05-bc37-f0f15435086b",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/payments/:payment_id?version=<integer>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "payments",
+                        ":payment_id"
+                      ],
+                      "query": [
+                        {
+                          "description": "Optional version to get a specific version. Gets latest version if it is not provided.",
+                          "key": "version",
+                          "value": "<integer>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "payment_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:16:44.000Z",
+                  "updatedAt": "2026-07-28T03:16:44.000Z",
+                  "uid": "35240-f86d3345-be8c-4b05-bc37-f0f15435086b"
+                },
+                {
+                  "id": "6a13f15b-9a6a-442a-819a-00ee042b039c",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/payments/:payment_id?version=<integer>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "payments",
+                        ":payment_id"
+                      ],
+                      "query": [
+                        {
+                          "description": "Optional version to get a specific version. Gets latest version if it is not provided.",
+                          "key": "version",
+                          "value": "<integer>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "payment_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:16:44.000Z",
+                  "updatedAt": "2026-07-28T03:16:44.000Z",
+                  "uid": "35240-6a13f15b-9a6a-442a-819a-00ee042b039c"
+                },
+                {
+                  "id": "690fd7f4-297c-4a37-8de2-ab4d9864ec08",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/payments/:payment_id?version=<integer>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "payments",
+                        ":payment_id"
+                      ],
+                      "query": [
+                        {
+                          "description": "Optional version to get a specific version. Gets latest version if it is not provided.",
+                          "key": "version",
+                          "value": "<integer>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "payment_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:16:44.000Z",
+                  "updatedAt": "2026-07-28T03:16:44.000Z",
+                  "uid": "35240-690fd7f4-297c-4a37-8de2-ab4d9864ec08"
+                },
+                {
+                  "id": "6e4eefe7-2dc6-48ba-b7e5-2beffe30ba70",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/payments/:payment_id?version=<integer>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "payments",
+                        ":payment_id"
+                      ],
+                      "query": [
+                        {
+                          "description": "Optional version to get a specific version. Gets latest version if it is not provided.",
+                          "key": "version",
+                          "value": "<integer>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "payment_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:16:44.000Z",
+                  "updatedAt": "2026-07-28T03:16:44.000Z",
+                  "uid": "35240-6e4eefe7-2dc6-48ba-b7e5-2beffe30ba70"
+                },
+                {
+                  "id": "bf72a787-5d1a-407f-bf6c-220e7075a43e",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/payments/:payment_id?version=<integer>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "payments",
+                        ":payment_id"
+                      ],
+                      "query": [
+                        {
+                          "description": "Optional version to get a specific version. Gets latest version if it is not provided.",
+                          "key": "version",
+                          "value": "<integer>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "payment_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:16:44.000Z",
+                  "updatedAt": "2026-07-28T03:16:44.000Z",
+                  "uid": "35240-bf72a787-5d1a-407f-bf6c-220e7075a43e"
+                },
+                {
+                  "id": "7bf54178-e6db-4881-8046-54380b3dcddf",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/payments/:payment_id?version=<integer>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "payments",
+                        ":payment_id"
+                      ],
+                      "query": [
+                        {
+                          "description": "Optional version to get a specific version. Gets latest version if it is not provided.",
+                          "key": "version",
+                          "value": "<integer>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "payment_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:16:44.000Z",
+                  "updatedAt": "2026-07-28T03:16:44.000Z",
+                  "uid": "35240-7bf54178-e6db-4881-8046-54380b3dcddf"
+                }
+              ],
+              "createdAt": "2026-07-28T03:16:44.000Z",
+              "updatedAt": "2026-07-28T03:16:44.000Z",
+              "uid": "35240-cdaeda06-db4f-4419-bae6-12049f412555"
+            }
+          ],
+          "id": "65ed77ac-5f6c-40a5-b761-745eaf3a1472",
+          "createdAt": "2026-07-28T03:16:44.000Z",
+          "updatedAt": "2026-07-28T03:16:44.000Z",
+          "uid": "35240-65ed77ac-5f6c-40a5-b761-745eaf3a1472"
+        },
+        {
+          "name": "List All Payments",
+          "id": "1bb42ac4-2027-4e84-887d-8d1465bc1c36",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/payments?nextToken=<string>&pageSize=<integer>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "payments"
+              ],
+              "query": [
+                {
+                  "description": "Pagination token used as a marker to get records from next page.",
+                  "key": "nextToken",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Maximum page size expected by client to return the record list. \n\n NOTE: Max page size cannot be more than 50. Also 50 is the default page size if no value is provided.",
+                  "key": "pageSize",
+                  "value": "<integer>"
+                }
+              ]
+            },
+            "description": "List all payments"
+          },
+          "response": [
+            {
+              "id": "478de514-5601-4dc6-a880-cb316d7675c9",
+              "name": "Response for GET payments requests",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/payments?nextToken=<string>&pageSize=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "payments"
+                  ],
+                  "query": [
+                    {
+                      "description": "Pagination token used as a marker to get records from next page.",
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Maximum page size expected by client to return the record list. \n\n NOTE: Max page size cannot be more than 50. Also 50 is the default page size if no value is provided.",
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"accountId\": \"<string>\",\n      \"externalPaymentReferences\": {\n        \"sourceName\": \"<string>\",\n        \"sourceType\": \"CARD\",\n        \"transactionNumber\": \"<string>\",\n        \"description\": \"<string>\",\n        \"metadata\": {\n          \"fugiat__\": false\n        }\n      },\n      \"lineItemRecords\": [\n        {\n          \"type\": \"WALLET_CREDIT\",\n          \"order\": \"<integer>\",\n          \"togaiId\": \"<string>\",\n          \"amount\": \"<number>\"\n        },\n        {\n          \"type\": \"WALLET_CREDIT\",\n          \"order\": \"<integer>\",\n          \"togaiId\": \"<string>\",\n          \"amount\": \"<number>\"\n        }\n      ],\n      \"totalAmount\": \"<number>\",\n      \"currency\": \"<string>\",\n      \"version\": \"<number>\",\n      \"createdBy\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"description\": \"<string>\",\n      \"notes\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"accountId\": \"<string>\",\n      \"externalPaymentReferences\": {\n        \"sourceName\": \"<string>\",\n        \"sourceType\": \"CHEQUE\",\n        \"transactionNumber\": \"<string>\",\n        \"description\": \"<string>\",\n        \"metadata\": {\n          \"ullamco504\": -78049015\n        }\n      },\n      \"lineItemRecords\": [\n        {\n          \"type\": \"INVOICE\",\n          \"order\": \"<integer>\",\n          \"togaiId\": \"<string>\",\n          \"amount\": \"<number>\"\n        },\n        {\n          \"type\": \"CREDIT\",\n          \"order\": \"<integer>\",\n          \"togaiId\": \"<string>\",\n          \"amount\": \"<number>\"\n        }\n      ],\n      \"totalAmount\": \"<number>\",\n      \"currency\": \"<string>\",\n      \"version\": \"<number>\",\n      \"createdBy\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"description\": \"<string>\",\n      \"notes\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"accountId\": \"<string>\",\n      \"externalPaymentReferences\": {\n        \"sourceName\": \"<string>\",\n        \"sourceType\": \"CASH\",\n        \"transactionNumber\": \"<string>\",\n        \"description\": \"<string>\",\n        \"metadata\": {\n          \"nulla9a3\": -80617082.76705466\n        }\n      },\n      \"lineItemRecords\": [\n        {\n          \"type\": \"CREDIT\",\n          \"order\": \"<integer>\",\n          \"togaiId\": \"<string>\",\n          \"amount\": \"<number>\"\n        },\n        {\n          \"type\": \"CREDIT\",\n          \"order\": \"<integer>\",\n          \"togaiId\": \"<string>\",\n          \"amount\": \"<number>\"\n        }\n      ],\n      \"totalAmount\": \"<number>\",\n      \"currency\": \"<string>\",\n      \"version\": \"<number>\",\n      \"createdBy\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"description\": \"<string>\",\n      \"notes\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"accountId\": \"<string>\",\n      \"externalPaymentReferences\": {\n        \"sourceName\": \"<string>\",\n        \"sourceType\": \"CHEQUE\",\n        \"transactionNumber\": \"<string>\",\n        \"description\": \"<string>\",\n        \"metadata\": {\n          \"pariatur57\": \"ex\",\n          \"dolore6_\": 18058875,\n          \"in98\": -21766907\n        }\n      },\n      \"lineItemRecords\": [\n        {\n          \"type\": \"INVOICE\",\n          \"order\": \"<integer>\",\n          \"togaiId\": \"<string>\",\n          \"amount\": \"<number>\"\n        },\n        {\n          \"type\": \"WALLET_CREDIT\",\n          \"order\": \"<integer>\",\n          \"togaiId\": \"<string>\",\n          \"amount\": \"<number>\"\n        }\n      ],\n      \"totalAmount\": \"<number>\",\n      \"currency\": \"<string>\",\n      \"version\": \"<number>\",\n      \"createdBy\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"description\": \"<string>\",\n      \"notes\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"accountId\": \"<string>\",\n      \"externalPaymentReferences\": {\n        \"sourceName\": \"<string>\",\n        \"sourceType\": \"CASH\",\n        \"transactionNumber\": \"<string>\",\n        \"description\": \"<string>\",\n        \"metadata\": {\n          \"in_8\": true\n        }\n      },\n      \"lineItemRecords\": [\n        {\n          \"type\": \"WALLET_CREDIT\",\n          \"order\": \"<integer>\",\n          \"togaiId\": \"<string>\",\n          \"amount\": \"<number>\"\n        },\n        {\n          \"type\": \"CREDIT\",\n          \"order\": \"<integer>\",\n          \"togaiId\": \"<string>\",\n          \"amount\": \"<number>\"\n        }\n      ],\n      \"totalAmount\": \"<number>\",\n      \"currency\": \"<string>\",\n      \"version\": \"<number>\",\n      \"createdBy\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"description\": \"<string>\",\n      \"notes\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"accountId\": \"<string>\",\n      \"externalPaymentReferences\": {\n        \"sourceName\": \"<string>\",\n        \"sourceType\": \"BANK_TRANSFER\",\n        \"transactionNumber\": \"<string>\",\n        \"description\": \"<string>\",\n        \"metadata\": {\n          \"Lorem_d77\": -98793587.73253135,\n          \"quis_4\": 40053626.14405471\n        }\n      },\n      \"lineItemRecords\": [\n        {\n          \"type\": \"CREDIT\",\n          \"order\": \"<integer>\",\n          \"togaiId\": \"<string>\",\n          \"amount\": \"<number>\"\n        },\n        {\n          \"type\": \"INVOICE\",\n          \"order\": \"<integer>\",\n          \"togaiId\": \"<string>\",\n          \"amount\": \"<number>\"\n        }\n      ],\n      \"totalAmount\": \"<number>\",\n      \"currency\": \"<string>\",\n      \"version\": \"<number>\",\n      \"createdBy\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"description\": \"<string>\",\n      \"notes\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"accountId\": \"<string>\",\n      \"externalPaymentReferences\": {\n        \"sourceName\": \"<string>\",\n        \"sourceType\": \"CARD\",\n        \"transactionNumber\": \"<string>\",\n        \"description\": \"<string>\",\n        \"metadata\": {\n          \"pariatur_3\": true,\n          \"veniam_3c\": -87087749,\n          \"fugiat94\": 12220397.822000042,\n          \"labore14b\": -46452611.735907204\n        }\n      },\n      \"lineItemRecords\": [\n        {\n          \"type\": \"CREDIT\",\n          \"order\": \"<integer>\",\n          \"togaiId\": \"<string>\",\n          \"amount\": \"<number>\"\n        },\n        {\n          \"type\": \"CREDIT\",\n          \"order\": \"<integer>\",\n          \"togaiId\": \"<string>\",\n          \"amount\": \"<number>\"\n        }\n      ],\n      \"totalAmount\": \"<number>\",\n      \"currency\": \"<string>\",\n      \"version\": \"<number>\",\n      \"createdBy\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"description\": \"<string>\",\n      \"notes\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"accountId\": \"<string>\",\n      \"externalPaymentReferences\": {\n        \"sourceName\": \"<string>\",\n        \"sourceType\": \"GATEWAY\",\n        \"transactionNumber\": \"<string>\",\n        \"description\": \"<string>\",\n        \"metadata\": {\n          \"occaecat_82\": \"amet Excepteur\"\n        }\n      },\n      \"lineItemRecords\": [\n        {\n          \"type\": \"CREDIT\",\n          \"order\": \"<integer>\",\n          \"togaiId\": \"<string>\",\n          \"amount\": \"<number>\"\n        },\n        {\n          \"type\": \"CREDIT\",\n          \"order\": \"<integer>\",\n          \"togaiId\": \"<string>\",\n          \"amount\": \"<number>\"\n        }\n      ],\n      \"totalAmount\": \"<number>\",\n      \"currency\": \"<string>\",\n      \"version\": \"<number>\",\n      \"createdBy\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"description\": \"<string>\",\n      \"notes\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"accountId\": \"<string>\",\n      \"externalPaymentReferences\": {\n        \"sourceName\": \"<string>\",\n        \"sourceType\": \"CHEQUE\",\n        \"transactionNumber\": \"<string>\",\n        \"description\": \"<string>\",\n        \"metadata\": {\n          \"culpad7\": true,\n          \"dolore97\": 32404249.102582708,\n          \"quis_6a5\": \"aliquip veniam\"\n        }\n      },\n      \"lineItemRecords\": [\n        {\n          \"type\": \"INVOICE\",\n          \"order\": \"<integer>\",\n          \"togaiId\": \"<string>\",\n          \"amount\": \"<number>\"\n        },\n        {\n          \"type\": \"WALLET_CREDIT\",\n          \"order\": \"<integer>\",\n          \"togaiId\": \"<string>\",\n          \"amount\": \"<number>\"\n        }\n      ],\n      \"totalAmount\": \"<number>\",\n      \"currency\": \"<string>\",\n      \"version\": \"<number>\",\n      \"createdBy\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"description\": \"<string>\",\n      \"notes\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"accountId\": \"<string>\",\n      \"externalPaymentReferences\": {\n        \"sourceName\": \"<string>\",\n        \"sourceType\": \"CASH\",\n        \"transactionNumber\": \"<string>\",\n        \"description\": \"<string>\",\n        \"metadata\": {\n          \"velitf2e\": -58304885.62553033,\n          \"sint__d8\": -18826878.58552225\n        }\n      },\n      \"lineItemRecords\": [\n        {\n          \"type\": \"CREDIT\",\n          \"order\": \"<integer>\",\n          \"togaiId\": \"<string>\",\n          \"amount\": \"<number>\"\n        },\n        {\n          \"type\": \"WALLET_CREDIT\",\n          \"order\": \"<integer>\",\n          \"togaiId\": \"<string>\",\n          \"amount\": \"<number>\"\n        }\n      ],\n      \"totalAmount\": \"<number>\",\n      \"currency\": \"<string>\",\n      \"version\": \"<number>\",\n      \"createdBy\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"description\": \"<string>\",\n      \"notes\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"accountId\": \"<string>\",\n      \"externalPaymentReferences\": {\n        \"sourceName\": \"<string>\",\n        \"sourceType\": \"CASH\",\n        \"transactionNumber\": \"<string>\",\n        \"description\": \"<string>\",\n        \"metadata\": {\n          \"non_39\": -20855529,\n          \"mollit_e\": \"veniam sint consectetur\"\n        }\n      },\n      \"lineItemRecords\": [\n        {\n          \"type\": \"CREDIT\",\n          \"order\": \"<integer>\",\n          \"togaiId\": \"<string>\",\n          \"amount\": \"<number>\"\n        },\n        {\n          \"type\": \"WALLET_CREDIT\",\n          \"order\": \"<integer>\",\n          \"togaiId\": \"<string>\",\n          \"amount\": \"<number>\"\n        }\n      ],\n      \"totalAmount\": \"<number>\",\n      \"currency\": \"<string>\",\n      \"version\": \"<number>\",\n      \"createdBy\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"description\": \"<string>\",\n      \"notes\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"accountId\": \"<string>\",\n      \"externalPaymentReferences\": {\n        \"sourceName\": \"<string>\",\n        \"sourceType\": \"CASH\",\n        \"transactionNumber\": \"<string>\",\n        \"description\": \"<string>\",\n        \"metadata\": {\n          \"non_4ea\": \"tempor in culpa non\",\n          \"in_70_\": true\n        }\n      },\n      \"lineItemRecords\": [\n        {\n          \"type\": \"INVOICE\",\n          \"order\": \"<integer>\",\n          \"togaiId\": \"<string>\",\n          \"amount\": \"<number>\"\n        },\n        {\n          \"type\": \"WALLET_CREDIT\",\n          \"order\": \"<integer>\",\n          \"togaiId\": \"<string>\",\n          \"amount\": \"<number>\"\n        }\n      ],\n      \"totalAmount\": \"<number>\",\n      \"currency\": \"<string>\",\n      \"version\": \"<number>\",\n      \"createdBy\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"description\": \"<string>\",\n      \"notes\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"accountId\": \"<string>\",\n      \"externalPaymentReferences\": {\n        \"sourceName\": \"<string>\",\n        \"sourceType\": \"CHEQUE\",\n        \"transactionNumber\": \"<string>\",\n        \"description\": \"<string>\",\n        \"metadata\": {\n          \"ad_980\": true\n        }\n      },\n      \"lineItemRecords\": [\n        {\n          \"type\": \"CREDIT\",\n          \"order\": \"<integer>\",\n          \"togaiId\": \"<string>\",\n          \"amount\": \"<number>\"\n        },\n        {\n          \"type\": \"WALLET_CREDIT\",\n          \"order\": \"<integer>\",\n          \"togaiId\": \"<string>\",\n          \"amount\": \"<number>\"\n        }\n      ],\n      \"totalAmount\": \"<number>\",\n      \"currency\": \"<string>\",\n      \"version\": \"<number>\",\n      \"createdBy\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"description\": \"<string>\",\n      \"notes\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"accountId\": \"<string>\",\n      \"externalPaymentReferences\": {\n        \"sourceName\": \"<string>\",\n        \"sourceType\": \"CASH\",\n        \"transactionNumber\": \"<string>\",\n        \"description\": \"<string>\",\n        \"metadata\": {\n          \"et_b\": -33998368\n        }\n      },\n      \"lineItemRecords\": [\n        {\n          \"type\": \"INVOICE\",\n          \"order\": \"<integer>\",\n          \"togaiId\": \"<string>\",\n          \"amount\": \"<number>\"\n        },\n        {\n          \"type\": \"CREDIT\",\n          \"order\": \"<integer>\",\n          \"togaiId\": \"<string>\",\n          \"amount\": \"<number>\"\n        }\n      ],\n      \"totalAmount\": \"<number>\",\n      \"currency\": \"<string>\",\n      \"version\": \"<number>\",\n      \"createdBy\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"description\": \"<string>\",\n      \"notes\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"accountId\": \"<string>\",\n      \"externalPaymentReferences\": {\n        \"sourceName\": \"<string>\",\n        \"sourceType\": \"GATEWAY\",\n        \"transactionNumber\": \"<string>\",\n        \"description\": \"<string>\",\n        \"metadata\": {\n          \"ad_78b\": 41802341.00797072\n        }\n      },\n      \"lineItemRecords\": [\n        {\n          \"type\": \"INVOICE\",\n          \"order\": \"<integer>\",\n          \"togaiId\": \"<string>\",\n          \"amount\": \"<number>\"\n        },\n        {\n          \"type\": \"CREDIT\",\n          \"order\": \"<integer>\",\n          \"togaiId\": \"<string>\",\n          \"amount\": \"<number>\"\n        }\n      ],\n      \"totalAmount\": \"<number>\",\n      \"currency\": \"<string>\",\n      \"version\": \"<number>\",\n      \"createdBy\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"description\": \"<string>\",\n      \"notes\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"accountId\": \"<string>\",\n      \"externalPaymentReferences\": {\n        \"sourceName\": \"<string>\",\n        \"sourceType\": \"GATEWAY\",\n        \"transactionNumber\": \"<string>\",\n        \"description\": \"<string>\",\n        \"metadata\": {\n          \"dolore9de\": false,\n          \"exercitation_e2_\": -16376277\n        }\n      },\n      \"lineItemRecords\": [\n        {\n          \"type\": \"CREDIT\",\n          \"order\": \"<integer>\",\n          \"togaiId\": \"<string>\",\n          \"amount\": \"<number>\"\n        },\n        {\n          \"type\": \"WALLET_CREDIT\",\n          \"order\": \"<integer>\",\n          \"togaiId\": \"<string>\",\n          \"amount\": \"<number>\"\n        }\n      ],\n      \"totalAmount\": \"<number>\",\n      \"currency\": \"<string>\",\n      \"version\": \"<number>\",\n      \"createdBy\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"description\": \"<string>\",\n      \"notes\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"accountId\": \"<string>\",\n      \"externalPaymentReferences\": {\n        \"sourceName\": \"<string>\",\n        \"sourceType\": \"CARD\",\n        \"transactionNumber\": \"<string>\",\n        \"description\": \"<string>\",\n        \"metadata\": {\n          \"et0\": false,\n          \"dolorb88\": \"exercitation la\",\n          \"proidentbe1\": \"elit ut in Lo\"\n        }\n      },\n      \"lineItemRecords\": [\n        {\n          \"type\": \"INVOICE\",\n          \"order\": \"<integer>\",\n          \"togaiId\": \"<string>\",\n          \"amount\": \"<number>\"\n        },\n        {\n          \"type\": \"WALLET_CREDIT\",\n          \"order\": \"<integer>\",\n          \"togaiId\": \"<string>\",\n          \"amount\": \"<number>\"\n        }\n      ],\n      \"totalAmount\": \"<number>\",\n      \"currency\": \"<string>\",\n      \"version\": \"<number>\",\n      \"createdBy\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"description\": \"<string>\",\n      \"notes\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"accountId\": \"<string>\",\n      \"externalPaymentReferences\": {\n        \"sourceName\": \"<string>\",\n        \"sourceType\": \"BANK_TRANSFER\",\n        \"transactionNumber\": \"<string>\",\n        \"description\": \"<string>\",\n        \"metadata\": {\n          \"ad_4f\": false\n        }\n      },\n      \"lineItemRecords\": [\n        {\n          \"type\": \"WALLET_CREDIT\",\n          \"order\": \"<integer>\",\n          \"togaiId\": \"<string>\",\n          \"amount\": \"<number>\"\n        },\n        {\n          \"type\": \"CREDIT\",\n          \"order\": \"<integer>\",\n          \"togaiId\": \"<string>\",\n          \"amount\": \"<number>\"\n        }\n      ],\n      \"totalAmount\": \"<number>\",\n      \"currency\": \"<string>\",\n      \"version\": \"<number>\",\n      \"createdBy\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"description\": \"<string>\",\n      \"notes\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"accountId\": \"<string>\",\n      \"externalPaymentReferences\": {\n        \"sourceName\": \"<string>\",\n        \"sourceType\": \"CASH\",\n        \"transactionNumber\": \"<string>\",\n        \"description\": \"<string>\",\n        \"metadata\": {\n          \"amet3\": false,\n          \"Lorem_2\": 93648221\n        }\n      },\n      \"lineItemRecords\": [\n        {\n          \"type\": \"INVOICE\",\n          \"order\": \"<integer>\",\n          \"togaiId\": \"<string>\",\n          \"amount\": \"<number>\"\n        },\n        {\n          \"type\": \"INVOICE\",\n          \"order\": \"<integer>\",\n          \"togaiId\": \"<string>\",\n          \"amount\": \"<number>\"\n        }\n      ],\n      \"totalAmount\": \"<number>\",\n      \"currency\": \"<string>\",\n      \"version\": \"<number>\",\n      \"createdBy\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"description\": \"<string>\",\n      \"notes\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"accountId\": \"<string>\",\n      \"externalPaymentReferences\": {\n        \"sourceName\": \"<string>\",\n        \"sourceType\": \"CASH\",\n        \"transactionNumber\": \"<string>\",\n        \"description\": \"<string>\",\n        \"metadata\": {\n          \"dolor26f\": 13488397,\n          \"dolore79c\": \"sunt eu fugiat ut\"\n        }\n      },\n      \"lineItemRecords\": [\n        {\n          \"type\": \"WALLET_CREDIT\",\n          \"order\": \"<integer>\",\n          \"togaiId\": \"<string>\",\n          \"amount\": \"<number>\"\n        },\n        {\n          \"type\": \"INVOICE\",\n          \"order\": \"<integer>\",\n          \"togaiId\": \"<string>\",\n          \"amount\": \"<number>\"\n        }\n      ],\n      \"totalAmount\": \"<number>\",\n      \"currency\": \"<string>\",\n      \"version\": \"<number>\",\n      \"createdBy\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"description\": \"<string>\",\n      \"notes\": \"<string>\"\n    }\n  ],\n  \"nextToken\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:16:44.000Z",
+              "updatedAt": "2026-07-28T03:16:44.000Z",
+              "uid": "35240-478de514-5601-4dc6-a880-cb316d7675c9"
+            },
+            {
+              "id": "4f43ae60-5a57-491b-89fe-0c49079346b3",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/payments?nextToken=<string>&pageSize=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "payments"
+                  ],
+                  "query": [
+                    {
+                      "description": "Pagination token used as a marker to get records from next page.",
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Maximum page size expected by client to return the record list. \n\n NOTE: Max page size cannot be more than 50. Also 50 is the default page size if no value is provided.",
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:16:44.000Z",
+              "updatedAt": "2026-07-28T03:16:44.000Z",
+              "uid": "35240-4f43ae60-5a57-491b-89fe-0c49079346b3"
+            },
+            {
+              "id": "1133660c-1d52-4fdb-adf9-0bc11ca9b585",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/payments?nextToken=<string>&pageSize=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "payments"
+                  ],
+                  "query": [
+                    {
+                      "description": "Pagination token used as a marker to get records from next page.",
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Maximum page size expected by client to return the record list. \n\n NOTE: Max page size cannot be more than 50. Also 50 is the default page size if no value is provided.",
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:16:44.000Z",
+              "updatedAt": "2026-07-28T03:16:44.000Z",
+              "uid": "35240-1133660c-1d52-4fdb-adf9-0bc11ca9b585"
+            },
+            {
+              "id": "7898e221-379b-485b-95a9-e125b15a5ec9",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/payments?nextToken=<string>&pageSize=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "payments"
+                  ],
+                  "query": [
+                    {
+                      "description": "Pagination token used as a marker to get records from next page.",
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Maximum page size expected by client to return the record list. \n\n NOTE: Max page size cannot be more than 50. Also 50 is the default page size if no value is provided.",
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:16:44.000Z",
+              "updatedAt": "2026-07-28T03:16:44.000Z",
+              "uid": "35240-7898e221-379b-485b-95a9-e125b15a5ec9"
+            },
+            {
+              "id": "5fa3c4dc-1b46-4857-bb4d-6f01a138cfb3",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/payments?nextToken=<string>&pageSize=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "payments"
+                  ],
+                  "query": [
+                    {
+                      "description": "Pagination token used as a marker to get records from next page.",
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Maximum page size expected by client to return the record list. \n\n NOTE: Max page size cannot be more than 50. Also 50 is the default page size if no value is provided.",
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:16:44.000Z",
+              "updatedAt": "2026-07-28T03:16:44.000Z",
+              "uid": "35240-5fa3c4dc-1b46-4857-bb4d-6f01a138cfb3"
+            },
+            {
+              "id": "8cae5ebd-5efb-4f5b-a0a8-973c51b38db8",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/payments?nextToken=<string>&pageSize=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "payments"
+                  ],
+                  "query": [
+                    {
+                      "description": "Pagination token used as a marker to get records from next page.",
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Maximum page size expected by client to return the record list. \n\n NOTE: Max page size cannot be more than 50. Also 50 is the default page size if no value is provided.",
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:16:44.000Z",
+              "updatedAt": "2026-07-28T03:16:44.000Z",
+              "uid": "35240-8cae5ebd-5efb-4f5b-a0a8-973c51b38db8"
+            },
+            {
+              "id": "2a6ef7ed-ed04-4e96-bdfc-7491d6407b5c",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/payments?nextToken=<string>&pageSize=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "payments"
+                  ],
+                  "query": [
+                    {
+                      "description": "Pagination token used as a marker to get records from next page.",
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Maximum page size expected by client to return the record list. \n\n NOTE: Max page size cannot be more than 50. Also 50 is the default page size if no value is provided.",
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:16:44.000Z",
+              "updatedAt": "2026-07-28T03:16:44.000Z",
+              "uid": "35240-2a6ef7ed-ed04-4e96-bdfc-7491d6407b5c"
+            }
+          ],
+          "createdAt": "2026-07-28T03:16:44.000Z",
+          "updatedAt": "2026-07-28T03:16:44.000Z",
+          "uid": "35240-1bb42ac4-2027-4e84-887d-8d1465bc1c36"
+        },
+        {
+          "name": "Create Payments",
+          "id": "2741add8-b196-4ab1-9e35-fa0ace768d73",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"accountId\": \"<string>\",\n  \"externalPaymentReference\": {\n    \"sourceName\": \"<string>\",\n    \"sourceType\": \"BANK_TRANSFER\",\n    \"transactionNumber\": \"<string>\",\n    \"description\": \"<string>\",\n    \"metadata\": {\n      \"deserunt9a\": true,\n      \"Duis95d\": 81623915.30709639,\n      \"elit4\": 41730382,\n      \"in_de\": true\n    }\n  },\n  \"lineItemRecords\": [\n    {\n      \"type\": \"INVOICE\",\n      \"order\": \"<integer>\",\n      \"togaiId\": \"<string>\",\n      \"amount\": \"<number>\"\n    },\n    {\n      \"type\": \"CREDIT\",\n      \"order\": \"<integer>\",\n      \"togaiId\": \"<string>\",\n      \"amount\": \"<number>\"\n    }\n  ],\n  \"currency\": \"<string>\",\n  \"totalAmount\": \"<number>\",\n  \"description\": \"<string>\",\n  \"notes\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/payments",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "payments"
+              ]
+            },
+            "description": "create payments"
+          },
+          "response": [
+            {
+              "id": "18faa341-8c82-435c-a24d-10dcc06b3819",
+              "name": "Response for POST payments requests",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"accountId\": \"<string>\",\n  \"externalPaymentReference\": {\n    \"sourceName\": \"<string>\",\n    \"sourceType\": \"BANK_TRANSFER\",\n    \"transactionNumber\": \"<string>\",\n    \"description\": \"<string>\",\n    \"metadata\": {\n      \"deserunt9a\": true,\n      \"Duis95d\": 81623915.30709639,\n      \"elit4\": 41730382,\n      \"in_de\": true\n    }\n  },\n  \"lineItemRecords\": [\n    {\n      \"type\": \"INVOICE\",\n      \"order\": \"<integer>\",\n      \"togaiId\": \"<string>\",\n      \"amount\": \"<number>\"\n    },\n    {\n      \"type\": \"CREDIT\",\n      \"order\": \"<integer>\",\n      \"togaiId\": \"<string>\",\n      \"amount\": \"<number>\"\n    }\n  ],\n  \"currency\": \"<string>\",\n  \"totalAmount\": \"<number>\",\n  \"description\": \"<string>\",\n  \"notes\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/payments",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "payments"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"externalPaymentReferences\": {\n    \"sourceName\": \"<string>\",\n    \"sourceType\": \"CHEQUE\",\n    \"transactionNumber\": \"<string>\",\n    \"description\": \"<string>\",\n    \"metadata\": {\n      \"laboris_c_6\": 93385706\n    }\n  },\n  \"lineItemRecords\": [\n    {\n      \"type\": \"CREDIT\",\n      \"order\": \"<integer>\",\n      \"togaiId\": \"<string>\",\n      \"amount\": \"<number>\"\n    },\n    {\n      \"type\": \"CREDIT\",\n      \"order\": \"<integer>\",\n      \"togaiId\": \"<string>\",\n      \"amount\": \"<number>\"\n    }\n  ],\n  \"totalAmount\": \"<number>\",\n  \"currency\": \"<string>\",\n  \"version\": \"<number>\",\n  \"createdBy\": \"<string>\",\n  \"createdAt\": \"<dateTime>\",\n  \"description\": \"<string>\",\n  \"notes\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:16:44.000Z",
+              "updatedAt": "2026-07-28T03:16:44.000Z",
+              "uid": "35240-18faa341-8c82-435c-a24d-10dcc06b3819"
+            },
+            {
+              "id": "a25594c0-86ca-486b-96a8-74a9b167571f",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"accountId\": \"<string>\",\n  \"externalPaymentReference\": {\n    \"sourceName\": \"<string>\",\n    \"sourceType\": \"BANK_TRANSFER\",\n    \"transactionNumber\": \"<string>\",\n    \"description\": \"<string>\",\n    \"metadata\": {\n      \"deserunt9a\": true,\n      \"Duis95d\": 81623915.30709639,\n      \"elit4\": 41730382,\n      \"in_de\": true\n    }\n  },\n  \"lineItemRecords\": [\n    {\n      \"type\": \"INVOICE\",\n      \"order\": \"<integer>\",\n      \"togaiId\": \"<string>\",\n      \"amount\": \"<number>\"\n    },\n    {\n      \"type\": \"CREDIT\",\n      \"order\": \"<integer>\",\n      \"togaiId\": \"<string>\",\n      \"amount\": \"<number>\"\n    }\n  ],\n  \"currency\": \"<string>\",\n  \"totalAmount\": \"<number>\",\n  \"description\": \"<string>\",\n  \"notes\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/payments",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "payments"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:16:44.000Z",
+              "updatedAt": "2026-07-28T03:16:44.000Z",
+              "uid": "35240-a25594c0-86ca-486b-96a8-74a9b167571f"
+            },
+            {
+              "id": "644ab0c2-6d09-4cfd-81bd-81c722ee7e88",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"accountId\": \"<string>\",\n  \"externalPaymentReference\": {\n    \"sourceName\": \"<string>\",\n    \"sourceType\": \"BANK_TRANSFER\",\n    \"transactionNumber\": \"<string>\",\n    \"description\": \"<string>\",\n    \"metadata\": {\n      \"deserunt9a\": true,\n      \"Duis95d\": 81623915.30709639,\n      \"elit4\": 41730382,\n      \"in_de\": true\n    }\n  },\n  \"lineItemRecords\": [\n    {\n      \"type\": \"INVOICE\",\n      \"order\": \"<integer>\",\n      \"togaiId\": \"<string>\",\n      \"amount\": \"<number>\"\n    },\n    {\n      \"type\": \"CREDIT\",\n      \"order\": \"<integer>\",\n      \"togaiId\": \"<string>\",\n      \"amount\": \"<number>\"\n    }\n  ],\n  \"currency\": \"<string>\",\n  \"totalAmount\": \"<number>\",\n  \"description\": \"<string>\",\n  \"notes\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/payments",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "payments"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:16:44.000Z",
+              "updatedAt": "2026-07-28T03:16:44.000Z",
+              "uid": "35240-644ab0c2-6d09-4cfd-81bd-81c722ee7e88"
+            },
+            {
+              "id": "22a6bec8-8bab-448c-aa85-cd99b7f94d71",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"accountId\": \"<string>\",\n  \"externalPaymentReference\": {\n    \"sourceName\": \"<string>\",\n    \"sourceType\": \"BANK_TRANSFER\",\n    \"transactionNumber\": \"<string>\",\n    \"description\": \"<string>\",\n    \"metadata\": {\n      \"deserunt9a\": true,\n      \"Duis95d\": 81623915.30709639,\n      \"elit4\": 41730382,\n      \"in_de\": true\n    }\n  },\n  \"lineItemRecords\": [\n    {\n      \"type\": \"INVOICE\",\n      \"order\": \"<integer>\",\n      \"togaiId\": \"<string>\",\n      \"amount\": \"<number>\"\n    },\n    {\n      \"type\": \"CREDIT\",\n      \"order\": \"<integer>\",\n      \"togaiId\": \"<string>\",\n      \"amount\": \"<number>\"\n    }\n  ],\n  \"currency\": \"<string>\",\n  \"totalAmount\": \"<number>\",\n  \"description\": \"<string>\",\n  \"notes\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/payments",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "payments"
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:16:44.000Z",
+              "updatedAt": "2026-07-28T03:16:44.000Z",
+              "uid": "35240-22a6bec8-8bab-448c-aa85-cd99b7f94d71"
+            },
+            {
+              "id": "df40d711-d4d1-4350-bae3-384b91423cb0",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"accountId\": \"<string>\",\n  \"externalPaymentReference\": {\n    \"sourceName\": \"<string>\",\n    \"sourceType\": \"BANK_TRANSFER\",\n    \"transactionNumber\": \"<string>\",\n    \"description\": \"<string>\",\n    \"metadata\": {\n      \"deserunt9a\": true,\n      \"Duis95d\": 81623915.30709639,\n      \"elit4\": 41730382,\n      \"in_de\": true\n    }\n  },\n  \"lineItemRecords\": [\n    {\n      \"type\": \"INVOICE\",\n      \"order\": \"<integer>\",\n      \"togaiId\": \"<string>\",\n      \"amount\": \"<number>\"\n    },\n    {\n      \"type\": \"CREDIT\",\n      \"order\": \"<integer>\",\n      \"togaiId\": \"<string>\",\n      \"amount\": \"<number>\"\n    }\n  ],\n  \"currency\": \"<string>\",\n  \"totalAmount\": \"<number>\",\n  \"description\": \"<string>\",\n  \"notes\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/payments",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "payments"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:16:44.000Z",
+              "updatedAt": "2026-07-28T03:16:44.000Z",
+              "uid": "35240-df40d711-d4d1-4350-bae3-384b91423cb0"
+            },
+            {
+              "id": "9391c742-3baa-4429-ad25-5a252ed768db",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"accountId\": \"<string>\",\n  \"externalPaymentReference\": {\n    \"sourceName\": \"<string>\",\n    \"sourceType\": \"BANK_TRANSFER\",\n    \"transactionNumber\": \"<string>\",\n    \"description\": \"<string>\",\n    \"metadata\": {\n      \"deserunt9a\": true,\n      \"Duis95d\": 81623915.30709639,\n      \"elit4\": 41730382,\n      \"in_de\": true\n    }\n  },\n  \"lineItemRecords\": [\n    {\n      \"type\": \"INVOICE\",\n      \"order\": \"<integer>\",\n      \"togaiId\": \"<string>\",\n      \"amount\": \"<number>\"\n    },\n    {\n      \"type\": \"CREDIT\",\n      \"order\": \"<integer>\",\n      \"togaiId\": \"<string>\",\n      \"amount\": \"<number>\"\n    }\n  ],\n  \"currency\": \"<string>\",\n  \"totalAmount\": \"<number>\",\n  \"description\": \"<string>\",\n  \"notes\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/payments",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "payments"
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:16:44.000Z",
+              "updatedAt": "2026-07-28T03:16:44.000Z",
+              "uid": "35240-9391c742-3baa-4429-ad25-5a252ed768db"
+            },
+            {
+              "id": "6949baa2-c1f6-4ced-a7d4-d1d6b1ac02f8",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"accountId\": \"<string>\",\n  \"externalPaymentReference\": {\n    \"sourceName\": \"<string>\",\n    \"sourceType\": \"BANK_TRANSFER\",\n    \"transactionNumber\": \"<string>\",\n    \"description\": \"<string>\",\n    \"metadata\": {\n      \"deserunt9a\": true,\n      \"Duis95d\": 81623915.30709639,\n      \"elit4\": 41730382,\n      \"in_de\": true\n    }\n  },\n  \"lineItemRecords\": [\n    {\n      \"type\": \"INVOICE\",\n      \"order\": \"<integer>\",\n      \"togaiId\": \"<string>\",\n      \"amount\": \"<number>\"\n    },\n    {\n      \"type\": \"CREDIT\",\n      \"order\": \"<integer>\",\n      \"togaiId\": \"<string>\",\n      \"amount\": \"<number>\"\n    }\n  ],\n  \"currency\": \"<string>\",\n  \"totalAmount\": \"<number>\",\n  \"description\": \"<string>\",\n  \"notes\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/payments",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "payments"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:16:44.000Z",
+              "updatedAt": "2026-07-28T03:16:44.000Z",
+              "uid": "35240-6949baa2-c1f6-4ced-a7d4-d1d6b1ac02f8"
+            }
+          ],
+          "createdAt": "2026-07-28T03:16:44.000Z",
+          "updatedAt": "2026-07-28T03:16:44.000Z",
+          "uid": "35240-2741add8-b196-4ab1-9e35-fa0ace768d73"
+        }
+      ],
+      "id": "bda07893-4cac-459b-8edb-6ec84248f603",
+      "createdAt": "2026-07-28T03:16:44.000Z",
+      "updatedAt": "2026-07-28T03:16:44.000Z",
+      "uid": "35240-bda07893-4cac-459b-8edb-6ec84248f603"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.togai.com/"
+    }
+  ]
+}

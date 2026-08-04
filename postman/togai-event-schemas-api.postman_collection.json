@@ -1,0 +1,3405 @@
+{
+  "info": {
+    "_postman_id": "a9e591ab-d6a4-4bd5-9767-ae4ef2d86811",
+    "name": "Togai Apis Accounts Event Schemas API",
+    "description": "APIs for Togai App\n\nContact Support:\n Email: engg@togai.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:15:31.000Z",
+    "updatedAt": "2026-07-28T03:15:31.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-a9e591ab-d6a4-4bd5-9767-ae4ef2d86811"
+  },
+  "item": [
+    {
+      "name": "event_schema",
+      "item": [
+        {
+          "name": "{event_schema_name}",
+          "item": [
+            {
+              "name": "versions",
+              "item": [
+                {
+                  "name": "List All Event Schema Versions",
+                  "id": "e4ed46b5-7df1-4e74-b494-6e3c6c75cf94",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/event_schema/:event_schema_name/versions",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "event_schema",
+                        ":event_schema_name",
+                        "versions"
+                      ],
+                      "variable": [
+                        {
+                          "id": "aa1ae5bb-f78e-46f5-8397-084128614628",
+                          "key": "event_schema_name",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Get a list of all the versions of an event schema"
+                  },
+                  "response": [
+                    {
+                      "id": "84337a32-9d8a-4329-882e-621d2ec494be",
+                      "name": "Response for list event schema versions request",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/event_schema/:event_schema_name/versions",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "event_schema",
+                            ":event_schema_name",
+                            "versions"
+                          ],
+                          "variable": [
+                            {
+                              "key": "event_schema_name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"data\": [\n    {\n      \"name\": \"RA\",\n      \"version\": \"<integer>\",\n      \"description\": \"<string>\",\n      \"status\": \"DRAFT\",\n      \"attributes\": [\n        {\n          \"name\": \"j\",\n          \"defaultUnit\": \"<string>\"\n        },\n        {\n          \"name\": \"O\u3000 s\",\n          \"defaultUnit\": \"<string>\"\n        }\n      ],\n      \"dimensions\": [\n        {\n          \"name\": \"Ccj\u202f\u1680LH\u2008J2\"\n        },\n        {\n          \"name\": \"ID\u205fG3\"\n        }\n      ],\n      \"filterFields\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"featureDetails\": {\n        \"featureId\": \"<string>\",\n        \"attributeName\": \"<string>\"\n      },\n      \"enrichments\": {\n        \"fields\": [\n          {\n            \"name\": \"<string>\",\n            \"type\": \"ATTRIBUTE\",\n            \"enrichmentType\": \"JSON_LOGIC\",\n            \"value\": \"<string>\",\n            \"order\": \"<integer>\"\n          },\n          {\n            \"name\": \"<string>\",\n            \"type\": \"ATTRIBUTE\",\n            \"enrichmentType\": \"VALUE\",\n            \"value\": \"<string>\",\n            \"order\": \"<integer>\"\n          }\n        ],\n        \"dependencies\": [\n          {\n            \"type\": \"SETTING\",\n            \"key\": \"<string>\",\n            \"name\": \"<string>\"\n          },\n          {\n            \"type\": \"SETTING\",\n            \"key\": \"<string>\",\n            \"name\": \"<string>\"\n          }\n        ]\n      },\n      \"eventIdTemplate\": \"<string>\",\n      \"eventLevelRevenue\": \"<boolean>\",\n      \"createdAt\": \"<dateTime>\",\n      \"updatedAt\": \"<dateTime>\"\n    },\n    {\n      \"name\": \"\u2029B\",\n      \"version\": \"<integer>\",\n      \"description\": \"<string>\",\n      \"status\": \"ARCHIVED\",\n      \"attributes\": [\n        {\n          \"name\": \"\\rC\",\n          \"defaultUnit\": \"<string>\"\n        },\n        {\n          \"name\": \"R\u2028\",\n          \"defaultUnit\": \"<string>\"\n        }\n      ],\n      \"dimensions\": [\n        {\n          \"name\": \"\"\n        },\n        {\n          \"name\": \"\u2002\u200a2\u202f0\u20061\u2029\u2006\"\n        }\n      ],\n      \"filterFields\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"featureDetails\": {\n        \"featureId\": \"<string>\",\n        \"attributeName\": \"<string>\"\n      },\n      \"enrichments\": {\n        \"fields\": [\n          {\n            \"name\": \"<string>\",\n            \"type\": \"DIMENSION\",\n            \"enrichmentType\": \"JSON_LOGIC_FROM_DEPENDENCY\",\n            \"value\": \"<string>\",\n            \"order\": \"<integer>\"\n          },\n          {\n            \"name\": \"<string>\",\n            \"type\": \"ATTRIBUTE\",\n            \"enrichmentType\": \"JSON_LOGIC\",\n            \"value\": \"<string>\",\n            \"order\": \"<integer>\"\n          }\n        ],\n        \"dependencies\": [\n          {\n            \"type\": \"SETTING\",\n            \"key\": \"<string>\",\n            \"name\": \"<string>\"\n          },\n          {\n            \"type\": \"SETTING\",\n            \"key\": \"<string>\",\n            \"name\": \"<string>\"\n          }\n        ]\n      },\n      \"eventIdTemplate\": \"<string>\",\n      \"eventLevelRevenue\": \"<boolean>\",\n      \"createdAt\": \"<dateTime>\",\n      \"updatedAt\": \"<dateTime>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T03:15:31.000Z",
+                      "updatedAt": "2026-07-28T03:15:31.000Z",
+                      "uid": "35240-84337a32-9d8a-4329-882e-621d2ec494be"
+                    },
+                    {
+                      "id": "20b4dd75-494a-45e9-87ff-6acbba3db40b",
+                      "name": "Error response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/event_schema/:event_schema_name/versions",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "event_schema",
+                            ":event_schema_name",
+                            "versions"
+                          ],
+                          "variable": [
+                            {
+                              "key": "event_schema_name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:15:31.000Z",
+                      "updatedAt": "2026-07-28T03:15:31.000Z",
+                      "uid": "35240-20b4dd75-494a-45e9-87ff-6acbba3db40b"
+                    },
+                    {
+                      "id": "4c92f18c-2001-4119-9628-1d6aab1bf091",
+                      "name": "Error response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/event_schema/:event_schema_name/versions",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "event_schema",
+                            ":event_schema_name",
+                            "versions"
+                          ],
+                          "variable": [
+                            {
+                              "key": "event_schema_name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:15:31.000Z",
+                      "updatedAt": "2026-07-28T03:15:31.000Z",
+                      "uid": "35240-4c92f18c-2001-4119-9628-1d6aab1bf091"
+                    },
+                    {
+                      "id": "a7df2a9f-07ca-4c92-b261-36f8b9d5b274",
+                      "name": "Error response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/event_schema/:event_schema_name/versions",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "event_schema",
+                            ":event_schema_name",
+                            "versions"
+                          ],
+                          "variable": [
+                            {
+                              "key": "event_schema_name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:15:31.000Z",
+                      "updatedAt": "2026-07-28T03:15:31.000Z",
+                      "uid": "35240-a7df2a9f-07ca-4c92-b261-36f8b9d5b274"
+                    },
+                    {
+                      "id": "481b3dcd-4b58-4d2e-8b12-414e95ad3593",
+                      "name": "Error response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/event_schema/:event_schema_name/versions",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "event_schema",
+                            ":event_schema_name",
+                            "versions"
+                          ],
+                          "variable": [
+                            {
+                              "key": "event_schema_name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:15:31.000Z",
+                      "updatedAt": "2026-07-28T03:15:31.000Z",
+                      "uid": "35240-481b3dcd-4b58-4d2e-8b12-414e95ad3593"
+                    },
+                    {
+                      "id": "4f77db83-30fd-4590-8255-907ff5b47421",
+                      "name": "Error response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/event_schema/:event_schema_name/versions",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "event_schema",
+                            ":event_schema_name",
+                            "versions"
+                          ],
+                          "variable": [
+                            {
+                              "key": "event_schema_name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:15:31.000Z",
+                      "updatedAt": "2026-07-28T03:15:31.000Z",
+                      "uid": "35240-4f77db83-30fd-4590-8255-907ff5b47421"
+                    },
+                    {
+                      "id": "26e7e5de-537f-4a21-9bf2-006edf4a73d1",
+                      "name": "Error response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/event_schema/:event_schema_name/versions",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "event_schema",
+                            ":event_schema_name",
+                            "versions"
+                          ],
+                          "variable": [
+                            {
+                              "key": "event_schema_name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:15:31.000Z",
+                      "updatedAt": "2026-07-28T03:15:31.000Z",
+                      "uid": "35240-26e7e5de-537f-4a21-9bf2-006edf4a73d1"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:15:31.000Z",
+                  "updatedAt": "2026-07-28T03:15:31.000Z",
+                  "uid": "35240-e4ed46b5-7df1-4e74-b494-6e3c6c75cf94"
+                }
+              ],
+              "id": "d41a8a90-a1cf-443f-a1a2-01e00e91c2df",
+              "createdAt": "2026-07-28T03:15:31.000Z",
+              "updatedAt": "2026-07-28T03:15:31.000Z",
+              "uid": "35240-d41a8a90-a1cf-443f-a1a2-01e00e91c2df"
+            },
+            {
+              "name": "activate",
+              "item": [
+                {
+                  "name": "Activate an Event Schema",
+                  "id": "5d52a794-de2d-4504-8a38-a19b5ece178e",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/event_schema/:event_schema_name/activate",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "event_schema",
+                        ":event_schema_name",
+                        "activate"
+                      ],
+                      "variable": [
+                        {
+                          "id": "b30fce5d-26f8-42e1-a029-41ec115dbcd4",
+                          "key": "event_schema_name",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Activate an event schema"
+                  },
+                  "response": [
+                    {
+                      "id": "e2d97b61-b901-47d2-9047-e4a0a3ed779e",
+                      "name": "Response for Create and Get event schema requests",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/event_schema/:event_schema_name/activate",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "event_schema",
+                            ":event_schema_name",
+                            "activate"
+                          ],
+                          "variable": [
+                            {
+                              "key": "event_schema_name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"name\": \"ti_4C\u2002\u16804\",\n  \"version\": \"<integer>\",\n  \"description\": \"<string>\",\n  \"status\": \"ACTIVE\",\n  \"attributes\": [\n    {\n      \"name\": \"\u2006xP0gENwS\u2006\",\n      \"defaultUnit\": \"<string>\"\n    },\n    {\n      \"name\": \"a\\f\\t\u2000\",\n      \"defaultUnit\": \"<string>\"\n    }\n  ],\n  \"dimensions\": [\n    {\n      \"name\": \"9\u2001A\u2000dit\"\n    },\n    {\n      \"name\": \"9\\tLh\ufeffuJ\u2006\u2006\u202f\"\n    }\n  ],\n  \"filterFields\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"featureDetails\": {\n    \"featureId\": \"<string>\",\n    \"attributeName\": \"<string>\"\n  },\n  \"enrichments\": {\n    \"fields\": [\n      {\n        \"name\": \"<string>\",\n        \"type\": \"DIMENSION\",\n        \"enrichmentType\": \"JSON_LOGIC_FROM_DEPENDENCY\",\n        \"value\": \"<string>\",\n        \"order\": \"<integer>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"type\": \"DIMENSION\",\n        \"enrichmentType\": \"JSON_LOGIC_FROM_DEPENDENCY\",\n        \"value\": \"<string>\",\n        \"order\": \"<integer>\"\n      }\n    ],\n    \"dependencies\": [\n      {\n        \"type\": \"SETTING\",\n        \"key\": \"<string>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"type\": \"SETTING\",\n        \"key\": \"<string>\",\n        \"name\": \"<string>\"\n      }\n    ]\n  },\n  \"eventIdTemplate\": \"<string>\",\n  \"eventLevelRevenue\": \"<boolean>\",\n  \"createdAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\"\n}",
+                      "createdAt": "2026-07-28T03:15:31.000Z",
+                      "updatedAt": "2026-07-28T03:15:31.000Z",
+                      "uid": "35240-e2d97b61-b901-47d2-9047-e4a0a3ed779e"
+                    },
+                    {
+                      "id": "21abc1ac-bce5-472a-ab38-40ec0e351ed9",
+                      "name": "Error response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/event_schema/:event_schema_name/activate",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "event_schema",
+                            ":event_schema_name",
+                            "activate"
+                          ],
+                          "variable": [
+                            {
+                              "key": "event_schema_name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:15:31.000Z",
+                      "updatedAt": "2026-07-28T03:15:31.000Z",
+                      "uid": "35240-21abc1ac-bce5-472a-ab38-40ec0e351ed9"
+                    },
+                    {
+                      "id": "83d78ef1-881e-4b9c-b1c9-4aed524701bd",
+                      "name": "Error response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/event_schema/:event_schema_name/activate",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "event_schema",
+                            ":event_schema_name",
+                            "activate"
+                          ],
+                          "variable": [
+                            {
+                              "key": "event_schema_name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:15:31.000Z",
+                      "updatedAt": "2026-07-28T03:15:31.000Z",
+                      "uid": "35240-83d78ef1-881e-4b9c-b1c9-4aed524701bd"
+                    },
+                    {
+                      "id": "ecbcd63e-9c73-4841-acf2-9909afdb39c9",
+                      "name": "Error response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/event_schema/:event_schema_name/activate",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "event_schema",
+                            ":event_schema_name",
+                            "activate"
+                          ],
+                          "variable": [
+                            {
+                              "key": "event_schema_name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:15:31.000Z",
+                      "updatedAt": "2026-07-28T03:15:31.000Z",
+                      "uid": "35240-ecbcd63e-9c73-4841-acf2-9909afdb39c9"
+                    },
+                    {
+                      "id": "c57f55e5-3a9f-41ba-93b1-8a769598abc2",
+                      "name": "Error response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/event_schema/:event_schema_name/activate",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "event_schema",
+                            ":event_schema_name",
+                            "activate"
+                          ],
+                          "variable": [
+                            {
+                              "key": "event_schema_name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:15:31.000Z",
+                      "updatedAt": "2026-07-28T03:15:31.000Z",
+                      "uid": "35240-c57f55e5-3a9f-41ba-93b1-8a769598abc2"
+                    },
+                    {
+                      "id": "d9bf4450-bcc2-49f2-81a8-26a1566ababb",
+                      "name": "Error response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/event_schema/:event_schema_name/activate",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "event_schema",
+                            ":event_schema_name",
+                            "activate"
+                          ],
+                          "variable": [
+                            {
+                              "key": "event_schema_name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:15:31.000Z",
+                      "updatedAt": "2026-07-28T03:15:31.000Z",
+                      "uid": "35240-d9bf4450-bcc2-49f2-81a8-26a1566ababb"
+                    },
+                    {
+                      "id": "bf19e15c-587d-47b3-a3d7-49f4cf35a403",
+                      "name": "Error response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/event_schema/:event_schema_name/activate",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "event_schema",
+                            ":event_schema_name",
+                            "activate"
+                          ],
+                          "variable": [
+                            {
+                              "key": "event_schema_name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:15:31.000Z",
+                      "updatedAt": "2026-07-28T03:15:31.000Z",
+                      "uid": "35240-bf19e15c-587d-47b3-a3d7-49f4cf35a403"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:15:31.000Z",
+                  "updatedAt": "2026-07-28T03:15:31.000Z",
+                  "uid": "35240-5d52a794-de2d-4504-8a38-a19b5ece178e"
+                }
+              ],
+              "id": "c34e3d9d-ec8d-43cf-91d6-12fe0c99cb31",
+              "createdAt": "2026-07-28T03:15:31.000Z",
+              "updatedAt": "2026-07-28T03:15:31.000Z",
+              "uid": "35240-c34e3d9d-ec8d-43cf-91d6-12fe0c99cb31"
+            },
+            {
+              "name": "deactivate",
+              "item": [
+                {
+                  "name": "Deactivate an Event Schema",
+                  "id": "3f1b3d33-ac04-432d-aee6-3fe370c25be3",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/event_schema/:event_schema_name/deactivate",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "event_schema",
+                        ":event_schema_name",
+                        "deactivate"
+                      ],
+                      "variable": [
+                        {
+                          "id": "9440075e-7874-49ec-aa2f-7ff81e4047ec",
+                          "key": "event_schema_name",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "You can deactivate an event schema using this API. In case you have an activate usage meter associated with the event schema, you will need to deactivate it first and then try deactivating the event schema.\n"
+                  },
+                  "response": [
+                    {
+                      "id": "27085a33-f3fc-4454-b6c2-fa99cf6fb083",
+                      "name": "Response for Create and Get event schema requests",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/event_schema/:event_schema_name/deactivate",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "event_schema",
+                            ":event_schema_name",
+                            "deactivate"
+                          ],
+                          "variable": [
+                            {
+                              "key": "event_schema_name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"name\": \"ti_4C\u2002\u16804\",\n  \"version\": \"<integer>\",\n  \"description\": \"<string>\",\n  \"status\": \"ACTIVE\",\n  \"attributes\": [\n    {\n      \"name\": \"\u2006xP0gENwS\u2006\",\n      \"defaultUnit\": \"<string>\"\n    },\n    {\n      \"name\": \"a\\f\\t\u2000\",\n      \"defaultUnit\": \"<string>\"\n    }\n  ],\n  \"dimensions\": [\n    {\n      \"name\": \"9\u2001A\u2000dit\"\n    },\n    {\n      \"name\": \"9\\tLh\ufeffuJ\u2006\u2006\u202f\"\n    }\n  ],\n  \"filterFields\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"featureDetails\": {\n    \"featureId\": \"<string>\",\n    \"attributeName\": \"<string>\"\n  },\n  \"enrichments\": {\n    \"fields\": [\n      {\n        \"name\": \"<string>\",\n        \"type\": \"DIMENSION\",\n        \"enrichmentType\": \"JSON_LOGIC_FROM_DEPENDENCY\",\n        \"value\": \"<string>\",\n        \"order\": \"<integer>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"type\": \"DIMENSION\",\n        \"enrichmentType\": \"JSON_LOGIC_FROM_DEPENDENCY\",\n        \"value\": \"<string>\",\n        \"order\": \"<integer>\"\n      }\n    ],\n    \"dependencies\": [\n      {\n        \"type\": \"SETTING\",\n        \"key\": \"<string>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"type\": \"SETTING\",\n        \"key\": \"<string>\",\n        \"name\": \"<string>\"\n      }\n    ]\n  },\n  \"eventIdTemplate\": \"<string>\",\n  \"eventLevelRevenue\": \"<boolean>\",\n  \"createdAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\"\n}",
+                      "createdAt": "2026-07-28T03:15:31.000Z",
+                      "updatedAt": "2026-07-28T03:15:31.000Z",
+                      "uid": "35240-27085a33-f3fc-4454-b6c2-fa99cf6fb083"
+                    },
+                    {
+                      "id": "f8a4b554-f918-4d52-9c92-df7eeb0b54c0",
+                      "name": "Error response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/event_schema/:event_schema_name/deactivate",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "event_schema",
+                            ":event_schema_name",
+                            "deactivate"
+                          ],
+                          "variable": [
+                            {
+                              "key": "event_schema_name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:15:31.000Z",
+                      "updatedAt": "2026-07-28T03:15:31.000Z",
+                      "uid": "35240-f8a4b554-f918-4d52-9c92-df7eeb0b54c0"
+                    },
+                    {
+                      "id": "23b5712b-d530-4656-afb3-27d882ccf132",
+                      "name": "Error response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/event_schema/:event_schema_name/deactivate",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "event_schema",
+                            ":event_schema_name",
+                            "deactivate"
+                          ],
+                          "variable": [
+                            {
+                              "key": "event_schema_name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:15:31.000Z",
+                      "updatedAt": "2026-07-28T03:15:31.000Z",
+                      "uid": "35240-23b5712b-d530-4656-afb3-27d882ccf132"
+                    },
+                    {
+                      "id": "64035867-e735-4c02-90fb-da4c13b1324b",
+                      "name": "Error response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/event_schema/:event_schema_name/deactivate",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "event_schema",
+                            ":event_schema_name",
+                            "deactivate"
+                          ],
+                          "variable": [
+                            {
+                              "key": "event_schema_name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:15:31.000Z",
+                      "updatedAt": "2026-07-28T03:15:31.000Z",
+                      "uid": "35240-64035867-e735-4c02-90fb-da4c13b1324b"
+                    },
+                    {
+                      "id": "83521b7c-e36b-4dae-a410-e518841754c9",
+                      "name": "Error response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/event_schema/:event_schema_name/deactivate",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "event_schema",
+                            ":event_schema_name",
+                            "deactivate"
+                          ],
+                          "variable": [
+                            {
+                              "key": "event_schema_name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:15:31.000Z",
+                      "updatedAt": "2026-07-28T03:15:31.000Z",
+                      "uid": "35240-83521b7c-e36b-4dae-a410-e518841754c9"
+                    },
+                    {
+                      "id": "f692302b-67f2-4899-9493-9f93bef61ec1",
+                      "name": "Error response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/event_schema/:event_schema_name/deactivate",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "event_schema",
+                            ":event_schema_name",
+                            "deactivate"
+                          ],
+                          "variable": [
+                            {
+                              "key": "event_schema_name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:15:31.000Z",
+                      "updatedAt": "2026-07-28T03:15:31.000Z",
+                      "uid": "35240-f692302b-67f2-4899-9493-9f93bef61ec1"
+                    },
+                    {
+                      "id": "9f9212ab-056f-47d6-a50b-dab41263e3a9",
+                      "name": "Error response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/event_schema/:event_schema_name/deactivate",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "event_schema",
+                            ":event_schema_name",
+                            "deactivate"
+                          ],
+                          "variable": [
+                            {
+                              "key": "event_schema_name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:15:31.000Z",
+                      "updatedAt": "2026-07-28T03:15:31.000Z",
+                      "uid": "35240-9f9212ab-056f-47d6-a50b-dab41263e3a9"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:15:31.000Z",
+                  "updatedAt": "2026-07-28T03:15:31.000Z",
+                  "uid": "35240-3f1b3d33-ac04-432d-aee6-3fe370c25be3"
+                }
+              ],
+              "id": "9a730ce6-1fc4-4175-acd2-0bd7f41cf337",
+              "createdAt": "2026-07-28T03:15:31.000Z",
+              "updatedAt": "2026-07-28T03:15:31.000Z",
+              "uid": "35240-9a730ce6-1fc4-4175-acd2-0bd7f41cf337"
+            },
+            {
+              "name": "Update an Event Schema",
+              "id": "9e635941-b837-40f5-b7db-fbaa1f6c3057",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"<string>\",\n  \"attributes\": [\n    {\n      \"name\": \"MI7\\u000bDFVv\",\n      \"defaultUnit\": \"<string>\"\n    },\n    {\n      \"name\": \"l-s0iL\",\n      \"defaultUnit\": \"<string>\"\n    }\n  ],\n  \"dimensions\": [\n    {\n      \"name\": \"\ufeffD\\nB\u2004\"\n    },\n    {\n      \"name\": \"ZS\\fI\\t_\u202fjLW\"\n    }\n  ],\n  \"enrichments\": {\n    \"fields\": [\n      {\n        \"name\": \"<string>\",\n        \"type\": \"ATTRIBUTE\",\n        \"enrichmentType\": \"JSON_LOGIC_FROM_DEPENDENCY\",\n        \"value\": \"<string>\",\n        \"order\": \"<integer>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"type\": \"ATTRIBUTE\",\n        \"enrichmentType\": \"VALUE\",\n        \"value\": \"<string>\",\n        \"order\": \"<integer>\"\n      }\n    ],\n    \"dependencies\": [\n      {\n        \"type\": \"SETTING\",\n        \"key\": \"<string>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"type\": \"SETTING\",\n        \"key\": \"<string>\",\n        \"name\": \"<string>\"\n      }\n    ]\n  },\n  \"filterFields\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"eventIdTemplate\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/event_schema/:event_schema_name",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "event_schema",
+                    ":event_schema_name"
+                  ],
+                  "variable": [
+                    {
+                      "id": "9847e90a-3d74-4606-aecc-6e07caed5eff",
+                      "key": "event_schema_name",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "Update an event schema and add new attributes and dimensions\n\nOnce an event schema is activated, you cannot update or delete existing attributes and dimensions however you can add new attributes and dimensions and update event schema description.\n    operationId: updateEventSchema\n"
+              },
+              "response": [
+                {
+                  "id": "ab402009-8bd4-45e2-8d36-28b25b75db45",
+                  "name": "Response for Create and Get event schema requests",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"description\": \"<string>\",\n  \"attributes\": [\n    {\n      \"name\": \"MI7\\u000bDFVv\",\n      \"defaultUnit\": \"<string>\"\n    },\n    {\n      \"name\": \"l-s0iL\",\n      \"defaultUnit\": \"<string>\"\n    }\n  ],\n  \"dimensions\": [\n    {\n      \"name\": \"\ufeffD\\nB\u2004\"\n    },\n    {\n      \"name\": \"ZS\\fI\\t_\u202fjLW\"\n    }\n  ],\n  \"enrichments\": {\n    \"fields\": [\n      {\n        \"name\": \"<string>\",\n        \"type\": \"ATTRIBUTE\",\n        \"enrichmentType\": \"JSON_LOGIC_FROM_DEPENDENCY\",\n        \"value\": \"<string>\",\n        \"order\": \"<integer>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"type\": \"ATTRIBUTE\",\n        \"enrichmentType\": \"VALUE\",\n        \"value\": \"<string>\",\n        \"order\": \"<integer>\"\n      }\n    ],\n    \"dependencies\": [\n      {\n        \"type\": \"SETTING\",\n        \"key\": \"<string>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"type\": \"SETTING\",\n        \"key\": \"<string>\",\n        \"name\": \"<string>\"\n      }\n    ]\n  },\n  \"filterFields\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"eventIdTemplate\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/event_schema/:event_schema_name",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "event_schema",
+                        ":event_schema_name"
+                      ],
+                      "variable": [
+                        {
+                          "key": "event_schema_name"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"name\": \"ti_4C\u2002\u16804\",\n  \"version\": \"<integer>\",\n  \"description\": \"<string>\",\n  \"status\": \"ACTIVE\",\n  \"attributes\": [\n    {\n      \"name\": \"\u2006xP0gENwS\u2006\",\n      \"defaultUnit\": \"<string>\"\n    },\n    {\n      \"name\": \"a\\f\\t\u2000\",\n      \"defaultUnit\": \"<string>\"\n    }\n  ],\n  \"dimensions\": [\n    {\n      \"name\": \"9\u2001A\u2000dit\"\n    },\n    {\n      \"name\": \"9\\tLh\ufeffuJ\u2006\u2006\u202f\"\n    }\n  ],\n  \"filterFields\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"featureDetails\": {\n    \"featureId\": \"<string>\",\n    \"attributeName\": \"<string>\"\n  },\n  \"enrichments\": {\n    \"fields\": [\n      {\n        \"name\": \"<string>\",\n        \"type\": \"DIMENSION\",\n        \"enrichmentType\": \"JSON_LOGIC_FROM_DEPENDENCY\",\n        \"value\": \"<string>\",\n        \"order\": \"<integer>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"type\": \"DIMENSION\",\n        \"enrichmentType\": \"JSON_LOGIC_FROM_DEPENDENCY\",\n        \"value\": \"<string>\",\n        \"order\": \"<integer>\"\n      }\n    ],\n    \"dependencies\": [\n      {\n        \"type\": \"SETTING\",\n        \"key\": \"<string>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"type\": \"SETTING\",\n        \"key\": \"<string>\",\n        \"name\": \"<string>\"\n      }\n    ]\n  },\n  \"eventIdTemplate\": \"<string>\",\n  \"eventLevelRevenue\": \"<boolean>\",\n  \"createdAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\"\n}",
+                  "createdAt": "2026-07-28T03:15:31.000Z",
+                  "updatedAt": "2026-07-28T03:15:31.000Z",
+                  "uid": "35240-ab402009-8bd4-45e2-8d36-28b25b75db45"
+                },
+                {
+                  "id": "de8cf396-086a-4ea8-834f-8cb0375b2472",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"description\": \"<string>\",\n  \"attributes\": [\n    {\n      \"name\": \"MI7\\u000bDFVv\",\n      \"defaultUnit\": \"<string>\"\n    },\n    {\n      \"name\": \"l-s0iL\",\n      \"defaultUnit\": \"<string>\"\n    }\n  ],\n  \"dimensions\": [\n    {\n      \"name\": \"\ufeffD\\nB\u2004\"\n    },\n    {\n      \"name\": \"ZS\\fI\\t_\u202fjLW\"\n    }\n  ],\n  \"enrichments\": {\n    \"fields\": [\n      {\n        \"name\": \"<string>\",\n        \"type\": \"ATTRIBUTE\",\n        \"enrichmentType\": \"JSON_LOGIC_FROM_DEPENDENCY\",\n        \"value\": \"<string>\",\n        \"order\": \"<integer>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"type\": \"ATTRIBUTE\",\n        \"enrichmentType\": \"VALUE\",\n        \"value\": \"<string>\",\n        \"order\": \"<integer>\"\n      }\n    ],\n    \"dependencies\": [\n      {\n        \"type\": \"SETTING\",\n        \"key\": \"<string>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"type\": \"SETTING\",\n        \"key\": \"<string>\",\n        \"name\": \"<string>\"\n      }\n    ]\n  },\n  \"filterFields\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"eventIdTemplate\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/event_schema/:event_schema_name",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "event_schema",
+                        ":event_schema_name"
+                      ],
+                      "variable": [
+                        {
+                          "key": "event_schema_name"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:15:31.000Z",
+                  "updatedAt": "2026-07-28T03:15:31.000Z",
+                  "uid": "35240-de8cf396-086a-4ea8-834f-8cb0375b2472"
+                },
+                {
+                  "id": "fa8a0a11-b40b-4bb4-b749-9107742e2fcd",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"description\": \"<string>\",\n  \"attributes\": [\n    {\n      \"name\": \"MI7\\u000bDFVv\",\n      \"defaultUnit\": \"<string>\"\n    },\n    {\n      \"name\": \"l-s0iL\",\n      \"defaultUnit\": \"<string>\"\n    }\n  ],\n  \"dimensions\": [\n    {\n      \"name\": \"\ufeffD\\nB\u2004\"\n    },\n    {\n      \"name\": \"ZS\\fI\\t_\u202fjLW\"\n    }\n  ],\n  \"enrichments\": {\n    \"fields\": [\n      {\n        \"name\": \"<string>\",\n        \"type\": \"ATTRIBUTE\",\n        \"enrichmentType\": \"JSON_LOGIC_FROM_DEPENDENCY\",\n        \"value\": \"<string>\",\n        \"order\": \"<integer>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"type\": \"ATTRIBUTE\",\n        \"enrichmentType\": \"VALUE\",\n        \"value\": \"<string>\",\n        \"order\": \"<integer>\"\n      }\n    ],\n    \"dependencies\": [\n      {\n        \"type\": \"SETTING\",\n        \"key\": \"<string>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"type\": \"SETTING\",\n        \"key\": \"<string>\",\n        \"name\": \"<string>\"\n      }\n    ]\n  },\n  \"filterFields\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"eventIdTemplate\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/event_schema/:event_schema_name",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "event_schema",
+                        ":event_schema_name"
+                      ],
+                      "variable": [
+                        {
+                          "key": "event_schema_name"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:15:31.000Z",
+                  "updatedAt": "2026-07-28T03:15:31.000Z",
+                  "uid": "35240-fa8a0a11-b40b-4bb4-b749-9107742e2fcd"
+                },
+                {
+                  "id": "94505ce2-eed9-4a5a-b6bf-90aa1638011e",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"description\": \"<string>\",\n  \"attributes\": [\n    {\n      \"name\": \"MI7\\u000bDFVv\",\n      \"defaultUnit\": \"<string>\"\n    },\n    {\n      \"name\": \"l-s0iL\",\n      \"defaultUnit\": \"<string>\"\n    }\n  ],\n  \"dimensions\": [\n    {\n      \"name\": \"\ufeffD\\nB\u2004\"\n    },\n    {\n      \"name\": \"ZS\\fI\\t_\u202fjLW\"\n    }\n  ],\n  \"enrichments\": {\n    \"fields\": [\n      {\n        \"name\": \"<string>\",\n        \"type\": \"ATTRIBUTE\",\n        \"enrichmentType\": \"JSON_LOGIC_FROM_DEPENDENCY\",\n        \"value\": \"<string>\",\n        \"order\": \"<integer>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"type\": \"ATTRIBUTE\",\n        \"enrichmentType\": \"VALUE\",\n        \"value\": \"<string>\",\n        \"order\": \"<integer>\"\n      }\n    ],\n    \"dependencies\": [\n      {\n        \"type\": \"SETTING\",\n        \"key\": \"<string>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"type\": \"SETTING\",\n        \"key\": \"<string>\",\n        \"name\": \"<string>\"\n      }\n    ]\n  },\n  \"filterFields\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"eventIdTemplate\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/event_schema/:event_schema_name",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "event_schema",
+                        ":event_schema_name"
+                      ],
+                      "variable": [
+                        {
+                          "key": "event_schema_name"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:15:31.000Z",
+                  "updatedAt": "2026-07-28T03:15:31.000Z",
+                  "uid": "35240-94505ce2-eed9-4a5a-b6bf-90aa1638011e"
+                },
+                {
+                  "id": "ba456b20-e76c-47ff-9a68-b99dd0254cdc",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"description\": \"<string>\",\n  \"attributes\": [\n    {\n      \"name\": \"MI7\\u000bDFVv\",\n      \"defaultUnit\": \"<string>\"\n    },\n    {\n      \"name\": \"l-s0iL\",\n      \"defaultUnit\": \"<string>\"\n    }\n  ],\n  \"dimensions\": [\n    {\n      \"name\": \"\ufeffD\\nB\u2004\"\n    },\n    {\n      \"name\": \"ZS\\fI\\t_\u202fjLW\"\n    }\n  ],\n  \"enrichments\": {\n    \"fields\": [\n      {\n        \"name\": \"<string>\",\n        \"type\": \"ATTRIBUTE\",\n        \"enrichmentType\": \"JSON_LOGIC_FROM_DEPENDENCY\",\n        \"value\": \"<string>\",\n        \"order\": \"<integer>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"type\": \"ATTRIBUTE\",\n        \"enrichmentType\": \"VALUE\",\n        \"value\": \"<string>\",\n        \"order\": \"<integer>\"\n      }\n    ],\n    \"dependencies\": [\n      {\n        \"type\": \"SETTING\",\n        \"key\": \"<string>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"type\": \"SETTING\",\n        \"key\": \"<string>\",\n        \"name\": \"<string>\"\n      }\n    ]\n  },\n  \"filterFields\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"eventIdTemplate\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/event_schema/:event_schema_name",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "event_schema",
+                        ":event_schema_name"
+                      ],
+                      "variable": [
+                        {
+                          "key": "event_schema_name"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:15:31.000Z",
+                  "updatedAt": "2026-07-28T03:15:31.000Z",
+                  "uid": "35240-ba456b20-e76c-47ff-9a68-b99dd0254cdc"
+                },
+                {
+                  "id": "9cc75e69-8797-46e9-afa8-6b69a2df9bc7",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"description\": \"<string>\",\n  \"attributes\": [\n    {\n      \"name\": \"MI7\\u000bDFVv\",\n      \"defaultUnit\": \"<string>\"\n    },\n    {\n      \"name\": \"l-s0iL\",\n      \"defaultUnit\": \"<string>\"\n    }\n  ],\n  \"dimensions\": [\n    {\n      \"name\": \"\ufeffD\\nB\u2004\"\n    },\n    {\n      \"name\": \"ZS\\fI\\t_\u202fjLW\"\n    }\n  ],\n  \"enrichments\": {\n    \"fields\": [\n      {\n        \"name\": \"<string>\",\n        \"type\": \"ATTRIBUTE\",\n        \"enrichmentType\": \"JSON_LOGIC_FROM_DEPENDENCY\",\n        \"value\": \"<string>\",\n        \"order\": \"<integer>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"type\": \"ATTRIBUTE\",\n        \"enrichmentType\": \"VALUE\",\n        \"value\": \"<string>\",\n        \"order\": \"<integer>\"\n      }\n    ],\n    \"dependencies\": [\n      {\n        \"type\": \"SETTING\",\n        \"key\": \"<string>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"type\": \"SETTING\",\n        \"key\": \"<string>\",\n        \"name\": \"<string>\"\n      }\n    ]\n  },\n  \"filterFields\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"eventIdTemplate\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/event_schema/:event_schema_name",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "event_schema",
+                        ":event_schema_name"
+                      ],
+                      "variable": [
+                        {
+                          "key": "event_schema_name"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:15:31.000Z",
+                  "updatedAt": "2026-07-28T03:15:31.000Z",
+                  "uid": "35240-9cc75e69-8797-46e9-afa8-6b69a2df9bc7"
+                },
+                {
+                  "id": "1eab74bd-925c-4d5f-9f2d-04cf6aac7a08",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"description\": \"<string>\",\n  \"attributes\": [\n    {\n      \"name\": \"MI7\\u000bDFVv\",\n      \"defaultUnit\": \"<string>\"\n    },\n    {\n      \"name\": \"l-s0iL\",\n      \"defaultUnit\": \"<string>\"\n    }\n  ],\n  \"dimensions\": [\n    {\n      \"name\": \"\ufeffD\\nB\u2004\"\n    },\n    {\n      \"name\": \"ZS\\fI\\t_\u202fjLW\"\n    }\n  ],\n  \"enrichments\": {\n    \"fields\": [\n      {\n        \"name\": \"<string>\",\n        \"type\": \"ATTRIBUTE\",\n        \"enrichmentType\": \"JSON_LOGIC_FROM_DEPENDENCY\",\n        \"value\": \"<string>\",\n        \"order\": \"<integer>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"type\": \"ATTRIBUTE\",\n        \"enrichmentType\": \"VALUE\",\n        \"value\": \"<string>\",\n        \"order\": \"<integer>\"\n      }\n    ],\n    \"dependencies\": [\n      {\n        \"type\": \"SETTING\",\n        \"key\": \"<string>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"type\": \"SETTING\",\n        \"key\": \"<string>\",\n        \"name\": \"<string>\"\n      }\n    ]\n  },\n  \"filterFields\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"eventIdTemplate\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/event_schema/:event_schema_name",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "event_schema",
+                        ":event_schema_name"
+                      ],
+                      "variable": [
+                        {
+                          "key": "event_schema_name"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:15:31.000Z",
+                  "updatedAt": "2026-07-28T03:15:31.000Z",
+                  "uid": "35240-1eab74bd-925c-4d5f-9f2d-04cf6aac7a08"
+                }
+              ],
+              "createdAt": "2026-07-28T03:15:31.000Z",
+              "updatedAt": "2026-07-28T03:15:31.000Z",
+              "uid": "35240-9e635941-b837-40f5-b7db-fbaa1f6c3057"
+            },
+            {
+              "name": "Get an Event Schema",
+              "id": "c1fddf2a-e625-4ae7-8e1e-fb20a8c26daa",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/event_schema/:event_schema_name?version=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "event_schema",
+                    ":event_schema_name"
+                  ],
+                  "query": [
+                    {
+                      "description": "Optional version to get a specific version. Gets latest version if it is not provided.",
+                      "key": "version",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "id": "88a5e22f-78d7-4dec-a0f5-960a9c399354",
+                      "key": "event_schema_name",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "Get an event schema"
+              },
+              "response": [
+                {
+                  "id": "70eaa23d-e619-4b47-a37c-909acad5df55",
+                  "name": "Response for Create and Get event schema requests",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/event_schema/:event_schema_name?version=<integer>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "event_schema",
+                        ":event_schema_name"
+                      ],
+                      "query": [
+                        {
+                          "description": "Optional version to get a specific version. Gets latest version if it is not provided.",
+                          "key": "version",
+                          "value": "<integer>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "event_schema_name"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"name\": \"ti_4C\u2002\u16804\",\n  \"version\": \"<integer>\",\n  \"description\": \"<string>\",\n  \"status\": \"ACTIVE\",\n  \"attributes\": [\n    {\n      \"name\": \"\u2006xP0gENwS\u2006\",\n      \"defaultUnit\": \"<string>\"\n    },\n    {\n      \"name\": \"a\\f\\t\u2000\",\n      \"defaultUnit\": \"<string>\"\n    }\n  ],\n  \"dimensions\": [\n    {\n      \"name\": \"9\u2001A\u2000dit\"\n    },\n    {\n      \"name\": \"9\\tLh\ufeffuJ\u2006\u2006\u202f\"\n    }\n  ],\n  \"filterFields\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"featureDetails\": {\n    \"featureId\": \"<string>\",\n    \"attributeName\": \"<string>\"\n  },\n  \"enrichments\": {\n    \"fields\": [\n      {\n        \"name\": \"<string>\",\n        \"type\": \"DIMENSION\",\n        \"enrichmentType\": \"JSON_LOGIC_FROM_DEPENDENCY\",\n        \"value\": \"<string>\",\n        \"order\": \"<integer>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"type\": \"DIMENSION\",\n        \"enrichmentType\": \"JSON_LOGIC_FROM_DEPENDENCY\",\n        \"value\": \"<string>\",\n        \"order\": \"<integer>\"\n      }\n    ],\n    \"dependencies\": [\n      {\n        \"type\": \"SETTING\",\n        \"key\": \"<string>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"type\": \"SETTING\",\n        \"key\": \"<string>\",\n        \"name\": \"<string>\"\n      }\n    ]\n  },\n  \"eventIdTemplate\": \"<string>\",\n  \"eventLevelRevenue\": \"<boolean>\",\n  \"createdAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\"\n}",
+                  "createdAt": "2026-07-28T03:15:31.000Z",
+                  "updatedAt": "2026-07-28T03:15:31.000Z",
+                  "uid": "35240-70eaa23d-e619-4b47-a37c-909acad5df55"
+                },
+                {
+                  "id": "4ed05f84-d696-436c-b481-80fdd6978352",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/event_schema/:event_schema_name?version=<integer>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "event_schema",
+                        ":event_schema_name"
+                      ],
+                      "query": [
+                        {
+                          "description": "Optional version to get a specific version. Gets latest version if it is not provided.",
+                          "key": "version",
+                          "value": "<integer>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "event_schema_name"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:15:31.000Z",
+                  "updatedAt": "2026-07-28T03:15:31.000Z",
+                  "uid": "35240-4ed05f84-d696-436c-b481-80fdd6978352"
+                },
+                {
+                  "id": "6b0d778f-305c-4b8b-af09-6e901e844abb",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/event_schema/:event_schema_name?version=<integer>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "event_schema",
+                        ":event_schema_name"
+                      ],
+                      "query": [
+                        {
+                          "description": "Optional version to get a specific version. Gets latest version if it is not provided.",
+                          "key": "version",
+                          "value": "<integer>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "event_schema_name"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:15:31.000Z",
+                  "updatedAt": "2026-07-28T03:15:31.000Z",
+                  "uid": "35240-6b0d778f-305c-4b8b-af09-6e901e844abb"
+                },
+                {
+                  "id": "79f606c1-d88c-4ba1-acd3-011ff520b19e",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/event_schema/:event_schema_name?version=<integer>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "event_schema",
+                        ":event_schema_name"
+                      ],
+                      "query": [
+                        {
+                          "description": "Optional version to get a specific version. Gets latest version if it is not provided.",
+                          "key": "version",
+                          "value": "<integer>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "event_schema_name"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:15:31.000Z",
+                  "updatedAt": "2026-07-28T03:15:31.000Z",
+                  "uid": "35240-79f606c1-d88c-4ba1-acd3-011ff520b19e"
+                },
+                {
+                  "id": "ccb5a35f-f854-4cb9-a412-71a4852d2cad",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/event_schema/:event_schema_name?version=<integer>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "event_schema",
+                        ":event_schema_name"
+                      ],
+                      "query": [
+                        {
+                          "description": "Optional version to get a specific version. Gets latest version if it is not provided.",
+                          "key": "version",
+                          "value": "<integer>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "event_schema_name"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:15:31.000Z",
+                  "updatedAt": "2026-07-28T03:15:31.000Z",
+                  "uid": "35240-ccb5a35f-f854-4cb9-a412-71a4852d2cad"
+                },
+                {
+                  "id": "41eb1d2d-99a9-4b2a-8e4f-daba9e85c067",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/event_schema/:event_schema_name?version=<integer>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "event_schema",
+                        ":event_schema_name"
+                      ],
+                      "query": [
+                        {
+                          "description": "Optional version to get a specific version. Gets latest version if it is not provided.",
+                          "key": "version",
+                          "value": "<integer>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "event_schema_name"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:15:31.000Z",
+                  "updatedAt": "2026-07-28T03:15:31.000Z",
+                  "uid": "35240-41eb1d2d-99a9-4b2a-8e4f-daba9e85c067"
+                },
+                {
+                  "id": "886479ad-2e11-4932-891d-3e1281d544eb",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/event_schema/:event_schema_name?version=<integer>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "event_schema",
+                        ":event_schema_name"
+                      ],
+                      "query": [
+                        {
+                          "description": "Optional version to get a specific version. Gets latest version if it is not provided.",
+                          "key": "version",
+                          "value": "<integer>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "event_schema_name"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:15:31.000Z",
+                  "updatedAt": "2026-07-28T03:15:31.000Z",
+                  "uid": "35240-886479ad-2e11-4932-891d-3e1281d544eb"
+                }
+              ],
+              "createdAt": "2026-07-28T03:15:31.000Z",
+              "updatedAt": "2026-07-28T03:15:31.000Z",
+              "uid": "35240-c1fddf2a-e625-4ae7-8e1e-fb20a8c26daa"
+            },
+            {
+              "name": "Delete an Event Schema",
+              "id": "b756a1f9-d8ff-420a-b643-493773bbce91",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/event_schema/:event_schema_name",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "event_schema",
+                    ":event_schema_name"
+                  ],
+                  "variable": [
+                    {
+                      "id": "38eeddfc-c0db-4a47-a212-66539e84177c",
+                      "key": "event_schema_name",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "To delete(archive) an event schema, you\u2019re required to archive associated active usage meters if any."
+              },
+              "response": [
+                {
+                  "id": "6311627a-8ef6-44f7-bf57-fdf627e12f89",
+                  "name": "OK",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/event_schema/:event_schema_name",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "event_schema",
+                        ":event_schema_name"
+                      ],
+                      "variable": [
+                        {
+                          "key": "event_schema_name"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"success\": \"<boolean>\"\n}",
+                  "createdAt": "2026-07-28T03:15:31.000Z",
+                  "updatedAt": "2026-07-28T03:15:31.000Z",
+                  "uid": "35240-6311627a-8ef6-44f7-bf57-fdf627e12f89"
+                },
+                {
+                  "id": "544e5d86-185d-4405-bd4f-77da9694a19c",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/event_schema/:event_schema_name",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "event_schema",
+                        ":event_schema_name"
+                      ],
+                      "variable": [
+                        {
+                          "key": "event_schema_name"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:15:31.000Z",
+                  "updatedAt": "2026-07-28T03:15:31.000Z",
+                  "uid": "35240-544e5d86-185d-4405-bd4f-77da9694a19c"
+                },
+                {
+                  "id": "1fe907f4-7718-4382-a7c1-4a2fa20ea10d",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/event_schema/:event_schema_name",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "event_schema",
+                        ":event_schema_name"
+                      ],
+                      "variable": [
+                        {
+                          "key": "event_schema_name"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:15:31.000Z",
+                  "updatedAt": "2026-07-28T03:15:31.000Z",
+                  "uid": "35240-1fe907f4-7718-4382-a7c1-4a2fa20ea10d"
+                },
+                {
+                  "id": "df9fed08-c6f5-4cb9-8bcc-a892efe2c75c",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/event_schema/:event_schema_name",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "event_schema",
+                        ":event_schema_name"
+                      ],
+                      "variable": [
+                        {
+                          "key": "event_schema_name"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:15:31.000Z",
+                  "updatedAt": "2026-07-28T03:15:31.000Z",
+                  "uid": "35240-df9fed08-c6f5-4cb9-8bcc-a892efe2c75c"
+                },
+                {
+                  "id": "f7d391d9-d862-4d29-8035-f6c2d6f1908c",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/event_schema/:event_schema_name",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "event_schema",
+                        ":event_schema_name"
+                      ],
+                      "variable": [
+                        {
+                          "key": "event_schema_name"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:15:31.000Z",
+                  "updatedAt": "2026-07-28T03:15:31.000Z",
+                  "uid": "35240-f7d391d9-d862-4d29-8035-f6c2d6f1908c"
+                },
+                {
+                  "id": "0f2c95f8-0bea-4168-ae6a-28d034adce93",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/event_schema/:event_schema_name",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "event_schema",
+                        ":event_schema_name"
+                      ],
+                      "variable": [
+                        {
+                          "key": "event_schema_name"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:15:31.000Z",
+                  "updatedAt": "2026-07-28T03:15:31.000Z",
+                  "uid": "35240-0f2c95f8-0bea-4168-ae6a-28d034adce93"
+                },
+                {
+                  "id": "32e57d0a-09ae-4c69-a340-6e5b2e13c024",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/event_schema/:event_schema_name",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "event_schema",
+                        ":event_schema_name"
+                      ],
+                      "variable": [
+                        {
+                          "key": "event_schema_name"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:15:31.000Z",
+                  "updatedAt": "2026-07-28T03:15:31.000Z",
+                  "uid": "35240-32e57d0a-09ae-4c69-a340-6e5b2e13c024"
+                }
+              ],
+              "createdAt": "2026-07-28T03:15:31.000Z",
+              "updatedAt": "2026-07-28T03:15:31.000Z",
+              "uid": "35240-b756a1f9-d8ff-420a-b643-493773bbce91"
+            }
+          ],
+          "id": "f6e45ba6-ba27-4dc9-bf5b-1aa40b4a4931",
+          "createdAt": "2026-07-28T03:15:31.000Z",
+          "updatedAt": "2026-07-28T03:15:31.000Z",
+          "uid": "35240-f6e45ba6-ba27-4dc9-bf5b-1aa40b4a4931"
+        },
+        {
+          "name": "Create an Event Schema",
+          "id": "73d3bb83-9e70-4f0d-a063-d02beaa69f22",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"V\\tBX\u200aJ\",\n  \"attributes\": [\n    {\n      \"name\": \"\u00a0E\u00a0\",\n      \"defaultUnit\": \"<string>\"\n    },\n    {\n      \"name\": \"bW\u2006f7Y\u2006\",\n      \"defaultUnit\": \"<string>\"\n    }\n  ],\n  \"dimensions\": [\n    {\n      \"name\": \"sG\"\n    },\n    {\n      \"name\": \"ifz6x4\"\n    }\n  ],\n  \"description\": \"<string>\",\n  \"enrichments\": {\n    \"fields\": [\n      {\n        \"name\": \"<string>\",\n        \"type\": \"ATTRIBUTE\",\n        \"enrichmentType\": \"JSON_LOGIC_FROM_DEPENDENCY\",\n        \"value\": \"<string>\",\n        \"order\": \"<integer>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"type\": \"ATTRIBUTE\",\n        \"enrichmentType\": \"JSON_LOGIC\",\n        \"value\": \"<string>\",\n        \"order\": \"<integer>\"\n      }\n    ],\n    \"dependencies\": [\n      {\n        \"type\": \"SETTING\",\n        \"key\": \"<string>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"type\": \"SETTING\",\n        \"key\": \"<string>\",\n        \"name\": \"<string>\"\n      }\n    ]\n  },\n  \"filterFields\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"eventIdTemplate\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/event_schema",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "event_schema"
+              ]
+            },
+            "description": "Create an event schema with attributes and dimensions to process events."
+          },
+          "response": [
+            {
+              "id": "f990061b-c071-4b3e-b041-1eb6a6ffb253",
+              "name": "Response for Create and Get event schema requests",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"V\\tBX\u200aJ\",\n  \"attributes\": [\n    {\n      \"name\": \"\u00a0E\u00a0\",\n      \"defaultUnit\": \"<string>\"\n    },\n    {\n      \"name\": \"bW\u2006f7Y\u2006\",\n      \"defaultUnit\": \"<string>\"\n    }\n  ],\n  \"dimensions\": [\n    {\n      \"name\": \"sG\"\n    },\n    {\n      \"name\": \"ifz6x4\"\n    }\n  ],\n  \"description\": \"<string>\",\n  \"enrichments\": {\n    \"fields\": [\n      {\n        \"name\": \"<string>\",\n        \"type\": \"ATTRIBUTE\",\n        \"enrichmentType\": \"JSON_LOGIC_FROM_DEPENDENCY\",\n        \"value\": \"<string>\",\n        \"order\": \"<integer>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"type\": \"ATTRIBUTE\",\n        \"enrichmentType\": \"JSON_LOGIC\",\n        \"value\": \"<string>\",\n        \"order\": \"<integer>\"\n      }\n    ],\n    \"dependencies\": [\n      {\n        \"type\": \"SETTING\",\n        \"key\": \"<string>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"type\": \"SETTING\",\n        \"key\": \"<string>\",\n        \"name\": \"<string>\"\n      }\n    ]\n  },\n  \"filterFields\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"eventIdTemplate\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/event_schema",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "event_schema"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"name\": \"ti_4C\u2002\u16804\",\n  \"version\": \"<integer>\",\n  \"description\": \"<string>\",\n  \"status\": \"ACTIVE\",\n  \"attributes\": [\n    {\n      \"name\": \"\u2006xP0gENwS\u2006\",\n      \"defaultUnit\": \"<string>\"\n    },\n    {\n      \"name\": \"a\\f\\t\u2000\",\n      \"defaultUnit\": \"<string>\"\n    }\n  ],\n  \"dimensions\": [\n    {\n      \"name\": \"9\u2001A\u2000dit\"\n    },\n    {\n      \"name\": \"9\\tLh\ufeffuJ\u2006\u2006\u202f\"\n    }\n  ],\n  \"filterFields\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"featureDetails\": {\n    \"featureId\": \"<string>\",\n    \"attributeName\": \"<string>\"\n  },\n  \"enrichments\": {\n    \"fields\": [\n      {\n        \"name\": \"<string>\",\n        \"type\": \"DIMENSION\",\n        \"enrichmentType\": \"JSON_LOGIC_FROM_DEPENDENCY\",\n        \"value\": \"<string>\",\n        \"order\": \"<integer>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"type\": \"DIMENSION\",\n        \"enrichmentType\": \"JSON_LOGIC_FROM_DEPENDENCY\",\n        \"value\": \"<string>\",\n        \"order\": \"<integer>\"\n      }\n    ],\n    \"dependencies\": [\n      {\n        \"type\": \"SETTING\",\n        \"key\": \"<string>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"type\": \"SETTING\",\n        \"key\": \"<string>\",\n        \"name\": \"<string>\"\n      }\n    ]\n  },\n  \"eventIdTemplate\": \"<string>\",\n  \"eventLevelRevenue\": \"<boolean>\",\n  \"createdAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\"\n}",
+              "createdAt": "2026-07-28T03:15:31.000Z",
+              "updatedAt": "2026-07-28T03:15:31.000Z",
+              "uid": "35240-f990061b-c071-4b3e-b041-1eb6a6ffb253"
+            },
+            {
+              "id": "803d79c2-4599-4b1b-8ce6-507442218b12",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"V\\tBX\u200aJ\",\n  \"attributes\": [\n    {\n      \"name\": \"\u00a0E\u00a0\",\n      \"defaultUnit\": \"<string>\"\n    },\n    {\n      \"name\": \"bW\u2006f7Y\u2006\",\n      \"defaultUnit\": \"<string>\"\n    }\n  ],\n  \"dimensions\": [\n    {\n      \"name\": \"sG\"\n    },\n    {\n      \"name\": \"ifz6x4\"\n    }\n  ],\n  \"description\": \"<string>\",\n  \"enrichments\": {\n    \"fields\": [\n      {\n        \"name\": \"<string>\",\n        \"type\": \"ATTRIBUTE\",\n        \"enrichmentType\": \"JSON_LOGIC_FROM_DEPENDENCY\",\n        \"value\": \"<string>\",\n        \"order\": \"<integer>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"type\": \"ATTRIBUTE\",\n        \"enrichmentType\": \"JSON_LOGIC\",\n        \"value\": \"<string>\",\n        \"order\": \"<integer>\"\n      }\n    ],\n    \"dependencies\": [\n      {\n        \"type\": \"SETTING\",\n        \"key\": \"<string>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"type\": \"SETTING\",\n        \"key\": \"<string>\",\n        \"name\": \"<string>\"\n      }\n    ]\n  },\n  \"filterFields\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"eventIdTemplate\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/event_schema",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "event_schema"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:15:31.000Z",
+              "updatedAt": "2026-07-28T03:15:31.000Z",
+              "uid": "35240-803d79c2-4599-4b1b-8ce6-507442218b12"
+            },
+            {
+              "id": "1be31603-7e66-456c-815d-8ea13d59e244",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"V\\tBX\u200aJ\",\n  \"attributes\": [\n    {\n      \"name\": \"\u00a0E\u00a0\",\n      \"defaultUnit\": \"<string>\"\n    },\n    {\n      \"name\": \"bW\u2006f7Y\u2006\",\n      \"defaultUnit\": \"<string>\"\n    }\n  ],\n  \"dimensions\": [\n    {\n      \"name\": \"sG\"\n    },\n    {\n      \"name\": \"ifz6x4\"\n    }\n  ],\n  \"description\": \"<string>\",\n  \"enrichments\": {\n    \"fields\": [\n      {\n        \"name\": \"<string>\",\n        \"type\": \"ATTRIBUTE\",\n        \"enrichmentType\": \"JSON_LOGIC_FROM_DEPENDENCY\",\n        \"value\": \"<string>\",\n        \"order\": \"<integer>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"type\": \"ATTRIBUTE\",\n        \"enrichmentType\": \"JSON_LOGIC\",\n        \"value\": \"<string>\",\n        \"order\": \"<integer>\"\n      }\n    ],\n    \"dependencies\": [\n      {\n        \"type\": \"SETTING\",\n        \"key\": \"<string>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"type\": \"SETTING\",\n        \"key\": \"<string>\",\n        \"name\": \"<string>\"\n      }\n    ]\n  },\n  \"filterFields\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"eventIdTemplate\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/event_schema",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "event_schema"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:15:31.000Z",
+              "updatedAt": "2026-07-28T03:15:31.000Z",
+              "uid": "35240-1be31603-7e66-456c-815d-8ea13d59e244"
+            },
+            {
+              "id": "b7c11e87-3d09-4acc-844e-584d142244f3",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"V\\tBX\u200aJ\",\n  \"attributes\": [\n    {\n      \"name\": \"\u00a0E\u00a0\",\n      \"defaultUnit\": \"<string>\"\n    },\n    {\n      \"name\": \"bW\u2006f7Y\u2006\",\n      \"defaultUnit\": \"<string>\"\n    }\n  ],\n  \"dimensions\": [\n    {\n      \"name\": \"sG\"\n    },\n    {\n      \"name\": \"ifz6x4\"\n    }\n  ],\n  \"description\": \"<string>\",\n  \"enrichments\": {\n    \"fields\": [\n      {\n        \"name\": \"<string>\",\n        \"type\": \"ATTRIBUTE\",\n        \"enrichmentType\": \"JSON_LOGIC_FROM_DEPENDENCY\",\n        \"value\": \"<string>\",\n        \"order\": \"<integer>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"type\": \"ATTRIBUTE\",\n        \"enrichmentType\": \"JSON_LOGIC\",\n        \"value\": \"<string>\",\n        \"order\": \"<integer>\"\n      }\n    ],\n    \"dependencies\": [\n      {\n        \"type\": \"SETTING\",\n        \"key\": \"<string>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"type\": \"SETTING\",\n        \"key\": \"<string>\",\n        \"name\": \"<string>\"\n      }\n    ]\n  },\n  \"filterFields\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"eventIdTemplate\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/event_schema",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "event_schema"
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:15:31.000Z",
+              "updatedAt": "2026-07-28T03:15:31.000Z",
+              "uid": "35240-b7c11e87-3d09-4acc-844e-584d142244f3"
+            },
+            {
+              "id": "427dce23-5754-48e8-85c3-688ab02a75bd",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"V\\tBX\u200aJ\",\n  \"attributes\": [\n    {\n      \"name\": \"\u00a0E\u00a0\",\n      \"defaultUnit\": \"<string>\"\n    },\n    {\n      \"name\": \"bW\u2006f7Y\u2006\",\n      \"defaultUnit\": \"<string>\"\n    }\n  ],\n  \"dimensions\": [\n    {\n      \"name\": \"sG\"\n    },\n    {\n      \"name\": \"ifz6x4\"\n    }\n  ],\n  \"description\": \"<string>\",\n  \"enrichments\": {\n    \"fields\": [\n      {\n        \"name\": \"<string>\",\n        \"type\": \"ATTRIBUTE\",\n        \"enrichmentType\": \"JSON_LOGIC_FROM_DEPENDENCY\",\n        \"value\": \"<string>\",\n        \"order\": \"<integer>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"type\": \"ATTRIBUTE\",\n        \"enrichmentType\": \"JSON_LOGIC\",\n        \"value\": \"<string>\",\n        \"order\": \"<integer>\"\n      }\n    ],\n    \"dependencies\": [\n      {\n        \"type\": \"SETTING\",\n        \"key\": \"<string>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"type\": \"SETTING\",\n        \"key\": \"<string>\",\n        \"name\": \"<string>\"\n      }\n    ]\n  },\n  \"filterFields\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"eventIdTemplate\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/event_schema",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "event_schema"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:15:31.000Z",
+              "updatedAt": "2026-07-28T03:15:31.000Z",
+              "uid": "35240-427dce23-5754-48e8-85c3-688ab02a75bd"
+            },
+            {
+              "id": "dab9e5bd-f11d-4132-b497-1c87ee443e8d",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"V\\tBX\u200aJ\",\n  \"attributes\": [\n    {\n      \"name\": \"\u00a0E\u00a0\",\n      \"defaultUnit\": \"<string>\"\n    },\n    {\n      \"name\": \"bW\u2006f7Y\u2006\",\n      \"defaultUnit\": \"<string>\"\n    }\n  ],\n  \"dimensions\": [\n    {\n      \"name\": \"sG\"\n    },\n    {\n      \"name\": \"ifz6x4\"\n    }\n  ],\n  \"description\": \"<string>\",\n  \"enrichments\": {\n    \"fields\": [\n      {\n        \"name\": \"<string>\",\n        \"type\": \"ATTRIBUTE\",\n        \"enrichmentType\": \"JSON_LOGIC_FROM_DEPENDENCY\",\n        \"value\": \"<string>\",\n        \"order\": \"<integer>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"type\": \"ATTRIBUTE\",\n        \"enrichmentType\": \"JSON_LOGIC\",\n        \"value\": \"<string>\",\n        \"order\": \"<integer>\"\n      }\n    ],\n    \"dependencies\": [\n      {\n        \"type\": \"SETTING\",\n        \"key\": \"<string>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"type\": \"SETTING\",\n        \"key\": \"<string>\",\n        \"name\": \"<string>\"\n      }\n    ]\n  },\n  \"filterFields\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"eventIdTemplate\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/event_schema",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "event_schema"
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:15:31.000Z",
+              "updatedAt": "2026-07-28T03:15:31.000Z",
+              "uid": "35240-dab9e5bd-f11d-4132-b497-1c87ee443e8d"
+            },
+            {
+              "id": "e0416616-b1c5-434d-bee2-eed865b7c804",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"V\\tBX\u200aJ\",\n  \"attributes\": [\n    {\n      \"name\": \"\u00a0E\u00a0\",\n      \"defaultUnit\": \"<string>\"\n    },\n    {\n      \"name\": \"bW\u2006f7Y\u2006\",\n      \"defaultUnit\": \"<string>\"\n    }\n  ],\n  \"dimensions\": [\n    {\n      \"name\": \"sG\"\n    },\n    {\n      \"name\": \"ifz6x4\"\n    }\n  ],\n  \"description\": \"<string>\",\n  \"enrichments\": {\n    \"fields\": [\n      {\n        \"name\": \"<string>\",\n        \"type\": \"ATTRIBUTE\",\n        \"enrichmentType\": \"JSON_LOGIC_FROM_DEPENDENCY\",\n        \"value\": \"<string>\",\n        \"order\": \"<integer>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"type\": \"ATTRIBUTE\",\n        \"enrichmentType\": \"JSON_LOGIC\",\n        \"value\": \"<string>\",\n        \"order\": \"<integer>\"\n      }\n    ],\n    \"dependencies\": [\n      {\n        \"type\": \"SETTING\",\n        \"key\": \"<string>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"type\": \"SETTING\",\n        \"key\": \"<string>\",\n        \"name\": \"<string>\"\n      }\n    ]\n  },\n  \"filterFields\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"eventIdTemplate\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/event_schema",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "event_schema"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:15:31.000Z",
+              "updatedAt": "2026-07-28T03:15:31.000Z",
+              "uid": "35240-e0416616-b1c5-434d-bee2-eed865b7c804"
+            }
+          ],
+          "createdAt": "2026-07-28T03:15:31.000Z",
+          "updatedAt": "2026-07-28T03:15:31.000Z",
+          "uid": "35240-73d3bb83-9e70-4f0d-a063-d02beaa69f22"
+        },
+        {
+          "name": "List Event Schemas",
+          "id": "51ddc320-569e-4b7a-8511-1361006616e0",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/event_schema?status=INACTIVE&nextToken=<string>&pageSize=<number>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "event_schema"
+              ],
+              "query": [
+                {
+                  "description": "Filter by provided status",
+                  "key": "status",
+                  "value": "INACTIVE"
+                },
+                {
+                  "key": "nextToken",
+                  "value": "<string>"
+                },
+                {
+                  "key": "pageSize",
+                  "value": "<number>"
+                }
+              ]
+            },
+            "description": "Returns a list of event schema with pagination."
+          },
+          "response": [
+            {
+              "id": "7bf6ec4d-7187-491c-aff2-9e9057658fde",
+              "name": "Response for list events request",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/event_schema?status=INACTIVE&nextToken=<string>&pageSize=<number>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "event_schema"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter by provided status",
+                      "key": "status",
+                      "value": "INACTIVE"
+                    },
+                    {
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<number>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"data\": [\n    {\n      \"name\": \"d51b\ufeff\\r\u2001cD\",\n      \"version\": \"<integer>\",\n      \"description\": \"<string>\",\n      \"status\": \"ACTIVE\",\n      \"attributes\": [\n        {\n          \"name\": \"\",\n          \"defaultUnit\": \"<string>\"\n        },\n        {\n          \"name\": \"pz\u3000\",\n          \"defaultUnit\": \"<string>\"\n        }\n      ],\n      \"dimensions\": [\n        {\n          \"name\": \"\u205f\u200a\u200ajrQc\\r\"\n        },\n        {\n          \"name\": \"X\\tLjxL\"\n        }\n      ],\n      \"filterFields\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"featureDetails\": {\n        \"featureId\": \"<string>\",\n        \"attributeName\": \"<string>\"\n      },\n      \"enrichments\": {\n        \"fields\": [\n          {\n            \"name\": \"<string>\",\n            \"type\": \"DIMENSION\",\n            \"enrichmentType\": \"JSON_LOGIC\",\n            \"value\": \"<string>\",\n            \"order\": \"<integer>\"\n          },\n          {\n            \"name\": \"<string>\",\n            \"type\": \"DIMENSION\",\n            \"enrichmentType\": \"JSON_LOGIC\",\n            \"value\": \"<string>\",\n            \"order\": \"<integer>\"\n          }\n        ],\n        \"dependencies\": [\n          {\n            \"type\": \"SETTING\",\n            \"key\": \"<string>\",\n            \"name\": \"<string>\"\n          },\n          {\n            \"type\": \"SETTING\",\n            \"key\": \"<string>\",\n            \"name\": \"<string>\"\n          }\n        ]\n      },\n      \"eventIdTemplate\": \"<string>\",\n      \"eventLevelRevenue\": \"<boolean>\",\n      \"createdAt\": \"<dateTime>\",\n      \"updatedAt\": \"<dateTime>\",\n      \"usageMetersCount\": \"<integer>\"\n    },\n    {\n      \"name\": \"\\t5\u2005N5\\tJk\u2007\",\n      \"version\": \"<integer>\",\n      \"description\": \"<string>\",\n      \"status\": \"INACTIVE\",\n      \"attributes\": [\n        {\n          \"name\": \" \u2004Dbz\u20094\",\n          \"defaultUnit\": \"<string>\"\n        },\n        {\n          \"name\": \"5\u200a\u00a0\u2029r\",\n          \"defaultUnit\": \"<string>\"\n        }\n      ],\n      \"dimensions\": [\n        {\n          \"name\": \"S9O\u2001dawq\"\n        },\n        {\n          \"name\": \"D_b\u2008\u200a-\u20289y\"\n        }\n      ],\n      \"filterFields\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"featureDetails\": {\n        \"featureId\": \"<string>\",\n        \"attributeName\": \"<string>\"\n      },\n      \"enrichments\": {\n        \"fields\": [\n          {\n            \"name\": \"<string>\",\n            \"type\": \"ATTRIBUTE\",\n            \"enrichmentType\": \"JSON_LOGIC\",\n            \"value\": \"<string>\",\n            \"order\": \"<integer>\"\n          },\n          {\n            \"name\": \"<string>\",\n            \"type\": \"DIMENSION\",\n            \"enrichmentType\": \"VALUE\",\n            \"value\": \"<string>\",\n            \"order\": \"<integer>\"\n          }\n        ],\n        \"dependencies\": [\n          {\n            \"type\": \"SETTING\",\n            \"key\": \"<string>\",\n            \"name\": \"<string>\"\n          },\n          {\n            \"type\": \"SETTING\",\n            \"key\": \"<string>\",\n            \"name\": \"<string>\"\n          }\n        ]\n      },\n      \"eventIdTemplate\": \"<string>\",\n      \"eventLevelRevenue\": \"<boolean>\",\n      \"createdAt\": \"<dateTime>\",\n      \"updatedAt\": \"<dateTime>\",\n      \"usageMetersCount\": \"<integer>\"\n    }\n  ],\n  \"nextToken\": \"<string>\",\n  \"context\": {\n    \"pageSize\": \"<integer>\",\n    \"sortOrder\": \"DESC\"\n  }\n}",
+              "createdAt": "2026-07-28T03:15:31.000Z",
+              "updatedAt": "2026-07-28T03:15:31.000Z",
+              "uid": "35240-7bf6ec4d-7187-491c-aff2-9e9057658fde"
+            },
+            {
+              "id": "5f0c3f3f-8e2e-42f4-a3ce-21614959aa57",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/event_schema?status=INACTIVE&nextToken=<string>&pageSize=<number>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "event_schema"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter by provided status",
+                      "key": "status",
+                      "value": "INACTIVE"
+                    },
+                    {
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<number>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:15:31.000Z",
+              "updatedAt": "2026-07-28T03:15:31.000Z",
+              "uid": "35240-5f0c3f3f-8e2e-42f4-a3ce-21614959aa57"
+            },
+            {
+              "id": "ed098112-431f-43aa-a395-1a0a2c30a714",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/event_schema?status=INACTIVE&nextToken=<string>&pageSize=<number>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "event_schema"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter by provided status",
+                      "key": "status",
+                      "value": "INACTIVE"
+                    },
+                    {
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<number>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:15:31.000Z",
+              "updatedAt": "2026-07-28T03:15:31.000Z",
+              "uid": "35240-ed098112-431f-43aa-a395-1a0a2c30a714"
+            },
+            {
+              "id": "7288cf29-98f1-4910-84a0-6c6fa7ddb230",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/event_schema?status=INACTIVE&nextToken=<string>&pageSize=<number>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "event_schema"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter by provided status",
+                      "key": "status",
+                      "value": "INACTIVE"
+                    },
+                    {
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<number>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:15:31.000Z",
+              "updatedAt": "2026-07-28T03:15:31.000Z",
+              "uid": "35240-7288cf29-98f1-4910-84a0-6c6fa7ddb230"
+            },
+            {
+              "id": "48609dc5-509f-4a7c-9a5b-e18371ce2272",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/event_schema?status=INACTIVE&nextToken=<string>&pageSize=<number>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "event_schema"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter by provided status",
+                      "key": "status",
+                      "value": "INACTIVE"
+                    },
+                    {
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<number>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:15:31.000Z",
+              "updatedAt": "2026-07-28T03:15:31.000Z",
+              "uid": "35240-48609dc5-509f-4a7c-9a5b-e18371ce2272"
+            },
+            {
+              "id": "6b0180c4-cc14-4641-9922-9bd36736efb7",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/event_schema?status=INACTIVE&nextToken=<string>&pageSize=<number>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "event_schema"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter by provided status",
+                      "key": "status",
+                      "value": "INACTIVE"
+                    },
+                    {
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<number>"
+                    }
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:15:31.000Z",
+              "updatedAt": "2026-07-28T03:15:31.000Z",
+              "uid": "35240-6b0180c4-cc14-4641-9922-9bd36736efb7"
+            },
+            {
+              "id": "42a6dc82-57a1-4e9f-a7a7-f9220784623e",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/event_schema?status=INACTIVE&nextToken=<string>&pageSize=<number>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "event_schema"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter by provided status",
+                      "key": "status",
+                      "value": "INACTIVE"
+                    },
+                    {
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<number>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:15:31.000Z",
+              "updatedAt": "2026-07-28T03:15:31.000Z",
+              "uid": "35240-42a6dc82-57a1-4e9f-a7a7-f9220784623e"
+            }
+          ],
+          "createdAt": "2026-07-28T03:15:31.000Z",
+          "updatedAt": "2026-07-28T03:15:31.000Z",
+          "uid": "35240-51ddc320-569e-4b7a-8511-1361006616e0"
+        }
+      ],
+      "id": "c2488257-7ec7-46ac-9445-bdb7a20dfa06",
+      "createdAt": "2026-07-28T03:15:31.000Z",
+      "updatedAt": "2026-07-28T03:15:31.000Z",
+      "uid": "35240-c2488257-7ec7-46ac-9445-bdb7a20dfa06"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.togai.com/"
+    }
+  ]
+}

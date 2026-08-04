@@ -1,0 +1,1624 @@
+{
+  "info": {
+    "_postman_id": "85f16977-85f4-4d4c-959b-99f5e4144bff",
+    "name": "Togai Apis Accounts Wallet API",
+    "description": "APIs for Togai App\n\nContact Support:\n Email: engg@togai.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:17:04.000Z",
+    "updatedAt": "2026-07-28T03:17:04.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-85f16977-85f4-4d4c-959b-99f5e4144bff"
+  },
+  "item": [
+    {
+      "name": "accounts",
+      "item": [
+        {
+          "name": "{account_id}",
+          "item": [
+            {
+              "name": "wallet_topup",
+              "item": [
+                {
+                  "name": "Top-up Wallet for an Account",
+                  "id": "40839278-2d55-4263-aebd-0958cab10330",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"topupAmount\": \"<number>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/accounts/:account_id/wallet_topup",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "accounts",
+                        ":account_id",
+                        "wallet_topup"
+                      ],
+                      "variable": [
+                        {
+                          "id": "29387754-60a1-43f1-90fd-55a410e4ed23",
+                          "key": "account_id",
+                          "value": "<string>",
+                          "description": "(Required) account_id corresponding to an account"
+                        }
+                      ]
+                    },
+                    "description": "Top-up wallet for an account"
+                  },
+                  "response": [
+                    {
+                      "id": "1c0e07e9-c484-4587-96fd-66c26650300b",
+                      "name": "Response for Credit Balance Request",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"topupAmount\": \"<number>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:account_id/wallet_topup",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":account_id",
+                            "wallet_topup"
+                          ],
+                          "variable": [
+                            {
+                              "key": "account_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"effectiveFrom\": \"<dateTime>\",\n  \"status\": \"ACTIVE\",\n  \"customerId\": \"<string>\",\n  \"balance\": \"<number>\",\n  \"creditUnit\": \"<string>\",\n  \"externalId\": \"<string>\",\n  \"holdAmount\": \"<number>\",\n  \"createdAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\",\n  \"metadata\": {\n    \"deserunt14\": \"proident eu ut et\",\n    \"ex_5\": \"nisi des\",\n    \"dolor_3\": 64666918\n  }\n}",
+                      "createdAt": "2026-07-28T03:17:04.000Z",
+                      "updatedAt": "2026-07-28T03:17:04.000Z",
+                      "uid": "35240-1c0e07e9-c484-4587-96fd-66c26650300b"
+                    },
+                    {
+                      "id": "4b0f9fb9-0090-427e-ac69-d946dc74c415",
+                      "name": "Error response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"topupAmount\": \"<number>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:account_id/wallet_topup",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":account_id",
+                            "wallet_topup"
+                          ],
+                          "variable": [
+                            {
+                              "key": "account_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:17:04.000Z",
+                      "updatedAt": "2026-07-28T03:17:04.000Z",
+                      "uid": "35240-4b0f9fb9-0090-427e-ac69-d946dc74c415"
+                    },
+                    {
+                      "id": "b39ba5e8-40a1-4151-a53b-d393ec96b0ac",
+                      "name": "Error response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"topupAmount\": \"<number>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:account_id/wallet_topup",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":account_id",
+                            "wallet_topup"
+                          ],
+                          "variable": [
+                            {
+                              "key": "account_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:17:04.000Z",
+                      "updatedAt": "2026-07-28T03:17:04.000Z",
+                      "uid": "35240-b39ba5e8-40a1-4151-a53b-d393ec96b0ac"
+                    },
+                    {
+                      "id": "5750fbb3-3e90-4b42-adb7-11adbf9d4911",
+                      "name": "Error response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"topupAmount\": \"<number>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:account_id/wallet_topup",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":account_id",
+                            "wallet_topup"
+                          ],
+                          "variable": [
+                            {
+                              "key": "account_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:17:04.000Z",
+                      "updatedAt": "2026-07-28T03:17:04.000Z",
+                      "uid": "35240-5750fbb3-3e90-4b42-adb7-11adbf9d4911"
+                    },
+                    {
+                      "id": "2a4b83fa-1a49-4208-ac12-384480de1a69",
+                      "name": "Error response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"topupAmount\": \"<number>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:account_id/wallet_topup",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":account_id",
+                            "wallet_topup"
+                          ],
+                          "variable": [
+                            {
+                              "key": "account_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:17:04.000Z",
+                      "updatedAt": "2026-07-28T03:17:04.000Z",
+                      "uid": "35240-2a4b83fa-1a49-4208-ac12-384480de1a69"
+                    },
+                    {
+                      "id": "67d7fcbb-fae5-49a6-be7f-c8dd15a7fca8",
+                      "name": "Error response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"topupAmount\": \"<number>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:account_id/wallet_topup",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":account_id",
+                            "wallet_topup"
+                          ],
+                          "variable": [
+                            {
+                              "key": "account_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:17:04.000Z",
+                      "updatedAt": "2026-07-28T03:17:04.000Z",
+                      "uid": "35240-67d7fcbb-fae5-49a6-be7f-c8dd15a7fca8"
+                    },
+                    {
+                      "id": "60d520cd-7e9e-4587-83bc-d67fdc3bd63f",
+                      "name": "Error response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"topupAmount\": \"<number>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:account_id/wallet_topup",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":account_id",
+                            "wallet_topup"
+                          ],
+                          "variable": [
+                            {
+                              "key": "account_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:17:04.000Z",
+                      "updatedAt": "2026-07-28T03:17:04.000Z",
+                      "uid": "35240-60d520cd-7e9e-4587-83bc-d67fdc3bd63f"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:17:04.000Z",
+                  "updatedAt": "2026-07-28T03:17:04.000Z",
+                  "uid": "35240-40839278-2d55-4263-aebd-0958cab10330"
+                }
+              ],
+              "id": "083adf48-6ca1-4635-8f21-56417484b97b",
+              "createdAt": "2026-07-28T03:17:04.000Z",
+              "updatedAt": "2026-07-28T03:17:04.000Z",
+              "uid": "35240-083adf48-6ca1-4635-8f21-56417484b97b"
+            },
+            {
+              "name": "wallet",
+              "item": [
+                {
+                  "name": "entries",
+                  "item": [
+                    {
+                      "name": "Wallet Entries for Account",
+                      "id": "f8cd961c-fa3a-45f3-8976-88b55137ab21",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:account_id/wallet/entries?nextToken=<string>&pageSize=<integer>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":account_id",
+                            "wallet",
+                            "entries"
+                          ],
+                          "query": [
+                            {
+                              "description": "Pagination token used as a marker to get records from next page.",
+                              "key": "nextToken",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Maximum page size expected by client to return the record list. \n\n NOTE: Max page size cannot be more than 50. Also 50 is the default page size if no value is provided.",
+                              "key": "pageSize",
+                              "value": "<integer>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "eb6b55c9-eba1-4fe0-99cd-4424a201d104",
+                              "key": "account_id",
+                              "value": "<string>",
+                              "description": "(Required) account_id corresponding to an account"
+                            }
+                          ]
+                        },
+                        "description": "Wallet entries for Account"
+                      },
+                      "response": [
+                        {
+                          "id": "538f5612-6b78-4cdb-a53e-2ef9600f9ed8",
+                          "name": "Response for Credit Balance Request",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:account_id/wallet/entries?nextToken=<string>&pageSize=<integer>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":account_id",
+                                "wallet",
+                                "entries"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Pagination token used as a marker to get records from next page.",
+                                  "key": "nextToken",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Maximum page size expected by client to return the record list. \n\n NOTE: Max page size cannot be more than 50. Also 50 is the default page size if no value is provided.",
+                                  "key": "pageSize",
+                                  "value": "<integer>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "account_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"walletId\": \"<string>\",\n      \"transactionType\": \"CREDITED\",\n      \"status\": \"ON_HOLD\",\n      \"amount\": \"<number>\",\n      \"createdAt\": \"<dateTime>\",\n      \"closingBalance\": \"<number>\",\n      \"description\": \"<string>\",\n      \"entityId\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"walletId\": \"<string>\",\n      \"transactionType\": \"DEBITED\",\n      \"status\": \"ON_HOLD\",\n      \"amount\": \"<number>\",\n      \"createdAt\": \"<dateTime>\",\n      \"closingBalance\": \"<number>\",\n      \"description\": \"<string>\",\n      \"entityId\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"walletId\": \"<string>\",\n      \"transactionType\": \"DEBITED\",\n      \"status\": \"ON_HOLD\",\n      \"amount\": \"<number>\",\n      \"createdAt\": \"<dateTime>\",\n      \"closingBalance\": \"<number>\",\n      \"description\": \"<string>\",\n      \"entityId\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"walletId\": \"<string>\",\n      \"transactionType\": \"DEBITED\",\n      \"status\": \"COMPLETED\",\n      \"amount\": \"<number>\",\n      \"createdAt\": \"<dateTime>\",\n      \"closingBalance\": \"<number>\",\n      \"description\": \"<string>\",\n      \"entityId\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"walletId\": \"<string>\",\n      \"transactionType\": \"CREDITED\",\n      \"status\": \"ON_HOLD\",\n      \"amount\": \"<number>\",\n      \"createdAt\": \"<dateTime>\",\n      \"closingBalance\": \"<number>\",\n      \"description\": \"<string>\",\n      \"entityId\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"walletId\": \"<string>\",\n      \"transactionType\": \"DEBITED\",\n      \"status\": \"COMPLETED\",\n      \"amount\": \"<number>\",\n      \"createdAt\": \"<dateTime>\",\n      \"closingBalance\": \"<number>\",\n      \"description\": \"<string>\",\n      \"entityId\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"walletId\": \"<string>\",\n      \"transactionType\": \"CREDITED\",\n      \"status\": \"ON_HOLD\",\n      \"amount\": \"<number>\",\n      \"createdAt\": \"<dateTime>\",\n      \"closingBalance\": \"<number>\",\n      \"description\": \"<string>\",\n      \"entityId\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"walletId\": \"<string>\",\n      \"transactionType\": \"CREDITED\",\n      \"status\": \"ON_HOLD\",\n      \"amount\": \"<number>\",\n      \"createdAt\": \"<dateTime>\",\n      \"closingBalance\": \"<number>\",\n      \"description\": \"<string>\",\n      \"entityId\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"walletId\": \"<string>\",\n      \"transactionType\": \"CREDITED\",\n      \"status\": \"COMPLETED\",\n      \"amount\": \"<number>\",\n      \"createdAt\": \"<dateTime>\",\n      \"closingBalance\": \"<number>\",\n      \"description\": \"<string>\",\n      \"entityId\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"walletId\": \"<string>\",\n      \"transactionType\": \"DEBITED\",\n      \"status\": \"COMPLETED\",\n      \"amount\": \"<number>\",\n      \"createdAt\": \"<dateTime>\",\n      \"closingBalance\": \"<number>\",\n      \"description\": \"<string>\",\n      \"entityId\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"walletId\": \"<string>\",\n      \"transactionType\": \"CREDITED\",\n      \"status\": \"ON_HOLD\",\n      \"amount\": \"<number>\",\n      \"createdAt\": \"<dateTime>\",\n      \"closingBalance\": \"<number>\",\n      \"description\": \"<string>\",\n      \"entityId\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"walletId\": \"<string>\",\n      \"transactionType\": \"CREDITED\",\n      \"status\": \"ON_HOLD\",\n      \"amount\": \"<number>\",\n      \"createdAt\": \"<dateTime>\",\n      \"closingBalance\": \"<number>\",\n      \"description\": \"<string>\",\n      \"entityId\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"walletId\": \"<string>\",\n      \"transactionType\": \"CREDITED\",\n      \"status\": \"COMPLETED\",\n      \"amount\": \"<number>\",\n      \"createdAt\": \"<dateTime>\",\n      \"closingBalance\": \"<number>\",\n      \"description\": \"<string>\",\n      \"entityId\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"walletId\": \"<string>\",\n      \"transactionType\": \"DEBITED\",\n      \"status\": \"ON_HOLD\",\n      \"amount\": \"<number>\",\n      \"createdAt\": \"<dateTime>\",\n      \"closingBalance\": \"<number>\",\n      \"description\": \"<string>\",\n      \"entityId\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"walletId\": \"<string>\",\n      \"transactionType\": \"DEBITED\",\n      \"status\": \"COMPLETED\",\n      \"amount\": \"<number>\",\n      \"createdAt\": \"<dateTime>\",\n      \"closingBalance\": \"<number>\",\n      \"description\": \"<string>\",\n      \"entityId\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"walletId\": \"<string>\",\n      \"transactionType\": \"DEBITED\",\n      \"status\": \"COMPLETED\",\n      \"amount\": \"<number>\",\n      \"createdAt\": \"<dateTime>\",\n      \"closingBalance\": \"<number>\",\n      \"description\": \"<string>\",\n      \"entityId\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"walletId\": \"<string>\",\n      \"transactionType\": \"CREDITED\",\n      \"status\": \"COMPLETED\",\n      \"amount\": \"<number>\",\n      \"createdAt\": \"<dateTime>\",\n      \"closingBalance\": \"<number>\",\n      \"description\": \"<string>\",\n      \"entityId\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"walletId\": \"<string>\",\n      \"transactionType\": \"DEBITED\",\n      \"status\": \"COMPLETED\",\n      \"amount\": \"<number>\",\n      \"createdAt\": \"<dateTime>\",\n      \"closingBalance\": \"<number>\",\n      \"description\": \"<string>\",\n      \"entityId\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"walletId\": \"<string>\",\n      \"transactionType\": \"CREDITED\",\n      \"status\": \"ON_HOLD\",\n      \"amount\": \"<number>\",\n      \"createdAt\": \"<dateTime>\",\n      \"closingBalance\": \"<number>\",\n      \"description\": \"<string>\",\n      \"entityId\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"walletId\": \"<string>\",\n      \"transactionType\": \"CREDITED\",\n      \"status\": \"ON_HOLD\",\n      \"amount\": \"<number>\",\n      \"createdAt\": \"<dateTime>\",\n      \"closingBalance\": \"<number>\",\n      \"description\": \"<string>\",\n      \"entityId\": \"<string>\"\n    }\n  ],\n  \"nextToken\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:17:04.000Z",
+                          "updatedAt": "2026-07-28T03:17:04.000Z",
+                          "uid": "35240-538f5612-6b78-4cdb-a53e-2ef9600f9ed8"
+                        },
+                        {
+                          "id": "83782ac6-e58b-4652-bcdb-ce92f63df7b7",
+                          "name": "Error response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:account_id/wallet/entries?nextToken=<string>&pageSize=<integer>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":account_id",
+                                "wallet",
+                                "entries"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Pagination token used as a marker to get records from next page.",
+                                  "key": "nextToken",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Maximum page size expected by client to return the record list. \n\n NOTE: Max page size cannot be more than 50. Also 50 is the default page size if no value is provided.",
+                                  "key": "pageSize",
+                                  "value": "<integer>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "account_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:17:04.000Z",
+                          "updatedAt": "2026-07-28T03:17:04.000Z",
+                          "uid": "35240-83782ac6-e58b-4652-bcdb-ce92f63df7b7"
+                        },
+                        {
+                          "id": "e421e9fa-ece5-4683-bf72-4bf358f81fce",
+                          "name": "Error response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:account_id/wallet/entries?nextToken=<string>&pageSize=<integer>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":account_id",
+                                "wallet",
+                                "entries"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Pagination token used as a marker to get records from next page.",
+                                  "key": "nextToken",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Maximum page size expected by client to return the record list. \n\n NOTE: Max page size cannot be more than 50. Also 50 is the default page size if no value is provided.",
+                                  "key": "pageSize",
+                                  "value": "<integer>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "account_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:17:04.000Z",
+                          "updatedAt": "2026-07-28T03:17:04.000Z",
+                          "uid": "35240-e421e9fa-ece5-4683-bf72-4bf358f81fce"
+                        },
+                        {
+                          "id": "2e2853eb-d66c-4acb-bce2-5671b9c43ba0",
+                          "name": "Error response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:account_id/wallet/entries?nextToken=<string>&pageSize=<integer>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":account_id",
+                                "wallet",
+                                "entries"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Pagination token used as a marker to get records from next page.",
+                                  "key": "nextToken",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Maximum page size expected by client to return the record list. \n\n NOTE: Max page size cannot be more than 50. Also 50 is the default page size if no value is provided.",
+                                  "key": "pageSize",
+                                  "value": "<integer>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "account_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:17:04.000Z",
+                          "updatedAt": "2026-07-28T03:17:04.000Z",
+                          "uid": "35240-2e2853eb-d66c-4acb-bce2-5671b9c43ba0"
+                        },
+                        {
+                          "id": "f77451d3-78b6-46f1-961a-a0474e7464a0",
+                          "name": "Error response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:account_id/wallet/entries?nextToken=<string>&pageSize=<integer>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":account_id",
+                                "wallet",
+                                "entries"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Pagination token used as a marker to get records from next page.",
+                                  "key": "nextToken",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Maximum page size expected by client to return the record list. \n\n NOTE: Max page size cannot be more than 50. Also 50 is the default page size if no value is provided.",
+                                  "key": "pageSize",
+                                  "value": "<integer>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "account_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:17:04.000Z",
+                          "updatedAt": "2026-07-28T03:17:04.000Z",
+                          "uid": "35240-f77451d3-78b6-46f1-961a-a0474e7464a0"
+                        },
+                        {
+                          "id": "f9bb7ca7-c934-491c-9d7a-ea76114d024f",
+                          "name": "Error response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:account_id/wallet/entries?nextToken=<string>&pageSize=<integer>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":account_id",
+                                "wallet",
+                                "entries"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Pagination token used as a marker to get records from next page.",
+                                  "key": "nextToken",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Maximum page size expected by client to return the record list. \n\n NOTE: Max page size cannot be more than 50. Also 50 is the default page size if no value is provided.",
+                                  "key": "pageSize",
+                                  "value": "<integer>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "account_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:17:04.000Z",
+                          "updatedAt": "2026-07-28T03:17:04.000Z",
+                          "uid": "35240-f9bb7ca7-c934-491c-9d7a-ea76114d024f"
+                        },
+                        {
+                          "id": "40604b2a-7868-4247-b73e-2b387c5f1966",
+                          "name": "Error response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/accounts/:account_id/wallet/entries?nextToken=<string>&pageSize=<integer>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "accounts",
+                                ":account_id",
+                                "wallet",
+                                "entries"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Pagination token used as a marker to get records from next page.",
+                                  "key": "nextToken",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Maximum page size expected by client to return the record list. \n\n NOTE: Max page size cannot be more than 50. Also 50 is the default page size if no value is provided.",
+                                  "key": "pageSize",
+                                  "value": "<integer>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "account_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:17:04.000Z",
+                          "updatedAt": "2026-07-28T03:17:04.000Z",
+                          "uid": "35240-40604b2a-7868-4247-b73e-2b387c5f1966"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:17:04.000Z",
+                      "updatedAt": "2026-07-28T03:17:04.000Z",
+                      "uid": "35240-f8cd961c-fa3a-45f3-8976-88b55137ab21"
+                    }
+                  ],
+                  "id": "bc1fb7d3-a80b-4562-85f5-ceadf30a3eb4",
+                  "createdAt": "2026-07-28T03:17:04.000Z",
+                  "updatedAt": "2026-07-28T03:17:04.000Z",
+                  "uid": "35240-bc1fb7d3-a80b-4562-85f5-ceadf30a3eb4"
+                },
+                {
+                  "name": "Wallet Balance for Account",
+                  "id": "0372a86e-8e66-4b36-b1a5-e2f02b44843c",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/accounts/:account_id/wallet",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "accounts",
+                        ":account_id",
+                        "wallet"
+                      ],
+                      "variable": [
+                        {
+                          "id": "7be3e8db-bb18-4f8f-81ad-5b0f76b13949",
+                          "key": "account_id",
+                          "value": "<string>",
+                          "description": "(Required) account_id corresponding to an account"
+                        }
+                      ]
+                    },
+                    "description": "Wallet balance for Account"
+                  },
+                  "response": [
+                    {
+                      "id": "cd7924c4-e8fc-4c5c-9bf4-1c43e4264b6b",
+                      "name": "Response for Credit Balance Request",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:account_id/wallet",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":account_id",
+                            "wallet"
+                          ],
+                          "variable": [
+                            {
+                              "key": "account_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"effectiveFrom\": \"<dateTime>\",\n  \"status\": \"ACTIVE\",\n  \"customerId\": \"<string>\",\n  \"balance\": \"<number>\",\n  \"creditUnit\": \"<string>\",\n  \"externalId\": \"<string>\",\n  \"holdAmount\": \"<number>\",\n  \"createdAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\",\n  \"metadata\": {\n    \"deserunt14\": \"proident eu ut et\",\n    \"ex_5\": \"nisi des\",\n    \"dolor_3\": 64666918\n  }\n}",
+                      "createdAt": "2026-07-28T03:17:04.000Z",
+                      "updatedAt": "2026-07-28T03:17:04.000Z",
+                      "uid": "35240-cd7924c4-e8fc-4c5c-9bf4-1c43e4264b6b"
+                    },
+                    {
+                      "id": "f5386cd6-ae93-43d3-9ffd-282dda4b6cb2",
+                      "name": "Error response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:account_id/wallet",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":account_id",
+                            "wallet"
+                          ],
+                          "variable": [
+                            {
+                              "key": "account_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:17:04.000Z",
+                      "updatedAt": "2026-07-28T03:17:04.000Z",
+                      "uid": "35240-f5386cd6-ae93-43d3-9ffd-282dda4b6cb2"
+                    },
+                    {
+                      "id": "feb7ea73-1ac8-4eaa-81bb-4a4c33fab4ea",
+                      "name": "Error response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:account_id/wallet",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":account_id",
+                            "wallet"
+                          ],
+                          "variable": [
+                            {
+                              "key": "account_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:17:04.000Z",
+                      "updatedAt": "2026-07-28T03:17:04.000Z",
+                      "uid": "35240-feb7ea73-1ac8-4eaa-81bb-4a4c33fab4ea"
+                    },
+                    {
+                      "id": "19a18717-69da-47c6-9d6c-71dc066bba58",
+                      "name": "Error response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:account_id/wallet",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":account_id",
+                            "wallet"
+                          ],
+                          "variable": [
+                            {
+                              "key": "account_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:17:04.000Z",
+                      "updatedAt": "2026-07-28T03:17:04.000Z",
+                      "uid": "35240-19a18717-69da-47c6-9d6c-71dc066bba58"
+                    },
+                    {
+                      "id": "617724cc-a73f-4fc7-968b-43d1eef31abd",
+                      "name": "Error response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:account_id/wallet",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":account_id",
+                            "wallet"
+                          ],
+                          "variable": [
+                            {
+                              "key": "account_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:17:04.000Z",
+                      "updatedAt": "2026-07-28T03:17:04.000Z",
+                      "uid": "35240-617724cc-a73f-4fc7-968b-43d1eef31abd"
+                    },
+                    {
+                      "id": "74695edd-097c-41d0-a7a6-ad88c30553e5",
+                      "name": "Error response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:account_id/wallet",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":account_id",
+                            "wallet"
+                          ],
+                          "variable": [
+                            {
+                              "key": "account_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:17:04.000Z",
+                      "updatedAt": "2026-07-28T03:17:04.000Z",
+                      "uid": "35240-74695edd-097c-41d0-a7a6-ad88c30553e5"
+                    },
+                    {
+                      "id": "608c51c0-a0be-46b1-9a7f-fd2c48011667",
+                      "name": "Error response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:account_id/wallet",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":account_id",
+                            "wallet"
+                          ],
+                          "variable": [
+                            {
+                              "key": "account_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:17:04.000Z",
+                      "updatedAt": "2026-07-28T03:17:04.000Z",
+                      "uid": "35240-608c51c0-a0be-46b1-9a7f-fd2c48011667"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:17:04.000Z",
+                  "updatedAt": "2026-07-28T03:17:04.000Z",
+                  "uid": "35240-0372a86e-8e66-4b36-b1a5-e2f02b44843c"
+                },
+                {
+                  "name": "Update Wallet Details for an Account",
+                  "id": "5fd993f5-485a-4740-a5da-1465bd698b5f",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"effectiveFrom\": \"<dateTime>\",\n  \"status\": \"ACTIVE\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/accounts/:account_id/wallet",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "accounts",
+                        ":account_id",
+                        "wallet"
+                      ],
+                      "variable": [
+                        {
+                          "id": "a11c3178-5a4c-4f31-abbd-6b85119fc3d3",
+                          "key": "account_id",
+                          "value": "<string>",
+                          "description": "(Required) account_id corresponding to an account"
+                        }
+                      ]
+                    },
+                    "description": "Update wallet details for an account"
+                  },
+                  "response": [
+                    {
+                      "id": "10233bb0-e96e-4aba-83f8-09ec7c9ec554",
+                      "name": "Response for Credit Balance Request",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"effectiveFrom\": \"<dateTime>\",\n  \"status\": \"ACTIVE\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:account_id/wallet",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":account_id",
+                            "wallet"
+                          ],
+                          "variable": [
+                            {
+                              "key": "account_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"effectiveFrom\": \"<dateTime>\",\n  \"status\": \"ACTIVE\",\n  \"customerId\": \"<string>\",\n  \"balance\": \"<number>\",\n  \"creditUnit\": \"<string>\",\n  \"externalId\": \"<string>\",\n  \"holdAmount\": \"<number>\",\n  \"createdAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\",\n  \"metadata\": {\n    \"deserunt14\": \"proident eu ut et\",\n    \"ex_5\": \"nisi des\",\n    \"dolor_3\": 64666918\n  }\n}",
+                      "createdAt": "2026-07-28T03:17:04.000Z",
+                      "updatedAt": "2026-07-28T03:17:04.000Z",
+                      "uid": "35240-10233bb0-e96e-4aba-83f8-09ec7c9ec554"
+                    },
+                    {
+                      "id": "63f40d25-7b83-4a78-a9a0-1c3b94238b37",
+                      "name": "Error response",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"effectiveFrom\": \"<dateTime>\",\n  \"status\": \"ACTIVE\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/accounts/:account_id/wallet",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "accounts",
+                            ":account_id",
+                            "wallet"
+                          ],
+                          "variable": [
+                            {
+                              "key": "account_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:17:04.000Z",
+                      "updatedAt": "2026-07-28T03:17:04.000Z",
+                      "uid": "35240-63f40d25-7b83-4a78-a9a0-1c3b94238b37"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:17:04.000Z",
+                  "updatedAt": "2026-07-28T03:17:04.000Z",
+                  "uid": "35240-5fd993f5-485a-4740-a5da-1465bd698b5f"
+                }
+              ],
+              "id": "6180403b-95a1-45ef-a362-265c542ec417",
+              "createdAt": "2026-07-28T03:17:04.000Z",
+              "updatedAt": "2026-07-28T03:17:04.000Z",
+              "uid": "35240-6180403b-95a1-45ef-a362-265c542ec417"
+            }
+          ],
+          "id": "abdb35af-4e4c-4b68-a2ec-75272866362a",
+          "createdAt": "2026-07-28T03:17:04.000Z",
+          "updatedAt": "2026-07-28T03:17:04.000Z",
+          "uid": "35240-abdb35af-4e4c-4b68-a2ec-75272866362a"
+        }
+      ],
+      "id": "e6503ade-329c-48c9-91dc-a558bb7fdd7a",
+      "createdAt": "2026-07-28T03:17:04.000Z",
+      "updatedAt": "2026-07-28T03:17:04.000Z",
+      "uid": "35240-e6503ade-329c-48c9-91dc-a558bb7fdd7a"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.togai.com/"
+    }
+  ]
+}

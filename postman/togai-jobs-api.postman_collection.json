@@ -1,0 +1,2008 @@
+{
+  "info": {
+    "_postman_id": "e656d670-023d-46bd-9306-ba18376c8876",
+    "name": "Togai Apis Accounts Jobs API",
+    "description": "APIs for Togai App\n\nContact Support:\n Email: engg@togai.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:16:37.000Z",
+    "updatedAt": "2026-07-28T03:16:38.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-e656d670-023d-46bd-9306-ba18376c8876"
+  },
+  "item": [
+    {
+      "name": "jobs",
+      "item": [
+        {
+          "name": "{job_id}",
+          "item": [
+            {
+              "name": "confirm",
+              "item": [
+                {
+                  "name": "Confirm a Job",
+                  "id": "92cb4a63-7c25-4581-bfac-ec5ebbc362d2",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/jobs/:job_id/confirm",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "jobs",
+                        ":job_id",
+                        "confirm"
+                      ],
+                      "variable": [
+                        {
+                          "id": "352beea0-074b-4c08-bd4e-1c35f89dd394",
+                          "key": "job_id",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Confirm a job"
+                  },
+                  "response": [
+                    {
+                      "id": "74e61f0c-4487-4c30-bd50-c4c12f37f00c",
+                      "name": "Response for get job status request",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/jobs/:job_id/confirm",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "jobs",
+                            ":job_id",
+                            "confirm"
+                          ],
+                          "variable": [
+                            {
+                              "key": "job_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"type\": \"PRICE_PLAN\",\n  \"updatedAt\": \"<dateTime>\",\n  \"status\": \"FAILED\",\n  \"totalJobEntries\": \"<integer>\",\n  \"pendingJobEntries\": \"<integer>\",\n  \"failedJobEntries\": \"<integer>\",\n  \"completedJobEntries\": \"<integer>\",\n  \"settledAt\": \"<dateTime>\",\n  \"metadata\": {\n    \"incididuntb2f\": \"<string>\",\n    \"aute4\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T03:16:38.000Z",
+                      "updatedAt": "2026-07-28T03:16:38.000Z",
+                      "uid": "35240-74e61f0c-4487-4c30-bd50-c4c12f37f00c"
+                    },
+                    {
+                      "id": "e8f6c72a-8775-4a3d-921c-af5fb65e44fb",
+                      "name": "Error response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/jobs/:job_id/confirm",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "jobs",
+                            ":job_id",
+                            "confirm"
+                          ],
+                          "variable": [
+                            {
+                              "key": "job_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:16:38.000Z",
+                      "updatedAt": "2026-07-28T03:16:38.000Z",
+                      "uid": "35240-e8f6c72a-8775-4a3d-921c-af5fb65e44fb"
+                    },
+                    {
+                      "id": "bfb3861f-5211-4665-a329-34680f080135",
+                      "name": "Error response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/jobs/:job_id/confirm",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "jobs",
+                            ":job_id",
+                            "confirm"
+                          ],
+                          "variable": [
+                            {
+                              "key": "job_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:16:38.000Z",
+                      "updatedAt": "2026-07-28T03:16:38.000Z",
+                      "uid": "35240-bfb3861f-5211-4665-a329-34680f080135"
+                    },
+                    {
+                      "id": "5613ccc7-4805-47fe-8ba9-69a83f90c0cc",
+                      "name": "Error response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/jobs/:job_id/confirm",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "jobs",
+                            ":job_id",
+                            "confirm"
+                          ],
+                          "variable": [
+                            {
+                              "key": "job_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:16:38.000Z",
+                      "updatedAt": "2026-07-28T03:16:38.000Z",
+                      "uid": "35240-5613ccc7-4805-47fe-8ba9-69a83f90c0cc"
+                    },
+                    {
+                      "id": "e0607b6c-0909-40e0-bf81-892edb843e51",
+                      "name": "Error response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/jobs/:job_id/confirm",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "jobs",
+                            ":job_id",
+                            "confirm"
+                          ],
+                          "variable": [
+                            {
+                              "key": "job_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:16:38.000Z",
+                      "updatedAt": "2026-07-28T03:16:38.000Z",
+                      "uid": "35240-e0607b6c-0909-40e0-bf81-892edb843e51"
+                    },
+                    {
+                      "id": "fea88303-fc5d-4878-803d-edba850e12ca",
+                      "name": "Error response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/jobs/:job_id/confirm",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "jobs",
+                            ":job_id",
+                            "confirm"
+                          ],
+                          "variable": [
+                            {
+                              "key": "job_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:16:38.000Z",
+                      "updatedAt": "2026-07-28T03:16:38.000Z",
+                      "uid": "35240-fea88303-fc5d-4878-803d-edba850e12ca"
+                    },
+                    {
+                      "id": "d0043136-e034-457d-83c8-736c71bddccc",
+                      "name": "Error response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/jobs/:job_id/confirm",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "jobs",
+                            ":job_id",
+                            "confirm"
+                          ],
+                          "variable": [
+                            {
+                              "key": "job_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:16:38.000Z",
+                      "updatedAt": "2026-07-28T03:16:38.000Z",
+                      "uid": "35240-d0043136-e034-457d-83c8-736c71bddccc"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:16:38.000Z",
+                  "updatedAt": "2026-07-28T03:16:38.000Z",
+                  "uid": "35240-92cb4a63-7c25-4581-bfac-ec5ebbc362d2"
+                }
+              ],
+              "id": "bc7e9e23-1ac2-451a-a0eb-b8c9cf309b38",
+              "createdAt": "2026-07-28T03:16:38.000Z",
+              "updatedAt": "2026-07-28T03:16:38.000Z",
+              "uid": "35240-bc7e9e23-1ac2-451a-a0eb-b8c9cf309b38"
+            },
+            {
+              "name": "reject",
+              "item": [
+                {
+                  "name": "Reject a Job",
+                  "id": "a49d1e21-2945-472c-bd5e-ea56bedbabe5",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/jobs/:job_id/reject",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "jobs",
+                        ":job_id",
+                        "reject"
+                      ],
+                      "variable": [
+                        {
+                          "id": "dd3ddd08-673e-4b80-9a12-b508a68da906",
+                          "key": "job_id",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Reject a job"
+                  },
+                  "response": [
+                    {
+                      "id": "f0e0b4c7-4245-48bc-874a-d80254420b00",
+                      "name": "Response for get job status request",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/jobs/:job_id/reject",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "jobs",
+                            ":job_id",
+                            "reject"
+                          ],
+                          "variable": [
+                            {
+                              "key": "job_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"type\": \"PRICE_PLAN\",\n  \"updatedAt\": \"<dateTime>\",\n  \"status\": \"FAILED\",\n  \"totalJobEntries\": \"<integer>\",\n  \"pendingJobEntries\": \"<integer>\",\n  \"failedJobEntries\": \"<integer>\",\n  \"completedJobEntries\": \"<integer>\",\n  \"settledAt\": \"<dateTime>\",\n  \"metadata\": {\n    \"incididuntb2f\": \"<string>\",\n    \"aute4\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T03:16:38.000Z",
+                      "updatedAt": "2026-07-28T03:16:38.000Z",
+                      "uid": "35240-f0e0b4c7-4245-48bc-874a-d80254420b00"
+                    },
+                    {
+                      "id": "f740a7d4-7125-48cd-a4e0-e037e9388160",
+                      "name": "Error response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/jobs/:job_id/reject",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "jobs",
+                            ":job_id",
+                            "reject"
+                          ],
+                          "variable": [
+                            {
+                              "key": "job_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:16:38.000Z",
+                      "updatedAt": "2026-07-28T03:16:38.000Z",
+                      "uid": "35240-f740a7d4-7125-48cd-a4e0-e037e9388160"
+                    },
+                    {
+                      "id": "0fe4ba23-0d7d-4804-ae16-64ec17b48a22",
+                      "name": "Error response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/jobs/:job_id/reject",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "jobs",
+                            ":job_id",
+                            "reject"
+                          ],
+                          "variable": [
+                            {
+                              "key": "job_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:16:38.000Z",
+                      "updatedAt": "2026-07-28T03:16:38.000Z",
+                      "uid": "35240-0fe4ba23-0d7d-4804-ae16-64ec17b48a22"
+                    },
+                    {
+                      "id": "9d597530-0512-40f0-b0af-e5c979994c3b",
+                      "name": "Error response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/jobs/:job_id/reject",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "jobs",
+                            ":job_id",
+                            "reject"
+                          ],
+                          "variable": [
+                            {
+                              "key": "job_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:16:38.000Z",
+                      "updatedAt": "2026-07-28T03:16:38.000Z",
+                      "uid": "35240-9d597530-0512-40f0-b0af-e5c979994c3b"
+                    },
+                    {
+                      "id": "703a13a8-0a0f-4dcf-9e79-e88005e07b13",
+                      "name": "Error response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/jobs/:job_id/reject",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "jobs",
+                            ":job_id",
+                            "reject"
+                          ],
+                          "variable": [
+                            {
+                              "key": "job_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:16:38.000Z",
+                      "updatedAt": "2026-07-28T03:16:38.000Z",
+                      "uid": "35240-703a13a8-0a0f-4dcf-9e79-e88005e07b13"
+                    },
+                    {
+                      "id": "78527080-d735-410e-9b2d-5e54ef9861b5",
+                      "name": "Error response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/jobs/:job_id/reject",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "jobs",
+                            ":job_id",
+                            "reject"
+                          ],
+                          "variable": [
+                            {
+                              "key": "job_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:16:38.000Z",
+                      "updatedAt": "2026-07-28T03:16:38.000Z",
+                      "uid": "35240-78527080-d735-410e-9b2d-5e54ef9861b5"
+                    },
+                    {
+                      "id": "b26a759c-b284-4504-9068-b4e869b5a8eb",
+                      "name": "Error response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/jobs/:job_id/reject",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "jobs",
+                            ":job_id",
+                            "reject"
+                          ],
+                          "variable": [
+                            {
+                              "key": "job_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:16:38.000Z",
+                      "updatedAt": "2026-07-28T03:16:38.000Z",
+                      "uid": "35240-b26a759c-b284-4504-9068-b4e869b5a8eb"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:16:38.000Z",
+                  "updatedAt": "2026-07-28T03:16:38.000Z",
+                  "uid": "35240-a49d1e21-2945-472c-bd5e-ea56bedbabe5"
+                }
+              ],
+              "id": "aac029a7-3e75-4096-a34b-04706ce7bb23",
+              "createdAt": "2026-07-28T03:16:38.000Z",
+              "updatedAt": "2026-07-28T03:16:38.000Z",
+              "uid": "35240-aac029a7-3e75-4096-a34b-04706ce7bb23"
+            },
+            {
+              "name": "entries",
+              "item": [
+                {
+                  "name": "List Job Entries",
+                  "id": "1664d951-0ffd-4588-a6fb-c86c7cb89d69",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/jobs/:job_id/entries",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "jobs",
+                        ":job_id",
+                        "entries"
+                      ],
+                      "variable": [
+                        {
+                          "id": "a07b132a-6839-4dc4-ba66-2c287c87ece4",
+                          "key": "job_id",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "List individual job entries and current state of processing"
+                  },
+                  "response": [
+                    {
+                      "id": "6c967a1f-638e-4b30-9863-9b22d8b75493",
+                      "name": "Response for list job entries request",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/jobs/:job_id/entries",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "jobs",
+                            ":job_id",
+                            "entries"
+                          ],
+                          "variable": [
+                            {
+                              "key": "job_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"data\": [\n    {\n      \"entityId\": \"<string>\",\n      \"jobId\": \"<string>\",\n      \"status\": \"IN_PROGRESS\",\n      \"createdAt\": \"<dateTime>\",\n      \"metadata\": {\n        \"quis_56\": \"<string>\",\n        \"exa\": \"<string>\",\n        \"consectetur_4e\": \"<string>\"\n      }\n    },\n    {\n      \"entityId\": \"<string>\",\n      \"jobId\": \"<string>\",\n      \"status\": \"IN_PROGRESS\",\n      \"createdAt\": \"<dateTime>\",\n      \"metadata\": {\n        \"eu8\": \"<string>\",\n        \"qui_a\": \"<string>\"\n      }\n    }\n  ],\n  \"nextToken\": \"<string>\",\n  \"context\": {\n    \"pageSize\": \"<integer>\",\n    \"sortOrder\": \"DESC\"\n  }\n}",
+                      "createdAt": "2026-07-28T03:16:38.000Z",
+                      "updatedAt": "2026-07-28T03:16:38.000Z",
+                      "uid": "35240-6c967a1f-638e-4b30-9863-9b22d8b75493"
+                    },
+                    {
+                      "id": "20fa642d-3dc5-4090-b002-2726069af3f2",
+                      "name": "Error response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/jobs/:job_id/entries",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "jobs",
+                            ":job_id",
+                            "entries"
+                          ],
+                          "variable": [
+                            {
+                              "key": "job_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:16:38.000Z",
+                      "updatedAt": "2026-07-28T03:16:38.000Z",
+                      "uid": "35240-20fa642d-3dc5-4090-b002-2726069af3f2"
+                    },
+                    {
+                      "id": "80061025-7265-4a97-8040-57ba0feea249",
+                      "name": "Error response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/jobs/:job_id/entries",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "jobs",
+                            ":job_id",
+                            "entries"
+                          ],
+                          "variable": [
+                            {
+                              "key": "job_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:16:38.000Z",
+                      "updatedAt": "2026-07-28T03:16:38.000Z",
+                      "uid": "35240-80061025-7265-4a97-8040-57ba0feea249"
+                    },
+                    {
+                      "id": "505e4bb3-23f3-45e1-af13-d89d386ba855",
+                      "name": "Error response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/jobs/:job_id/entries",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "jobs",
+                            ":job_id",
+                            "entries"
+                          ],
+                          "variable": [
+                            {
+                              "key": "job_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:16:38.000Z",
+                      "updatedAt": "2026-07-28T03:16:38.000Z",
+                      "uid": "35240-505e4bb3-23f3-45e1-af13-d89d386ba855"
+                    },
+                    {
+                      "id": "5323e441-caa1-4279-a5b6-9eff112feaa1",
+                      "name": "Error response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/jobs/:job_id/entries",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "jobs",
+                            ":job_id",
+                            "entries"
+                          ],
+                          "variable": [
+                            {
+                              "key": "job_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:16:38.000Z",
+                      "updatedAt": "2026-07-28T03:16:38.000Z",
+                      "uid": "35240-5323e441-caa1-4279-a5b6-9eff112feaa1"
+                    },
+                    {
+                      "id": "64fdc9d2-0e3a-4161-91f4-70d802103321",
+                      "name": "Error response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/jobs/:job_id/entries",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "jobs",
+                            ":job_id",
+                            "entries"
+                          ],
+                          "variable": [
+                            {
+                              "key": "job_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:16:38.000Z",
+                      "updatedAt": "2026-07-28T03:16:38.000Z",
+                      "uid": "35240-64fdc9d2-0e3a-4161-91f4-70d802103321"
+                    },
+                    {
+                      "id": "5f580176-1bb1-439d-b5b0-34e97f4d04bb",
+                      "name": "Error response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/jobs/:job_id/entries",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "jobs",
+                            ":job_id",
+                            "entries"
+                          ],
+                          "variable": [
+                            {
+                              "key": "job_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:16:38.000Z",
+                      "updatedAt": "2026-07-28T03:16:38.000Z",
+                      "uid": "35240-5f580176-1bb1-439d-b5b0-34e97f4d04bb"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:16:38.000Z",
+                  "updatedAt": "2026-07-28T03:16:38.000Z",
+                  "uid": "35240-1664d951-0ffd-4588-a6fb-c86c7cb89d69"
+                }
+              ],
+              "id": "27978e6e-5e71-4105-b469-5c44b1c452e5",
+              "createdAt": "2026-07-28T03:16:38.000Z",
+              "updatedAt": "2026-07-28T03:16:38.000Z",
+              "uid": "35240-27978e6e-5e71-4105-b469-5c44b1c452e5"
+            },
+            {
+              "name": "Get the Status of a Job",
+              "id": "e513e500-5366-44b4-8d26-dab28fdcf1f6",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/jobs/:job_id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "jobs",
+                    ":job_id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "dfc1c407-c4b7-42aa-8a01-e18f0b1ed8af",
+                      "key": "job_id",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "Get the status of a job"
+              },
+              "response": [
+                {
+                  "id": "0a9db964-204b-4332-82e8-b1f626300b17",
+                  "name": "Response for get job status request",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/jobs/:job_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "jobs",
+                        ":job_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "job_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"type\": \"PRICE_PLAN\",\n  \"updatedAt\": \"<dateTime>\",\n  \"status\": \"FAILED\",\n  \"totalJobEntries\": \"<integer>\",\n  \"pendingJobEntries\": \"<integer>\",\n  \"failedJobEntries\": \"<integer>\",\n  \"completedJobEntries\": \"<integer>\",\n  \"settledAt\": \"<dateTime>\",\n  \"metadata\": {\n    \"incididuntb2f\": \"<string>\",\n    \"aute4\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T03:16:38.000Z",
+                  "updatedAt": "2026-07-28T03:16:38.000Z",
+                  "uid": "35240-0a9db964-204b-4332-82e8-b1f626300b17"
+                },
+                {
+                  "id": "adc4ec7f-c652-4196-908b-9d324bdf4c45",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/jobs/:job_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "jobs",
+                        ":job_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "job_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:16:38.000Z",
+                  "updatedAt": "2026-07-28T03:16:38.000Z",
+                  "uid": "35240-adc4ec7f-c652-4196-908b-9d324bdf4c45"
+                },
+                {
+                  "id": "915eef52-c42c-4c8a-af5e-27edae7d4903",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/jobs/:job_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "jobs",
+                        ":job_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "job_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:16:38.000Z",
+                  "updatedAt": "2026-07-28T03:16:38.000Z",
+                  "uid": "35240-915eef52-c42c-4c8a-af5e-27edae7d4903"
+                },
+                {
+                  "id": "f2529704-6411-4611-8d6f-fb3ff3666d6f",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/jobs/:job_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "jobs",
+                        ":job_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "job_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:16:38.000Z",
+                  "updatedAt": "2026-07-28T03:16:38.000Z",
+                  "uid": "35240-f2529704-6411-4611-8d6f-fb3ff3666d6f"
+                },
+                {
+                  "id": "9a8d03cb-1e3d-4b11-aaab-1d31be8d2be2",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/jobs/:job_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "jobs",
+                        ":job_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "job_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:16:38.000Z",
+                  "updatedAt": "2026-07-28T03:16:38.000Z",
+                  "uid": "35240-9a8d03cb-1e3d-4b11-aaab-1d31be8d2be2"
+                },
+                {
+                  "id": "b799b19f-b624-403e-b0f1-68c976f95a54",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/jobs/:job_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "jobs",
+                        ":job_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "job_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:16:38.000Z",
+                  "updatedAt": "2026-07-28T03:16:38.000Z",
+                  "uid": "35240-b799b19f-b624-403e-b0f1-68c976f95a54"
+                },
+                {
+                  "id": "d7285d50-d071-4b80-98f2-27289a1d7da3",
+                  "name": "Error response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/jobs/:job_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "jobs",
+                        ":job_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "job_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:16:38.000Z",
+                  "updatedAt": "2026-07-28T03:16:38.000Z",
+                  "uid": "35240-d7285d50-d071-4b80-98f2-27289a1d7da3"
+                }
+              ],
+              "createdAt": "2026-07-28T03:16:38.000Z",
+              "updatedAt": "2026-07-28T03:16:38.000Z",
+              "uid": "35240-e513e500-5366-44b4-8d26-dab28fdcf1f6"
+            }
+          ],
+          "id": "0d80ab94-7240-47a3-bd52-c43aff1e1d25",
+          "createdAt": "2026-07-28T03:16:38.000Z",
+          "updatedAt": "2026-07-28T03:16:38.000Z",
+          "uid": "35240-0d80ab94-7240-47a3-bd52-c43aff1e1d25"
+        },
+        {
+          "name": "List Jobs",
+          "id": "bdbbd1be-5c92-4ab9-ba4a-4382a9f40512",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/jobs?nextToken=<string>&pageSize=<number>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "jobs"
+              ],
+              "query": [
+                {
+                  "key": "nextToken",
+                  "value": "<string>"
+                },
+                {
+                  "key": "pageSize",
+                  "value": "<number>"
+                }
+              ]
+            },
+            "description": "Returns a list of jobs with pagination and sort."
+          },
+          "response": [
+            {
+              "id": "1c60f988-ac08-46e0-94c3-ba92ba5f4387",
+              "name": "Response for list customers request",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/jobs?nextToken=<string>&pageSize=<number>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "jobs"
+                  ],
+                  "query": [
+                    {
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<number>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\",\n      \"status\": \"<string>\",\n      \"updatedAt\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\",\n      \"status\": \"<string>\",\n      \"updatedAt\": \"<dateTime>\"\n    }\n  ],\n  \"nextToken\": \"<string>\",\n  \"context\": {\n    \"pageSize\": \"<integer>\",\n    \"sortOrder\": \"ASC\"\n  }\n}",
+              "createdAt": "2026-07-28T03:16:38.000Z",
+              "updatedAt": "2026-07-28T03:16:38.000Z",
+              "uid": "35240-1c60f988-ac08-46e0-94c3-ba92ba5f4387"
+            },
+            {
+              "id": "617274b9-77f2-40fa-b224-864fc4396522",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/jobs?nextToken=<string>&pageSize=<number>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "jobs"
+                  ],
+                  "query": [
+                    {
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<number>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:16:38.000Z",
+              "updatedAt": "2026-07-28T03:16:38.000Z",
+              "uid": "35240-617274b9-77f2-40fa-b224-864fc4396522"
+            },
+            {
+              "id": "a3c1b244-e303-4ff9-b60f-fe2a02fdb7de",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/jobs?nextToken=<string>&pageSize=<number>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "jobs"
+                  ],
+                  "query": [
+                    {
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<number>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:16:38.000Z",
+              "updatedAt": "2026-07-28T03:16:38.000Z",
+              "uid": "35240-a3c1b244-e303-4ff9-b60f-fe2a02fdb7de"
+            },
+            {
+              "id": "edf9130c-48dc-4b85-86f1-84d2b93cf9e6",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/jobs?nextToken=<string>&pageSize=<number>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "jobs"
+                  ],
+                  "query": [
+                    {
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<number>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:16:38.000Z",
+              "updatedAt": "2026-07-28T03:16:38.000Z",
+              "uid": "35240-edf9130c-48dc-4b85-86f1-84d2b93cf9e6"
+            },
+            {
+              "id": "f458e642-090a-4316-a85b-d0d2f34b3961",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/jobs?nextToken=<string>&pageSize=<number>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "jobs"
+                  ],
+                  "query": [
+                    {
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<number>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:16:38.000Z",
+              "updatedAt": "2026-07-28T03:16:38.000Z",
+              "uid": "35240-f458e642-090a-4316-a85b-d0d2f34b3961"
+            },
+            {
+              "id": "539a100e-8baa-472c-ad90-2d9ba7f34529",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/jobs?nextToken=<string>&pageSize=<number>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "jobs"
+                  ],
+                  "query": [
+                    {
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<number>"
+                    }
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:16:38.000Z",
+              "updatedAt": "2026-07-28T03:16:38.000Z",
+              "uid": "35240-539a100e-8baa-472c-ad90-2d9ba7f34529"
+            },
+            {
+              "id": "ab5d0c19-1826-444e-8f91-bc9a00864e70",
+              "name": "Error response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/jobs?nextToken=<string>&pageSize=<number>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "jobs"
+                  ],
+                  "query": [
+                    {
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<number>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:16:38.000Z",
+              "updatedAt": "2026-07-28T03:16:38.000Z",
+              "uid": "35240-ab5d0c19-1826-444e-8f91-bc9a00864e70"
+            }
+          ],
+          "createdAt": "2026-07-28T03:16:38.000Z",
+          "updatedAt": "2026-07-28T03:16:38.000Z",
+          "uid": "35240-bdbbd1be-5c92-4ab9-ba4a-4382a9f40512"
+        }
+      ],
+      "id": "b3ec1e37-7c6d-4629-8357-7bb22f0aa64b",
+      "createdAt": "2026-07-28T03:16:38.000Z",
+      "updatedAt": "2026-07-28T03:16:38.000Z",
+      "uid": "35240-b3ec1e37-7c6d-4629-8357-7bb22f0aa64b"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.togai.com/"
+    }
+  ]
+}
