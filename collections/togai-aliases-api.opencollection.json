@@ -1,0 +1,98 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Togai Apis Accounts Aliases API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Aliases",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List All Aliases",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.togai.com/aliases",
+            "params": [
+              {
+                "name": "nextToken",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns a list of aliases with pagination and sort."
+        },
+        {
+          "info": {
+            "name": "Create an Alias",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.togai.com/aliases",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API let’s you to create an alias"
+        },
+        {
+          "info": {
+            "name": "Get an Alias",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.togai.com/aliases/:alias",
+            "params": [
+              {
+                "name": "alias",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get alias information using alias."
+        },
+        {
+          "info": {
+            "name": "Delete an Alias",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.togai.com/aliases/:alias",
+            "params": [
+              {
+                "name": "alias",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "This API let’s you to delete an alias using alias."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

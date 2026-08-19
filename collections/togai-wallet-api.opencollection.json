@@ -1,0 +1,120 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Togai Apis Accounts Wallet API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Wallet",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Top-up Wallet for an Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.togai.com/accounts/:account_id/wallet_topup",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "account_id corresponding to an account"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Top-up wallet for an account"
+        },
+        {
+          "info": {
+            "name": "Wallet Balance for Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.togai.com/accounts/:account_id/wallet",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "account_id corresponding to an account"
+              }
+            ]
+          },
+          "docs": "Wallet balance for Account"
+        },
+        {
+          "info": {
+            "name": "Update Wallet Details for an Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.togai.com/accounts/:account_id/wallet",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "account_id corresponding to an account"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update wallet details for an account"
+        },
+        {
+          "info": {
+            "name": "Wallet Entries for Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.togai.com/accounts/:account_id/wallet/entries",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "account_id corresponding to an account"
+              },
+              {
+                "name": "nextToken",
+                "value": "",
+                "type": "query",
+                "description": "Pagination token used as a marker to get records from next page."
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "Maximum page size expected by client to return the record list. \n\n NOTE: Max page size cannot be more than 50. Also 50 is the default page size if no value is provided."
+              }
+            ]
+          },
+          "docs": "Wallet entries for Account"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

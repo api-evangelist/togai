@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Togai Apis Accounts Authentication API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Authentication",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Generate Short Lived Bearer Token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.togai.com/authenticate",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Generates and returns a bearer token. Behavior of this API differs on the basis of the auth mechanism used to make the request.\n  - For API key auth, this API generates a JWT token whcih is valid for 24 hours and returns it.\n  - For JWT bearer auth, returns the same JWT token in response\nFor information on how to generate API token, refer [Generating New API Keys](https://docs.togai.com/api-reference/authentication#generating-new-api-keys) section of docs.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

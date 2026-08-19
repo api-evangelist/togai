@@ -1,0 +1,53 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Togai Apis Accounts Pricing Rules API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Pricing Rules",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Pricing Rules by Price Plan Id and Pricing Schedule Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.togai.com/price_plans/:price_plan_id/pricing_schedules/:pricing_schedule_id/pricing_rules",
+            "params": [
+              {
+                "name": "price_plan_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "pricing_schedule_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "invoice_timing",
+                "value": "",
+                "type": "query",
+                "description": "Optional field to filter pricing rules based on invoice timing"
+              }
+            ]
+          },
+          "docs": "Get a list of pricing rules using price plan id and pricing schedule id"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,54 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Togai Apis Accounts Event Ingestion API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Event Ingestion",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Ingest Events to Togai",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.togai.com/ingest",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API let’s you to ingest events to your Togai account.\nEvents ingested using this API will be processed via associated usage meters and further via associated price plans to generate final billable value to invoice the customer\nRead more about [Event Ingestion](https://docs.togai.com/docs/event-ingestion)\n"
+        },
+        {
+          "info": {
+            "name": "Ingest Events to Togai in Batch",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.togai.com/ingestBatch",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API let’s you to ingest events in batch upto 500 events.\nIngest large amounts of events up to 500 in batches in an array using this API."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

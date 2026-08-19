@@ -1,0 +1,1291 @@
+{
+  "item": [
+    {
+      "id": "4199361b-dbb3-4b77-a44d-f9f6bf028846",
+      "name": "Event Management",
+      "description": {
+        "content": "APIs for getting events ingested in Togai",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b90f948b-d1c2-4ab9-896e-af0506bd270e",
+          "name": "Get a List of Usage Events with Multiple Query Options",
+          "request": {
+            "name": "Get a List of Usage Events with Multiple Query Options",
+            "description": {
+              "content": "This API let’s you to fetch a list of events with multiple query parameters",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "events"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "nextToken",
+                  "value": "<string>",
+                  "description": "Pagination token used as a marker to get records from next page."
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "Filter option to filter by status."
+                },
+                {
+                  "disabled": false,
+                  "key": "account_id",
+                  "value": "<string>",
+                  "description": "Filter option to filter based on account id."
+                },
+                {
+                  "disabled": false,
+                  "key": "schema_name",
+                  "value": "<string>",
+                  "description": "Filter option to filter the events based on schema name."
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "<integer>",
+                  "description": "Maximum page size expected by client to return the record list. \n\n NOTE: Max page size cannot be more than 50. Also 50 is the default page size if no value is provided."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c96c7705-6641-40e9-981b-53aa34a80336",
+              "name": "Success response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "nextToken",
+                      "value": "eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEyMywgInNvcnRPcmRlciI6ICJhc2MifQ=="
+                    },
+                    {
+                      "key": "status",
+                      "value": "PROCESSED"
+                    },
+                    {
+                      "key": "account_id",
+                      "value": "1234"
+                    },
+                    {
+                      "key": "schema_name",
+                      "value": "Rides"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"events\": [\n    {\n      \"eventPayload\": {\n        \"timestamp\": \"2023-02-23T14:25:10Z\",\n        \"schemaName\": \"travelCompletedEvent\",\n        \"id\": \"c0b1306d-f506-43a6-856b-69221efaee6b\",\n        \"referenceId\": \"event.dsvhk32.234n3\",\n        \"accountId\": \"1\",\n        \"attributes\": [\n          {\n            \"name\": \"distanceTravelled\",\n            \"value\": \"50\",\n            \"unit\": \"Miles\"\n          },\n          {\n            \"name\": \"timeSpent\",\n            \"value\": \"60\",\n            \"unit\": \"Minutes\"\n          }\n        ],\n        \"dimensions\": {\n          \"location\": \"Seattle\",\n          \"costCenterCode\": \"1234\",\n          \"travelType\": \"Business\"\n        }\n      },\n      \"ingestionStatus\": {\n        \"status\": \"INGESTION_COMPLETED_EVENT_NOT_METERED\",\n        \"statusDescription\": \"Event ingestion completed successfully but the event is not associated with any bill plan.\"\n      },\n      \"createdAt\": \"2021-03-04T14:25:10Z\"\n    },\n    {\n      \"eventPayload\": {\n        \"timestamp\": \"2023-02-23T14:25:10Z\",\n        \"schemaName\": \"sendMessageEvent\",\n        \"referenceId\": \"event.dsvhk32.234n4\",\n        \"id\": \"c0b1306d-f506-43a6-856b-69221efaee6c\",\n        \"accountId\": \"1\",\n        \"attributes\": [\n          {\n            \"name\": \"messageSentCount\",\n            \"value\": \"50\",\n            \"unit\": \"None\"\n          },\n          {\n            \"name\": \"sizeOfMessage\",\n            \"value\": \"60\",\n            \"unit\": \"KiloBytes\"\n          }\n        ],\n        \"dimensions\": {\n          \"location\": \"Seattle\",\n          \"costCenterCode\": \"1234\",\n          \"messageProviderName\": \"Twilio\"\n        }\n      },\n      \"ingestionStatus\": {\n        \"status\": \"INGESTION_COMPLETED_EVENT_METERED\",\n        \"statusDescription\": \"Ingestion completed successfully\"\n      },\n      \"createdAt\": \"2021-03-04T14:25:10Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "52d5d7d3-c1ac-47e9-a677-f5ce23b4f30d",
+              "name": "Bad request. Please check the response message for failure details.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "nextToken",
+                      "value": "eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEyMywgInNvcnRPcmRlciI6ICJhc2MifQ=="
+                    },
+                    {
+                      "key": "status",
+                      "value": "PROCESSED"
+                    },
+                    {
+                      "key": "account_id",
+                      "value": "1234"
+                    },
+                    {
+                      "key": "schema_name",
+                      "value": "Rides"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "70caa53b-47af-4f84-8d19-cd194be5963f",
+              "name": "Credential is not valid. Please check the response message for failure details.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "nextToken",
+                      "value": "eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEyMywgInNvcnRPcmRlciI6ICJhc2MifQ=="
+                    },
+                    {
+                      "key": "status",
+                      "value": "PROCESSED"
+                    },
+                    {
+                      "key": "account_id",
+                      "value": "1234"
+                    },
+                    {
+                      "key": "schema_name",
+                      "value": "Rides"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "93361c7b-b381-468f-bb3d-b4053a224bd5",
+              "name": "Credential does not have access to list events.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "nextToken",
+                      "value": "eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEyMywgInNvcnRPcmRlciI6ICJhc2MifQ=="
+                    },
+                    {
+                      "key": "status",
+                      "value": "PROCESSED"
+                    },
+                    {
+                      "key": "account_id",
+                      "value": "1234"
+                    },
+                    {
+                      "key": "schema_name",
+                      "value": "Rides"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7477567c-1157-441d-8792-b5824fee003d",
+              "name": "Unable to process the query parameters provided. Please check our docs for the api limits - https://togai.io/docs/limits.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "nextToken",
+                      "value": "eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEyMywgInNvcnRPcmRlciI6ICJhc2MifQ=="
+                    },
+                    {
+                      "key": "status",
+                      "value": "PROCESSED"
+                    },
+                    {
+                      "key": "account_id",
+                      "value": "1234"
+                    },
+                    {
+                      "key": "schema_name",
+                      "value": "Rides"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "06c2b058-a7ae-4295-9964-0f70ecf5de46",
+              "name": "Request throttled. Please check the response message on the failure details.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "nextToken",
+                      "value": "eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEyMywgInNvcnRPcmRlciI6ICJhc2MifQ=="
+                    },
+                    {
+                      "key": "status",
+                      "value": "PROCESSED"
+                    },
+                    {
+                      "key": "account_id",
+                      "value": "1234"
+                    },
+                    {
+                      "key": "schema_name",
+                      "value": "Rides"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9cfd9f65-8d05-4172-8865-42c72f3126e9",
+              "name": "Error response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "nextToken",
+                      "value": "eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEyMywgInNvcnRPcmRlciI6ICJhc2MifQ=="
+                    },
+                    {
+                      "key": "status",
+                      "value": "PROCESSED"
+                    },
+                    {
+                      "key": "account_id",
+                      "value": "1234"
+                    },
+                    {
+                      "key": "schema_name",
+                      "value": "Rides"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"<Reason message>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2eb4bf3b-b9c3-4e3d-aa55-cfd60e0b825b",
+          "name": "Get an Event Using Event Id",
+          "request": {
+            "name": "Get an Event Using Event Id",
+            "description": {
+              "content": "Fetch details of a particular event using the event ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "events",
+                ":event_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "event_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "006e1ac9-d772-47e0-95f0-c131c79aca5c",
+              "name": "Success response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    ":event_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "event_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"events\": [\n    {\n      \"eventPayload\": {\n        \"timestamp\": \"2023-02-23T14:25:10Z\",\n        \"schemaName\": \"travelCompletedEvent\",\n        \"referenceId\": \"event.dsvhk32.234n3\",\n        \"id\": \"c0b1306d-f506-43a6-856b-69221efaee6b\",\n        \"accountId\": \"1\",\n        \"attributes\": [\n          {\n            \"name\": \"distanceTravelled\",\n            \"value\": \"50\",\n            \"unit\": \"Miles\"\n          },\n          {\n            \"name\": \"timeSpent\",\n            \"value\": \"60\",\n            \"unit\": \"Minutes\"\n          }\n        ],\n        \"dimensions\": {\n          \"location\": \"Seattle\",\n          \"costCenterCode\": \"1234\",\n          \"travelType\": \"Business\"\n        }\n      },\n      \"eventPipelineInfo\": {\n        \"eventSchema\": {\n          \"name\": \"Rides\",\n          \"version\": 1\n        },\n        \"usageMeters\": [\n          {\n            \"id\": \"23bh55ZZdifACTAV9WEV\",\n            \"name\": \"rides_distance\",\n            \"version\": 1,\n            \"status\": \"PROCESSED_UNITS_COMPUTED\",\n            \"units\": 10.42\n          },\n          {\n            \"id\": \"23bh55ZZdifACTAV9WEV\",\n            \"name\": \"rides_time\",\n            \"version\": 1,\n            \"status\": \"PROCESSED_FILTERED_OUT\"\n          }\n        ],\n        \"pricePlans\": [\n          {\n            \"name\": \"pro-plan\",\n            \"id\": \"68551191-982b-4663-92fa-38a6f8313e91\",\n            \"scheduleId\": \"c0b1306d-f506-43a6-856b-69221efaee6b\",\n            \"cycleStart\": \"04-03-2022\",\n            \"cycleEnd\": \"04-04-2022\"\n          }\n        ],\n        \"account\": {\n          \"id\": \"acme-prod\"\n        },\n        \"customer\": {\n          \"id\": \"acme_inc\"\n        }\n      },\n      \"ingestionStatus\": {\n        \"status\": \"INGESTION_COMPLETED_EVENT_NOT_METERED\",\n        \"statusDescription\": \"Event ingestion completed successfully but the event is not associated with any bill plan.\"\n      },\n      \"createdAt\": \"2021-03-04T14:25:10Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d5f55673-68e0-4665-8ac3-2a4cc275bf7d",
+              "name": "Bad request. Please check the response message for failure details.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    ":event_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "event_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e4a65cc7-b2d9-498a-9113-22d7d0b58147",
+              "name": "Credential is not valid. Please check the response message for failure details.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    ":event_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "event_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4be6deb2-7054-46d7-b751-c97ae557afe8",
+              "name": "Credential does not have access to get events.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    ":event_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "event_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cf4e7734-4111-4eea-8aca-944f803b56d0",
+              "name": "Request throttled. Please check the response message on the failure details.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    ":event_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "event_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9572bc7a-ee17-4326-bb55-0f9439a87c11",
+              "name": "Error response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    ":event_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "event_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"<Reason message>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "22241d81-688d-4cb1-b32f-b91527aafbe1",
+          "name": "Correct an Ingested Event",
+          "request": {
+            "name": "Correct an Ingested Event",
+            "description": {
+              "content": "#### This API lets you to correct events. Available in both synchronous and asynchronous mode\n- **Usages**: Reduction of all usages associated with this event\n- **Revenue**: Reduction of all revenues associated with this event\n- **Entitlements**: Entitlements(Feature Credits) consumed by this event are granted back to the account.\n\n### Possible Actions:\n- UNDO: Undo all usages, revenue and entitlements associated with an event\n- REDO: Performs UNDO and re-ingests the same event\n- REDO_EVENT: Performs UNDO and re-ingests the correction payload of the event\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "events",
+                "correction"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "action",
+                  "value": "<string>",
+                  "description": "(Required) Action to perform in event correction"
+                },
+                {
+                  "disabled": false,
+                  "key": "require_confirmation",
+                  "value": "<boolean>",
+                  "description": "Specifies whether to start a migration only after a confirmation"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"event\": {\n    \"schemaName\": \"<string>\",\n    \"timestamp\": \"<dateTime>\",\n    \"accountId\": \"<string>\",\n    \"attributes\": [\n      {\n        \"name\": \"<string>\",\n        \"value\": \"<string>\",\n        \"unit\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"<string>\",\n        \"unit\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"<string>\",\n        \"unit\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"<string>\",\n        \"unit\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"<string>\",\n        \"unit\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"<string>\",\n        \"unit\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"<string>\",\n        \"unit\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"<string>\",\n        \"unit\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"<string>\",\n        \"unit\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"<string>\",\n        \"unit\": \"<string>\"\n      }\n    ],\n    \"dimensions\": {\n      \"key_0\": \"<string>\"\n    },\n    \"id\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b167fcea-aeaa-4fac-b5a1-71ccfda3c65f",
+              "name": "Success response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    "correction"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "action",
+                      "value": "UNDO"
+                    },
+                    {
+                      "key": "require_confirmation",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"referenceId\": \"event.21OpEx4DHQu.CZlyh\",\n      \"eventPayload\": {\n        \"timestamp\": \"2023-02-23T14:25:10Z\",\n        \"schemaName\": \"travelCompletedEvent\",\n        \"id\": \"c0b1306d-f506-43a6-856b-69221efaee6b\",\n        \"accountId\": \"1\",\n        \"attributes\": [\n          {\n            \"name\": \"distanceTravelled\",\n            \"value\": \"50\",\n            \"unit\": \"Miles\"\n          },\n          {\n            \"name\": \"timeSpent\",\n            \"value\": \"60\",\n            \"unit\": \"Minutes\"\n          }\n        ],\n        \"dimensions\": {\n          \"location\": \"Seattle\",\n          \"costCenterCode\": \"1234\",\n          \"travelType\": \"Business\"\n        }\n      },\n      \"ingestionStatus\": {\n        \"status\": \"INGESTION_COMPLETED_EVENT_NOT_METERED\",\n        \"statusDescription\": \"Event ingestion completed successfully but the event is not associated with any bill plan.\"\n      },\n      \"customerId\": \"CUS0001\",\n      \"source\": {\n        \"id\": \"ENTITLED\",\n        \"type\": \"ENTITLED\"\n      },\n      \"createdAt\": \"2023-02-23T14:25:10Z\",\n      \"status\": \"REVERTED\",\n      \"reason\": \"Event Reverted\"\n    },\n    {\n      \"referenceId\": \"event.23OrTx4FGQu.XVpzf\",\n      \"eventPayload\": {\n        \"timestamp\": \"2023-02-23T14:25:10Z\",\n        \"schemaName\": \"smsSentEvent\",\n        \"id\": \"sdvb325j-f506-43a6-856b-69221efaee6b\",\n        \"accountId\": \"1\",\n        \"attributes\": [\n          {\n            \"name\": \"smsCount\",\n            \"value\": \"50\",\n            \"unit\": \"count\"\n          }\n        ],\n        \"dimensions\": {}\n      },\n      \"ingestionStatus\": {\n        \"status\": \"INGESTION_COMPLETED_EVENT_NOT_METERED\",\n        \"statusDescription\": \"Event ingestion completed successfully but the event is not associated with any bill plan.\"\n      },\n      \"customerId\": \"CUS0001\",\n      \"source\": {\n        \"id\": \"\",\n        \"type\": \"\"\n      },\n      \"createdAt\": \"2023-01-01T14:25:10Z\",\n      \"status\": \"FAILED\",\n      \"reason\": \"Event was ingested in past pricing cycle\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e3dbe6c2-f869-4180-94b3-652bf678b508",
+              "name": "Bad request. Please check the response message for failure details.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    "correction"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "action",
+                      "value": "UNDO"
+                    },
+                    {
+                      "key": "require_confirmation",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ab099108-104f-4adb-a58e-3dc32f758a0a",
+              "name": "Credential is not valid. Please check the response message for failure details.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    "correction"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "action",
+                      "value": "UNDO"
+                    },
+                    {
+                      "key": "require_confirmation",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c5850561-48e1-48f6-b4ba-1d0799b75825",
+              "name": "Credential does not have access to get events.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    "correction"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "action",
+                      "value": "UNDO"
+                    },
+                    {
+                      "key": "require_confirmation",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "31bf7b14-780e-4db6-918a-7ccf8acb471e",
+              "name": "Request throttled. Please check the response message on the failure details.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    "correction"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "action",
+                      "value": "UNDO"
+                    },
+                    {
+                      "key": "require_confirmation",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8de6f02d-2b58-4562-ab1b-27f03262c755",
+              "name": "Error response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    "correction"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "action",
+                      "value": "UNDO"
+                    },
+                    {
+                      "key": "require_confirmation",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"<Reason message>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.togai.com/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "723bbb0f-b1b9-4515-923b-97f4b862cc57",
+    "name": "Togai Apis Accounts Event Management API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "APIs for Togai App\n\nContact Support:\n Email: engg@togai.com",
+      "type": "text/plain"
+    }
+  }
+}

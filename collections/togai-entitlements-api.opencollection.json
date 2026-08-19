@@ -1,0 +1,240 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Togai Apis Accounts Entitlements API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Entitlements",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Ingest Event if a User is Entitled to a Feature",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.togai.com/entitled",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API let’s you to ingest an event if a user is entitled to a feature"
+        },
+        {
+          "info": {
+            "name": "List Feature Credits Entries of a Feature for an Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.togai.com/accounts/:account_id/features/:feature_id/entries",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "account_id corresponding to an account"
+              },
+              {
+                "name": "feature_id",
+                "value": "",
+                "type": "path",
+                "description": "feature_id corresponding to a feature"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "Maximum page size expected by client to return the record list. \n\n NOTE: Max page size cannot be more than 50. Also 50 is the default page size if no value is provided."
+              },
+              {
+                "name": "nextToken",
+                "value": "",
+                "type": "query",
+                "description": "Pagination token used as a marker to get records from next page."
+              }
+            ]
+          },
+          "docs": "This API let’s you to list the feature credits entries of a feature for an account"
+        },
+        {
+          "info": {
+            "name": "Update a Feature Credits Entry",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.togai.com/accounts/:account_id/features/:feature_id/entries/:entry_id",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "account_id corresponding to an account"
+              },
+              {
+                "name": "feature_id",
+                "value": "",
+                "type": "path",
+                "description": "feature_id corresponding to a feature"
+              },
+              {
+                "name": "entry_id",
+                "value": "",
+                "type": "path",
+                "description": "`entryId` corresponding to a particular entitlement/overage grant entry\n\nFormats:\n1. If source of entry is an entitlement grant rate card in price plan: `schedule_id#pricing_cycle_start_date$PRICE_PLAN`\n2. If source of entry is an entitlement overage rate card in price plan: `schedule_id#pricing_cycle_start_date$OVERAGE`\n3. If source of entry is a purchase: `purchase_id#int_index$PURCHASE`\n"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "#### This API let's you to update the following attributes: `effectiveUntil` and `granted`\n\n- **effectiveUntil**: must be in future\n- **granted**: must be greater than the existing usage (previous granted - current balance)\n"
+        },
+        {
+          "info": {
+            "name": "Void a Feature Credits Entry of a Feature for an Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.togai.com/accounts/:account_id/features/:feature_id/entries/:entry_id/void",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "account_id corresponding to an account"
+              },
+              {
+                "name": "feature_id",
+                "value": "",
+                "type": "path",
+                "description": "feature_id corresponding to a feature"
+              },
+              {
+                "name": "entry_id",
+                "value": "",
+                "type": "path",
+                "description": "`entryId` corresponding to a particular entitlement/overage grant entry\n\nFormats:\n1. If source of entry is an entitlement grant rate card in price plan: `schedule_id#pricing_cycle_start_date$PRICE_PLAN`\n2. If source of entry is an entitlement overage rate card in price plan: `schedule_id#pricing_cycle_start_date$OVERAGE`\n3. If source of entry is a purchase: `purchase_id#int_index$PURCHASE`\n"
+              }
+            ]
+          },
+          "docs": "This API let’s you to void the feature credits entries of a feature for an account"
+        },
+        {
+          "info": {
+            "name": "Get Feature Credits Balance",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.togai.com/accounts/:account_id/features/:feature_id",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "account_id corresponding to an account"
+              },
+              {
+                "name": "feature_id",
+                "value": "",
+                "type": "path",
+                "description": "feature_id corresponding to a feature"
+              }
+            ]
+          },
+          "docs": "This API let’s you to get the feature credits balance"
+        },
+        {
+          "info": {
+            "name": "Get Entitlement Value for a Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.togai.com/accounts/:account_id/entitlements/:feature_id",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "account_id corresponding to an account"
+              },
+              {
+                "name": "feature_id",
+                "value": "",
+                "type": "path",
+                "description": "feature_id corresponding to a feature"
+              }
+            ]
+          },
+          "docs": "This API let’s you to get the entitlement value for a account"
+        },
+        {
+          "info": {
+            "name": "Check Entitlement Value for a Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.togai.com/accounts/:account_id/entitlements/:feature_id",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "account_id corresponding to an account"
+              },
+              {
+                "name": "feature_id",
+                "value": "",
+                "type": "path",
+                "description": "feature_id corresponding to a feature"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API let’s you to validate the entitlement value for a account"
+        },
+        {
+          "info": {
+            "name": "Get Entitlements for a Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.togai.com/accounts/:account_id/entitlements",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "account_id corresponding to an account"
+              }
+            ]
+          },
+          "docs": "This API let’s you to get the entitlements for a account"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,186 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Togai Apis Accounts Event Schemas API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Event Schemas",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Event Schemas",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.togai.com/event_schema",
+            "params": [
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter by provided status"
+              },
+              {
+                "name": "nextToken",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns a list of event schema with pagination."
+        },
+        {
+          "info": {
+            "name": "Create an Event Schema",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.togai.com/event_schema",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create an event schema with attributes and dimensions to process events."
+        },
+        {
+          "info": {
+            "name": "Get an Event Schema",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.togai.com/event_schema/:event_schema_name",
+            "params": [
+              {
+                "name": "event_schema_name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "query",
+                "description": "Optional version to get a specific version. Gets latest version if it is not provided."
+              }
+            ]
+          },
+          "docs": "Get an event schema"
+        },
+        {
+          "info": {
+            "name": "Update an Event Schema",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.togai.com/event_schema/:event_schema_name",
+            "params": [
+              {
+                "name": "event_schema_name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an event schema and add new attributes and dimensions\n\nOnce an event schema is activated, you cannot update or delete existing attributes and dimensions however you can add new attributes and dimensions and update event schema description.\n    operationId: updateEventSchema\n"
+        },
+        {
+          "info": {
+            "name": "Delete an Event Schema",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.togai.com/event_schema/:event_schema_name",
+            "params": [
+              {
+                "name": "event_schema_name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "To delete(archive) an event schema, you’re required to archive associated active usage meters if any."
+        },
+        {
+          "info": {
+            "name": "List All Event Schema Versions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.togai.com/event_schema/:event_schema_name/versions",
+            "params": [
+              {
+                "name": "event_schema_name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a list of all the versions of an event schema"
+        },
+        {
+          "info": {
+            "name": "Activate an Event Schema",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.togai.com/event_schema/:event_schema_name/activate",
+            "params": [
+              {
+                "name": "event_schema_name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Activate an event schema"
+        },
+        {
+          "info": {
+            "name": "Deactivate an Event Schema",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.togai.com/event_schema/:event_schema_name/deactivate",
+            "params": [
+              {
+                "name": "event_schema_name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "You can deactivate an event schema using this API. In case you have an activate usage meter associated with the event schema, you will need to deactivate it first and then try deactivating the event schema.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

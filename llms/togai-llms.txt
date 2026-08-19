@@ -1,0 +1,243 @@
+# Togai documentation
+
+## Docs
+
+- [Introduction](https://docs.togai.com/docs/introduction.md)
+- [How Togai works?](https://docs.togai.com/docs/how-togai-works.md)
+- [Event Schemas](https://docs.togai.com/docs/event-schemas.md)
+- [Event enrichments](https://docs.togai.com/docs/event-enrichments.md)
+- [Event Ingestion](https://docs.togai.com/docs/event-ingestion.md)
+- [Usage Meter](https://docs.togai.com/docs/usage-meter.md)
+- [Billable Items](https://docs.togai.com/docs/billable-items.md)
+- [Overview](https://docs.togai.com/docs/price-plan-overview.md)
+- [Pricing cycle](https://docs.togai.com/docs/pricing-cycle.md)
+- [Rate cards](https://docs.togai.com/docs/rate-cards.md)
+- [Pricing Rules](https://docs.togai.com/docs/pricing-rules.md)
+- [Lifecycle and version control](https://docs.togai.com/docs/price-plan-lifecycle-version.md)
+- [Customers](https://docs.togai.com/docs/customers.md)
+- [Price plan overrides](https://docs.togai.com/docs/price-plan-overrides.md)
+- [Price Plan Schedule](https://docs.togai.com/docs/price-plan-schedule.md)
+- [Quote to cash overview](https://docs.togai.com/docs/qtc-overview.md)
+- [Proposals](https://docs.togai.com/docs/proposals.md)
+- [Purchases](https://docs.togai.com/docs/purchases.md)
+- [Customer portal](https://docs.togai.com/docs/customer-portal.md)
+- [Introduction](https://docs.togai.com/docs/ui-widgets/introduction.md)
+- [Usage](https://docs.togai.com/docs/ui-widgets/usage.md)
+- [Api](https://docs.togai.com/docs/ui-widgets/api.md)
+- [Custom theme and styles](https://docs.togai.com/docs/ui-widgets/custom-theme-and-styles.md)
+- [Others](https://docs.togai.com/docs/ui-widgets/others.md)
+- [Invoices overview](https://docs.togai.com/docs/invoices-overview.md)
+- [Invoice groups](https://docs.togai.com/docs/invoice-groups.md)
+- [Invoice templates](https://docs.togai.com/docs/invoice-templates.md)
+- [Credits](https://docs.togai.com/docs/credits.md)
+- [Payments and wallet](https://docs.togai.com/docs/payments-and-wallet.md)
+- [Insights overview](https://docs.togai.com/docs/insights-overview.md)
+- [Reports](https://docs.togai.com/docs/reports.md)
+- [Revenue simulator](https://docs.togai.com/docs/revenue-simulator.md)
+- [Alerts](https://docs.togai.com/docs/alerts.md)
+- [Admin Center](https://docs.togai.com/docs/admin-center.md)
+- [Settings](https://docs.togai.com/docs/settings.md)
+- [Quotas and Limits](https://docs.togai.com/docs/quotas-and-limits.md)
+- [JSON Logic at Togai](https://docs.togai.com/docs/JSON-logic-custom-operators.md)
+- [Overview](https://docs.togai.com/docs/integrations/overview.md)
+- [Supported Integrations](https://docs.togai.com/docs/integrations/supported-integrations.md): Togai integrates with a variety of third party (3P) platforms for different use cases and requirements.
+- [Webhooks](https://docs.togai.com/docs/integrations/webhooks.md)
+- [Stripe](https://docs.togai.com/docs/integrations/payments/stripe.md)
+- [Adyen](https://docs.togai.com/docs/integrations/payments/adyen.md)
+- [Paystack](https://docs.togai.com/docs/integrations/payments/paystack.md)
+- [Razorpay](https://docs.togai.com/docs/integrations/payments/razorpay.md)
+- [Verifone](https://docs.togai.com/docs/integrations/payments/verifone.md)
+- [AWS S3](https://docs.togai.com/docs/integrations/data-sources/aws-s3.md)
+- [AWS Redshift](https://docs.togai.com/docs/integrations/data-sources/aws-redshift.md)
+- [Snowflake](https://docs.togai.com/docs/integrations/data-sources/snowflake.md)
+- [JDBC](https://docs.togai.com/docs/integrations/data-sources/jdbc.md)
+- [Postgres](https://docs.togai.com/docs/integrations/data-sources/postgres.md)
+- [Prometheus](https://docs.togai.com/docs/integrations/data-sources/prometheus.md)
+- [Victoria Metrics](https://docs.togai.com/docs/integrations/data-sources/victoria-metrics.md)
+- [AWS Marketplace](https://docs.togai.com/docs/integrations/billing-and-invoicing/aws-marketplace.md)
+- [Zuora](https://docs.togai.com/docs/integrations/billing-and-invoicing/zuora.md)
+- [Chargebee](https://docs.togai.com/docs/integrations/billing-and-invoicing/chargebee.md)
+- [MS Dynamics 365](https://docs.togai.com/docs/integrations/accounting-and-erp/ms-dynamics.md)
+- [Netsuite](https://docs.togai.com/docs/integrations/accounting-and-erp/netsuite.md)
+- [Quickbooks](https://docs.togai.com/docs/integrations/accounting-and-erp/quickbooks.md)
+- [Sage](https://docs.togai.com/docs/integrations/accounting-and-erp/sage.md)
+- [Xero](https://docs.togai.com/docs/integrations/accounting-and-erp/xero.md)
+- [Odoo](https://docs.togai.com/docs/integrations/accounting-and-erp/odoo.md)
+- [ZohoBooks](https://docs.togai.com/docs/integrations/accounting-and-erp/zohobooks.md)
+- [Payday](https://docs.togai.com/docs/integrations/accounting-and-erp/payday.md)
+- [Salesforce](https://docs.togai.com/docs/integrations/crm-and-cpq/salesforce.md)
+- [Hubspot](https://docs.togai.com/docs/integrations/crm-and-cpq/hubspot.md)
+- [DocuSign](https://docs.togai.com/docs/integrations/crm-and-cpq/docusign.md)
+- [AWS Simple Email Service](https://docs.togai.com/docs/integrations/communications/aws-ses.md)
+- [Slack](https://docs.togai.com/docs/integrations/communications/slack.md)
+- [SMTP](https://docs.togai.com/docs/integrations/communications/smtp.md)
+- [MS Exchange Online](https://docs.togai.com/docs/integrations/communications/ms-exchange-online.md)
+- [First Promoter](https://docs.togai.com/docs/integrations/marketing/first-promoter.md)
+- [JDBC](https://docs.togai.com/docs/integrations/data-exports/jdbc-overview.md)
+- [S3](https://docs.togai.com/docs/integrations/data-exports/s3.md)
+- [Getting Started](https://docs.togai.com/api-reference/getting-started.md)
+- [Authentication 🔐](https://docs.togai.com/api-reference/authentication.md)
+- [Pagination 📄](https://docs.togai.com/api-reference/pagination.md)
+- [Generate short lived bearer token](https://docs.togai.com/api-reference/authentication/get-bearer-token.md): Generates and returns a bearer token. Behavior of this API differs on the basis of the auth mechanism used to make the request.   - For API key auth, this API generates a JWT token whcih is valid for 24 hours and returns it.   - For JWT bearer auth, returns the same JWT token in response For informa…
+- [Generate portal token](https://docs.togai.com/api-reference/authentication/customer-portal-auth.md): Generates and returns a bearer token belonging to a contact scoped to the accounts to which portal access has been granted
+- [Get delegate token for customer portal](https://docs.togai.com/api-reference/authentication/get-delegate-token-for-customer-portal.md): Get delegate token for customer portal
+- [List customers](https://docs.togai.com/api-reference/customers/list-customers.md): Returns a list of customers with pagination and sort.
+- [Create a customer](https://docs.togai.com/api-reference/customers/create-a-customer.md): This API let’s you to create customers and corresponding accounts.
+- [Get a customer](https://docs.togai.com/api-reference/customers/get-a-customer.md): Get customer information using customer_id.
+- [Delete a customer](https://docs.togai.com/api-reference/customers/delete-a-customer.md): This API let’s you to delete a customer using customer_id.
+- [Update a customer](https://docs.togai.com/api-reference/customers/update-a-customer.md): This API let’s you to update a customer’s information using customer_id.
+- [List accounts of customer](https://docs.togai.com/api-reference/accounts/list-accounts-of-customer.md): Returns a list of accounts of a customer with pagination and sort.
+- [Create an account](https://docs.togai.com/api-reference/accounts/create-an-account.md): This API let’s you to create an account for a customer using customer_id.
+- [Get an account](https://docs.togai.com/api-reference/accounts/get-an-account.md): Get account information using customer_id and account_id.
+- [Delete an account](https://docs.togai.com/api-reference/accounts/delete-an-account.md): This API let’s you to delete a customer using customer_id and account_id.
+- [Update an account](https://docs.togai.com/api-reference/accounts/update-an-account.md): This API let’s you to update an account’s information using customer_id and account_id.
+- [Get all aliases of an account](https://docs.togai.com/api-reference/accounts/account-aliases/get-all-aliases-of-an-account.md): Get all aliases of an account using account_id
+- [Add Aliases to account](https://docs.togai.com/api-reference/accounts/account-aliases/add-aliases-to-account.md): Add aliases to an account using customer_id and account_id.
+- [Remove Aliases to account](https://docs.togai.com/api-reference/accounts/account-aliases/remove-aliases-to-account.md): Remove existing aliases tagged to an account using this API
+- [(DEPRECATED) List pricing schedules of an account](https://docs.togai.com/api-reference/accounts/plan-association/list-pricing-schedules-of-an-account.md): Returns a list of pricing schedules of an account with pagination and sort.
+- [(DEPRECATED) Edit schedules of an account.](https://docs.togai.com/api-reference/accounts/plan-association/edit-schedules-of-an-account.md): This API let’s you to detach/attach one or more price plans from/to an existing account
+- [(DEPRECATED) Dissociate or associate a price plan with an account](https://docs.togai.com/api-reference/accounts/plan-association/disassociate-a-plan-fromto-an-account.md): This API let’s you to detach or attach a price plan with an existing account
+- [(DEPRECATED) Get all purchases for an account](https://docs.togai.com/api-reference/accounts/purchases/get-all-purchases-for-an-account.md): Get Purchase information for an account using account_id and price_plan_id
+- [(DEPRECATED) Initiate a purchase](https://docs.togai.com/api-reference/accounts/purchases/initiate-a-purchase.md): This API let’s you to initiate a purchase for an account
+- [(DEPRECATED) Get a specific purchase of an account](https://docs.togai.com/api-reference/accounts/purchases/get-a-specific-purchase-of-an-account.md): Get purchase information of an account for a specific plan using account_id and price_plan_id
+- [(DEPRECATED) List all proposals of an account](https://docs.togai.com/api-reference/accounts/proposals/list-all-proposals-of-an-account.md): List all proposals of an account
+- [(DEPRECATED) Propose a purchase of a plan](https://docs.togai.com/api-reference/accounts/proposals/propose-a-purchase-of-a-plan.md): This API let’s you to create a proposal of a billing/entitlement plan for an account
+- [(DEPRECATED) Get proposal information](https://docs.togai.com/api-reference/accounts/proposals/get-proposal-information.md): Get proposal information
+- [(DEPRECATED) Approve or decline a purchase of a billing plan](https://docs.togai.com/api-reference/accounts/proposals/approve-or-decline-a-purchase-of-a-billing-plan.md): This API let’s you to approve or decline a proposal of a billing plan for an account
+- [List rate cards](https://docs.togai.com/api-reference/schedules/list-rate-cards.md): List rate cards
+- [Bulk rate card operations on a schedule](https://docs.togai.com/api-reference/schedules/bulk-rate-card-operations-on-a-schedule.md): Bulk rate card operations on a schedule
+- [Bulk edit schedules of an account](https://docs.togai.com/api-reference/schedules/bulk-edit-schedules-of-an-account.md): Bulk edit schedules of an account
+- [List pricing schedules of an account](https://docs.togai.com/api-reference/schedules/list-pricing-schedules-of-an-account.md): List pricing schedules of an account
+- [Get list of errors of a acc schedule](https://docs.togai.com/api-reference/schedules/get-list-of-errors-of-a-acc-schedule.md): Get list of errors of a acc schedule
+- [Discard schedules of an account](https://docs.togai.com/api-reference/schedules/discard-schedules-of-an-account.md): Discard schedules of an account
+- [Finalize schedules of an account](https://docs.togai.com/api-reference/schedules/finalize-schedules-of-an-account.md): Finalize schedules of an account
+- [List pricing rules of a account schedule](https://docs.togai.com/api-reference/schedules/list-pricing-rules-of-a-account-schedule.md): List pricing rules of a account schedule
+- [Update pricing rules of a account schedule](https://docs.togai.com/api-reference/schedules/update-pricing-rules-of-a-account-schedule.md): Update pricing rules of a account schedule
+- [List all aliases](https://docs.togai.com/api-reference/aliases/list-all-aliases.md): Returns a list of aliases with pagination and sort.
+- [Create an alias](https://docs.togai.com/api-reference/aliases/create-an-alias.md): This API let’s you to create an alias
+- [Get an alias](https://docs.togai.com/api-reference/aliases/get-an-alias.md): Get alias information using alias.
+- [Delete an alias](https://docs.togai.com/api-reference/aliases/delete-an-alias.md): This API let’s you to delete an alias using alias.
+- [List event schemas](https://docs.togai.com/api-reference/event-schemas/list-event-schemas.md): Returns a list of event schema with pagination.
+- [Create an event schema](https://docs.togai.com/api-reference/event-schemas/create-an-event-schema.md): Create an event schema with attributes and dimensions to process events.
+- [Get an event schema](https://docs.togai.com/api-reference/event-schemas/get-an-event-schema.md): Get an event schema
+- [Delete an event schema](https://docs.togai.com/api-reference/event-schemas/delete-an-event-schema.md): To delete(archive) an event schema, you’re required to archive associated active usage meters if any.
+- [Update an event schema](https://docs.togai.com/api-reference/event-schemas/update-an-event-schema.md): Update an event schema and add new attributes and dimensions
+- [List all event schema versions](https://docs.togai.com/api-reference/event-schemas/list-all-event-schema-versions.md): Get a list of all the versions of an event schema
+- [Activate an event schema](https://docs.togai.com/api-reference/event-schemas/activate-an-event-schema.md): Activate an event schema
+- [Deactivate an event schema](https://docs.togai.com/api-reference/event-schemas/deactivate-an-event-schema.md): You can deactivate an event schema using this API. In case you have an activate usage meter associated with the event schema, you will need to deactivate it first and then try deactivating the event schema.
+- [List usage meters for event schema](https://docs.togai.com/api-reference/usage-meters/list-usage-meters-for-event-schema.md): Get a list of usage meters associated with an event schema
+- [Create an usage meter](https://docs.togai.com/api-reference/usage-meters/create-an-usage-meter.md): Create an usage meter and associate with an event schema
+- [Get usage meter](https://docs.togai.com/api-reference/usage-meters/get-usage-meter.md): Get an usage meter using event schema name and usage meter id.
+- [Delete an Usage Meter](https://docs.togai.com/api-reference/usage-meters/delete-an-usage-meter.md): Delete an Usage Meter
+- [Update an usage meter](https://docs.togai.com/api-reference/usage-meters/update-an-usage-meter.md): This API lets you update an existing usage meter.
+- [Activate usage meter](https://docs.togai.com/api-reference/usage-meters/activate-usage-meter.md): Activate usage meter
+- [Deactivate usage meter](https://docs.togai.com/api-reference/usage-meters/deactivate-usage-meter.md): Make an existing active usage meter to be inactive Active Usage Meters with active Pricing Plan attached can also be deactivated.
+- [List addOns](https://docs.togai.com/api-reference/addons/list-addons.md): Get a list of add-ons
+- [Create an AddOn](https://docs.togai.com/api-reference/addons/create-an-addon.md): Create an AddOn
+- [Get an addon](https://docs.togai.com/api-reference/addons/get-an-addon.md): Get details of an addon
+- [Delete an addon](https://docs.togai.com/api-reference/addons/delete-an-addon.md): Archive an addOn
+- [Update an addon](https://docs.togai.com/api-reference/addons/update-an-addon.md): Update an existing addon
+- [Get a list of licenses updates](https://docs.togai.com/api-reference/licenses/get-a-list-of-licenses-updates.md): This API let’s you to fetch a list of licenses updates with multiple query parameters
+- [Update a license entry](https://docs.togai.com/api-reference/licenses/update-a-license-entry.md): This API let’s you to add a license entry
+- [Get a list of named licenses updates](https://docs.togai.com/api-reference/licenses/get-a-list-of-named-licenses-updates.md): This API let’s you to fetch a list of named licenses updates with multiple query parameters
+- [List Feature](https://docs.togai.com/api-reference/feature/list-feature.md): Get a list of features along with its associations
+- [Create a Feature and optionally associate with one or more event_schemas](https://docs.togai.com/api-reference/feature/create-a-feature-and-optionally-associate-with-one-or-more-event_schemas.md): Create a Feature optionally associate with one or more event_schemas
+- [Get a Feature](https://docs.togai.com/api-reference/feature/get-a-feature.md): Get details of a Feature
+- [Update a Feature](https://docs.togai.com/api-reference/feature/update-a-feature.md): Update an existing feature and its eventSchema associations
+- [(DEPRECATED) List price plans](https://docs.togai.com/api-reference/price-plans/list-price-plans.md): Get a list of price plans
+- [(DEPRECATED) Create a price plan](https://docs.togai.com/api-reference/price-plans/create-a-price-plan.md): This API let's you create and price plan Learn more about [Price Plans](https://docs.togai.com/docs/priceplan)
+- [(DEPRECATED) Get a price plan](https://docs.togai.com/api-reference/price-plans/get-a-price-plan.md): Get a price plan details using price plan id
+- [(DEPRECATED) Update a price plan](https://docs.togai.com/api-reference/price-plans/update-a-price-plan.md): Update an existing price plan Price Plans with status as DRAFT alone can be updated . Learn more about [Price plans](https://docs.togai.com/docs/priceplan) from our Guides
+- [(DEPRECATED) Activate a price plan](https://docs.togai.com/api-reference/price-plans/activate-a-price-plan.md): Activate a price plan details using price plan id
+- [(DEPRECATED) Create a price plan migration](https://docs.togai.com/api-reference/price-plans/create-a-price-plan-migration.md): Migrates accounts across price plans. This is an asynchronous process functioning on top of Togai's Jobs  framework. Status of the created migrations can be obtained using the [Jobs APIs](https://docs.togai.com/api-reference/jobs/get-the-status-of-a-job)
+- [(DEPRECATED) Archive a price plan](https://docs.togai.com/api-reference/price-plans/archive-a-price-plan.md): Archive a price plan
+- [List price plans](https://docs.togai.com/api-reference/priceplanv2/list-price-plans.md): List price plans
+- [Create a price plan](https://docs.togai.com/api-reference/priceplanv2/create-a-price-plan.md): Create a price plan
+- [Get a price plan](https://docs.togai.com/api-reference/priceplanv2/get-a-price-plan.md): Get a price plan
+- [Update a price plan](https://docs.togai.com/api-reference/priceplanv2/update-a-price-plan.md): Update a price plan
+- [Discard a price plan](https://docs.togai.com/api-reference/priceplanv2/discard-a-price-plan.md): Discard a price plan
+- [Finalize a price plan](https://docs.togai.com/api-reference/priceplanv2/finalize-a-price-plan.md): Finalize a price plan
+- [List rate cards of a price plan](https://docs.togai.com/api-reference/priceplanv2/list-rate-cards-of-a-price-plan.md): List rate cards of a price plan
+- [Bulk rate card operations of a price plan](https://docs.togai.com/api-reference/priceplanv2/bulk-rate-card-operations-of-a-price-plan.md): Bulk rate card operations of a price plan
+- [List pricing rules of a price plan](https://docs.togai.com/api-reference/priceplanv2/list-pricing-rules-of-a-price-plan.md): List pricing rules of a price plan
+- [Update pricing rules of a price plan](https://docs.togai.com/api-reference/priceplanv2/update-pricing-rules-of-a-price-plan.md): Update pricing rules of a price plan
+- [Get list of errors of a price plan](https://docs.togai.com/api-reference/priceplanv2/get-list-of-errors-of-a-price-plan.md): Get list of errors of a price plan
+- [List price plan versions](https://docs.togai.com/api-reference/priceplanv2/list-price-plan-versions.md): List price plan versions
+- [Create a price plan v2 migration](https://docs.togai.com/api-reference/priceplanv2/create-a-price-plan-v2-migration.md): Migrates accounts across price plans. This is an asynchronous process functioning on top of Togai's Jobs  framework. Status of the created migrations can be obtained using the [Jobs APIs](https://docs.togai.com/api-reference/jobs/get-the-status-of-a-job)
+- [Lists settings](https://docs.togai.com/api-reference/settings/lists-settings.md): List settings
+- [Create a setting](https://docs.togai.com/api-reference/settings/create-a-setting.md): Create a setting
+- [Get a setting](https://docs.togai.com/api-reference/settings/get-a-setting.md): Get a setting
+- [Update a setting](https://docs.togai.com/api-reference/settings/update-a-setting.md): Update a setting
+- [(DEPRECATED) Calculate and return the revenue for a existing or new price plan](https://docs.togai.com/api-reference/price-experimentation/calculate-and-return-the-revenue-for-a-existing-or-new-price-plan.md): Calculate and return the revenue for a existing or new price plan
+- [Get the status of a job](https://docs.togai.com/api-reference/jobs/get-the-status-of-a-job.md): Get the status of a job
+- [List jobs](https://docs.togai.com/api-reference/jobs/list-jobs.md): Returns a list of jobs with pagination and sort.
+- [Confirm a job](https://docs.togai.com/api-reference/jobs/confirm-a-job.md): Confirm a job
+- [Reject a job](https://docs.togai.com/api-reference/jobs/reject-a-job.md): Reject a job
+- [List job entries](https://docs.togai.com/api-reference/jobs/list-job-entries.md): List individual job entries and current state of processing
+- [Ingest events to Togai](https://docs.togai.com/api-reference/event-ingestion/ingest-events-to-togai.md): This API let’s you to ingest events to your Togai account. Events ingested using this API will be processed via associated usage meters and further via associated price plans to generate final billable value to invoice the customer Read more about [Event Ingestion](https://docs.togai.com/docs/event-…
+- [Ingest events to Togai in batch](https://docs.togai.com/api-reference/event-ingestion/ingest-events-to-togai-in-batch.md): This API let’s you to ingest events in batch upto 500 events. Ingest large amounts of events up to 500 in batches in an array using this API.
+- [Ingest event if a user is entitled to a feature](https://docs.togai.com/api-reference/entitlements/ingest-event-if-a-user-is-entitled-to-a-feature.md): This API let’s you to ingest an event if a user is entitled to a feature
+- [Get Feature credits balance](https://docs.togai.com/api-reference/entitlements/get-feature-credits-balance.md): This API let’s you to get the feature credits balance
+- [List feature credits entries of a feature for an account](https://docs.togai.com/api-reference/entitlements/list-feature-credits-entries-of-a-feature-for-an-account.md): This API let’s you to list the feature credits entries of a feature for an account
+- [Update a feature credits entry](https://docs.togai.com/api-reference/entitlements/update-a-feature-credits-entry-of-a-feature-for-an-account.md): #### This API let's you to update the following attributes: `effectiveUntil` and `granted`
+- [Void a feature credits entry of a feature for an account](https://docs.togai.com/api-reference/entitlements/void-a-feature-credits-entry-of-a-feature-for-an-account.md): This API let’s you to void the feature credits entries of a feature for an account
+- [Get entitlements for a account](https://docs.togai.com/api-reference/entitlements/get-entitlements-for-a-account.md): This API let’s you to get the entitlements for a account
+- [Check entitlement value for a account](https://docs.togai.com/api-reference/entitlements/check-entitlement-value-for-a-account.md): This API let’s you to validate the entitlement value for a account
+- [Get entitlement value for a account](https://docs.togai.com/api-reference/entitlements/get-entitlement-value-for-a-account.md): This API let’s you to get the entitlement value for a account
+- [Get a list of usage events with multiple query options](https://docs.togai.com/api-reference/event-management/get-a-list-of-usage-events-with-multiple-query-options.md): This API let’s you to fetch a list of events with multiple query parameters
+- [Get an event using event id](https://docs.togai.com/api-reference/event-management/get-an-usage-event-using-event-id.md): Fetch details of a particular event using the event ID.
+- [Correct an ingested event](https://docs.togai.com/api-reference/event-management/correct-an-ingested-event.md): #### This API lets you to correct events. Available in both synchronous and asynchronous mode - **Usages**: Reduction of all usages associated with this event - **Revenue**: Reduction of all revenues associated with this event - **Entitlements**: Entitlements(Feature Credits) consumed by this event…
+- [Get Togai Metrics](https://docs.togai.com/api-reference/metrics/get-togai-metrics.md): Togai Metrics API allows you to fetch different metrics from Events, Usage Meters and PricePlans with multiple queryable options. A single request can query up to five metrics.  Single response can contain a maximum of 300 data points.
+- [List credits](https://docs.togai.com/api-reference/credits/list-credits.md): Get all credits
+- [Grant credit](https://docs.togai.com/api-reference/credits/grant-credit.md): Grant credit
+- [Get credit details](https://docs.togai.com/api-reference/credits/get-credit-details.md): Get credit details
+- [Void credit](https://docs.togai.com/api-reference/credits/void-credit.md): Void credit
+- [Credit balance for Account](https://docs.togai.com/api-reference/credits/credit-balance-for-account.md): Credit balance for Account
+- [List invoices](https://docs.togai.com/api-reference/invoices/list-invoices.md): List invoices
+- [Get an invoice](https://docs.togai.com/api-reference/invoices/get-an-invoice.md): Get invoice
+- [List pricing rule logs](https://docs.togai.com/api-reference/invoices/list-pricing-rule-logs.md): List pricing rule logs
+- [Add or update miscellaneous charges in Invoice](https://docs.togai.com/api-reference/invoices/add-or-update-miscellaneous-charges-in-invoice.md): Add or update miscellaneous charges in Invoice
+- [Add or update miscellaneous charges in upcoming Invoice for a account](https://docs.togai.com/api-reference/invoices/add-or-update-miscellaneous-charges-in-upcoming-invoice-for-a-account.md): Add or update miscellaneous charges in upcoming Invoice for a account
+- [Create a custom invoice for an account](https://docs.togai.com/api-reference/invoices/create-a-custom-invoice-for-an-account.md): Create a custom invoice for an account.
+- [Delete a custom invoice in DRAFT state](https://docs.togai.com/api-reference/invoices/delete-a-custom-invoice-in-draft-state.md): Delete a custom invoice in DRAFT state.
+- [List invoices eligible for bill run](https://docs.togai.com/api-reference/invoices/list-invoices-eligible-for-bill-run.md): List invoices eligible for bill run
+- [Create a bill run job request](https://docs.togai.com/api-reference/invoices/create-a-bill-run-job-request.md): Create a bill run job request
+- [List all payments](https://docs.togai.com/api-reference/payments/list-all-payments.md): List all payments
+- [Get a payment](https://docs.togai.com/api-reference/payments/get-a-payment.md): Get payment
+- [create payments](https://docs.togai.com/api-reference/payments/create-payments.md): create payments
+- [Wallet balance for Account](https://docs.togai.com/api-reference/wallet/wallet-balance-for-account.md): Wallet balance for Account
+- [Wallet entries for Account](https://docs.togai.com/api-reference/wallet/wallet-entries-for-account.md): Wallet entries for Account
+- [List Invoice Groups](https://docs.togai.com/api-reference/invoicegroups/list-invoice-groups.md): This API let’s you to list invoice groups
+- [Create an invoice group](https://docs.togai.com/api-reference/invoicegroups/create-an-invoice-group.md): This API let’s you to create an invoice group
+- [Get information of an invoice group](https://docs.togai.com/api-reference/invoicegroups/get-information-of-an-invoice-group.md): This API let’s you to get information of an invoice group
+- [Add accounts to an invoice group](https://docs.togai.com/api-reference/invoicegroups/add-accounts-to-an-invoice-group.md): This API let’s you to add accounts to an invoice group
+- [Remove accounts from an invoice group. Removing all accounts will also delete the invoice group](https://docs.togai.com/api-reference/invoicegroups/remove-accounts-from-an-invoice-group-removing-all-accounts-will-also-delete-the-invoice-group.md): This API let’s you to remove accounts from an invoice group. Removing all accounts will also delete the invoice group
+- [Introduction](https://docs.togai.com/api-reference/alerts/introduction.md)
+- [List alert templates](https://docs.togai.com/api-reference/alerts/list-alert-templates.md): Returns a list of alert templates with pagination and sort.
+- [Get an alert template](https://docs.togai.com/api-reference/alerts/get-an-alert-template.md): Get an alert template
+- [Create an alert](https://docs.togai.com/api-reference/alerts/create-an-alert.md): Create an alert
+- [List alerts](https://docs.togai.com/api-reference/alerts/list-alerts.md): Returns a list of alerts with pagination and sort.
+- [Update an alert](https://docs.togai.com/api-reference/alerts/update-an-alert.md): Update an alert
+- [List incidents](https://docs.togai.com/api-reference/alerts/list-incidents.md): Returns a list of incidents with pagination and sort.
+- [Get an incident](https://docs.togai.com/api-reference/alerts/get-an-incident.md): Get an incident
+- [Update an incident status](https://docs.togai.com/api-reference/alerts/update-an-incident-status.md): Update an incident status
+- [List reports](https://docs.togai.com/api-reference/reports/list-reports.md): List reports
+- [Product Updates](https://docs.togai.com/changelog/change-log.md)
+- [How to use Togai - Showcases](https://docs.togai.com/how-tos/overview.md)
+- [Eleven Labs](https://docs.togai.com/how-tos/eleven-labs.md)
+- [OpusClip](https://docs.togai.com/how-tos/opus-clip.md)
+- [Hypertrack](https://docs.togai.com/how-tos/hypertrack.md)
+- [Loxo](https://docs.togai.com/how-tos/loxo.md)
+- [Typeform](https://docs.togai.com/how-tos/typeform.md)
+- [Heygen](https://docs.togai.com/how-tos/heygen.md)
+- [Anthropic](https://docs.togai.com/how-tos/anthropic.md)
+- [Personal.ai](https://docs.togai.com/how-tos/personal-ai.md)
+
+## OpenAPI Specs
+
+- [openapi](https://docs.togai.com/openapi.yaml)
+
+## Optional
+
+- [Postman collection](https://www.postman.com/togai-workspace/workspace/togai-public)
+- [Open API spec](https://github.com/TogaiHQ/togai-mintlify-docs/blob/main/openapi.yaml)

@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Togai Apis Accounts Price Experimentation API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Price Experimentation",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Calculate and Return the Revenue for a Existing or New Price Plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.togai.com/revenue_calculator",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Calculate and return the revenue for a existing or new price plan"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

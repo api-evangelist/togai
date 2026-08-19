@@ -1,0 +1,137 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Togai Apis Accounts Credits API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Credits",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Credits",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.togai.com/credits",
+            "params": [
+              {
+                "name": "nextToken",
+                "value": "",
+                "type": "query",
+                "description": "Pagination token used as a marker to get records from next page."
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter option to filter by status."
+              },
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter option to filter based on account id."
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "Filter option to filter based on credit id."
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "Maximum page size expected by client to return the record list. \n\n NOTE: Max page size cannot be more than 50. Also 50 is the default page size if no value is provided."
+              }
+            ]
+          },
+          "docs": "Get all credits"
+        },
+        {
+          "info": {
+            "name": "Grant Credit",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.togai.com/credits",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Grant credit"
+        },
+        {
+          "info": {
+            "name": "Get Credit Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.togai.com/credits/:credit_id",
+            "params": [
+              {
+                "name": "credit_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get credit details"
+        },
+        {
+          "info": {
+            "name": "Void Credit",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.togai.com/credits/:credit_id/void",
+            "params": [
+              {
+                "name": "credit_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Void credit"
+        },
+        {
+          "info": {
+            "name": "Credit Balance for Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.togai.com/accounts/:account_id/credit_balance",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "account_id corresponding to an account"
+              }
+            ]
+          },
+          "docs": "Credit balance for Account"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

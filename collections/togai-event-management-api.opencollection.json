@@ -1,0 +1,114 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Togai Apis Accounts Event Management API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Event Management",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a List of Usage Events with Multiple Query Options",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.togai.com/events",
+            "params": [
+              {
+                "name": "nextToken",
+                "value": "",
+                "type": "query",
+                "description": "Pagination token used as a marker to get records from next page."
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter option to filter by status."
+              },
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter option to filter based on account id."
+              },
+              {
+                "name": "schema_name",
+                "value": "",
+                "type": "query",
+                "description": "Filter option to filter the events based on schema name."
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "Maximum page size expected by client to return the record list. \n\n NOTE: Max page size cannot be more than 50. Also 50 is the default page size if no value is provided."
+              }
+            ]
+          },
+          "docs": "This API let’s you to fetch a list of events with multiple query parameters"
+        },
+        {
+          "info": {
+            "name": "Get an Event Using Event Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.togai.com/events/:event_id",
+            "params": [
+              {
+                "name": "event_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Fetch details of a particular event using the event ID."
+        },
+        {
+          "info": {
+            "name": "Correct an Ingested Event",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.togai.com/events/correction",
+            "params": [
+              {
+                "name": "action",
+                "value": "",
+                "type": "query",
+                "description": "Action to perform in event correction"
+              },
+              {
+                "name": "require_confirmation",
+                "value": "",
+                "type": "query",
+                "description": "Specifies whether to start a migration only after a confirmation"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "#### This API lets you to correct events. Available in both synchronous and asynchronous mode\n- **Usages**: Reduction of all usages associated with this event\n- **Revenue**: Reduction of all revenues associated with this event\n- **Entitlements**: Entitlements(Feature Credits) consumed by this event are granted back to the account.\n\n### Possible Actions:\n- UNDO: Undo all usages, revenue and entitlements associated with an event\n- REDO: Performs UNDO and re-ingests the same event\n- REDO_EVENT: Per"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

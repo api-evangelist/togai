@@ -1,0 +1,112 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Togai Apis Accounts InvoiceGroups API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "InvoiceGroups",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Invoice Groups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.togai.com/invoice_groups"
+          },
+          "docs": "This API let’s you to list invoice groups"
+        },
+        {
+          "info": {
+            "name": "Create an Invoice Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.togai.com/invoice_groups",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API let’s you to create an invoice group"
+        },
+        {
+          "info": {
+            "name": "Get Information of an Invoice Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.togai.com/invoice_groups/:invoice_group_id",
+            "params": [
+              {
+                "name": "invoice_group_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "This API let’s you to get information of an invoice group"
+        },
+        {
+          "info": {
+            "name": "Add Accounts to an Invoice Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.togai.com/invoice_groups/:invoice_group_id/add_accounts",
+            "params": [
+              {
+                "name": "invoice_group_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API let’s you to add accounts to an invoice group"
+        },
+        {
+          "info": {
+            "name": "Remove Accounts From an Invoice Group. Removing All Accounts Will Also Delete the Invoice Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.togai.com/invoice_groups/:invoice_group_id/remove_accounts",
+            "params": [
+              {
+                "name": "invoice_group_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API let’s you to remove accounts from an invoice group. Removing all accounts will also delete the invoice group"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

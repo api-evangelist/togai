@@ -1,0 +1,215 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Togai Apis Accounts Price Plans API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Price Plans",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Price Plans",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.togai.com/price_plans",
+            "params": [
+              {
+                "name": "nextToken",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get a list of price plans"
+        },
+        {
+          "info": {
+            "name": "Create a Price Plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.togai.com/price_plans",
+            "params": [
+              {
+                "name": "dry_run",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API let's you create and price plan\nLearn more about [Price Plans](https://docs.togai.com/docs/priceplan)\n"
+        },
+        {
+          "info": {
+            "name": "Get a Price Plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.togai.com/price_plans/:price_plan_id",
+            "params": [
+              {
+                "name": "price_plan_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "query",
+                "description": "Optional version to get a specific version. Gets latest version if it is not provided."
+              }
+            ]
+          },
+          "docs": "Get a price plan details using price plan id"
+        },
+        {
+          "info": {
+            "name": "Update a Price Plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.togai.com/price_plans/:price_plan_id",
+            "params": [
+              {
+                "name": "price_plan_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an existing price plan\nPrice Plans with status as DRAFT alone can be updated . Learn more about [Price plans](https://docs.togai.com/docs/priceplan) from our Guides\n"
+        },
+        {
+          "info": {
+            "name": "Archive a Price Plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.togai.com/price_plans/:price_plan_id",
+            "params": [
+              {
+                "name": "price_plan_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Archive a price plan"
+        },
+        {
+          "info": {
+            "name": "Activate a Price Plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.togai.com/price_plans/:price_plan_id/activate",
+            "params": [
+              {
+                "name": "price_plan_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Activate a price plan details using price plan id"
+        },
+        {
+          "info": {
+            "name": "Add Currencies to a Price Plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.togai.com/price_plans/:price_plan_id/currencies",
+            "params": [
+              {
+                "name": "price_plan_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add currencies to a price plan"
+        },
+        {
+          "info": {
+            "name": "Remove a Draft Currency From a Price Plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.togai.com/price_plans/:price_plan_id/currencies/:currency_id",
+            "params": [
+              {
+                "name": "price_plan_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "currency_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Remove a draft currency from a price plan"
+        },
+        {
+          "info": {
+            "name": "Create a Price Plan Migration",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.togai.com/price_plans/migration",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Migrates accounts across price plans. This is an asynchronous process functioning on top of Togai's Jobs \nframework. Status of the created migrations can be obtained using the [Jobs APIs](https://docs.togai.com/api-reference/jobs/get-the-status-of-a-job)\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

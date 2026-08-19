@@ -1,0 +1,116 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Togai Apis Accounts Licenses API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Licenses",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a List of Licenses Updates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.togai.com/license_updates",
+            "params": [
+              {
+                "name": "nextToken",
+                "value": "",
+                "type": "query",
+                "description": "Pagination token used as a marker to get records from next page."
+              },
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter option to filter based on account id."
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "Maximum page size expected by client to return the record list. \n\n NOTE: Max page size cannot be more than 50. Also 50 is the default page size if no value is provided."
+              },
+              {
+                "name": "licenseId",
+                "value": "",
+                "type": "query",
+                "description": "License Id to filter"
+              },
+              {
+                "name": "effectiveFrom",
+                "value": "",
+                "type": "query",
+                "description": "effectiveFrom to filter"
+              }
+            ]
+          },
+          "docs": "This API let’s you to fetch a list of licenses updates with multiple query parameters"
+        },
+        {
+          "info": {
+            "name": "Update a License Entry",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.togai.com/license_updates",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API let’s you to add a license entry"
+        },
+        {
+          "info": {
+            "name": "Update a License Entry Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.togai.com/license_updates/:license_id",
+            "params": [
+              {
+                "name": "licenseId",
+                "value": "",
+                "type": "query",
+                "description": "License Id to filter"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API let’s you to update metadata of a license entry"
+        },
+        {
+          "info": {
+            "name": "Get a List of Named Licenses Updates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.togai.com/named_license_updates"
+          },
+          "docs": "This API let’s you to fetch a list of named licenses updates with multiple query parameters"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

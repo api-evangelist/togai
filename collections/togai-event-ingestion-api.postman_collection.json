@@ -1,0 +1,902 @@
+{
+  "item": [
+    {
+      "id": "607333d0-6a0f-443f-bba6-0aafb186198d",
+      "name": "Event Ingestion",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "00a3d688-290d-48e3-baba-4b6acf4bd31c",
+          "name": "Ingest Events to Togai",
+          "request": {
+            "name": "Ingest Events to Togai",
+            "description": {
+              "content": "This API let’s you to ingest events to your Togai account.\nEvents ingested using this API will be processed via associated usage meters and further via associated price plans to generate final billable value to invoice the customer\nRead more about [Event Ingestion](https://docs.togai.com/docs/event-ingestion)\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ingest"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"event\": {\n    \"schemaName\": \"<string>\",\n    \"timestamp\": \"<dateTime>\",\n    \"accountId\": \"<string>\",\n    \"attributes\": [\n      {\n        \"name\": \"<string>\",\n        \"value\": \"<string>\",\n        \"unit\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"<string>\",\n        \"unit\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"<string>\",\n        \"unit\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"<string>\",\n        \"unit\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"<string>\",\n        \"unit\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"<string>\",\n        \"unit\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"<string>\",\n        \"unit\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"<string>\",\n        \"unit\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"<string>\",\n        \"unit\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value\": \"<string>\",\n        \"unit\": \"<string>\"\n      }\n    ],\n    \"dimensions\": {\n      \"key_0\": \"<string>\"\n    },\n    \"id\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7e32d8e3-86f6-457c-9cbc-adcf1cd17bd2",
+              "name": "Successfully accepted to process all the events from payload.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ingest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": {\n    \"timestamp\": \"2022-06-15T07:30:35.123\",\n    \"schemaName\": \"travelCompletedEvent\",\n    \"id\": \"c0b1306d-f506-43a6-856b-69221efaee6b\",\n    \"accountId\": \"1\",\n    \"attributes\": [\n      {\n        \"name\": \"distanceTravelled\",\n        \"value\": \"50\",\n        \"unit\": \"Miles\"\n      },\n      {\n        \"name\": \"timeSpent\",\n        \"value\": \"60\",\n        \"unit\": \"Minutes\"\n      }\n    ],\n    \"dimensions\": {\n      \"location\": \"Seattle\",\n      \"costCenterCode\": \"1234\",\n      \"travelType\": \"Business\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"statusCode\": 7360,\n  \"name\": \"string\",\n  \"message\": \"string\",\n  \"code\": \"string\",\n  \"details\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "40cb52ae-84e5-47ef-929a-6091c2abe12a",
+              "name": "Bad request. Please check the response message for failure details.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ingest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": {\n    \"timestamp\": \"2022-06-15T07:30:35.123\",\n    \"schemaName\": \"travelCompletedEvent\",\n    \"id\": \"c0b1306d-f506-43a6-856b-69221efaee6b\",\n    \"accountId\": \"1\",\n    \"attributes\": [\n      {\n        \"name\": \"distanceTravelled\",\n        \"value\": \"50\",\n        \"unit\": \"Miles\"\n      },\n      {\n        \"name\": \"timeSpent\",\n        \"value\": \"60\",\n        \"unit\": \"Minutes\"\n      }\n    ],\n    \"dimensions\": {\n      \"location\": \"Seattle\",\n      \"costCenterCode\": \"1234\",\n      \"travelType\": \"Business\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e4e731d8-52b4-4e84-a654-9870a2c9fe8f",
+              "name": "Credential \"x-api-key\" is not valid. Please check the response message for failure details.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ingest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": {\n    \"timestamp\": \"2022-06-15T07:30:35.123\",\n    \"schemaName\": \"travelCompletedEvent\",\n    \"id\": \"c0b1306d-f506-43a6-856b-69221efaee6b\",\n    \"accountId\": \"1\",\n    \"attributes\": [\n      {\n        \"name\": \"distanceTravelled\",\n        \"value\": \"50\",\n        \"unit\": \"Miles\"\n      },\n      {\n        \"name\": \"timeSpent\",\n        \"value\": \"60\",\n        \"unit\": \"Minutes\"\n      }\n    ],\n    \"dimensions\": {\n      \"location\": \"Seattle\",\n      \"costCenterCode\": \"1234\",\n      \"travelType\": \"Business\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "396ba14b-de2b-4e19-be81-87bb86b92ab2",
+              "name": "Unable to process the events as the size of the event payload is above the supported limit. Please check our docs for the api limits - https://togai.com/docs/limits.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ingest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": {\n    \"timestamp\": \"2022-06-15T07:30:35.123\",\n    \"schemaName\": \"travelCompletedEvent\",\n    \"id\": \"c0b1306d-f506-43a6-856b-69221efaee6b\",\n    \"accountId\": \"1\",\n    \"attributes\": [\n      {\n        \"name\": \"distanceTravelled\",\n        \"value\": \"50\",\n        \"unit\": \"Miles\"\n      },\n      {\n        \"name\": \"timeSpent\",\n        \"value\": \"60\",\n        \"unit\": \"Minutes\"\n      }\n    ],\n    \"dimensions\": {\n      \"location\": \"Seattle\",\n      \"costCenterCode\": \"1234\",\n      \"travelType\": \"Business\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a816e1dd-7ba2-4f05-8368-98cdc026f79b",
+              "name": "Request throttled. Please check the response message on the failure details.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ingest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": {\n    \"timestamp\": \"2022-06-15T07:30:35.123\",\n    \"schemaName\": \"travelCompletedEvent\",\n    \"id\": \"c0b1306d-f506-43a6-856b-69221efaee6b\",\n    \"accountId\": \"1\",\n    \"attributes\": [\n      {\n        \"name\": \"distanceTravelled\",\n        \"value\": \"50\",\n        \"unit\": \"Miles\"\n      },\n      {\n        \"name\": \"timeSpent\",\n        \"value\": \"60\",\n        \"unit\": \"Minutes\"\n      }\n    ],\n    \"dimensions\": {\n      \"location\": \"Seattle\",\n      \"costCenterCode\": \"1234\",\n      \"travelType\": \"Business\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "63071800-1a2f-43d9-bc46-76c4064f4b0f",
+              "name": "Service is currently unavailable to process the request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ingest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": {\n    \"timestamp\": \"2022-06-15T07:30:35.123\",\n    \"schemaName\": \"travelCompletedEvent\",\n    \"id\": \"c0b1306d-f506-43a6-856b-69221efaee6b\",\n    \"accountId\": \"1\",\n    \"attributes\": [\n      {\n        \"name\": \"distanceTravelled\",\n        \"value\": \"50\",\n        \"unit\": \"Miles\"\n      },\n      {\n        \"name\": \"timeSpent\",\n        \"value\": \"60\",\n        \"unit\": \"Minutes\"\n      }\n    ],\n    \"dimensions\": {\n      \"location\": \"Seattle\",\n      \"costCenterCode\": \"1234\",\n      \"travelType\": \"Business\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c878f7fd-9cc7-47f8-abf8-251e1b79b55e",
+              "name": "Error response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ingest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": {\n    \"timestamp\": \"2022-06-15T07:30:35.123\",\n    \"schemaName\": \"travelCompletedEvent\",\n    \"id\": \"c0b1306d-f506-43a6-856b-69221efaee6b\",\n    \"accountId\": \"1\",\n    \"attributes\": [\n      {\n        \"name\": \"distanceTravelled\",\n        \"value\": \"50\",\n        \"unit\": \"Miles\"\n      },\n      {\n        \"name\": \"timeSpent\",\n        \"value\": \"60\",\n        \"unit\": \"Minutes\"\n      }\n    ],\n    \"dimensions\": {\n      \"location\": \"Seattle\",\n      \"costCenterCode\": \"1234\",\n      \"travelType\": \"Business\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"<Reason message>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "71a387b4-e40d-4374-8ab2-c636701236bb",
+          "name": "Ingest Events to Togai in Batch",
+          "request": {
+            "name": "Ingest Events to Togai in Batch",
+            "description": {
+              "content": "This API let’s you to ingest events in batch upto 500 events.\nIngest large amounts of events up to 500 in batches in an array using this API.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ingestBatch"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"events\": [\n    {\n      \"schemaName\": \"<string>\",\n      \"timestamp\": \"<dateTime>\",\n      \"accountId\": \"<string>\",\n      \"attributes\": [\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\",\n          \"unit\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\",\n          \"unit\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\",\n          \"unit\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\",\n          \"unit\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\",\n          \"unit\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\",\n          \"unit\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\",\n          \"unit\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\",\n          \"unit\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\",\n          \"unit\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"value\": \"<string>\",\n          \"unit\": \"<string>\"\n        }\n      ],\n      \"dimensions\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      },\n      \"id\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a06c36ce-67b6-4c4e-9a24-fd89e725d7ca",
+              "name": "Successfully accepted to process all the events from payload.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ingestBatch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"events\": [\n    {\n      \"timestamp\": \"2022-06-15T07:30:35.123\",\n      \"schemaName\": \"travelCompletedEvent\",\n      \"id\": \"c0b1306d-f506-43a6-856b-69221efaee6b\",\n      \"accountId\": \"1\",\n      \"attributes\": [\n        {\n          \"name\": \"distanceTravelled\",\n          \"value\": \"50\",\n          \"unit\": \"Miles\"\n        },\n        {\n          \"name\": \"timeSpent\",\n          \"value\": \"60\",\n          \"unit\": \"Minutes\"\n        }\n      ],\n      \"dimensions\": {\n        \"location\": \"Seattle\",\n        \"costCenterCode\": \"1234\",\n        \"travelType\": \"Business\"\n      }\n    },\n    {\n      \"timestamp\": \"2022-06-15T07:30:35.123\",\n      \"schemaName\": \"sendMessageEvent\",\n      \"id\": \"c0b1306d-f506-43a6-856b-69221efaee6c\",\n      \"accountId\": \"1\",\n      \"attributes\": [\n        {\n          \"name\": \"messageSentCount\",\n          \"value\": \"50\",\n          \"unit\": \"None\"\n        },\n        {\n          \"name\": \"sizeOfMessage\",\n          \"value\": \"60\",\n          \"unit\": \"KiloBytes\"\n        }\n      ],\n      \"dimensions\": {\n        \"location\": \"Seattle\",\n        \"costCenterCode\": \"1234\",\n        \"messageProviderName\": \"Twilio\"\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d97354f5-759e-4373-8d03-dca07b628ce8",
+              "name": "Partial failure. Few events from request were not accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ingestBatch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"events\": [\n    {\n      \"timestamp\": \"2022-06-15T07:30:35.123\",\n      \"schemaName\": \"travelCompletedEvent\",\n      \"id\": \"c0b1306d-f506-43a6-856b-69221efaee6b\",\n      \"accountId\": \"1\",\n      \"attributes\": [\n        {\n          \"name\": \"distanceTravelled\",\n          \"value\": \"50\",\n          \"unit\": \"Miles\"\n        },\n        {\n          \"name\": \"timeSpent\",\n          \"value\": \"60\",\n          \"unit\": \"Minutes\"\n        }\n      ],\n      \"dimensions\": {\n        \"location\": \"Seattle\",\n        \"costCenterCode\": \"1234\",\n        \"travelType\": \"Business\"\n      }\n    },\n    {\n      \"timestamp\": \"2022-06-15T07:30:35.123\",\n      \"schemaName\": \"sendMessageEvent\",\n      \"id\": \"c0b1306d-f506-43a6-856b-69221efaee6c\",\n      \"accountId\": \"1\",\n      \"attributes\": [\n        {\n          \"name\": \"messageSentCount\",\n          \"value\": \"50\",\n          \"unit\": \"None\"\n        },\n        {\n          \"name\": \"sizeOfMessage\",\n          \"value\": \"60\",\n          \"unit\": \"KiloBytes\"\n        }\n      ],\n      \"dimensions\": {\n        \"location\": \"Seattle\",\n        \"costCenterCode\": \"1234\",\n        \"messageProviderName\": \"Twilio\"\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Multi-Status (WebDAV) (RFC 4918)",
+              "code": 207,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"statusCode\": 7360,\n  \"name\": \"string\",\n  \"message\": \"string\",\n  \"code\": \"string\",\n  \"details\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0bbe0ed7-c770-4d89-bc1e-edf650d62889",
+              "name": "Bad request. Please check the response message for failure details.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ingestBatch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"events\": [\n    {\n      \"timestamp\": \"2022-06-15T07:30:35.123\",\n      \"schemaName\": \"travelCompletedEvent\",\n      \"id\": \"c0b1306d-f506-43a6-856b-69221efaee6b\",\n      \"accountId\": \"1\",\n      \"attributes\": [\n        {\n          \"name\": \"distanceTravelled\",\n          \"value\": \"50\",\n          \"unit\": \"Miles\"\n        },\n        {\n          \"name\": \"timeSpent\",\n          \"value\": \"60\",\n          \"unit\": \"Minutes\"\n        }\n      ],\n      \"dimensions\": {\n        \"location\": \"Seattle\",\n        \"costCenterCode\": \"1234\",\n        \"travelType\": \"Business\"\n      }\n    },\n    {\n      \"timestamp\": \"2022-06-15T07:30:35.123\",\n      \"schemaName\": \"sendMessageEvent\",\n      \"id\": \"c0b1306d-f506-43a6-856b-69221efaee6c\",\n      \"accountId\": \"1\",\n      \"attributes\": [\n        {\n          \"name\": \"messageSentCount\",\n          \"value\": \"50\",\n          \"unit\": \"None\"\n        },\n        {\n          \"name\": \"sizeOfMessage\",\n          \"value\": \"60\",\n          \"unit\": \"KiloBytes\"\n        }\n      ],\n      \"dimensions\": {\n        \"location\": \"Seattle\",\n        \"costCenterCode\": \"1234\",\n        \"messageProviderName\": \"Twilio\"\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e0fce19a-6878-44f0-8c27-d1f448bb9f70",
+              "name": "Credential \"x-api-key\" is not valid. Please check the response message for failure details.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ingestBatch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"events\": [\n    {\n      \"timestamp\": \"2022-06-15T07:30:35.123\",\n      \"schemaName\": \"travelCompletedEvent\",\n      \"id\": \"c0b1306d-f506-43a6-856b-69221efaee6b\",\n      \"accountId\": \"1\",\n      \"attributes\": [\n        {\n          \"name\": \"distanceTravelled\",\n          \"value\": \"50\",\n          \"unit\": \"Miles\"\n        },\n        {\n          \"name\": \"timeSpent\",\n          \"value\": \"60\",\n          \"unit\": \"Minutes\"\n        }\n      ],\n      \"dimensions\": {\n        \"location\": \"Seattle\",\n        \"costCenterCode\": \"1234\",\n        \"travelType\": \"Business\"\n      }\n    },\n    {\n      \"timestamp\": \"2022-06-15T07:30:35.123\",\n      \"schemaName\": \"sendMessageEvent\",\n      \"id\": \"c0b1306d-f506-43a6-856b-69221efaee6c\",\n      \"accountId\": \"1\",\n      \"attributes\": [\n        {\n          \"name\": \"messageSentCount\",\n          \"value\": \"50\",\n          \"unit\": \"None\"\n        },\n        {\n          \"name\": \"sizeOfMessage\",\n          \"value\": \"60\",\n          \"unit\": \"KiloBytes\"\n        }\n      ],\n      \"dimensions\": {\n        \"location\": \"Seattle\",\n        \"costCenterCode\": \"1234\",\n        \"messageProviderName\": \"Twilio\"\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "92c24613-7701-4023-9028-436dbd4b46dd",
+              "name": "Unable to process the events as the size of the event payload is above the supported limit. Please check our docs for the api limits - https://togai.com/docs/limits.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ingestBatch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"events\": [\n    {\n      \"timestamp\": \"2022-06-15T07:30:35.123\",\n      \"schemaName\": \"travelCompletedEvent\",\n      \"id\": \"c0b1306d-f506-43a6-856b-69221efaee6b\",\n      \"accountId\": \"1\",\n      \"attributes\": [\n        {\n          \"name\": \"distanceTravelled\",\n          \"value\": \"50\",\n          \"unit\": \"Miles\"\n        },\n        {\n          \"name\": \"timeSpent\",\n          \"value\": \"60\",\n          \"unit\": \"Minutes\"\n        }\n      ],\n      \"dimensions\": {\n        \"location\": \"Seattle\",\n        \"costCenterCode\": \"1234\",\n        \"travelType\": \"Business\"\n      }\n    },\n    {\n      \"timestamp\": \"2022-06-15T07:30:35.123\",\n      \"schemaName\": \"sendMessageEvent\",\n      \"id\": \"c0b1306d-f506-43a6-856b-69221efaee6c\",\n      \"accountId\": \"1\",\n      \"attributes\": [\n        {\n          \"name\": \"messageSentCount\",\n          \"value\": \"50\",\n          \"unit\": \"None\"\n        },\n        {\n          \"name\": \"sizeOfMessage\",\n          \"value\": \"60\",\n          \"unit\": \"KiloBytes\"\n        }\n      ],\n      \"dimensions\": {\n        \"location\": \"Seattle\",\n        \"costCenterCode\": \"1234\",\n        \"messageProviderName\": \"Twilio\"\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cefe2b1e-6b84-455f-88b5-ed6ba336e3ba",
+              "name": "Request throttled. Please check the response message on the failure details.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ingestBatch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"events\": [\n    {\n      \"timestamp\": \"2022-06-15T07:30:35.123\",\n      \"schemaName\": \"travelCompletedEvent\",\n      \"id\": \"c0b1306d-f506-43a6-856b-69221efaee6b\",\n      \"accountId\": \"1\",\n      \"attributes\": [\n        {\n          \"name\": \"distanceTravelled\",\n          \"value\": \"50\",\n          \"unit\": \"Miles\"\n        },\n        {\n          \"name\": \"timeSpent\",\n          \"value\": \"60\",\n          \"unit\": \"Minutes\"\n        }\n      ],\n      \"dimensions\": {\n        \"location\": \"Seattle\",\n        \"costCenterCode\": \"1234\",\n        \"travelType\": \"Business\"\n      }\n    },\n    {\n      \"timestamp\": \"2022-06-15T07:30:35.123\",\n      \"schemaName\": \"sendMessageEvent\",\n      \"id\": \"c0b1306d-f506-43a6-856b-69221efaee6c\",\n      \"accountId\": \"1\",\n      \"attributes\": [\n        {\n          \"name\": \"messageSentCount\",\n          \"value\": \"50\",\n          \"unit\": \"None\"\n        },\n        {\n          \"name\": \"sizeOfMessage\",\n          \"value\": \"60\",\n          \"unit\": \"KiloBytes\"\n        }\n      ],\n      \"dimensions\": {\n        \"location\": \"Seattle\",\n        \"costCenterCode\": \"1234\",\n        \"messageProviderName\": \"Twilio\"\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b63ed760-78eb-47bc-abfb-5c932afb8f06",
+              "name": "Service is currently unavailable to process the request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ingestBatch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"events\": [\n    {\n      \"timestamp\": \"2022-06-15T07:30:35.123\",\n      \"schemaName\": \"travelCompletedEvent\",\n      \"id\": \"c0b1306d-f506-43a6-856b-69221efaee6b\",\n      \"accountId\": \"1\",\n      \"attributes\": [\n        {\n          \"name\": \"distanceTravelled\",\n          \"value\": \"50\",\n          \"unit\": \"Miles\"\n        },\n        {\n          \"name\": \"timeSpent\",\n          \"value\": \"60\",\n          \"unit\": \"Minutes\"\n        }\n      ],\n      \"dimensions\": {\n        \"location\": \"Seattle\",\n        \"costCenterCode\": \"1234\",\n        \"travelType\": \"Business\"\n      }\n    },\n    {\n      \"timestamp\": \"2022-06-15T07:30:35.123\",\n      \"schemaName\": \"sendMessageEvent\",\n      \"id\": \"c0b1306d-f506-43a6-856b-69221efaee6c\",\n      \"accountId\": \"1\",\n      \"attributes\": [\n        {\n          \"name\": \"messageSentCount\",\n          \"value\": \"50\",\n          \"unit\": \"None\"\n        },\n        {\n          \"name\": \"sizeOfMessage\",\n          \"value\": \"60\",\n          \"unit\": \"KiloBytes\"\n        }\n      ],\n      \"dimensions\": {\n        \"location\": \"Seattle\",\n        \"costCenterCode\": \"1234\",\n        \"messageProviderName\": \"Twilio\"\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cf938446-daca-4955-8492-5485ae1847de",
+              "name": "Error response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ingestBatch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"events\": [\n    {\n      \"timestamp\": \"2022-06-15T07:30:35.123\",\n      \"schemaName\": \"travelCompletedEvent\",\n      \"id\": \"c0b1306d-f506-43a6-856b-69221efaee6b\",\n      \"accountId\": \"1\",\n      \"attributes\": [\n        {\n          \"name\": \"distanceTravelled\",\n          \"value\": \"50\",\n          \"unit\": \"Miles\"\n        },\n        {\n          \"name\": \"timeSpent\",\n          \"value\": \"60\",\n          \"unit\": \"Minutes\"\n        }\n      ],\n      \"dimensions\": {\n        \"location\": \"Seattle\",\n        \"costCenterCode\": \"1234\",\n        \"travelType\": \"Business\"\n      }\n    },\n    {\n      \"timestamp\": \"2022-06-15T07:30:35.123\",\n      \"schemaName\": \"sendMessageEvent\",\n      \"id\": \"c0b1306d-f506-43a6-856b-69221efaee6c\",\n      \"accountId\": \"1\",\n      \"attributes\": [\n        {\n          \"name\": \"messageSentCount\",\n          \"value\": \"50\",\n          \"unit\": \"None\"\n        },\n        {\n          \"name\": \"sizeOfMessage\",\n          \"value\": \"60\",\n          \"unit\": \"KiloBytes\"\n        }\n      ],\n      \"dimensions\": {\n        \"location\": \"Seattle\",\n        \"costCenterCode\": \"1234\",\n        \"messageProviderName\": \"Twilio\"\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"<Reason message>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.togai.com/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "3a17c1c0-082d-48cf-ac7c-6c56d5d77e65",
+    "name": "Togai Apis Accounts Event Ingestion API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "APIs for Togai App\n\nContact Support:\n Email: engg@togai.com",
+      "type": "text/plain"
+    }
+  }
+}

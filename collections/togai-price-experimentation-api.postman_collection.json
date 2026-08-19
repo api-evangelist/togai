@@ -1,0 +1,390 @@
+{
+  "item": [
+    {
+      "id": "e5329c4b-4c2c-4e08-861b-7ed244d8ffb1",
+      "name": "Price Experimentation",
+      "description": {
+        "content": "Price Experimentation apis",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5d00b33e-03b4-4ecd-b59d-1fe19ed6adc6",
+          "name": "Calculate and Return the Revenue for a Existing or New Price Plan",
+          "request": {
+            "name": "Calculate and Return the Revenue for a Existing or New Price Plan",
+            "description": {
+              "content": "Calculate and return the revenue for a existing or new price plan",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "revenue_calculator"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"currencyConfig\": {\n    \"mode\": \"<string>\",\n    \"currency\": \"<string>\",\n    \"accountId\": \"<string>\"\n  },\n  \"pricePlanDetailsConfig\": {\n    \"mode\": \"<string>\",\n    \"pricePlanDetails\": {\n      \"supportedCurrencies\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"pricingCycleConfig\": {\n        \"interval\": \"<string>\",\n        \"gracePeriod\": \"<integer>\",\n        \"startOffset\": {\n          \"dayOffset\": \"<string>\",\n          \"monthOffset\": \"<string>\"\n        },\n        \"anniversaryCycle\": \"<boolean>\"\n      },\n      \"usageRateCards\": [\n        {\n          \"usageMeterId\": \"<string>\",\n          \"ratePlan\": {\n            \"pricingModel\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"slabs\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"rateValues\": [\n            {\n              \"currency\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"slabRates\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"rateConfig\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"currency\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"slabRates\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"rateConfig\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"displayName\": \"<string>\",\n          \"tag\": \"<string>\"\n        },\n        {\n          \"usageMeterId\": \"<string>\",\n          \"ratePlan\": {\n            \"pricingModel\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"slabs\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"rateValues\": [\n            {\n              \"currency\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"slabRates\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"rateConfig\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"currency\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"slabRates\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"rateConfig\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"displayName\": \"<string>\",\n          \"tag\": \"<string>\"\n        }\n      ],\n      \"fixedFeeRateCards\": [\n        {\n          \"id\": \"<string>\",\n          \"rateValues\": [\n            {\n              \"currency\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"rate\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"currency\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"rate\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"enableProration\": \"<boolean>\",\n          \"displayName\": \"<string>\",\n          \"tag\": \"<string>\",\n          \"invoiceTiming\": \"<string>\",\n          \"type\": \"<string>\",\n          \"recurrenceConfig\": {\n            \"interval\": \"<long>\",\n            \"offset\": \"<long>\"\n          }\n        },\n        {\n          \"id\": \"<string>\",\n          \"rateValues\": [\n            {\n              \"currency\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"rate\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"currency\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"rate\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"enableProration\": \"<boolean>\",\n          \"displayName\": \"<string>\",\n          \"tag\": \"<string>\",\n          \"invoiceTiming\": \"<string>\",\n          \"type\": \"<string>\",\n          \"recurrenceConfig\": {\n            \"interval\": \"<long>\",\n            \"offset\": \"<long>\"\n          }\n        }\n      ],\n      \"licenseRateCards\": [\n        {\n          \"id\": \"<string>\",\n          \"rateValues\": [\n            {\n              \"currency\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"slabRates\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"rateConfig\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"currency\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"slabRates\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"rateConfig\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"ratePlan\": {\n            \"pricingModel\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"slabs\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"enableProration\": \"<boolean>\",\n          \"type\": \"<string>\",\n          \"displayName\": \"<string>\",\n          \"tag\": \"<string>\",\n          \"invoiceTiming\": \"<string>\",\n          \"usageCycle\": \"<string>\",\n          \"config\": {\n            \"maxQuantity\": \"<long>\",\n            \"maxQuantityBreachAction\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"proratedRefundMode\": \"<string>\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"rateValues\": [\n            {\n              \"currency\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"slabRates\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"rateConfig\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"currency\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"slabRates\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"rateConfig\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"ratePlan\": {\n            \"pricingModel\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"slabs\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"enableProration\": \"<boolean>\",\n          \"type\": \"<string>\",\n          \"displayName\": \"<string>\",\n          \"tag\": \"<string>\",\n          \"invoiceTiming\": \"<string>\",\n          \"usageCycle\": \"<string>\",\n          \"config\": {\n            \"maxQuantity\": \"<long>\",\n            \"maxQuantityBreachAction\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"proratedRefundMode\": \"<string>\"\n        }\n      ],\n      \"billingEntitlementRateCards\": [\n        {\n          \"featureId\": \"<string>\",\n          \"featureConfigs\": [\n            {\n              \"effectiveUntil\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"featureCreditLimit\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"effectiveFrom\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"ratePlan\": {\n            \"pricingModel\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"slabs\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"rateValues\": [\n            {\n              \"currency\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"slabRates\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"rateConfig\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"currency\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"slabRates\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"rateConfig\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"invoiceTiming\": \"<string>\",\n          \"tag\": \"<string>\",\n          \"displayName\": \"<string>\",\n          \"recurrenceConfig\": {\n            \"interval\": \"<long>\",\n            \"offset\": \"<long>\"\n          }\n        },\n        {\n          \"featureId\": \"<string>\",\n          \"featureConfigs\": [\n            {\n              \"effectiveUntil\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"featureCreditLimit\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"effectiveFrom\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"ratePlan\": {\n            \"pricingModel\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"slabs\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"rateValues\": [\n            {\n              \"currency\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"slabRates\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"rateConfig\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"currency\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"slabRates\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"rateConfig\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"invoiceTiming\": \"<string>\",\n          \"tag\": \"<string>\",\n          \"displayName\": \"<string>\",\n          \"recurrenceConfig\": {\n            \"interval\": \"<long>\",\n            \"offset\": \"<long>\"\n          }\n        }\n      ],\n      \"minimumCommitment\": {\n        \"displayName\": \"<string>\",\n        \"rateValues\": [\n          {\n            \"currency\": \"<string>\",\n            \"rate\": \"<number>\"\n          }\n        ]\n      },\n      \"creditGrantRateCards\": [\n        {\n          \"id\": \"<string>\",\n          \"rateDetails\": {\n            \"pricingModel\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currencySlabRateDetails\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"grantDetails\": {\n            \"priority\": \"<integer>\",\n            \"expiryType\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"expiryDuration\": \"<duration>\",\n            \"applicableEntityIds\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"displayName\": \"<string>\",\n          \"tag\": \"<string>\",\n          \"invoiceTiming\": \"<string>\",\n          \"type\": \"<string>\",\n          \"recurrenceConfig\": {\n            \"interval\": \"<long>\",\n            \"offset\": \"<long>\"\n          }\n        },\n        {\n          \"id\": \"<string>\",\n          \"rateDetails\": {\n            \"pricingModel\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"currencySlabRateDetails\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"grantDetails\": {\n            \"priority\": \"<integer>\",\n            \"expiryType\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"expiryDuration\": \"<duration>\",\n            \"applicableEntityIds\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"displayName\": \"<string>\",\n          \"tag\": \"<string>\",\n          \"invoiceTiming\": \"<string>\",\n          \"type\": \"<string>\",\n          \"recurrenceConfig\": {\n            \"interval\": \"<long>\",\n            \"offset\": \"<long>\"\n          }\n        }\n      ],\n      \"entitlementOverageRateCards\": [\n        {\n          \"ratePlan\": {\n            \"pricingModel\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"slabs\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"rateValues\": [\n            {\n              \"currency\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"slabRates\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"rateConfig\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"currency\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"slabRates\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"rateConfig\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"featureId\": \"<string>\",\n          \"displayName\": \"<string>\",\n          \"tag\": \"<string>\",\n          \"maxQuantity\": \"<number>\",\n          \"billingConfig\": {\n            \"interval\": \"<long>\",\n            \"startOffset\": \"<long>\"\n          }\n        },\n        {\n          \"ratePlan\": {\n            \"pricingModel\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"slabs\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"rateValues\": [\n            {\n              \"currency\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"slabRates\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"rateConfig\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"currency\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"slabRates\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"rateConfig\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"featureId\": \"<string>\",\n          \"displayName\": \"<string>\",\n          \"tag\": \"<string>\",\n          \"maxQuantity\": \"<number>\",\n          \"billingConfig\": {\n            \"interval\": \"<long>\",\n            \"startOffset\": \"<long>\"\n          }\n        }\n      ],\n      \"deferredRevenue\": \"<boolean>\"\n    },\n    \"pricePlanId\": \"<string>\",\n    \"accountId\": \"<string>\",\n    \"effectiveOn\": \"<dateTime>\",\n    \"pricingCycleOrdinal\": \"<integer>\"\n  },\n  \"usageConfig\": {\n    \"mode\": \"<string>\",\n    \"usageMap\": {\n      \"key_0\": \"<number>\"\n    },\n    \"lookupRange\": {\n      \"start\": \"<dateTime>\",\n      \"end\": \"<dateTime>\",\n      \"accountId\": \"<string>\"\n    },\n    \"lookupCycle\": {\n      \"accountId\": \"<string>\",\n      \"cycleEffectiveOn\": \"<dateTime>\"\n    }\n  },\n  \"licenseEntriesConfig\": {\n    \"mode\": \"<string>\",\n    \"custom\": [\n      {\n        \"licenseId\": \"<string>\",\n        \"quantity\": \"<integer>\",\n        \"effectiveFrom\": \"<dateTime>\"\n      },\n      {\n        \"licenseId\": \"<string>\",\n        \"quantity\": \"<integer>\",\n        \"effectiveFrom\": \"<dateTime>\"\n      }\n    ],\n    \"lookupRange\": {\n      \"start\": \"<dateTime>\",\n      \"end\": \"<dateTime>\",\n      \"accountId\": \"<string>\"\n    },\n    \"lookupCycle\": {\n      \"accountId\": \"<string>\",\n      \"cycleEffectiveOn\": \"<dateTime>\"\n    }\n  },\n  \"namedLicenseEntriesConfig\": {\n    \"mode\": \"<string>\",\n    \"custom\": [\n      {\n        \"licenseId\": \"<string>\",\n        \"name\": \"<integer>\",\n        \"effectiveFrom\": \"<dateTime>\",\n        \"effectiveUntil\": \"<dateTime>\"\n      },\n      {\n        \"licenseId\": \"<string>\",\n        \"name\": \"<integer>\",\n        \"effectiveFrom\": \"<dateTime>\",\n        \"effectiveUntil\": \"<dateTime>\"\n      }\n    ],\n    \"lookupRange\": {\n      \"start\": \"<dateTime>\",\n      \"end\": \"<dateTime>\",\n      \"accountId\": \"<string>\"\n    },\n    \"lookupCycle\": {\n      \"accountId\": \"<string>\",\n      \"cycleEffectiveOn\": \"<dateTime>\"\n    }\n  },\n  \"prorationConfig\": {\n    \"mode\": \"<string>\",\n    \"customConfig\": {\n      \"cycleStartDate\": \"<dateTime>\",\n      \"cycleEndDate\": \"<dateTime>\",\n      \"currentDate\": \"<dateTime>\"\n    },\n    \"lookupCycleConfig\": {\n      \"accountId\": \"<string>\",\n      \"currentDateTime\": \"<dateTime>\",\n      \"cycleEffectiveOn\": \"<dateTime>\"\n    }\n  },\n  \"entitlementOverageConfig\": {\n    \"mode\": \"<string>\",\n    \"custom\": [\n      {\n        \"featureId\": \"<string>\",\n        \"quantity\": \"<number>\"\n      },\n      {\n        \"featureId\": \"<string>\",\n        \"quantity\": \"<number>\"\n      }\n    ],\n    \"lookupCycle\": {\n      \"accountId\": \"<string>\",\n      \"billingCycleEndDate\": \"<dateTime>\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "de23623e-22f8-4513-a1a8-ac9c5d6f1890",
+              "name": "Response payload for calculateRevenueAPI",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "revenue_calculator"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"currency\": \"USD\",\n  \"pricePlanDetails\": {\n    \"supportedCurrencies\": [\n      \"USD\"\n    ],\n    \"activeCurrencies\": [\n      \"USD\"\n    ],\n    \"pricingCycleConfig\": {\n      \"interval\": \"MONTHLY\",\n      \"startOffset\": {\n        \"dayOffset\": \"1\",\n        \"monthOffset\": \"NIL\"\n      },\n      \"gracePeriod\": 1,\n      \"anniversaryCycle\": false\n    },\n    \"usageRateCards\": [\n      {\n        \"displayName\": \"AfterShip Shipments1\",\n        \"usageMeterId\": \"um.1zcgWalbM2y.qaX5j\",\n        \"ratePlan\": {\n          \"pricingModel\": \"TIERED\",\n          \"slabs\": [\n            {\n              \"priceType\": \"PER_UNIT\",\n              \"startAfter\": 0,\n              \"order\": 1\n            },\n            {\n              \"priceType\": \"PACKAGE\",\n              \"startAfter\": 2,\n              \"order\": 2,\n              \"slabConfig\": {\n                \"packageSize\": \"10\"\n              }\n            }\n          ]\n        },\n        \"rateValues\": [\n          {\n            \"currency\": \"USD\",\n            \"slabRates\": [\n              {\n                \"order\": 1,\n                \"rate\": 10,\n                \"slabRateConfig\": {\n                  \"minimumRate\": \"1\",\n                  \"maximumRate\": \"10\"\n                }\n              },\n              {\n                \"order\": 2,\n                \"rate\": 20\n              }\n            ]\n          }\n        ],\n        \"tag\": \"1\"\n      }\n    ],\n    \"type\": \"BILLING\"\n  },\n  \"revenueInfo\": [\n    {\n      \"usages\": {\n        \"um.fdjal.kdajf\": 10\n      },\n      \"usageRateCard\": {\n        \"displayName\": \"AfterShip Shipments1\",\n        \"usageMeterId\": \"um.1zcgWalbM2y.qaX5j\",\n        \"ratePlan\": {\n          \"pricingModel\": \"TIERED\",\n          \"slabs\": [\n            {\n              \"priceType\": \"PER_UNIT\",\n              \"startAfter\": 0,\n              \"order\": 1\n            },\n            {\n              \"priceType\": \"PACKAGE\",\n              \"startAfter\": 2,\n              \"order\": 2,\n              \"slabConfig\": {\n                \"packageSize\": \"10\"\n              }\n            }\n          ]\n        },\n        \"rateValues\": [\n          {\n            \"currency\": \"USD\",\n            \"slabRates\": [\n              {\n                \"order\": 1,\n                \"rate\": 10,\n                \"slabRateConfig\": {\n                  \"minimumRate\": 1,\n                  \"maximumRate\": 10\n                }\n              },\n              {\n                \"order\": 2,\n                \"rate\": 20\n              }\n            ]\n          }\n        ]\n      },\n      \"slabRevenueSummaries\": [\n        {\n          \"order\": 1,\n          \"usage\": 10,\n          \"revenue\": 100\n        },\n        {\n          \"order\": 2,\n          \"usage\": 0,\n          \"revenue\": 0\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7e9101b7-6064-4ecf-b882-52e446919bc1",
+              "name": "Error response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "revenue_calculator"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"<Reason message>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3c4ffcb5-b1de-45df-81a5-c604a3fa678c",
+              "name": "Error response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "revenue_calculator"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"<Reason message>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "702b6685-a16e-4829-bb3f-b19153a8ae7d",
+              "name": "Error response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "revenue_calculator"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"<Reason message>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "34138b68-25c5-4f04-bba0-d1029e11d35e",
+              "name": "Error response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "revenue_calculator"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"<Reason message>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "03a7e8d9-d3da-4f3a-ae5a-91df316d7e1b",
+              "name": "Error response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "revenue_calculator"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"<Reason message>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "388c5b75-ea0b-406c-8c24-0536fe14b64a",
+              "name": "Error response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "revenue_calculator"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"<Reason message>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.togai.com/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "647dd7da-62f9-480c-a543-a318ee473248",
+    "name": "Togai Apis Accounts Price Experimentation API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "APIs for Togai App\n\nContact Support:\n Email: engg@togai.com",
+      "type": "text/plain"
+    }
+  }
+}

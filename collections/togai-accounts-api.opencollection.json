@@ -1,0 +1,440 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Togai Apis Accounts API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Accounts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Accounts of Customer",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.togai.com/accounts",
+            "params": [
+              {
+                "name": "nextToken",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns a list of accounts of a customer with pagination and sort."
+        },
+        {
+          "info": {
+            "name": "Create an Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.togai.com/accounts",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API let’s you to create an account for a customer using customer_id."
+        },
+        {
+          "info": {
+            "name": "Get an Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.togai.com/accounts/:account_id",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "account_id corresponding to an account"
+              },
+              {
+                "name": "effectiveOn",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "includeGroupDetails",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get account information using customer_id and account_id."
+        },
+        {
+          "info": {
+            "name": "Update an Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.togai.com/accounts/:account_id",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "account_id corresponding to an account"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API let’s you to update an account’s information using customer_id and account_id."
+        },
+        {
+          "info": {
+            "name": "Delete an Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.togai.com/accounts/:account_id",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "account_id corresponding to an account"
+              }
+            ]
+          },
+          "docs": "This API let’s you to delete a customer using customer_id and account_id."
+        },
+        {
+          "info": {
+            "name": "Add Aliases to Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.togai.com/accounts/:account_id/add_aliases",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "account_id corresponding to an account"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add aliases to an account using customer_id and account_id."
+        },
+        {
+          "info": {
+            "name": "Get All Aliases of an Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.togai.com/accounts/:account_id/account_aliases",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "account_id corresponding to an account"
+              }
+            ]
+          },
+          "docs": "Get all aliases of an account using account_id"
+        },
+        {
+          "info": {
+            "name": "Remove Aliases to Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.togai.com/accounts/:account_id/remove_aliases",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "account_id corresponding to an account"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Remove existing aliases tagged to an account using this API"
+        },
+        {
+          "info": {
+            "name": "Dissociate or Associate a Price Plan with an Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.togai.com/accounts/:account_id/price_plans",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "account_id corresponding to an account"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API let’s you to detach or attach a price plan with an existing account"
+        },
+        {
+          "info": {
+            "name": "Get All Purchases for an Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.togai.com/accounts/:account_id/purchases",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "account_id corresponding to an account"
+              }
+            ]
+          },
+          "docs": "Get Purchase information for an account using account_id and price_plan_id"
+        },
+        {
+          "info": {
+            "name": "Initiate a Purchase",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.togai.com/accounts/:account_id/purchases",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "account_id corresponding to an account"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API let’s you to initiate a purchase for an account"
+        },
+        {
+          "info": {
+            "name": "Get a Specific Purchase of an Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.togai.com/purchases/:purchase_id",
+            "params": [
+              {
+                "name": "purchase_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get purchase information of an account for a specific plan using account_id and price_plan_id"
+        },
+        {
+          "info": {
+            "name": "List All Proposals of an Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.togai.com/accounts/:account_id/purchase_proposals",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "account_id corresponding to an account"
+              }
+            ]
+          },
+          "docs": "List all proposals of an account"
+        },
+        {
+          "info": {
+            "name": "Propose a Purchase of a Plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.togai.com/accounts/:account_id/purchase_proposals",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "account_id corresponding to an account"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API let’s you to create a proposal of a billing/entitlement plan for an account"
+        },
+        {
+          "info": {
+            "name": "Get Proposal Information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.togai.com/purchase_proposals/:purchase_proposal_id",
+            "params": [
+              {
+                "name": "purchase_proposal_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get proposal information"
+        },
+        {
+          "info": {
+            "name": "Edit Schedules of an Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.togai.com/accounts/:account_id/edit_schedules",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "account_id corresponding to an account"
+              },
+              {
+                "name": "dry_run",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API let’s you to detach/attach one or more price plans from/to an existing account"
+        },
+        {
+          "info": {
+            "name": "List Pricing Schedules of an Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.togai.com/accounts/:account_id/pricing_schedules",
+            "params": [
+              {
+                "name": "nextToken",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "account_id corresponding to an account"
+              },
+              {
+                "name": "start_date",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "end_date",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "include_price_plan_info",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "compact",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns a list of pricing schedules of an account with pagination and sort."
+        },
+        {
+          "info": {
+            "name": "Approve or Decline a Purchase of a Billing Plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.togai.com/purchase_proposals/:purchase_proposal_id/update_status",
+            "params": [
+              {
+                "name": "purchase_proposal_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API let’s you to approve or decline a proposal of a billing plan for an account"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
