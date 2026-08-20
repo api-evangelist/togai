@@ -27,6 +27,13 @@ tags:
   - Metering
   - Usage-Based Pricing
   - Revenue Management
+  - Software-as-a-Service
+  - Fintech
+tags_raw:
+  - Billing
+  - Metering
+  - Usage-Based Pricing
+  - Revenue Management
   - SaaS
   - Fintech
 created: '2025-02-10'
@@ -40,6 +47,8 @@ apis:
   humanURL: https://docs.togai.com/api-reference/getting-started
   baseURL: https://api.togai.com
   tags:
+  - Account
+  tags_raw:
   - Accounts
   properties:
   - type: OpenAPI
@@ -63,6 +72,8 @@ apis:
   humanURL: https://docs.togai.com/api-reference/getting-started
   baseURL: https://api.togai.com
   tags:
+  - Addons
+  tags_raw:
   - AddOns
   properties:
   - type: OpenAPI
@@ -269,7 +280,8 @@ apis:
   description: Event Schema level calls
   humanURL: https://docs.togai.com/api-reference/getting-started
   baseURL: https://api.togai.com
-  tags:
+  tags: []
+  tags_raw:
   - Event Schemas
   properties:
   - type: OpenAPI
@@ -385,6 +397,8 @@ apis:
   humanURL: https://docs.togai.com/api-reference/getting-started
   baseURL: https://api.togai.com
   tags:
+  - Job
+  tags_raw:
   - Jobs
   properties:
   - type: OpenAPI
@@ -592,6 +606,8 @@ apis:
   humanURL: https://docs.togai.com/api-reference/getting-started
   baseURL: https://api.togai.com
   tags:
+  - Wallets
+  tags_raw:
   - Wallet
   properties:
   - type: OpenAPI
