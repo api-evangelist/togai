@@ -84,7 +84,7 @@ apis:
   humanURL: https://docs.togai.com/api-reference/getting-started
   baseURL: https://api.togai.com
   tags:
-  - Addons
+  - AddOns
   tags_raw:
   - AddOns
   properties:
@@ -292,7 +292,8 @@ apis:
   description: Event Schema level calls
   humanURL: https://docs.togai.com/api-reference/getting-started
   baseURL: https://api.togai.com
-  tags: []
+  tags:
+  - Event Schemas
   tags_raw:
   - Event Schemas
   properties:
