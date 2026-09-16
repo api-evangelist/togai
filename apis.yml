@@ -79,31 +79,6 @@ apis:
   - type: Vocabulary
     url: >-
       https://raw.githubusercontent.com/api-evangelist/togai/refs/heads/main/vocabulary/togai-vocabulary.yml
-- aid: togai:togai-addons-api
-  name: Togai AddOns API
-  description: The AddOns API from Togai — 2 operation(s) for addons.
-  humanURL: https://docs.togai.com/api-reference/getting-started
-  baseURL: https://api.togai.com
-  tags:
-  - Addons
-  tags_raw:
-  - AddOns
-  properties:
-  - type: OpenAPI
-    url: openapi/togai-addons-api-openapi.yml
-  - type: Documentation
-    url: https://docs.togai.com/api-reference/getting-started
-  - type: GettingStarted
-    url: https://docs.togai.com/docs/introduction
-  - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/togai/refs/heads/main/json-schema/togai-customer-schema.json
-  - type: SpectralRules
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/togai/refs/heads/main/rules/togai-rules.yml
-  - type: Vocabulary
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/togai/refs/heads/main/vocabulary/togai-vocabulary.yml
 - aid: togai:togai-aliases-api
   name: Togai Aliases API
   description: Alias level calls
@@ -625,6 +600,29 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/togai-wallet-api-openapi.yml
+  - type: Documentation
+    url: https://docs.togai.com/api-reference/getting-started
+  - type: GettingStarted
+    url: https://docs.togai.com/docs/introduction
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/togai/refs/heads/main/json-schema/togai-customer-schema.json
+  - type: SpectralRules
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/togai/refs/heads/main/rules/togai-rules.yml
+  - type: Vocabulary
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/togai/refs/heads/main/vocabulary/togai-vocabulary.yml
+- aid: togai:togai-add-ons-api
+  name: Togai Add Ons API
+  description: The Add Ons API from Togai — 2 operation(s) for add ons.
+  humanURL: https://docs.togai.com/api-reference/getting-started
+  baseURL: https://api.togai.com
+  tags:
+  - Add Ons
+  properties:
+  - type: OpenAPI
+    url: openapi/togai-add-ons-api-openapi.yml
   - type: Documentation
     url: https://docs.togai.com/api-reference/getting-started
   - type: GettingStarted
