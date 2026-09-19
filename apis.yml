@@ -131,6 +131,8 @@ apis:
   humanURL: https://docs.togai.com/api-reference/getting-started
   baseURL: https://api.togai.com
   tags:
+  - Credit
+  tags_raw:
   - Credits
   properties:
   - type: OpenAPI
@@ -619,6 +621,8 @@ apis:
   humanURL: https://docs.togai.com/api-reference/getting-started
   baseURL: https://api.togai.com
   tags:
+  - Addons
+  tags_raw:
   - Add Ons
   properties:
   - type: OpenAPI
