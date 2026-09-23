@@ -1,7 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   version: '1.0'
-  title: Togai Apis Accounts InvoiceGroups API
+  title: Togai Invoice Groups API
   contact:
     email: engg@togai.com
   license:
@@ -118,7 +118,7 @@ paths:
     post:
       tags:
       - InvoiceGroups
-      summary: Remove Accounts From an Invoice Group. Removing All Accounts Will Also Delete the Invoice Group
+      summary: Remove Accounts From an Invoice Group.
       description: This API let’s you to remove accounts from an invoice group. Removing all accounts will also delete the invoice group
       operationId: RemoveInvoiceGroupAccounts
       parameters:
@@ -141,78 +141,16 @@ paths:
         default:
           $ref: '#/components/responses/ErrorResponse'
 components:
-  responses:
-    BaseSuccessResponse:
-      description: OK
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/BaseSuccessResponse'
-    InvoiceGroupAccountsPaginatedResponse:
-      description: Response to get invoice group request
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/InvoiceGroupAccountsPaginatedResponse'
-          examples:
-            InvoiceGroupAccountsPaginatedResponse:
-              $ref: '#/components/examples/InvoiceGroupAccountsPaginatedResponse'
-    ErrorResponse:
-      description: Error response
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          examples:
-            ErrorResponse:
-              summary: Error Message
-              value:
-                message: <Reason message>
-    InvoiceGroupResponse:
-      description: Response to create invoice group request
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/InvoiceGroups'
-          examples:
-            InvoiceGroupResponse:
-              $ref: '#/components/examples/InvoiceGroups'
-    InvoiceGroupPaginatedResponse:
-      description: Response to get invoice group request
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/InvoiceGroupPaginatedResponse'
-          examples:
-            InvoiceGroupPaginatedResponse:
-              $ref: '#/components/examples/InvoiceGroupPaginatedResponse'
+  parameters:
+    invoice_group_id:
+      in: path
+      name: invoice_group_id
+      required: true
+      schema:
+        type: string
+        maxLength: 512
+        example: inv_grp.20rqjgFJf2O.ejl25
   schemas:
-    Address:
-      description: billing address of the customer
-      type: object
-      additionalProperties: false
-      properties:
-        phoneNumber:
-          description: Contact number
-          type: string
-        line1:
-          description: Address line 1 (eg. Street, PO Box, Company Name)
-          type: string
-        line2:
-          description: Address line 2 (eg. apartment, suite, unit or building)
-          type: string
-        postalCode:
-          description: ZIP or postal code
-          type: string
-        city:
-          description: City, district, suburb, town or village
-          type: string
-        state:
-          description: State, county, province or region
-          type: string
-        country:
-          description: Two letter country code [ISO-3166-1 Alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
-          type: string
     InvoiceGroupDetails:
       description: Invoice group details
       type: object
@@ -241,38 +179,6 @@ components:
           type: string
         billingAddress:
           $ref: '#/components/schemas/Address'
-    ErrorResponse:
-      type: object
-      additionalProperties: false
-      required:
-      - message
-      properties:
-        message:
-          type: string
-          description: error description
-          maxLength: 500
-    InvoiceGroupAccountsPaginatedResponse:
-      allOf:
-      - $ref: '#/components/schemas/InvoiceGroups'
-      - type: object
-        required:
-        - accounts
-        properties:
-          accounts:
-            type: array
-            items:
-              type: string
-          nextToken:
-            type: string
-    BaseSuccessResponse:
-      type: object
-      additionalProperties: false
-      required:
-      - success
-      properties:
-        success:
-          type: boolean
-          example: true
     InvoiceGroups:
       allOf:
       - $ref: '#/components/schemas/InvoiceGroupDetails'
@@ -292,29 +198,55 @@ components:
           updatedAt:
             type: string
             format: date-time
-    UpdateInvoiceGroupAccounts:
-      description: Add accounts to an invoice group
+    Address:
+      description: billing address of the customer
+      type: object
+      additionalProperties: false
+      properties:
+        phoneNumber:
+          description: Contact number
+          type: string
+        line1:
+          description: Address line 1 (eg. Street, PO Box, Company Name)
+          type: string
+        line2:
+          description: Address line 2 (eg. apartment, suite, unit or building)
+          type: string
+        postalCode:
+          description: ZIP or postal code
+          type: string
+        city:
+          description: City, district, suburb, town or village
+          type: string
+        state:
+          description: State, county, province or region
+          type: string
+        country:
+          description: Two letter country code [ISO-3166-1 Alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
+          type: string
+    InvoiceGroupAccountsPaginatedResponse:
+      allOf:
+      - $ref: '#/components/schemas/InvoiceGroups'
+      - type: object
+        required:
+        - accounts
+        properties:
+          accounts:
+            type: array
+            items:
+              type: string
+          nextToken:
+            type: string
+    ErrorResponse:
       type: object
       additionalProperties: false
       required:
-      - accountIds
+      - message
       properties:
-        accountIds:
-          type: array
-          maxItems: 100
-          minItems: 1
-          items:
-            type: string
-    InvoiceGroupPaginatedResponse:
-      type: object
-      additionalProperties: false
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/InvoiceGroups'
-        nextToken:
+        message:
           type: string
+          description: error description
+          maxLength: 500
     CreateInvoiceGroupRequest:
       description: Create an invoice group
       type: object
@@ -344,61 +276,105 @@ components:
           format: int32
         address:
           $ref: '#/components/schemas/Address'
-  examples:
     UpdateInvoiceGroupAccounts:
-      value:
+      description: Add accounts to an invoice group
+      type: object
+      additionalProperties: false
+      required:
+      - accountIds
+      properties:
         accountIds:
-        - ACC0001
-        - ACC0002
-    InvoiceGroups:
-      value:
-        id: inv_group.20rvWRxQcQK.0ZwPG
-        name: Invoice Group 1
-        email: acme@acme.com
-        dailyInvoiceConsolidation: true
-        accountsCount: 2
-        gracePeriod: 3
-        netTermDays: 45
-        invoiceCurrency: USD
-        billingAddress:
-          phoneNumber: '+919876543210'
-          line1: 2281 Broadway Street
-          line2: G-31
-          postalCode: '29501'
-          city: Florence
-          state: South Carolina
-          country: US
-        createdAt: '2023-07-26T12:36:56.58015Z'
-        updatedAt: '2023-07-26T12:36:56.58015Z'
-    CreateInvoiceGroupRequest:
-      value:
-        dailyInvoiceConsolidation: true
-        accountIds:
-        - ACC0001
-        - ACC0002
-        netTermDays: 30
+          type: array
+          maxItems: 100
+          minItems: 1
+          items:
+            type: string
+    BaseSuccessResponse:
+      type: object
+      additionalProperties: false
+      required:
+      - success
+      properties:
+        success:
+          type: boolean
+          example: true
     InvoiceGroupPaginatedResponse:
-      value:
+      type: object
+      additionalProperties: false
+      properties:
         data:
-        - id: inv_group.20rvWRxQcQK.0ZwPG
-          name: Invoice Group 1
-          email: acme@acme.com
-          dailyInvoiceConsolidation: true
-          accountsCount: 2
-          gracePeriod: 3
-          netTermDays: 45
-          invoiceCurrency: USD
-          billingAddress:
-            phoneNumber: '+919876543210'
-            line1: 2281 Broadway Street
-            line2: G-31
-            postalCode: '29501'
-            city: Florence
-            state: South Carolina
-            country: US
-          createdAt: '2023-07-26T12:36:56.58015Z'
-          updatedAt: '2023-07-26T12:36:56.58015Z'
-        nextToken: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEwMCwgInNvcnRPcmRlciI6ICJhc2MifQ==
+          type: array
+          items:
+            $ref: '#/components/schemas/InvoiceGroups'
+        nextToken:
+          type: string
+  requestBodies:
+    UpdateInvoiceGroupAccounts:
+      description: Payload to add or remove accounts to/from an invoice group
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UpdateInvoiceGroupAccounts'
+          examples:
+            UpdateInvoiceGroupAccounts:
+              $ref: '#/components/examples/UpdateInvoiceGroupAccounts'
+    CreateInvoiceGroupRequest:
+      description: Payload to approve or decline a proposal
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CreateInvoiceGroupRequest'
+          examples:
+            CreateInvoiceGroupRequest:
+              $ref: '#/components/examples/CreateInvoiceGroupRequest'
+  responses:
+    BaseSuccessResponse:
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/BaseSuccessResponse'
+    InvoiceGroupPaginatedResponse:
+      description: Response to get invoice group request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InvoiceGroupPaginatedResponse'
+          examples:
+            InvoiceGroupPaginatedResponse:
+              $ref: '#/components/examples/InvoiceGroupPaginatedResponse'
+    ErrorResponse:
+      description: Error response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            ErrorResponse:
+              summary: Error Message
+              value:
+                message: <Reason message>
+    InvoiceGroupAccountsPaginatedResponse:
+      description: Response to get invoice group request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InvoiceGroupAccountsPaginatedResponse'
+          examples:
+            InvoiceGroupAccountsPaginatedResponse:
+              $ref: '#/components/examples/InvoiceGroupAccountsPaginatedResponse'
+    InvoiceGroupResponse:
+      description: Response to create invoice group request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InvoiceGroups'
+          examples:
+            InvoiceGroupResponse:
+              $ref: '#/components/examples/InvoiceGroups'
+  examples:
     InvoiceGroupAccountsPaginatedResponse:
       value:
         id: inv_group.20rvWRxQcQK.0ZwPG
@@ -423,36 +399,60 @@ components:
         createdAt: '2023-07-26T12:36:56.58015Z'
         updatedAt: '2023-07-26T12:36:56.58015Z'
         nextToken: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEwMCwgInNvcnRPcmRlciI6ICJhc2MifQ==
-  parameters:
-    invoice_group_id:
-      in: path
-      name: invoice_group_id
-      required: true
-      schema:
-        type: string
-        maxLength: 512
-        example: inv_grp.20rqjgFJf2O.ejl25
-  requestBodies:
+    InvoiceGroupPaginatedResponse:
+      value:
+        data:
+        - id: inv_group.20rvWRxQcQK.0ZwPG
+          name: Invoice Group 1
+          email: acme@acme.com
+          dailyInvoiceConsolidation: true
+          accountsCount: 2
+          gracePeriod: 3
+          netTermDays: 45
+          invoiceCurrency: USD
+          billingAddress:
+            phoneNumber: '+919876543210'
+            line1: 2281 Broadway Street
+            line2: G-31
+            postalCode: '29501'
+            city: Florence
+            state: South Carolina
+            country: US
+          createdAt: '2023-07-26T12:36:56.58015Z'
+          updatedAt: '2023-07-26T12:36:56.58015Z'
+        nextToken: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEwMCwgInNvcnRPcmRlciI6ICJhc2MifQ==
     CreateInvoiceGroupRequest:
-      description: Payload to approve or decline a proposal
-      required: true
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/CreateInvoiceGroupRequest'
-          examples:
-            CreateInvoiceGroupRequest:
-              $ref: '#/components/examples/CreateInvoiceGroupRequest'
+      value:
+        dailyInvoiceConsolidation: true
+        accountIds:
+        - ACC0001
+        - ACC0002
+        netTermDays: 30
+    InvoiceGroups:
+      value:
+        id: inv_group.20rvWRxQcQK.0ZwPG
+        name: Invoice Group 1
+        email: acme@acme.com
+        dailyInvoiceConsolidation: true
+        accountsCount: 2
+        gracePeriod: 3
+        netTermDays: 45
+        invoiceCurrency: USD
+        billingAddress:
+          phoneNumber: '+919876543210'
+          line1: 2281 Broadway Street
+          line2: G-31
+          postalCode: '29501'
+          city: Florence
+          state: South Carolina
+          country: US
+        createdAt: '2023-07-26T12:36:56.58015Z'
+        updatedAt: '2023-07-26T12:36:56.58015Z'
     UpdateInvoiceGroupAccounts:
-      description: Payload to add or remove accounts to/from an invoice group
-      required: true
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UpdateInvoiceGroupAccounts'
-          examples:
-            UpdateInvoiceGroupAccounts:
-              $ref: '#/components/examples/UpdateInvoiceGroupAccounts'
+      value:
+        accountIds:
+        - ACC0001
+        - ACC0002
   securitySchemes:
     bearerAuth:
       type: http

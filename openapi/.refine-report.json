@@ -1,31 +1,7 @@
 {
   "provider": "togai",
   "sources": [
-    "togai-accounts-api-openapi.yml",
-    "togai-addons-api-openapi.yml",
-    "togai-aliases-api-openapi.yml",
-    "togai-authentication-api-openapi.yml",
-    "togai-credits-api-openapi.yml",
-    "togai-customer-portal-api-openapi.yml",
-    "togai-customers-api-openapi.yml",
-    "togai-entitlements-api-openapi.yml",
-    "togai-event-ingestion-api-openapi.yml",
-    "togai-event-management-api-openapi.yml",
-    "togai-event-schemas-api-openapi.yml",
-    "togai-feature-api-openapi.yml",
-    "togai-file-storage-api-openapi.yml",
-    "togai-invoicegroups-api-openapi.yml",
-    "togai-invoices-api-openapi.yml",
-    "togai-jobs-api-openapi.yml",
-    "togai-licenses-api-openapi.yml",
-    "togai-metrics-api-openapi.yml",
-    "togai-payments-api-openapi.yml",
-    "togai-price-experimentation-api-openapi.yml",
-    "togai-price-plans-api-openapi.yml",
-    "togai-pricing-rules-api-openapi.yml",
-    "togai-settings-api-openapi.yml",
-    "togai-usage-meters-api-openapi.yml",
-    "togai-wallet-api-openapi.yml"
+    "_original/togai-openapi.yml"
   ],
   "outputs": [
     "togai-accounts-api-openapi.yml",
@@ -54,9 +30,47 @@
     "togai-usage-meters-api-openapi.yml",
     "togai-wallet-api-openapi.yml"
   ],
-  "archived": [],
+  "archived": [
+    "deleted 1 superseded output(s) from the previous generation"
+  ],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "togai-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "togai-openapi.yml: declared missing tag: AddOns",
+    "togai-openapi.yml: declared missing tag: Event Ingestion",
+    "togai-openapi.yml: declared missing tag: Feature",
+    "togai-openapi.yml: declared missing tag: File Storage",
+    "togai-openapi.yml: declared missing tag: Jobs",
+    "superseded outputs removed: togai-add-ons-api-openapi.yml",
+    "apis.yml register: written (+1 apis, 25 total)"
+  ],
+  "skipped": [
+    "togai-accounts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "togai-add-ons-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "togai-aliases-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "togai-authentication-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "togai-credits-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "togai-customer-portal-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "togai-customers-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "togai-entitlements-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "togai-event-ingestion-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "togai-event-management-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "togai-event-schemas-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "togai-feature-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "togai-file-storage-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "togai-invoicegroups-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "togai-invoices-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "togai-jobs-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "togai-licenses-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "togai-metrics-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "togai-payments-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "togai-price-experimentation-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "togai-price-plans-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "togai-pricing-rules-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "togai-settings-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "togai-usage-meters-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "togai-wallet-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

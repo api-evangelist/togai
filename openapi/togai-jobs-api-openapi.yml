@@ -1,7 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   version: '1.0'
-  title: Togai Apis Accounts Jobs API
+  title: Togai Jobs API
   contact:
     email: engg@togai.com
   license:
@@ -140,39 +140,18 @@ paths:
         default:
           $ref: '#/components/responses/ErrorResponse'
 components:
-  examples:
-    JobEntriesPaginatedResponse:
-      value:
-        data:
-        - entityId: inv.423535.afe325
-          jobId: job.20aUyEZSuYq.SoGbS
-          createdAt: '2080-10-04T00:00:00Z'
-          status: COMPLETED
-        nextToken: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEwMCwgInNvcnRPcmRlciI6ICJhc2MifQ==
-    GetJobResponse:
-      value:
-        id: job.20aUyEZSuYq.SoGbS
-        type: PRICE_PLAN
-        updatedAt: '2080-10-04T00:00:00Z'
-        status: COMPLETED
-        totalJobEntries: 100
-        pendingJobEntries: 40
-        failedJobEntries: 20
-        completedJobEntries: 40
-        metadata:
-          sourceId: pp.njrjk314hfr
-          targetId: pp.rhk32h4dsfq
-    JobsPaginatedResponse:
-      value:
-        data:
-        - id: mig.20aUyEZSuYq.SoGbS
-          type: PRICE_PLAN
-          status: COMPLETED
-          updatedAt: '2080-10-04T00:00:00Z'
-        nextToken: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEwMCwgInNvcnRPcmRlciI6ICJhc2MifQ==
-        context:
-          pageSize: 10
   schemas:
+    PaginationOptions:
+      type: object
+      additionalProperties: false
+      properties:
+        pageSize:
+          type: integer
+        sortOrder:
+          type: string
+          enum:
+          - ASC
+          - DESC
     GetJobResponse:
       type: object
       additionalProperties: false
@@ -239,6 +218,16 @@ components:
           type: string
         context:
           $ref: '#/components/schemas/PaginationOptions'
+    ErrorResponse:
+      type: object
+      additionalProperties: false
+      required:
+      - message
+      properties:
+        message:
+          type: string
+          description: error description
+          maxLength: 500
     JobsWithoutStatusInfoResponse:
       type: object
       additionalProperties: false
@@ -257,27 +246,18 @@ components:
         updatedAt:
           type: string
           format: date-time
-    PaginationOptions:
+    JobsPaginatedResponse:
       type: object
       additionalProperties: false
       properties:
-        pageSize:
-          type: integer
-        sortOrder:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/JobsWithoutStatusInfoResponse'
+        nextToken:
           type: string
-          enum:
-          - ASC
-          - DESC
-    ErrorResponse:
-      type: object
-      additionalProperties: false
-      required:
-      - message
-      properties:
-        message:
-          type: string
-          description: error description
-          maxLength: 500
+        context:
+          $ref: '#/components/schemas/PaginationOptions'
     JobEntriesResponse:
       type: object
       additionalProperties: false
@@ -307,18 +287,38 @@ components:
           type: object
           additionalProperties:
             type: string
-    JobsPaginatedResponse:
-      type: object
-      additionalProperties: false
-      properties:
+  examples:
+    JobEntriesPaginatedResponse:
+      value:
         data:
-          type: array
-          items:
-            $ref: '#/components/schemas/JobsWithoutStatusInfoResponse'
-        nextToken:
-          type: string
+        - entityId: inv.423535.afe325
+          jobId: job.20aUyEZSuYq.SoGbS
+          createdAt: '2080-10-04T00:00:00Z'
+          status: COMPLETED
+        nextToken: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEwMCwgInNvcnRPcmRlciI6ICJhc2MifQ==
+    GetJobResponse:
+      value:
+        id: job.20aUyEZSuYq.SoGbS
+        type: PRICE_PLAN
+        updatedAt: '2080-10-04T00:00:00Z'
+        status: COMPLETED
+        totalJobEntries: 100
+        pendingJobEntries: 40
+        failedJobEntries: 20
+        completedJobEntries: 40
+        metadata:
+          sourceId: pp.njrjk314hfr
+          targetId: pp.rhk32h4dsfq
+    JobsPaginatedResponse:
+      value:
+        data:
+        - id: mig.20aUyEZSuYq.SoGbS
+          type: PRICE_PLAN
+          status: COMPLETED
+          updatedAt: '2080-10-04T00:00:00Z'
+        nextToken: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEwMCwgInNvcnRPcmRlciI6ICJhc2MifQ==
         context:
-          $ref: '#/components/schemas/PaginationOptions'
+          pageSize: 10
   parameters:
     page_size:
       in: query
@@ -342,15 +342,15 @@ components:
         type: string
         example: mig.20aUyEZSuYq.SoGbS
   responses:
-    JobsPaginatedResponse:
-      description: Response for list customers request
+    JobEntriesPaginatedResponse:
+      description: Response for list job entries request
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/JobsPaginatedResponse'
+            $ref: '#/components/schemas/JobEntriesPaginatedResponse'
           examples:
-            JobsPaginatedResponse:
-              $ref: '#/components/examples/JobsPaginatedResponse'
+            JobEntriesPaginatedResponse:
+              $ref: '#/components/examples/JobEntriesPaginatedResponse'
     ErrorResponse:
       description: Error response
       content:
@@ -362,15 +362,6 @@ components:
               summary: Error Message
               value:
                 message: <Reason message>
-    JobEntriesPaginatedResponse:
-      description: Response for list job entries request
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/JobEntriesPaginatedResponse'
-          examples:
-            JobEntriesPaginatedResponse:
-              $ref: '#/components/examples/JobEntriesPaginatedResponse'
     GetJobResponse:
       description: Response for get job status request
       content:
@@ -380,6 +371,15 @@ components:
           examples:
             GetJobResponse:
               $ref: '#/components/examples/GetJobResponse'
+    JobsPaginatedResponse:
+      description: Response for list customers request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/JobsPaginatedResponse'
+          examples:
+            JobsPaginatedResponse:
+              $ref: '#/components/examples/JobsPaginatedResponse'
   securitySchemes:
     bearerAuth:
       type: http

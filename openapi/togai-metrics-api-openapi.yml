@@ -1,7 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   version: '1.0'
-  title: Togai Apis Accounts Metrics API
+  title: Togai Metrics API
   contact:
     email: engg@togai.com
   license:
@@ -27,7 +27,11 @@ paths:
       tags:
       - Metrics
       summary: Get Togai Metrics
-      description: "Togai Metrics API allows you to fetch different metrics from Events, Usage Meters and PricePlans with multiple queryable options.\nA single request can query up to five metrics. \nSingle response can contain a maximum of 300 data points.\n"
+      description: 'Togai Metrics API allows you to fetch different metrics from Events, Usage Meters and PricePlans with multiple queryable options.
+
+        A single request can query up to five metrics.
+
+        Single response can contain a maximum of 300 data points.'
       operationId: getMetrics
       requestBody:
         $ref: '#/components/requestBodies/GetMetricsRequest'
@@ -68,7 +72,99 @@ paths:
         default:
           $ref: '#/components/responses/ErrorResponse'
 components:
+  responses:
+    ErrorResponse:
+      description: Error response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            ErrorResponse:
+              summary: Error Message
+              value:
+                message: <Reason message>
   schemas:
+    MetricQueryResponse:
+      type: object
+      description: Response to GetMetrics Request
+      additionalProperties: false
+      required:
+      - id
+      - name
+      - data
+      properties:
+        id:
+          type: string
+        name:
+          $ref: '#/components/schemas/MetricName'
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/MetricDataPoints'
+    ErrorResponse:
+      type: object
+      additionalProperties: false
+      required:
+      - message
+      properties:
+        message:
+          type: string
+          description: error description
+          maxLength: 500
+    MetricDataPoints:
+      type: object
+      additionalProperties: false
+      required:
+      - timestamps
+      - metricValues
+      properties:
+        groupedBy:
+          title: MetricDataPointsGroupedBy
+          type: object
+          required:
+          - fieldName
+          - fieldValue
+          properties:
+            fieldName:
+              type: string
+            fieldValue:
+              type: string
+        timestamps:
+          type: array
+          items:
+            type: string
+            format: date-time
+          maxItems: 300
+        metricValues:
+          type: array
+          items:
+            type: number
+          maxItems: 300
+    GetMetricsRequest:
+      type: object
+      description: Request to get metrics from togai
+      additionalProperties: false
+      required:
+      - startTime
+      - endTime
+      - metricQueries
+      properties:
+        startTime:
+          type: string
+          format: date-time
+          description: Start date time of the query (inclusive)
+          example: '2017-07-21T00:00:00Z'
+        endTime:
+          type: string
+          format: date-time
+          description: End date time of the query (exclusive)
+          example: '2017-07-21T00:00:00Z'
+        metricQueries:
+          type: array
+          items:
+            $ref: '#/components/schemas/MetricQuery'
+          uniqueItems: true
     MetricName:
       type: string
       description: 'Define the metric you would like to get - allowed options are
@@ -97,6 +193,17 @@ components:
       - USAGE_FOR_CYCLE
       - REVENUE_FOR_CYCLE
       default: EVENTS
+    GetMetricsResponse:
+      type: object
+      description: Response to GetMetrics Request
+      additionalProperties: false
+      required:
+      - results
+      properties:
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/MetricQueryResponse'
     MetricQuery:
       type: object
       description: Object representing a single metrics query
@@ -159,130 +266,6 @@ components:
                 items:
                   type: string
                   example: account#1
-    GetMetricsRequest:
-      type: object
-      description: Request to get metrics from togai
-      additionalProperties: false
-      required:
-      - startTime
-      - endTime
-      - metricQueries
-      properties:
-        startTime:
-          type: string
-          format: date-time
-          description: Start date time of the query (inclusive)
-          example: '2017-07-21T00:00:00Z'
-        endTime:
-          type: string
-          format: date-time
-          description: End date time of the query (exclusive)
-          example: '2017-07-21T00:00:00Z'
-        metricQueries:
-          type: array
-          items:
-            $ref: '#/components/schemas/MetricQuery'
-          uniqueItems: true
-    MetricDataPoints:
-      type: object
-      additionalProperties: false
-      required:
-      - timestamps
-      - metricValues
-      properties:
-        groupedBy:
-          title: MetricDataPointsGroupedBy
-          type: object
-          required:
-          - fieldName
-          - fieldValue
-          properties:
-            fieldName:
-              type: string
-            fieldValue:
-              type: string
-        timestamps:
-          type: array
-          items:
-            type: string
-            format: date-time
-          maxItems: 300
-        metricValues:
-          type: array
-          items:
-            type: number
-          maxItems: 300
-    GetMetricsResponse:
-      type: object
-      description: Response to GetMetrics Request
-      additionalProperties: false
-      required:
-      - results
-      properties:
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/MetricQueryResponse'
-    ErrorResponse:
-      type: object
-      additionalProperties: false
-      required:
-      - message
-      properties:
-        message:
-          type: string
-          description: error description
-          maxLength: 500
-    MetricQueryResponse:
-      type: object
-      description: Response to GetMetrics Request
-      additionalProperties: false
-      required:
-      - id
-      - name
-      - data
-      properties:
-        id:
-          type: string
-        name:
-          $ref: '#/components/schemas/MetricName'
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/MetricDataPoints'
-  examples:
-    GetMetricsResponse:
-      summary: Example Get Metrics Response
-      value:
-        results:
-        - id: m1
-          name: EVENTS
-          data:
-          - timestamps:
-            - '2017-07-21T00:00:00Z'
-            - '2017-07-22T00:00:00Z'
-            metricValues:
-            - 53
-            - 32
-        - id: m2
-          name: USAGE
-          data:
-          - timestamps:
-            - '2017-07-01T00:00:00Z'
-            metricValues:
-            - 123.45
-  responses:
-    ErrorResponse:
-      description: Error response
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          examples:
-            ErrorResponse:
-              summary: Error Message
-              value:
-                message: <Reason message>
   requestBodies:
     GetMetricsRequest:
       content:
@@ -315,6 +298,27 @@ components:
                   - fieldName: CUSTOMER_ID
                     fieldValues:
                     - customer#1
+  examples:
+    GetMetricsResponse:
+      summary: Example Get Metrics Response
+      value:
+        results:
+        - id: m1
+          name: EVENTS
+          data:
+          - timestamps:
+            - '2017-07-21T00:00:00Z'
+            - '2017-07-22T00:00:00Z'
+            metricValues:
+            - 53
+            - 32
+        - id: m2
+          name: USAGE
+          data:
+          - timestamps:
+            - '2017-07-01T00:00:00Z'
+            metricValues:
+            - 123.45
   securitySchemes:
     bearerAuth:
       type: http

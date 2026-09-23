@@ -1,7 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   version: '1.0'
-  title: Togai Apis Accounts Licenses API
+  title: Togai Licenses API
   contact:
     email: engg@togai.com
   license:
@@ -191,160 +191,7 @@ paths:
         default:
           $ref: '#/components/responses/ErrorResponse'
 components:
-  parameters:
-    filter_license_id:
-      in: query
-      description: License Id to filter
-      name: licenseId
-      required: false
-      schema:
-        type: string
-        example: addon.1zYnCiM9Bpg.1zYn
-    filter_account_id:
-      in: query
-      description: Filter option to filter based on account id.
-      name: account_id
-      required: false
-      schema:
-        type: string
-        example: '1234'
-    filter_effective_from:
-      in: query
-      description: effectiveFrom to filter
-      name: effectiveFrom
-      required: false
-      schema:
-        type: string
-        format: date-time
-        example: '2021-03-04T14:25:10Z'
-    filter_page_size:
-      in: query
-      description: "Maximum page size expected by client to return the record list. \n\n NOTE: Max page size cannot be more than 50. Also 50 is the default page size if no value is provided."
-      name: pageSize
-      required: false
-      schema:
-        type: integer
-        example: 10
-    filter_next_page_token:
-      in: query
-      description: Pagination token used as a marker to get records from next page.
-      name: nextToken
-      required: false
-      schema:
-        type: string
-        example: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEyMywgInNvcnRPcmRlciI6ICJhc2MifQ==
   schemas:
-    NamedLicenseUpdatesPaginatedResponse:
-      description: Named License updates paginated response
-      type: object
-      additionalProperties: false
-      required:
-      - data
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/NamedLicenseUpdate'
-        nextToken:
-          type: string
-          maxLength: 500
-          example: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEyMywgInNvcnRPcmRlciI6ICJhc2MifQ==
-    ErrorResponse:
-      type: object
-      additionalProperties: false
-      required:
-      - message
-      properties:
-        message:
-          type: string
-          description: error description
-          maxLength: 500
-    LicenseUpdateResponse:
-      allOf:
-      - $ref: '#/components/schemas/LicenseUpdate'
-      - type: object
-        additionalProperties: false
-        required:
-        - createdAt
-        properties:
-          createdAt:
-            type: string
-            format: date-time
-            example: '2021-03-04T14:25:10Z'
-    GetLicenseUpdatesResponse:
-      description: Get license updates response
-      type: object
-      additionalProperties: false
-      required:
-      - data
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/LicenseUpdateResponse'
-        nextToken:
-          type: string
-          maxLength: 500
-          example: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEyMywgInNvcnRPcmRlciI6ICJhc2MifQ==
-    LicenseUpdate:
-      description: License update
-      type: object
-      additionalProperties: false
-      required:
-      - licenseId
-      - accountId
-      - quantity
-      - effectiveFrom
-      properties:
-        licenseId:
-          type: string
-          maxLength: 50
-          example: lic.fdjsl.313
-        accountId:
-          type: string
-          maxLength: 50
-          example: acc.fdjsl.313
-        quantity:
-          description: Absolute quantity of the license
-          type: number
-          example: 10
-        effectiveFrom:
-          type: string
-          format: date-time
-          example: '2021-03-04T14:25:10Z'
-        metadata:
-          type: object
-          additionalProperties:
-            type: string
-          example:
-            key1: value1
-            key2: value2
-    LicenseEntryDetailsUpdateRequest:
-      description: License Entry Details update request
-      type: object
-      additionalProperties: false
-      required:
-      - accountId
-      - effectiveFrom
-      - metadata
-      properties:
-        accountId:
-          type: string
-          description: The account id for which the license is being updated
-          maxLength: 50
-          example: acc.fdjsl.313
-        effectiveFrom:
-          type: string
-          description: The effective from date of the license entry
-          format: date-time
-          example: '2021-03-04T14:25:10Z'
-        metadata:
-          type: object
-          additionalProperties:
-            type: string
-          example:
-            key1: value1
-            key2: value2
     NamedLicenseUpdate:
       description: Named License update response
       type: object
@@ -389,6 +236,102 @@ components:
           type: string
           format: date-time
           example: '2021-03-04T14:25:10Z'
+    LicenseUpdate:
+      description: License update
+      type: object
+      additionalProperties: false
+      required:
+      - licenseId
+      - accountId
+      - quantity
+      - effectiveFrom
+      properties:
+        licenseId:
+          type: string
+          maxLength: 50
+          example: lic.fdjsl.313
+        accountId:
+          type: string
+          maxLength: 50
+          example: acc.fdjsl.313
+        quantity:
+          description: Absolute quantity of the license
+          type: number
+          example: 10
+        effectiveFrom:
+          type: string
+          format: date-time
+          example: '2021-03-04T14:25:10Z'
+        metadata:
+          type: object
+          additionalProperties:
+            type: string
+          example:
+            key1: value1
+            key2: value2
+    LicenseUpdateResponse:
+      allOf:
+      - $ref: '#/components/schemas/LicenseUpdate'
+      - type: object
+        additionalProperties: false
+        required:
+        - createdAt
+        properties:
+          createdAt:
+            type: string
+            format: date-time
+            example: '2021-03-04T14:25:10Z'
+    ErrorResponse:
+      type: object
+      additionalProperties: false
+      required:
+      - message
+      properties:
+        message:
+          type: string
+          description: error description
+          maxLength: 500
+    LicenseEntryDetailsUpdateRequest:
+      description: License Entry Details update request
+      type: object
+      additionalProperties: false
+      required:
+      - accountId
+      - effectiveFrom
+      - metadata
+      properties:
+        accountId:
+          type: string
+          description: The account id for which the license is being updated
+          maxLength: 50
+          example: acc.fdjsl.313
+        effectiveFrom:
+          type: string
+          description: The effective from date of the license entry
+          format: date-time
+          example: '2021-03-04T14:25:10Z'
+        metadata:
+          type: object
+          additionalProperties:
+            type: string
+          example:
+            key1: value1
+            key2: value2
+    GetLicenseUpdatesResponse:
+      description: Get license updates response
+      type: object
+      additionalProperties: false
+      required:
+      - data
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/LicenseUpdateResponse'
+        nextToken:
+          type: string
+          maxLength: 500
+          example: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEyMywgInNvcnRPcmRlciI6ICJhc2MifQ==
     LicenseUpdateRequest:
       description: License update request
       type: object
@@ -434,7 +377,76 @@ components:
           example:
             key1: value1
             key2: value2
+    NamedLicenseUpdatesPaginatedResponse:
+      description: Named License updates paginated response
+      type: object
+      additionalProperties: false
+      required:
+      - data
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/NamedLicenseUpdate'
+        nextToken:
+          type: string
+          maxLength: 500
+          example: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEyMywgInNvcnRPcmRlciI6ICJhc2MifQ==
+  parameters:
+    filter_next_page_token:
+      in: query
+      description: Pagination token used as a marker to get records from next page.
+      name: nextToken
+      required: false
+      schema:
+        type: string
+        example: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEyMywgInNvcnRPcmRlciI6ICJhc2MifQ==
+    filter_effective_from:
+      in: query
+      description: effectiveFrom to filter
+      name: effectiveFrom
+      required: false
+      schema:
+        type: string
+        format: date-time
+        example: '2021-03-04T14:25:10Z'
+    filter_account_id:
+      in: query
+      description: Filter option to filter based on account id.
+      name: account_id
+      required: false
+      schema:
+        type: string
+        example: '1234'
+    filter_license_id:
+      in: query
+      description: License Id to filter
+      name: licenseId
+      required: false
+      schema:
+        type: string
+        example: addon.1zYnCiM9Bpg.1zYn
+    filter_page_size:
+      in: query
+      description: "Maximum page size expected by client to return the record list. \n\n NOTE: Max page size cannot be more than 50. Also 50 is the default page size if no value is provided."
+      name: pageSize
+      required: false
+      schema:
+        type: integer
+        example: 10
   requestBodies:
+    LicenseEntryDetailsUpdateRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/LicenseEntryDetailsUpdateRequest'
+          examples:
+            LicenseEntryDetailsUpdateRequest:
+              value:
+                accountId: account#1
+                effectiveFrom: '2020-01-01T00:00:00Z'
+                metadata:
+                  PO Number: PO.432t5kbj.43tdsv
     LicenseUpdateRequest:
       content:
         application/json:
@@ -467,18 +479,35 @@ components:
                 updateType: RELATIVE
                 quantity: -5
                 idempotencyKey: idempotencyKey#2
-    LicenseEntryDetailsUpdateRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/LicenseEntryDetailsUpdateRequest'
-          examples:
-            LicenseEntryDetailsUpdateRequest:
-              value:
-                accountId: account#1
-                effectiveFrom: '2020-01-01T00:00:00Z'
-                metadata:
-                  PO Number: PO.432t5kbj.43tdsv
+  examples:
+    GetLicenseUpdatesResponse:
+      summary: Example Get License Updates Response
+      value:
+        data:
+        - licenseId: lic.fdjsl.313
+          accountId: acc.fdjsl.313
+          quantity: 10
+          effectiveFrom: '2020-01-01T00:00:00Z'
+          createdAt: '2021-03-04T14:25:10Z'
+    NamedLicenseUpdatesPaginatedResponse:
+      value:
+        data:
+        - id: named_license_entry.20rvWRx.0ZwPG
+          licenseId: addon.fdjsl.313
+          accountId: '123'
+          name: user1
+          effectiveFrom: '2021-03-04T14:25:10Z'
+          effectiveUntil: '2021-03-04T14:25:10Z'
+          createdAt: '2021-03-04T14:25:10Z'
+          updatedAt: '2021-03-04T14:25:10Z'
+    LicenseUpdateResponse:
+      summary: Example License Update Response
+      value:
+        licenseId: lic.fdjsl.313
+        accountId: acc.fdjsl.313
+        quantity: 10
+        effectiveFrom: '2020-01-01T00:00:00Z'
+        createdAt: '2021-03-04T14:25:10Z'
   responses:
     ErrorResponse:
       description: Error response
@@ -491,35 +520,6 @@ components:
               summary: Error Message
               value:
                 message: <Reason message>
-  examples:
-    LicenseUpdateResponse:
-      summary: Example License Update Response
-      value:
-        licenseId: lic.fdjsl.313
-        accountId: acc.fdjsl.313
-        quantity: 10
-        effectiveFrom: '2020-01-01T00:00:00Z'
-        createdAt: '2021-03-04T14:25:10Z'
-    NamedLicenseUpdatesPaginatedResponse:
-      value:
-        data:
-        - id: named_license_entry.20rvWRx.0ZwPG
-          licenseId: addon.fdjsl.313
-          accountId: '123'
-          name: user1
-          effectiveFrom: '2021-03-04T14:25:10Z'
-          effectiveUntil: '2021-03-04T14:25:10Z'
-          createdAt: '2021-03-04T14:25:10Z'
-          updatedAt: '2021-03-04T14:25:10Z'
-    GetLicenseUpdatesResponse:
-      summary: Example Get License Updates Response
-      value:
-        data:
-        - licenseId: lic.fdjsl.313
-          accountId: acc.fdjsl.313
-          quantity: 10
-          effectiveFrom: '2020-01-01T00:00:00Z'
-          createdAt: '2021-03-04T14:25:10Z'
   securitySchemes:
     bearerAuth:
       type: http

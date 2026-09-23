@@ -1,7 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   version: '1.0'
-  title: Togai Apis Accounts Aliases API
+  title: Togai Aliases API
   contact:
     email: engg@togai.com
   license:
@@ -75,54 +75,7 @@ paths:
         default:
           $ref: '#/components/responses/ErrorResponse'
 components:
-  responses:
-    BaseSuccessResponse:
-      description: OK
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/BaseSuccessResponse'
-    AliasPaginatedResponse:
-      description: Response for list aliases request
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/AliasPaginatedResponse'
-          examples:
-            AliasPaginatedResponse:
-              $ref: '#/components/examples/AliasPaginatedResponse'
-    ErrorResponse:
-      description: Error response
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          examples:
-            ErrorResponse:
-              summary: Error Message
-              value:
-                message: <Reason message>
-    AliasResponse:
-      description: Response for adding or removing aliases
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Alias'
-          examples:
-            AliasResponse:
-              $ref: '#/components/examples/AliasResponse'
   schemas:
-    AliasPaginatedResponse:
-      type: object
-      description: Represents for list response of alias
-      additionalProperties: false
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Alias'
-        nextToken:
-          type: string
     CreateBulkAliasRequest:
       description: Create bulk alias
       type: object
@@ -136,6 +89,15 @@ components:
           minItems: 1
           items:
             $ref: '#/components/schemas/CreateAliasRequest'
+    BaseSuccessResponse:
+      type: object
+      additionalProperties: false
+      required:
+      - success
+      properties:
+        success:
+          type: boolean
+          example: true
     CreateAliasRequest:
       description: Create an alias
       type: object
@@ -156,15 +118,17 @@ components:
           type: string
           description: error description
           maxLength: 500
-    BaseSuccessResponse:
+    AliasPaginatedResponse:
       type: object
+      description: Represents for list response of alias
       additionalProperties: false
-      required:
-      - success
       properties:
-        success:
-          type: boolean
-          example: true
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Alias'
+        nextToken:
+          type: string
     Alias:
       type: object
       description: Represents an Alias
@@ -200,7 +164,48 @@ components:
       schema:
         type: string
         example: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEwMCwgInNvcnRPcmRlciI6ICJhc2MifQ==
+  responses:
+    ErrorResponse:
+      description: Error response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            ErrorResponse:
+              summary: Error Message
+              value:
+                message: <Reason message>
+    AliasPaginatedResponse:
+      description: Response for list aliases request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/AliasPaginatedResponse'
+          examples:
+            AliasPaginatedResponse:
+              $ref: '#/components/examples/AliasPaginatedResponse'
+    AliasResponse:
+      description: Response for adding or removing aliases
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Alias'
+          examples:
+            AliasResponse:
+              $ref: '#/components/examples/AliasResponse'
+    BaseSuccessResponse:
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/BaseSuccessResponse'
   examples:
+    AliasPaginatedResponse:
+      value:
+        data:
+        - value: acme_primary
+          createdAt: '2020-01-01T00:00:00Z'
     AliasResponse:
       value:
         value: acme_primary
@@ -209,11 +214,6 @@ components:
       value:
         aliases:
         - value: alias1
-    AliasPaginatedResponse:
-      value:
-        data:
-        - value: acme_primary
-          createdAt: '2020-01-01T00:00:00Z'
   requestBodies:
     CreateBulkAliasRequest:
       description: Payload to create bulk aliases

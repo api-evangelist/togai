@@ -1,7 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   version: '1.0'
-  title: Togai Apis Accounts File Storage API
+  title: Togai File Storage API
   contact:
     email: engg@togai.com
   license:
@@ -72,10 +72,6 @@ paths:
         default:
           $ref: '#/components/responses/ErrorResponse'
 components:
-  examples:
-    FileDownloadUrlResponse:
-      value:
-        downloadUrl: https://s3.amazonaws.com/...
   responses:
     ErrorResponse:
       description: Error response
@@ -98,14 +94,6 @@ components:
             FileDownloadUrlResponse:
               $ref: '#/components/examples/FileDownloadUrlResponse'
   schemas:
-    FileDownloadUrlResponse:
-      type: object
-      additionalProperties: false
-      required:
-      - downloadUrl
-      properties:
-        downloadUrl:
-          type: string
     ErrorResponse:
       type: object
       additionalProperties: false
@@ -116,6 +104,18 @@ components:
           type: string
           description: error description
           maxLength: 500
+    FileDownloadUrlResponse:
+      type: object
+      additionalProperties: false
+      required:
+      - downloadUrl
+      properties:
+        downloadUrl:
+          type: string
+  examples:
+    FileDownloadUrlResponse:
+      value:
+        downloadUrl: https://s3.amazonaws.com/...
   parameters:
     file_id:
       in: path

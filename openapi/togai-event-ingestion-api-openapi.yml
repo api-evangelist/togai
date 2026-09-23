@@ -1,7 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   version: '1.0'
-  title: Togai Apis Accounts Event Ingestion API
+  title: Togai Event Ingestion API
   contact:
     email: engg@togai.com
   license:
@@ -27,9 +27,7 @@ paths:
 
         Events ingested using this API will be processed via associated usage meters and further via associated price plans to generate final billable value to invoice the customer
 
-        Read more about [Event Ingestion](https://docs.togai.com/docs/event-ingestion)
-
-        '
+        Read more about Event Ingestion'
       operationId: ingest
       requestBody:
         content:
@@ -152,91 +150,6 @@ paths:
           $ref: '#/components/responses/ErrorResponse'
 components:
   schemas:
-    Dimensions:
-      description: Dimensions are tags/labels associated with the events.
-      type: object
-      additionalProperties:
-        type: string
-        minLength: 1
-        maxLength: 200
-        example:
-          Country: India
-    IngestBatchEventRequest:
-      description: Payload for ingesting batch events
-      type: object
-      additionalProperties: false
-      required:
-      - events
-      properties:
-        events:
-          type: array
-          minItems: 1
-          maxItems: 500
-          items:
-            $ref: '#/components/schemas/Event'
-    IngestEventRequest:
-      description: Payload for ingesting events
-      type: object
-      additionalProperties: false
-      required:
-      - event
-      properties:
-        event:
-          $ref: '#/components/schemas/Event'
-    IngestEventResponse:
-      type: object
-      additionalProperties: false
-      properties:
-        success:
-          type: boolean
-          example: true
-        statusCode:
-          type: integer
-          format: int32
-        name:
-          type: string
-        message:
-          type: string
-          maxLength: 500
-        code:
-          type: string
-        details:
-          type: object
-    ErrorResponse:
-      type: object
-      additionalProperties: false
-      required:
-      - message
-      properties:
-        message:
-          type: string
-          description: error description
-          maxLength: 500
-    Attribute:
-      description: Metric to be recorded
-      type: object
-      additionalProperties: false
-      required:
-      - name
-      - value
-      properties:
-        name:
-          description: Name of the event attribute
-          type: string
-          minLength: 1
-          maxLength: 50
-          example: message
-        value:
-          description: Value of the event attribute
-          type: string
-          pattern: ^-?\d{1,512}(\.\d+)?$
-          example: 100
-        unit:
-          description: Unit with which the attribute value was measured. Natively supported units - "Meters, Miles, Kilometers, Grams, Kilograms, ounces, Pounds, Minutes, Hours, Seconds, Milliseconds, Microseconds, None". Clients are free to add any other custom units.
-          type: string
-          minLength: 1
-          maxLength: 50
-          example: characters
     Event:
       description: Contents of the event
       type: object
@@ -277,26 +190,104 @@ components:
             $ref: '#/components/schemas/Attribute'
         dimensions:
           $ref: '#/components/schemas/Dimensions'
-  examples:
+    IngestBatchEventRequest:
+      description: Payload for ingesting batch events
+      type: object
+      additionalProperties: false
+      required:
+      - events
+      properties:
+        events:
+          type: array
+          minItems: 1
+          maxItems: 500
+          items:
+            $ref: '#/components/schemas/Event'
+    ErrorResponse:
+      type: object
+      additionalProperties: false
+      required:
+      - message
+      properties:
+        message:
+          type: string
+          description: error description
+          maxLength: 500
+    Attribute:
+      description: Metric to be recorded
+      type: object
+      additionalProperties: false
+      required:
+      - name
+      - value
+      properties:
+        name:
+          description: Name of the event attribute
+          type: string
+          minLength: 1
+          maxLength: 50
+          example: message
+        value:
+          description: Value of the event attribute
+          type: string
+          pattern: ^-?\d{1,512}(\.\d+)?$
+          example: 100
+        unit:
+          description: Unit with which the attribute value was measured. Natively supported units - "Meters, Miles, Kilometers, Grams, Kilograms, ounces, Pounds, Minutes, Hours, Seconds, Milliseconds, Microseconds, None". Clients are free to add any other custom units.
+          type: string
+          minLength: 1
+          maxLength: 50
+          example: characters
+    Dimensions:
+      description: Dimensions are tags/labels associated with the events.
+      type: object
+      additionalProperties:
+        type: string
+        minLength: 1
+        maxLength: 200
+        example:
+          Country: India
+    IngestEventResponse:
+      type: object
+      additionalProperties: false
+      properties:
+        success:
+          type: boolean
+          example: true
+        statusCode:
+          type: integer
+          format: int32
+        name:
+          type: string
+        message:
+          type: string
+          maxLength: 500
+        code:
+          type: string
+        details:
+          type: object
     IngestEventRequest:
-      summary: Example Event Ingestion Request
-      value:
+      description: Payload for ingesting events
+      type: object
+      additionalProperties: false
+      required:
+      - event
+      properties:
         event:
-          timestamp: '2022-06-15T07:30:35.123'
-          schemaName: travelCompletedEvent
-          id: c0b1306d-f506-43a6-856b-69221efaee6b
-          accountId: '1'
-          attributes:
-          - name: distanceTravelled
-            value: '50'
-            unit: Miles
-          - name: timeSpent
-            value: '60'
-            unit: Minutes
-          dimensions:
-            location: Seattle
-            costCenterCode: '1234'
-            travelType: Business
+          $ref: '#/components/schemas/Event'
+  responses:
+    ErrorResponse:
+      description: Error response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            ErrorResponse:
+              summary: Error Message
+              value:
+                message: <Reason message>
+  examples:
     NamedLicenseEventRequest:
       summary: Example Usage Event Ingestion Request
       value:
@@ -358,18 +349,25 @@ components:
             location: Seattle
             costCenterCode: '1234'
             messageProviderName: Twilio
-  responses:
-    ErrorResponse:
-      description: Error response
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          examples:
-            ErrorResponse:
-              summary: Error Message
-              value:
-                message: <Reason message>
+    IngestEventRequest:
+      summary: Example Event Ingestion Request
+      value:
+        event:
+          timestamp: '2022-06-15T07:30:35.123'
+          schemaName: travelCompletedEvent
+          id: c0b1306d-f506-43a6-856b-69221efaee6b
+          accountId: '1'
+          attributes:
+          - name: distanceTravelled
+            value: '50'
+            unit: Miles
+          - name: timeSpent
+            value: '60'
+            unit: Minutes
+          dimensions:
+            location: Seattle
+            costCenterCode: '1234'
+            travelType: Business
   securitySchemes:
     bearerAuth:
       type: http

@@ -1,7 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   version: '1.0'
-  title: Togai Apis Accounts Payments API
+  title: Togai Payments API
   contact:
     email: engg@togai.com
   license:
@@ -93,39 +93,6 @@ paths:
         default:
           $ref: '#/components/responses/ErrorResponse'
 components:
-  parameters:
-    filter_page_size:
-      in: query
-      description: "Maximum page size expected by client to return the record list. \n\n NOTE: Max page size cannot be more than 50. Also 50 is the default page size if no value is provided."
-      name: pageSize
-      required: false
-      schema:
-        type: integer
-        example: 10
-    filter_next_page_token:
-      in: query
-      description: Pagination token used as a marker to get records from next page.
-      name: nextToken
-      required: false
-      schema:
-        type: string
-        example: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEyMywgInNvcnRPcmRlciI6ICJhc2MifQ==
-    version:
-      in: query
-      name: version
-      description: Optional version to get a specific version. Gets latest version if it is not provided.
-      required: false
-      schema:
-        type: integer
-        format: int32
-        example: 2
-    payment_id:
-      in: path
-      name: payment_id
-      required: true
-      schema:
-        type: string
-        example: payment.1zYnCiM9Bpg.lv25y
   responses:
     ErrorResponse:
       description: Error response
@@ -156,94 +123,16 @@ components:
           examples:
             Payment:
               $ref: '#/components/examples/Payment'
-  examples:
+  requestBodies:
     CreatePaymentRequest:
-      summary: A Sample for CreatePaymentRequest
-      value:
-        description: Payment for services
-        notes: Invoice payment
-        currency: USD
-        accountId: acc123
-        totalAmount: 10000
-        externalPaymentReference:
-          sourceName: XYZ Company
-          sourceType: CARD
-          transactionNumber: TXN123
-          description: Card payment
-        lineItemRecords:
-        - togaiId: inv.234.12efwe
-          order: 1
-          amount: 1000
-          type: INVOICE
-        - togaiId: inv.236.12efwe
-          order: 2
-          amount: 500
-          type: INVOICE
-        - togaiId: cred.236.12efwe
-          order: 3
-          amount: 200
-          type: CREDIT
-    Payment:
-      summary: A Sample Payment
-      value:
-        id: payment.1223dfs.234ds
-        description: Payment for services
-        notes: Invoice payment
-        accountId: acc123
-        currency: USD
-        externalPaymentReferences:
-          sourceName: XYZ Company
-          sourceType: CARD
-          transactionNumber: TXN123
-          description: Card payment
-        lineItemRecords:
-        - togaiId: inv.234.12efwe
-          amount: 1000
-          type: INVOICE
-          order: 1
-        - togaiId: inv.235.12efwe
-          amount: 600
-          type: INVOICE
-          order: 2
-        - togaiId: cred.236.12efwe
-          amount: 100
-          type: CREDIT
-          order: 3
-        totalAmount: 1700
-        version: 1
-        createdBy: user123
-        createdAt: '2023-01-01T12:00:00'
-    ListPaymentResponse:
-      summary: A Sample List Payments Response
-      value:
-        data:
-        - id: payment.1223dfs.234ds
-          description: Payment for services
-          notes: Invoice payment
-          accountId: acc123
-          currency: USD
-          externalPaymentReferences:
-            sourceName: XYZ Company
-            sourceType: CARD
-            transactionNumber: TXN123
-            description: Card payment
-          lineItemRecords:
-          - togaiId: inv.234.12efwe
-            amount: 1000
-            type: INVOICE
-            order: 1
-          - togaiId: inv.235.12efwe
-            amount: 600
-            type: INVOICE
-            order: 2
-          - togaiId: cred.236.12efwe
-            amount: 100
-            type: CREDIT
-            order: 3
-          totalAmount: 1700
-          version: 1
-          createdBy: user123
-          createdAt: '2023-01-01T12:00:00'
+      description: Payload to create a payment
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CreatePaymentRequest'
+          examples:
+            CreatePaymentRequest:
+              $ref: '#/components/examples/CreatePaymentRequest'
   schemas:
     ErrorResponse:
       type: object
@@ -277,33 +166,6 @@ components:
         order:
           type: integer
           format: int32
-    ExternalPaymentReference:
-      type: object
-      description: external payment reference object
-      additionalProperties: false
-      required:
-      - sourceName
-      - sourceType
-      - transactionNumber
-      properties:
-        sourceName:
-          type: string
-        sourceType:
-          type: string
-          enum:
-          - GATEWAY
-          - CASH
-          - CHEQUE
-          - BANK_TRANSFER
-          - CARD
-        transactionNumber:
-          description: Check number or Card transaction number
-          type: string
-        description:
-          type: string
-        metadata:
-          type: object
-          additionalProperties: true
     CreatePaymentRequest:
       type: object
       description: payload to create payment
@@ -402,16 +264,154 @@ components:
         createdAt:
           type: string
           format: date-time
-  requestBodies:
+    ExternalPaymentReference:
+      type: object
+      description: external payment reference object
+      additionalProperties: false
+      required:
+      - sourceName
+      - sourceType
+      - transactionNumber
+      properties:
+        sourceName:
+          type: string
+        sourceType:
+          type: string
+          enum:
+          - GATEWAY
+          - CASH
+          - CHEQUE
+          - BANK_TRANSFER
+          - CARD
+        transactionNumber:
+          description: Check number or Card transaction number
+          type: string
+        description:
+          type: string
+        metadata:
+          type: object
+          additionalProperties: true
+  parameters:
+    version:
+      in: query
+      name: version
+      description: Optional version to get a specific version. Gets latest version if it is not provided.
+      required: false
+      schema:
+        type: integer
+        format: int32
+        example: 2
+    payment_id:
+      in: path
+      name: payment_id
+      required: true
+      schema:
+        type: string
+        example: payment.1zYnCiM9Bpg.lv25y
+    filter_next_page_token:
+      in: query
+      description: Pagination token used as a marker to get records from next page.
+      name: nextToken
+      required: false
+      schema:
+        type: string
+        example: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEyMywgInNvcnRPcmRlciI6ICJhc2MifQ==
+    filter_page_size:
+      in: query
+      description: "Maximum page size expected by client to return the record list. \n\n NOTE: Max page size cannot be more than 50. Also 50 is the default page size if no value is provided."
+      name: pageSize
+      required: false
+      schema:
+        type: integer
+        example: 10
+  examples:
     CreatePaymentRequest:
-      description: Payload to create a payment
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/CreatePaymentRequest'
-          examples:
-            CreatePaymentRequest:
-              $ref: '#/components/examples/CreatePaymentRequest'
+      summary: A Sample for CreatePaymentRequest
+      value:
+        description: Payment for services
+        notes: Invoice payment
+        currency: USD
+        accountId: acc123
+        totalAmount: 10000
+        externalPaymentReference:
+          sourceName: XYZ Company
+          sourceType: CARD
+          transactionNumber: TXN123
+          description: Card payment
+        lineItemRecords:
+        - togaiId: inv.234.12efwe
+          order: 1
+          amount: 1000
+          type: INVOICE
+        - togaiId: inv.236.12efwe
+          order: 2
+          amount: 500
+          type: INVOICE
+        - togaiId: cred.236.12efwe
+          order: 3
+          amount: 200
+          type: CREDIT
+    ListPaymentResponse:
+      summary: A Sample List Payments Response
+      value:
+        data:
+        - id: payment.1223dfs.234ds
+          description: Payment for services
+          notes: Invoice payment
+          accountId: acc123
+          currency: USD
+          externalPaymentReferences:
+            sourceName: XYZ Company
+            sourceType: CARD
+            transactionNumber: TXN123
+            description: Card payment
+          lineItemRecords:
+          - togaiId: inv.234.12efwe
+            amount: 1000
+            type: INVOICE
+            order: 1
+          - togaiId: inv.235.12efwe
+            amount: 600
+            type: INVOICE
+            order: 2
+          - togaiId: cred.236.12efwe
+            amount: 100
+            type: CREDIT
+            order: 3
+          totalAmount: 1700
+          version: 1
+          createdBy: user123
+          createdAt: '2023-01-01T12:00:00'
+    Payment:
+      summary: A Sample Payment
+      value:
+        id: payment.1223dfs.234ds
+        description: Payment for services
+        notes: Invoice payment
+        accountId: acc123
+        currency: USD
+        externalPaymentReferences:
+          sourceName: XYZ Company
+          sourceType: CARD
+          transactionNumber: TXN123
+          description: Card payment
+        lineItemRecords:
+        - togaiId: inv.234.12efwe
+          amount: 1000
+          type: INVOICE
+          order: 1
+        - togaiId: inv.235.12efwe
+          amount: 600
+          type: INVOICE
+          order: 2
+        - togaiId: cred.236.12efwe
+          amount: 100
+          type: CREDIT
+          order: 3
+        totalAmount: 1700
+        version: 1
+        createdBy: user123
+        createdAt: '2023-01-01T12:00:00'
   securitySchemes:
     bearerAuth:
       type: http

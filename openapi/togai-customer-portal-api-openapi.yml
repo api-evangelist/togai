@@ -1,7 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   version: '1.0'
-  title: Togai Apis Accounts Customer Portal API
+  title: Togai Customer Portal API
   contact:
     email: engg@togai.com
   license:
@@ -44,32 +44,6 @@ paths:
         default:
           $ref: '#/components/responses/ErrorResponse'
 components:
-  examples:
-    GetCustomerPortalDelegateTokenRequestAllAccountAccess:
-      value:
-        customerId: acme_cust
-        allAccountAccess: true
-        expiry: 60000
-    GetCustomerPortalDelegateTokenRequestSelectedAccountsAccess:
-      value:
-        customerId: acme_cust
-        accountIds:
-        - acme_accnt_1
-        - acme_accnt_2
-        expiry: 60000
-  requestBodies:
-    GetCustomerPortalDelegateTokenRequest:
-      description: Payload to get delegate token for customer portal
-      required: true
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/GetCustomerPortalDelegateTokenRequest'
-          examples:
-            GetCustomerPortalDelegateTokenRequestAllAccountAccess:
-              $ref: '#/components/examples/GetCustomerPortalDelegateTokenRequestAllAccountAccess'
-            GetCustomerPortalDelegateTokenRequestSelectedAccountsAccess:
-              $ref: '#/components/examples/GetCustomerPortalDelegateTokenRequestSelectedAccountsAccess'
   responses:
     ErrorResponse:
       description: Error response
@@ -89,14 +63,6 @@ components:
           schema:
             $ref: '#/components/schemas/TokenResponse'
   schemas:
-    TokenResponse:
-      type: object
-      additionalProperties: false
-      required:
-      - token
-      properties:
-        token:
-          type: string
     ErrorResponse:
       type: object
       additionalProperties: false
@@ -107,6 +73,14 @@ components:
           type: string
           description: error description
           maxLength: 500
+    TokenResponse:
+      type: object
+      additionalProperties: false
+      required:
+      - token
+      properties:
+        token:
+          type: string
     GetCustomerPortalDelegateTokenRequest:
       description: Request to get delegate token for customer portal
       type: object
@@ -131,6 +105,32 @@ components:
           description: "Expiry in seconds from the time of generation. \nIf not provided, generated token will have the expiry of the token used for requesting.\n"
           type: integer
           format: int64
+  examples:
+    GetCustomerPortalDelegateTokenRequestSelectedAccountsAccess:
+      value:
+        customerId: acme_cust
+        accountIds:
+        - acme_accnt_1
+        - acme_accnt_2
+        expiry: 60000
+    GetCustomerPortalDelegateTokenRequestAllAccountAccess:
+      value:
+        customerId: acme_cust
+        allAccountAccess: true
+        expiry: 60000
+  requestBodies:
+    GetCustomerPortalDelegateTokenRequest:
+      description: Payload to get delegate token for customer portal
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/GetCustomerPortalDelegateTokenRequest'
+          examples:
+            GetCustomerPortalDelegateTokenRequestAllAccountAccess:
+              $ref: '#/components/examples/GetCustomerPortalDelegateTokenRequestAllAccountAccess'
+            GetCustomerPortalDelegateTokenRequestSelectedAccountsAccess:
+              $ref: '#/components/examples/GetCustomerPortalDelegateTokenRequestSelectedAccountsAccess'
   securitySchemes:
     bearerAuth:
       type: http

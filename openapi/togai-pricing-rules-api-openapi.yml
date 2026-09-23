@@ -1,7 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   version: '1.0'
-  title: Togai Apis Accounts Pricing Rules API
+  title: Togai Pricing Rules API
   contact:
     email: engg@togai.com
   license:
@@ -46,103 +46,7 @@ paths:
         default:
           $ref: '#/components/responses/ErrorResponse'
 components:
-  examples:
-    PricingRulesPaginatedResponse:
-      value:
-        data:
-        - id: um.1zYnCiM9Bpg.lv25y
-          name: Rule 1
-          version: 1
-          order: 1
-          computation: '{"+": [{"var": "revenue.urc.um.21lmjsfcXPs.d929R"}, {"var": "usage.urc.um.21lmjObpMV6.9XeFl"}]}
-
-            '
-          condition: '{">": [{"+": [{"var": "revenue.urc.um.21lmjObpMV6.9XeFl"}, {"var": "usage.urc.um.21lmjObpMV6.9XeFl"}]}, 100]}
-
-            '
-          action:
-            type: UPDATE
-            target: revenue.ff.addon.21ERXMFJ83s.9EM5S
-  parameters:
-    price_plan_id:
-      in: path
-      name: price_plan_id
-      required: true
-      schema:
-        type: string
-        maxLength: 50
-        example: pp.1zYnCiM9Bpg.lv25y
-    invoice_timing:
-      in: query
-      name: invoice_timing
-      description: Optional field to filter pricing rules based on invoice timing
-      required: false
-      schema:
-        type: string
-        enum:
-        - IN_ADVANCE
-        - IN_ARREARS
-    pricing_schedule_id:
-      in: path
-      name: pricing_schedule_id
-      required: true
-      schema:
-        type: string
-        maxLength: 50
-        example: sch.1zYnCiM9Bpg.lv25y
-  responses:
-    ErrorResponse:
-      description: Error response
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          examples:
-            ErrorResponse:
-              summary: Error Message
-              value:
-                message: <Reason message>
-    PricingRulesPaginatedResponse:
-      description: Response for create/list pricing rules request
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/PricingRulesPaginatedResponse'
-          examples:
-            PricingRulesPaginatedResponse:
-              $ref: '#/components/examples/PricingRulesPaginatedResponse'
   schemas:
-    PricingRuleAction:
-      type: object
-      additionalProperties: false
-      required:
-      - type
-      properties:
-        type:
-          type: string
-          enum:
-          - ADD
-          - UPDATE
-        target:
-          type: string
-        id:
-          type: string
-        description:
-          type: string
-        metadata:
-          type: object
-          additionalProperties:
-            type: string
-    PricingRulesPaginatedResponse:
-      type: object
-      required:
-      - data
-      additionalProperties: false
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/PricingRule'
     PricingRuleTiming:
       type: string
       enum:
@@ -156,16 +60,6 @@ components:
         If IN_ARREARS, the rule will be applied on rate cards with invoice timing IN_ARREARS .
 
         '
-    ErrorResponse:
-      type: object
-      additionalProperties: false
-      required:
-      - message
-      properties:
-        message:
-          type: string
-          description: error description
-          maxLength: 500
     PricingRule:
       type: object
       description: Represents pricing rules of a price plan. i.e, price plan bound by time.
@@ -202,6 +96,112 @@ components:
           description: JSON logic to be computed
           title: action
           $ref: '#/components/schemas/PricingRuleAction'
+    ErrorResponse:
+      type: object
+      additionalProperties: false
+      required:
+      - message
+      properties:
+        message:
+          type: string
+          description: error description
+          maxLength: 500
+    PricingRuleAction:
+      type: object
+      additionalProperties: false
+      required:
+      - type
+      properties:
+        type:
+          type: string
+          enum:
+          - ADD
+          - UPDATE
+        target:
+          type: string
+        id:
+          type: string
+        description:
+          type: string
+        metadata:
+          type: object
+          additionalProperties:
+            type: string
+    PricingRulesPaginatedResponse:
+      type: object
+      required:
+      - data
+      additionalProperties: false
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/PricingRule'
+  responses:
+    ErrorResponse:
+      description: Error response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            ErrorResponse:
+              summary: Error Message
+              value:
+                message: <Reason message>
+    PricingRulesPaginatedResponse:
+      description: Response for create/list pricing rules request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PricingRulesPaginatedResponse'
+          examples:
+            PricingRulesPaginatedResponse:
+              $ref: '#/components/examples/PricingRulesPaginatedResponse'
+  parameters:
+    invoice_timing:
+      in: query
+      name: invoice_timing
+      description: Optional field to filter pricing rules based on invoice timing
+      required: false
+      schema:
+        type: string
+        enum:
+        - IN_ADVANCE
+        - IN_ARREARS
+    pricing_schedule_id:
+      in: path
+      name: pricing_schedule_id
+      required: true
+      schema:
+        type: string
+        maxLength: 50
+        example: sch.1zYnCiM9Bpg.lv25y
+    price_plan_id:
+      in: path
+      name: price_plan_id
+      required: true
+      schema:
+        type: string
+        maxLength: 50
+        example: pp.1zYnCiM9Bpg.lv25y
+  examples:
+    PricingRulesPaginatedResponse:
+      value:
+        data:
+        - id: um.1zYnCiM9Bpg.lv25y
+          name: Rule 1
+          version: 1
+          order: 1
+          computation: '{"+": [{"var": "revenue.urc.um.21lmjsfcXPs.d929R"}, {"var": "usage.urc.um.21lmjObpMV6.9XeFl"}]}
+
+            '
+          condition: '{">": [{"+": [{"var": "revenue.urc.um.21lmjObpMV6.9XeFl"}, {"var": "usage.urc.um.21lmjObpMV6.9XeFl"}]}, 100]}
+
+            '
+          action:
+            type: UPDATE
+            target: revenue.ff.addon.21ERXMFJ83s.9EM5S
   securitySchemes:
     bearerAuth:
       type: http

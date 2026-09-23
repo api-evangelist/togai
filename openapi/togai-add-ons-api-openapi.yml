@@ -1,7 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   version: '1.0'
-  title: Togai Apis Accounts AddOns API
+  title: Togai Add Ons API
   contact:
     email: engg@togai.com
   license:
@@ -16,14 +16,13 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: AddOns
+- name: Add Ons
 paths:
   /addons:
     post:
       tags:
-      - AddOns
+      - Add Ons
       summary: Create an AddOn
-      description: Create an AddOn
       operationId: createAddOn
       requestBody:
         $ref: '#/components/requestBodies/CreateAddOnRequest'
@@ -44,7 +43,7 @@ paths:
           $ref: '#/components/responses/ErrorResponse'
     get:
       tags:
-      - AddOns
+      - Add Ons
       summary: List AddOns
       description: Get a list of add-ons
       operationId: getAddOns
@@ -81,11 +80,9 @@ paths:
   /addons/{addon_id}:
     patch:
       tags:
-      - AddOns
+      - Add Ons
       summary: Update an Addon
-      description: 'Update an existing addon
-
-        '
+      description: Update an existing addon
       operationId: updateAddOn
       parameters:
       - $ref: '#/components/parameters/addon_id'
@@ -108,7 +105,7 @@ paths:
           $ref: '#/components/responses/ErrorResponse'
     get:
       tags:
-      - AddOns
+      - Add Ons
       summary: Get an Addon
       description: Get details of an addon
       operationId: getAddOn
@@ -131,7 +128,7 @@ paths:
           $ref: '#/components/responses/ErrorResponse'
     delete:
       tags:
-      - AddOns
+      - Add Ons
       summary: Delete an Addon
       description: Archive an addOn
       operationId: deleteAddOn
@@ -153,37 +150,50 @@ paths:
         default:
           $ref: '#/components/responses/ErrorResponse'
 components:
-  responses:
-    AddOnResponse:
-      description: Response for Create and Get addons requests
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/AddOn'
-    BaseSuccessResponse:
-      description: OK
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/BaseSuccessResponse'
-    AddOnPaginatedResponse:
-      description: Response for List addons requests
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/AddOnPaginatedResponse'
-    ErrorResponse:
-      description: Error response
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          examples:
-            ErrorResponse:
-              summary: Error Message
-              value:
-                message: <Reason message>
   schemas:
+    PaginationOptions:
+      type: object
+      additionalProperties: false
+      properties:
+        pageSize:
+          type: integer
+        sortOrder:
+          type: string
+          enum:
+          - ASC
+          - DESC
+    BaseSuccessResponse:
+      type: object
+      additionalProperties: false
+      required:
+      - success
+      properties:
+        success:
+          type: boolean
+          example: true
+    UpdateAddOnRequest:
+      description: Request to update an addon
+      type: object
+      additionalProperties: false
+      properties:
+        name:
+          description: Name of addon
+          type: string
+          maxLength: 255
+        billableName:
+          description: Billable name of addon. Billable name takes precedence over name to display in invoice.
+          type: string
+          maxLength: 255
+    ErrorResponse:
+      type: object
+      additionalProperties: false
+      required:
+      - message
+      properties:
+        message:
+          type: string
+          description: error description
+          maxLength: 500
     CreateAddOnRequest:
       description: Request to create an addon
       type: object
@@ -216,35 +226,6 @@ components:
           type: string
         context:
           $ref: '#/components/schemas/PaginationOptions'
-    UpdateAddOnRequest:
-      description: Request to update an addon
-      type: object
-      additionalProperties: false
-      properties:
-        name:
-          description: Name of addon
-          type: string
-          maxLength: 255
-        billableName:
-          description: Billable name of addon. Billable name takes precedence over name to display in invoice.
-          type: string
-          maxLength: 255
-    AddOnType:
-      type: string
-      enum:
-      - LICENSE
-      - FIXED_FEE
-      - CREDIT_GRANT
-      - NAMED_LICENSE
-      description: 'LICENSE: Addon can be used in license rate cards
-
-        FIXED_FEE: Addon can be used in fixed fee rate cards
-
-        CREDIT_GRANT: Addon can be used in credit grant rate cards
-
-        NAMED_LICENSE: Addon can be used in license rate cards
-
-        '
     AddOn:
       allOf:
       - $ref: '#/components/schemas/CreateAddOnRequest'
@@ -277,37 +258,61 @@ components:
 
               '
             type: string
-    PaginationOptions:
-      type: object
-      additionalProperties: false
-      properties:
-        pageSize:
-          type: integer
-        sortOrder:
-          type: string
-          enum:
-          - ASC
-          - DESC
+    AddOnType:
+      type: string
+      enum:
+      - LICENSE
+      - FIXED_FEE
+      - CREDIT_GRANT
+      - NAMED_LICENSE
+      description: 'LICENSE: Addon can be used in license rate cards
+
+        FIXED_FEE: Addon can be used in fixed fee rate cards
+
+        CREDIT_GRANT: Addon can be used in credit grant rate cards
+
+        NAMED_LICENSE: Addon can be used in license rate cards
+
+        '
+  responses:
+    AddOnResponse:
+      description: Response for Create and Get addons requests
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/AddOn'
     ErrorResponse:
-      type: object
-      additionalProperties: false
-      required:
-      - message
-      properties:
-        message:
-          type: string
-          description: error description
-          maxLength: 500
+      description: Error response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            ErrorResponse:
+              summary: Error Message
+              value:
+                message: <Reason message>
+    AddOnPaginatedResponse:
+      description: Response for List addons requests
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/AddOnPaginatedResponse'
     BaseSuccessResponse:
-      type: object
-      additionalProperties: false
-      required:
-      - success
-      properties:
-        success:
-          type: boolean
-          example: true
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/BaseSuccessResponse'
   parameters:
+    addon_id:
+      in: path
+      name: addon_id
+      required: true
+      schema:
+        type: string
+        maxLength: 50
+        example: addon.1zYnCiM9Bpg.lv25y
     page_size:
       in: query
       name: pageSize
@@ -322,22 +327,7 @@ components:
       schema:
         type: string
         example: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEwMCwgInNvcnRPcmRlciI6ICJhc2MifQ==
-    addon_id:
-      in: path
-      name: addon_id
-      required: true
-      schema:
-        type: string
-        maxLength: 50
-        example: addon.1zYnCiM9Bpg.lv25y
   requestBodies:
-    CreateAddOnRequest:
-      description: Payload to create addon
-      required: true
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/CreateAddOnRequest'
     UpdateAddOnRequest:
       description: Payload to update addon
       required: true
@@ -345,6 +335,13 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/UpdateAddOnRequest'
+    CreateAddOnRequest:
+      description: Payload to create addon
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CreateAddOnRequest'
   securitySchemes:
     bearerAuth:
       type: http

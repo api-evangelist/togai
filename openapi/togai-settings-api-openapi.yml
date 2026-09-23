@@ -1,7 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   version: '1.0'
-  title: Togai Apis Accounts Settings API
+  title: Togai Settings API
   contact:
     email: engg@togai.com
   license:
@@ -125,52 +125,18 @@ paths:
         default:
           $ref: '#/components/responses/ErrorResponse'
 components:
-  parameters:
-    settings_namespace:
-      in: query
-      name: namespace
-      schema:
-        type: string
-        example: USER
-    settings_setting_id:
-      in: query
-      name: setting_id
-      schema:
-        type: string
-    settings_entity_id:
-      in: query
-      name: entity_id
-      schema:
-        type: string
-        example: acc_X1Df3sRf3
-    settings_full_setting_id:
-      in: path
-      name: setting_id_str
-      required: true
-      schema:
-        type: string
-        example: setting.USER.success_threshold.ACCOUNT.G234DZZKBKACATFFGVGEMERFI
-    page_size:
-      in: query
-      name: pageSize
-      required: false
-      schema:
-        type: number
-        example: 10
-    settings_entity_type:
-      in: query
-      name: entity_type
-      schema:
-        type: string
-        example: ACCOUNT
-    next_token:
-      in: query
-      name: nextToken
-      required: false
-      schema:
-        type: string
-        example: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEwMCwgInNvcnRPcmRlciI6ICJhc2MifQ==
   schemas:
+    PaginationOptions:
+      type: object
+      additionalProperties: false
+      properties:
+        pageSize:
+          type: integer
+        sortOrder:
+          type: string
+          enum:
+          - ASC
+          - DESC
     Setting:
       type: object
       description: Represents a setting
@@ -208,17 +174,13 @@ components:
           type: string
           description: error description
           maxLength: 500
-    PaginationOptions:
-      type: object
-      additionalProperties: false
-      properties:
-        pageSize:
-          type: integer
-        sortOrder:
-          type: string
-          enum:
-          - ASC
-          - DESC
+    SettingDataType:
+      type: string
+      enum:
+      - STRING
+      - NUMERIC
+      - JSON
+      - JSON_LOGIC
     UpdateSettingRequest:
       description: Update Settings
       type: object
@@ -230,13 +192,6 @@ components:
           type: string
         dataType:
           $ref: '#/components/schemas/SettingDataType'
-    SettingDataType:
-      type: string
-      enum:
-      - STRING
-      - NUMERIC
-      - JSON
-      - JSON_LOGIC
     SettingPaginatedResponse:
       type: object
       additionalProperties: false
@@ -249,36 +204,51 @@ components:
           type: string
         context:
           $ref: '#/components/schemas/PaginationOptions'
-  responses:
-    SettingPaginatedResponse:
-      description: Response for list setting request
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/SettingPaginatedResponse'
-          examples:
-            SettingPaginatedResponse:
-              $ref: '#/components/examples/SettingPaginatedResponse'
-    ErrorResponse:
-      description: Error response
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          examples:
-            ErrorResponse:
-              summary: Error Message
-              value:
-                message: <Reason message>
-    SettingResponse:
-      description: Response for insert and update settings request
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Setting'
-          examples:
-            Setting:
-              $ref: '#/components/examples/Setting'
+  parameters:
+    settings_setting_id:
+      in: query
+      name: setting_id
+      schema:
+        type: string
+    settings_entity_type:
+      in: query
+      name: entity_type
+      schema:
+        type: string
+        example: ACCOUNT
+    page_size:
+      in: query
+      name: pageSize
+      required: false
+      schema:
+        type: number
+        example: 10
+    settings_full_setting_id:
+      in: path
+      name: setting_id_str
+      required: true
+      schema:
+        type: string
+        example: setting.USER.success_threshold.ACCOUNT.G234DZZKBKACATFFGVGEMERFI
+    settings_entity_id:
+      in: query
+      name: entity_id
+      schema:
+        type: string
+        example: acc_X1Df3sRf3
+    next_token:
+      in: query
+      name: nextToken
+      required: false
+      schema:
+        type: string
+        example: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEwMCwgInNvcnRPcmRlciI6ICJhc2MifQ==
+    settings_namespace:
+      in: query
+      name: namespace
+      schema:
+        type: string
+        example: USER
   requestBodies:
     CreateSettingRequest:
       description: Payload to insert setting
@@ -300,7 +270,42 @@ components:
           examples:
             UpdateSettingRequest:
               $ref: '#/components/examples/UpdateSettingRequest'
+  responses:
+    SettingResponse:
+      description: Response for insert and update settings request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Setting'
+          examples:
+            Setting:
+              $ref: '#/components/examples/Setting'
+    ErrorResponse:
+      description: Error response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            ErrorResponse:
+              summary: Error Message
+              value:
+                message: <Reason message>
+    SettingPaginatedResponse:
+      description: Response for list setting request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SettingPaginatedResponse'
+          examples:
+            SettingPaginatedResponse:
+              $ref: '#/components/examples/SettingPaginatedResponse'
   examples:
+    UpdateSettingRequest:
+      value:
+        value: '{"USD":"1"}'
+        name: Base_Currency
+        dataType: JSON
     Setting:
       value:
         id: UserSetting
@@ -310,11 +315,6 @@ components:
         namespace: USER
         name: Settings Name
         dataType: STRING
-    UpdateSettingRequest:
-      value:
-        value: '{"USD":"1"}'
-        name: Base_Currency
-        dataType: JSON
     SettingPaginatedResponse:
       value:
         data:

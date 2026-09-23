@@ -1,7 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   version: '1.0'
-  title: Togai Apis Accounts Customers API
+  title: Togai Customers API
   contact:
     email: engg@togai.com
   license:
@@ -166,118 +166,107 @@ paths:
         default:
           $ref: '#/components/responses/ErrorResponse'
 components:
-  responses:
-    BaseSuccessResponse:
-      description: OK
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/BaseSuccessResponse'
-    CreateCustomerResponse:
-      description: Response for Create customer request
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/CreateCustomerResponse'
-          examples:
-            CreateCustomerResponse:
-              $ref: '#/components/examples/CreateCustomerResponse'
-    ErrorResponse:
-      description: Error response
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          examples:
-            ErrorResponse:
-              summary: Error Message
-              value:
-                message: <Reason message>
-    CustomerPaginatedResponse:
-      description: Response for list customers request
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/CustomerPaginatedResponse'
-          examples:
-            CustomerPaginatedResponse:
-              $ref: '#/components/examples/CustomerPaginatedResponse'
-    CustomerResponse:
-      description: Response for Get customer requests
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Customer'
-          examples:
-            Customer:
-              $ref: '#/components/examples/Customer'
-    CreateCustomerContactResponse:
-      description: Response for CreateCustomerContactRequest
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/CreateCustomerContactResponse'
-          examples:
-            User:
-              $ref: '#/components/examples/CreateCustomerContactResponse'
-  requestBodies:
-    CreateCustomerRequest:
-      description: Payload to create customer
-      required: true
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/CreateCustomerRequest'
-          examples:
-            CreateCustomerRequest:
-              $ref: '#/components/examples/CreateCustomerRequest'
-    CreateCustomerContactRequest:
-      description: Payload to create a contact for a customer
-      required: true
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/CreateCustomerContactRequest'
-          examples:
-            CreateCustomerContactRequest:
-              $ref: '#/components/examples/CreateCustomerContactRequest'
-    UpdateCustomerRequest:
-      description: Payload to update customer
-      required: true
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UpdateCustomerRequest'
-          examples:
-            UpdateCustomerRequest:
-              $ref: '#/components/examples/UpdateCustomerRequest'
   schemas:
-    Address:
-      description: billing address of the customer
+    PaginationOptions:
       type: object
       additionalProperties: false
       properties:
-        phoneNumber:
-          description: Contact number
+        pageSize:
+          type: integer
+        sortOrder:
           type: string
-        line1:
-          description: Address line 1 (eg. Street, PO Box, Company Name)
+          enum:
+          - ASC
+          - DESC
+    CreateCustomerContactResponse:
+      type: object
+      additionalProperties: false
+      required:
+      - username
+      - name
+      - verified
+      - createdAt
+      - loginAccess
+      properties:
+        username:
           type: string
-        line2:
-          description: Address line 2 (eg. apartment, suite, unit or building)
+          maxLength: 50
+        preferredUsername:
           type: string
-        postalCode:
-          description: ZIP or postal code
+          maxLength: 50
+        name:
           type: string
-        city:
-          description: City, district, suburb, town or village
+          maxLength: 50
+        email:
           type: string
-        state:
-          description: State, county, province or region
+          maxLength: 320
+        phone:
           type: string
-        country:
-          description: Two letter country code [ISO-3166-1 Alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
+          maxLength: 20
+        loginAccess:
+          type: boolean
+        createdBy:
           type: string
+          maxLength: 50
+        createdAt:
+          type: string
+          format: date-time
+        verified:
+          type: boolean
+    CreateCustomerRequest:
+      description: Payload to create customer
+      type: object
+      additionalProperties: false
+      required:
+      - name
+      - id
+      - primaryEmail
+      - address
+      properties:
+        id:
+          description: Customer identifier
+          type: string
+          maxLength: 50
+          example: 01BX5ZZKBKACTAV9WEVGEMMVRZ
+        name:
+          description: Name of the Customer
+          type: string
+          maxLength: 255
+          minLength: 3
+          example: ACME Enterprise
+        primaryEmail:
+          description: Primary email of the customer
+          type: string
+          maxLength: 320
+          example: admin@example.com
+        address:
+          $ref: '#/components/schemas/Address'
+        settings:
+          type: array
+          maxItems: 10
+          minItems: 0
+          items:
+            $ref: '#/components/schemas/CreateEntitySetting'
+        account:
+          $ref: '#/components/schemas/CreateAccountRequestWithoutCustomerId'
+    UpdateCustomerRequest:
+      description: Payload to update customer
+      type: object
+      additionalProperties: false
+      properties:
+        name:
+          description: Name of the Customer
+          type: string
+          maxLength: 255
+          minLength: 3
+          example: ACME Enterprise
+        primaryEmail:
+          description: Primary email of the customer
+          type: string
+          maxLength: 320
+          example: admin@example.com
+        address:
+          $ref: '#/components/schemas/Address'
     InvoiceGroupDetails:
       description: Invoice group details
       type: object
@@ -306,6 +295,191 @@ components:
           type: string
         billingAddress:
           $ref: '#/components/schemas/Address'
+    CreateCustomerContactRequest:
+      description: Payload to create a contact for a customer
+      type: object
+      additionalProperties: false
+      required:
+      - name
+      - email
+      properties:
+        preferredUsername:
+          type: string
+          maxLength: 50
+          pattern: ^[A-Za-z0-9]{3,50}$
+        name:
+          type: string
+          maxLength: 50
+        password:
+          type: string
+          maxLength: 100
+        email:
+          type: string
+          maxLength: 320
+          pattern: ^\S+@\S+\.\S+$
+        phone:
+          type: string
+          maxLength: 30
+        verified:
+          type: boolean
+        loginAccess:
+          type: boolean
+          default: false
+    CreateAccountAliasRequest:
+      description: An alternative account identifier for event ingestion with a defined effective duration.
+      type: object
+      additionalProperties: false
+      required:
+      - value
+      properties:
+        value:
+          type: string
+          maxLength: 50
+          minLength: 1
+        effectiveFrom:
+          type: string
+          format: date-time
+          description: Effective from date, if not provided, it will be set to -infinity
+        effectiveUntil:
+          type: string
+          format: date-time
+          description: Effective until date, if not provided, it will be set to +infinity
+    Customer:
+      description: Structure of customer
+      type: object
+      additionalProperties: false
+      required:
+      - name
+      - id
+      - togaiCustomerId
+      - primaryEmail
+      - billingAddress
+      - address
+      - status
+      - createdAt
+      - updatedAt
+      properties:
+        id:
+          description: Identifier of customer
+          type: string
+          maxLength: 50
+        togaiCustomerId:
+          description: Unique identifier of customer
+          type: string
+        name:
+          description: Name of the Customer
+          type: string
+          maxLength: 255
+          minLength: 3
+        primaryEmail:
+          description: Primary email of the customer
+          type: string
+          maxLength: 320
+        billingAddress:
+          description: billing address of the customer
+          type: string
+          maxLength: 1000
+          example: 201 Boulevard, WA 53123
+        address:
+          $ref: '#/components/schemas/Address'
+        status:
+          description: Status of the customer
+          type: string
+          enum:
+          - ACTIVE
+          - ARCHIVED
+          example: ACTIVE
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+    CustomerPaginatedResponse:
+      type: object
+      additionalProperties: false
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Customer'
+        nextToken:
+          type: string
+        context:
+          $ref: '#/components/schemas/PaginationOptions'
+    CreateEntitySetting:
+      type: object
+      description: Represents a setting
+      additionalProperties: false
+      required:
+      - id
+      - value
+      - namespace
+      - name
+      - dataType
+      properties:
+        id:
+          type: string
+        value:
+          type: string
+        namespace:
+          type: string
+        name:
+          type: string
+        dataType:
+          $ref: '#/components/schemas/SettingDataType'
+    Address:
+      description: billing address of the customer
+      type: object
+      additionalProperties: false
+      properties:
+        phoneNumber:
+          description: Contact number
+          type: string
+        line1:
+          description: Address line 1 (eg. Street, PO Box, Company Name)
+          type: string
+        line2:
+          description: Address line 2 (eg. apartment, suite, unit or building)
+          type: string
+        postalCode:
+          description: ZIP or postal code
+          type: string
+        city:
+          description: City, district, suburb, town or village
+          type: string
+        state:
+          description: State, county, province or region
+          type: string
+        country:
+          description: Two letter country code [ISO-3166-1 Alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
+          type: string
+    ErrorResponse:
+      type: object
+      additionalProperties: false
+      required:
+      - message
+      properties:
+        message:
+          type: string
+          description: error description
+          maxLength: 500
+    SettingDataType:
+      type: string
+      enum:
+      - STRING
+      - NUMERIC
+      - JSON
+      - JSON_LOGIC
+    BaseSuccessResponse:
+      type: object
+      additionalProperties: false
+      required:
+      - success
+      properties:
+        success:
+          type: boolean
+          example: true
     CreateAccountRequestWithoutCustomerId:
       description: Payload to create account
       type: object
@@ -384,144 +558,6 @@ components:
           enum:
           - ACTIVE
           - DRAFT
-    CreateCustomerContactRequest:
-      description: Payload to create a contact for a customer
-      type: object
-      additionalProperties: false
-      required:
-      - name
-      - email
-      properties:
-        preferredUsername:
-          type: string
-          maxLength: 50
-          pattern: ^[A-Za-z0-9]{3,50}$
-        name:
-          type: string
-          maxLength: 50
-        password:
-          type: string
-          maxLength: 100
-        email:
-          type: string
-          maxLength: 320
-          pattern: ^\S+@\S+\.\S+$
-        phone:
-          type: string
-          maxLength: 30
-        verified:
-          type: boolean
-        loginAccess:
-          type: boolean
-          default: false
-    ErrorResponse:
-      type: object
-      additionalProperties: false
-      required:
-      - message
-      properties:
-        message:
-          type: string
-          description: error description
-          maxLength: 500
-    Customer:
-      description: Structure of customer
-      type: object
-      additionalProperties: false
-      required:
-      - name
-      - id
-      - togaiCustomerId
-      - primaryEmail
-      - billingAddress
-      - address
-      - status
-      - createdAt
-      - updatedAt
-      properties:
-        id:
-          description: Identifier of customer
-          type: string
-          maxLength: 50
-        togaiCustomerId:
-          description: Unique identifier of customer
-          type: string
-        name:
-          description: Name of the Customer
-          type: string
-          maxLength: 255
-          minLength: 3
-        primaryEmail:
-          description: Primary email of the customer
-          type: string
-          maxLength: 320
-        billingAddress:
-          description: billing address of the customer
-          type: string
-          maxLength: 1000
-          example: 201 Boulevard, WA 53123
-        address:
-          $ref: '#/components/schemas/Address'
-        status:
-          description: Status of the customer
-          type: string
-          enum:
-          - ACTIVE
-          - ARCHIVED
-          example: ACTIVE
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-    PaginationOptions:
-      type: object
-      additionalProperties: false
-      properties:
-        pageSize:
-          type: integer
-        sortOrder:
-          type: string
-          enum:
-          - ASC
-          - DESC
-    CreateCustomerRequest:
-      description: Payload to create customer
-      type: object
-      additionalProperties: false
-      required:
-      - name
-      - id
-      - primaryEmail
-      - address
-      properties:
-        id:
-          description: Customer identifier
-          type: string
-          maxLength: 50
-          example: 01BX5ZZKBKACTAV9WEVGEMMVRZ
-        name:
-          description: Name of the Customer
-          type: string
-          maxLength: 255
-          minLength: 3
-          example: ACME Enterprise
-        primaryEmail:
-          description: Primary email of the customer
-          type: string
-          maxLength: 320
-          example: admin@example.com
-        address:
-          $ref: '#/components/schemas/Address'
-        settings:
-          type: array
-          maxItems: 10
-          minItems: 0
-          items:
-            $ref: '#/components/schemas/CreateEntitySetting'
-        account:
-          $ref: '#/components/schemas/CreateAccountRequestWithoutCustomerId'
     CreateCustomerResponse:
       type: object
       additionalProperties: false
@@ -559,127 +595,6 @@ components:
             $ref: '#/components/schemas/CreateEntitySetting'
         account:
           $ref: '#/components/schemas/Account'
-    SettingDataType:
-      type: string
-      enum:
-      - STRING
-      - NUMERIC
-      - JSON
-      - JSON_LOGIC
-    UpdateCustomerRequest:
-      description: Payload to update customer
-      type: object
-      additionalProperties: false
-      properties:
-        name:
-          description: Name of the Customer
-          type: string
-          maxLength: 255
-          minLength: 3
-          example: ACME Enterprise
-        primaryEmail:
-          description: Primary email of the customer
-          type: string
-          maxLength: 320
-          example: admin@example.com
-        address:
-          $ref: '#/components/schemas/Address'
-    CreateAccountAliasRequest:
-      description: An alternative account identifier for event ingestion with a defined effective duration.
-      type: object
-      additionalProperties: false
-      required:
-      - value
-      properties:
-        value:
-          type: string
-          maxLength: 50
-          minLength: 1
-        effectiveFrom:
-          type: string
-          format: date-time
-          description: Effective from date, if not provided, it will be set to -infinity
-        effectiveUntil:
-          type: string
-          format: date-time
-          description: Effective until date, if not provided, it will be set to +infinity
-    BaseSuccessResponse:
-      type: object
-      additionalProperties: false
-      required:
-      - success
-      properties:
-        success:
-          type: boolean
-          example: true
-    CreateCustomerContactResponse:
-      type: object
-      additionalProperties: false
-      required:
-      - username
-      - name
-      - verified
-      - createdAt
-      - loginAccess
-      properties:
-        username:
-          type: string
-          maxLength: 50
-        preferredUsername:
-          type: string
-          maxLength: 50
-        name:
-          type: string
-          maxLength: 50
-        email:
-          type: string
-          maxLength: 320
-        phone:
-          type: string
-          maxLength: 20
-        loginAccess:
-          type: boolean
-        createdBy:
-          type: string
-          maxLength: 50
-        createdAt:
-          type: string
-          format: date-time
-        verified:
-          type: boolean
-    CreateEntitySetting:
-      type: object
-      description: Represents a setting
-      additionalProperties: false
-      required:
-      - id
-      - value
-      - namespace
-      - name
-      - dataType
-      properties:
-        id:
-          type: string
-        value:
-          type: string
-        namespace:
-          type: string
-        name:
-          type: string
-        dataType:
-          $ref: '#/components/schemas/SettingDataType'
-    CustomerPaginatedResponse:
-      type: object
-      additionalProperties: false
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Customer'
-        nextToken:
-          type: string
-        context:
-          $ref: '#/components/schemas/PaginationOptions'
     Account:
       description: Structure of an account
       type: object
@@ -773,70 +688,92 @@ components:
           uniqueItems: true
           items:
             type: string
-  examples:
-    CreateCustomerContactResponse:
-      value:
-        username: 3d9e0a90-38d5-49d8-b34d-fdbe2e6cf8f2
-        name: Lorem Ipsum
-        email: bob@acme.com
-        verified: true
-        phone: '+1234071628'
-        loginAccess: true
-        createdBy: hrn:Xghfdksd::iam-user/johnny314
-        createdAt: '2020-01-01T00:00:00Z'
-    CustomerPaginatedResponse:
-      value:
-        data:
-        - id: 01BX5ZZKBKACTAV9WEVGEMMVRZ
-          togaiCustomerId: customer.dsvvre314.dcs314
-          name: ACME Enterprise
-          primaryEmail: admin@example.com
-          address:
-            phoneNumber: '+919876543210'
-            line1: 2281 Broadway Street
-            line2: G-31
-            postalCode: '29501'
-            city: Florence
-            state: South Carolina
-            country: US
-          billingAddress: 2281 Broadway Street, G-31, 29501, Florence, South Carolina, US
-          status: ACTIVE
-          createdAt: '2020-01-01T10:10:22Z'
-          updatedAt: '2020-01-01T10:10:22Z'
-        nextToken: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEwMCwgInNvcnRPcmRlciI6ICJhc2MifQ==
-        context:
-          pageSize: 10
-    Customer:
-      summary: A Sample Customer
-      value:
-        id: 01BX5ZZKBKACTAV9WEVGEMMVRZ
-        togaiCustomerId: customer.dsvvre314.dcs14
-        name: ACME Enterprise
-        primaryEmail: admin@example.com
-        address:
-          phoneNumber: '+919876543210'
-          line1: 2281 Broadway Street
-          line2: G-31
-          postalCode: '29501'
-          city: Florence
-          state: South Carolina
-          country: US
-        billingAddress: 2281 Broadway Street, G-31, 29501, Florence, South Carolina, US
-        status: ACTIVE
-        updatedAt: '2020-07-04T12:00:00.000Z'
-        createdAt: '2020-07-04T12:00:00.000Z'
+  requestBodies:
+    CreateCustomerRequest:
+      description: Payload to create customer
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CreateCustomerRequest'
+          examples:
+            CreateCustomerRequest:
+              $ref: '#/components/examples/CreateCustomerRequest'
     UpdateCustomerRequest:
-      value:
-        name: ACME Enterprise
-        primaryEmail: admin@example.com
-        address:
-          phoneNumber: '+919876543210'
-          line1: 2281 Broadway Street
-          line2: G-31
-          postalCode: '29501'
-          city: Florence
-          state: South Carolina
-          country: US
+      description: Payload to update customer
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UpdateCustomerRequest'
+          examples:
+            UpdateCustomerRequest:
+              $ref: '#/components/examples/UpdateCustomerRequest'
+    CreateCustomerContactRequest:
+      description: Payload to create a contact for a customer
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CreateCustomerContactRequest'
+          examples:
+            CreateCustomerContactRequest:
+              $ref: '#/components/examples/CreateCustomerContactRequest'
+  responses:
+    CreateCustomerResponse:
+      description: Response for Create customer request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CreateCustomerResponse'
+          examples:
+            CreateCustomerResponse:
+              $ref: '#/components/examples/CreateCustomerResponse'
+    CustomerPaginatedResponse:
+      description: Response for list customers request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CustomerPaginatedResponse'
+          examples:
+            CustomerPaginatedResponse:
+              $ref: '#/components/examples/CustomerPaginatedResponse'
+    BaseSuccessResponse:
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/BaseSuccessResponse'
+    CustomerResponse:
+      description: Response for Get customer requests
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Customer'
+          examples:
+            Customer:
+              $ref: '#/components/examples/Customer'
+    ErrorResponse:
+      description: Error response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            ErrorResponse:
+              summary: Error Message
+              value:
+                message: <Reason message>
+    CreateCustomerContactResponse:
+      description: Response for CreateCustomerContactRequest
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CreateCustomerContactResponse'
+          examples:
+            User:
+              $ref: '#/components/examples/CreateCustomerContactResponse'
+  examples:
     CreateCustomerResponse:
       value:
         id: 01BX5ZZKBKACTAV9WEVGEMMVRZ
@@ -874,6 +811,27 @@ components:
             namespace: USER
             name: Settings Name
             dataType: STRING
+    CreateCustomerContactRequest:
+      summary: A Sample Create Contact for a Customer Request
+      value:
+        name: Lorem Ipsum
+        password: nii2du35bdtuethntv3q7416
+        email: bob@acme.com
+        phone: '+1234071628'
+        verified: true
+        loginAccess: true
+    UpdateCustomerRequest:
+      value:
+        name: ACME Enterprise
+        primaryEmail: admin@example.com
+        address:
+          phoneNumber: '+919876543210'
+          line1: 2281 Broadway Street
+          line2: G-31
+          postalCode: '29501'
+          city: Florence
+          state: South Carolina
+          country: US
     CreateCustomerRequest:
       value:
         id: 01BX5ZZKBKACTAV9WEVGEMMVRZ
@@ -906,15 +864,57 @@ components:
             namespace: USER
             name: Settings Name
             dataType: STRING
-    CreateCustomerContactRequest:
-      summary: A Sample Create Contact for a Customer Request
+    Customer:
+      summary: A Sample Customer
       value:
+        id: 01BX5ZZKBKACTAV9WEVGEMMVRZ
+        togaiCustomerId: customer.dsvvre314.dcs14
+        name: ACME Enterprise
+        primaryEmail: admin@example.com
+        address:
+          phoneNumber: '+919876543210'
+          line1: 2281 Broadway Street
+          line2: G-31
+          postalCode: '29501'
+          city: Florence
+          state: South Carolina
+          country: US
+        billingAddress: 2281 Broadway Street, G-31, 29501, Florence, South Carolina, US
+        status: ACTIVE
+        updatedAt: '2020-07-04T12:00:00.000Z'
+        createdAt: '2020-07-04T12:00:00.000Z'
+    CreateCustomerContactResponse:
+      value:
+        username: 3d9e0a90-38d5-49d8-b34d-fdbe2e6cf8f2
         name: Lorem Ipsum
-        password: nii2du35bdtuethntv3q7416
         email: bob@acme.com
-        phone: '+1234071628'
         verified: true
+        phone: '+1234071628'
         loginAccess: true
+        createdBy: hrn:Xghfdksd::iam-user/johnny314
+        createdAt: '2020-01-01T00:00:00Z'
+    CustomerPaginatedResponse:
+      value:
+        data:
+        - id: 01BX5ZZKBKACTAV9WEVGEMMVRZ
+          togaiCustomerId: customer.dsvvre314.dcs314
+          name: ACME Enterprise
+          primaryEmail: admin@example.com
+          address:
+            phoneNumber: '+919876543210'
+            line1: 2281 Broadway Street
+            line2: G-31
+            postalCode: '29501'
+            city: Florence
+            state: South Carolina
+            country: US
+          billingAddress: 2281 Broadway Street, G-31, 29501, Florence, South Carolina, US
+          status: ACTIVE
+          createdAt: '2020-01-01T10:10:22Z'
+          updatedAt: '2020-01-01T10:10:22Z'
+        nextToken: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEwMCwgInNvcnRPcmRlciI6ICJhc2MifQ==
+        context:
+          pageSize: 10
   parameters:
     page_size:
       in: query
