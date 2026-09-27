@@ -125,7 +125,85 @@ paths:
         default:
           $ref: '#/components/responses/ErrorResponse'
 components:
+  parameters:
+    settings_entity_id:
+      in: query
+      name: entity_id
+      schema:
+        type: string
+        example: acc_X1Df3sRf3
+    settings_full_setting_id:
+      in: path
+      name: setting_id_str
+      required: true
+      schema:
+        type: string
+        example: setting.USER.success_threshold.ACCOUNT.G234DZZKBKACATFFGVGEMERFI
+    settings_entity_type:
+      in: query
+      name: entity_type
+      schema:
+        type: string
+        example: ACCOUNT
+    settings_setting_id:
+      in: query
+      name: setting_id
+      schema:
+        type: string
+    page_size:
+      in: query
+      name: pageSize
+      required: false
+      schema:
+        type: number
+        example: 10
+    next_token:
+      in: query
+      name: nextToken
+      required: false
+      schema:
+        type: string
+        example: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEwMCwgInNvcnRPcmRlciI6ICJhc2MifQ==
+    settings_namespace:
+      in: query
+      name: namespace
+      schema:
+        type: string
+        example: USER
+  requestBodies:
+    UpdateSettingRequest:
+      description: Payload to update setting
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UpdateSettingRequest'
+          examples:
+            UpdateSettingRequest:
+              $ref: '#/components/examples/UpdateSettingRequest'
+    CreateSettingRequest:
+      description: Payload to insert setting
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Setting'
+          examples:
+            Setting:
+              $ref: '#/components/examples/Setting'
   schemas:
+    SettingPaginatedResponse:
+      type: object
+      additionalProperties: false
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Setting'
+        nextToken:
+          type: string
+        context:
+          $ref: '#/components/schemas/PaginationOptions'
     PaginationOptions:
       type: object
       additionalProperties: false
@@ -164,6 +242,17 @@ components:
           type: string
         dataType:
           $ref: '#/components/schemas/SettingDataType'
+    UpdateSettingRequest:
+      description: Update Settings
+      type: object
+      additionalProperties: false
+      properties:
+        name:
+          type: string
+        value:
+          type: string
+        dataType:
+          $ref: '#/components/schemas/SettingDataType'
     ErrorResponse:
       type: object
       additionalProperties: false
@@ -181,95 +270,34 @@ components:
       - NUMERIC
       - JSON
       - JSON_LOGIC
-    UpdateSettingRequest:
-      description: Update Settings
-      type: object
-      additionalProperties: false
-      properties:
-        name:
-          type: string
-        value:
-          type: string
-        dataType:
-          $ref: '#/components/schemas/SettingDataType'
+  examples:
     SettingPaginatedResponse:
-      type: object
-      additionalProperties: false
-      properties:
+      value:
         data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Setting'
-        nextToken:
-          type: string
+        - id: TogaiSetting
+          value: INR
+          entityType: ORGANIZATION
+          entityId: XlK5h64gND
+          namespace: togai
+          name: Settings Name
+          dataType: STRING
+        nextToken: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEwMCwgInNvcnRPcmRlciI6ICJhc2MifQ==
         context:
-          $ref: '#/components/schemas/PaginationOptions'
-  parameters:
-    settings_setting_id:
-      in: query
-      name: setting_id
-      schema:
-        type: string
-    settings_entity_type:
-      in: query
-      name: entity_type
-      schema:
-        type: string
-        example: ACCOUNT
-    page_size:
-      in: query
-      name: pageSize
-      required: false
-      schema:
-        type: number
-        example: 10
-    settings_full_setting_id:
-      in: path
-      name: setting_id_str
-      required: true
-      schema:
-        type: string
-        example: setting.USER.success_threshold.ACCOUNT.G234DZZKBKACATFFGVGEMERFI
-    settings_entity_id:
-      in: query
-      name: entity_id
-      schema:
-        type: string
-        example: acc_X1Df3sRf3
-    next_token:
-      in: query
-      name: nextToken
-      required: false
-      schema:
-        type: string
-        example: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEwMCwgInNvcnRPcmRlciI6ICJhc2MifQ==
-    settings_namespace:
-      in: query
-      name: namespace
-      schema:
-        type: string
-        example: USER
-  requestBodies:
-    CreateSettingRequest:
-      description: Payload to insert setting
-      required: true
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Setting'
-          examples:
-            Setting:
-              $ref: '#/components/examples/Setting'
+          pageSize: 10
+    Setting:
+      value:
+        id: UserSetting
+        value: INR
+        entityType: ORGANIZATION
+        entityId: XlK5h64gND
+        namespace: USER
+        name: Settings Name
+        dataType: STRING
     UpdateSettingRequest:
-      description: Payload to update setting
-      required: true
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UpdateSettingRequest'
-          examples:
-            UpdateSettingRequest:
-              $ref: '#/components/examples/UpdateSettingRequest'
+      value:
+        value: '{"USD":"1"}'
+        name: Base_Currency
+        dataType: JSON
   responses:
     SettingResponse:
       description: Response for insert and update settings request
@@ -300,34 +328,6 @@ components:
           examples:
             SettingPaginatedResponse:
               $ref: '#/components/examples/SettingPaginatedResponse'
-  examples:
-    UpdateSettingRequest:
-      value:
-        value: '{"USD":"1"}'
-        name: Base_Currency
-        dataType: JSON
-    Setting:
-      value:
-        id: UserSetting
-        value: INR
-        entityType: ORGANIZATION
-        entityId: XlK5h64gND
-        namespace: USER
-        name: Settings Name
-        dataType: STRING
-    SettingPaginatedResponse:
-      value:
-        data:
-        - id: TogaiSetting
-          value: INR
-          entityType: ORGANIZATION
-          entityId: XlK5h64gND
-          namespace: togai
-          name: Settings Name
-          dataType: STRING
-        nextToken: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEwMCwgInNvcnRPcmRlciI6ICJhc2MifQ==
-        context:
-          pageSize: 10
   securitySchemes:
     bearerAuth:
       type: http

@@ -299,35 +299,172 @@ paths:
         default:
           $ref: '#/components/responses/ErrorResponse'
 components:
-  requestBodies:
-    CreateCustomInvoiceRequest:
-      description: Payload to create invoice
+  parameters:
+    require_confirmation:
+      in: query
+      name: require_confirmation
+      description: Specifies whether to start a migration only after a confirmation
+      required: false
+      schema:
+        type: boolean
+        example: false
+    filter_end_time:
+      in: query
+      name: end_time
+      description: End time filter in epoch milli seconds
+      required: false
+      schema:
+        type: integer
+        format: int64
+        example: 1650110402000
+    filter_status:
+      in: query
+      description: Filter option to filter by status.
+      name: status
+      required: false
+      schema:
+        type: string
+      examples:
+        processed:
+          value: PROCESSED
+        in_progress:
+          value: IN_PROGRESS
+    filter_customer_id:
+      in: query
+      description: Filter option to filter based on customer id.
+      name: customer_id
+      required: false
+      schema:
+        type: string
+        example: '1234'
+    filter_start_time:
+      in: query
+      name: start_time
+      description: Start time filter in epoch milli seconds
+      required: false
+      schema:
+        type: integer
+        format: int64
+        example: 1650110402000
+    filter_owner_id:
+      in: query
+      description: Filter option to filter based on owner id.
+      name: owner_id
+      required: false
+      schema:
+        type: string
+        example: ACC001
+    filter_page_size:
+      in: query
+      description: "Maximum page size expected by client to return the record list. \n\n NOTE: Max page size cannot be more than 50. Also 50 is the default page size if no value is provided."
+      name: pageSize
+      required: false
+      schema:
+        type: integer
+        example: 10
+    account_id:
+      in: path
+      description: account_id corresponding to an account
+      name: account_id
+      required: true
+      schema:
+        type: string
+        maxLength: 50
+        example: ACC00001
+    filter_next_page_token:
+      in: query
+      description: Pagination token used as a marker to get records from next page.
+      name: nextToken
+      required: false
+      schema:
+        type: string
+        example: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEyMywgInNvcnRPcmRlciI6ICJhc2MifQ==
+    invoice_id:
+      in: path
+      name: invoice_id
+      required: true
+      schema:
+        type: string
+        example: ACC001
+  responses:
+    PricingRulesLogsPaginatedResponse:
+      description: Response for list Invoice Pricing Rules Logs Request
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/CreateCustomInvoiceRequest'
+            $ref: '#/components/schemas/PricingRulesLogsPaginatedResponse'
           examples:
-            CreateCustomInvoiceRequest:
-              $ref: '#/components/examples/CreateCustomInvoiceRequest'
-    UpdateInvoiceRequest:
-      description: Payload to update an invoice
+            PricingRulesLogsPaginatedResponse:
+              $ref: '#/components/examples/PricingRulesLogsPaginatedResponse'
+    ListInvoicesResponse:
+      description: Response for Get invoice requests
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/UpdateInvoiceRequest'
+            $ref: '#/components/schemas/ListInvoicesResponse'
           examples:
-            UpdateInvoiceRequest:
-              $ref: '#/components/examples/UpdateInvoiceRequest'
-    ManageMiscellaneousChargesRequest:
-      description: Payload to update custom line items
+            ListInvoicesResponse:
+              $ref: '#/components/examples/ListInvoicesResponse'
+    MiscellaneousChargesResponse:
+      description: Response for Miscellaneous Charges Request
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/ManageMiscellaneousChargesRequest'
+            $ref: '#/components/schemas/MiscellaneousChargesResponse'
           examples:
-            ManageMiscellaneousChargesRequest:
-              $ref: '#/components/examples/ManageMiscellaneousChargesRequest'
+            MiscellaneousChargesResponse:
+              $ref: '#/components/examples/MiscellaneousChargesResponse'
+    BaseSuccessResponse:
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/BaseSuccessResponse'
+    InvoiceResponse:
+      description: Response for Get invoice requests
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Invoice'
+          examples:
+            Invoice:
+              $ref: '#/components/examples/Invoice'
+    ErrorResponse:
+      description: Error response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            ErrorResponse:
+              summary: Error Message
+              value:
+                message: <Reason message>
   schemas:
+    PricingRulesLogsPaginatedResponse:
+      description: Pricing Rules Logs response
+      type: object
+      additionalProperties: false
+      required:
+      - data
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/PricingRulesLog'
+    InvoicesStatus:
+      description: Status of the invoice
+      type: string
+      enum:
+      - DRAFT
+      - DUE
+      - PAID
+      - VOID
+      - UN_COLLECTIBLE
+      - REFUND_INITIATED
+      - REFUND_COMPLETED
+      - MERGED
+      - PARTIALLY_PAID
     Invoice:
       description: Structure of invoice
       type: object
@@ -477,44 +614,13 @@ components:
             But disabling this property of left null does not auto update the custom status
 
             '
-    CustomInvoiceLineItem:
-      type: object
-      description: 'Custom line item. Either `value` or `quantity` + `valuePerQuantity` is required.
-
-        In case `quantity` and `valuePerQuantity` are provided, `value` is computed as (`quantity` X `valuePerQuantity`)
-
-        '
-      additionalProperties: false
-      required:
-      - description
-      properties:
-        id:
-          type: string
-        description:
-          type: string
-        valuePerQuantity:
-          type: number
-        quantity:
-          type: number
-        value:
-          type: number
-    ListInvoicesResponse:
-      description: List invoices response
-      type: object
-      additionalProperties: false
-      required:
-      - data
-      properties:
-        data:
-          type: array
-          minItems: 0
-          maxItems: 50
-          items:
-            $ref: '#/components/schemas/InvoiceSummary'
-        nextToken:
-          type: string
-          maxLength: 500
-          example: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEyMywgInNvcnRPcmRlciI6ICJhc2MifQ==
+    InvoicesClass:
+      description: Represents the class of entity( INVOICE/ORDER/BILLABLE)
+      type: string
+      enum:
+      - INVOICE
+      - ORDER
+      - BILLABLE
     InvoicesType:
       description: Represents the type of entity(STANDARD/AD_HOC/COMPOSITE)
       type: string
@@ -525,24 +631,37 @@ components:
       - COMPOSITE
       - STANDARD_ADVANCED
       - ADHOC_ADVANCED
-    PricingRulesLogsPaginatedResponse:
-      description: Pricing Rules Logs response
+    PricingRulesLog:
+      description: Pricing Rules Logs
       type: object
       additionalProperties: false
       required:
-      - data
+      - id
+      - order
+      - changes
       properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/PricingRulesLog'
-    InvoicesClass:
-      description: Represents the class of entity( INVOICE/ORDER/BILLABLE)
-      type: string
-      enum:
-      - INVOICE
-      - ORDER
-      - BILLABLE
+        id:
+          type: string
+        type:
+          type: string
+          enum:
+          - CONDITION_TRUE
+          - CONDITION_FALSE
+          - CONDITION_ERROR
+          - COMPUTATION_ERROR
+        order:
+          type: integer
+          format: int32
+        changes:
+          $ref: '#/components/schemas/PricingRuleChangesLog'
+        rule:
+          $ref: '#/components/schemas/PricingRuleInfo'
+        variablesValue:
+          type:
+          - object
+          - 'null'
+          additionalProperties:
+            $ref: '#/components/schemas/PricingRulesValues'
     MiscellaneousCharges:
       type: array
       items:
@@ -574,32 +693,6 @@ components:
             type: boolean
             default: false
             example: true
-    Address:
-      description: billing address of the customer
-      type: object
-      additionalProperties: false
-      properties:
-        phoneNumber:
-          description: Contact number
-          type: string
-        line1:
-          description: Address line 1 (eg. Street, PO Box, Company Name)
-          type: string
-        line2:
-          description: Address line 2 (eg. apartment, suite, unit or building)
-          type: string
-        postalCode:
-          description: ZIP or postal code
-          type: string
-        city:
-          description: City, district, suburb, town or village
-          type: string
-        state:
-          description: State, county, province or region
-          type: string
-        country:
-          description: Two letter country code [ISO-3166-1 Alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
-          type: string
     InvoiceDetails:
       type: object
       additionalProperties: false
@@ -680,52 +773,6 @@ components:
                 type: string
         logoUrl:
           type: string
-    PricingRuleInfo:
-      description: Pricing Rule Info
-      type: object
-      additionalProperties: false
-      required:
-      - id
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        condition:
-          type: string
-        computation:
-          type: string
-    ErrorResponse:
-      type: object
-      additionalProperties: false
-      required:
-      - message
-      properties:
-        message:
-          type: string
-          description: error description
-          maxLength: 500
-    InvoicesStatus:
-      description: Status of the invoice
-      type: string
-      enum:
-      - DRAFT
-      - DUE
-      - PAID
-      - VOID
-      - UN_COLLECTIBLE
-      - REFUND_INITIATED
-      - REFUND_COMPLETED
-      - MERGED
-      - PARTIALLY_PAID
-    PricingRulesValues:
-      title: PricingRulesValues
-      type: object
-      properties:
-        name:
-          type: string
-        value:
-          type: string
     ManageMiscellaneousChargesRequest:
       description: Payload to update custom line items
       type: object
@@ -734,6 +781,15 @@ components:
       - items
       properties:
         items:
+          $ref: '#/components/schemas/MiscellaneousCharges'
+    MiscellaneousChargesResponse:
+      description: Miscellaneous charges response
+      type: object
+      additionalProperties: false
+      required:
+      - data
+      properties:
+        data:
           $ref: '#/components/schemas/MiscellaneousCharges'
     CreateCustomInvoiceRequest:
       description: Payload to create invoice
@@ -801,6 +857,53 @@ components:
           description: 'This property defines the behaviour of whether or not to use wallet amount to net off with the invoice amount. Default: true
 
             '
+    Address:
+      description: billing address of the customer
+      type: object
+      additionalProperties: false
+      properties:
+        phoneNumber:
+          description: Contact number
+          type: string
+        line1:
+          description: Address line 1 (eg. Street, PO Box, Company Name)
+          type: string
+        line2:
+          description: Address line 2 (eg. apartment, suite, unit or building)
+          type: string
+        postalCode:
+          description: ZIP or postal code
+          type: string
+        city:
+          description: City, district, suburb, town or village
+          type: string
+        state:
+          description: State, county, province or region
+          type: string
+        country:
+          description: Two letter country code [ISO-3166-1 Alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
+          type: string
+    CustomInvoiceLineItem:
+      type: object
+      description: 'Custom line item. Either `value` or `quantity` + `valuePerQuantity` is required.
+
+        In case `quantity` and `valuePerQuantity` are provided, `value` is computed as (`quantity` X `valuePerQuantity`)
+
+        '
+      additionalProperties: false
+      required:
+      - description
+      properties:
+        id:
+          type: string
+        description:
+          type: string
+        valuePerQuantity:
+          type: number
+        quantity:
+          type: number
+        value:
+          type: number
     InvoiceSummary:
       description: Structure of invoice response
       type: object
@@ -886,15 +989,54 @@ components:
         netTermDays:
           type: integer
           description: Number of days from the invoice date after which an invoice is considered overdue.
-    BaseSuccessResponse:
+    PricingRuleInfo:
+      description: Pricing Rule Info
       type: object
       additionalProperties: false
       required:
-      - success
+      - id
       properties:
-        success:
-          type: boolean
-          example: true
+        id:
+          type: string
+        name:
+          type: string
+        condition:
+          type: string
+        computation:
+          type: string
+    PricingRuleChangesLog:
+      description: Pricing Rules Logs Changes
+      type: object
+      additionalProperties: false
+      required:
+      - key
+      - oldRevenue
+      - newRevenue
+      properties:
+        key:
+          type: string
+        keyName:
+          type: string
+        oldRevenue:
+          type: number
+        newRevenue:
+          type: number
+        oldUsage:
+          type: number
+        newUsage:
+          type: number
+        errorMessage:
+          type: string
+    ErrorResponse:
+      type: object
+      additionalProperties: false
+      required:
+      - message
+      properties:
+        message:
+          type: string
+          description: error description
+          maxLength: 500
     InvoiceLineItem:
       type: object
       additionalProperties: false
@@ -961,156 +1103,68 @@ components:
         metadata:
           type: object
           additionalProperties: true
-    PricingRulesLog:
-      description: Pricing Rules Logs
-      type: object
-      additionalProperties: false
-      required:
-      - id
-      - order
-      - changes
-      properties:
-        id:
-          type: string
-        type:
-          type: string
-          enum:
-          - CONDITION_TRUE
-          - CONDITION_FALSE
-          - CONDITION_ERROR
-          - COMPUTATION_ERROR
-        order:
-          type: integer
-          format: int32
-        changes:
-          $ref: '#/components/schemas/PricingRuleChangesLog'
-        rule:
-          $ref: '#/components/schemas/PricingRuleInfo'
-        variablesValue:
-          type:
-          - object
-          - 'null'
-          additionalProperties:
-            $ref: '#/components/schemas/PricingRulesValues'
-    MiscellaneousChargesResponse:
-      description: Miscellaneous charges response
+    ListInvoicesResponse:
+      description: List invoices response
       type: object
       additionalProperties: false
       required:
       - data
       properties:
         data:
-          $ref: '#/components/schemas/MiscellaneousCharges'
-    PricingRuleChangesLog:
-      description: Pricing Rules Logs Changes
+          type: array
+          minItems: 0
+          maxItems: 50
+          items:
+            $ref: '#/components/schemas/InvoiceSummary'
+        nextToken:
+          type: string
+          maxLength: 500
+          example: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEyMywgInNvcnRPcmRlciI6ICJhc2MifQ==
+    BaseSuccessResponse:
       type: object
       additionalProperties: false
       required:
-      - key
-      - oldRevenue
-      - newRevenue
+      - success
       properties:
-        key:
+        success:
+          type: boolean
+          example: true
+    PricingRulesValues:
+      title: PricingRulesValues
+      type: object
+      properties:
+        name:
           type: string
-        keyName:
+        value:
           type: string
-        oldRevenue:
-          type: number
-        newRevenue:
-          type: number
-        oldUsage:
-          type: number
-        newUsage:
-          type: number
-        errorMessage:
-          type: string
-  parameters:
-    filter_next_page_token:
-      in: query
-      description: Pagination token used as a marker to get records from next page.
-      name: nextToken
-      required: false
-      schema:
-        type: string
-        example: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEyMywgInNvcnRPcmRlciI6ICJhc2MifQ==
-    filter_start_time:
-      in: query
-      name: start_time
-      description: Start time filter in epoch milli seconds
-      required: false
-      schema:
-        type: integer
-        format: int64
-        example: 1650110402000
-    require_confirmation:
-      in: query
-      name: require_confirmation
-      description: Specifies whether to start a migration only after a confirmation
-      required: false
-      schema:
-        type: boolean
-        example: false
-    filter_end_time:
-      in: query
-      name: end_time
-      description: End time filter in epoch milli seconds
-      required: false
-      schema:
-        type: integer
-        format: int64
-        example: 1650110402000
-    account_id:
-      in: path
-      description: account_id corresponding to an account
-      name: account_id
-      required: true
-      schema:
-        type: string
-        maxLength: 50
-        example: ACC00001
-    filter_owner_id:
-      in: query
-      description: Filter option to filter based on owner id.
-      name: owner_id
-      required: false
-      schema:
-        type: string
-        example: ACC001
-    filter_customer_id:
-      in: query
-      description: Filter option to filter based on customer id.
-      name: customer_id
-      required: false
-      schema:
-        type: string
-        example: '1234'
-    filter_status:
-      in: query
-      description: Filter option to filter by status.
-      name: status
-      required: false
-      schema:
-        type: string
-      examples:
-        processed:
-          value: PROCESSED
-        in_progress:
-          value: IN_PROGRESS
-    invoice_id:
-      in: path
-      name: invoice_id
-      required: true
-      schema:
-        type: string
-        example: ACC001
-    filter_page_size:
-      in: query
-      description: "Maximum page size expected by client to return the record list. \n\n NOTE: Max page size cannot be more than 50. Also 50 is the default page size if no value is provided."
-      name: pageSize
-      required: false
-      schema:
-        type: integer
-        example: 10
+  requestBodies:
+    CreateCustomInvoiceRequest:
+      description: Payload to create invoice
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CreateCustomInvoiceRequest'
+          examples:
+            CreateCustomInvoiceRequest:
+              $ref: '#/components/examples/CreateCustomInvoiceRequest'
+    UpdateInvoiceRequest:
+      description: Payload to update an invoice
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UpdateInvoiceRequest'
+          examples:
+            UpdateInvoiceRequest:
+              $ref: '#/components/examples/UpdateInvoiceRequest'
+    ManageMiscellaneousChargesRequest:
+      description: Payload to update custom line items
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ManageMiscellaneousChargesRequest'
+          examples:
+            ManageMiscellaneousChargesRequest:
+              $ref: '#/components/examples/ManageMiscellaneousChargesRequest'
   examples:
     Invoice:
       summary: A Sample Invoice
@@ -1219,16 +1273,6 @@ components:
         invoiceDate: '2020-08-04T12:00:00.000Z'
         generatedAt: '2020-08-04T12:00:00.000Z'
         updatedAt: '2020-08-04T12:00:00.000Z'
-    UpdateInvoiceRequest:
-      summary: A Sample for UpdateInvoiceRequest
-      value:
-        startDate: '2020-06-04T12:00:00.000Z'
-        endDate: '2020-07-04T12:00:00.000Z'
-        status: DUE
-        lineItems:
-        - description: Payout IMPS
-          valuePerQuantity: 0.001
-          quantity: 32109
     ListInvoicesResponse:
       summary: A Sample ListInvoicesResponse
       value:
@@ -1248,16 +1292,17 @@ components:
           generatedAt: '2020-07-04T12:00:00.000Z'
           updatedAt: '2020-07-04T12:00:00.000Z'
         nextToken: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEyMywgInNvcnRPcmRlciI6ICJhc2MifQ==
-    MiscellaneousChargesResponse:
-      summary: A Sample MiscellaneousChargesResponse
+    ManageMiscellaneousChargesRequest:
+      summary: A Sample for ManageMiscellaneousChargesRequest
       value:
-        data:
+        items:
         - name: charge 1
           value: '100'
-        - name: charge 2
+        - name: qty & rate charge
           rate: 20
           quantity: 10
-          value: '200'
+        - name: json logic charge
+          value: '{"var": "um.linitem.id"}'
     PricingRulesLogsPaginatedResponse:
       summary: A Sample PricingRulesLogsPaginatedResponse
       value:
@@ -1271,6 +1316,16 @@ components:
             newUsage: 200
             oldRevenue: 200
             newRevenue: 400
+    UpdateInvoiceRequest:
+      summary: A Sample for UpdateInvoiceRequest
+      value:
+        startDate: '2020-06-04T12:00:00.000Z'
+        endDate: '2020-07-04T12:00:00.000Z'
+        status: DUE
+        lineItems:
+        - description: Payout IMPS
+          valuePerQuantity: 0.001
+          quantity: 32109
     CreateCustomInvoiceRequest:
       summary: A Sample for CreateCustomInvoiceRequest
       value:
@@ -1283,71 +1338,16 @@ components:
         - description: Payout IMPS
           valuePerQuantity: 0.001
           quantity: 32109
-    ManageMiscellaneousChargesRequest:
-      summary: A Sample for ManageMiscellaneousChargesRequest
+    MiscellaneousChargesResponse:
+      summary: A Sample MiscellaneousChargesResponse
       value:
-        items:
+        data:
         - name: charge 1
           value: '100'
-        - name: qty & rate charge
+        - name: charge 2
           rate: 20
           quantity: 10
-        - name: json logic charge
-          value: '{"var": "um.linitem.id"}'
-  responses:
-    BaseSuccessResponse:
-      description: OK
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/BaseSuccessResponse'
-    MiscellaneousChargesResponse:
-      description: Response for Miscellaneous Charges Request
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/MiscellaneousChargesResponse'
-          examples:
-            MiscellaneousChargesResponse:
-              $ref: '#/components/examples/MiscellaneousChargesResponse'
-    ErrorResponse:
-      description: Error response
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          examples:
-            ErrorResponse:
-              summary: Error Message
-              value:
-                message: <Reason message>
-    InvoiceResponse:
-      description: Response for Get invoice requests
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Invoice'
-          examples:
-            Invoice:
-              $ref: '#/components/examples/Invoice'
-    PricingRulesLogsPaginatedResponse:
-      description: Response for list Invoice Pricing Rules Logs Request
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/PricingRulesLogsPaginatedResponse'
-          examples:
-            PricingRulesLogsPaginatedResponse:
-              $ref: '#/components/examples/PricingRulesLogsPaginatedResponse'
-    ListInvoicesResponse:
-      description: Response for Get invoice requests
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ListInvoicesResponse'
-          examples:
-            ListInvoicesResponse:
-              $ref: '#/components/examples/ListInvoicesResponse'
+          value: '200'
   securitySchemes:
     bearerAuth:
       type: http

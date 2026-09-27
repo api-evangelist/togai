@@ -60,42 +60,6 @@ components:
         If IN_ARREARS, the rule will be applied on rate cards with invoice timing IN_ARREARS .
 
         '
-    PricingRule:
-      type: object
-      description: Represents pricing rules of a price plan. i.e, price plan bound by time.
-      additionalProperties: false
-      required:
-      - id
-      - name
-      - version
-      - order
-      - computation
-      - action
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        version:
-          type: integer
-          format: int32
-          minimum: 1
-        invoiceTiming:
-          $ref: '#/components/schemas/PricingRuleTiming'
-        order:
-          type: integer
-          format: int32
-          minimum: 1
-        condition:
-          description: JSON logic condition deciding whether to compute this pricing rule or not
-          type: string
-        computation:
-          description: JSON logic to be computed
-          type: string
-        action:
-          description: JSON logic to be computed
-          title: action
-          $ref: '#/components/schemas/PricingRuleAction'
     ErrorResponse:
       type: object
       additionalProperties: false
@@ -137,6 +101,42 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/PricingRule'
+    PricingRule:
+      type: object
+      description: Represents pricing rules of a price plan. i.e, price plan bound by time.
+      additionalProperties: false
+      required:
+      - id
+      - name
+      - version
+      - order
+      - computation
+      - action
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        version:
+          type: integer
+          format: int32
+          minimum: 1
+        invoiceTiming:
+          $ref: '#/components/schemas/PricingRuleTiming'
+        order:
+          type: integer
+          format: int32
+          minimum: 1
+        condition:
+          description: JSON logic condition deciding whether to compute this pricing rule or not
+          type: string
+        computation:
+          description: JSON logic to be computed
+          type: string
+        action:
+          description: JSON logic to be computed
+          title: action
+          $ref: '#/components/schemas/PricingRuleAction'
   responses:
     ErrorResponse:
       description: Error response
@@ -169,14 +169,6 @@ components:
         enum:
         - IN_ADVANCE
         - IN_ARREARS
-    pricing_schedule_id:
-      in: path
-      name: pricing_schedule_id
-      required: true
-      schema:
-        type: string
-        maxLength: 50
-        example: sch.1zYnCiM9Bpg.lv25y
     price_plan_id:
       in: path
       name: price_plan_id
@@ -185,6 +177,14 @@ components:
         type: string
         maxLength: 50
         example: pp.1zYnCiM9Bpg.lv25y
+    pricing_schedule_id:
+      in: path
+      name: pricing_schedule_id
+      required: true
+      schema:
+        type: string
+        maxLength: 50
+        example: sch.1zYnCiM9Bpg.lv25y
   examples:
     PricingRulesPaginatedResponse:
       value:

@@ -72,7 +72,35 @@ paths:
         default:
           $ref: '#/components/responses/ErrorResponse'
 components:
+  schemas:
+    FileDownloadUrlResponse:
+      type: object
+      additionalProperties: false
+      required:
+      - downloadUrl
+      properties:
+        downloadUrl:
+          type: string
+    ErrorResponse:
+      type: object
+      additionalProperties: false
+      required:
+      - message
+      properties:
+        message:
+          type: string
+          description: error description
+          maxLength: 500
   responses:
+    FileDownloadUrlResponse:
+      description: Response for getting a download url for a file
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/FileDownloadUrlResponse'
+          examples:
+            FileDownloadUrlResponse:
+              $ref: '#/components/examples/FileDownloadUrlResponse'
     ErrorResponse:
       description: Error response
       content:
@@ -84,38 +112,6 @@ components:
               summary: Error Message
               value:
                 message: <Reason message>
-    FileDownloadUrlResponse:
-      description: Response for getting a download url for a file
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/FileDownloadUrlResponse'
-          examples:
-            FileDownloadUrlResponse:
-              $ref: '#/components/examples/FileDownloadUrlResponse'
-  schemas:
-    ErrorResponse:
-      type: object
-      additionalProperties: false
-      required:
-      - message
-      properties:
-        message:
-          type: string
-          description: error description
-          maxLength: 500
-    FileDownloadUrlResponse:
-      type: object
-      additionalProperties: false
-      required:
-      - downloadUrl
-      properties:
-        downloadUrl:
-          type: string
-  examples:
-    FileDownloadUrlResponse:
-      value:
-        downloadUrl: https://s3.amazonaws.com/...
   parameters:
     file_id:
       in: path
@@ -124,6 +120,10 @@ components:
       schema:
         type: string
         example: file.20aUyEZSuYq.SoGbS
+  examples:
+    FileDownloadUrlResponse:
+      value:
+        downloadUrl: https://s3.amazonaws.com/...
   securitySchemes:
     bearerAuth:
       type: http

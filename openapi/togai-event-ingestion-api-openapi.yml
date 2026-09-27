@@ -213,6 +213,24 @@ components:
           type: string
           description: error description
           maxLength: 500
+    Dimensions:
+      description: Dimensions are tags/labels associated with the events.
+      type: object
+      additionalProperties:
+        type: string
+        minLength: 1
+        maxLength: 200
+        example:
+          Country: India
+    IngestEventRequest:
+      description: Payload for ingesting events
+      type: object
+      additionalProperties: false
+      required:
+      - event
+      properties:
+        event:
+          $ref: '#/components/schemas/Event'
     Attribute:
       description: Metric to be recorded
       type: object
@@ -238,15 +256,6 @@ components:
           minLength: 1
           maxLength: 50
           example: characters
-    Dimensions:
-      description: Dimensions are tags/labels associated with the events.
-      type: object
-      additionalProperties:
-        type: string
-        minLength: 1
-        maxLength: 200
-        example:
-          Country: India
     IngestEventResponse:
       type: object
       additionalProperties: false
@@ -266,55 +275,7 @@ components:
           type: string
         details:
           type: object
-    IngestEventRequest:
-      description: Payload for ingesting events
-      type: object
-      additionalProperties: false
-      required:
-      - event
-      properties:
-        event:
-          $ref: '#/components/schemas/Event'
-  responses:
-    ErrorResponse:
-      description: Error response
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          examples:
-            ErrorResponse:
-              summary: Error Message
-              value:
-                message: <Reason message>
   examples:
-    NamedLicenseEventRequest:
-      summary: Example Usage Event Ingestion Request
-      value:
-        event:
-          id: id-123
-          timestamp: '2024-04-18T13:23:55'
-          accountId: sampleID
-          schemaName: togai-named-license
-          dimensions:
-            license_id: addon.sample.sample
-            name: unique_name
-          attributes:
-          - name: action
-            value: '1'
-    UsageEventRequest:
-      summary: Example Named License Event Ingestion Request
-      value:
-        event:
-          id: 42162b5e-22f6-4cd3-a9d9-019ba2c485c1
-          timestamp: '2024-04-18T16:00:17'
-          accountId: customer@biswa
-          schemaName: togai-usage
-          dimensions:
-            usage_meter_id: um.21UFaN6gpmS.RAbFG
-          attributes:
-          - name: usage
-            value: '10'
     IngestEventBatchRequest:
       summary: Example Batch Event Ingestion Request
       value:
@@ -349,6 +310,20 @@ components:
             location: Seattle
             costCenterCode: '1234'
             messageProviderName: Twilio
+    NamedLicenseEventRequest:
+      summary: Example Usage Event Ingestion Request
+      value:
+        event:
+          id: id-123
+          timestamp: '2024-04-18T13:23:55'
+          accountId: sampleID
+          schemaName: togai-named-license
+          dimensions:
+            license_id: addon.sample.sample
+            name: unique_name
+          attributes:
+          - name: action
+            value: '1'
     IngestEventRequest:
       summary: Example Event Ingestion Request
       value:
@@ -368,6 +343,31 @@ components:
             location: Seattle
             costCenterCode: '1234'
             travelType: Business
+    UsageEventRequest:
+      summary: Example Named License Event Ingestion Request
+      value:
+        event:
+          id: 42162b5e-22f6-4cd3-a9d9-019ba2c485c1
+          timestamp: '2024-04-18T16:00:17'
+          accountId: customer@biswa
+          schemaName: togai-usage
+          dimensions:
+            usage_meter_id: um.21UFaN6gpmS.RAbFG
+          attributes:
+          - name: usage
+            value: '10'
+  responses:
+    ErrorResponse:
+      description: Error response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            ErrorResponse:
+              summary: Error Message
+              value:
+                message: <Reason message>
   securitySchemes:
     bearerAuth:
       type: http

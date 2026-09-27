@@ -76,6 +76,50 @@ paths:
           $ref: '#/components/responses/ErrorResponse'
 components:
   schemas:
+    CreateAliasRequest:
+      description: Create an alias
+      type: object
+      additionalProperties: false
+      required:
+      - value
+      properties:
+        value:
+          type: string
+          maxLength: 255
+    Alias:
+      type: object
+      description: Represents an Alias
+      additionalProperties: false
+      required:
+      - value
+      - createdAt
+      properties:
+        value:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+    ErrorResponse:
+      type: object
+      additionalProperties: false
+      required:
+      - message
+      properties:
+        message:
+          type: string
+          description: error description
+          maxLength: 500
+    AliasPaginatedResponse:
+      type: object
+      description: Represents for list response of alias
+      additionalProperties: false
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Alias'
+        nextToken:
+          type: string
     CreateBulkAliasRequest:
       description: Create bulk alias
       type: object
@@ -98,73 +142,30 @@ components:
         success:
           type: boolean
           example: true
-    CreateAliasRequest:
-      description: Create an alias
-      type: object
-      additionalProperties: false
-      required:
-      - value
-      properties:
-        value:
-          type: string
-          maxLength: 255
-    ErrorResponse:
-      type: object
-      additionalProperties: false
-      required:
-      - message
-      properties:
-        message:
-          type: string
-          description: error description
-          maxLength: 500
+  examples:
+    CreateBulkAliasRequest:
+      value:
+        aliases:
+        - value: alias1
     AliasPaginatedResponse:
-      type: object
-      description: Represents for list response of alias
-      additionalProperties: false
-      properties:
+      value:
         data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Alias'
-        nextToken:
-          type: string
-    Alias:
-      type: object
-      description: Represents an Alias
-      additionalProperties: false
-      required:
-      - value
-      - createdAt
-      properties:
-        value:
-          type: string
-        createdAt:
-          type: string
-          format: date-time
-  parameters:
-    page_size:
-      in: query
-      name: pageSize
-      required: false
-      schema:
-        type: number
-        example: 10
-    alias:
-      in: path
-      name: alias
-      required: true
-      schema:
-        type: string
-        example: custom_value
-    next_token:
-      in: query
-      name: nextToken
-      required: false
-      schema:
-        type: string
-        example: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEwMCwgInNvcnRPcmRlciI6ICJhc2MifQ==
+        - value: acme_primary
+          createdAt: '2020-01-01T00:00:00Z'
+    AliasResponse:
+      value:
+        value: acme_primary
+        createdAt: '2020-01-01T00:00:00Z'
   responses:
+    AliasPaginatedResponse:
+      description: Response for list aliases request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/AliasPaginatedResponse'
+          examples:
+            AliasPaginatedResponse:
+              $ref: '#/components/examples/AliasPaginatedResponse'
     ErrorResponse:
       description: Error response
       content:
@@ -176,15 +177,12 @@ components:
               summary: Error Message
               value:
                 message: <Reason message>
-    AliasPaginatedResponse:
-      description: Response for list aliases request
+    BaseSuccessResponse:
+      description: OK
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/AliasPaginatedResponse'
-          examples:
-            AliasPaginatedResponse:
-              $ref: '#/components/examples/AliasPaginatedResponse'
+            $ref: '#/components/schemas/BaseSuccessResponse'
     AliasResponse:
       description: Response for adding or removing aliases
       content:
@@ -194,26 +192,28 @@ components:
           examples:
             AliasResponse:
               $ref: '#/components/examples/AliasResponse'
-    BaseSuccessResponse:
-      description: OK
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/BaseSuccessResponse'
-  examples:
-    AliasPaginatedResponse:
-      value:
-        data:
-        - value: acme_primary
-          createdAt: '2020-01-01T00:00:00Z'
-    AliasResponse:
-      value:
-        value: acme_primary
-        createdAt: '2020-01-01T00:00:00Z'
-    CreateBulkAliasRequest:
-      value:
-        aliases:
-        - value: alias1
+  parameters:
+    next_token:
+      in: query
+      name: nextToken
+      required: false
+      schema:
+        type: string
+        example: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEwMCwgInNvcnRPcmRlciI6ICJhc2MifQ==
+    alias:
+      in: path
+      name: alias
+      required: true
+      schema:
+        type: string
+        example: custom_value
+    page_size:
+      in: query
+      name: pageSize
+      required: false
+      schema:
+        type: number
+        example: 10
   requestBodies:
     CreateBulkAliasRequest:
       description: Payload to create bulk aliases

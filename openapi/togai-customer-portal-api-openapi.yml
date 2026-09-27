@@ -45,6 +45,12 @@ paths:
           $ref: '#/components/responses/ErrorResponse'
 components:
   responses:
+    TokenResponse:
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/TokenResponse'
     ErrorResponse:
       description: Error response
       content:
@@ -56,12 +62,6 @@ components:
               summary: Error Message
               value:
                 message: <Reason message>
-    TokenResponse:
-      description: OK
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/TokenResponse'
   schemas:
     ErrorResponse:
       type: object
@@ -106,17 +106,17 @@ components:
           type: integer
           format: int64
   examples:
+    GetCustomerPortalDelegateTokenRequestAllAccountAccess:
+      value:
+        customerId: acme_cust
+        allAccountAccess: true
+        expiry: 60000
     GetCustomerPortalDelegateTokenRequestSelectedAccountsAccess:
       value:
         customerId: acme_cust
         accountIds:
         - acme_accnt_1
         - acme_accnt_2
-        expiry: 60000
-    GetCustomerPortalDelegateTokenRequestAllAccountAccess:
-      value:
-        customerId: acme_cust
-        allAccountAccess: true
         expiry: 60000
   requestBodies:
     GetCustomerPortalDelegateTokenRequest:

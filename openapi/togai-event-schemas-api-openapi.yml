@@ -229,30 +229,45 @@ paths:
           $ref: '#/components/responses/ErrorResponse'
 components:
   schemas:
-    PaginationOptions:
-      type: object
-      additionalProperties: false
-      properties:
-        pageSize:
-          type: integer
-        sortOrder:
-          type: string
-          enum:
-          - ASC
-          - DESC
-    DimensionsSchema:
-      description: Structure of dimensions
+    CreateEventSchemaRequest:
+      description: Request to create event schema
       type: object
       additionalProperties: false
       required:
       - name
+      - attributes
+      - dimensions
       properties:
         name:
-          description: Name of the event dimension
+          description: Name of the event. Must be unique for an organization.
           type: string
           maxLength: 50
           pattern: ^[\sa-zA-Z0-9_-]*$
-          example: city
+        description:
+          description: Description of the event
+          type: string
+          maxLength: 255
+        attributes:
+          type: array
+          maxItems: 50
+          items:
+            $ref: '#/components/schemas/EventAttributeSchema'
+        dimensions:
+          type: array
+          maxItems: 50
+          items:
+            $ref: '#/components/schemas/DimensionsSchema'
+        enrichments:
+          $ref: '#/components/schemas/Enrichments'
+        filterFields:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+          description: List of fields that can be used for filtering in usage meter
+        eventIdTemplate:
+          description: Template used to generate event id based on event payload
+          type: string
     Field:
       type: object
       additionalProperties: false
@@ -281,52 +296,6 @@ components:
         order:
           type: integer
           format: int32
-    UpdateEventSchemaRequest:
-      description: Request to update event schema
-      type: object
-      additionalProperties: false
-      properties:
-        description:
-          description: Description of the event
-          type: string
-          maxLength: 255
-        attributes:
-          type: array
-          maxItems: 50
-          items:
-            $ref: '#/components/schemas/EventAttributeSchema'
-        dimensions:
-          type: array
-          maxItems: 50
-          items:
-            $ref: '#/components/schemas/DimensionsSchema'
-        enrichments:
-          $ref: '#/components/schemas/Enrichments'
-        filterFields:
-          type: array
-          uniqueItems: true
-          items:
-            type: string
-          description: List of fields that can be used for filtering in usage meter
-        eventIdTemplate:
-          description: Template used to generate event id based on event payload
-          type: string
-    Dependency:
-      type: object
-      additionalProperties: false
-      required:
-      - type
-      - key
-      - name
-      properties:
-        type:
-          type: string
-          enum:
-          - SETTING
-        key:
-          type: string
-        name:
-          type: string
     Enrichments:
       type: object
       additionalProperties: false
@@ -341,6 +310,17 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Field'
+    EventSchemaVersionsResponse:
+      description: Response for event schema versions
+      type: object
+      additionalProperties: false
+      required:
+      - data
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/EventSchema'
     EventSchemaListPaginatedResponse:
       type: object
       additionalProperties: false
@@ -353,73 +333,6 @@ components:
           type: string
         context:
           $ref: '#/components/schemas/PaginationOptions'
-    ErrorResponse:
-      type: object
-      additionalProperties: false
-      required:
-      - message
-      properties:
-        message:
-          type: string
-          description: error description
-          maxLength: 500
-    FeatureDetails:
-      description: details of feature associated with event schema with attribute name
-      type: object
-      additionalProperties: false
-      required:
-      - featureId
-      - attributeName
-      properties:
-        featureId:
-          type: string
-        attributeName:
-          type: string
-    EventSchemaListData:
-      allOf:
-      - $ref: '#/components/schemas/EventSchema'
-      - type: object
-        properties:
-          usageMetersCount:
-            type: integer
-    EventSchemaVersionsResponse:
-      description: Response for event schema versions
-      type: object
-      additionalProperties: false
-      required:
-      - data
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/EventSchema'
-    EventAttributeSchema:
-      description: Structure of an event attribute
-      type: object
-      additionalProperties: false
-      required:
-      - name
-      properties:
-        name:
-          description: Name of the event attribute.
-          type: string
-          maxLength: 50
-          pattern: ^[\sa-zA-Z0-9_-]*$
-          example: distance
-        defaultUnit:
-          description: Unit for the attribute
-          type: string
-          maxLength: 10
-          example: kms
-    BaseSuccessResponse:
-      type: object
-      additionalProperties: false
-      required:
-      - success
-      properties:
-        success:
-          type: boolean
-          example: true
     EventSchema:
       description: Structure of an event schema
       type: object
@@ -484,20 +397,35 @@ components:
         updatedAt:
           type: string
           format: date-time
-    CreateEventSchemaRequest:
-      description: Request to create event schema
+    PaginationOptions:
+      type: object
+      additionalProperties: false
+      properties:
+        pageSize:
+          type: integer
+        sortOrder:
+          type: string
+          enum:
+          - ASC
+          - DESC
+    DimensionsSchema:
+      description: Structure of dimensions
       type: object
       additionalProperties: false
       required:
       - name
-      - attributes
-      - dimensions
       properties:
         name:
-          description: Name of the event. Must be unique for an organization.
+          description: Name of the event dimension
           type: string
           maxLength: 50
           pattern: ^[\sa-zA-Z0-9_-]*$
+          example: city
+    UpdateEventSchemaRequest:
+      description: Request to update event schema
+      type: object
+      additionalProperties: false
+      properties:
         description:
           description: Description of the event
           type: string
@@ -523,7 +451,146 @@ components:
         eventIdTemplate:
           description: Template used to generate event id based on event payload
           type: string
+    FeatureDetails:
+      description: details of feature associated with event schema with attribute name
+      type: object
+      additionalProperties: false
+      required:
+      - featureId
+      - attributeName
+      properties:
+        featureId:
+          type: string
+        attributeName:
+          type: string
+    EventAttributeSchema:
+      description: Structure of an event attribute
+      type: object
+      additionalProperties: false
+      required:
+      - name
+      properties:
+        name:
+          description: Name of the event attribute.
+          type: string
+          maxLength: 50
+          pattern: ^[\sa-zA-Z0-9_-]*$
+          example: distance
+        defaultUnit:
+          description: Unit for the attribute
+          type: string
+          maxLength: 10
+          example: kms
+    Dependency:
+      type: object
+      additionalProperties: false
+      required:
+      - type
+      - key
+      - name
+      properties:
+        type:
+          type: string
+          enum:
+          - SETTING
+        key:
+          type: string
+        name:
+          type: string
+    EventSchemaListData:
+      allOf:
+      - $ref: '#/components/schemas/EventSchema'
+      - type: object
+        properties:
+          usageMetersCount:
+            type: integer
+    ErrorResponse:
+      type: object
+      additionalProperties: false
+      required:
+      - message
+      properties:
+        message:
+          type: string
+          description: error description
+          maxLength: 500
+    BaseSuccessResponse:
+      type: object
+      additionalProperties: false
+      required:
+      - success
+      properties:
+        success:
+          type: boolean
+          example: true
+  requestBodies:
+    CreateEventSchemaRequest:
+      description: Payload to create event schema
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CreateEventSchemaRequest'
+          examples:
+            EventSchema:
+              $ref: '#/components/examples/CreateEventSchemaRequest'
+    UpdateEventSchemaRequest:
+      description: Payload to update event schema
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UpdateEventSchemaRequest'
+          examples:
+            EventSchema:
+              $ref: '#/components/examples/UpdateEventSchemaRequest'
+  parameters:
+    version_query:
+      in: query
+      name: version
+      description: Optional version to get a specific version. Gets latest version if it is not provided.
+      required: false
+      schema:
+        type: integer
+        format: int32
+        example: 2
+    page_size:
+      in: query
+      name: pageSize
+      required: false
+      schema:
+        type: number
+        example: 10
+    event_schema_name:
+      in: path
+      name: event_schema_name
+      required: true
+      schema:
+        type: string
+        maxLength: 50
+        example: rides
+    next_token:
+      in: query
+      name: nextToken
+      required: false
+      schema:
+        type: string
+        example: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEwMCwgInNvcnRPcmRlciI6ICJhc2MifQ==
   examples:
+    EventSchemaVersionsResponse:
+      summary: A Sample Event Schema Versions Response
+      value:
+        data:
+        - name: ride_completed
+          description: Cab ride completed
+          version: 1
+          status: DRAFT
+          attributes:
+          - name: distance
+          - name: time
+          dimensions:
+          - name: city
+          - name: ride_type
     EventSchema:
       summary: A Sample Event Schema
       value:
@@ -540,33 +607,6 @@ components:
           featureId: feature.1122.ahoiud
           attributeName: distance
         eventLevelRevenue: false
-    CreateEventSchemaRequest:
-      summary: Create Event Schema Request Payload
-      value:
-        name: ride_completed
-        description: Cab ride completed
-        attributes:
-        - name: distance
-        - name: time
-        dimensions:
-        - name: city
-        - name: vehicle_type
-        enrichments:
-          dependencies:
-          - type: SETTING
-            key: setting.user.meters_per_km
-            name: meters_per_km
-          fields:
-          - name: distanceInKM
-            type: ATTRIBUTE
-            enrichmentType: JSON_LOGIC
-            value: '{"/":[{"var":["attribute.distance"]},{"var":["dependencies.meters_per_km"]}]}'
-            order: 1
-          - name: rideType
-            type: DIMENSION
-            enrichmentType: JSON_LOGIC
-            value: '{"if":[{"<=":[100,{"var":["attribute.distanceInKM"]}]},"long_distance","short_distance"]}'
-            order: 2
     EventSchemaListPaginatedResponse:
       value:
         data:
@@ -584,20 +624,6 @@ components:
         nextToken: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEwMCwgInNvcnRPcmRlciI6ICJhc2MifQ==
         context:
           pageSize: 10
-    EventSchemaVersionsResponse:
-      summary: A Sample Event Schema Versions Response
-      value:
-        data:
-        - name: ride_completed
-          description: Cab ride completed
-          version: 1
-          status: DRAFT
-          attributes:
-          - name: distance
-          - name: time
-          dimensions:
-          - name: city
-          - name: ride_type
     UpdateEventSchemaRequest:
       summary: Update Event Schema Request Payload
       value:
@@ -625,54 +651,49 @@ components:
             enrichmentType: JSON_LOGIC
             value: '{"if":[{"<=":[100,{"var":["attribute.distanceInKM"]}]},"long_distance","short_distance"]}'
             order: 2
-  parameters:
-    event_schema_name:
-      in: path
-      name: event_schema_name
-      required: true
-      schema:
-        type: string
-        maxLength: 50
-        example: rides
-    version_query:
-      in: query
-      name: version
-      description: Optional version to get a specific version. Gets latest version if it is not provided.
-      required: false
-      schema:
-        type: integer
-        format: int32
-        example: 2
-    page_size:
-      in: query
-      name: pageSize
-      required: false
-      schema:
-        type: number
-        example: 10
-    next_token:
-      in: query
-      name: nextToken
-      required: false
-      schema:
-        type: string
-        example: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEwMCwgInNvcnRPcmRlciI6ICJhc2MifQ==
+    CreateEventSchemaRequest:
+      summary: Create Event Schema Request Payload
+      value:
+        name: ride_completed
+        description: Cab ride completed
+        attributes:
+        - name: distance
+        - name: time
+        dimensions:
+        - name: city
+        - name: vehicle_type
+        enrichments:
+          dependencies:
+          - type: SETTING
+            key: setting.user.meters_per_km
+            name: meters_per_km
+          fields:
+          - name: distanceInKM
+            type: ATTRIBUTE
+            enrichmentType: JSON_LOGIC
+            value: '{"/":[{"var":["attribute.distance"]},{"var":["dependencies.meters_per_km"]}]}'
+            order: 1
+          - name: rideType
+            type: DIMENSION
+            enrichmentType: JSON_LOGIC
+            value: '{"if":[{"<=":[100,{"var":["attribute.distanceInKM"]}]},"long_distance","short_distance"]}'
+            order: 2
   responses:
+    EventSchemaResponse:
+      description: Response for Create and Get event schema requests
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/EventSchema'
+          examples:
+            EventSchema:
+              $ref: '#/components/examples/EventSchema'
     BaseSuccessResponse:
       description: OK
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/BaseSuccessResponse'
-    EventSchemaVersionsResponse:
-      description: Response for list event schema versions request
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/EventSchemaVersionsResponse'
-          examples:
-            EventSchemaVersionsResponse:
-              $ref: '#/components/examples/EventSchemaVersionsResponse'
     EventSchemaListPaginatedResponse:
       description: Response for list events request
       content:
@@ -693,36 +714,15 @@ components:
               summary: Error Message
               value:
                 message: <Reason message>
-    EventSchemaResponse:
-      description: Response for Create and Get event schema requests
+    EventSchemaVersionsResponse:
+      description: Response for list event schema versions request
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/EventSchema'
+            $ref: '#/components/schemas/EventSchemaVersionsResponse'
           examples:
-            EventSchema:
-              $ref: '#/components/examples/EventSchema'
-  requestBodies:
-    UpdateEventSchemaRequest:
-      description: Payload to update event schema
-      required: true
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UpdateEventSchemaRequest'
-          examples:
-            EventSchema:
-              $ref: '#/components/examples/UpdateEventSchemaRequest'
-    CreateEventSchemaRequest:
-      description: Payload to create event schema
-      required: true
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/CreateEventSchemaRequest'
-          examples:
-            EventSchema:
-              $ref: '#/components/examples/CreateEventSchemaRequest'
+            EventSchemaVersionsResponse:
+              $ref: '#/components/examples/EventSchemaVersionsResponse'
   securitySchemes:
     bearerAuth:
       type: http

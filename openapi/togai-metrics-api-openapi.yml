@@ -72,46 +72,7 @@ paths:
         default:
           $ref: '#/components/responses/ErrorResponse'
 components:
-  responses:
-    ErrorResponse:
-      description: Error response
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          examples:
-            ErrorResponse:
-              summary: Error Message
-              value:
-                message: <Reason message>
   schemas:
-    MetricQueryResponse:
-      type: object
-      description: Response to GetMetrics Request
-      additionalProperties: false
-      required:
-      - id
-      - name
-      - data
-      properties:
-        id:
-          type: string
-        name:
-          $ref: '#/components/schemas/MetricName'
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/MetricDataPoints'
-    ErrorResponse:
-      type: object
-      additionalProperties: false
-      required:
-      - message
-      properties:
-        message:
-          type: string
-          description: error description
-          maxLength: 500
     MetricDataPoints:
       type: object
       additionalProperties: false
@@ -141,30 +102,23 @@ components:
           items:
             type: number
           maxItems: 300
-    GetMetricsRequest:
+    MetricQueryResponse:
       type: object
-      description: Request to get metrics from togai
+      description: Response to GetMetrics Request
       additionalProperties: false
       required:
-      - startTime
-      - endTime
-      - metricQueries
+      - id
+      - name
+      - data
       properties:
-        startTime:
+        id:
           type: string
-          format: date-time
-          description: Start date time of the query (inclusive)
-          example: '2017-07-21T00:00:00Z'
-        endTime:
-          type: string
-          format: date-time
-          description: End date time of the query (exclusive)
-          example: '2017-07-21T00:00:00Z'
-        metricQueries:
+        name:
+          $ref: '#/components/schemas/MetricName'
+        data:
           type: array
           items:
-            $ref: '#/components/schemas/MetricQuery'
-          uniqueItems: true
+            $ref: '#/components/schemas/MetricDataPoints'
     MetricName:
       type: string
       description: 'Define the metric you would like to get - allowed options are
@@ -193,6 +147,16 @@ components:
       - USAGE_FOR_CYCLE
       - REVENUE_FOR_CYCLE
       default: EVENTS
+    ErrorResponse:
+      type: object
+      additionalProperties: false
+      required:
+      - message
+      properties:
+        message:
+          type: string
+          description: error description
+          maxLength: 500
     GetMetricsResponse:
       type: object
       description: Response to GetMetrics Request
@@ -266,6 +230,42 @@ components:
                 items:
                   type: string
                   example: account#1
+    GetMetricsRequest:
+      type: object
+      description: Request to get metrics from togai
+      additionalProperties: false
+      required:
+      - startTime
+      - endTime
+      - metricQueries
+      properties:
+        startTime:
+          type: string
+          format: date-time
+          description: Start date time of the query (inclusive)
+          example: '2017-07-21T00:00:00Z'
+        endTime:
+          type: string
+          format: date-time
+          description: End date time of the query (exclusive)
+          example: '2017-07-21T00:00:00Z'
+        metricQueries:
+          type: array
+          items:
+            $ref: '#/components/schemas/MetricQuery'
+          uniqueItems: true
+  responses:
+    ErrorResponse:
+      description: Error response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            ErrorResponse:
+              summary: Error Message
+              value:
+                message: <Reason message>
   requestBodies:
     GetMetricsRequest:
       content:
