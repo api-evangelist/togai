@@ -48,32 +48,7 @@ paths:
       security:
       - bearerAuth: []
 components:
-  schemas:
-    ErrorResponse:
-      type: object
-      additionalProperties: false
-      required:
-      - message
-      properties:
-        message:
-          type: string
-          description: error description
-          maxLength: 500
-    TokenResponse:
-      type: object
-      additionalProperties: false
-      required:
-      - token
-      properties:
-        token:
-          type: string
   responses:
-    TokenResponse:
-      description: OK
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/TokenResponse'
     ErrorResponse:
       description: Error response
       content:
@@ -85,6 +60,31 @@ components:
               summary: Error Message
               value:
                 message: <Reason message>
+    TokenResponse:
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/TokenResponse'
+  schemas:
+    TokenResponse:
+      type: object
+      additionalProperties: false
+      required:
+      - token
+      properties:
+        token:
+          type: string
+    ErrorResponse:
+      type: object
+      additionalProperties: false
+      required:
+      - message
+      properties:
+        message:
+          type: string
+          description: error description
+          maxLength: 500
   securitySchemes:
     bearerAuth:
       type: http

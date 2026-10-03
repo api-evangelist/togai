@@ -140,67 +140,6 @@ paths:
         default:
           $ref: '#/components/responses/ErrorResponse'
 components:
-  responses:
-    ErrorResponse:
-      description: Error response
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          examples:
-            ErrorResponse:
-              summary: Error Message
-              value:
-                message: <Reason message>
-    JobsPaginatedResponse:
-      description: Response for list customers request
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/JobsPaginatedResponse'
-          examples:
-            JobsPaginatedResponse:
-              $ref: '#/components/examples/JobsPaginatedResponse'
-    JobEntriesPaginatedResponse:
-      description: Response for list job entries request
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/JobEntriesPaginatedResponse'
-          examples:
-            JobEntriesPaginatedResponse:
-              $ref: '#/components/examples/JobEntriesPaginatedResponse'
-    GetJobResponse:
-      description: Response for get job status request
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/GetJobResponse'
-          examples:
-            GetJobResponse:
-              $ref: '#/components/examples/GetJobResponse'
-  parameters:
-    next_token:
-      in: query
-      name: nextToken
-      required: false
-      schema:
-        type: string
-        example: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEwMCwgInNvcnRPcmRlciI6ICJhc2MifQ==
-    job_id:
-      in: path
-      name: job_id
-      required: true
-      schema:
-        type: string
-        example: mig.20aUyEZSuYq.SoGbS
-    page_size:
-      in: query
-      name: pageSize
-      required: false
-      schema:
-        type: number
-        example: 10
   schemas:
     PaginationOptions:
       type: object
@@ -213,34 +152,6 @@ components:
           enum:
           - ASC
           - DESC
-    JobsWithoutStatusInfoResponse:
-      type: object
-      additionalProperties: false
-      required:
-      - id
-      - type
-      - status
-      - updatedAt
-      properties:
-        id:
-          type: string
-        type:
-          type: string
-        status:
-          type: string
-        updatedAt:
-          type: string
-          format: date-time
-    ErrorResponse:
-      type: object
-      additionalProperties: false
-      required:
-      - message
-      properties:
-        message:
-          type: string
-          description: error description
-          maxLength: 500
     JobEntriesPaginatedResponse:
       type: object
       additionalProperties: false
@@ -294,6 +205,16 @@ components:
           type: string
         context:
           $ref: '#/components/schemas/PaginationOptions'
+    ErrorResponse:
+      type: object
+      additionalProperties: false
+      required:
+      - message
+      properties:
+        message:
+          type: string
+          description: error description
+          maxLength: 500
     GetJobResponse:
       type: object
       additionalProperties: false
@@ -348,20 +269,64 @@ components:
           type: object
           additionalProperties:
             type: string
-  examples:
+    JobsWithoutStatusInfoResponse:
+      type: object
+      additionalProperties: false
+      required:
+      - id
+      - type
+      - status
+      - updatedAt
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+        status:
+          type: string
+        updatedAt:
+          type: string
+          format: date-time
+  responses:
+    ErrorResponse:
+      description: Error response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            ErrorResponse:
+              summary: Error Message
+              value:
+                message: <Reason message>
+    JobsPaginatedResponse:
+      description: Response for list customers request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/JobsPaginatedResponse'
+          examples:
+            JobsPaginatedResponse:
+              $ref: '#/components/examples/JobsPaginatedResponse'
     GetJobResponse:
-      value:
-        id: job.20aUyEZSuYq.SoGbS
-        type: PRICE_PLAN
-        updatedAt: '2080-10-04T00:00:00Z'
-        status: COMPLETED
-        totalJobEntries: 100
-        pendingJobEntries: 40
-        failedJobEntries: 20
-        completedJobEntries: 40
-        metadata:
-          sourceId: pp.njrjk314hfr
-          targetId: pp.rhk32h4dsfq
+      description: Response for get job status request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/GetJobResponse'
+          examples:
+            GetJobResponse:
+              $ref: '#/components/examples/GetJobResponse'
+    JobEntriesPaginatedResponse:
+      description: Response for list job entries request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/JobEntriesPaginatedResponse'
+          examples:
+            JobEntriesPaginatedResponse:
+              $ref: '#/components/examples/JobEntriesPaginatedResponse'
+  examples:
     JobsPaginatedResponse:
       value:
         data:
@@ -380,6 +345,41 @@ components:
           createdAt: '2080-10-04T00:00:00Z'
           status: COMPLETED
         nextToken: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEwMCwgInNvcnRPcmRlciI6ICJhc2MifQ==
+    GetJobResponse:
+      value:
+        id: job.20aUyEZSuYq.SoGbS
+        type: PRICE_PLAN
+        updatedAt: '2080-10-04T00:00:00Z'
+        status: COMPLETED
+        totalJobEntries: 100
+        pendingJobEntries: 40
+        failedJobEntries: 20
+        completedJobEntries: 40
+        metadata:
+          sourceId: pp.njrjk314hfr
+          targetId: pp.rhk32h4dsfq
+  parameters:
+    job_id:
+      in: path
+      name: job_id
+      required: true
+      schema:
+        type: string
+        example: mig.20aUyEZSuYq.SoGbS
+    page_size:
+      in: query
+      name: pageSize
+      required: false
+      schema:
+        type: number
+        example: 10
+    next_token:
+      in: query
+      name: nextToken
+      required: false
+      schema:
+        type: string
+        example: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEwMCwgInNvcnRPcmRlciI6ICJhc2MifQ==
   securitySchemes:
     bearerAuth:
       type: http

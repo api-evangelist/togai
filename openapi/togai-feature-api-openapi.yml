@@ -116,74 +116,37 @@ paths:
         default:
           $ref: '#/components/responses/ErrorResponse'
 components:
+  responses:
+    FeatureResponse:
+      description: Response for Create and Get Feature requests
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Feature'
+          examples:
+            FeatureResponse:
+              $ref: '#/components/examples/FeatureResponse'
+    ErrorResponse:
+      description: Error response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            ErrorResponse:
+              summary: Error Message
+              value:
+                message: <Reason message>
+    FeaturePaginatedResponse:
+      description: Response for list Feature request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/FeaturePaginatedListData'
+          examples:
+            FeaturePaginatedResponse:
+              $ref: '#/components/examples/FeaturePaginatedResponse'
   schemas:
-    Feature:
-      type: object
-      description: Represents a Feature
-      additionalProperties: false
-      required:
-      - id
-      - name
-      - displayName
-      - schemaAssociations
-      - createdAt
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        billableName:
-          type: string
-          maxLength: 255
-        displayName:
-          description: 'Display name of feature. This is an auto-generated field which contains billableName of feature.
-
-            If billableName is not provided, name will be used as display name.
-
-            '
-          type: string
-          maxLength: 255
-        schemaAssociations:
-          $ref: '#/components/schemas/SchemaFeature'
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-    CreateFeatureRequest:
-      description: Create a Feature stand-alone or associate it with schemas
-      type: object
-      additionalProperties: false
-      required:
-      - name
-      - schemaAssociations
-      properties:
-        name:
-          description: Name of the feature
-          type: string
-          maxLength: 255
-        billableName:
-          description: Billable name of feature. Billable name takes precedence over name to display in invoice.
-          type: string
-          maxLength: 255
-        schemaAssociations:
-          $ref: '#/components/schemas/SchemaFeature'
-    UpdateFeatureRequest:
-      description: Update a Feature properties
-      type: object
-      additionalProperties: false
-      properties:
-        name:
-          description: Name of the feature
-          type: string
-          maxLength: 255
-        billableName:
-          description: Billable name of addon. Billable name takes precedence over name to display in invoice.
-          type: string
-          maxLength: 255
-        schemaAssociations:
-          $ref: '#/components/schemas/SchemaFeature'
     FeatureListResponse:
       type: object
       description: Represents a Feature for List Response
@@ -219,46 +182,40 @@ components:
         updatedAt:
           type: string
           format: date-time
-    PaginationOptions:
+    Feature:
       type: object
-      additionalProperties: false
-      properties:
-        pageSize:
-          type: integer
-        sortOrder:
-          type: string
-          enum:
-          - ASC
-          - DESC
-    FeaturePaginatedListData:
-      type: object
-      additionalProperties: false
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/FeatureListResponse'
-        nextToken:
-          type: string
-        context:
-          $ref: '#/components/schemas/PaginationOptions'
-    SchemaFeature:
-      description: Association of a feature with event_schemas
-      type: array
-      maxItems: 50
-      items:
-        $ref: '#/components/schemas/EventSchemasForFeature'
-      uniqueItems: true
-    ErrorResponse:
-      type: object
+      description: Represents a Feature
       additionalProperties: false
       required:
-      - message
+      - id
+      - name
+      - displayName
+      - schemaAssociations
+      - createdAt
       properties:
-        message:
+        id:
           type: string
-          description: error description
-          maxLength: 500
+        name:
+          type: string
+        billableName:
+          type: string
+          maxLength: 255
+        displayName:
+          description: 'Display name of feature. This is an auto-generated field which contains billableName of feature.
+
+            If billableName is not provided, name will be used as display name.
+
+            '
+          type: string
+          maxLength: 255
+        schemaAssociations:
+          $ref: '#/components/schemas/SchemaFeature'
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
     EventSchemasForFeature:
       description: event_schema details that are in association with feature
       type: object
@@ -271,6 +228,140 @@ components:
           pattern: ^[\sa-zA-Z0-9_-]*$
         attributeName:
           type: string
+    FeaturePaginatedListData:
+      type: object
+      additionalProperties: false
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/FeatureListResponse'
+        nextToken:
+          type: string
+        context:
+          $ref: '#/components/schemas/PaginationOptions'
+    UpdateFeatureRequest:
+      description: Update a Feature properties
+      type: object
+      additionalProperties: false
+      properties:
+        name:
+          description: Name of the feature
+          type: string
+          maxLength: 255
+        billableName:
+          description: Billable name of addon. Billable name takes precedence over name to display in invoice.
+          type: string
+          maxLength: 255
+        schemaAssociations:
+          $ref: '#/components/schemas/SchemaFeature'
+    ErrorResponse:
+      type: object
+      additionalProperties: false
+      required:
+      - message
+      properties:
+        message:
+          type: string
+          description: error description
+          maxLength: 500
+    SchemaFeature:
+      description: Association of a feature with event_schemas
+      type: array
+      maxItems: 50
+      items:
+        $ref: '#/components/schemas/EventSchemasForFeature'
+      uniqueItems: true
+    PaginationOptions:
+      type: object
+      additionalProperties: false
+      properties:
+        pageSize:
+          type: integer
+        sortOrder:
+          type: string
+          enum:
+          - ASC
+          - DESC
+    CreateFeatureRequest:
+      description: Create a Feature stand-alone or associate it with schemas
+      type: object
+      additionalProperties: false
+      required:
+      - name
+      - schemaAssociations
+      properties:
+        name:
+          description: Name of the feature
+          type: string
+          maxLength: 255
+        billableName:
+          description: Billable name of feature. Billable name takes precedence over name to display in invoice.
+          type: string
+          maxLength: 255
+        schemaAssociations:
+          $ref: '#/components/schemas/SchemaFeature'
+  parameters:
+    feature_id:
+      in: path
+      description: feature_id corresponding to a feature
+      name: feature_id
+      required: true
+      schema:
+        type: string
+        maxLength: 50
+        example: feat.fdjskl.sdkjl
+    page_size:
+      in: query
+      name: pageSize
+      required: false
+      schema:
+        type: number
+        example: 10
+    next_token:
+      in: query
+      name: nextToken
+      required: false
+      schema:
+        type: string
+        example: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEwMCwgInNvcnRPcmRlciI6ICJhc2MifQ==
+  examples:
+    CreateFeatureRequest:
+      value:
+        name: DiscountCredits
+        schemaAssociations:
+        - event_schema1
+        - event_schema2
+    UpdateFeatureRequest:
+      value:
+        name: DiscountCredits
+        schemaAssociations:
+        - event_schema1
+        - event_schema3
+    FeaturePaginatedResponse:
+      value:
+        data:
+        - id: feature.1zYnCiM9Bpg.lv25y
+          name: DiscountCredits
+          displayName: DiscountCredits
+          schemaCount: 2
+          createdAt: '2020-01-01T00:00:00Z'
+          updatedAt: '2020-01-01T00:00:00Z'
+        nextToken: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEwMCwgInNvcnRPcmRlciI6ICJhc2MifQ==
+        context:
+          pageSize: 10
+    FeatureResponse:
+      value:
+        id: feature.1zYnCiM9Bpg.lv25y
+        name: DiscountCredits
+        displayName: DiscountCredits
+        schemaAssociations:
+        - schemaName: event_schema1
+          attributeName: distance
+        - schemaName: event_schema2
+          attributeName: time
+        createdAt: '2020-01-01T00:00:00Z'
+        updatedAt: '2020-01-01T00:00:00Z'
   requestBodies:
     CreateFeatureRequest:
       description: Payload to create a Feature along the association with event_schemas
@@ -292,97 +383,6 @@ components:
           examples:
             UpdateFeatureRequest:
               $ref: '#/components/examples/UpdateFeatureRequest'
-  examples:
-    CreateFeatureRequest:
-      value:
-        name: DiscountCredits
-        schemaAssociations:
-        - event_schema1
-        - event_schema2
-    UpdateFeatureRequest:
-      value:
-        name: DiscountCredits
-        schemaAssociations:
-        - event_schema1
-        - event_schema3
-    FeatureResponse:
-      value:
-        id: feature.1zYnCiM9Bpg.lv25y
-        name: DiscountCredits
-        displayName: DiscountCredits
-        schemaAssociations:
-        - schemaName: event_schema1
-          attributeName: distance
-        - schemaName: event_schema2
-          attributeName: time
-        createdAt: '2020-01-01T00:00:00Z'
-        updatedAt: '2020-01-01T00:00:00Z'
-    FeaturePaginatedResponse:
-      value:
-        data:
-        - id: feature.1zYnCiM9Bpg.lv25y
-          name: DiscountCredits
-          displayName: DiscountCredits
-          schemaCount: 2
-          createdAt: '2020-01-01T00:00:00Z'
-          updatedAt: '2020-01-01T00:00:00Z'
-        nextToken: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEwMCwgInNvcnRPcmRlciI6ICJhc2MifQ==
-        context:
-          pageSize: 10
-  parameters:
-    page_size:
-      in: query
-      name: pageSize
-      required: false
-      schema:
-        type: number
-        example: 10
-    feature_id:
-      in: path
-      description: feature_id corresponding to a feature
-      name: feature_id
-      required: true
-      schema:
-        type: string
-        maxLength: 50
-        example: feat.fdjskl.sdkjl
-    next_token:
-      in: query
-      name: nextToken
-      required: false
-      schema:
-        type: string
-        example: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEwMCwgInNvcnRPcmRlciI6ICJhc2MifQ==
-  responses:
-    FeaturePaginatedResponse:
-      description: Response for list Feature request
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/FeaturePaginatedListData'
-          examples:
-            FeaturePaginatedResponse:
-              $ref: '#/components/examples/FeaturePaginatedResponse'
-    FeatureResponse:
-      description: Response for Create and Get Feature requests
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Feature'
-          examples:
-            FeatureResponse:
-              $ref: '#/components/examples/FeatureResponse'
-    ErrorResponse:
-      description: Error response
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          examples:
-            ErrorResponse:
-              summary: Error Message
-              value:
-                message: <Reason message>
   securitySchemes:
     bearerAuth:
       type: http

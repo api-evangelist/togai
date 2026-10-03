@@ -44,43 +44,7 @@ paths:
         default:
           $ref: '#/components/responses/ErrorResponse'
 components:
-  responses:
-    TokenResponse:
-      description: OK
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/TokenResponse'
-    ErrorResponse:
-      description: Error response
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          examples:
-            ErrorResponse:
-              summary: Error Message
-              value:
-                message: <Reason message>
   schemas:
-    ErrorResponse:
-      type: object
-      additionalProperties: false
-      required:
-      - message
-      properties:
-        message:
-          type: string
-          description: error description
-          maxLength: 500
-    TokenResponse:
-      type: object
-      additionalProperties: false
-      required:
-      - token
-      properties:
-        token:
-          type: string
     GetCustomerPortalDelegateTokenRequest:
       description: Request to get delegate token for customer portal
       type: object
@@ -105,19 +69,42 @@ components:
           description: "Expiry in seconds from the time of generation. \nIf not provided, generated token will have the expiry of the token used for requesting.\n"
           type: integer
           format: int64
-  examples:
-    GetCustomerPortalDelegateTokenRequestAllAccountAccess:
-      value:
-        customerId: acme_cust
-        allAccountAccess: true
-        expiry: 60000
-    GetCustomerPortalDelegateTokenRequestSelectedAccountsAccess:
-      value:
-        customerId: acme_cust
-        accountIds:
-        - acme_accnt_1
-        - acme_accnt_2
-        expiry: 60000
+    TokenResponse:
+      type: object
+      additionalProperties: false
+      required:
+      - token
+      properties:
+        token:
+          type: string
+    ErrorResponse:
+      type: object
+      additionalProperties: false
+      required:
+      - message
+      properties:
+        message:
+          type: string
+          description: error description
+          maxLength: 500
+  responses:
+    ErrorResponse:
+      description: Error response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            ErrorResponse:
+              summary: Error Message
+              value:
+                message: <Reason message>
+    TokenResponse:
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/TokenResponse'
   requestBodies:
     GetCustomerPortalDelegateTokenRequest:
       description: Payload to get delegate token for customer portal
@@ -131,6 +118,19 @@ components:
               $ref: '#/components/examples/GetCustomerPortalDelegateTokenRequestAllAccountAccess'
             GetCustomerPortalDelegateTokenRequestSelectedAccountsAccess:
               $ref: '#/components/examples/GetCustomerPortalDelegateTokenRequestSelectedAccountsAccess'
+  examples:
+    GetCustomerPortalDelegateTokenRequestSelectedAccountsAccess:
+      value:
+        customerId: acme_cust
+        accountIds:
+        - acme_accnt_1
+        - acme_accnt_2
+        expiry: 60000
+    GetCustomerPortalDelegateTokenRequestAllAccountAccess:
+      value:
+        customerId: acme_cust
+        allAccountAccess: true
+        expiry: 60000
   securitySchemes:
     bearerAuth:
       type: http

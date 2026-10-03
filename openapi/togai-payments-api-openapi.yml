@@ -93,164 +93,39 @@ paths:
         default:
           $ref: '#/components/responses/ErrorResponse'
 components:
-  schemas:
-    CreatePaymentRequest:
-      type: object
-      description: payload to create payment
-      additionalProperties: false
-      required:
-      - accountId
-      - externalPaymentReference
-      - lineItemRecords
-      - currency
-      - totalAmount
-      properties:
-        description:
-          description: A brief description of the payment
-          type: string
-          maxLength: 512
-          example: Payment for Invoice inv.234.23afv
-        notes:
-          description: A detailed note about the payment
-          type: string
-          maxLength: 512
-          example: Payment for purchase of credits
-        accountId:
-          type: string
-          maxLength: 512
-          example: ACC001
-        externalPaymentReference:
-          $ref: '#/components/schemas/ExternalPaymentReference'
-        lineItemRecords:
-          type: array
-          minLength: 1
-          items:
-            $ref: '#/components/schemas/PaymentLineItemRecord'
-        currency:
-          type: string
-          maxLength: 512
-          example: USD
-        totalAmount:
-          type: number
-    ExternalPaymentReference:
-      type: object
-      description: external payment reference object
-      additionalProperties: false
-      required:
-      - sourceName
-      - sourceType
-      - transactionNumber
-      properties:
-        sourceName:
-          type: string
-        sourceType:
-          type: string
-          enum:
-          - GATEWAY
-          - CASH
-          - CHEQUE
-          - BANK_TRANSFER
-          - CARD
-        transactionNumber:
-          description: Check number or Card transaction number
-          type: string
-        description:
-          type: string
-        metadata:
-          type: object
-          additionalProperties: true
-    ErrorResponse:
-      type: object
-      additionalProperties: false
-      required:
-      - message
-      properties:
-        message:
-          type: string
-          description: error description
-          maxLength: 500
-    PaymentLineItemRecord:
-      type: object
-      description: payment line item record object
-      additionalProperties: false
-      required:
-      - type
-      - order
-      properties:
-        type:
-          type: string
-          enum:
-          - INVOICE
-          - CREDIT
-          - WALLET_CREDIT
-        togaiId:
-          type: string
-          example: inv.234.12efwe
-        amount:
-          type: number
-        order:
-          type: integer
-          format: int32
-    Payment:
-      description: Payment object
-      type: object
-      additionalProperties: false
-      required:
-      - id
-      - accountId
-      - externalPaymentReferences
-      - lineItemRecords
-      - totalAmount
-      - currency
-      - version
-      - createdBy
-      - createdAt
-      properties:
-        id:
-          type: string
-          example: pay.w123rwe.1231
-        description:
-          type: string
-        notes:
-          type: string
-        accountId:
-          type: string
-          example: ACC001
-        externalPaymentReferences:
-          $ref: '#/components/schemas/ExternalPaymentReference'
-        lineItemRecords:
-          type: array
-          minLength: 1
-          items:
-            $ref: '#/components/schemas/PaymentLineItemRecord'
-        totalAmount:
-          type: number
-        currency:
-          type: string
-        version:
-          type: number
-        createdBy:
-          type: string
-        createdAt:
-          type: string
-          format: date-time
-    ListPaymentResponse:
-      description: List payments response
-      type: object
-      additionalProperties: false
-      required:
-      - data
-      properties:
-        data:
-          type: array
-          minItems: 0
-          maxItems: 50
-          items:
-            $ref: '#/components/schemas/Payment'
-        nextToken:
-          type: string
-          maxLength: 500
-          example: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEyMywgInNvcnRPcmRlciI6ICJhc2MifQ==
+  parameters:
+    version:
+      in: query
+      name: version
+      description: Optional version to get a specific version. Gets latest version if it is not provided.
+      required: false
+      schema:
+        type: integer
+        format: int32
+        example: 2
+    payment_id:
+      in: path
+      name: payment_id
+      required: true
+      schema:
+        type: string
+        example: payment.1zYnCiM9Bpg.lv25y
+    filter_page_size:
+      in: query
+      description: "Maximum page size expected by client to return the record list. \n\n NOTE: Max page size cannot be more than 50. Also 50 is the default page size if no value is provided."
+      name: pageSize
+      required: false
+      schema:
+        type: integer
+        example: 10
+    filter_next_page_token:
+      in: query
+      description: Pagination token used as a marker to get records from next page.
+      name: nextToken
+      required: false
+      schema:
+        type: string
+        example: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEyMywgInNvcnRPcmRlciI6ICJhc2MifQ==
   examples:
     CreatePaymentRequest:
       summary: A Sample for CreatePaymentRequest
@@ -340,15 +215,6 @@ components:
         createdBy: user123
         createdAt: '2023-01-01T12:00:00'
   responses:
-    ListPaymentResponse:
-      description: Response for GET payments requests
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ListPaymentResponse'
-          examples:
-            ListPaymentResponse:
-              $ref: '#/components/examples/ListPaymentResponse'
     ErrorResponse:
       description: Error response
       content:
@@ -369,6 +235,173 @@ components:
           examples:
             Payment:
               $ref: '#/components/examples/Payment'
+    ListPaymentResponse:
+      description: Response for GET payments requests
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ListPaymentResponse'
+          examples:
+            ListPaymentResponse:
+              $ref: '#/components/examples/ListPaymentResponse'
+  schemas:
+    PaymentLineItemRecord:
+      type: object
+      description: payment line item record object
+      additionalProperties: false
+      required:
+      - type
+      - order
+      properties:
+        type:
+          type: string
+          enum:
+          - INVOICE
+          - CREDIT
+          - WALLET_CREDIT
+        togaiId:
+          type: string
+          example: inv.234.12efwe
+        amount:
+          type: number
+        order:
+          type: integer
+          format: int32
+    ListPaymentResponse:
+      description: List payments response
+      type: object
+      additionalProperties: false
+      required:
+      - data
+      properties:
+        data:
+          type: array
+          minItems: 0
+          maxItems: 50
+          items:
+            $ref: '#/components/schemas/Payment'
+        nextToken:
+          type: string
+          maxLength: 500
+          example: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEyMywgInNvcnRPcmRlciI6ICJhc2MifQ==
+    ExternalPaymentReference:
+      type: object
+      description: external payment reference object
+      additionalProperties: false
+      required:
+      - sourceName
+      - sourceType
+      - transactionNumber
+      properties:
+        sourceName:
+          type: string
+        sourceType:
+          type: string
+          enum:
+          - GATEWAY
+          - CASH
+          - CHEQUE
+          - BANK_TRANSFER
+          - CARD
+        transactionNumber:
+          description: Check number or Card transaction number
+          type: string
+        description:
+          type: string
+        metadata:
+          type: object
+          additionalProperties: true
+    ErrorResponse:
+      type: object
+      additionalProperties: false
+      required:
+      - message
+      properties:
+        message:
+          type: string
+          description: error description
+          maxLength: 500
+    CreatePaymentRequest:
+      type: object
+      description: payload to create payment
+      additionalProperties: false
+      required:
+      - accountId
+      - externalPaymentReference
+      - lineItemRecords
+      - currency
+      - totalAmount
+      properties:
+        description:
+          description: A brief description of the payment
+          type: string
+          maxLength: 512
+          example: Payment for Invoice inv.234.23afv
+        notes:
+          description: A detailed note about the payment
+          type: string
+          maxLength: 512
+          example: Payment for purchase of credits
+        accountId:
+          type: string
+          maxLength: 512
+          example: ACC001
+        externalPaymentReference:
+          $ref: '#/components/schemas/ExternalPaymentReference'
+        lineItemRecords:
+          type: array
+          minLength: 1
+          items:
+            $ref: '#/components/schemas/PaymentLineItemRecord'
+        currency:
+          type: string
+          maxLength: 512
+          example: USD
+        totalAmount:
+          type: number
+    Payment:
+      description: Payment object
+      type: object
+      additionalProperties: false
+      required:
+      - id
+      - accountId
+      - externalPaymentReferences
+      - lineItemRecords
+      - totalAmount
+      - currency
+      - version
+      - createdBy
+      - createdAt
+      properties:
+        id:
+          type: string
+          example: pay.w123rwe.1231
+        description:
+          type: string
+        notes:
+          type: string
+        accountId:
+          type: string
+          example: ACC001
+        externalPaymentReferences:
+          $ref: '#/components/schemas/ExternalPaymentReference'
+        lineItemRecords:
+          type: array
+          minLength: 1
+          items:
+            $ref: '#/components/schemas/PaymentLineItemRecord'
+        totalAmount:
+          type: number
+        currency:
+          type: string
+        version:
+          type: number
+        createdBy:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
   requestBodies:
     CreatePaymentRequest:
       description: Payload to create a payment
@@ -379,39 +412,6 @@ components:
           examples:
             CreatePaymentRequest:
               $ref: '#/components/examples/CreatePaymentRequest'
-  parameters:
-    filter_page_size:
-      in: query
-      description: "Maximum page size expected by client to return the record list. \n\n NOTE: Max page size cannot be more than 50. Also 50 is the default page size if no value is provided."
-      name: pageSize
-      required: false
-      schema:
-        type: integer
-        example: 10
-    filter_next_page_token:
-      in: query
-      description: Pagination token used as a marker to get records from next page.
-      name: nextToken
-      required: false
-      schema:
-        type: string
-        example: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEyMywgInNvcnRPcmRlciI6ICJhc2MifQ==
-    payment_id:
-      in: path
-      name: payment_id
-      required: true
-      schema:
-        type: string
-        example: payment.1zYnCiM9Bpg.lv25y
-    version:
-      in: query
-      name: version
-      description: Optional version to get a specific version. Gets latest version if it is not provided.
-      required: false
-      schema:
-        type: integer
-        format: int32
-        example: 2
   securitySchemes:
     bearerAuth:
       type: http

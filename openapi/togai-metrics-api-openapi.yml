@@ -72,53 +72,19 @@ paths:
         default:
           $ref: '#/components/responses/ErrorResponse'
 components:
+  responses:
+    ErrorResponse:
+      description: Error response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            ErrorResponse:
+              summary: Error Message
+              value:
+                message: <Reason message>
   schemas:
-    MetricDataPoints:
-      type: object
-      additionalProperties: false
-      required:
-      - timestamps
-      - metricValues
-      properties:
-        groupedBy:
-          title: MetricDataPointsGroupedBy
-          type: object
-          required:
-          - fieldName
-          - fieldValue
-          properties:
-            fieldName:
-              type: string
-            fieldValue:
-              type: string
-        timestamps:
-          type: array
-          items:
-            type: string
-            format: date-time
-          maxItems: 300
-        metricValues:
-          type: array
-          items:
-            type: number
-          maxItems: 300
-    MetricQueryResponse:
-      type: object
-      description: Response to GetMetrics Request
-      additionalProperties: false
-      required:
-      - id
-      - name
-      - data
-      properties:
-        id:
-          type: string
-        name:
-          $ref: '#/components/schemas/MetricName'
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/MetricDataPoints'
     MetricName:
       type: string
       description: 'Define the metric you would like to get - allowed options are
@@ -147,27 +113,6 @@ components:
       - USAGE_FOR_CYCLE
       - REVENUE_FOR_CYCLE
       default: EVENTS
-    ErrorResponse:
-      type: object
-      additionalProperties: false
-      required:
-      - message
-      properties:
-        message:
-          type: string
-          description: error description
-          maxLength: 500
-    GetMetricsResponse:
-      type: object
-      description: Response to GetMetrics Request
-      additionalProperties: false
-      required:
-      - results
-      properties:
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/MetricQueryResponse'
     MetricQuery:
       type: object
       description: Object representing a single metrics query
@@ -230,6 +175,23 @@ components:
                 items:
                   type: string
                   example: account#1
+    MetricQueryResponse:
+      type: object
+      description: Response to GetMetrics Request
+      additionalProperties: false
+      required:
+      - id
+      - name
+      - data
+      properties:
+        id:
+          type: string
+        name:
+          $ref: '#/components/schemas/MetricName'
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/MetricDataPoints'
     GetMetricsRequest:
       type: object
       description: Request to get metrics from togai
@@ -254,18 +216,77 @@ components:
           items:
             $ref: '#/components/schemas/MetricQuery'
           uniqueItems: true
-  responses:
+    GetMetricsResponse:
+      type: object
+      description: Response to GetMetrics Request
+      additionalProperties: false
+      required:
+      - results
+      properties:
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/MetricQueryResponse'
+    MetricDataPoints:
+      type: object
+      additionalProperties: false
+      required:
+      - timestamps
+      - metricValues
+      properties:
+        groupedBy:
+          title: MetricDataPointsGroupedBy
+          type: object
+          required:
+          - fieldName
+          - fieldValue
+          properties:
+            fieldName:
+              type: string
+            fieldValue:
+              type: string
+        timestamps:
+          type: array
+          items:
+            type: string
+            format: date-time
+          maxItems: 300
+        metricValues:
+          type: array
+          items:
+            type: number
+          maxItems: 300
     ErrorResponse:
-      description: Error response
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          examples:
-            ErrorResponse:
-              summary: Error Message
-              value:
-                message: <Reason message>
+      type: object
+      additionalProperties: false
+      required:
+      - message
+      properties:
+        message:
+          type: string
+          description: error description
+          maxLength: 500
+  examples:
+    GetMetricsResponse:
+      summary: Example Get Metrics Response
+      value:
+        results:
+        - id: m1
+          name: EVENTS
+          data:
+          - timestamps:
+            - '2017-07-21T00:00:00Z'
+            - '2017-07-22T00:00:00Z'
+            metricValues:
+            - 53
+            - 32
+        - id: m2
+          name: USAGE
+          data:
+          - timestamps:
+            - '2017-07-01T00:00:00Z'
+            metricValues:
+            - 123.45
   requestBodies:
     GetMetricsRequest:
       content:
@@ -298,27 +319,6 @@ components:
                   - fieldName: CUSTOMER_ID
                     fieldValues:
                     - customer#1
-  examples:
-    GetMetricsResponse:
-      summary: Example Get Metrics Response
-      value:
-        results:
-        - id: m1
-          name: EVENTS
-          data:
-          - timestamps:
-            - '2017-07-21T00:00:00Z'
-            - '2017-07-22T00:00:00Z'
-            metricValues:
-            - 53
-            - 32
-        - id: m2
-          name: USAGE
-          data:
-          - timestamps:
-            - '2017-07-01T00:00:00Z'
-            metricValues:
-            - 123.45
   securitySchemes:
     bearerAuth:
       type: http

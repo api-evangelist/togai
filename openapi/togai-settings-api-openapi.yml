@@ -125,96 +125,7 @@ paths:
         default:
           $ref: '#/components/responses/ErrorResponse'
 components:
-  parameters:
-    settings_entity_id:
-      in: query
-      name: entity_id
-      schema:
-        type: string
-        example: acc_X1Df3sRf3
-    settings_full_setting_id:
-      in: path
-      name: setting_id_str
-      required: true
-      schema:
-        type: string
-        example: setting.USER.success_threshold.ACCOUNT.G234DZZKBKACATFFGVGEMERFI
-    settings_entity_type:
-      in: query
-      name: entity_type
-      schema:
-        type: string
-        example: ACCOUNT
-    settings_setting_id:
-      in: query
-      name: setting_id
-      schema:
-        type: string
-    page_size:
-      in: query
-      name: pageSize
-      required: false
-      schema:
-        type: number
-        example: 10
-    next_token:
-      in: query
-      name: nextToken
-      required: false
-      schema:
-        type: string
-        example: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEwMCwgInNvcnRPcmRlciI6ICJhc2MifQ==
-    settings_namespace:
-      in: query
-      name: namespace
-      schema:
-        type: string
-        example: USER
-  requestBodies:
-    UpdateSettingRequest:
-      description: Payload to update setting
-      required: true
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UpdateSettingRequest'
-          examples:
-            UpdateSettingRequest:
-              $ref: '#/components/examples/UpdateSettingRequest'
-    CreateSettingRequest:
-      description: Payload to insert setting
-      required: true
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Setting'
-          examples:
-            Setting:
-              $ref: '#/components/examples/Setting'
   schemas:
-    SettingPaginatedResponse:
-      type: object
-      additionalProperties: false
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Setting'
-        nextToken:
-          type: string
-        context:
-          $ref: '#/components/schemas/PaginationOptions'
-    PaginationOptions:
-      type: object
-      additionalProperties: false
-      properties:
-        pageSize:
-          type: integer
-        sortOrder:
-          type: string
-          enum:
-          - ASC
-          - DESC
     Setting:
       type: object
       description: Represents a setting
@@ -242,6 +153,46 @@ components:
           type: string
         dataType:
           $ref: '#/components/schemas/SettingDataType'
+    SettingDataType:
+      type: string
+      enum:
+      - STRING
+      - NUMERIC
+      - JSON
+      - JSON_LOGIC
+    SettingPaginatedResponse:
+      type: object
+      additionalProperties: false
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Setting'
+        nextToken:
+          type: string
+        context:
+          $ref: '#/components/schemas/PaginationOptions'
+    ErrorResponse:
+      type: object
+      additionalProperties: false
+      required:
+      - message
+      properties:
+        message:
+          type: string
+          description: error description
+          maxLength: 500
+    PaginationOptions:
+      type: object
+      additionalProperties: false
+      properties:
+        pageSize:
+          type: integer
+        sortOrder:
+          type: string
+          enum:
+          - ASC
+          - DESC
     UpdateSettingRequest:
       description: Update Settings
       type: object
@@ -253,24 +204,61 @@ components:
           type: string
         dataType:
           $ref: '#/components/schemas/SettingDataType'
-    ErrorResponse:
-      type: object
-      additionalProperties: false
-      required:
-      - message
-      properties:
-        message:
-          type: string
-          description: error description
-          maxLength: 500
-    SettingDataType:
-      type: string
-      enum:
-      - STRING
-      - NUMERIC
-      - JSON
-      - JSON_LOGIC
+  parameters:
+    settings_full_setting_id:
+      in: path
+      name: setting_id_str
+      required: true
+      schema:
+        type: string
+        example: setting.USER.success_threshold.ACCOUNT.G234DZZKBKACATFFGVGEMERFI
+    settings_entity_id:
+      in: query
+      name: entity_id
+      schema:
+        type: string
+        example: acc_X1Df3sRf3
+    next_token:
+      in: query
+      name: nextToken
+      required: false
+      schema:
+        type: string
+        example: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEwMCwgInNvcnRPcmRlciI6ICJhc2MifQ==
+    settings_namespace:
+      in: query
+      name: namespace
+      schema:
+        type: string
+        example: USER
+    settings_setting_id:
+      in: query
+      name: setting_id
+      schema:
+        type: string
+    settings_entity_type:
+      in: query
+      name: entity_type
+      schema:
+        type: string
+        example: ACCOUNT
+    page_size:
+      in: query
+      name: pageSize
+      required: false
+      schema:
+        type: number
+        example: 10
   examples:
+    Setting:
+      value:
+        id: UserSetting
+        value: INR
+        entityType: ORGANIZATION
+        entityId: XlK5h64gND
+        namespace: USER
+        name: Settings Name
+        dataType: STRING
     SettingPaginatedResponse:
       value:
         data:
@@ -284,23 +272,25 @@ components:
         nextToken: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEwMCwgInNvcnRPcmRlciI6ICJhc2MifQ==
         context:
           pageSize: 10
-    Setting:
-      value:
-        id: UserSetting
-        value: INR
-        entityType: ORGANIZATION
-        entityId: XlK5h64gND
-        namespace: USER
-        name: Settings Name
-        dataType: STRING
     UpdateSettingRequest:
       value:
         value: '{"USD":"1"}'
         name: Base_Currency
         dataType: JSON
-  responses:
-    SettingResponse:
-      description: Response for insert and update settings request
+  requestBodies:
+    UpdateSettingRequest:
+      description: Payload to update setting
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UpdateSettingRequest'
+          examples:
+            UpdateSettingRequest:
+              $ref: '#/components/examples/UpdateSettingRequest'
+    CreateSettingRequest:
+      description: Payload to insert setting
+      required: true
       content:
         application/json:
           schema:
@@ -308,6 +298,7 @@ components:
           examples:
             Setting:
               $ref: '#/components/examples/Setting'
+  responses:
     ErrorResponse:
       description: Error response
       content:
@@ -328,6 +319,15 @@ components:
           examples:
             SettingPaginatedResponse:
               $ref: '#/components/examples/SettingPaginatedResponse'
+    SettingResponse:
+      description: Response for insert and update settings request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Setting'
+          examples:
+            Setting:
+              $ref: '#/components/examples/Setting'
   securitySchemes:
     bearerAuth:
       type: http
