@@ -621,6 +621,8 @@ apis:
   humanURL: https://docs.togai.com/api-reference/getting-started
   baseURL: https://api.togai.com
   tags:
+  - Addons
+  tags_raw:
   - Add Ons
   properties:
   - type: OpenAPI
@@ -668,6 +670,9 @@ integrations:
   - Chargebee
   - Zuora
 common:
+  - type: CapabilityMap
+    url: capabilities/togai-capability-edges.yml
+    name: Togai Business Capability Map
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/togai/overview
   - type: AgenticAccess
