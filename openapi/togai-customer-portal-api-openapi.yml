@@ -87,6 +87,19 @@ components:
           type: string
           description: error description
           maxLength: 500
+  examples:
+    GetCustomerPortalDelegateTokenRequestAllAccountAccess:
+      value:
+        customerId: acme_cust
+        allAccountAccess: true
+        expiry: 60000
+    GetCustomerPortalDelegateTokenRequestSelectedAccountsAccess:
+      value:
+        customerId: acme_cust
+        accountIds:
+        - acme_accnt_1
+        - acme_accnt_2
+        expiry: 60000
   responses:
     ErrorResponse:
       description: Error response
@@ -118,19 +131,6 @@ components:
               $ref: '#/components/examples/GetCustomerPortalDelegateTokenRequestAllAccountAccess'
             GetCustomerPortalDelegateTokenRequestSelectedAccountsAccess:
               $ref: '#/components/examples/GetCustomerPortalDelegateTokenRequestSelectedAccountsAccess'
-  examples:
-    GetCustomerPortalDelegateTokenRequestSelectedAccountsAccess:
-      value:
-        customerId: acme_cust
-        accountIds:
-        - acme_accnt_1
-        - acme_accnt_2
-        expiry: 60000
-    GetCustomerPortalDelegateTokenRequestAllAccountAccess:
-      value:
-        customerId: acme_cust
-        allAccountAccess: true
-        expiry: 60000
   securitySchemes:
     bearerAuth:
       type: http

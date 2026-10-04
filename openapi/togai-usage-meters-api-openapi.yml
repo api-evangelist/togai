@@ -211,6 +211,29 @@ paths:
         default:
           $ref: '#/components/responses/ErrorResponse'
 components:
+  parameters:
+    usage_meter_id:
+      in: path
+      name: usage_meter_id
+      required: true
+      schema:
+        type: string
+        maxLength: 50
+        example: um.1zYnCiM9Bpg.1zYn
+    page_size:
+      in: query
+      name: pageSize
+      required: false
+      schema:
+        type: number
+        example: 10
+    next_token:
+      in: query
+      name: nextToken
+      required: false
+      schema:
+        type: string
+        example: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEwMCwgInNvcnRPcmRlciI6ICJhc2MifQ==
   requestBodies:
     CreateUsageMeterRequest:
       description: Payload to create usage meter
@@ -230,18 +253,16 @@ components:
           schema:
             $ref: '#/components/schemas/UpdateUsageMeterRequest'
   schemas:
-    UsageMeterPaginatedResponse:
+    ErrorResponse:
       type: object
       additionalProperties: false
+      required:
+      - message
       properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/UsageMeter'
-        nextToken:
+        message:
           type: string
-        context:
-          $ref: '#/components/schemas/PaginationOptions'
+          description: error description
+          maxLength: 500
     UsageMeterAggregation:
       description: 'Aggregation to be applied on usage meter result
 
@@ -295,6 +316,17 @@ components:
         eventSchemaName:
           description: Event Schema Identifier
           type: string
+    UsageMeterFilterEntry:
+      description: Filter entry with field and value
+      type: object
+      required:
+      - field
+      - value
+      properties:
+        field:
+          type: string
+        value:
+          type: string
     BaseSuccessResponse:
       type: object
       additionalProperties: false
@@ -304,27 +336,36 @@ components:
         success:
           type: boolean
           example: true
-    ErrorResponse:
+    Computation:
       type: object
-      additionalProperties: false
       required:
-      - message
+      - computation
+      - order
       properties:
-        message:
+        id:
+          description: Optional identifier describing the matcher and computation pair
           type: string
-          description: error description
+          maxLength: 50
+        matcher:
+          description: 'Condition to be applied on event. Upon matching it the corresponding computation will be considered for usage_meter unit calculation. The result of the matcher needs to be [truthy](https://jsonlogic.com/truthy.html) in order to be considered as a match.
+
+            '
+          type: string
+          maxLength: 1500
+          example: "{\n  \"and\": [\n    {\"in\": [{\"var\": \"dimension.city\"}, \"chennai\", \"mumbai\"]},\n    \"or\": [\n      {\">\": [{\"var\": \"attribute.distance\"}, 100]},\n      {\"<\": [{\"var\": \"attribute.distance\"}, 20]}\n    ]\n  ]\n}\n"
+        computation:
+          description: 'Computation to be applied on an event if it matches the matcher. In case of a COUNT aggregation type, computation should be passed as ''1''
+
+            '
+          type: string
           maxLength: 500
-    PaginationOptions:
-      type: object
-      additionalProperties: false
-      properties:
-        pageSize:
+          example:
+            '*':
+            - var: attributes.distance
+            - 0.4
+        order:
+          description: The order in which multiple matched computations will get evaluated
           type: integer
-        sortOrder:
-          type: string
-          enum:
-          - ASC
-          - DESC
     UsageMeter:
       description: Structure of usage meter
       type: object
@@ -439,61 +480,30 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/UsageMeterFilterEntry'
-    UsageMeterFilterEntry:
-      description: Filter entry with field and value
+    UsageMeterPaginatedResponse:
       type: object
-      required:
-      - field
-      - value
+      additionalProperties: false
       properties:
-        field:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/UsageMeter'
+        nextToken:
           type: string
-        value:
-          type: string
-    Computation:
+        context:
+          $ref: '#/components/schemas/PaginationOptions'
+    PaginationOptions:
       type: object
-      required:
-      - computation
-      - order
+      additionalProperties: false
       properties:
-        id:
-          description: Optional identifier describing the matcher and computation pair
-          type: string
-          maxLength: 50
-        matcher:
-          description: 'Condition to be applied on event. Upon matching it the corresponding computation will be considered for usage_meter unit calculation. The result of the matcher needs to be [truthy](https://jsonlogic.com/truthy.html) in order to be considered as a match.
-
-            '
-          type: string
-          maxLength: 1500
-          example: "{\n  \"and\": [\n    {\"in\": [{\"var\": \"dimension.city\"}, \"chennai\", \"mumbai\"]},\n    \"or\": [\n      {\">\": [{\"var\": \"attribute.distance\"}, 100]},\n      {\"<\": [{\"var\": \"attribute.distance\"}, 20]}\n    ]\n  ]\n}\n"
-        computation:
-          description: 'Computation to be applied on an event if it matches the matcher. In case of a COUNT aggregation type, computation should be passed as ''1''
-
-            '
-          type: string
-          maxLength: 500
-          example:
-            '*':
-            - var: attributes.distance
-            - 0.4
-        order:
-          description: The order in which multiple matched computations will get evaluated
+        pageSize:
           type: integer
+        sortOrder:
+          type: string
+          enum:
+          - ASC
+          - DESC
   examples:
-    UsageMeter:
-      value:
-        id: um.1zlQTBWlkeO.lB7fh
-        name: Rides
-        displayName: Rides
-        description: Cab rides
-        type: COUNTER
-        aggregation: COUNT
-        status: DRAFT
-        computations:
-        - matcher: "{\n  \"and\": [\n    {\"in\": [{\"var\": \"dimension.city\"}, \"chennai\", \"mumbai\"]},\n    \"or\": [\n      {\">\": [{\"var\": \"attribute.distance\"}, 100]},\n      {\"<\": [{\"var\": \"attribute.distance\"}, 20]}\n    ]\n  ]\n}\n"
-          order: 1
-          computation: '1'
     CreateUsageMeterRequest:
       value:
         name: Rides
@@ -524,22 +534,20 @@ components:
         nextToken: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEwMCwgInNvcnRPcmRlciI6ICJhc2MifQ==
         context:
           pageSize: 10
+    UsageMeter:
+      value:
+        id: um.1zlQTBWlkeO.lB7fh
+        name: Rides
+        displayName: Rides
+        description: Cab rides
+        type: COUNTER
+        aggregation: COUNT
+        status: DRAFT
+        computations:
+        - matcher: "{\n  \"and\": [\n    {\"in\": [{\"var\": \"dimension.city\"}, \"chennai\", \"mumbai\"]},\n    \"or\": [\n      {\">\": [{\"var\": \"attribute.distance\"}, 100]},\n      {\"<\": [{\"var\": \"attribute.distance\"}, 20]}\n    ]\n  ]\n}\n"
+          order: 1
+          computation: '1'
   responses:
-    UsageMeterPaginatedResponse:
-      description: Response for list usage_meters request
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/UsageMeterPaginatedResponse'
-          examples:
-            UsageMeterPaginatedResponse:
-              $ref: '#/components/examples/UsageMeterPaginatedResponse'
-    BaseSuccessResponse:
-      description: OK
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/BaseSuccessResponse'
     ErrorResponse:
       description: Error response
       content:
@@ -551,6 +559,12 @@ components:
               summary: Error Message
               value:
                 message: <Reason message>
+    BaseSuccessResponse:
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/BaseSuccessResponse'
     UsageMeterResponse:
       description: Response for Create and Get usage event requests
       content:
@@ -560,29 +574,15 @@ components:
           examples:
             UsageMeter:
               $ref: '#/components/examples/UsageMeter'
-  parameters:
-    next_token:
-      in: query
-      name: nextToken
-      required: false
-      schema:
-        type: string
-        example: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEwMCwgInNvcnRPcmRlciI6ICJhc2MifQ==
-    usage_meter_id:
-      in: path
-      name: usage_meter_id
-      required: true
-      schema:
-        type: string
-        maxLength: 50
-        example: um.1zYnCiM9Bpg.1zYn
-    page_size:
-      in: query
-      name: pageSize
-      required: false
-      schema:
-        type: number
-        example: 10
+    UsageMeterPaginatedResponse:
+      description: Response for list usage_meters request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UsageMeterPaginatedResponse'
+          examples:
+            UsageMeterPaginatedResponse:
+              $ref: '#/components/examples/UsageMeterPaginatedResponse'
   securitySchemes:
     bearerAuth:
       type: http

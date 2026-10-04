@@ -141,17 +141,6 @@ paths:
           $ref: '#/components/responses/ErrorResponse'
 components:
   schemas:
-    PaginationOptions:
-      type: object
-      additionalProperties: false
-      properties:
-        pageSize:
-          type: integer
-        sortOrder:
-          type: string
-          enum:
-          - ASC
-          - DESC
     JobEntriesPaginatedResponse:
       type: object
       additionalProperties: false
@@ -193,28 +182,6 @@ components:
           type: object
           additionalProperties:
             type: string
-    JobsPaginatedResponse:
-      type: object
-      additionalProperties: false
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/JobsWithoutStatusInfoResponse'
-        nextToken:
-          type: string
-        context:
-          $ref: '#/components/schemas/PaginationOptions'
-    ErrorResponse:
-      type: object
-      additionalProperties: false
-      required:
-      - message
-      properties:
-        message:
-          type: string
-          description: error description
-          maxLength: 500
     GetJobResponse:
       type: object
       additionalProperties: false
@@ -287,18 +254,40 @@ components:
         updatedAt:
           type: string
           format: date-time
-  responses:
     ErrorResponse:
-      description: Error response
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          examples:
-            ErrorResponse:
-              summary: Error Message
-              value:
-                message: <Reason message>
+      type: object
+      additionalProperties: false
+      required:
+      - message
+      properties:
+        message:
+          type: string
+          description: error description
+          maxLength: 500
+    JobsPaginatedResponse:
+      type: object
+      additionalProperties: false
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/JobsWithoutStatusInfoResponse'
+        nextToken:
+          type: string
+        context:
+          $ref: '#/components/schemas/PaginationOptions'
+    PaginationOptions:
+      type: object
+      additionalProperties: false
+      properties:
+        pageSize:
+          type: integer
+        sortOrder:
+          type: string
+          enum:
+          - ASC
+          - DESC
+  responses:
     JobsPaginatedResponse:
       description: Response for list customers request
       content:
@@ -317,6 +306,17 @@ components:
           examples:
             GetJobResponse:
               $ref: '#/components/examples/GetJobResponse'
+    ErrorResponse:
+      description: Error response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            ErrorResponse:
+              summary: Error Message
+              value:
+                message: <Reason message>
     JobEntriesPaginatedResponse:
       description: Response for list job entries request
       content:
@@ -327,6 +327,14 @@ components:
             JobEntriesPaginatedResponse:
               $ref: '#/components/examples/JobEntriesPaginatedResponse'
   examples:
+    JobEntriesPaginatedResponse:
+      value:
+        data:
+        - entityId: inv.423535.afe325
+          jobId: job.20aUyEZSuYq.SoGbS
+          createdAt: '2080-10-04T00:00:00Z'
+          status: COMPLETED
+        nextToken: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEwMCwgInNvcnRPcmRlciI6ICJhc2MifQ==
     JobsPaginatedResponse:
       value:
         data:
@@ -337,14 +345,6 @@ components:
         nextToken: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEwMCwgInNvcnRPcmRlciI6ICJhc2MifQ==
         context:
           pageSize: 10
-    JobEntriesPaginatedResponse:
-      value:
-        data:
-        - entityId: inv.423535.afe325
-          jobId: job.20aUyEZSuYq.SoGbS
-          createdAt: '2080-10-04T00:00:00Z'
-          status: COMPLETED
-        nextToken: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEwMCwgInNvcnRPcmRlciI6ICJhc2MifQ==
     GetJobResponse:
       value:
         id: job.20aUyEZSuYq.SoGbS

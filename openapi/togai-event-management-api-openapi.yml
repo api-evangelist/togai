@@ -187,14 +187,6 @@ paths:
           $ref: '#/components/responses/ErrorResponse'
 components:
   parameters:
-    event_id:
-      in: path
-      name: event_id
-      required: true
-      schema:
-        type: string
-        maxLength: 50
-        example: f4a52f2d-b798-4e08-8b24-db0a5a468ba3
     filter_page_size:
       in: query
       description: "Maximum page size expected by client to return the record list. \n\n NOTE: Max page size cannot be more than 50. Also 50 is the default page size if no value is provided."
@@ -215,14 +207,6 @@ components:
           value: PROCESSED
         in_progress:
           value: IN_PROGRESS
-    filter_next_page_token:
-      in: query
-      description: Pagination token used as a marker to get records from next page.
-      name: nextToken
-      required: false
-      schema:
-        type: string
-        example: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEyMywgInNvcnRPcmRlciI6ICJhc2MifQ==
     require_confirmation:
       in: query
       name: require_confirmation
@@ -231,14 +215,14 @@ components:
       schema:
         type: boolean
         example: false
-    filter_schema_name:
-      in: query
-      description: Filter option to filter the events based on schema name.
-      name: schema_name
-      required: false
+    event_id:
+      in: path
+      name: event_id
+      required: true
       schema:
         type: string
-        example: Rides
+        maxLength: 50
+        example: f4a52f2d-b798-4e08-8b24-db0a5a468ba3
     filter_account_id:
       in: query
       description: Filter option to filter based on account id.
@@ -247,6 +231,22 @@ components:
       schema:
         type: string
         example: '1234'
+    filter_next_page_token:
+      in: query
+      description: Pagination token used as a marker to get records from next page.
+      name: nextToken
+      required: false
+      schema:
+        type: string
+        example: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEyMywgInNvcnRPcmRlciI6ICJhc2MifQ==
+    filter_schema_name:
+      in: query
+      description: Filter option to filter the events based on schema name.
+      name: schema_name
+      required: false
+      schema:
+        type: string
+        example: Rides
     event_correction_action:
       in: query
       description: Action to perform in event correction
@@ -260,6 +260,142 @@ components:
         - REDO_EVENT
         example: UNDO
   schemas:
+    Dimensions:
+      description: Dimensions are tags/labels associated with the events.
+      type: object
+      additionalProperties:
+        type: string
+        minLength: 1
+        maxLength: 200
+        example:
+          Country: India
+    IngestionStatus:
+      description: Status about the event ingestion.
+      type: object
+      additionalProperties: false
+      required:
+      - status
+      properties:
+        status:
+          type: string
+          description: Ingestion status
+          enum:
+          - INGESTION_IN_PROGRESS
+          - INGESTION_FAILED
+          - INGESTION_FAILED_SCHEMA_NOT_DEFINED
+          - INGESTION_FAILED_ENRICHMENT_FAILED
+          - INGESTION_FAILED_UNITS_INVALID
+          - INGESTION_COMPLETED_NO_MATCHING_METERS
+          - INGESTION_COMPLETED_EVENT_METERED
+          - INGESTION_COMPLETED_EVENT_NOT_METERED
+          - INGESTION_FAILED_PAST_GRACE_PERIOD
+          - INGESTION_FAILED_ACCOUNT_NOT_FOUND
+          - INGESTION_FAILED_DUPLICATE_EVENT
+          - INGESTION_FAILED_NO_EVENT_ID
+          - INGESTION_FAILED_INVALID_NAMED_LICENSE_EVENT
+          - INGESTION_FAILED_INSUFFICIENT_CREDITS
+          - REVERTED
+          - UNKNOWN
+          example: INGESTION_COMPLETED
+        statusDescription:
+          type: string
+          maxLength: 250
+          example: Ingestion Completed successfully
+    EventsCorrectionResponse:
+      description: Events Correction response
+      type: object
+      additionalProperties: false
+      required:
+      - data
+      properties:
+        data:
+          type: array
+          minItems: 1
+          maxItems: 50
+          items:
+            $ref: '#/components/schemas/EventCorrectionInfo'
+    ErrorResponse:
+      type: object
+      additionalProperties: false
+      required:
+      - message
+      properties:
+        message:
+          type: string
+          description: error description
+          maxLength: 500
+    EventCorrectionRequest:
+      description: Event Correction Payload for event correction
+      type: object
+      additionalProperties: false
+      properties:
+        event:
+          $ref: '#/components/schemas/Event'
+    EnrichmentDependency:
+      readOnly: true
+      description: enrichment dependency
+      type: object
+      additionalProperties: false
+      required:
+      - key
+      - type
+      - value
+      properties:
+        key:
+          type: string
+        type:
+          type: string
+          enum:
+          - SETTING
+        name:
+          type: string
+        value:
+          type: string
+    EventCorrectionInfo:
+      allOf:
+      - $ref: '#/components/schemas/EventWithStatus'
+      - type: object
+        additionalProperties: false
+        required:
+        - status
+        - reason
+        properties:
+          status:
+            type: string
+            description: Status of the event requested for correction
+            enum:
+            - REVERTED
+            - REVERTED_AND_REINGESTED
+            - FAILED
+          reason:
+            type: string
+            description: Status description of the event requested for correction
+    EventWithStatusAndEventPipelineInfo:
+      allOf:
+      - $ref: '#/components/schemas/EventWithStatus'
+      - type: object
+        additionalProperties: false
+        required:
+        - eventPipelineInfo
+        properties:
+          eventPipelineInfo:
+            $ref: '#/components/schemas/EventPipelineInfo'
+    EventSource:
+      description: Source of ingestion of event
+      type: object
+      additionalProperties: false
+      required:
+      - id
+      - type
+      properties:
+        id:
+          type: string
+          description: Unique identifier representing the source
+          maxLength: 100
+        type:
+          type: string
+          description: Type of source
+          maxLength: 100
     EventPipelineInfo:
       description: Information related to ingestion of an event
       type: object
@@ -412,174 +548,6 @@ components:
                 type: number
         statusBeforeReverting:
           type: string
-    EnrichmentDependency:
-      readOnly: true
-      description: enrichment dependency
-      type: object
-      additionalProperties: false
-      required:
-      - key
-      - type
-      - value
-      properties:
-        key:
-          type: string
-        type:
-          type: string
-          enum:
-          - SETTING
-        name:
-          type: string
-        value:
-          type: string
-    EnrichedField:
-      readOnly: true
-      description: enriched field
-      type: object
-      additionalProperties: false
-      required:
-      - name
-      - type
-      - value
-      properties:
-        name:
-          type: string
-        type:
-          type: string
-          enum:
-          - ATTRIBUTE
-          - DIMENSION
-        value:
-          type: string
-    Dimensions:
-      description: Dimensions are tags/labels associated with the events.
-      type: object
-      additionalProperties:
-        type: string
-        minLength: 1
-        maxLength: 200
-        example:
-          Country: India
-    IngestionStatus:
-      description: Status about the event ingestion.
-      type: object
-      additionalProperties: false
-      required:
-      - status
-      properties:
-        status:
-          type: string
-          description: Ingestion status
-          enum:
-          - INGESTION_IN_PROGRESS
-          - INGESTION_FAILED
-          - INGESTION_FAILED_SCHEMA_NOT_DEFINED
-          - INGESTION_FAILED_ENRICHMENT_FAILED
-          - INGESTION_FAILED_UNITS_INVALID
-          - INGESTION_COMPLETED_NO_MATCHING_METERS
-          - INGESTION_COMPLETED_EVENT_METERED
-          - INGESTION_COMPLETED_EVENT_NOT_METERED
-          - INGESTION_FAILED_PAST_GRACE_PERIOD
-          - INGESTION_FAILED_ACCOUNT_NOT_FOUND
-          - INGESTION_FAILED_DUPLICATE_EVENT
-          - INGESTION_FAILED_NO_EVENT_ID
-          - INGESTION_FAILED_INVALID_NAMED_LICENSE_EVENT
-          - INGESTION_FAILED_INSUFFICIENT_CREDITS
-          - REVERTED
-          - UNKNOWN
-          example: INGESTION_COMPLETED
-        statusDescription:
-          type: string
-          maxLength: 250
-          example: Ingestion Completed successfully
-    ErrorResponse:
-      type: object
-      additionalProperties: false
-      required:
-      - message
-      properties:
-        message:
-          type: string
-          description: error description
-          maxLength: 500
-    EventWithStatus:
-      description: Raw usage event ingested by the business team and the status of the event ingestion.
-      type: object
-      additionalProperties: false
-      required:
-      - referenceId
-      - eventPayload
-      - ingestionStatus
-      - createdAt
-      properties:
-        referenceId:
-          type: string
-          description: Unique id generated by Togai to identify an event uniquely
-        eventPayload:
-          $ref: '#/components/schemas/Event'
-        ingestionStatus:
-          $ref: '#/components/schemas/IngestionStatus'
-        customerId:
-          description: The associated account belongs to this customer
-          type: string
-          maxLength: 50
-          example: '1'
-        source:
-          $ref: '#/components/schemas/EventSource'
-        createdAt:
-          description: Created time stamp of the event. This timestamp must be in ISO 8601 format.
-          type: string
-          format: date-time
-          example: '2022-06-15T07:30:35.123'
-    EventCorrectionRequest:
-      description: Event Correction Payload for event correction
-      type: object
-      additionalProperties: false
-      properties:
-        event:
-          $ref: '#/components/schemas/Event'
-    GetEventsResponse:
-      description: Get batch events response
-      type: object
-      additionalProperties: false
-      required:
-      - events
-      properties:
-        events:
-          type: array
-          minItems: 1
-          maxItems: 50
-          items:
-            $ref: '#/components/schemas/EventWithStatus'
-        nextToken:
-          type: string
-          maxLength: 500
-          example: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEyMywgInNvcnRPcmRlciI6ICJhc2MifQ==
-    Attribute:
-      description: Metric to be recorded
-      type: object
-      additionalProperties: false
-      required:
-      - name
-      - value
-      properties:
-        name:
-          description: Name of the event attribute
-          type: string
-          minLength: 1
-          maxLength: 50
-          example: message
-        value:
-          description: Value of the event attribute
-          type: string
-          pattern: ^-?\d{1,512}(\.\d+)?$
-          example: 100
-        unit:
-          description: Unit with which the attribute value was measured. Natively supported units - "Meters, Miles, Kilometers, Grams, Kilograms, ounces, Pounds, Minutes, Hours, Seconds, Milliseconds, Microseconds, None". Clients are free to add any other custom units.
-          type: string
-          minLength: 1
-          maxLength: 50
-          example: characters
     Event:
       description: Contents of the event
       type: object
@@ -620,45 +588,6 @@ components:
             $ref: '#/components/schemas/Attribute'
         dimensions:
           $ref: '#/components/schemas/Dimensions'
-    EventWithStatusAndEventPipelineInfo:
-      allOf:
-      - $ref: '#/components/schemas/EventWithStatus'
-      - type: object
-        additionalProperties: false
-        required:
-        - eventPipelineInfo
-        properties:
-          eventPipelineInfo:
-            $ref: '#/components/schemas/EventPipelineInfo'
-    EventSource:
-      description: Source of ingestion of event
-      type: object
-      additionalProperties: false
-      required:
-      - id
-      - type
-      properties:
-        id:
-          type: string
-          description: Unique identifier representing the source
-          maxLength: 100
-        type:
-          type: string
-          description: Type of source
-          maxLength: 100
-    EventsCorrectionResponse:
-      description: Events Correction response
-      type: object
-      additionalProperties: false
-      required:
-      - data
-      properties:
-        data:
-          type: array
-          minItems: 1
-          maxItems: 50
-          items:
-            $ref: '#/components/schemas/EventCorrectionInfo'
     GetEventResponse:
       description: Get single event response
       type: object
@@ -670,26 +599,155 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/EventWithStatusAndEventPipelineInfo'
-    EventCorrectionInfo:
-      allOf:
-      - $ref: '#/components/schemas/EventWithStatus'
-      - type: object
-        additionalProperties: false
-        required:
-        - status
-        - reason
-        properties:
-          status:
-            type: string
-            description: Status of the event requested for correction
-            enum:
-            - REVERTED
-            - REVERTED_AND_REINGESTED
-            - FAILED
-          reason:
-            type: string
-            description: Status description of the event requested for correction
+    Attribute:
+      description: Metric to be recorded
+      type: object
+      additionalProperties: false
+      required:
+      - name
+      - value
+      properties:
+        name:
+          description: Name of the event attribute
+          type: string
+          minLength: 1
+          maxLength: 50
+          example: message
+        value:
+          description: Value of the event attribute
+          type: string
+          pattern: ^-?\d{1,512}(\.\d+)?$
+          example: 100
+        unit:
+          description: Unit with which the attribute value was measured. Natively supported units - "Meters, Miles, Kilometers, Grams, Kilograms, ounces, Pounds, Minutes, Hours, Seconds, Milliseconds, Microseconds, None". Clients are free to add any other custom units.
+          type: string
+          minLength: 1
+          maxLength: 50
+          example: characters
+    GetEventsResponse:
+      description: Get batch events response
+      type: object
+      additionalProperties: false
+      required:
+      - events
+      properties:
+        events:
+          type: array
+          minItems: 1
+          maxItems: 50
+          items:
+            $ref: '#/components/schemas/EventWithStatus'
+        nextToken:
+          type: string
+          maxLength: 500
+          example: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEyMywgInNvcnRPcmRlciI6ICJhc2MifQ==
+    EventWithStatus:
+      description: Raw usage event ingested by the business team and the status of the event ingestion.
+      type: object
+      additionalProperties: false
+      required:
+      - referenceId
+      - eventPayload
+      - ingestionStatus
+      - createdAt
+      properties:
+        referenceId:
+          type: string
+          description: Unique id generated by Togai to identify an event uniquely
+        eventPayload:
+          $ref: '#/components/schemas/Event'
+        ingestionStatus:
+          $ref: '#/components/schemas/IngestionStatus'
+        customerId:
+          description: The associated account belongs to this customer
+          type: string
+          maxLength: 50
+          example: '1'
+        source:
+          $ref: '#/components/schemas/EventSource'
+        createdAt:
+          description: Created time stamp of the event. This timestamp must be in ISO 8601 format.
+          type: string
+          format: date-time
+          example: '2022-06-15T07:30:35.123'
+    EnrichedField:
+      readOnly: true
+      description: enriched field
+      type: object
+      additionalProperties: false
+      required:
+      - name
+      - type
+      - value
+      properties:
+        name:
+          type: string
+        type:
+          type: string
+          enum:
+          - ATTRIBUTE
+          - DIMENSION
+        value:
+          type: string
+  requestBodies:
+    EventCorrectionRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/EventCorrectionRequest'
   examples:
+    EventsCorrectionResponse:
+      summary: Example Event Correction Response
+      value:
+        data:
+        - referenceId: event.21OpEx4DHQu.CZlyh
+          eventPayload:
+            timestamp: '2023-02-23T14:25:10Z'
+            schemaName: travelCompletedEvent
+            id: c0b1306d-f506-43a6-856b-69221efaee6b
+            accountId: '1'
+            attributes:
+            - name: distanceTravelled
+              value: '50'
+              unit: Miles
+            - name: timeSpent
+              value: '60'
+              unit: Minutes
+            dimensions:
+              location: Seattle
+              costCenterCode: '1234'
+              travelType: Business
+          ingestionStatus:
+            status: INGESTION_COMPLETED_EVENT_NOT_METERED
+            statusDescription: Event ingestion completed successfully but the event is not associated with any bill plan.
+          customerId: CUS0001
+          source:
+            id: ENTITLED
+            type: ENTITLED
+          createdAt: '2023-02-23T14:25:10Z'
+          status: REVERTED
+          reason: Event Reverted
+        - referenceId: event.23OrTx4FGQu.XVpzf
+          eventPayload:
+            timestamp: '2023-02-23T14:25:10Z'
+            schemaName: smsSentEvent
+            id: sdvb325j-f506-43a6-856b-69221efaee6b
+            accountId: '1'
+            attributes:
+            - name: smsCount
+              value: '50'
+              unit: count
+            dimensions: {}
+          ingestionStatus:
+            status: INGESTION_COMPLETED_EVENT_NOT_METERED
+            statusDescription: Event ingestion completed successfully but the event is not associated with any bill plan.
+          customerId: CUS0001
+          source:
+            id: ''
+            type: ''
+          createdAt: '2023-01-01T14:25:10Z'
+          status: FAILED
+          reason: Event was ingested in past pricing cycle
     GetEventsResponse:
       summary: Example Get Batch Event Response
       value:
@@ -785,58 +843,6 @@ components:
             status: INGESTION_COMPLETED_EVENT_NOT_METERED
             statusDescription: Event ingestion completed successfully but the event is not associated with any bill plan.
           createdAt: '2021-03-04T14:25:10Z'
-    EventsCorrectionResponse:
-      summary: Example Event Correction Response
-      value:
-        data:
-        - referenceId: event.21OpEx4DHQu.CZlyh
-          eventPayload:
-            timestamp: '2023-02-23T14:25:10Z'
-            schemaName: travelCompletedEvent
-            id: c0b1306d-f506-43a6-856b-69221efaee6b
-            accountId: '1'
-            attributes:
-            - name: distanceTravelled
-              value: '50'
-              unit: Miles
-            - name: timeSpent
-              value: '60'
-              unit: Minutes
-            dimensions:
-              location: Seattle
-              costCenterCode: '1234'
-              travelType: Business
-          ingestionStatus:
-            status: INGESTION_COMPLETED_EVENT_NOT_METERED
-            statusDescription: Event ingestion completed successfully but the event is not associated with any bill plan.
-          customerId: CUS0001
-          source:
-            id: ENTITLED
-            type: ENTITLED
-          createdAt: '2023-02-23T14:25:10Z'
-          status: REVERTED
-          reason: Event Reverted
-        - referenceId: event.23OrTx4FGQu.XVpzf
-          eventPayload:
-            timestamp: '2023-02-23T14:25:10Z'
-            schemaName: smsSentEvent
-            id: sdvb325j-f506-43a6-856b-69221efaee6b
-            accountId: '1'
-            attributes:
-            - name: smsCount
-              value: '50'
-              unit: count
-            dimensions: {}
-          ingestionStatus:
-            status: INGESTION_COMPLETED_EVENT_NOT_METERED
-            statusDescription: Event ingestion completed successfully but the event is not associated with any bill plan.
-          customerId: CUS0001
-          source:
-            id: ''
-            type: ''
-          createdAt: '2023-01-01T14:25:10Z'
-          status: FAILED
-          reason: Event was ingested in past pricing cycle
   responses:
     ErrorResponse:
       description: Error response
@@ -849,12 +855,6 @@ components:
               summary: Error Message
               value:
                 message: <Reason message>
-  requestBodies:
-    EventCorrectionRequest:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/EventCorrectionRequest'
   securitySchemes:
     bearerAuth:
       type: http

@@ -137,43 +137,6 @@ components:
         type: string
         maxLength: 50
         example: ACC00001
-  examples:
-    UpdateWalletRequest:
-      summary: A Sample for UpdateWalletRequest
-      value:
-        effectiveFrom: '2023-02-04T00:00:00Z'
-        status: ACTIVE
-    WalletEntriesPaginatedResponse:
-      summary: A Sample for CreditBalanceResponse
-      value:
-        data:
-        - id: wallet.q3df.1241
-          description: payment
-          walletId: cred.1234.2342
-          transactionType: CREDITED
-          entityId: inv.wrwerw.4234e
-          amount: 500
-          createdAt: '2023-11-07T05:31:56Z'
-          closingBalance: 500
-    WalletBalanceResponse:
-      summary: A Sample for WalletBalanceResponse
-      value:
-        id: wallet.1223.sf23f
-        accountId: ACC001
-        customerId: CUST001
-        balance: 500
-        creditUnit: USD
-        externalId: ext_id_123
-        status: ACTIVE
-        holdAmount: 500
-        createdAt: '2023-12-13T12:00:00Z'
-        updatedAt: '2023-12-13T12:00:00Z'
-        metadata:
-          autoNetOff: false
-    TopupWalletRequest:
-      summary: A Sample for TopupWalletRequest
-      value:
-        topupAmount: 50
   responses:
     WalletEntriesPaginatedResponse:
       description: Response for Credit Balance Request
@@ -184,15 +147,6 @@ components:
           examples:
             CreditBalanceResponse:
               $ref: '#/components/examples/WalletEntriesPaginatedResponse'
-    WalletBalanceResponse:
-      description: Response for Credit Balance Request
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/WalletBalanceResponse'
-          examples:
-            WalletBalanceResponse:
-              $ref: '#/components/examples/WalletBalanceResponse'
     ErrorResponse:
       description: Error response
       content:
@@ -204,7 +158,40 @@ components:
               summary: Error Message
               value:
                 message: <Reason message>
+    WalletBalanceResponse:
+      description: Response for Credit Balance Request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/WalletBalanceResponse'
+          examples:
+            WalletBalanceResponse:
+              $ref: '#/components/examples/WalletBalanceResponse'
   schemas:
+    TopupWalletRequest:
+      type: object
+      description: Payload to topup wallet of an account
+      additionalProperties: false
+      required:
+      - topupAmount
+      properties:
+        topupAmount:
+          type: number
+    ErrorResponse:
+      type: object
+      additionalProperties: false
+      required:
+      - message
+      properties:
+        message:
+          type: string
+          description: error description
+          maxLength: 500
+    WalletStatus:
+      type: string
+      enum:
+      - ACTIVE
+      - INACTIVE
     WalletEntry:
       type: object
       additionalProperties: false
@@ -250,40 +237,6 @@ components:
         closingBalance:
           type: number
           example: 200
-    ErrorResponse:
-      type: object
-      additionalProperties: false
-      required:
-      - message
-      properties:
-        message:
-          type: string
-          description: error description
-          maxLength: 500
-    WalletStatus:
-      type: string
-      enum:
-      - ACTIVE
-      - INACTIVE
-    UpdateWalletRequest:
-      type: object
-      description: Payload to update wallet of an account
-      additionalProperties: false
-      properties:
-        effectiveFrom:
-          type: string
-          format: date-time
-        status:
-          $ref: '#/components/schemas/WalletStatus'
-    TopupWalletRequest:
-      type: object
-      description: Payload to topup wallet of an account
-      additionalProperties: false
-      required:
-      - topupAmount
-      properties:
-        topupAmount:
-          type: number
     WalletEntriesPaginatedResponse:
       description: List wallet entries response
       type: object
@@ -352,6 +305,53 @@ components:
         metadata:
           type: object
           additionalProperties: true
+    UpdateWalletRequest:
+      type: object
+      description: Payload to update wallet of an account
+      additionalProperties: false
+      properties:
+        effectiveFrom:
+          type: string
+          format: date-time
+        status:
+          $ref: '#/components/schemas/WalletStatus'
+  examples:
+    WalletBalanceResponse:
+      summary: A Sample for WalletBalanceResponse
+      value:
+        id: wallet.1223.sf23f
+        accountId: ACC001
+        customerId: CUST001
+        balance: 500
+        creditUnit: USD
+        externalId: ext_id_123
+        status: ACTIVE
+        holdAmount: 500
+        createdAt: '2023-12-13T12:00:00Z'
+        updatedAt: '2023-12-13T12:00:00Z'
+        metadata:
+          autoNetOff: false
+    WalletEntriesPaginatedResponse:
+      summary: A Sample for CreditBalanceResponse
+      value:
+        data:
+        - id: wallet.q3df.1241
+          description: payment
+          walletId: cred.1234.2342
+          transactionType: CREDITED
+          entityId: inv.wrwerw.4234e
+          amount: 500
+          createdAt: '2023-11-07T05:31:56Z'
+          closingBalance: 500
+    TopupWalletRequest:
+      summary: A Sample for TopupWalletRequest
+      value:
+        topupAmount: 50
+    UpdateWalletRequest:
+      summary: A Sample for UpdateWalletRequest
+      value:
+        effectiveFrom: '2023-02-04T00:00:00Z'
+        status: ACTIVE
   requestBodies:
     UpdateWalletRequest:
       description: Payload to update wallet of an account

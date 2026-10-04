@@ -44,184 +44,35 @@ paths:
         default:
           $ref: '#/components/responses/ErrorResponse'
 components:
+  requestBodies:
+    CalculateRevenueRequest:
+      description: Request payload for calculateRevenueAPI
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CalculateRevenueRequest'
+          examples:
+            FirstCalculateRevenueRequestExample:
+              $ref: '#/components/examples/FirstCalculateRevenueRequestExample'
+            SecondCalculateRevenueRequestExample:
+              $ref: '#/components/examples/SecondCalculateRevenueRequestExample'
+            ThirdCalculateRevenueRequestExample:
+              $ref: '#/components/examples/ThirdCalculateRevenueRequestExample'
   schemas:
-    CreditGrantType:
-      type: string
-      enum:
-      - ONE_TIME
-      - RECURRING
-      description: Credit grant applies either for a one-time occurrence or for each cycle.
-    FixedFeeType:
-      type: string
-      enum:
-      - ONE_TIME
-      - RECURRING
-      description: Fixed fee applies either for a one-time occurrence or for each cycle.
-    AddOnType:
-      type: string
-      enum:
-      - LICENSE
-      - FIXED_FEE
-      - CREDIT_GRANT
-      - NAMED_LICENSE
-      description: 'LICENSE: Addon can be used in license rate cards
-
-        FIXED_FEE: Addon can be used in fixed fee rate cards
-
-        CREDIT_GRANT: Addon can be used in credit grant rate cards
-
-        NAMED_LICENSE: Addon can be used in license rate cards
-
-        '
-    PriceType:
-      type: string
-      enum:
-      - FLAT
-      - PER_UNIT
-      - PACKAGE
-    EntitlementOverageRateCard:
-      type: object
-      required:
-      - ratePlan
-      - rateValues
-      - featureId
-      properties:
-        featureId:
-          type: string
-          description: Unique Identifier of the attached Feature
-          maxLength: 50
-        displayName:
-          type: string
-          description: Name to be displayed during invoice
-        tag:
-          type: string
-          description: A tag string to group rate cards
-        maxQuantity:
-          type: number
-          description: Maximum quantity allowed for the feature, if not specified, unlimited quantity is allowed
-        ratePlan:
-          $ref: '#/components/schemas/RatePlan'
-        rateValues:
-          type: array
-          items:
-            $ref: '#/components/schemas/RateValue'
-        billingConfig:
-          $ref: '#/components/schemas/BillingConfig'
-          description: Represents the billing config of the entitlement overage rate card. If not specified interval:1 and startOffset:0 is taken as default value
-    RateValue:
-      type: object
-      description: Represents a rate
-      required:
-      - currency
-      - slabRates
-      properties:
-        currency:
-          type: string
-        slabRates:
-          type: array
-          minItems: 1
-          items:
-            $ref: '#/components/schemas/SlabRate'
-        rateConfig:
-          type: object
-          additionalProperties:
-            type: string
-    BillingConfig:
+    RecurrenceConfig:
       type: object
       properties:
         interval:
-          description: Represents the number of pricing cycles after which the rate card will be billed
+          description: Represents the number of pricing cycles after which the rate card will be charged
           type: integer
           format: int64
           example: 3
-        startOffset:
-          description: Represents the offset for pricing cycles after which the rate card will be billed
+        offset:
+          description: Represents the offset for pricing cycles after which the rate card will be charged
           type: integer
           format: int64
           example: 5
-    PricePlanDetails:
-      type: object
-      required:
-      - supportedCurrencies
-      - activeCurrencies
-      properties:
-        supportedCurrencies:
-          type: array
-          uniqueItems: true
-          items:
-            type: string
-        activeCurrencies:
-          type: array
-          uniqueItems: true
-          readOnly: true
-          items:
-            type: string
-        pricingCycleConfig:
-          $ref: '#/components/schemas/PricingCycleConfig'
-        usageRateCards:
-          type: array
-          items:
-            $ref: '#/components/schemas/UsageRateCard'
-        fixedFeeRateCards:
-          type: array
-          items:
-            $ref: '#/components/schemas/FixedFeeRateCard'
-        licenseRateCards:
-          type: array
-          items:
-            $ref: '#/components/schemas/LicenseRateCard'
-        billingEntitlementRateCards:
-          type: array
-          items:
-            $ref: '#/components/schemas/BillingEntitlementRateCard'
-        entitlementOverageRateCards:
-          type: array
-          items:
-            $ref: '#/components/schemas/EntitlementOverageRateCard'
-        minimumCommitment:
-          $ref: '#/components/schemas/MinimumCommitment'
-        creditGrantRateCards:
-          type: array
-          items:
-            $ref: '#/components/schemas/CreditGrantRateCard'
-        type:
-          $ref: '#/components/schemas/PricePlanType'
-        deferredRevenue:
-          type: boolean
-    BillingEntitlementRateCard:
-      description: Billing Entitlement rate card
-      type: object
-      additionalProperties: false
-      required:
-      - featureId
-      - featureConfigs
-      - ratePlan
-      - rateValues
-      - invoiceTiming
-      properties:
-        featureId:
-          type: string
-        featureConfigs:
-          type: array
-          minItems: 1
-          items:
-            $ref: '#/components/schemas/FeatureConfig'
-        tag:
-          type: string
-          description: A tag string to group rate cards
-        invoiceTiming:
-          $ref: '#/components/schemas/InvoiceTiming'
-        displayName:
-          type: string
-          description: Name your rate card, this will be used in invoice
-        ratePlan:
-          $ref: '#/components/schemas/RatePlan'
-        rateValues:
-          type: array
-          items:
-            $ref: '#/components/schemas/RateValue'
-        recurrenceConfig:
-          $ref: '#/components/schemas/RecurrenceConfig'
     MinimumCommitment:
       title: MinimumCommitment
       type: object
@@ -236,26 +87,6 @@ components:
           minItems: 1
           items:
             $ref: '#/components/schemas/CurrencyRateValue'
-    GrantDetails:
-      description: Grant details of Credit Grant Rate Card
-      type: object
-      additionalProperties: false
-      required:
-      - priority
-      - expiryType
-      properties:
-        priority:
-          type: integer
-          minimum: 0
-        expiryType:
-          $ref: '#/components/schemas/ExpiryType'
-        expiryDuration:
-          type: string
-          format: duration
-        applicableEntityIds:
-          type: array
-          items:
-            type: string
     SlabRate:
       type: object
       description: Represents a rate for a slab
@@ -272,21 +103,6 @@ components:
           type: object
           additionalProperties:
             type: string
-    RatePlan:
-      type: object
-      description: Contains all rate related configurations
-      required:
-      - pricingModel
-      - slabs
-      properties:
-        pricingModel:
-          $ref: '#/components/schemas/PricingModel'
-        slabs:
-          description: Rate cards can have single or multiple slab up to 100.
-          type: array
-          minItems: 1
-          items:
-            $ref: '#/components/schemas/Slab'
     CalculateRevenueResponse:
       type: object
       additionalProperties: false
@@ -383,205 +199,6 @@ components:
                 type: array
                 items:
                   $ref: '#/components/schemas/SlabRevenueSummary'
-    PricingCycleInterval:
-      type: string
-      description: Interval field allow you to define the billing interval you would like to set
-      enum:
-      - WEEKLY
-      - MONTHLY
-      - QUARTERLY
-      - HALF_YEARLY
-      - ANNUALLY
-    RecurrenceConfig:
-      type: object
-      properties:
-        interval:
-          description: Represents the number of pricing cycles after which the rate card will be charged
-          type: integer
-          format: int64
-          example: 3
-        offset:
-          description: Represents the offset for pricing cycles after which the rate card will be charged
-          type: integer
-          format: int64
-          example: 5
-    CreditRateDetails:
-      type: object
-      description: Amount to be credited
-      additionalProperties: false
-      required:
-      - pricingModel
-      - currencySlabRateDetails
-      properties:
-        pricingModel:
-          $ref: '#/components/schemas/PricingModel'
-        currencySlabRateDetails:
-          type: array
-          items:
-            $ref: '#/components/schemas/CurrencySlabRateDetail'
-    FeatureConfig:
-      description: Feature configuration object
-      type: object
-      additionalProperties: false
-      required:
-      - effectiveUntil
-      - featureCreditLimit
-      properties:
-        effectiveFrom:
-          type: string
-          format: duration
-        effectiveUntil:
-          type: string
-          format: duration
-        featureCreditLimit:
-          type: number
-          minimum: 0
-    UsageRateCard:
-      type: object
-      required:
-      - usageMeterId
-      - ratePlan
-      - rateValues
-      properties:
-        displayName:
-          type: string
-          description: Name your rate card, this will be displayed in the Togai App
-        tag:
-          type: string
-          description: A tag string to group usageRateCards
-        usageMeterId:
-          type: string
-          example: um.1zYnCiM9Bpg.1zYn
-        ratePlan:
-          $ref: '#/components/schemas/RatePlan'
-        rateValues:
-          type: array
-          items:
-            $ref: '#/components/schemas/RateValue'
-    PricingCycleConfig:
-      type: object
-      description: Represents configurations related to pricing cycle
-      required:
-      - interval
-      - gracePeriod
-      properties:
-        interval:
-          $ref: '#/components/schemas/PricingCycleInterval'
-        startOffset:
-          type: object
-          description: "Represents the start of pricing cycle in terms of\n - dayOffset - number of days from beginning of week / month and\n - monthOffset - number of months from beginning of interval (quarter, half-year or year)\nNote: If a day with offset doesn't exist for a month, closest previous day is considered\nExamples:\nWEEKLY -\n  - {dayOffset: 1, monthOffset: NIL} - First day of every week (Monday)\n  - {dayOffset: 3, monthOffset: NIL} - 3rd day of every week (Wednesday)\n  - {dayOffset: LAST, monthOffset: NIL} - Last day of every week (Sunday)\nMONTHLY -\n  - {dayOffset: 1, monthOffset: NIL} - First day of every month\n  - {dayOffset: 12, monthOffset: NIL} - 12th of every month\n  - {dayOffset: 28, monthOffset: NIL} - 28th of every month. i.e, 28th of Jan, 28th of Feb, ...\n  - {dayOffset: 30, monthOffset: NIL} - 30th of every month. i.e, 28th of Jan, 28th of Feb, ...\n  - {dayOffset: LAST, monthOffset: NIL} - Last day of every month. i.e, 31st of Jan, 28th of Feb, ...\nQUARTERLY\n  - {dayOffset: 15, monthOffset: FIRST} - 15th Jan, 15th Apr, 15th Jul and 15th Oct\n  - {dayOffset: 15, monthOffset: 2} - 15th Feb, 15th May, 15th Aug and 15th Nov\n  - {dayOffset: 15, monthOffset: LAST} - 15th Mar, 15th Jun, 15th Sep and 15th Dec\n  - {dayOffset: LAST, monthOffset: FIRST} - 31st Jan, 30th Apr, 30th Jul and 31th Oct\nHALF_YEARLY\n  - {dayOffset: 15, monthOffset: FIRST} - 15th Jan and 15th Jul\n  - {dayOffset: 15, monthOffset: 4} - 15th Apr and 15th Oct\n  - {dayOffset: 15, monthOffset: LAST} - 15th Jun and 15th Dec\nANNUALLY\n  - {dayOffset: 15, monthOffset: FIRST} - 15th Jan\n  - {dayOffset: 15, monthOffset: 1} - 15th Jan\n  - {dayOffset: LAST, monthOffset: 2} - 29th Feb on Leap year, 28th otherwise \n  - {dayOffset: 15, monthOffset: 8} - 15th Aug\n  - {dayOffset: 15, monthOffset: LAST} - 15th Dec\n"
-          required:
-          - dayOffset
-          - monthOffset
-          properties:
-            dayOffset:
-              type: string
-              description: 'If interval is WEEKLY, min: "1" and max: "7" as strings. Spl. string allowed: LAST
-
-                Otherwise, min: "1" and max: "31" as strings. Spl. string allowed: LAST
-
-                '
-            monthOffset:
-              type: string
-              description: 'min: "1" and max: "12". Spl. string allowed: FIRST / LAST.
-
-                For QUARTERLY only 1 - 3 is allowed and for HALF_YEARLY 1 - 6. This being an optional field, shouldn''t be passed for MONTHLY.
-
-                '
-        gracePeriod:
-          type: integer
-          description: "Togai allows you to ingest past dated events that will be processed by a pricing cycle till the end grace period. \nFor example: Pricing cycle is Monthly from 1st to 30th and gracePeriod is 5 days which next month 1 to 5th date, you can ingest past dated events during this grace period.\n"
-          format: int32
-          example: 3
-        anniversaryCycle:
-          type: boolean
-          description: "Togai calculates the startOffsets based on the date of association instead of requiring from the user and \nthese offsets will be applied as an override if this flag is enabled.\nExamples:\nWEEKLY -\n  - 23/10/2023 (Monday) - {dayOffset: 1, monthOffset: NIL} \n  - 25/10/2023 (Wednesday) - {dayOffset: 3, monthOffset: NIL} \n  - 29/10/2023 (Sunday) - {dayOffset: 7, monthOffset: NIL}\nMONTHLY -\n  - 1st Oct - {dayOffset: 1, monthOffset: NIL}\n  - 12th Oct - {dayOffset: 12, monthOffset: NIL}\n  - 28th Oct - {dayOffset: 28, monthOffset: NIL}\n  - 30th Oct - {dayOffset: 30, monthOffset: NIL}\n  - 31th Oct - {dayOffset: LAST, monthOffset: NIL}\nQUARTERLY\n  - 15th Jan, 15th Apr, 15th Jul and 15th Oct - {dayOffset: 15, monthOffset: 1}\n  - 15th Feb, 15th May, 15th Aug and 15th Nov - {dayOffset: 15, monthOffset: 2} \n  - 15th Mar, 15th Jun, 15th Sep and 15th Dec - {dayOffset: 15, monthOffset: 3}\nHALF_YEARLY\n  - 15th Jan and 15th Jul - {dayOffset: 15, monthOffset: 1} \n  - 15th Apr and 15th Oct - {dayOffset: 15, monthOffset: 4} \n  - 15th Jun and 15th Dec - {dayOffset: 15, monthOffset: 6}\nANNUALLY\n  - 15th Jan - {dayOffset: 15, monthOffset: 1}\n  - 29th Feb on Leap year  - {dayOffset: LAST, monthOffset: 2}\n  - 28th Feb  - {dayOffset: LAST, monthOffset: 2}\n  - 15th Aug - {dayOffset: 15, monthOffset: 8}\n  - 15th Dec - {dayOffset: 15, monthOffset: 12}\n"
-    ErrorResponse:
-      type: object
-      additionalProperties: false
-      required:
-      - message
-      properties:
-        message:
-          type: string
-          description: error description
-          maxLength: 500
-    CurrencySlabRateDetail:
-      type: object
-      description: The association of a currency along with its slab detail
-      additionalProperties: false
-      required:
-      - currency
-      - creditAmount
-      - slabDetails
-      properties:
-        currency:
-          type: string
-        creditAmount:
-          type: number
-          description: The amount of credit that needs to be credited
-          minimum: 0
-        slabDetails:
-          type: array
-          items:
-            $ref: '#/components/schemas/SlabDetail'
-        rateConfig:
-          type: object
-          additionalProperties:
-            type: string
-    MaxQuantityBreachAction:
-      type: string
-      enum:
-      - DO_NOTHING
-      description: "Action to be taken when the license maxQuantity is breached: \n- `DO_NOTHING`: Refrain from granting any new licenses.\n"
-    InvoiceTiming:
-      type: string
-      enum:
-      - IN_ADVANCE
-      - IN_ARREARS
-      - PREPAID
-      x-enum-varnames:
-      - IN_ADVANCE
-      - IN_ARREARS
-      - PREPAID
-      description: 'If IN_ADVANCE, the rate card will be invoiced in the previous billing cycle.
-
-        If IN_ARREARS, the rate card will be invoiced in the current billing cycle.
-
-        If PREPAID, credits/entitlements will be granted only after invoice is paid
-
-        '
-    FixedFeeRateCard:
-      title: FixedFeeRateCard
-      type: object
-      required:
-      - id
-      - rateValues
-      - enableProration
-      properties:
-        id:
-          description: Unique Identifier of the attached AddOn
-          type: string
-          maxLength: 50
-        displayName:
-          type: string
-          description: Name of the attached AddOn
-        tag:
-          type: string
-          description: A tag string to group fixedFeeRateCards
-        invoiceTiming:
-          $ref: '#/components/schemas/InvoiceTiming'
-        type:
-          $ref: '#/components/schemas/FixedFeeType'
-        rateValues:
-          type: array
-          items:
-            $ref: '#/components/schemas/CurrencyRateValue'
-        enableProration:
-          type: boolean
-          example: false
-        recurrenceConfig:
-          $ref: '#/components/schemas/RecurrenceConfig'
     SlabRevenueSummary:
       type: object
       additionalProperties: false
@@ -607,106 +224,6 @@ components:
               type: boolean
             packageQuantity:
               type: integer
-    CreditGrantRateCard:
-      description: Credit grant rate card
-      type: object
-      additionalProperties: false
-      required:
-      - id
-      - rateDetails
-      - grantDetails
-      properties:
-        id:
-          type: string
-        displayName:
-          type: string
-        tag:
-          type: string
-          description: A tag string to group creditGrantRateCard
-        grantDetails:
-          $ref: '#/components/schemas/GrantDetails'
-        rateDetails:
-          $ref: '#/components/schemas/CreditRateDetails'
-        invoiceTiming:
-          $ref: '#/components/schemas/InvoiceTiming'
-        type:
-          $ref: '#/components/schemas/CreditGrantType'
-        recurrenceConfig:
-          $ref: '#/components/schemas/RecurrenceConfig'
-    CurrencyRateValue:
-      type: object
-      required:
-      - currency
-      - rate
-      properties:
-        currency:
-          type: string
-        rate:
-          type: number
-    SlabDetail:
-      type: object
-      description: The details of a slab
-      additionalProperties: false
-      required:
-      - startAfter
-      - priceType
-      - rate
-      properties:
-        startAfter:
-          type: number
-        priceType:
-          $ref: '#/components/schemas/PriceType'
-        slabConfig:
-          type: object
-          additionalProperties:
-            type: string
-        rate:
-          type: number
-        slabRateConfig:
-          type: object
-          additionalProperties:
-            type: string
-    ExpiryType:
-      type: string
-      description: Expiry type of grant
-      enum:
-      - PRICING_CYCLE
-      - NO_EXPIRY
-      - CUSTOM
-    Slab:
-      type: object
-      description: Represents a pricing priceType (rates + slabs) for usage price plan
-      required:
-      - order
-      - startAfter
-      - priceType
-      properties:
-        order:
-          type: integer
-          format: int32
-          minimum: 1
-          maximum: 10
-        startAfter:
-          type: number
-        priceType:
-          $ref: '#/components/schemas/PriceType'
-        slabConfig:
-          type: object
-          additionalProperties:
-            type: string
-    PricingModel:
-      type: string
-      description: "Togai supports two type of pricing model Tiered and Volume. Tiered pricing model applies respective slab and its rate to the usage value while volume pricing model applies the latest matching slab of the usage value and applies respective rate. \nFor more understanding read [Rate Cards](https://docs.togai.com/docs/priceplan#setting-up-multiple-rate-cards)\n"
-      enum:
-      - TIERED
-      - VOLUME
-    ProratedRefundMode:
-      type: string
-      enum:
-      - NONE
-      - CREDITS
-      - PAYMENT
-      - WALLET
     LicenseRateCard:
       title: LicenseRateCard
       type: object
@@ -745,21 +262,222 @@ components:
             $ref: '#/components/schemas/RateValue'
         proratedRefundMode:
           $ref: '#/components/schemas/ProratedRefundMode'
-    UsageCycleInterval:
+    PricingModel:
       type: string
-      description: "UsageCycleInterval field allows you to treat the billing interval as many smaller windows. Revenue is calculated for\neach of the windows (usage cycles) and their sum is considered as the billing interval revenue.\nExample: 1 Named License being used across entire billing interval. Rate Value: $1/license\nCASE 1: Without usage cycle. $1 is charged for the entire billing cycle.\nCASE 2: Usage cycle is configure to be WEEKLY and the billing interval has 4 weeks. In this case $1 is charged \nfor each week totalling to $4 across for the billing interval\n"
+      description: "Togai supports two type of pricing model Tiered and Volume. Tiered pricing model applies respective slab and its rate to the usage value while volume pricing model applies the latest matching slab of the usage value and applies respective rate. \nFor more understanding read [Rate Cards](https://docs.togai.com/docs/priceplan#setting-up-multiple-rate-cards)\n"
       enum:
-      - WEEKLY
-      - MONTHLY
-      - QUARTERLY
-      - HALF_YEARLY
-      - ANNUALLY
-    PricePlanType:
+      - TIERED
+      - VOLUME
+    InvoiceTiming:
       type: string
-      description: Type of price plan
       enum:
-      - BILLING
-      - PURCHASE
+      - IN_ADVANCE
+      - IN_ARREARS
+      - PREPAID
+      x-enum-varnames:
+      - IN_ADVANCE
+      - IN_ARREARS
+      - PREPAID
+      description: 'If IN_ADVANCE, the rate card will be invoiced in the previous billing cycle.
+
+        If IN_ARREARS, the rate card will be invoiced in the current billing cycle.
+
+        If PREPAID, credits/entitlements will be granted only after invoice is paid
+
+        '
+    ErrorResponse:
+      type: object
+      additionalProperties: false
+      required:
+      - message
+      properties:
+        message:
+          type: string
+          description: error description
+          maxLength: 500
+    CreditRateDetails:
+      type: object
+      description: Amount to be credited
+      additionalProperties: false
+      required:
+      - pricingModel
+      - currencySlabRateDetails
+      properties:
+        pricingModel:
+          $ref: '#/components/schemas/PricingModel'
+        currencySlabRateDetails:
+          type: array
+          items:
+            $ref: '#/components/schemas/CurrencySlabRateDetail'
+    Slab:
+      type: object
+      description: Represents a pricing priceType (rates + slabs) for usage price plan
+      required:
+      - order
+      - startAfter
+      - priceType
+      properties:
+        order:
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 10
+        startAfter:
+          type: number
+        priceType:
+          $ref: '#/components/schemas/PriceType'
+        slabConfig:
+          type: object
+          additionalProperties:
+            type: string
+    RatePlan:
+      type: object
+      description: Contains all rate related configurations
+      required:
+      - pricingModel
+      - slabs
+      properties:
+        pricingModel:
+          $ref: '#/components/schemas/PricingModel'
+        slabs:
+          description: Rate cards can have single or multiple slab up to 100.
+          type: array
+          minItems: 1
+          items:
+            $ref: '#/components/schemas/Slab'
+    FixedFeeRateCard:
+      title: FixedFeeRateCard
+      type: object
+      required:
+      - id
+      - rateValues
+      - enableProration
+      properties:
+        id:
+          description: Unique Identifier of the attached AddOn
+          type: string
+          maxLength: 50
+        displayName:
+          type: string
+          description: Name of the attached AddOn
+        tag:
+          type: string
+          description: A tag string to group fixedFeeRateCards
+        invoiceTiming:
+          $ref: '#/components/schemas/InvoiceTiming'
+        type:
+          $ref: '#/components/schemas/FixedFeeType'
+        rateValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/CurrencyRateValue'
+        enableProration:
+          type: boolean
+          example: false
+        recurrenceConfig:
+          $ref: '#/components/schemas/RecurrenceConfig'
+    ExpiryType:
+      type: string
+      description: Expiry type of grant
+      enum:
+      - PRICING_CYCLE
+      - NO_EXPIRY
+      - CUSTOM
+    CurrencySlabRateDetail:
+      type: object
+      description: The association of a currency along with its slab detail
+      additionalProperties: false
+      required:
+      - currency
+      - creditAmount
+      - slabDetails
+      properties:
+        currency:
+          type: string
+        creditAmount:
+          type: number
+          description: The amount of credit that needs to be credited
+          minimum: 0
+        slabDetails:
+          type: array
+          items:
+            $ref: '#/components/schemas/SlabDetail'
+        rateConfig:
+          type: object
+          additionalProperties:
+            type: string
+    CurrencyRateValue:
+      type: object
+      required:
+      - currency
+      - rate
+      properties:
+        currency:
+          type: string
+        rate:
+          type: number
+    MaxQuantityBreachAction:
+      type: string
+      enum:
+      - DO_NOTHING
+      description: "Action to be taken when the license maxQuantity is breached: \n- `DO_NOTHING`: Refrain from granting any new licenses.\n"
+    SlabDetail:
+      type: object
+      description: The details of a slab
+      additionalProperties: false
+      required:
+      - startAfter
+      - priceType
+      - rate
+      properties:
+        startAfter:
+          type: number
+        priceType:
+          $ref: '#/components/schemas/PriceType'
+        slabConfig:
+          type: object
+          additionalProperties:
+            type: string
+        rate:
+          type: number
+        slabRateConfig:
+          type: object
+          additionalProperties:
+            type: string
+    BillingEntitlementRateCard:
+      description: Billing Entitlement rate card
+      type: object
+      additionalProperties: false
+      required:
+      - featureId
+      - featureConfigs
+      - ratePlan
+      - rateValues
+      - invoiceTiming
+      properties:
+        featureId:
+          type: string
+        featureConfigs:
+          type: array
+          minItems: 1
+          items:
+            $ref: '#/components/schemas/FeatureConfig'
+        tag:
+          type: string
+          description: A tag string to group rate cards
+        invoiceTiming:
+          $ref: '#/components/schemas/InvoiceTiming'
+        displayName:
+          type: string
+          description: Name your rate card, this will be used in invoice
+        ratePlan:
+          $ref: '#/components/schemas/RatePlan'
+        rateValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/RateValue'
+        recurrenceConfig:
+          $ref: '#/components/schemas/RecurrenceConfig'
     CreatePricePlanDetails:
       type: object
       additionalProperties: false
@@ -816,6 +534,61 @@ components:
           example: 100
         maxQuantityBreachAction:
           $ref: '#/components/schemas/MaxQuantityBreachAction'
+    PricePlanDetails:
+      type: object
+      required:
+      - supportedCurrencies
+      - activeCurrencies
+      properties:
+        supportedCurrencies:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+        activeCurrencies:
+          type: array
+          uniqueItems: true
+          readOnly: true
+          items:
+            type: string
+        pricingCycleConfig:
+          $ref: '#/components/schemas/PricingCycleConfig'
+        usageRateCards:
+          type: array
+          items:
+            $ref: '#/components/schemas/UsageRateCard'
+        fixedFeeRateCards:
+          type: array
+          items:
+            $ref: '#/components/schemas/FixedFeeRateCard'
+        licenseRateCards:
+          type: array
+          items:
+            $ref: '#/components/schemas/LicenseRateCard'
+        billingEntitlementRateCards:
+          type: array
+          items:
+            $ref: '#/components/schemas/BillingEntitlementRateCard'
+        entitlementOverageRateCards:
+          type: array
+          items:
+            $ref: '#/components/schemas/EntitlementOverageRateCard'
+        minimumCommitment:
+          $ref: '#/components/schemas/MinimumCommitment'
+        creditGrantRateCards:
+          type: array
+          items:
+            $ref: '#/components/schemas/CreditGrantRateCard'
+        type:
+          $ref: '#/components/schemas/PricePlanType'
+        deferredRevenue:
+          type: boolean
+    PricePlanType:
+      type: string
+      description: Type of price plan
+      enum:
+      - BILLING
+      - PURCHASE
     CalculateRevenueRequest:
       description: Request to get revenue details
       type: object
@@ -1193,50 +966,301 @@ components:
                 accountId:
                   type: string
                   minLength: 1
-  responses:
-    ErrorResponse:
-      description: Error response
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          examples:
-            ErrorResponse:
-              summary: Error Message
-              value:
-                message: <Reason message>
-    CalculateRevenueResponse:
-      description: Response payload for calculateRevenueAPI
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/CalculateRevenueResponse'
-          examples:
-            CalculateRevenueResponse:
-              $ref: '#/components/examples/CalculateRevenueResponse'
+    PricingCycleConfig:
+      type: object
+      description: Represents configurations related to pricing cycle
+      required:
+      - interval
+      - gracePeriod
+      properties:
+        interval:
+          $ref: '#/components/schemas/PricingCycleInterval'
+        startOffset:
+          type: object
+          description: "Represents the start of pricing cycle in terms of\n - dayOffset - number of days from beginning of week / month and\n - monthOffset - number of months from beginning of interval (quarter, half-year or year)\nNote: If a day with offset doesn't exist for a month, closest previous day is considered\nExamples:\nWEEKLY -\n  - {dayOffset: 1, monthOffset: NIL} - First day of every week (Monday)\n  - {dayOffset: 3, monthOffset: NIL} - 3rd day of every week (Wednesday)\n  - {dayOffset: LAST, monthOffset: NIL} - Last day of every week (Sunday)\nMONTHLY -\n  - {dayOffset: 1, monthOffset: NIL} - First day of every month\n  - {dayOffset: 12, monthOffset: NIL} - 12th of every month\n  - {dayOffset: 28, monthOffset: NIL} - 28th of every month. i.e, 28th of Jan, 28th of Feb, ...\n  - {dayOffset: 30, monthOffset: NIL} - 30th of every month. i.e, 28th of Jan, 28th of Feb, ...\n  - {dayOffset: LAST, monthOffset: NIL} - Last day of every month. i.e, 31st of Jan, 28th of Feb, ...\nQUARTERLY\n  - {dayOffset: 15, monthOffset: FIRST} - 15th Jan, 15th Apr, 15th Jul and 15th Oct\n  - {dayOffset: 15, monthOffset: 2} - 15th Feb, 15th May, 15th Aug and 15th Nov\n  - {dayOffset: 15, monthOffset: LAST} - 15th Mar, 15th Jun, 15th Sep and 15th Dec\n  - {dayOffset: LAST, monthOffset: FIRST} - 31st Jan, 30th Apr, 30th Jul and 31th Oct\nHALF_YEARLY\n  - {dayOffset: 15, monthOffset: FIRST} - 15th Jan and 15th Jul\n  - {dayOffset: 15, monthOffset: 4} - 15th Apr and 15th Oct\n  - {dayOffset: 15, monthOffset: LAST} - 15th Jun and 15th Dec\nANNUALLY\n  - {dayOffset: 15, monthOffset: FIRST} - 15th Jan\n  - {dayOffset: 15, monthOffset: 1} - 15th Jan\n  - {dayOffset: LAST, monthOffset: 2} - 29th Feb on Leap year, 28th otherwise \n  - {dayOffset: 15, monthOffset: 8} - 15th Aug\n  - {dayOffset: 15, monthOffset: LAST} - 15th Dec\n"
+          required:
+          - dayOffset
+          - monthOffset
+          properties:
+            dayOffset:
+              type: string
+              description: 'If interval is WEEKLY, min: "1" and max: "7" as strings. Spl. string allowed: LAST
+
+                Otherwise, min: "1" and max: "31" as strings. Spl. string allowed: LAST
+
+                '
+            monthOffset:
+              type: string
+              description: 'min: "1" and max: "12". Spl. string allowed: FIRST / LAST.
+
+                For QUARTERLY only 1 - 3 is allowed and for HALF_YEARLY 1 - 6. This being an optional field, shouldn''t be passed for MONTHLY.
+
+                '
+        gracePeriod:
+          type: integer
+          description: "Togai allows you to ingest past dated events that will be processed by a pricing cycle till the end grace period. \nFor example: Pricing cycle is Monthly from 1st to 30th and gracePeriod is 5 days which next month 1 to 5th date, you can ingest past dated events during this grace period.\n"
+          format: int32
+          example: 3
+        anniversaryCycle:
+          type: boolean
+          description: "Togai calculates the startOffsets based on the date of association instead of requiring from the user and \nthese offsets will be applied as an override if this flag is enabled.\nExamples:\nWEEKLY -\n  - 23/10/2023 (Monday) - {dayOffset: 1, monthOffset: NIL} \n  - 25/10/2023 (Wednesday) - {dayOffset: 3, monthOffset: NIL} \n  - 29/10/2023 (Sunday) - {dayOffset: 7, monthOffset: NIL}\nMONTHLY -\n  - 1st Oct - {dayOffset: 1, monthOffset: NIL}\n  - 12th Oct - {dayOffset: 12, monthOffset: NIL}\n  - 28th Oct - {dayOffset: 28, monthOffset: NIL}\n  - 30th Oct - {dayOffset: 30, monthOffset: NIL}\n  - 31th Oct - {dayOffset: LAST, monthOffset: NIL}\nQUARTERLY\n  - 15th Jan, 15th Apr, 15th Jul and 15th Oct - {dayOffset: 15, monthOffset: 1}\n  - 15th Feb, 15th May, 15th Aug and 15th Nov - {dayOffset: 15, monthOffset: 2} \n  - 15th Mar, 15th Jun, 15th Sep and 15th Dec - {dayOffset: 15, monthOffset: 3}\nHALF_YEARLY\n  - 15th Jan and 15th Jul - {dayOffset: 15, monthOffset: 1} \n  - 15th Apr and 15th Oct - {dayOffset: 15, monthOffset: 4} \n  - 15th Jun and 15th Dec - {dayOffset: 15, monthOffset: 6}\nANNUALLY\n  - 15th Jan - {dayOffset: 15, monthOffset: 1}\n  - 29th Feb on Leap year  - {dayOffset: LAST, monthOffset: 2}\n  - 28th Feb  - {dayOffset: LAST, monthOffset: 2}\n  - 15th Aug - {dayOffset: 15, monthOffset: 8}\n  - 15th Dec - {dayOffset: 15, monthOffset: 12}\n"
+    AddOnType:
+      type: string
+      enum:
+      - LICENSE
+      - FIXED_FEE
+      - CREDIT_GRANT
+      - NAMED_LICENSE
+      description: 'LICENSE: Addon can be used in license rate cards
+
+        FIXED_FEE: Addon can be used in fixed fee rate cards
+
+        CREDIT_GRANT: Addon can be used in credit grant rate cards
+
+        NAMED_LICENSE: Addon can be used in license rate cards
+
+        '
+    EntitlementOverageRateCard:
+      type: object
+      required:
+      - ratePlan
+      - rateValues
+      - featureId
+      properties:
+        featureId:
+          type: string
+          description: Unique Identifier of the attached Feature
+          maxLength: 50
+        displayName:
+          type: string
+          description: Name to be displayed during invoice
+        tag:
+          type: string
+          description: A tag string to group rate cards
+        maxQuantity:
+          type: number
+          description: Maximum quantity allowed for the feature, if not specified, unlimited quantity is allowed
+        ratePlan:
+          $ref: '#/components/schemas/RatePlan'
+        rateValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/RateValue'
+        billingConfig:
+          $ref: '#/components/schemas/BillingConfig'
+          description: Represents the billing config of the entitlement overage rate card. If not specified interval:1 and startOffset:0 is taken as default value
+    CreditGrantType:
+      type: string
+      enum:
+      - ONE_TIME
+      - RECURRING
+      description: Credit grant applies either for a one-time occurrence or for each cycle.
+    UsageRateCard:
+      type: object
+      required:
+      - usageMeterId
+      - ratePlan
+      - rateValues
+      properties:
+        displayName:
+          type: string
+          description: Name your rate card, this will be displayed in the Togai App
+        tag:
+          type: string
+          description: A tag string to group usageRateCards
+        usageMeterId:
+          type: string
+          example: um.1zYnCiM9Bpg.1zYn
+        ratePlan:
+          $ref: '#/components/schemas/RatePlan'
+        rateValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/RateValue'
+    BillingConfig:
+      type: object
+      properties:
+        interval:
+          description: Represents the number of pricing cycles after which the rate card will be billed
+          type: integer
+          format: int64
+          example: 3
+        startOffset:
+          description: Represents the offset for pricing cycles after which the rate card will be billed
+          type: integer
+          format: int64
+          example: 5
+    GrantDetails:
+      description: Grant details of Credit Grant Rate Card
+      type: object
+      additionalProperties: false
+      required:
+      - priority
+      - expiryType
+      properties:
+        priority:
+          type: integer
+          minimum: 0
+        expiryType:
+          $ref: '#/components/schemas/ExpiryType'
+        expiryDuration:
+          type: string
+          format: duration
+        applicableEntityIds:
+          type: array
+          items:
+            type: string
+    FixedFeeType:
+      type: string
+      enum:
+      - ONE_TIME
+      - RECURRING
+      description: Fixed fee applies either for a one-time occurrence or for each cycle.
+    UsageCycleInterval:
+      type: string
+      description: "UsageCycleInterval field allows you to treat the billing interval as many smaller windows. Revenue is calculated for\neach of the windows (usage cycles) and their sum is considered as the billing interval revenue.\nExample: 1 Named License being used across entire billing interval. Rate Value: $1/license\nCASE 1: Without usage cycle. $1 is charged for the entire billing cycle.\nCASE 2: Usage cycle is configure to be WEEKLY and the billing interval has 4 weeks. In this case $1 is charged \nfor each week totalling to $4 across for the billing interval\n"
+      enum:
+      - WEEKLY
+      - MONTHLY
+      - QUARTERLY
+      - HALF_YEARLY
+      - ANNUALLY
+    PricingCycleInterval:
+      type: string
+      description: Interval field allow you to define the billing interval you would like to set
+      enum:
+      - WEEKLY
+      - MONTHLY
+      - QUARTERLY
+      - HALF_YEARLY
+      - ANNUALLY
+    ProratedRefundMode:
+      type: string
+      enum:
+      - NONE
+      - CREDITS
+      - PAYMENT
+      - WALLET
+    RateValue:
+      type: object
+      description: Represents a rate
+      required:
+      - currency
+      - slabRates
+      properties:
+        currency:
+          type: string
+        slabRates:
+          type: array
+          minItems: 1
+          items:
+            $ref: '#/components/schemas/SlabRate'
+        rateConfig:
+          type: object
+          additionalProperties:
+            type: string
+    PriceType:
+      type: string
+      enum:
+      - FLAT
+      - PER_UNIT
+      - PACKAGE
+    FeatureConfig:
+      description: Feature configuration object
+      type: object
+      additionalProperties: false
+      required:
+      - effectiveUntil
+      - featureCreditLimit
+      properties:
+        effectiveFrom:
+          type: string
+          format: duration
+        effectiveUntil:
+          type: string
+          format: duration
+        featureCreditLimit:
+          type: number
+          minimum: 0
+    CreditGrantRateCard:
+      description: Credit grant rate card
+      type: object
+      additionalProperties: false
+      required:
+      - id
+      - rateDetails
+      - grantDetails
+      properties:
+        id:
+          type: string
+        displayName:
+          type: string
+        tag:
+          type: string
+          description: A tag string to group creditGrantRateCard
+        grantDetails:
+          $ref: '#/components/schemas/GrantDetails'
+        rateDetails:
+          $ref: '#/components/schemas/CreditRateDetails'
+        invoiceTiming:
+          $ref: '#/components/schemas/InvoiceTiming'
+        type:
+          $ref: '#/components/schemas/CreditGrantType'
+        recurrenceConfig:
+          $ref: '#/components/schemas/RecurrenceConfig'
   examples:
-    ThirdCalculateRevenueRequestExample:
+    SecondCalculateRevenueRequestExample:
+      description: 'Example request for calculate revenue API on a custom price plan with currency as the invoice currency of a existing account, and existing usage of a account over a time period
+
+        '
       value:
         currencyConfig:
           mode: ACCOUNT_INVOICE
           accountId: ACC00001
         pricePlanDetailsConfig:
-          mode: ACCOUNT
-          accountId: ACC00001
-          effectiveOn: '2020-01-01T00:00:00Z'
+          mode: CUSTOM
+          pricingCycleOrdinal: 1
+          pricePlanDetails:
+            supportedCurrencies:
+            - USD
+            pricingCycleConfig:
+              interval: MONTHLY
+              startOffset:
+                dayOffset: '4'
+                monthOffset: '1'
+              gracePeriod: 3
+              anniversaryCycle: false
+            usageRateCards:
+            - displayName: Local Rides
+              usageMeterId: um.1zYnCiM9Bpg.1zYn
+              ratePlan:
+                pricingModel: TIERED
+                slabs:
+                - order: 1
+                  startAfter: 0
+                  priceType: FLAT
+              rateValues:
+              - currency: USD
+                slabRates:
+                - rate: 40
+                  order: 1
         usageConfig:
-          mode: LOOKUP_CYCLE
-          lookupCycle:
+          mode: LOOKUP_RANGE
+          lookupRange:
+            start: '2020-01-01T00:00:00Z'
+            end: '2020-01-31T00:00:00Z'
             accountId: ACC00001
-            cycleEffectiveOn: '2020-01-01T00:00:00Z'
         licenseEntriesConfig:
+          mode: LOOKUP_RANGE
+          lookupRange:
+            start: '2020-01-01T00:00:00Z'
+            end: '2020-01-31T00:00:00Z'
+            accountId: ACC00001
+        entitlementOverageConfig:
           mode: LOOKUP_CYCLE
           lookupCycle:
-            accountId: ACC00001
-            cycleEffectiveOn: '2020-01-01T00:00:00Z'
-      description: 'Example request for calculate revenue API on a already associated price plan of the account  with currency as the invoice currency of an existing account, and existing usage of a account over a certain pricing cycle
-
-        '
+            accountId: ACC0001
+            billingCycleEndDate: '2020-01-31T00:00:00Z'
     FirstCalculateRevenueRequestExample:
       description: 'Example request for calculate revenue API on a existing price plan with custom currency and usage.
 
@@ -1267,6 +1291,28 @@ components:
             quantity: 5
           - featureId: feature.3452.abcaf2
             quantity: 28
+    ThirdCalculateRevenueRequestExample:
+      value:
+        currencyConfig:
+          mode: ACCOUNT_INVOICE
+          accountId: ACC00001
+        pricePlanDetailsConfig:
+          mode: ACCOUNT
+          accountId: ACC00001
+          effectiveOn: '2020-01-01T00:00:00Z'
+        usageConfig:
+          mode: LOOKUP_CYCLE
+          lookupCycle:
+            accountId: ACC00001
+            cycleEffectiveOn: '2020-01-01T00:00:00Z'
+        licenseEntriesConfig:
+          mode: LOOKUP_CYCLE
+          lookupCycle:
+            accountId: ACC00001
+            cycleEffectiveOn: '2020-01-01T00:00:00Z'
+      description: 'Example request for calculate revenue API on a already associated price plan of the account  with currency as the invoice currency of an existing account, and existing usage of a account over a certain pricing cycle
+
+        '
     CalculateRevenueResponse:
       value:
         currency: USD
@@ -1342,73 +1388,27 @@ components:
           - order: 2
             usage: 0
             revenue: 0
-    SecondCalculateRevenueRequestExample:
-      description: 'Example request for calculate revenue API on a custom price plan with currency as the invoice currency of a existing account, and existing usage of a account over a time period
-
-        '
-      value:
-        currencyConfig:
-          mode: ACCOUNT_INVOICE
-          accountId: ACC00001
-        pricePlanDetailsConfig:
-          mode: CUSTOM
-          pricingCycleOrdinal: 1
-          pricePlanDetails:
-            supportedCurrencies:
-            - USD
-            pricingCycleConfig:
-              interval: MONTHLY
-              startOffset:
-                dayOffset: '4'
-                monthOffset: '1'
-              gracePeriod: 3
-              anniversaryCycle: false
-            usageRateCards:
-            - displayName: Local Rides
-              usageMeterId: um.1zYnCiM9Bpg.1zYn
-              ratePlan:
-                pricingModel: TIERED
-                slabs:
-                - order: 1
-                  startAfter: 0
-                  priceType: FLAT
-              rateValues:
-              - currency: USD
-                slabRates:
-                - rate: 40
-                  order: 1
-        usageConfig:
-          mode: LOOKUP_RANGE
-          lookupRange:
-            start: '2020-01-01T00:00:00Z'
-            end: '2020-01-31T00:00:00Z'
-            accountId: ACC00001
-        licenseEntriesConfig:
-          mode: LOOKUP_RANGE
-          lookupRange:
-            start: '2020-01-01T00:00:00Z'
-            end: '2020-01-31T00:00:00Z'
-            accountId: ACC00001
-        entitlementOverageConfig:
-          mode: LOOKUP_CYCLE
-          lookupCycle:
-            accountId: ACC0001
-            billingCycleEndDate: '2020-01-31T00:00:00Z'
-  requestBodies:
-    CalculateRevenueRequest:
-      description: Request payload for calculateRevenueAPI
-      required: true
+  responses:
+    CalculateRevenueResponse:
+      description: Response payload for calculateRevenueAPI
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/CalculateRevenueRequest'
+            $ref: '#/components/schemas/CalculateRevenueResponse'
           examples:
-            FirstCalculateRevenueRequestExample:
-              $ref: '#/components/examples/FirstCalculateRevenueRequestExample'
-            SecondCalculateRevenueRequestExample:
-              $ref: '#/components/examples/SecondCalculateRevenueRequestExample'
-            ThirdCalculateRevenueRequestExample:
-              $ref: '#/components/examples/ThirdCalculateRevenueRequestExample'
+            CalculateRevenueResponse:
+              $ref: '#/components/examples/CalculateRevenueResponse'
+    ErrorResponse:
+      description: Error response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            ErrorResponse:
+              summary: Error Message
+              value:
+                message: <Reason message>
   securitySchemes:
     bearerAuth:
       type: http

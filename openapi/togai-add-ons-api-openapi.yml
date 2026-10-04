@@ -151,17 +151,6 @@ paths:
           $ref: '#/components/responses/ErrorResponse'
 components:
   schemas:
-    PaginationOptions:
-      type: object
-      additionalProperties: false
-      properties:
-        pageSize:
-          type: integer
-        sortOrder:
-          type: string
-          enum:
-          - ASC
-          - DESC
     AddOn:
       allOf:
       - $ref: '#/components/schemas/CreateAddOnRequest'
@@ -194,6 +183,20 @@ components:
 
               '
             type: string
+    AddOnPaginatedResponse:
+      type: object
+      required:
+      - data
+      additionalProperties: false
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/AddOn'
+        nextToken:
+          type: string
+        context:
+          $ref: '#/components/schemas/PaginationOptions'
     AddOnType:
       type: string
       enum:
@@ -210,6 +213,29 @@ components:
         NAMED_LICENSE: Addon can be used in license rate cards
 
         '
+    UpdateAddOnRequest:
+      description: Request to update an addon
+      type: object
+      additionalProperties: false
+      properties:
+        name:
+          description: Name of addon
+          type: string
+          maxLength: 255
+        billableName:
+          description: Billable name of addon. Billable name takes precedence over name to display in invoice.
+          type: string
+          maxLength: 255
+    ErrorResponse:
+      type: object
+      additionalProperties: false
+      required:
+      - message
+      properties:
+        message:
+          type: string
+          description: error description
+          maxLength: 500
     CreateAddOnRequest:
       description: Request to create an addon
       type: object
@@ -228,33 +254,17 @@ components:
           description: Billable name of addon. Billable name takes precedence over name to display in invoice.
           type: string
           maxLength: 255
-    UpdateAddOnRequest:
-      description: Request to update an addon
+    PaginationOptions:
       type: object
       additionalProperties: false
       properties:
-        name:
-          description: Name of addon
+        pageSize:
+          type: integer
+        sortOrder:
           type: string
-          maxLength: 255
-        billableName:
-          description: Billable name of addon. Billable name takes precedence over name to display in invoice.
-          type: string
-          maxLength: 255
-    AddOnPaginatedResponse:
-      type: object
-      required:
-      - data
-      additionalProperties: false
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/AddOn'
-        nextToken:
-          type: string
-        context:
-          $ref: '#/components/schemas/PaginationOptions'
+          enum:
+          - ASC
+          - DESC
     BaseSuccessResponse:
       type: object
       additionalProperties: false
@@ -264,17 +274,19 @@ components:
         success:
           type: boolean
           example: true
-    ErrorResponse:
-      type: object
-      additionalProperties: false
-      required:
-      - message
-      properties:
-        message:
-          type: string
-          description: error description
-          maxLength: 500
   responses:
+    AddOnResponse:
+      description: Response for Create and Get addons requests
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/AddOn'
+    AddOnPaginatedResponse:
+      description: Response for List addons requests
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/AddOnPaginatedResponse'
     ErrorResponse:
       description: Error response
       content:
@@ -286,24 +298,35 @@ components:
               summary: Error Message
               value:
                 message: <Reason message>
-    AddOnResponse:
-      description: Response for Create and Get addons requests
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/AddOn'
     BaseSuccessResponse:
       description: OK
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/BaseSuccessResponse'
-    AddOnPaginatedResponse:
-      description: Response for List addons requests
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/AddOnPaginatedResponse'
+  parameters:
+    page_size:
+      in: query
+      name: pageSize
+      required: false
+      schema:
+        type: number
+        example: 10
+    next_token:
+      in: query
+      name: nextToken
+      required: false
+      schema:
+        type: string
+        example: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEwMCwgInNvcnRPcmRlciI6ICJhc2MifQ==
+    addon_id:
+      in: path
+      name: addon_id
+      required: true
+      schema:
+        type: string
+        maxLength: 50
+        example: addon.1zYnCiM9Bpg.lv25y
   requestBodies:
     CreateAddOnRequest:
       description: Payload to create addon
@@ -319,29 +342,6 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/UpdateAddOnRequest'
-  parameters:
-    addon_id:
-      in: path
-      name: addon_id
-      required: true
-      schema:
-        type: string
-        maxLength: 50
-        example: addon.1zYnCiM9Bpg.lv25y
-    page_size:
-      in: query
-      name: pageSize
-      required: false
-      schema:
-        type: number
-        example: 10
-    next_token:
-      in: query
-      name: nextToken
-      required: false
-      schema:
-        type: string
-        example: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEwMCwgInNvcnRPcmRlciI6ICJhc2MifQ==
   securitySchemes:
     bearerAuth:
       type: http

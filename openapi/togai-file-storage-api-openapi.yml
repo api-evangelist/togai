@@ -72,6 +72,10 @@ paths:
         default:
           $ref: '#/components/responses/ErrorResponse'
 components:
+  examples:
+    FileDownloadUrlResponse:
+      value:
+        downloadUrl: https://s3.amazonaws.com/...
   responses:
     ErrorResponse:
       description: Error response
@@ -93,27 +97,7 @@ components:
           examples:
             FileDownloadUrlResponse:
               $ref: '#/components/examples/FileDownloadUrlResponse'
-  parameters:
-    file_id:
-      in: path
-      name: file_id
-      required: true
-      schema:
-        type: string
-        example: file.20aUyEZSuYq.SoGbS
-  examples:
-    FileDownloadUrlResponse:
-      value:
-        downloadUrl: https://s3.amazonaws.com/...
   schemas:
-    FileDownloadUrlResponse:
-      type: object
-      additionalProperties: false
-      required:
-      - downloadUrl
-      properties:
-        downloadUrl:
-          type: string
     ErrorResponse:
       type: object
       additionalProperties: false
@@ -124,6 +108,22 @@ components:
           type: string
           description: error description
           maxLength: 500
+    FileDownloadUrlResponse:
+      type: object
+      additionalProperties: false
+      required:
+      - downloadUrl
+      properties:
+        downloadUrl:
+          type: string
+  parameters:
+    file_id:
+      in: path
+      name: file_id
+      required: true
+      schema:
+        type: string
+        example: file.20aUyEZSuYq.SoGbS
   securitySchemes:
     bearerAuth:
       type: http

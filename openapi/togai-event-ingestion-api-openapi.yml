@@ -149,19 +149,16 @@ paths:
         default:
           $ref: '#/components/responses/ErrorResponse'
 components:
-  responses:
-    ErrorResponse:
-      description: Error response
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          examples:
-            ErrorResponse:
-              summary: Error Message
-              value:
-                message: <Reason message>
   schemas:
+    IngestEventRequest:
+      description: Payload for ingesting events
+      type: object
+      additionalProperties: false
+      required:
+      - event
+      properties:
+        event:
+          $ref: '#/components/schemas/Event'
     Attribute:
       description: Metric to be recorded
       type: object
@@ -187,6 +184,15 @@ components:
           minLength: 1
           maxLength: 50
           example: characters
+    Dimensions:
+      description: Dimensions are tags/labels associated with the events.
+      type: object
+      additionalProperties:
+        type: string
+        minLength: 1
+        maxLength: 200
+        example:
+          Country: India
     IngestEventResponse:
       type: object
       additionalProperties: false
@@ -206,15 +212,6 @@ components:
           type: string
         details:
           type: object
-    Dimensions:
-      description: Dimensions are tags/labels associated with the events.
-      type: object
-      additionalProperties:
-        type: string
-        minLength: 1
-        maxLength: 200
-        example:
-          Country: India
     Event:
       description: Contents of the event
       type: object
@@ -255,15 +252,6 @@ components:
             $ref: '#/components/schemas/Attribute'
         dimensions:
           $ref: '#/components/schemas/Dimensions'
-    IngestEventRequest:
-      description: Payload for ingesting events
-      type: object
-      additionalProperties: false
-      required:
-      - event
-      properties:
-        event:
-          $ref: '#/components/schemas/Event'
     ErrorResponse:
       type: object
       additionalProperties: false
@@ -287,26 +275,19 @@ components:
           maxItems: 500
           items:
             $ref: '#/components/schemas/Event'
+  responses:
+    ErrorResponse:
+      description: Error response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          examples:
+            ErrorResponse:
+              summary: Error Message
+              value:
+                message: <Reason message>
   examples:
-    IngestEventRequest:
-      summary: Example Event Ingestion Request
-      value:
-        event:
-          timestamp: '2022-06-15T07:30:35.123'
-          schemaName: travelCompletedEvent
-          id: c0b1306d-f506-43a6-856b-69221efaee6b
-          accountId: '1'
-          attributes:
-          - name: distanceTravelled
-            value: '50'
-            unit: Miles
-          - name: timeSpent
-            value: '60'
-            unit: Minutes
-          dimensions:
-            location: Seattle
-            costCenterCode: '1234'
-            travelType: Business
     UsageEventRequest:
       summary: Example Named License Event Ingestion Request
       value:
@@ -320,20 +301,6 @@ components:
           attributes:
           - name: usage
             value: '10'
-    NamedLicenseEventRequest:
-      summary: Example Usage Event Ingestion Request
-      value:
-        event:
-          id: id-123
-          timestamp: '2024-04-18T13:23:55'
-          accountId: sampleID
-          schemaName: togai-named-license
-          dimensions:
-            license_id: addon.sample.sample
-            name: unique_name
-          attributes:
-          - name: action
-            value: '1'
     IngestEventBatchRequest:
       summary: Example Batch Event Ingestion Request
       value:
@@ -368,6 +335,39 @@ components:
             location: Seattle
             costCenterCode: '1234'
             messageProviderName: Twilio
+    NamedLicenseEventRequest:
+      summary: Example Usage Event Ingestion Request
+      value:
+        event:
+          id: id-123
+          timestamp: '2024-04-18T13:23:55'
+          accountId: sampleID
+          schemaName: togai-named-license
+          dimensions:
+            license_id: addon.sample.sample
+            name: unique_name
+          attributes:
+          - name: action
+            value: '1'
+    IngestEventRequest:
+      summary: Example Event Ingestion Request
+      value:
+        event:
+          timestamp: '2022-06-15T07:30:35.123'
+          schemaName: travelCompletedEvent
+          id: c0b1306d-f506-43a6-856b-69221efaee6b
+          accountId: '1'
+          attributes:
+          - name: distanceTravelled
+            value: '50'
+            unit: Miles
+          - name: timeSpent
+            value: '60'
+            unit: Minutes
+          dimensions:
+            location: Seattle
+            costCenterCode: '1234'
+            travelType: Business
   securitySchemes:
     bearerAuth:
       type: http

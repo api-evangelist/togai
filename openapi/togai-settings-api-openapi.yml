@@ -126,6 +126,13 @@ paths:
           $ref: '#/components/responses/ErrorResponse'
 components:
   schemas:
+    SettingDataType:
+      type: string
+      enum:
+      - STRING
+      - NUMERIC
+      - JSON
+      - JSON_LOGIC
     Setting:
       type: object
       description: Represents a setting
@@ -153,13 +160,27 @@ components:
           type: string
         dataType:
           $ref: '#/components/schemas/SettingDataType'
-    SettingDataType:
-      type: string
-      enum:
-      - STRING
-      - NUMERIC
-      - JSON
-      - JSON_LOGIC
+    ErrorResponse:
+      type: object
+      additionalProperties: false
+      required:
+      - message
+      properties:
+        message:
+          type: string
+          description: error description
+          maxLength: 500
+    UpdateSettingRequest:
+      description: Update Settings
+      type: object
+      additionalProperties: false
+      properties:
+        name:
+          type: string
+        value:
+          type: string
+        dataType:
+          $ref: '#/components/schemas/SettingDataType'
     SettingPaginatedResponse:
       type: object
       additionalProperties: false
@@ -172,16 +193,6 @@ components:
           type: string
         context:
           $ref: '#/components/schemas/PaginationOptions'
-    ErrorResponse:
-      type: object
-      additionalProperties: false
-      required:
-      - message
-      properties:
-        message:
-          type: string
-          description: error description
-          maxLength: 500
     PaginationOptions:
       type: object
       additionalProperties: false
@@ -193,18 +204,24 @@ components:
           enum:
           - ASC
           - DESC
-    UpdateSettingRequest:
-      description: Update Settings
-      type: object
-      additionalProperties: false
-      properties:
-        name:
-          type: string
-        value:
-          type: string
-        dataType:
-          $ref: '#/components/schemas/SettingDataType'
   parameters:
+    settings_entity_id:
+      in: query
+      name: entity_id
+      schema:
+        type: string
+        example: acc_X1Df3sRf3
+    settings_entity_type:
+      in: query
+      name: entity_type
+      schema:
+        type: string
+        example: ACCOUNT
+    settings_setting_id:
+      in: query
+      name: setting_id
+      schema:
+        type: string
     settings_full_setting_id:
       in: path
       name: setting_id_str
@@ -212,36 +229,12 @@ components:
       schema:
         type: string
         example: setting.USER.success_threshold.ACCOUNT.G234DZZKBKACATFFGVGEMERFI
-    settings_entity_id:
-      in: query
-      name: entity_id
-      schema:
-        type: string
-        example: acc_X1Df3sRf3
-    next_token:
-      in: query
-      name: nextToken
-      required: false
-      schema:
-        type: string
-        example: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEwMCwgInNvcnRPcmRlciI6ICJhc2MifQ==
     settings_namespace:
       in: query
       name: namespace
       schema:
         type: string
         example: USER
-    settings_setting_id:
-      in: query
-      name: setting_id
-      schema:
-        type: string
-    settings_entity_type:
-      in: query
-      name: entity_type
-      schema:
-        type: string
-        example: ACCOUNT
     page_size:
       in: query
       name: pageSize
@@ -249,6 +242,13 @@ components:
       schema:
         type: number
         example: 10
+    next_token:
+      in: query
+      name: nextToken
+      required: false
+      schema:
+        type: string
+        example: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEwMCwgInNvcnRPcmRlciI6ICJhc2MifQ==
   examples:
     Setting:
       value:
@@ -259,6 +259,11 @@ components:
         namespace: USER
         name: Settings Name
         dataType: STRING
+    UpdateSettingRequest:
+      value:
+        value: '{"USD":"1"}'
+        name: Base_Currency
+        dataType: JSON
     SettingPaginatedResponse:
       value:
         data:
@@ -272,11 +277,6 @@ components:
         nextToken: eyJsYXN0SXRlbUlkIjogInN0cmluZyIsICJwYWdlU2l6ZSI6IDEwMCwgInNvcnRPcmRlciI6ICJhc2MifQ==
         context:
           pageSize: 10
-    UpdateSettingRequest:
-      value:
-        value: '{"USD":"1"}'
-        name: Base_Currency
-        dataType: JSON
   requestBodies:
     UpdateSettingRequest:
       description: Payload to update setting
@@ -310,15 +310,6 @@ components:
               summary: Error Message
               value:
                 message: <Reason message>
-    SettingPaginatedResponse:
-      description: Response for list setting request
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/SettingPaginatedResponse'
-          examples:
-            SettingPaginatedResponse:
-              $ref: '#/components/examples/SettingPaginatedResponse'
     SettingResponse:
       description: Response for insert and update settings request
       content:
@@ -328,6 +319,15 @@ components:
           examples:
             Setting:
               $ref: '#/components/examples/Setting'
+    SettingPaginatedResponse:
+      description: Response for list setting request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SettingPaginatedResponse'
+          examples:
+            SettingPaginatedResponse:
+              $ref: '#/components/examples/SettingPaginatedResponse'
   securitySchemes:
     bearerAuth:
       type: http
