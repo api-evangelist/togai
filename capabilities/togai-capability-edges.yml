@@ -1,0 +1,124 @@
+slug: togai
+provider: Togai
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 11
+edges:
+- tag: Invoices
+  spec_file: togai-invoices-api-openapi.yml
+  capability_id: BC-4250.30
+  capability_id_l1: BC-4250
+  capability_name: Invoicing & Statement Management
+  confidence: 0.95
+  evidence: POST /invoices 'Create a Custom Invoice for an Account'; POST /invoices/bill_runs 'Create
+    a Bill Run Job Request'; 'Add or Update Miscellaneous Charges in Invoice'
+  reason: Direct invoice lifecycle and bill-run generation for subscription/usage billing.
+- tag: Usage Meters
+  spec_file: togai-usage-meters-api-openapi.yml
+  capability_id: BC-4250.10
+  capability_id_l1: BC-4250
+  capability_name: Usage Metering
+  confidence: 0.95
+  evidence: POST /usage_meters "Create an Usage Meter"; GET /usage_meters "List Usage Meters for Event
+    Schema"; schemas UsageMeterAggregation, Computation, UsageMeterFilterEntry
+  reason: Operations define, activate and deactivate usage meters that aggregate ingested events for billing
+    — precisely usage metering (ingestion and aggregation of usage events feeding rating).
+- tag: Event Ingestion
+  spec_file: togai-event-ingestion-api-openapi.yml
+  capability_id: BC-4250.10
+  capability_id_l1: BC-4250
+  capability_name: Usage Metering
+  confidence: 0.88
+  evidence: 'POST /ingest ingest Ingest Events to Togai; POST /ingestBatch ingestBatch Ingest Events to
+    Togai in Batch; schemas: IngestEventRequest, Event'
+  reason: Ingestion of usage events into a metering-and-billing platform that feeds rating — usage metering.
+- tag: Event Management
+  spec_file: togai-event-management-api-openapi.yml
+  capability_id: BC-4250.10
+  capability_id_l1: BC-4250
+  capability_name: Usage Metering
+  confidence: 0.88
+  evidence: GET /events getEvents 'Get a List of Usage Events with Multiple Query Options'; POST /events/correction
+    'Correct an Ingested Event'; schema IngestionStatus
+  reason: Operations query and correct ingested usage events on a metering/billing platform — this is
+    ingestion and stewardship of usage events feeding rating, i.e. Usage Metering.
+- tag: Entitlements
+  spec_file: togai-entitlements-api-openapi.yml
+  capability_id: BC-4240.70
+  capability_id_l1: BC-4240
+  capability_name: Entitlement Enforcement
+  confidence: 0.85
+  evidence: POST /entitled ingestEntitledEvent Ingest Event if a User is Entitled to a Feature; POST /accounts/{account_id}/entitlements/{feature_id}
+    validateEntitlementValue Check Entitlement Value for a Account
+  reason: Runtime resolution and validation of per-account feature entitlements and feature-credit balances
+    is exactly entitlement enforcement.
+- tag: InvoiceGroups
+  spec_file: togai-invoicegroups-api-openapi.yml
+  capability_id: BC-4250.30
+  capability_id_l1: BC-4250
+  capability_name: Invoicing & Statement Management
+  confidence: 0.82
+  evidence: POST /invoice_groups 'Create an Invoice Group'; 'Add Accounts to an Invoice Group'
+  reason: Grouping accounts for consolidated invoicing is part of invoice generation and statement management
+    in the subscription billing lifecycle.
+- tag: Payments
+  spec_file: togai-payments-api-openapi.yml
+  capability_id: BC-4250.40
+  capability_id_l1: BC-4250
+  capability_name: Payment Collection & Dunning
+  confidence: 0.82
+  evidence: POST /payments 'Create Payments'; schemas PaymentLineItemRecord, ExternalPaymentReference
+  reason: Recording and retrieving payments applied against subscription invoices is payment collection
+    within subscription billing.
+- tag: Accounts
+  spec_file: togai-accounts-api-openapi.yml
+  capability_id: BC-4240
+  capability_id_l1: BC-4240
+  capability_name: Subscription Lifecycle Management
+  confidence: 0.7
+  evidence: 'POST /accounts/{account_id}/price_plans updatePricingSchedule Dissociate or Associate a Price
+    Plan with an Account; POST /accounts/{account_id}/purchases initiateOneTimeEntitlementPlan Initiate
+    a Purchase; schemas: PricingSchedule, PlanOverride'
+  reason: Billing accounts are the subject of plan association, pricing schedules and purchases — the
+    commercial subscription lifecycle; ambiguous between provisioning and modification sub-capabilities
+    so L1 only.
+- tag: Credits
+  spec_file: togai-credits-api-openapi.yml
+  capability_id: BC-4250
+  capability_id_l1: BC-4250
+  capability_name: Subscription Billing & Revenue Management
+  confidence: 0.7
+  evidence: POST /credits createCredit Grant Credit; POST /credits/{credit_id}/void voidCredit Void Credit;
+    GET /accounts/{account_id}/credit_balance CreditBalanceForAccount
+  reason: Granting, voiding and balancing billing credits against accounts is part of subscription billing
+    adjustment; specific L2 (invoicing adjustment vs rating) is not clearly determined.
+- tag: Event Schemas
+  spec_file: togai-event-schemas-api-openapi.yml
+  capability_id: BC-4250.10
+  capability_id_l1: BC-4250
+  capability_name: Usage Metering
+  confidence: 0.7
+  evidence: POST /event_schema 'Create an Event Schema'; schemas EventAttributeSchema, DimensionsSchema,
+    Enrichments
+  reason: Defines and versions the schemas of usage events ingested for metering on a consumption-billing
+    platform; supports the usage metering capability rather than product telemetry analytics.
+- tag: Price Plans
+  spec_file: togai-price-plans-api-openapi.yml
+  capability_id: BC-4240.10
+  capability_id_l1: BC-4240
+  capability_name: Plan & Entitlement Design
+  confidence: 0.7
+  evidence: POST /price_plans 'Create a Price Plan'; schemas UsageRateCard, BillingEntitlementRateCard,
+    EntitlementOverageRateCard, MinimumCommitment
+  reason: Defines subscription plans with rate cards, entitlements and currencies — plan and entitlement
+    design for the SaaS commercial model; could alternatively be read as price list management, hence
+    0.7.
