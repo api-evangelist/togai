@@ -668,6 +668,12 @@ integrations:
   - Chargebee
   - Zuora
 common:
+  - type: Plans
+    url: plans/togai-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/togai-rate-limits.yml
+  - type: FinOps
+    url: finops/togai-finops.yml
   - type: CapabilityMap
     url: capabilities/togai-capability-edges.yml
     name: Togai Business Capability Map
