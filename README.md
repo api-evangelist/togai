@@ -1,4 +1,4 @@
-# Togai (togai)
+# Togai
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,75 +66,208 @@
 
 Togai is a metering and billing platform for software and SaaS products, purpose-built for consumption-based and usage-based pricing models. The Togai API provides programmatic access to customers, accounts, event ingestion, usage meters, price plans, invoices, credits, entitlements, and financial reporting. Supports real-time billing orchestration across cloud infrastructure, generative AI services, and SaaS applications.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/togai/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/togai/refs/heads/main/apis.yml)
+**Areas:** Billing · Metering · Usage-Based Pricing · Revenue Management · Software-as-a-Service · Fintech
 
-## Scope
+## Togai on APIs.io
 
-- **Type:** Index
-- **Position:** Consumer
-- **Access:** 3rd-Party
+Everything profiled for Togai is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/togai/](https://apis.io/providers/togai/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (25)
 
-- Billing
-- Metering
-- Usage-Based Pricing
-- Revenue Management
-- SaaS
-- Fintech
+- [Togai Accounts API](https://apis.io/apis/togai/togai-accounts-api/) — Account level calls
+- [Togai Aliases API](https://apis.io/apis/togai/togai-aliases-api/) — Alias level calls
+- [Togai Authentication API](https://apis.io/apis/togai/togai-authentication-api/) — Authentication API
+- [Togai Credits API](https://apis.io/apis/togai/togai-credits-api/) — Credits API
+- [Togai Customer Portal API](https://apis.io/apis/togai/togai-customer-portal-api/) — Portal level calls
+- [Togai Customers API](https://apis.io/apis/togai/togai-customers-api/) — Customer level calls
+- [Togai Entitlements API](https://apis.io/apis/togai/togai-entitlements-api/) — APIs related to entitlements
+- [Togai Event Ingestion API](https://apis.io/apis/togai/togai-event-ingestion-api/) — The Event Ingestion API from Togai — 2 operation(s) for event ingestion.
+- [Togai Event Management API](https://apis.io/apis/togai/togai-event-management-api/) — APIs for getting events ingested in Togai
+- [Togai Event Schemas API](https://apis.io/apis/togai/togai-event-schemas-api/) — Event Schema level calls
+- [Togai Feature API](https://apis.io/apis/togai/togai-feature-api/) — The Feature API from Togai — 2 operation(s) for feature.
+- [Togai File Storage API](https://apis.io/apis/togai/togai-file-storage-api/) — The File Storage API from Togai — 2 operation(s) for file storage.
+- [Togai InvoiceGroups API](https://apis.io/apis/togai/togai-invoicegroups-api/) — Invoice Group level calls
+- [Togai Invoices API](https://apis.io/apis/togai/togai-invoices-api/) — Invoices API
+- [Togai Jobs API](https://apis.io/apis/togai/togai-jobs-api/) — The Jobs API from Togai — 5 operation(s) for jobs.
+- [Togai Licenses API](https://apis.io/apis/togai/togai-licenses-api/) — APIs for getting or updating license records in Togai
+- [Togai Metrics API](https://apis.io/apis/togai/togai-metrics-api/) — APIs for getting Togai metrics
+- [Togai Payments API](https://apis.io/apis/togai/togai-payments-api/) — Payments API
+- [Togai Price Experimentation API](https://apis.io/apis/togai/togai-price-experimentation-api/) — Price Experimentation apis
+- [Togai Price Plans API](https://apis.io/apis/togai/togai-price-plans-api/) — Price Plan level calls
+- [Togai Pricing Rules API](https://apis.io/apis/togai/togai-pricing-rules-api/) — Pricing Rules level calls
+- [Togai Settings API](https://apis.io/apis/togai/togai-settings-api/) — Settings
+- [Togai Usage Meters API](https://apis.io/apis/togai/togai-usage-meters-api/) — Usage Meter level calls
+- [Togai Wallet API](https://apis.io/apis/togai/togai-wallet-api/) — Wallet API
+- [Togai Add Ons API](https://apis.io/apis/togai/togai-add-ons-api/) — The Add Ons API from Togai — 2 operation(s) for add ons.
 
-## Timestamps
+### Published properties
 
-- **Created:** 2025-02-10
-- **Modified:** 2026-05-19
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Agentic access (1)
 
-### Togai API
+Which operations an agent can call, which act, and which need a human in the loop.
 
-The Togai API provides full programmatic access to the Togai usage-based billing platform. Resources include customers, accounts, event schemas, usage meters, price plans, pricing rules, invoices, credits, entitlements, wallet, licenses, and reports. Supports both production and sandbox environments.
+- [Togai Agentic Access](https://apis.io/agentic-access/togai/togai-agentic-access/)
 
-- **Human URL:** [https://docs.togai.com/api-reference/getting-started](https://docs.togai.com/api-reference/getting-started)
-- **Base URL:** `https://api.togai.com`
+#### JSON Schema (2)
 
-#### Tags
+The data models the API reads and writes.
 
-- Billing
-- Metering
-- Usage-Based Pricing
-- Revenue Management
-- Customers
-- Invoices
+- [Togai Customer](https://apis.io/schemas/togai/togai-customer/)
+- [Togai Usage Event](https://apis.io/schemas/togai/togai-event/)
 
-#### Properties
+#### JSON Structure (1)
 
-- [Documentation](https://docs.togai.com/api-reference/getting-started)
-- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/togai/refs/heads/main/openapi/togai-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Getting Started](https://docs.togai.com/docs/introduction)
-- [JSON Schema](https://raw.githubusercontent.com/api-evangelist/togai/refs/heads/main/json-schema/togai-customer-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [Spectral Rules](https://raw.githubusercontent.com/api-evangelist/togai/refs/heads/main/rules/togai-rules.yml)
-- [Vocabulary](https://raw.githubusercontent.com/api-evangelist/togai/refs/heads/main/vocabulary/togai-vocabulary.yml)
-- [Postman Collection](collections/togai.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/togai.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Data models expressed in JSON Structure.
 
-## Common Properties
+- [Togai Customer Structure](https://apis.io/json-structure/togai/togai-customer-structure/)
 
-- [LinkedIn](https://www.linkedin.com/company/togai)
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Togai Context](https://apis.io/jsonld/togai/togai-context/)
+
+#### Vocabulary (1)
+
+The provider's domain terms, defined.
+
+- [Togai Vocabulary](https://apis.io/vocabularies/togai/togai-vocabulary/)
+
+#### Examples (2)
+
+Example requests and responses.
+
+- [Togai Create Customer Example](https://apis.io/examples/togai/togai-create-customer-example/)
+- [Togai Ingest Events Example](https://apis.io/examples/togai/togai-ingest-events-example/)
+
+#### Collections (51)
+
+Postman and Open Collection request collections.
+
+- [Togai Apis](https://apis.io/collections/togai/open-togai/)
+- [Togai Apis Accounts API](https://apis.io/collections/togai/open-togai-accounts-api/)
+- [Togai Apis Accounts AddOns API](https://apis.io/collections/togai/open-togai-addons-api/)
+- [Togai Apis Accounts Aliases API](https://apis.io/collections/togai/open-togai-aliases-api/)
+- [Togai Apis Accounts Authentication API](https://apis.io/collections/togai/open-togai-authentication-api/)
+- [Togai Apis Accounts Credits API](https://apis.io/collections/togai/open-togai-credits-api/)
+- [Togai Apis Accounts Customer Portal API](https://apis.io/collections/togai/open-togai-customer-portal-api/)
+- [Togai Apis Accounts Customers API](https://apis.io/collections/togai/open-togai-customers-api/)
+- [Togai Apis Accounts Entitlements API](https://apis.io/collections/togai/open-togai-entitlements-api/)
+- [Togai Apis Accounts Event Ingestion API](https://apis.io/collections/togai/open-togai-event-ingestion-api/)
+- [Togai Apis Accounts Event Management API](https://apis.io/collections/togai/open-togai-event-management-api/)
+- [Togai Apis Accounts Event Schemas API](https://apis.io/collections/togai/open-togai-event-schemas-api/)
+- [Togai Apis Accounts Feature API](https://apis.io/collections/togai/open-togai-feature-api/)
+- [Togai Apis Accounts File Storage API](https://apis.io/collections/togai/open-togai-file-storage-api/)
+- [Togai Apis Accounts InvoiceGroups API](https://apis.io/collections/togai/open-togai-invoicegroups-api/)
+- [Togai Apis Accounts Invoices API](https://apis.io/collections/togai/open-togai-invoices-api/)
+- [Togai Apis Accounts Jobs API](https://apis.io/collections/togai/open-togai-jobs-api/)
+- [Togai Apis Accounts Licenses API](https://apis.io/collections/togai/open-togai-licenses-api/)
+- [Togai Apis Accounts Metrics API](https://apis.io/collections/togai/open-togai-metrics-api/)
+- [Togai Apis Accounts Payments API](https://apis.io/collections/togai/open-togai-payments-api/)
+- [Togai Apis Accounts Price Experimentation API](https://apis.io/collections/togai/open-togai-price-experimentation-api/)
+- [Togai Apis Accounts Price Plans API](https://apis.io/collections/togai/open-togai-price-plans-api/)
+- [Togai Apis Accounts Pricing Rules API](https://apis.io/collections/togai/open-togai-pricing-rules-api/)
+- [Togai Apis Accounts Settings API](https://apis.io/collections/togai/open-togai-settings-api/)
+- [Togai Apis Accounts Usage Meters API](https://apis.io/collections/togai/open-togai-usage-meters-api/)
+- …and 26 more published on APIs.io
+
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [Togai — jsonschema rules](https://apis.io/rules/togai/togai-jsonschema-spectral-rules/)
+- [Togai API Rules](https://apis.io/rules/togai/togai-rules/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Togai Authentication](https://apis.io/security/togai/togai-authentication/)
+- [Togai Domain Security](https://apis.io/security/togai/togai-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Togai Plans Pricing](https://apis.io/plans/togai/togai-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Togai Rate Limits](https://apis.io/rate-limits/togai/togai-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Togai Finops](https://apis.io/finops/togai/togai-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
 - [Website](https://www.togai.com/)
-- [Developer  Portal](https://docs.togai.com/)
 - [Documentation](https://docs.togai.com/docs)
-- [API Reference](https://docs.togai.com/api-reference/getting-started)
-- [Sign Up](https://app.togai.com/auth/signup)
+- [API reference](https://docs.togai.com/api-reference/getting-started)
 - [Pricing](https://www.togai.com/pricing/)
-- [Blog](https://www.togai.com/blog/)
 - [Changelog](https://docs.togai.com/changelog/change-log)
-- [GitHub Organization](https://github.com/TogaiHQ)
-- [Sandbox](https://sandbox-api.togai.com/)
-- [Postman  Collection](https://docs.togai.com/api-reference/getting-started)
-- [Integrations](https://www.togai.com/product/integrations/)
-- [L L Ms Txt](https://docs.togai.com/llms.txt)
+- [Blog](https://www.togai.com/blog/)
+- [GitHub](https://github.com/TogaiHQ)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 48.9** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 73.2 |
+| Contract quality | 61.7 |
+| Contract governance | 27.3 |
+| Operational transparency | 26.3 |
+| Developer ergonomics | 57.1 |
+| Access clarity | 31.6 |
+
+**Agent readiness 41.4** — agent-native
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | verified |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | verified |
+| Error Semantics | verified |
+| OpenAPI Examples | partial |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | yes |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | partial |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 16.7** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/togai/](https://apis.io/providers/togai/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Togai: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/togai/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
